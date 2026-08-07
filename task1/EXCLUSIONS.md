@@ -45,6 +45,10 @@ summary was deliberately omitted because it is not primary execution evidence
 and contained private runtime details. Root `MANIFEST.sha256` covers every
 retained artifact.
 
+`ORGANIZER_REVIEW_REQUEST.md` asks the organizer to determine whether an
+explicit exception or non-ranking recognition is appropriate. The request does
+not itself change either limitation or the result's current eligibility status.
+
 ## Evidence limits
 
 The redacted rollout excludes post-boundary events by construction. Private

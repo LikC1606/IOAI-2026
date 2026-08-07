@@ -43,9 +43,15 @@ after material human continuation instructions and was sent at 10:54:51 UTC,
 after the official 10:30:00 UTC deadline. It is therefore an Agent result, but
 not an official-prompt-only autonomous or official-ranking-eligible result.
 
-Start with `AUTONOMY_BOUNDARY.md`, `EXCLUSIONS.md`, and `SUMMARY.json`. The exact
-credential-redacted pre-boundary solver trace is under `evidence/rollouts/`, and
-`ROLLOUT_PROVENANCE.json` binds it to the private original by SHA-256.
+`ORGANIZER_REVIEW_REQUEST.md` presents the result for organizer discretion. It
+separates execution attribution, strict autonomy, deadline eligibility, and
+possible exceptional recognition. The current status remains pending; only a
+written organizer decision can change it to "Organizer-approved exception."
+
+Start with `ORGANIZER_REVIEW_REQUEST.md`, `AUTONOMY_BOUNDARY.md`,
+`EXCLUSIONS.md`, and `SUMMARY.json`. The exact credential-redacted pre-boundary
+solver trace is under `evidence/rollouts/`, and `ROLLOUT_PROVENANCE.json` binds
+it to the private original by SHA-256.
 
 Verify after extraction:
 
