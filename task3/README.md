@@ -30,6 +30,8 @@ Start with these documents:
 - `SUPPLEMENTARY_TECHNICAL_REPORT.md`: nine-paragraph explanation of v8 with
   reproduced win-turn statistics and the corrected local score.
 - `REPRODUCE.md`: exact local and Kaggle notebook reproduction procedure.
+- `DATA_PROVENANCE.md`: organizer-data hashes, access restrictions, and
+  public-release handling.
 - `EXCLUSIONS.md`: the exact Task 3 evidence-scope boundary.
 - `evidence/LOCAL_REPRODUCTION.json`: machine-readable v1-v8 verification.
 - `MANIFEST.sha256`: integrity hashes for the package.

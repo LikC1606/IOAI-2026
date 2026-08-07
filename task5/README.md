@@ -2,6 +2,11 @@
 
 Competition: `ioai-2026-task-5-westlake-nlp-24`.
 
+For the consolidated rule, artifact, report-correction, and reproduction audit,
+start with `COMPLIANCE.md`. `V6_SOURCE_PROVENANCE.json` records why the preserved
+local source is attributed to historical Kernel version 6 despite Kaggle's 403
+response for the historical source endpoint.
+
 The formal run began at 07:04:20 UTC and stopped at its two-hour deadline,
 09:04:20.519 UTC. The main solver and autonomous workers received the organizer
 Starter Prompt; the main solver received no Continuation Prompt or custom method
@@ -35,4 +40,3 @@ log, submission ID, and score remain available and are included.
 
 No private leaderboard score is available in the captured Kaggle records. Public
 and private performance must not be conflated.
-

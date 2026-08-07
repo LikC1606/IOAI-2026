@@ -1,0 +1,54 @@
+{
+  "schema": "ioai.preserved-kernel-source-provenance.v1",
+  "task": 5,
+  "competition": "ioai-2026-task-5-westlake-nlp-24",
+  "kernel": "researai/ioai-2026-ghost-of-the-machine-solution",
+  "kernel_version": 6,
+  "submission_ref": 55320296,
+  "classification": "preserved formal-run source; not independently redownloaded historical source",
+  "source": {
+    "path": "notebooks/BEST_V6_SOURCE.py",
+    "size_bytes": 18106,
+    "sha256": "dd310ac9a5aff845f0298f4fb23374b8ddbc225bbe8f6b439d80d9bbc443585c"
+  },
+  "preserved_run_copy": {
+    "private_path": "/workspace/IOAI/ioai-competition-runs/ioai-2026-task-5-westlake-nlp-24/project/candidates/bge_finetune_all_labels_remote_v6.py",
+    "sha256_at_package_audit": "dd310ac9a5aff845f0298f4fb23374b8ddbc225bbe8f6b439d80d9bbc443585c",
+    "byte_identical_to_packaged_source": true
+  },
+  "rollout_binding": {
+    "path": "evidence/rollouts/rollout-2026-08-07T15-04-23-019fdb09-8b16-7032-82e1-21be10be17c0.jsonl",
+    "redacted_rollout_sha256": "bc25826f180ce0ae427f7fbe6545628321a0ba2b48520ad1d5a5f14fd40c135c",
+    "events": [
+      {
+        "line": 878,
+        "timestamp_utc": "2026-08-07T08:35:19.594Z",
+        "fact": "Agent invoked kaggle kernels push -p submission/ --timeout 600"
+      },
+      {
+        "line": 879,
+        "timestamp_utc": "2026-08-07T08:35:25.071Z",
+        "fact": "Kaggle CLI returned Kernel version 6 successfully pushed"
+      },
+      {
+        "line": 915,
+        "timestamp_utc": "2026-08-07T08:38:16.453Z",
+        "fact": "In-run source audit recorded submission/script.py as 18106 bytes with SHA-256 dd310ac9a5aff845f0298f4fb23374b8ddbc225bbe8f6b439d80d9bbc443585c"
+      },
+      {
+        "line": 1071,
+        "timestamp_utc": "2026-08-07T08:51:12.172Z",
+        "fact": "Before editing version 7, Agent copied unchanged submission/script.py to bge_finetune_all_labels_remote_v6.py"
+      }
+    ]
+  },
+  "remote_result": {
+    "public_score": 95.39,
+    "submitted_at_utc": "2026-08-07T08:43:46.740Z",
+    "output_path": "remote/v6/submission.csv",
+    "output_sha256": "176f45d8e5a46b9c634efb620a8373ab4eb69e0655f71445604e45491bc31375",
+    "log_path": "remote/v6/ioai-2026-ghost-of-the-machine-solution.log",
+    "log_sha256": "a70033f828289659427a5ffefbe6a85b29c20247f74f2d1f1e6d63358e5549c0"
+  },
+  "limitation": "Kaggle returns HTTP 403 for a historical version 6 source pull, so byte identity cannot be confirmed by an independent post-run source download."
+}

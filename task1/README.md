@@ -48,8 +48,9 @@ separates execution attribution, strict autonomy, deadline eligibility, and
 possible exceptional recognition. The current status remains pending; only a
 written organizer decision can change it to "Organizer-approved exception."
 
-Start with `ORGANIZER_REVIEW_REQUEST.md`, `AUTONOMY_BOUNDARY.md`,
-`EXCLUSIONS.md`, and `SUMMARY.json`. The exact credential-redacted pre-boundary
+Start with `COMPLIANCE.md`, `ORGANIZER_REVIEW_REQUEST.md`,
+`AUTONOMY_BOUNDARY.md`, `EXCLUSIONS.md`, and `SUMMARY.json`. The exact
+credential-redacted pre-boundary
 solver trace is under `evidence/rollouts/`, and `ROLLOUT_PROVENANCE.json` binds
 it to the private original by SHA-256.
 

@@ -2,6 +2,9 @@
 
 Competition: `ioai-2026-task-2-westlake-nlp-24`.
 
+For the consolidated rule, artifact, report-correction, and reproduction audit,
+start with `COMPLIANCE.md`.
+
 The formal solver began at 05:30:32 UTC. Before the conservative autonomy
 boundary it received only the injected startup instructions, the organizer
 Starter Prompt once, and the exact organizer Continuation Prompt once. The first

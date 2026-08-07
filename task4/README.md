@@ -2,6 +2,9 @@
 
 Competition: `ioai-2026-task-4-westlake-nlp-24`.
 
+For the consolidated rule, artifact, report-correction, and reproduction audit,
+start with `COMPLIANCE.md`.
+
 The formal run used the organizer Starter Prompt and exact organizer
 Continuation Prompt. No human method suggestion was found in solver-role inputs.
 The additional rollout files are autonomous workers and official-prompt resumes;
@@ -34,4 +37,3 @@ The score became visible just after the local run deadline. The scored action
 itself was sent before the deadline, and the project record states the organizer
 rule that an already-sent notebook may finish scoring afterward. No later model
 tuning or resubmission is included.
-
