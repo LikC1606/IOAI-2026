@@ -27,6 +27,8 @@ Start with these documents:
 - `SUBMISSION_TIMELINE.md`: all autonomous remote submissions and scores.
 - `COMPLIANCE.md`: rules-to-evidence audit and candid limitations.
 - `REPORT_COMPLIANCE.md`: audit of the historical source-header reports.
+- `SUPPLEMENTARY_TECHNICAL_REPORT.md`: nine-paragraph explanation of v8 with
+  reproduced win-turn statistics and the corrected local score.
 - `REPRODUCE.md`: exact local and Kaggle notebook reproduction procedure.
 - `EXCLUSIONS.md`: the exact Task 3 evidence-scope boundary.
 - `evidence/LOCAL_REPRODUCTION.json`: machine-readable v1-v8 verification.
@@ -42,9 +44,11 @@ The report header in every historical source is shorter than the organizer's
 requested 8-10 paragraphs, and v8's header reports a 98.63 local score whereas
 the exact v8 artifact currently reproduces at 96.62. These documentation issues
 do not change the exact payload, executable contract, or Kaggle LB evidence, but
-they are disclosed rather than silently repaired. The official page states that
-the report carries no score and uses “should carry”; the jury decides whether
-the format deviation matters.
+they are disclosed rather than silently repaired. A clearly labeled post-run
+explanation is provided in `SUPPLEMENTARY_TECHNICAL_REPORT.md`; it is not
+represented as part of the historical submission. The official page states
+that the report carries no score and uses “should carry”; the jury decides
+whether the format deviation matters.
 
 The `evidence/rollouts` files are timestamp-truncated and credential-redacted
 copies. Their private originals remain at the paths and hashes recorded in

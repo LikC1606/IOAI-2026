@@ -40,6 +40,7 @@ a requirement, while the Report page says each source “should carry” it and 
 it “carries no score.” This package makes no legal conclusion about materiality.
 It preserves the exact source and gives the Jury the facts needed to decide.
 
-A corrected supplementary explanation may be supplied alongside an appeal or
-audit, but it must never be substituted for `solutions/vN.py` or represented as
-the source that generated the historical Submission.
+`SUPPLEMENTARY_TECHNICAL_REPORT.md` supplies a corrected nine-paragraph v8
+explanation, including the reproduced win-turn distribution. It may accompany
+an appeal or audit, but it must never be substituted for `solutions/v8.py` or
+represented as the report that generated the historical Submission.
