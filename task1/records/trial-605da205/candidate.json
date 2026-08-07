@@ -1,0 +1,69 @@
+{
+  "trial_version": 2,
+  "seal_id": "tc-95c2fbfc3e01",
+  "profile": "contest",
+  "task_id": "find-the-order",
+  "aggregation": "identity.v1",
+  "trial": {
+    "trial_ref": "candidate-prefix-identity-b5aad75d324f",
+    "operator": "draft",
+    "hypothesis": "Evaluate the complete candidate at candidates/prefix_identity.py.",
+    "strategy_summary": "Evaluate the complete candidate at candidates/prefix_identity.py.",
+    "parent_ids": []
+  },
+  "source": {
+    "kind": "agent-output",
+    "identity": "candidate-prefix-identity-b5aad75d324f",
+    "model": "ioai-solver"
+  },
+  "known_deviations": [],
+  "traces": {
+    "code_refs": [
+      "candidates/prefix_identity.py"
+    ],
+    "prompt_refs": [],
+    "tool_refs": [],
+    "model_calls": []
+  },
+  "resources": {
+    "timeout_seconds": 300.0,
+    "token_budget": 0,
+    "tokens_used": 0,
+    "cpu_slots": 1,
+    "gpu_slots": 0
+  },
+  "attempt": {
+    "schema": "deepscientist.ioai.competition.python-attempt.v2",
+    "entrypoint": "candidates/prefix_identity.py",
+    "include_paths": [
+      "candidates"
+    ],
+    "arguments": [],
+    "reusable_inputs": []
+  },
+  "cases": [
+    {
+      "case_id": "validation",
+      "fixture": "fixture-01.json"
+    }
+  ],
+  "candidate": {
+    "schema": "deepscientist.ioai.competition.candidate.v1",
+    "version": 1,
+    "candidate_id": "candidate-prefix-identity-b5aad75d324f",
+    "attribution": {
+      "schema": "deepscientist.ioai.competition.candidate-attribution.v3",
+      "team_id": "ioai-single-agent",
+      "slot_id": "lead",
+      "team_run_id": "run-tc-95c2fbfc3e01",
+      "turn_id": "turn-6-9005a14b7e9f",
+      "role_id": "ioai-lead",
+      "strategy_lane": "explore"
+    }
+  },
+  "search": {
+    "round": 0,
+    "portfolio_lane": "explore"
+  },
+  "candidate_type": "single"
+}

@@ -1,0 +1,20 @@
+[
+  {
+    "ref": 55260695,
+    "fileName": "submission.csv",
+    "date": "2026-08-05T06:19:10.890000",
+    "description": "rotation CNN v2; local validation 54.8056",
+    "status": "SubmissionStatus.COMPLETE",
+    "publicScore": "0.55416",
+    "privateScore": ""
+  },
+  {
+    "ref": 55260462,
+    "fileName": "submission.csv",
+    "date": "2026-08-05T06:09:48.697000",
+    "description": "rotation CNN v1 validation 54.8056",
+    "status": "SubmissionStatus.COMPLETE",
+    "publicScore": "0.55055",
+    "privateScore": ""
+  }
+]

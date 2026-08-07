@@ -1,0 +1,223 @@
+{
+  "packet_version": 1,
+  "trial_id": "trial-9c1d23c5",
+  "trial_ref": "candidate-mfcc-qwen-beam-9dca41471132",
+  "valid": true,
+  "score": 0.785577,
+  "direction": "maximize",
+  "evaluator_version": "task-evaluator.v1",
+  "validation_version": "task-validation.v1",
+  "profile": "contest",
+  "cache_key": "754450f43127038c6aa438dba772274035ac8ce2a29293a78dc4dd061db4d081",
+  "cache_hit": false,
+  "failure_kind": null,
+  "case_scores": {
+    "validation": 0.785577
+  },
+  "resource_usage": {
+    "wall_clock_seconds": 0.2897956371307373,
+    "scheduling_overhead_seconds": 0.012459278106689453,
+    "token_budget": 0,
+    "tokens_used": 0,
+    "cpu_slots": 1,
+    "gpu_slots": 0,
+    "gpu_device_ids": [],
+    "candidate_attempt_seconds": 0.06411448772996664
+  },
+  "evidence_refs": [
+    ".deepscientist/competition/worktrees/trial-9c1d23c5",
+    ".deepscientist/competition/trials/trial-9c1d23c5/result.json"
+  ],
+  "operator": "draft",
+  "hypothesis": "Evaluate the complete candidate at candidates/mfcc_qwen_beam.py.",
+  "strategy_summary": "Evaluate the complete candidate at candidates/mfcc_qwen_beam.py.",
+  "parent_ids": [],
+  "config_hash": "7246428ed9739d831938dca21d917606cdbdb666375e28af4a00cfde591af8ff",
+  "candidate_execution_mode": "executable",
+  "candidate_attempt": {
+    "schema": "deepscientist.ioai.competition.attempt-receipt.v1",
+    "attempt_schema": "deepscientist.ioai.competition.python-attempt.v2",
+    "source_manifest_hash": "2afe0d30652c7cecb94de811af050d4c1f539512622d8095d6da67f468ae387c",
+    "entrypoint": "candidates/mfcc_qwen_beam.py",
+    "attempt_root_ref": ".deepscientist/competition/worktrees/trial-9c1d23c5/.deepscientist/competition/candidate-attempt",
+    "input_ref": ".deepscientist/competition/worktrees/trial-9c1d23c5/.deepscientist/competition/candidate-attempt/attempt-input.json",
+    "output_ref": ".deepscientist/competition/worktrees/trial-9c1d23c5/.deepscientist/competition/candidate-attempt/attempt-output.json",
+    "wall_clock_seconds": 0.06411448772996664,
+    "exit_code": 0,
+    "stdout": "",
+    "stderr": "",
+    "network_isolation_enforced": true,
+    "network_isolation_backend": "python-sitecustomize.v1",
+    "output_sha256": "45e85abcb20ae95c6d1c390968fd972768c25ecedf13f9b19415d63d00f58e38",
+    "output_size_bytes": 127,
+    "validation_diagnostics": {
+      "metric_components": {},
+      "auxiliary_fold_scores": [],
+      "auxiliary_fold_summary": {
+        "count": 0,
+        "mean": null,
+        "stdev": null,
+        "worst": null,
+        "best": null,
+        "range": null
+      },
+      "per_class_scores": {}
+    },
+    "reusable_artifact_inputs": [],
+    "reusable_artifact_outputs": [],
+    "status": "passed",
+    "failure_kind": null,
+    "failure_detail": null,
+    "receipt_hash": "03806edf25287f883be768e685dce8e89df6171228f232363bcdaa39dc664ea7"
+  },
+  "validation_diagnostics": {
+    "metric_components": {},
+    "auxiliary_fold_scores": [],
+    "auxiliary_fold_summary": {
+      "count": 0,
+      "mean": null,
+      "stdev": null,
+      "worst": null,
+      "best": null,
+      "range": null
+    },
+    "per_class_scores": {}
+  },
+  "promotion_score_source": "canonical_evaluator",
+  "candidate_id": "candidate-mfcc-qwen-beam-9dca41471132",
+  "candidate_content_hash": "e8f17e17c7639fce7694e3d5b308f1f373be76bb27a9b4bd22b02024fe3b0aed",
+  "candidate_attribution": {
+    "schema": "deepscientist.ioai.competition.candidate-attribution.v3",
+    "team_id": "ioai-single-agent",
+    "slot_id": "lead",
+    "team_run_id": "run-tc-95c2fbfc3e01",
+    "turn_id": "turn-14-76b5b921d68c",
+    "role_id": "ioai-lead",
+    "strategy_lane": "explore"
+  },
+  "search_lineage": null,
+  "recovery_intent": null,
+  "candidate_type": "single",
+  "candidate_spec_hash": "56d55cf90a5210ae1a6d7b6c735272db7e3a2f3f87bff0c0711c6dd4c8df49f2",
+  "candidate_spec_sha256": "4affce63871ea84f2d3557601b014e07fa42d4c74f8baa1512b2fb7cc23e2738",
+  "candidate_spec_ref": ".deepscientist/competition/trials/trial-9c1d23c5/candidate.json",
+  "source": {
+    "kind": "agent-output",
+    "identity": "candidate-mfcc-qwen-beam-9dca41471132",
+    "model": "ioai-solver"
+  },
+  "known_deviations": [],
+  "traces": {
+    "code_refs": [
+      "candidates/mfcc_qwen_beam.py"
+    ],
+    "prompt_refs": [],
+    "tool_refs": [],
+    "model_calls": []
+  },
+  "task_id": "find-the-order",
+  "seal_id": "tc-95c2fbfc3e01",
+  "seal_hash": "95c2fbfc3e01dd7039a5f3fbaf10c748d6f3881bfe4a677ca68b62e9c26679fe",
+  "evaluator_audit_id": "ea-eed70708",
+  "evaluator_audit_receipt_hash": "8b07056f979f3576d4a83a8de76d90175b321c1500ca737edf8d6ad4f73a782c",
+  "evaluator_worker_sha256": "c3f223266a4007b476e77808cb0ffdb2d3111200dc3c7270b1a93cf2f8f8a9a2",
+  "worker_id": "worker-001",
+  "lease_id": "lease-72d881fc",
+  "worktree_rel_path": ".deepscientist/competition/worktrees/trial-9c1d23c5",
+  "execution_root_rel_path": ".deepscientist/competition/worktrees/trial-9c1d23c5/.deepscientist/competition/execution",
+  "started_at": "2026-08-05T10:42:59+00:00",
+  "claimed_epoch": 1785926579.3597984,
+  "started_epoch": 1785926579.3722577,
+  "finished_at": "2026-08-05T10:42:59+00:00",
+  "finished_epoch": 1785926579.649594,
+  "post_run_gate_valid": true,
+  "baseline_comparison": {
+    "baseline_id": "baseline-task-spec-8c839f45a749",
+    "profile": "contest",
+    "metric_id": "find-the-order.score",
+    "baseline_score": 0.0,
+    "direction": "maximize",
+    "metric_contract_json_path": ".deepscientist/competition/baselines/local/baseline-task-spec-8c839f45a749/metric-contract.json",
+    "comparable": true,
+    "candidate_profile": "contest",
+    "baseline_profile": "contest",
+    "candidate_score": 0.785577,
+    "delta": 0.785577,
+    "relation": "better"
+  },
+  "execution": {
+    "task_id": "find-the-order",
+    "status": "passed",
+    "failure_kind": null,
+    "validation_version": "task-validation.v1",
+    "evaluator_version": "task-evaluator.v1",
+    "metric_direction": "maximize",
+    "network_isolation_enforced": true,
+    "network_isolation_backend": "python-sitecustomize.v1",
+    "case_grouping": "case",
+    "aggregation": "identity.v1",
+    "score": 0.785577,
+    "case_scores": {
+      "validation": 0.785577
+    },
+    "task_contract_hash": "7409c329ee9a0872a3119dbd3eb7dd910e67b78f90c27b707b812252794586b8",
+    "validation_contract_hash": "dc02eb18e15d65581f030c6ae16234e259cd5393302e8913feb4fd996c975461",
+    "evaluator_evidence": {
+      "path": "q001/evaluator.py",
+      "sha256": "6c2121bc41df82350f50992d1fccb8851ebb0e3b7049866d076a209f20280933",
+      "sealed_source_path": "evaluator.py",
+      "sealed_snapshot_path": "q01/a010201-evaluator.py"
+    },
+    "cases": [
+      {
+        "case_id": "validation",
+        "fixture": "fixture-01.json",
+        "candidate_hash": "e7881e99ce5a7b8e78c360324ca62bb24258e3e09cfa6e817135bee240975e11",
+        "candidate_evidence": {
+          "path": "q001/c001-candidate.json",
+          "sha256": "46abeff07d76803b0d6be3b8ac00f116c08759b18ef28af815787463dd2d96a9",
+          "size_bytes": 24
+        },
+        "fixture_evidence": {
+          "path": "q001/c001-fixture.json",
+          "sha256": "57501b4a765d8b2e532e55b9a7a4db4cabec3689512db8768f6cea75f7c539de",
+          "size_bytes": 88,
+          "sealed_source_path": "fixture-01.json",
+          "sealed_snapshot_path": "q01/a010301-fixture-01.json"
+        },
+        "network_isolation_enforced": true,
+        "network_isolation_backend": "python-sitecustomize.v1",
+        "status": "passed",
+        "score": 0.785577,
+        "failure_kind": null,
+        "wall_clock_seconds": 0.0737763186916709,
+        "exit_code": 0,
+        "canonical_evaluation": {
+          "trial_id": "trial-9c1d23c5:find-the-order:validation",
+          "validation_version": "task-validation.v1",
+          "profile": "contest",
+          "status": "valid",
+          "score": 0.785577,
+          "metric_direction": "maximize",
+          "evaluator_version": "task-evaluator.v1",
+          "failure_kind": null,
+          "case_scores": {},
+          "resource_usage": {},
+          "contract_version": 1,
+          "valid": true
+        },
+        "output_evidence": {
+          "path": "q001/c001-output.json",
+          "sha256": "b477605602a420806f6b82d5e53600054d5eacda1cf1efb5c49a52c7df3c6838",
+          "size_bytes": 21
+        },
+        "stdout": "",
+        "stderr": ""
+      }
+    ]
+  },
+  "network_isolation_enforced": true,
+  "network_isolation_backend": "python-sitecustomize.v1",
+  "official_submission_enabled": false,
+  "packet_hash": "5517e7e4088cc8a5f87e6aff43c225c5715a2a49a3a555cfaddf19d42b139af5"
+}

@@ -1,0 +1,15 @@
+{
+  "id": "researai/ioai-find-order-mfcc-qwen-beam",
+  "title": "IOAI Find Order MFCC Qwen Beam",
+  "code_file": "script.py",
+  "language": "python",
+  "kernel_type": "script",
+  "is_private": true,
+  "enable_gpu": true,
+  "enable_internet": false,
+  "machine_shape": "NvidiaTeslaT4",
+  "dataset_sources": ["kamalkhan/ioai-2026-wheel-dataset"],
+  "competition_sources": ["ioai-2026-task-1-westlake-nlp-24"],
+  "kernel_sources": [],
+  "model_sources": []
+}

@@ -1,0 +1,10 @@
+{
+  "package_schema": "ioai.organizer-evidence.v1",
+  "task": 3,
+  "competition": "ioai-2026-task-3-westlake-nlp-48",
+  "account_owner": "researai",
+  "boundary_utc_exclusive": "2026-08-06T05:46:19.450Z",
+  "best_submission_refs": [55289569, 55289823],
+  "best_public_score": 58.51666,
+  "historical_remote_source_retrievable": true
+}

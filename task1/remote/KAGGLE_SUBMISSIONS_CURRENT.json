@@ -1,0 +1,272 @@
+[
+  {
+    "ref": 55300144,
+    "fileName": "submission.csv",
+    "date": "2026-08-06T14:00:38.463000",
+    "description": "conditional and response PMI candidate union rerank",
+    "status": "SubmissionStatus.COMPLETE",
+    "publicScore": "0.81854",
+    "privateScore": ""
+  },
+  {
+    "ref": 55299584,
+    "fileName": "submission.csv",
+    "date": "2026-08-06T13:35:03.953000",
+    "description": "T4-safe semantic local beam baseline",
+    "status": "SubmissionStatus.COMPLETE",
+    "publicScore": "0.81675",
+    "privateScore": ""
+  },
+  {
+    "ref": 55288077,
+    "fileName": "submission.csv",
+    "date": "2026-08-06T04:14:08.650000",
+    "description": "v3 MFCC Whisper Qwen PMI beam local 0.804433",
+    "status": "SubmissionStatus.COMPLETE",
+    "publicScore": "0.78811",
+    "privateScore": ""
+  },
+  {
+    "ref": 55287464,
+    "fileName": "submission.csv",
+    "date": "2026-08-06T03:46:39.913000",
+    "description": "v1 prefix-constrained baseline local 0.682710",
+    "status": "SubmissionStatus.COMPLETE",
+    "publicScore": "0.68969",
+    "privateScore": ""
+  },
+  {
+    "ref": 55280366,
+    "fileName": "submission.csv",
+    "date": "2026-08-05T20:38:13.740000",
+    "description": "width128 dialogue-conditioned semantic reranker",
+    "status": "SubmissionStatus.COMPLETE",
+    "publicScore": "0.78452",
+    "privateScore": ""
+  },
+  {
+    "ref": 55279931,
+    "fileName": "submission.csv",
+    "date": "2026-08-05T20:13:10.250000",
+    "description": "width128 blended semantic reranker",
+    "status": "SubmissionStatus.COMPLETE",
+    "publicScore": "0.81885",
+    "privateScore": ""
+  },
+  {
+    "ref": 55279562,
+    "fileName": "submission.csv",
+    "date": "2026-08-05T19:51:44.750000",
+    "description": "width64 full-context semantic reranker",
+    "status": "SubmissionStatus.COMPLETE",
+    "publicScore": "0.81261",
+    "privateScore": ""
+  },
+  {
+    "ref": 55279340,
+    "fileName": "submission.csv",
+    "date": "2026-08-05T19:36:07.740000",
+    "description": "v2 Whisper acoustic parity Qwen full-context rerank",
+    "status": "SubmissionStatus.COMPLETE",
+    "publicScore": "0.78070",
+    "privateScore": ""
+  },
+  {
+    "ref": 55278814,
+    "fileName": "submission.csv",
+    "date": "2026-08-05T19:03:33.790000",
+    "description": "v1 prefix-constrained deterministic baseline",
+    "status": "SubmissionStatus.COMPLETE",
+    "publicScore": "0.68969",
+    "privateScore": ""
+  },
+  {
+    "ref": 55277782,
+    "fileName": "submission.csv",
+    "date": "2026-08-05T18:04:59.350000",
+    "description": "Balanced MFCC speakers, Whisper ASR, Qwen edge beam",
+    "status": "SubmissionStatus.COMPLETE",
+    "publicScore": "0.74121",
+    "privateScore": ""
+  },
+  {
+    "ref": 55275090,
+    "fileName": "submission.csv",
+    "date": "2026-08-05T16:03:29.923000",
+    "description": "Four-path parity rank consensus; exact public 0.794653",
+    "status": "SubmissionStatus.COMPLETE",
+    "publicScore": "0.78691",
+    "privateScore": ""
+  },
+  {
+    "ref": 55267647,
+    "fileName": "submission.csv",
+    "date": "2026-08-05T10:56:25.367000",
+    "description": "MFCC balanced speakers + Whisper + Qwen beam; local 0.785577",
+    "status": "SubmissionStatus.COMPLETE",
+    "publicScore": "0.78049",
+    "privateScore": ""
+  },
+  {
+    "ref": 55267607,
+    "fileName": "submission.csv",
+    "date": "2026-08-05T10:54:51.343000",
+    "description": "MFCC speaker parity + Qwen constrained beam CV 0.785577",
+    "status": "SubmissionStatus.COMPLETE",
+    "publicScore": "0.78049",
+    "privateScore": ""
+  },
+  {
+    "ref": 55267587,
+    "fileName": "submission.csv",
+    "date": "2026-08-05T10:54:05.467000",
+    "description": "",
+    "status": "SubmissionStatus.COMPLETE",
+    "publicScore": "0.78049",
+    "privateScore": ""
+  },
+  {
+    "ref": 55267506,
+    "fileName": "submission.csv",
+    "date": "2026-08-05T10:50:03.013000",
+    "description": "",
+    "status": "SubmissionStatus.COMPLETE",
+    "publicScore": "0.77751",
+    "privateScore": ""
+  },
+  {
+    "ref": 55267404,
+    "fileName": "submission.csv",
+    "date": "2026-08-05T10:45:12.040000",
+    "description": "v5 public-selected macro pairwise, spectral speaker, final 350-dialogue refit",
+    "status": "SubmissionStatus.COMPLETE",
+    "publicScore": "0.69598",
+    "privateScore": ""
+  },
+  {
+    "ref": 55267368,
+    "fileName": "submission.csv",
+    "date": "2026-08-05T10:42:54.010000",
+    "description": "v5 V1 recovered strong-speaker diverse Kemeny full-dialogue rerank",
+    "status": "SubmissionStatus.COMPLETE",
+    "publicScore": "0.77751",
+    "privateScore": ""
+  },
+  {
+    "ref": 55267333,
+    "fileName": "submission.csv",
+    "date": "2026-08-05T10:41:12.387000",
+    "description": "V5 strong speaker parity diverse PMI beams plus full Qwen rerank",
+    "status": "SubmissionStatus.COMPLETE",
+    "publicScore": "0.77751",
+    "privateScore": ""
+  },
+  {
+    "ref": 55267202,
+    "fileName": "submission.csv",
+    "date": "2026-08-05T10:34:47.067000",
+    "description": "v4 stratified-length Whisper supervised pairwise, validation-selected pure text",
+    "status": "SubmissionStatus.COMPLETE",
+    "publicScore": "0.71792",
+    "privateScore": ""
+  },
+  {
+    "ref": 55267054,
+    "fileName": "submission.csv",
+    "date": "2026-08-05T10:27:29.273000",
+    "description": "clean final reproducible V1 incumbent",
+    "status": "SubmissionStatus.COMPLETE",
+    "publicScore": "0.68969",
+    "privateScore": ""
+  },
+  {
+    "ref": 55266870,
+    "fileName": "submission.csv",
+    "date": "2026-08-05T10:18:25.997000",
+    "description": "v4 V1 plus top-quartile high-margin local wav2vec parity swaps",
+    "status": "SubmissionStatus.COMPLETE",
+    "publicScore": "0.68806",
+    "privateScore": ""
+  },
+  {
+    "ref": 55266815,
+    "fileName": "submission.csv",
+    "date": "2026-08-05T10:16:28.243000",
+    "description": "v3 V1 plus wav2vec parity on top-confidence half",
+    "status": "SubmissionStatus.COMPLETE",
+    "publicScore": "0.69211",
+    "privateScore": ""
+  },
+  {
+    "ref": 55266795,
+    "fileName": "submission.csv",
+    "date": "2026-08-05T10:15:39.283000",
+    "description": "v3 supervised Whisper pairwise ranker plus heldout-gated soft speaker",
+    "status": "SubmissionStatus.COMPLETE",
+    "publicScore": "0.72376",
+    "privateScore": ""
+  },
+  {
+    "ref": 55266532,
+    "fileName": "submission.csv",
+    "date": "2026-08-05T10:03:33.950000",
+    "description": "v2 V1 plus hard wav2vec2 speaker parity",
+    "status": "SubmissionStatus.COMPLETE",
+    "publicScore": "0.70128",
+    "privateScore": ""
+  },
+  {
+    "ref": 55266465,
+    "fileName": "submission.csv",
+    "date": "2026-08-05T10:00:26.687000",
+    "description": "v4 V1-anchored conservative Qwen rank fusion, public margin gated",
+    "status": "SubmissionStatus.COMPLETE",
+    "publicScore": "0.68969",
+    "privateScore": ""
+  },
+  {
+    "ref": 55266278,
+    "fileName": "submission.csv",
+    "date": "2026-08-05T09:52:34.420000",
+    "description": "V1-anchored train index ranker with public-gated fusion",
+    "status": "SubmissionStatus.COMPLETE",
+    "publicScore": "0.68406",
+    "privateScore": ""
+  },
+  {
+    "ref": 55266068,
+    "fileName": "submission.csv",
+    "date": "2026-08-05T09:45:22.467000",
+    "description": "V1-anchored public-selected acoustic parity control",
+    "status": "SubmissionStatus.COMPLETE",
+    "publicScore": "0.69112",
+    "privateScore": ""
+  },
+  {
+    "ref": 55265826,
+    "fileName": "submission.csv",
+    "date": "2026-08-05T09:35:37.257000",
+    "description": "v3 public-audited hard speaker parity plus Qwen Kemeny",
+    "status": "SubmissionStatus.COMPLETE",
+    "publicScore": "0.68969",
+    "privateScore": ""
+  },
+  {
+    "ref": 55265658,
+    "fileName": "submission.csv",
+    "date": "2026-08-05T09:28:51.773000",
+    "description": "v2 target-only Qwen PMI plus Kemeny beam; OOM-safe exact scoring",
+    "status": "SubmissionStatus.COMPLETE",
+    "publicScore": "0.68969",
+    "privateScore": ""
+  },
+  {
+    "ref": 55265485,
+    "fileName": "submission.csv",
+    "date": "2026-08-05T09:21:18.870000",
+    "description": "v1 valid prefix fallback; Qwen scorer OOM diagnosed",
+    "status": "SubmissionStatus.COMPLETE",
+    "publicScore": "0.73585",
+    "privateScore": ""
+  }
+]

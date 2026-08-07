@@ -1,0 +1,9 @@
+[{"stream_name":"stdout","time":1.096732088,"data":"contract OK: load_public_data() + PotatoPlayer(words, embeddings)\n"}
+,{"stream_name":"stdout","time":1.099296489,"data":"wrote /kaggle/working/submission.csv (28996 base64 chars for 2 rows)\n"}
+,{"stream_name":"stderr","time":4.105781875,"data":"/usr/local/lib/python3.12/dist-packages/mistune.py:435: SyntaxWarning: invalid escape sequence '\\|'\n"}
+,{"stream_name":"stderr","time":4.105892604,"data":"  cells[i][c] = re.sub('\\\\\\\\\\|', '|', cell)\n"}
+,{"stream_name":"stderr","time":4.47757641,"data":"/usr/local/lib/python3.12/dist-packages/nbconvert/filters/filter_links.py:36: SyntaxWarning: invalid escape sequence '\\_'\n"}
+,{"stream_name":"stderr","time":4.477641672,"data":"  text = re.sub(r'_', '\\_', text) # Escape underscores in display text\n"}
+,{"stream_name":"stderr","time":6.140495591,"data":"[NbConvertApp] Converting notebook __script__.ipynb to html\n"}
+,{"stream_name":"stderr","time":7.913171289,"data":"[NbConvertApp] Writing 346260 bytes to __results__.html\n"}
+]

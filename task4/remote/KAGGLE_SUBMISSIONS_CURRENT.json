@@ -1,0 +1,29 @@
+[
+  {
+    "ref": 55316818,
+    "fileName": "submission.csv",
+    "date": "2026-08-07T06:10:48.923000",
+    "description": "fine-quantized dual-margin PGD with minimum-norm refinement",
+    "status": "SubmissionStatus.COMPLETE",
+    "publicScore": "98.41000",
+    "privateScore": ""
+  },
+  {
+    "ref": 55316194,
+    "fileName": "submission.csv",
+    "date": "2026-08-07T05:41:32.143000",
+    "description": "0.03-buffer fine-quantized dual-margin PGD",
+    "status": "SubmissionStatus.COMPLETE",
+    "publicScore": "98.36000",
+    "privateScore": ""
+  },
+  {
+    "ref": 55315359,
+    "fileName": "submission.csv",
+    "date": "2026-08-07T05:08:49.403000",
+    "description": "buffered dual-margin raw PGD with quantized deltas",
+    "status": "SubmissionStatus.COMPLETE",
+    "publicScore": "98.23000",
+    "privateScore": ""
+  }
+]

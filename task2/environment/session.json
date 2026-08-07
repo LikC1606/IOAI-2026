@@ -1,0 +1,13 @@
+{
+  "schema": "deepscientist.ioai.linux-competition-session.v1",
+  "competitionId": "ioai-2026-task-2-westlake-nlp-24",
+  "deadlineUtc": "2026-08-05T07:00:00.000Z",
+  "registeredKaggleOwner": "researai",
+  "joinedAtUtc": "2026-08-05T05:30:14.093Z",
+  "initialPromptSha256": "6e91132b190ef077ff9af4cc1c6e538155f71333c18d7666c13e752e0e7d693a",
+  "continuationPromptSha256": "fbe001a56ef12f475c4172114fcc9f68100c451810cd5adb05a3132bb7a38ead",
+  "submissionKernelRef": "researai/ioai-ioai-2026-task-2-westlake-nlp-24-1455ea51",
+  "maxSubmissions": 20,
+  "protectedReserve": 5,
+  "deadlineSource": "kaggle"
+}

@@ -1,0 +1,29 @@
+{
+  "fetched_at_utc": "2026-08-07T11:27:59.509254+00:00",
+  "competition": "ioai-2026-task-1-westlake-nlp-24",
+  "kernel": "researai/ioai-task-1-prefix-baseline",
+  "facts": {
+    "kernel_completed": true,
+    "output_generated": true,
+    "competition_submission_from_this_kernel_found": false,
+    "eligible_scored_submission_claimed": false
+  },
+  "files": {
+    "remote/preboundary-baseline-not-scored/output/kernel.log": {
+      "sha256": "ea88b665a45f78b00a89edea56969b55f8da6158c4622ee5b3fa9f8d66829302",
+      "bytes": 18785
+    },
+    "remote/preboundary-baseline-not-scored/output/submission.csv": {
+      "sha256": "6447cb3b97cf7a0801c803d2bbf45397929fef75e2f25d241a4abee82aa9d090",
+      "bytes": 6533
+    },
+    "remote/preboundary-baseline-not-scored/source/kernel-metadata.json": {
+      "sha256": "ef3264f2663e89984e1e1ac5025cec2e8fbee41c8c148c08332e0f7a66f90373",
+      "bytes": 662
+    },
+    "remote/preboundary-baseline-not-scored/source/script.py": {
+      "sha256": "27448633c4e184771ceb1f49a68172918df463968a3a3b6f4b25f6abe09364f3",
+      "bytes": 8953
+    }
+  }
+}

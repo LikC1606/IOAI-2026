@@ -1,0 +1,15 @@
+{
+  "id": "researai/ioai-2026-task-3-westlake-nlp-48-solution",
+  "title": "ioai-2026-task-3-westlake-nlp-48-solution",
+  "code_file": "script.py",
+  "language": "python",
+  "kernel_type": "script",
+  "is_private": true,
+  "enable_gpu": false,
+  "enable_internet": false,
+  "machine_shape": "",
+  "dataset_sources": [],
+  "competition_sources": ["ioai-2026-task-3-westlake-nlp-48"],
+  "kernel_sources": [],
+  "model_sources": []
+}

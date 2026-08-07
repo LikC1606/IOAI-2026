@@ -1,0 +1,7 @@
+{
+  "ledger_version": 1,
+  "max_submissions": 20,
+  "protected_reserve": 5,
+  "official_submission_enabled": false,
+  "attempts": []
+}

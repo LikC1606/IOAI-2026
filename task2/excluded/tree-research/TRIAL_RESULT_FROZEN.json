@@ -1,0 +1,223 @@
+{
+  "packet_version": 1,
+  "trial_id": "trial-4cc744a8",
+  "trial_ref": "candidate-structured-trees-v1-386c113bd686",
+  "valid": true,
+  "score": 0.5469444444444445,
+  "direction": "maximize",
+  "evaluator_version": "task-evaluator.v1",
+  "validation_version": "task-validation.v1",
+  "profile": "contest",
+  "cache_key": "753a39d7d835c753992776be96494948be8109d9f354c2e1148cf4c8edb85809",
+  "cache_hit": false,
+  "failure_kind": null,
+  "case_scores": {
+    "validation": 0.5469444444444445
+  },
+  "resource_usage": {
+    "wall_clock_seconds": 38.768797636032104,
+    "scheduling_overhead_seconds": 0.014247894287109375,
+    "token_budget": 0,
+    "tokens_used": 0,
+    "cpu_slots": 1,
+    "gpu_slots": 0,
+    "gpu_device_ids": [],
+    "candidate_attempt_seconds": 38.57122234813869
+  },
+  "evidence_refs": [
+    ".deepscientist/competition/worktrees/trial-4cc744a8",
+    ".deepscientist/competition/trials/trial-4cc744a8/result.json"
+  ],
+  "operator": "draft",
+  "hypothesis": "Evaluate the complete candidate at competition/candidates/structured_trees_v1.py.",
+  "strategy_summary": "Evaluate the complete candidate at competition/candidates/structured_trees_v1.py.",
+  "parent_ids": [],
+  "config_hash": "387bf8feca4f7a798c62ba735dc1104132115e47dcc2acb3fd1fe16c94fb5e35",
+  "candidate_execution_mode": "executable",
+  "candidate_attempt": {
+    "schema": "deepscientist.ioai.competition.attempt-receipt.v1",
+    "attempt_schema": "deepscientist.ioai.competition.python-attempt.v2",
+    "source_manifest_hash": "aa8ef40bcc239877fb7af6e5614e8d9569f99555c502f991529ec927cf60fad9",
+    "entrypoint": "competition/candidates/structured_trees_v1.py",
+    "attempt_root_ref": ".deepscientist/competition/worktrees/trial-4cc744a8/.deepscientist/competition/candidate-attempt",
+    "input_ref": ".deepscientist/competition/worktrees/trial-4cc744a8/.deepscientist/competition/candidate-attempt/attempt-input.json",
+    "output_ref": ".deepscientist/competition/worktrees/trial-4cc744a8/.deepscientist/competition/candidate-attempt/attempt-output.json",
+    "wall_clock_seconds": 38.57122234813869,
+    "exit_code": 0,
+    "stdout": "",
+    "stderr": "",
+    "network_isolation_enforced": true,
+    "network_isolation_backend": "python-sitecustomize.v1",
+    "output_sha256": "1ad88e6eb6d8686fd774d6babda79515cdee6d2ae4a6b6b9c6994db5a0ca5c32",
+    "output_size_bytes": 7656,
+    "validation_diagnostics": {
+      "metric_components": {},
+      "auxiliary_fold_scores": [],
+      "auxiliary_fold_summary": {
+        "count": 0,
+        "mean": null,
+        "stdev": null,
+        "worst": null,
+        "best": null,
+        "range": null
+      },
+      "per_class_scores": {}
+    },
+    "reusable_artifact_inputs": [],
+    "reusable_artifact_outputs": [],
+    "status": "passed",
+    "failure_kind": null,
+    "failure_detail": null,
+    "receipt_hash": "979ffbc3a29e3b20088136e8f2850a71d30cffcb653678191537bdfef2b33323"
+  },
+  "validation_diagnostics": {
+    "metric_components": {},
+    "auxiliary_fold_scores": [],
+    "auxiliary_fold_summary": {
+      "count": 0,
+      "mean": null,
+      "stdev": null,
+      "worst": null,
+      "best": null,
+      "range": null
+    },
+    "per_class_scores": {}
+  },
+  "promotion_score_source": "canonical_evaluator",
+  "candidate_id": "candidate-structured-trees-v1-386c113bd686",
+  "candidate_content_hash": "2a662b9672dcae9aba664ce8c9ac9d66149f4862808946441af09752102f5f98",
+  "candidate_attribution": {
+    "schema": "deepscientist.ioai.competition.candidate-attribution.v3",
+    "team_id": "ioai-single-agent",
+    "slot_id": "lead",
+    "team_run_id": "run-tc-e2fcb753ecca",
+    "turn_id": "turn-0-ffc5d5033eff",
+    "role_id": "ioai-lead",
+    "strategy_lane": "explore"
+  },
+  "search_lineage": null,
+  "recovery_intent": null,
+  "candidate_type": "single",
+  "candidate_spec_hash": "89d27e28420be8449b1804a59c8356bd630b3d422febf2e1b44b5a5605bb872a",
+  "candidate_spec_sha256": "38144ad126c5be1766101891240a0ee27ed8960a0e8344988da3d5db6e0bc538",
+  "candidate_spec_ref": ".deepscientist/competition/trials/trial-4cc744a8/candidate.json",
+  "source": {
+    "kind": "agent-output",
+    "identity": "candidate-structured-trees-v1-386c113bd686",
+    "model": "ioai-solver"
+  },
+  "known_deviations": [],
+  "traces": {
+    "code_refs": [
+      "competition/candidates/structured_trees_v1.py"
+    ],
+    "prompt_refs": [],
+    "tool_refs": [],
+    "model_calls": []
+  },
+  "task_id": "catch-the-robot-next-action",
+  "seal_id": "tc-e2fcb753ecca",
+  "seal_hash": "e2fcb753ecca4627457cddffedb30e8d6d757be1d6fb5b4014442914331ee6fb",
+  "evaluator_audit_id": "ea-90fc4afe",
+  "evaluator_audit_receipt_hash": "68028fe0122b73e0fed5f165836565a8fded2355319ba07d75d6d8aa0ef24bc9",
+  "evaluator_worker_sha256": "c3f223266a4007b476e77808cb0ffdb2d3111200dc3c7270b1a93cf2f8f8a9a2",
+  "worker_id": "worker-001",
+  "lease_id": "lease-3a42726d",
+  "worktree_rel_path": ".deepscientist/competition/worktrees/trial-4cc744a8",
+  "execution_root_rel_path": ".deepscientist/competition/worktrees/trial-4cc744a8/.deepscientist/competition/execution",
+  "started_at": "2026-08-05T06:09:56+00:00",
+  "claimed_epoch": 1785910196.3540175,
+  "started_epoch": 1785910196.3682654,
+  "finished_at": "2026-08-05T06:10:35+00:00",
+  "finished_epoch": 1785910235.1228151,
+  "post_run_gate_valid": true,
+  "baseline_comparison": {
+    "baseline_id": "baseline-task-spec-1f700ca30c03",
+    "profile": "contest",
+    "metric_id": "catch-the-robot-next-action.score",
+    "baseline_score": 0.0,
+    "direction": "maximize",
+    "metric_contract_json_path": ".deepscientist/competition/baselines/local/baseline-task-spec-1f700ca30c03/metric-contract.json",
+    "comparable": true,
+    "candidate_profile": "contest",
+    "baseline_profile": "contest",
+    "candidate_score": 0.5469444444444445,
+    "delta": 0.5469444444444445,
+    "relation": "better"
+  },
+  "execution": {
+    "task_id": "catch-the-robot-next-action",
+    "status": "passed",
+    "failure_kind": null,
+    "validation_version": "task-validation.v1",
+    "evaluator_version": "task-evaluator.v1",
+    "metric_direction": "maximize",
+    "network_isolation_enforced": true,
+    "network_isolation_backend": "python-sitecustomize.v1",
+    "case_grouping": "case",
+    "aggregation": "identity.v1",
+    "score": 0.5469444444444445,
+    "case_scores": {
+      "validation": 0.5469444444444445
+    },
+    "task_contract_hash": "06bf8c268c1ad0148e9088883937999c3ff8134967605060d65c8802e37d5744",
+    "validation_contract_hash": "dc02eb18e15d65581f030c6ae16234e259cd5393302e8913feb4fd996c975461",
+    "evaluator_evidence": {
+      "path": "q001/evaluator.py",
+      "sha256": "34e88bf1db48e2d10bd128e752f32045ff71ef90d8906081c1d556195631ed8a",
+      "sealed_source_path": "evaluator.py",
+      "sealed_snapshot_path": "q01/a010201-evaluator.py"
+    },
+    "cases": [
+      {
+        "case_id": "validation",
+        "fixture": "fixture-01.json",
+        "candidate_hash": "c312ccd9f2fbc99ae285cec045b310b55240bf78358118d89c4d7ac416a09bce",
+        "candidate_evidence": {
+          "path": "q001/c001-candidate.json",
+          "sha256": "b843f424cabea1bfded2e5724d3ca02d11e49e7bc381d1ac25ddfbcc92025533",
+          "size_bytes": 25631
+        },
+        "fixture_evidence": {
+          "path": "q001/c001-fixture.json",
+          "sha256": "8477d77f530b8ddccb5bef4a6294625579ce0b726ae57b3fc697646b1c55a1d8",
+          "size_bytes": 129,
+          "sealed_source_path": "fixture-01.json",
+          "sealed_snapshot_path": "q01/a010301-fixture-01.json"
+        },
+        "network_isolation_enforced": true,
+        "network_isolation_backend": "python-sitecustomize.v1",
+        "status": "passed",
+        "score": 0.5469444444444445,
+        "failure_kind": null,
+        "wall_clock_seconds": 0.05294826254248619,
+        "exit_code": 0,
+        "canonical_evaluation": {
+          "trial_id": "trial-4cc744a8:catch-the-robot-next-action:validation",
+          "validation_version": "task-validation.v1",
+          "profile": "contest",
+          "status": "valid",
+          "score": 0.5469444444444445,
+          "metric_direction": "maximize",
+          "evaluator_version": "task-evaluator.v1",
+          "failure_kind": null,
+          "case_scores": {},
+          "resource_usage": {},
+          "contract_version": 1,
+          "valid": true
+        },
+        "output_evidence": {
+          "path": "q001/c001-output.json",
+          "sha256": "86b306e2aea532865c0dd24a69224301537ed8e31d78b4c62679b4901641934b",
+          "size_bytes": 31
+        },
+        "stdout": "",
+        "stderr": ""
+      }
+    ]
+  },
+  "network_isolation_enforced": true,
+  "network_isolation_backend": "python-sitecustomize.v1",
+  "official_submission_enabled": false,
+  "packet_hash": "4149cca5594da47b0bb082e8a356855338da529ab89defdf39672616c3a3d70d"
+}

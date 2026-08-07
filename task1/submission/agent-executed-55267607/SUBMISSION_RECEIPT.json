@@ -1,0 +1,20 @@
+{
+  "competition_id": "ioai-2026-task-1-westlake-nlp-24",
+  "account": "researai",
+  "kernel": "researai/ioai-find-order-mfcc-qwen-beam",
+  "kernel_version": 1,
+  "submission_id": 55267607,
+  "file_name": "submission.csv",
+  "description": "MFCC speaker parity + Qwen constrained beam CV 0.785577",
+  "status": "COMPLETE",
+  "local_score": 0.785577,
+  "public_score": 0.78049,
+  "score_gap_public_minus_local": -0.005087,
+  "submitted_at_utc": "2026-08-05T10:54:51.343Z",
+  "candidate_id": "candidate-mfcc-qwen-beam-9dca41471132",
+  "trial_id": "trial-9c1d23c5",
+  "submitted_script_sha256": "81d89f00f1c68d70e39fc069086419f2409e9ee531459de25f09c621e518652f",
+  "submission_csv_sha256": "f997dea01312701ffe9fae0094539634a92b5c8835a31437a51ab8aeb40d23a6",
+  "kaggle_log_sha256": "370cf90f0777675bf678c52a371d748fc3246018db281b55df8f1def6d52e40c",
+  "notes": "Late submissions of the same output also received 0.78049; this receipt identifies the CLI submission directly verified in the supervising session."
+}

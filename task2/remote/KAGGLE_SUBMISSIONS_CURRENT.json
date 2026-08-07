@@ -1,0 +1,146 @@
+[
+  {
+    "ref": 55280319,
+    "fileName": "submission.csv",
+    "date": "2026-08-05T20:34:57.803000",
+    "description": "v4 mission-routed stage correction",
+    "status": "SubmissionStatus.COMPLETE",
+    "publicScore": "0.65888",
+    "privateScore": ""
+  },
+  {
+    "ref": 55279917,
+    "fileName": "submission.csv",
+    "date": "2026-08-05T20:12:26.043000",
+    "description": "v3 semantic ensemble plus 15 percent stage head",
+    "status": "SubmissionStatus.COMPLETE",
+    "publicScore": "0.65861",
+    "privateScore": ""
+  },
+  {
+    "ref": 55279521,
+    "fileName": "submission.csv",
+    "date": "2026-08-05T19:48:25.183000",
+    "description": "v2 three-seed semantic CNN probability ensemble",
+    "status": "SubmissionStatus.COMPLETE",
+    "publicScore": "0.65722",
+    "privateScore": ""
+  },
+  {
+    "ref": 55278924,
+    "fileName": "submission.csv",
+    "date": "2026-08-05T19:11:16.177000",
+    "description": "v1 semantic token-aware CNN, 65.19 validation",
+    "status": "SubmissionStatus.COMPLETE",
+    "publicScore": "0.64666",
+    "privateScore": ""
+  },
+  {
+    "ref": 55277932,
+    "fileName": "submission.csv",
+    "date": "2026-08-05T18:13:19.540000",
+    "description": "soft pooled navigation and robot-specific manipulation",
+    "status": "SubmissionStatus.COMPLETE",
+    "publicScore": "0.67000",
+    "privateScore": ""
+  },
+  {
+    "ref": 55277682,
+    "fileName": "submission.csv",
+    "date": "2026-08-05T17:59:48.353000",
+    "description": "65-35 structured tree and FiLM blend",
+    "status": "SubmissionStatus.COMPLETE",
+    "publicScore": "0.67500",
+    "privateScore": ""
+  },
+  {
+    "ref": 55276740,
+    "fileName": "submission.csv",
+    "date": "2026-08-05T17:13:01.017000",
+    "description": "per-robot structured policy with token and path features",
+    "status": "SubmissionStatus.COMPLETE",
+    "publicScore": "0.66944",
+    "privateScore": ""
+  },
+  {
+    "ref": 55274835,
+    "fileName": "submission.csv",
+    "date": "2026-08-05T15:53:47.857000",
+    "description": "stage LightGBM XGBoost CatBoost blend CV 0.664444",
+    "status": "SubmissionStatus.COMPLETE",
+    "publicScore": "0.67972",
+    "privateScore": ""
+  },
+  {
+    "ref": 55274478,
+    "fileName": "submission.csv",
+    "date": "2026-08-05T15:39:08.450000",
+    "description": "stage180 LightGBM plus GPU XGBoost blend CV 0.661944",
+    "status": "SubmissionStatus.COMPLETE",
+    "publicScore": "0.67638",
+    "privateScore": ""
+  },
+  {
+    "ref": 55273702,
+    "fileName": "submission.csv",
+    "date": "2026-08-05T15:06:13.450000",
+    "description": "per-robot GPU XGBoost validation 0.655833",
+    "status": "SubmissionStatus.COMPLETE",
+    "publicScore": "0.66694",
+    "privateScore": ""
+  },
+  {
+    "ref": 55273084,
+    "fileName": "submission.csv",
+    "date": "2026-08-05T14:40:13.590000",
+    "description": "per-robot LightGBM validation 0.657500",
+    "status": "SubmissionStatus.COMPLETE",
+    "publicScore": "0.66944",
+    "privateScore": ""
+  },
+  {
+    "ref": 55262303,
+    "fileName": "submission.csv",
+    "date": "2026-08-05T07:20:56.907000",
+    "description": "four-seed entropy ExtraTrees ensemble version 3",
+    "status": "SubmissionStatus.COMPLETE",
+    "publicScore": "0.63416",
+    "privateScore": ""
+  },
+  {
+    "ref": 55261913,
+    "fileName": "submission.csv",
+    "date": "2026-08-05T07:06:32.137000",
+    "description": "entropy ExtraTrees version 2 remote validation 0.630833",
+    "status": "SubmissionStatus.COMPLETE",
+    "publicScore": "0.63138",
+    "privateScore": ""
+  },
+  {
+    "ref": 55261432,
+    "fileName": "submission.csv",
+    "date": "2026-08-05T06:46:18.437000",
+    "description": "structured ExtraTrees v1 validation 0.625833",
+    "status": "SubmissionStatus.COMPLETE",
+    "publicScore": "0.63583",
+    "privateScore": ""
+  },
+  {
+    "ref": 55260695,
+    "fileName": "submission.csv",
+    "date": "2026-08-05T06:19:10.890000",
+    "description": "rotation CNN v2; local validation 54.8056",
+    "status": "SubmissionStatus.COMPLETE",
+    "publicScore": "0.55416",
+    "privateScore": ""
+  },
+  {
+    "ref": 55260462,
+    "fileName": "submission.csv",
+    "date": "2026-08-05T06:09:48.697000",
+    "description": "rotation CNN v1 validation 54.8056",
+    "status": "SubmissionStatus.COMPLETE",
+    "publicScore": "0.55055",
+    "privateScore": ""
+  }
+]

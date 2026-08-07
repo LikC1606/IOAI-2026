@@ -1,0 +1,34 @@
+{
+  "prepared_version": 2,
+  "authorization_hash": "c1f1cacac3691e66f228fbb466070a3dee784678a80a477736d3baf2ac4791b0",
+  "attempt_id": "submission-f2f141cc",
+  "attempt_key": "official-a98d7eff9a67f26855c968c0",
+  "payload": {
+    "competition_id": "ioai-2026-task-1-westlake-nlp-24",
+    "submission_mode": "file",
+    "seal_id": "tc-95c2fbfc3e01",
+    "task_id": "find-the-order",
+    "trial_id": "trial-605da205",
+    "packet_hash": "c2dc0e57af1ccef9b8dae269db37101382c2522669a057dd64bb431732a8caca",
+    "artifact_source_ref": "candidates/prefix_identity.py",
+    "artifact_path": ".deepscientist/competition/worktrees/trial-605da205/.deepscientist/competition/candidate-attempt/source/candidates/prefix_identity.py",
+    "artifact_sha256": "b5aad75d324f118245f7358b4174b5ab7bab286e70b260ef80efa461c4713248",
+    "artifact_size_bytes": 2973,
+    "candidate_source_manifest_hash": "067f207e5ae46b10920254d155d4378887e5a4b363e300ba5b3de7761af4a244",
+    "candidate_receipt_hash": "99713c5fe0698e8196f0104f0cfe467528821351f34028fc165c2a597cbe76e6",
+    "kernel_ref": "researai/ioai-ioai-2026-task-1-westlake-nlp-24-fca86668",
+    "internet_disabled": true
+  },
+  "payload_hash": "06d966f1c89ca822824cf3cb29ac14940e7f0b727997d9d5a6a864b262c4b77e",
+  "status": "send_reserved",
+  "submission_mode": "file",
+  "allowed_remote_sequence": [
+    "mcp_kaggle_start_competition_submission_upload",
+    "kaggle_mcp_submit_to_competition"
+  ],
+  "uncertain_response_policy": "poll_only_no_resend",
+  "quota_consumed_before_remote_send": true,
+  "prepared_at": "2026-08-05T09:51:48+00:00",
+  "official_submission_enabled": true,
+  "prepared_hash": "dfb3fb42c28496f1ed8342a7f22ea4e95263195c3f9d28902396fc00541a8a80"
+}

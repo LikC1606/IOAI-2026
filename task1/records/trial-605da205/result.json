@@ -1,0 +1,223 @@
+{
+  "packet_version": 1,
+  "trial_id": "trial-605da205",
+  "trial_ref": "candidate-prefix-identity-b5aad75d324f",
+  "valid": true,
+  "score": 0.6827101986420873,
+  "direction": "maximize",
+  "evaluator_version": "task-evaluator.v1",
+  "validation_version": "task-validation.v1",
+  "profile": "contest",
+  "cache_key": "fd68d6dc8cfbbb2781d68747c8954fb388ba756707453bb275b2e6644579cbb3",
+  "cache_hit": false,
+  "failure_kind": null,
+  "case_scores": {
+    "validation": 0.6827101986420873
+  },
+  "resource_usage": {
+    "wall_clock_seconds": 0.33515477180480957,
+    "scheduling_overhead_seconds": 0.010044336318969727,
+    "token_budget": 0,
+    "tokens_used": 0,
+    "cpu_slots": 1,
+    "gpu_slots": 0,
+    "gpu_device_ids": [],
+    "candidate_attempt_seconds": 0.12964541465044022
+  },
+  "evidence_refs": [
+    ".deepscientist/competition/worktrees/trial-605da205",
+    ".deepscientist/competition/trials/trial-605da205/result.json"
+  ],
+  "operator": "draft",
+  "hypothesis": "Evaluate the complete candidate at candidates/prefix_identity.py.",
+  "strategy_summary": "Evaluate the complete candidate at candidates/prefix_identity.py.",
+  "parent_ids": [],
+  "config_hash": "1fb2f41b142ee7263b4c9b22ec25ad8dec9be3d39ac79282b1107feb514fd789",
+  "candidate_execution_mode": "executable",
+  "candidate_attempt": {
+    "schema": "deepscientist.ioai.competition.attempt-receipt.v1",
+    "attempt_schema": "deepscientist.ioai.competition.python-attempt.v2",
+    "source_manifest_hash": "067f207e5ae46b10920254d155d4378887e5a4b363e300ba5b3de7761af4a244",
+    "entrypoint": "candidates/prefix_identity.py",
+    "attempt_root_ref": ".deepscientist/competition/worktrees/trial-605da205/.deepscientist/competition/candidate-attempt",
+    "input_ref": ".deepscientist/competition/worktrees/trial-605da205/.deepscientist/competition/candidate-attempt/attempt-input.json",
+    "output_ref": ".deepscientist/competition/worktrees/trial-605da205/.deepscientist/competition/candidate-attempt/attempt-output.json",
+    "wall_clock_seconds": 0.12964541465044022,
+    "exit_code": 0,
+    "stdout": "",
+    "stderr": "",
+    "network_isolation_enforced": true,
+    "network_isolation_backend": "python-sitecustomize.v1",
+    "output_sha256": "cfab63c18fb9e74c8bb75ce6c499161e95c0fe92d242ff0c886fff657f029d8d",
+    "output_size_bytes": 137,
+    "validation_diagnostics": {
+      "metric_components": {},
+      "auxiliary_fold_scores": [],
+      "auxiliary_fold_summary": {
+        "count": 0,
+        "mean": null,
+        "stdev": null,
+        "worst": null,
+        "best": null,
+        "range": null
+      },
+      "per_class_scores": {}
+    },
+    "reusable_artifact_inputs": [],
+    "reusable_artifact_outputs": [],
+    "status": "passed",
+    "failure_kind": null,
+    "failure_detail": null,
+    "receipt_hash": "99713c5fe0698e8196f0104f0cfe467528821351f34028fc165c2a597cbe76e6"
+  },
+  "validation_diagnostics": {
+    "metric_components": {},
+    "auxiliary_fold_scores": [],
+    "auxiliary_fold_summary": {
+      "count": 0,
+      "mean": null,
+      "stdev": null,
+      "worst": null,
+      "best": null,
+      "range": null
+    },
+    "per_class_scores": {}
+  },
+  "promotion_score_source": "canonical_evaluator",
+  "candidate_id": "candidate-prefix-identity-b5aad75d324f",
+  "candidate_content_hash": "4031040af7113859d544eedcc15c08d5bd8d660a3daa72ea6f6b19bc0f90e3b0",
+  "candidate_attribution": {
+    "schema": "deepscientist.ioai.competition.candidate-attribution.v3",
+    "team_id": "ioai-single-agent",
+    "slot_id": "lead",
+    "team_run_id": "run-tc-95c2fbfc3e01",
+    "turn_id": "turn-6-9005a14b7e9f",
+    "role_id": "ioai-lead",
+    "strategy_lane": "explore"
+  },
+  "search_lineage": null,
+  "recovery_intent": null,
+  "candidate_type": "single",
+  "candidate_spec_hash": "bd21fbd6f6354d8735a335f3f9d158434159ee0b352e8b734c06d845f4ac62c1",
+  "candidate_spec_sha256": "b2c0a80e5ef7cda2584599ad60ffbee69e374c3e1933239d3309e368dc18e022",
+  "candidate_spec_ref": ".deepscientist/competition/trials/trial-605da205/candidate.json",
+  "source": {
+    "kind": "agent-output",
+    "identity": "candidate-prefix-identity-b5aad75d324f",
+    "model": "ioai-solver"
+  },
+  "known_deviations": [],
+  "traces": {
+    "code_refs": [
+      "candidates/prefix_identity.py"
+    ],
+    "prompt_refs": [],
+    "tool_refs": [],
+    "model_calls": []
+  },
+  "task_id": "find-the-order",
+  "seal_id": "tc-95c2fbfc3e01",
+  "seal_hash": "95c2fbfc3e01dd7039a5f3fbaf10c748d6f3881bfe4a677ca68b62e9c26679fe",
+  "evaluator_audit_id": "ea-eed70708",
+  "evaluator_audit_receipt_hash": "8b07056f979f3576d4a83a8de76d90175b321c1500ca737edf8d6ad4f73a782c",
+  "evaluator_worker_sha256": "c3f223266a4007b476e77808cb0ffdb2d3111200dc3c7270b1a93cf2f8f8a9a2",
+  "worker_id": "worker-001",
+  "lease_id": "lease-6a92f583",
+  "worktree_rel_path": ".deepscientist/competition/worktrees/trial-605da205",
+  "execution_root_rel_path": ".deepscientist/competition/worktrees/trial-605da205/.deepscientist/competition/execution",
+  "started_at": "2026-08-05T09:45:27+00:00",
+  "claimed_epoch": 1785923127.7171075,
+  "started_epoch": 1785923127.7271519,
+  "finished_at": "2026-08-05T09:45:28+00:00",
+  "finished_epoch": 1785923128.0522623,
+  "post_run_gate_valid": true,
+  "baseline_comparison": {
+    "baseline_id": "baseline-task-spec-8c839f45a749",
+    "profile": "contest",
+    "metric_id": "find-the-order.score",
+    "baseline_score": 0.0,
+    "direction": "maximize",
+    "metric_contract_json_path": ".deepscientist/competition/baselines/local/baseline-task-spec-8c839f45a749/metric-contract.json",
+    "comparable": true,
+    "candidate_profile": "contest",
+    "baseline_profile": "contest",
+    "candidate_score": 0.6827101986420873,
+    "delta": 0.6827101986420873,
+    "relation": "better"
+  },
+  "execution": {
+    "task_id": "find-the-order",
+    "status": "passed",
+    "failure_kind": null,
+    "validation_version": "task-validation.v1",
+    "evaluator_version": "task-evaluator.v1",
+    "metric_direction": "maximize",
+    "network_isolation_enforced": true,
+    "network_isolation_backend": "python-sitecustomize.v1",
+    "case_grouping": "case",
+    "aggregation": "identity.v1",
+    "score": 0.6827101986420873,
+    "case_scores": {
+      "validation": 0.6827101986420873
+    },
+    "task_contract_hash": "7409c329ee9a0872a3119dbd3eb7dd910e67b78f90c27b707b812252794586b8",
+    "validation_contract_hash": "dc02eb18e15d65581f030c6ae16234e259cd5393302e8913feb4fd996c975461",
+    "evaluator_evidence": {
+      "path": "q001/evaluator.py",
+      "sha256": "6c2121bc41df82350f50992d1fccb8851ebb0e3b7049866d076a209f20280933",
+      "sealed_source_path": "evaluator.py",
+      "sealed_snapshot_path": "q01/a010201-evaluator.py"
+    },
+    "cases": [
+      {
+        "case_id": "validation",
+        "fixture": "fixture-01.json",
+        "candidate_hash": "3ff16da4c8a843c7e9e9ae4763f7cce68306f209dcd3cb756b89a88a4e3b7199",
+        "candidate_evidence": {
+          "path": "q001/c001-candidate.json",
+          "sha256": "5dff9d563a5aeba8c3968ca6de8d3361fad09e52f77d1fc3c7acbed00ae7348a",
+          "size_bytes": 34
+        },
+        "fixture_evidence": {
+          "path": "q001/c001-fixture.json",
+          "sha256": "57501b4a765d8b2e532e55b9a7a4db4cabec3689512db8768f6cea75f7c539de",
+          "size_bytes": 88,
+          "sealed_source_path": "fixture-01.json",
+          "sealed_snapshot_path": "q01/a010301-fixture-01.json"
+        },
+        "network_isolation_enforced": true,
+        "network_isolation_backend": "python-sitecustomize.v1",
+        "status": "passed",
+        "score": 0.6827101986420873,
+        "failure_kind": null,
+        "wall_clock_seconds": 0.06538116000592709,
+        "exit_code": 0,
+        "canonical_evaluation": {
+          "trial_id": "trial-605da205:find-the-order:validation",
+          "validation_version": "task-validation.v1",
+          "profile": "contest",
+          "status": "valid",
+          "score": 0.6827101986420873,
+          "metric_direction": "maximize",
+          "evaluator_version": "task-evaluator.v1",
+          "failure_kind": null,
+          "case_scores": {},
+          "resource_usage": {},
+          "contract_version": 1,
+          "valid": true
+        },
+        "output_evidence": {
+          "path": "q001/c001-output.json",
+          "sha256": "044a902d6070fbbb2f7591bdb97cfbb50d545e02819001ce43ad354608f49e69",
+          "size_bytes": 31
+        },
+        "stdout": "",
+        "stderr": ""
+      }
+    ]
+  },
+  "network_isolation_enforced": true,
+  "network_isolation_backend": "python-sitecustomize.v1",
+  "official_submission_enabled": false,
+  "packet_hash": "c2dc0e57af1ccef9b8dae269db37101382c2522669a057dd64bb431732a8caca"
+}

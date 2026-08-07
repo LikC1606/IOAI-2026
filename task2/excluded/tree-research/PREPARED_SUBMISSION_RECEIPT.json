@@ -1,0 +1,34 @@
+{
+  "prepared_version": 2,
+  "authorization_hash": "8c35e62143daf3d63ea32e8591818a98c25209b6c6d5999461ba7eea56dff68a",
+  "attempt_id": "submission-4ca453c4",
+  "attempt_key": "official-1e454720218630992c3946b5",
+  "payload": {
+    "competition_id": "ioai-2026-task-2-westlake-nlp-24",
+    "submission_mode": "file",
+    "seal_id": "tc-e2fcb753ecca",
+    "task_id": "catch-the-robot-next-action",
+    "trial_id": "trial-4cc744a8",
+    "packet_hash": "4149cca5594da47b0bb082e8a356855338da529ab89defdf39672616c3a3d70d",
+    "artifact_source_ref": "competition/candidates/structured_trees_v1.py",
+    "artifact_path": ".deepscientist/competition/worktrees/trial-4cc744a8/.deepscientist/competition/candidate-attempt/source/competition/candidates/structured_trees_v1.py",
+    "artifact_sha256": "386c113bd6865642ac51cb872aa2e95ce6fe4e0a4322f0dc210f07bd04db8da5",
+    "artifact_size_bytes": 13694,
+    "candidate_source_manifest_hash": "aa8ef40bcc239877fb7af6e5614e8d9569f99555c502f991529ec927cf60fad9",
+    "candidate_receipt_hash": "979ffbc3a29e3b20088136e8f2850a71d30cffcb653678191537bdfef2b33323",
+    "kernel_ref": "researai/ioai-ioai-2026-task-2-westlake-nlp-24-1455ea51",
+    "internet_disabled": true
+  },
+  "payload_hash": "3a9c26bea058e435bee6c06293fc83f51bc37c0a3563748b1a1fd4147567dc24",
+  "status": "send_reserved",
+  "submission_mode": "file",
+  "allowed_remote_sequence": [
+    "mcp_kaggle_start_competition_submission_upload",
+    "kaggle_mcp_submit_to_competition"
+  ],
+  "uncertain_response_policy": "poll_only_no_resend",
+  "quota_consumed_before_remote_send": true,
+  "prepared_at": "2026-08-05T06:23:51+00:00",
+  "official_submission_enabled": true,
+  "prepared_hash": "4920de38c58f6d3079ffc223955df53639e53201cd7a6f58a035b8c512d7ee06"
+}

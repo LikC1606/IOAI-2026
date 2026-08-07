@@ -1,0 +1,15 @@
+{
+  "id": "researai/ioai-2026-task-4-westlake-nlp-24-solution",
+  "title": "ioai-2026-task-4-westlake-nlp-24-solution",
+  "code_file": "script.py",
+  "language": "python",
+  "kernel_type": "script",
+  "is_private": true,
+  "enable_gpu": true,
+  "enable_internet": false,
+  "machine_shape": "NvidiaTeslaT4",
+  "dataset_sources": ["kamalkhan/ioai-2026-wheel-dataset"],
+  "competition_sources": ["ioai-2026-task-4-westlake-nlp-24"],
+  "kernel_sources": [],
+  "model_sources": []
+}

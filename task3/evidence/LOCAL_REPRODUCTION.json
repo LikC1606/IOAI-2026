@@ -1,0 +1,111 @@
+{
+  "python": "3.11.11 (main, Dec 11 2024, 16:28:39) [GCC 11.2.0]",
+  "data_directory": "/workspace/IOAI/competition-verification/2026-08-06-task3-official-prompt-autonomous/input/competition",
+  "all_ok": true,
+  "results": [
+    {
+      "version": 1,
+      "source_sha256": "3dd092a3ed70ff1f4c879926864188632b981b4be30e57c6c3ec7db8947661d7",
+      "csv_sha256": "4ea04e2547d13070ebe12540af4a1ab6b351f1adabd4b9d55caf44777e82d30d",
+      "csv_contract_ok": true,
+      "decoded_source_matches": true,
+      "local_returncode": 0,
+      "local_contract_ok": true,
+      "starter_executable_outside_player_preserved": true,
+      "elapsed_seconds": 0.252,
+      "stdout": "contract OK: load_public_data() + PotatoPlayer(words, embeddings)\nself-score 92.58 (119/120 solved) on 120 public words\nReminder: the real judge uses a different, private embedding space, so your leaderboard score will be much lower. Use this to catch crashes, not to predict rank.",
+      "stderr": ""
+    },
+    {
+      "version": 2,
+      "source_sha256": "b2a68b04e3f14dc77d9a43f8e08424ad4cd7dc9278fde97b1bb6ae6144189766",
+      "csv_sha256": "55cf70dc685cb94160e92a02f57eb0b8d01734860f0c9df989bb60cc761c0002",
+      "csv_contract_ok": true,
+      "decoded_source_matches": true,
+      "local_returncode": 0,
+      "local_contract_ok": true,
+      "starter_executable_outside_player_preserved": true,
+      "elapsed_seconds": 1.332,
+      "stdout": "contract OK: load_public_data() + PotatoPlayer(words, embeddings)\nself-score 99.20 (120/120 solved) on 120 public words\nReminder: the real judge uses a different, private embedding space, so your leaderboard score will be much lower. Use this to catch crashes, not to predict rank.",
+      "stderr": ""
+    },
+    {
+      "version": 3,
+      "source_sha256": "47454c89daf408b8491f5ebc49cdadd5018dafa446a8bef085776261dc179b13",
+      "csv_sha256": "3159828f53967d36a2ae1aa496d713e437195b343720a0d32014bf2768c65946",
+      "csv_contract_ok": true,
+      "decoded_source_matches": true,
+      "local_returncode": 0,
+      "local_contract_ok": true,
+      "starter_executable_outside_player_preserved": true,
+      "elapsed_seconds": 0.253,
+      "stdout": "contract OK: load_public_data() + PotatoPlayer(words, embeddings)\nself-score 99.05 (120/120 solved) on 120 public words\nReminder: the real judge uses a different, private embedding space, so your leaderboard score will be much lower. Use this to catch crashes, not to predict rank.",
+      "stderr": ""
+    },
+    {
+      "version": 4,
+      "source_sha256": "4b3cc3e627ad6d5a809ffe27550fc008924aae411fb38c7e333118ac4df7d828",
+      "csv_sha256": "935a834f0b29fcb87cff6832d2eb77bd98dacdcf6e3dff6499b504de8c90cbb5",
+      "csv_contract_ok": true,
+      "decoded_source_matches": true,
+      "local_returncode": 0,
+      "local_contract_ok": true,
+      "starter_executable_outside_player_preserved": true,
+      "elapsed_seconds": 1.44,
+      "stdout": "contract OK: load_public_data() + PotatoPlayer(words, embeddings)\nself-score 98.63 (120/120 solved) on 120 public words\nReminder: the real judge uses a different, private embedding space, so your leaderboard score will be much lower. Use this to catch crashes, not to predict rank.",
+      "stderr": ""
+    },
+    {
+      "version": 5,
+      "source_sha256": "48137cff92461988af155e7e103771856c5ae6a9b3591ed200014f8ac7237a62",
+      "csv_sha256": "d54e02819ebbdf7bd3f4772a5f4b4700fd58f826b6f8d8396ee77f1a582bb880",
+      "csv_contract_ok": true,
+      "decoded_source_matches": true,
+      "local_returncode": 0,
+      "local_contract_ok": true,
+      "starter_executable_outside_player_preserved": true,
+      "elapsed_seconds": 2.316,
+      "stdout": "contract OK: load_public_data() + PotatoPlayer(words, embeddings)\nself-score 90.72 (120/120 solved) on 120 public words\nReminder: the real judge uses a different, private embedding space, so your leaderboard score will be much lower. Use this to catch crashes, not to predict rank.",
+      "stderr": ""
+    },
+    {
+      "version": 6,
+      "source_sha256": "d008c4e019fdba84d42f62158401320583895e529288775a8d34b749252435d1",
+      "csv_sha256": "96606e7bb36c4d17b01c337db5811cb1c2ecf9b4398ccd8b97dd4e603307a3e2",
+      "csv_contract_ok": true,
+      "decoded_source_matches": true,
+      "local_returncode": 0,
+      "local_contract_ok": true,
+      "starter_executable_outside_player_preserved": true,
+      "elapsed_seconds": 1.319,
+      "stdout": "contract OK: load_public_data() + PotatoPlayer(words, embeddings)\nself-score 99.05 (120/120 solved) on 120 public words\nReminder: the real judge uses a different, private embedding space, so your leaderboard score will be much lower. Use this to catch crashes, not to predict rank.",
+      "stderr": ""
+    },
+    {
+      "version": 7,
+      "source_sha256": "ea74d2fb39e29aba14ded9fb5775f75211addf9aad1d6bfe37447a6cfefa69e8",
+      "csv_sha256": "4a3418e172ca3a2bb56d695a8ec6a35e446e15fe48e7b0306d789113e7dd15a7",
+      "csv_contract_ok": true,
+      "decoded_source_matches": true,
+      "local_returncode": 0,
+      "local_contract_ok": true,
+      "starter_executable_outside_player_preserved": true,
+      "elapsed_seconds": 1.211,
+      "stdout": "contract OK: load_public_data() + PotatoPlayer(words, embeddings)\nself-score 98.95 (120/120 solved) on 120 public words\nReminder: the real judge uses a different, private embedding space, so your leaderboard score will be much lower. Use this to catch crashes, not to predict rank.",
+      "stderr": ""
+    },
+    {
+      "version": 8,
+      "source_sha256": "3250a2498bd7df4901cbc68c9a92587fda62a81c188e2b3e02e737dfd3282ef9",
+      "csv_sha256": "90386b008abe13963f231ec978b10674b208dbc2436d3cc523e263f2cdb639ac",
+      "csv_contract_ok": true,
+      "decoded_source_matches": true,
+      "local_returncode": 0,
+      "local_contract_ok": true,
+      "starter_executable_outside_player_preserved": true,
+      "elapsed_seconds": 1.523,
+      "stdout": "contract OK: load_public_data() + PotatoPlayer(words, embeddings)\nself-score 96.62 (120/120 solved) on 120 public words\nReminder: the real judge uses a different, private embedding space, so your leaderboard score will be much lower. Use this to catch crashes, not to predict rank.",
+      "stderr": ""
+    }
+  ]
+}

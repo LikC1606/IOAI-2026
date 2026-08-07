@@ -1,0 +1,12 @@
+{
+  "schema": "deepscientist.ioai.simple-run-receipt.v1",
+  "competitionId": "ioai-2026-task-4-westlake-nlp-24",
+  "projectRoot": "/workspace/IOAI/ioai2-competition-runs-task4-official-20260807T1230CST/ioai-2026-task-4-westlake-nlp-24/project",
+  "startedAt": "2026-08-07T04:18:25.564Z",
+  "finishedAt": "2026-08-07T05:26:18.391Z",
+  "deadlineAt": "2026-08-07T06:18:25.517Z",
+  "turns": 3,
+  "consecutiveFailures": 3,
+  "transientFailures": 0,
+  "stopReason": "repeated_process_failure"
+}

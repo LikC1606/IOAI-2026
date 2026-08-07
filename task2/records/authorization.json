@@ -1,0 +1,31 @@
+{
+  "schema": "deepscientist.ioai.kaggle-code-submission-authorization.v4",
+  "authorization_version": 4,
+  "competition_id": "ioai-2026-task-2-westlake-nlp-24",
+  "deadline_utc": "2026-08-05T07:00:00Z",
+  "max_submissions": 20,
+  "protected_reserve": 5,
+  "authorization_prompt_sha256": "6e91132b190ef077ff9af4cc1c6e538155f71333c18d7666c13e752e0e7d693a",
+  "kernel_ref": "researai/ioai-ioai-2026-task-2-westlake-nlp-24-1455ea51",
+  "registered_kaggle_owner": "researai",
+  "competition_joined_at_utc": "2026-08-05T05:30:14.093000Z",
+  "provider": "kaggle",
+  "mcp_server": "kaggle",
+  "submission_mode": "file",
+  "artifact_extension": ".py",
+  "kernel_type": "script",
+  "internet_disabled": true,
+  "lead_role_id": "ioai-lead",
+  "lead_only": true,
+  "allowed_tools": [
+    "mcp_kaggle_start_competition_submission_upload",
+    "kaggle_mcp_submit_to_competition"
+  ],
+  "quota_reservation": "before_remote_send",
+  "uncertain_response_policy": "poll_only_no_resend",
+  "credentials_persisted": false,
+  "authorization_timing": "before_task_import",
+  "authorized_at": "2026-08-05T05:30:29+00:00",
+  "official_submission_enabled": true,
+  "authorization_hash": "8c35e62143daf3d63ea32e8591818a98c25209b6c6d5999461ba7eea56dff68a"
+}

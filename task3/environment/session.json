@@ -1,0 +1,11 @@
+{
+  "schema": "deepscientist.ioai.simple-competition-session.v1",
+  "competitionId": "ioai-2026-task-3-westlake-nlp-48",
+  "projectRoot": "/workspace/IOAI/ioai2-competition-runs-task3-formal-deadline-20260806T123442CST/ioai-2026-task-3-westlake-nlp-48/project",
+  "startedAt": "2026-08-06T04:34:44.429Z",
+  "deadlineAt": "2026-08-06T06:26:44.395Z",
+  "model": "gpt-5.6-sol",
+  "reasoningEffort": "max",
+  "kaggleOwner": "researai",
+  "codexThreadId": "019fd55a-3edf-7801-b6a1-f1313393ff34"
+}

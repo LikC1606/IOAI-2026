@@ -1,0 +1,74 @@
+[
+  {
+    "ref": 55289823,
+    "fileName": "submission.csv",
+    "date": "2026-08-06T05:35:41.457000",
+    "description": "v4 likelihood without practice sampling prior",
+    "status": "SubmissionStatus.COMPLETE",
+    "publicScore": "58.51666",
+    "privateScore": ""
+  },
+  {
+    "ref": 55289779,
+    "fileName": "submission.csv",
+    "date": "2026-08-06T05:33:35.703000",
+    "description": "interpolated likelihood tau006 flip010",
+    "status": "SubmissionStatus.COMPLETE",
+    "publicScore": "54.11666",
+    "privateScore": ""
+  },
+  {
+    "ref": 55289751,
+    "fileName": "submission.csv",
+    "date": "2026-08-06T05:32:01.070000",
+    "description": "online private likelihood calibration from solved games",
+    "status": "SubmissionStatus.COMPLETE",
+    "publicScore": "55.01666",
+    "privateScore": ""
+  },
+  {
+    "ref": 55289661,
+    "fileName": "submission.csv",
+    "date": "2026-08-06T05:26:08.787000",
+    "description": "disjoint practice penalty on prior soft",
+    "status": "SubmissionStatus.COMPLETE",
+    "publicScore": "45.70000",
+    "privateScore": ""
+  },
+  {
+    "ref": 55289569,
+    "fileName": "submission.csv",
+    "date": "2026-08-06T05:21:32.723000",
+    "description": "prior soft posterior calibrated mismatch floor",
+    "status": "SubmissionStatus.COMPLETE",
+    "publicScore": "58.51666",
+    "privateScore": ""
+  },
+  {
+    "ref": 55289414,
+    "fileName": "submission.csv",
+    "date": "2026-08-06T05:11:54.600000",
+    "description": "bounded sign posterior with sampling prior",
+    "status": "SubmissionStatus.COMPLETE",
+    "publicScore": "40.75000",
+    "privateScore": ""
+  },
+  {
+    "ref": 55289364,
+    "fileName": "submission.csv",
+    "date": "2026-08-06T05:08:22.643000",
+    "description": "soft posterior with disjoint practice prior",
+    "status": "SubmissionStatus.COMPLETE",
+    "publicScore": "45.70000",
+    "privateScore": ""
+  },
+  {
+    "ref": 55288941,
+    "fileName": "submission.csv",
+    "date": "2026-08-06T04:46:56.707000",
+    "description": "official starter baseline public 92.58",
+    "status": "SubmissionStatus.COMPLETE",
+    "publicScore": "32.50000",
+    "privateScore": ""
+  }
+]

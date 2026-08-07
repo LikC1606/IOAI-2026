@@ -1,0 +1,16 @@
+{
+  "competition": "ioai-2026-task-4-westlake-nlp-24",
+  "kernel": "researai/ioai-2026-task-4-westlake-nlp-24-solution",
+  "version": 4,
+  "submission_ref": 55316818,
+  "remote_filename": "submission.csv",
+  "size_bytes": 190117536,
+  "sha256": "bdb202711d6494bc94c331d549b0fa7956aa1d9eb585c247ae0dfce723f76542",
+  "rows": 200,
+  "columns": ["id", "delta_a", "delta_b"],
+  "remote_runtime_seconds": 316,
+  "public_score": 98.41,
+  "stored_in_compact_package": false,
+  "reason_not_stored": "Large exact output remains available from the private Kaggle Kernel; log, source, metadata, validation record, size and digest are retained here."
+}
+

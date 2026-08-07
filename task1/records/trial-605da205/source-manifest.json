@@ -1,0 +1,16 @@
+{
+  "schema": "deepscientist.ioai.competition.attempt-source-manifest.v1",
+  "source_manifest_hash": "067f207e5ae46b10920254d155d4378887e5a4b363e300ba5b3de7761af4a244",
+  "sources": [
+    {
+      "path": "candidates/__pycache__/prefix_identity.cpython-311.pyc",
+      "sha256": "06afa665fcd734948b963371d06b9b0924ed20b842ec72416ce4ba06973d0e52",
+      "size_bytes": 6963
+    },
+    {
+      "path": "candidates/prefix_identity.py",
+      "sha256": "b5aad75d324f118245f7358b4174b5ab7bab286e70b260ef80efa461c4713248",
+      "size_bytes": 2973
+    }
+  ]
+}

@@ -1,0 +1,69 @@
+{
+  "trial_version": 2,
+  "seal_id": "tc-95c2fbfc3e01",
+  "profile": "contest",
+  "task_id": "find-the-order",
+  "aggregation": "identity.v1",
+  "trial": {
+    "trial_ref": "candidate-mfcc-qwen-beam-9dca41471132",
+    "operator": "draft",
+    "hypothesis": "Evaluate the complete candidate at candidates/mfcc_qwen_beam.py.",
+    "strategy_summary": "Evaluate the complete candidate at candidates/mfcc_qwen_beam.py.",
+    "parent_ids": []
+  },
+  "source": {
+    "kind": "agent-output",
+    "identity": "candidate-mfcc-qwen-beam-9dca41471132",
+    "model": "ioai-solver"
+  },
+  "known_deviations": [],
+  "traces": {
+    "code_refs": [
+      "candidates/mfcc_qwen_beam.py"
+    ],
+    "prompt_refs": [],
+    "tool_refs": [],
+    "model_calls": []
+  },
+  "resources": {
+    "timeout_seconds": 300.0,
+    "token_budget": 0,
+    "tokens_used": 0,
+    "cpu_slots": 1,
+    "gpu_slots": 0
+  },
+  "attempt": {
+    "schema": "deepscientist.ioai.competition.python-attempt.v2",
+    "entrypoint": "candidates/mfcc_qwen_beam.py",
+    "include_paths": [
+      "candidates"
+    ],
+    "arguments": [],
+    "reusable_inputs": []
+  },
+  "cases": [
+    {
+      "case_id": "validation",
+      "fixture": "fixture-01.json"
+    }
+  ],
+  "candidate": {
+    "schema": "deepscientist.ioai.competition.candidate.v1",
+    "version": 1,
+    "candidate_id": "candidate-mfcc-qwen-beam-9dca41471132",
+    "attribution": {
+      "schema": "deepscientist.ioai.competition.candidate-attribution.v3",
+      "team_id": "ioai-single-agent",
+      "slot_id": "lead",
+      "team_run_id": "run-tc-95c2fbfc3e01",
+      "turn_id": "turn-14-76b5b921d68c",
+      "role_id": "ioai-lead",
+      "strategy_lane": "explore"
+    }
+  },
+  "search": {
+    "round": 0,
+    "portfolio_lane": "explore"
+  },
+  "candidate_type": "single"
+}

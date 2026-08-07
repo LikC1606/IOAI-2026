@@ -1,0 +1,247 @@
+[{"stream_name":"stderr","time":6.391261085,"data":"Using Python 3.12.13 environment at: /usr\n"}
+,{"stream_name":"stderr","time":6.599844132,"data":"Resolved 159 packages in 122ms\n"}
+,{"stream_name":"stderr","time":31.089133287,"data":"Prepared 118 packages in 24.48s\n"}
+,{"stream_name":"stderr","time":36.989140415,"data":"Uninstalled 106 packages in 5.89s\n"}
+,{"stream_name":"stderr","time":37.375387753,"data":"Installed 118 packages in 386ms\n"}
+,{"stream_name":"stderr","time":37.375718729,"data":" - absl-py==1.4.0\n"}
+,{"stream_name":"stderr","time":37.375749935,"data":" + absl-py==2.5.0\n"}
+,{"stream_name":"stderr","time":37.375811295,"data":" - accelerate==1.13.0\n"}
+,{"stream_name":"stderr","time":37.375819337,"data":" + accelerate==1.14.0\n"}
+,{"stream_name":"stderr","time":37.37591477,"data":" - aiohappyeyeballs==2.6.1\n"}
+,{"stream_name":"stderr","time":37.375946582,"data":" + aiohappyeyeballs==2.7.1\n"}
+,{"stream_name":"stderr","time":37.376000838,"data":" - aiohttp==3.13.5\n"}
+,{"stream_name":"stderr","time":37.376057958,"data":" + aiohttp==3.14.3\n"}
+,{"stream_name":"stderr","time":37.376216702,"data":" - alembic==1.18.4\n"}
+,{"stream_name":"stderr","time":37.37622897,"data":" + alembic==1.18.5\n"}
+,{"stream_name":"stderr","time":37.376471858,"data":" - annotated-doc==0.0.4\n"}
+,{"stream_name":"stderr","time":37.376477615,"data":" + annotated-doc==0.0.5\n"}
+,{"stream_name":"stderr","time":37.376482999,"data":" - annotated-types==0.7.0\n"}
+,{"stream_name":"stderr","time":37.376488551,"data":" + annotated-types==0.8.0\n"}
+,{"stream_name":"stderr","time":37.376494506,"data":" - anyio==4.13.0\n"}
+,{"stream_name":"stderr","time":37.376500252,"data":" + anyio==4.14.2\n"}
+,{"stream_name":"stderr","time":37.376557305,"data":" - asttokens==3.0.1\n"}
+,{"stream_name":"stderr","time":37.376607031,"data":" + asttokens==3.0.2\n"}
+,{"stream_name":"stderr","time":37.376639303,"data":" + async-lru==2.3.0\n"}
+,{"stream_name":"stderr","time":37.376708807,"data":" - beautifulsoup4==4.13.5\n"}
+,{"stream_name":"stderr","time":37.376740917,"data":" + beautifulsoup4==4.15.0\n"}
+,{"stream_name":"stderr","time":37.376797451,"data":" - blinker==1.9.0\n"}
+,{"stream_name":"stderr","time":37.376878577,"data":" + blinker==1.7.0\n"}
+,{"stream_name":"stderr","time":37.376899526,"data":" - certifi==2026.4.22\n"}
+,{"stream_name":"stderr","time":37.376938521,"data":" + certifi==2026.7.22\n"}
+,{"stream_name":"stderr","time":37.37698351,"data":" - cffi==2.0.0\n"}
+,{"stream_name":"stderr","time":37.377050368,"data":" + cffi==2.1.0\n"}
+,{"stream_name":"stderr","time":37.377225202,"data":" - charset-normalizer==3.4.7\n"}
+,{"stream_name":"stderr","time":37.377239706,"data":" + charset-normalizer==3.4.9\n"}
+,{"stream_name":"stderr","time":37.377273394,"data":" - click==8.3.3\n"}
+,{"stream_name":"stderr","time":37.377340264,"data":" + click==8.4.2\n"}
+,{"stream_name":"stderr","time":37.377384547,"data":" - cloudpathlib==0.23.0\n"}
+,{"stream_name":"stderr","time":37.377435327,"data":" + cloudpathlib==0.24.0\n"}
+,{"stream_name":"stderr","time":37.37749383,"data":" - cryptography==43.0.3\n"}
+,{"stream_name":"stderr","time":37.377546578,"data":" + cryptography==41.0.7\n"}
+,{"stream_name":"stderr","time":37.377617259,"data":" - cuda-toolkit==12.8.1\n"}
+,{"stream_name":"stderr","time":37.377678853,"data":" + cuda-toolkit==12.6.3\n"}
+,{"stream_name":"stderr","time":37.377692407,"data":" + evaluate==0.4.6\n"}
+,{"stream_name":"stderr","time":37.377750515,"data":" + executing==2.2.1\n"}
+,{"stream_name":"stderr","time":37.377797623,"data":" + fasttext-numpy2==0.10.4\n"}
+,{"stream_name":"stderr","time":37.377845865,"data":" - filelock==3.29.0\n"}
+,{"stream_name":"stderr","time":37.37788529,"data":" + filelock==3.32.2\n"}
+,{"stream_name":"stderr","time":37.377935703,"data":" - fonttools==4.62.1\n"}
+,{"stream_name":"stderr","time":37.377989725,"data":" + fonttools==4.63.0\n"}
+,{"stream_name":"stderr","time":37.378102038,"data":" - fsspec==2025.3.0\n"}
+,{"stream_name":"stderr","time":37.378110534,"data":" + fsspec==2026.4.0\n"}
+,{"stream_name":"stderr","time":37.378133497,"data":" - gitpython==3.1.47\n"}
+,{"stream_name":"stderr","time":37.378211048,"data":" + gitpython==3.1.57\n"}
+,{"stream_name":"stderr","time":37.378274423,"data":" - greenlet==3.4.0\n"}
+,{"stream_name":"stderr","time":37.378309698,"data":" + greenlet==3.5.4\n"}
+,{"stream_name":"stderr","time":37.378364296,"data":" - grpcio==1.81.1\n"}
+,{"stream_name":"stderr","time":37.378402543,"data":" + grpcio==1.83.0\n"}
+,{"stream_name":"stderr","time":37.378457008,"data":" - hf-xet==1.4.3\n"}
+,{"stream_name":"stderr","time":37.378519165,"data":" + hf-xet==1.5.2\n"}
+,{"stream_name":"stderr","time":37.378553777,"data":" - httplib2==0.31.2\n"}
+,{"stream_name":"stderr","time":37.378616764,"data":" + httplib2==0.20.4\n"}
+,{"stream_name":"stderr","time":37.37867421,"data":" - huggingface-hub==1.11.0\n"}
+,{"stream_name":"stderr","time":37.378718545,"data":" + huggingface-hub==1.26.0\n"}
+,{"stream_name":"stderr","time":37.37875405,"data":" - idna==3.13\n"}
+,{"stream_name":"stderr","time":37.378826412,"data":" + idna==3.18\n"}
+,{"stream_name":"stderr","time":37.378867507,"data":" - imageio==2.37.3\n"}
+,{"stream_name":"stderr","time":37.37892548,"data":" + imageio==2.37.4\n"}
+,{"stream_name":"stderr","time":37.378972,"data":" + ioai-env==0.2.0\n"}
+,{"stream_name":"stderr","time":37.379010329,"data":" - lightgbm==4.6.0\n"}
+,{"stream_name":"stderr","time":37.379089943,"data":" + lightgbm==4.7.0\n"}
+,{"stream_name":"stderr","time":37.379141662,"data":" - llvmlite==0.43.0\n"}
+,{"stream_name":"stderr","time":37.379171668,"data":" + llvmlite==0.48.0\n"}
+,{"stream_name":"stderr","time":37.379251334,"data":" - mako==1.3.11\n"}
+,{"stream_name":"stderr","time":37.379359274,"data":" + mako==1.3.12\n"}
+,{"stream_name":"stderr","time":37.379370651,"data":" - markdown==3.10.2\n"}
+,{"stream_name":"stderr","time":37.379453524,"data":" + markdown==3.10.3\n"}
+,{"stream_name":"stderr","time":37.379517208,"data":" - markdown-it-py==4.0.0\n"}
+,{"stream_name":"stderr","time":37.379535894,"data":" + markdown-it-py==4.2.0\n"}
+,{"stream_name":"stderr","time":37.379589365,"data":" - matplotlib==3.10.0\n"}
+,{"stream_name":"stderr","time":37.379657961,"data":" + matplotlib==3.11.1\n"}
+,{"stream_name":"stderr","time":37.379703869,"data":" - msgpack==1.1.2\n"}
+,{"stream_name":"stderr","time":37.379744181,"data":" + msgpack==1.2.1\n"}
+,{"stream_name":"stderr","time":37.379814614,"data":" - multiprocess==0.70.16\n"}
+,{"stream_name":"stderr","time":37.379849059,"data":" + multiprocess==0.70.19\n"}
+,{"stream_name":"stderr","time":37.379901763,"data":" - narwhals==2.20.0\n"}
+,{"stream_name":"stderr","time":37.379954041,"data":" + narwhals==2.24.0\n"}
+,{"stream_name":"stderr","time":37.380037976,"data":" + nest-asyncio2==1.7.2\n"}
+,{"stream_name":"stderr","time":37.380053281,"data":" - nltk==3.9.1\n"}
+,{"stream_name":"stderr","time":37.380104403,"data":" + nltk==3.10.0\n"}
+,{"stream_name":"stderr","time":37.380186586,"data":" - numba==0.60.0\n"}
+,{"stream_name":"stderr","time":37.380255669,"data":" + numba==0.66.0\n"}
+,{"stream_name":"stderr","time":37.380283061,"data":" - numpy==2.0.2\n"}
+,{"stream_name":"stderr","time":37.380334866,"data":" + numpy==2.4.6\n"}
+,{"stream_name":"stderr","time":37.380401312,"data":" - nvidia-cublas-cu12==12.8.4.1\n"}
+,{"stream_name":"stderr","time":37.380455621,"data":" + nvidia-cublas-cu12==12.6.4.1\n"}
+,{"stream_name":"stderr","time":37.380510586,"data":" - nvidia-cuda-cupti-cu12==12.8.90\n"}
+,{"stream_name":"stderr","time":37.380554389,"data":" + nvidia-cuda-cupti-cu12==12.6.80\n"}
+,{"stream_name":"stderr","time":37.380598442,"data":" - nvidia-cuda-nvrtc-cu12==12.8.93\n"}
+,{"stream_name":"stderr","time":37.380660814,"data":" + nvidia-cuda-nvrtc-cu12==12.6.85\n"}
+,{"stream_name":"stderr","time":37.38071166,"data":" - nvidia-cuda-runtime-cu12==12.8.90\n"}
+,{"stream_name":"stderr","time":37.380779431,"data":" + nvidia-cuda-runtime-cu12==12.6.77\n"}
+,{"stream_name":"stderr","time":37.380813951,"data":" - nvidia-cufft-cu12==11.3.3.83\n"}
+,{"stream_name":"stderr","time":37.380883419,"data":" + nvidia-cufft-cu12==11.3.0.4\n"}
+,{"stream_name":"stderr","time":37.380958084,"data":" - nvidia-cufile-cu12==1.13.1.3\n"}
+,{"stream_name":"stderr","time":37.381039428,"data":" + nvidia-cufile-cu12==1.11.1.6\n"}
+,{"stream_name":"stderr","time":37.381056539,"data":" - nvidia-curand-cu12==10.3.9.90\n"}
+,{"stream_name":"stderr","time":37.381186022,"data":" + nvidia-curand-cu12==10.3.7.77\n"}
+,{"stream_name":"stderr","time":37.381223197,"data":" - nvidia-cusolver-cu12==11.7.3.90\n"}
+,{"stream_name":"stderr","time":37.381229251,"data":" + nvidia-cusolver-cu12==11.7.1.2\n"}
+,{"stream_name":"stderr","time":37.381265924,"data":" - nvidia-cusparse-cu12==12.5.8.93\n"}
+,{"stream_name":"stderr","time":37.381323175,"data":" + nvidia-cusparse-cu12==12.5.4.2\n"}
+,{"stream_name":"stderr","time":37.381408699,"data":" - nvidia-nccl-cu12==2.27.5\n"}
+,{"stream_name":"stderr","time":37.381486679,"data":" + nvidia-nccl-cu12==2.29.3\n"}
+,{"stream_name":"stderr","time":37.381519181,"data":" - nvidia-nvjitlink-cu12==12.8.93\n"}
+,{"stream_name":"stderr","time":37.381529987,"data":" + nvidia-nvjitlink-cu12==12.6.85\n"}
+,{"stream_name":"stderr","time":37.381606037,"data":" - nvidia-nvtx-cu12==12.8.90\n"}
+,{"stream_name":"stderr","time":37.381613278,"data":" + nvidia-nvtx-cu12==12.6.77\n"}
+,{"stream_name":"stderr","time":37.381670771,"data":" - oauthlib==3.3.1\n"}
+,{"stream_name":"stderr","time":37.381706191,"data":" + oauthlib==3.2.2\n"}
+,{"stream_name":"stderr","time":37.381763046,"data":" - opencv-python==4.13.0.92\n"}
+,{"stream_name":"stderr","time":37.381819014,"data":" + opencv-python==5.0.0.93\n"}
+,{"stream_name":"stderr","time":37.38188244,"data":" - opencv-python-headless==4.13.0.92\n"}
+,{"stream_name":"stderr","time":37.381930739,"data":" + opencv-python-headless==5.0.0.93\n"}
+,{"stream_name":"stderr","time":37.381977943,"data":" - packaging==26.1\n"}
+,{"stream_name":"stderr","time":37.382053038,"data":" + packaging==26.2\n"}
+,{"stream_name":"stderr","time":37.382085157,"data":" - pandas==2.3.3\n"}
+,{"stream_name":"stderr","time":37.382129504,"data":" + pandas==3.0.5\n"}
+,{"stream_name":"stderr","time":37.382215217,"data":" - pillow==11.3.0\n"}
+,{"stream_name":"stderr","time":37.382244178,"data":" + pillow==12.3.0\n"}
+,{"stream_name":"stderr","time":37.382303356,"data":" - platformdirs==4.9.6\n"}
+,{"stream_name":"stderr","time":37.382357171,"data":" + platformdirs==4.11.0\n"}
+,{"stream_name":"stderr","time":37.382414564,"data":" - plotly==5.24.1\n"}
+,{"stream_name":"stderr","time":37.382448283,"data":" + plotly==6.9.0\n"}
+,{"stream_name":"stderr","time":37.382503945,"data":" - polars==1.35.2\n"}
+,{"stream_name":"stderr","time":37.382555634,"data":" + polars==1.43.0\n"}
+,{"stream_name":"stderr","time":37.382592841,"data":" - polars-runtime-32==1.35.2\n"}
+,{"stream_name":"stderr","time":37.382645744,"data":" + polars-runtime-32==1.43.0\n"}
+,{"stream_name":"stderr","time":37.382721356,"data":" - prompt-toolkit==3.0.52\n"}
+,{"stream_name":"stderr","time":37.382784829,"data":" + prompt-toolkit==3.0.53\n"}
+,{"stream_name":"stderr","time":37.382808468,"data":" - propcache==0.4.1\n"}
+,{"stream_name":"stderr","time":37.382856128,"data":" + propcache==0.5.2\n"}
+,{"stream_name":"stderr","time":37.382904353,"data":" - protobuf==5.29.5\n"}
+,{"stream_name":"stderr","time":37.382947389,"data":" + protobuf==7.35.1\n"}
+,{"stream_name":"stderr","time":37.383004633,"data":" - psutil==5.9.5\n"}
+,{"stream_name":"stderr","time":37.383068501,"data":" + psutil==7.2.2\n"}
+,{"stream_name":"stderr","time":37.383111302,"data":" + pure-eval==0.2.3\n"}
+,{"stream_name":"stderr","time":37.383163396,"data":" - pyarrow==24.0.0\n"}
+,{"stream_name":"stderr","time":37.383237569,"data":" + pyarrow==25.0.0\n"}
+,{"stream_name":"stderr","time":37.383300352,"data":" - pydantic==2.12.3\n"}
+,{"stream_name":"stderr","time":37.383365872,"data":" + pydantic==2.13.4\n"}
+,{"stream_name":"stderr","time":37.383391801,"data":" - pydantic-core==2.41.4\n"}
+,{"stream_name":"stderr","time":37.383440989,"data":" + pydantic-core==2.46.4\n"}
+,{"stream_name":"stderr","time":37.383514383,"data":" - pyjwt==2.12.1\n"}
+,{"stream_name":"stderr","time":37.383530025,"data":" + pyjwt==2.7.0\n"}
+,{"stream_name":"stderr","time":37.383633229,"data":" - pyparsing==3.3.2\n"}
+,{"stream_name":"stderr","time":37.383641038,"data":" + pyparsing==3.1.1\n"}
+,{"stream_name":"stderr","time":37.383685344,"data":" - regex==2025.11.3\n"}
+,{"stream_name":"stderr","time":37.383718289,"data":" + regex==2026.7.19\n"}
+,{"stream_name":"stderr","time":37.383769373,"data":" - requests==2.32.4\n"}
+,{"stream_name":"stderr","time":37.38381148,"data":" + requests==2.34.2\n"}
+,{"stream_name":"stderr","time":37.383859223,"data":" - rich==13.9.4\n"}
+,{"stream_name":"stderr","time":37.383912521,"data":" + rich==15.0.0\n"}
+,{"stream_name":"stderr","time":37.384001305,"data":" - rpds-py==0.30.0\n"}
+,{"stream_name":"stderr","time":37.384014387,"data":" + rpds-py==2026.6.3\n"}
+,{"stream_name":"stderr","time":37.384109855,"data":" - safetensors==0.7.0\n"}
+,{"stream_name":"stderr","time":37.384125029,"data":" + safetensors==0.8.0\n"}
+,{"stream_name":"stderr","time":37.384184217,"data":" - scikit-image==0.25.2\n"}
+,{"stream_name":"stderr","time":37.384240733,"data":" + scikit-image==0.26.0\n"}
+,{"stream_name":"stderr","time":37.384326942,"data":" - scikit-learn==1.6.1\n"}
+,{"stream_name":"stderr","time":37.384342895,"data":" + scikit-learn==1.9.0\n"}
+,{"stream_name":"stderr","time":37.38442414,"data":" - scipy==1.16.3\n"}
+,{"stream_name":"stderr","time":37.384442431,"data":" + scipy==1.18.0\n"}
+,{"stream_name":"stderr","time":37.384500764,"data":" - sentence-transformers==5.4.1\n"}
+,{"stream_name":"stderr","time":37.384577597,"data":" + sentence-transformers==5.6.1\n"}
+,{"stream_name":"stderr","time":37.384592829,"data":" - setuptools==81.0.0\n"}
+,{"stream_name":"stderr","time":37.384678395,"data":" + setuptools==83.0.0\n"}
+,{"stream_name":"stderr","time":37.384723504,"data":" - smart-open==7.6.0\n"}
+,{"stream_name":"stderr","time":37.384787833,"data":" + smart-open==8.0.1\n"}
+,{"stream_name":"stderr","time":37.384835752,"data":" - soundfile==0.13.1\n"}
+,{"stream_name":"stderr","time":37.384857455,"data":" + soundfile==0.14.0\n"}
+,{"stream_name":"stderr","time":37.384915389,"data":" - soupsieve==2.8.3\n"}
+,{"stream_name":"stderr","time":37.384953625,"data":" + soupsieve==2.9.1\n"}
+,{"stream_name":"stderr","time":37.385016628,"data":" - soxr==1.0.0\n"}
+,{"stream_name":"stderr","time":37.385054825,"data":" + soxr==1.1.0\n"}
+,{"stream_name":"stderr","time":37.385120397,"data":" - sqlalchemy==2.0.49\n"}
+,{"stream_name":"stderr","time":37.385158867,"data":" + sqlalchemy==2.0.51\n"}
+,{"stream_name":"stderr","time":37.385222463,"data":" + stack-data==0.6.3\n"}
+,{"stream_name":"stderr","time":37.385270839,"data":" + standard-aifc==3.13.0\n"}
+,{"stream_name":"stderr","time":37.385334705,"data":" + standard-chunk==3.13.0\n"}
+,{"stream_name":"stderr","time":37.385379795,"data":" + standard-sunau==3.13.0\n"}
+,{"stream_name":"stderr","time":37.385419644,"data":" - stringzilla==4.6.0\n"}
+,{"stream_name":"stderr","time":37.385490611,"data":" + stringzilla==5.0.7\n"}
+,{"stream_name":"stderr","time":37.385535977,"data":" - tensorboard==2.20.0\n"}
+,{"stream_name":"stderr","time":37.385597354,"data":" + tensorboard==2.21.0\n"}
+,{"stream_name":"stderr","time":37.385645444,"data":" - tifffile==2026.4.11\n"}
+,{"stream_name":"stderr","time":37.385683369,"data":" + tifffile==2026.7.31\n"}
+,{"stream_name":"stderr","time":37.385730844,"data":" - torch==2.10.0+cu128\n"}
+,{"stream_name":"stderr","time":37.385778302,"data":" + torch==2.13.0\n"}
+,{"stream_name":"stderr","time":37.385849092,"data":" - torchaudio==2.10.0+cu128\n"}
+,{"stream_name":"stderr","time":37.385888727,"data":" + torchaudio==2.11.0\n"}
+,{"stream_name":"stderr","time":37.386024332,"data":" - torchvision==0.25.0+cu128\n"}
+,{"stream_name":"stderr","time":37.386029199,"data":" + torchvision==0.28.0\n"}
+,{"stream_name":"stderr","time":37.386058005,"data":" - tqdm==4.67.3\n"}
+,{"stream_name":"stderr","time":37.386103347,"data":" + tqdm==4.69.1\n"}
+,{"stream_name":"stderr","time":37.3861538,"data":" - traitlets==5.15.1\n"}
+,{"stream_name":"stderr","time":37.386291297,"data":" + traitlets==5.16.0\n"}
+,{"stream_name":"stderr","time":37.38631645,"data":" - transformers==5.0.0\n"}
+,{"stream_name":"stderr","time":37.386356261,"data":" + transformers==5.14.1\n"}
+,{"stream_name":"stderr","time":37.386401139,"data":" - triton==3.6.0\n"}
+,{"stream_name":"stderr","time":37.386450934,"data":" + triton==3.7.1\n"}
+,{"stream_name":"stderr","time":37.386480084,"data":" + trl==1.9.0\n"}
+,{"stream_name":"stderr","time":37.386541609,"data":" - typer==0.24.2\n"}
+,{"stream_name":"stderr","time":37.386648564,"data":" + typer==0.27.0\n"}
+,{"stream_name":"stderr","time":37.386656929,"data":" - typing-extensions==4.15.0\n"}
+,{"stream_name":"stderr","time":37.386692461,"data":" + typing-extensions==4.16.0\n"}
+,{"stream_name":"stderr","time":37.386732182,"data":" - tzdata==2026.1\n"}
+,{"stream_name":"stderr","time":37.386812658,"data":" + tzdata==2026.3\n"}
+,{"stream_name":"stderr","time":37.386836695,"data":" - urllib3==2.5.0\n"}
+,{"stream_name":"stderr","time":37.386889841,"data":" + urllib3==2.7.0\n"}
+,{"stream_name":"stderr","time":37.38693738,"data":" - wcwidth==0.6.0\n"}
+,{"stream_name":"stderr","time":37.386988009,"data":" + wcwidth==0.8.2\n"}
+,{"stream_name":"stderr","time":37.387044977,"data":" - wrapt==2.1.2\n"}
+,{"stream_name":"stderr","time":37.387123835,"data":" + wrapt==2.3.0\n"}
+,{"stream_name":"stderr","time":37.387139459,"data":" - xgboost==3.2.0\n"}
+,{"stream_name":"stderr","time":37.387203029,"data":" + xgboost==3.3.0\n"}
+,{"stream_name":"stderr","time":37.387277978,"data":" - xxhash==3.6.0\n"}
+,{"stream_name":"stderr","time":37.387302488,"data":" + xxhash==3.8.1\n"}
+,{"stream_name":"stderr","time":37.387348893,"data":" - yarl==1.23.0\n"}
+,{"stream_name":"stderr","time":37.38741291,"data":" + yarl==1.24.5\n"}
+,{"stream_name":"stdout","time":37.395866215,"data":"IOAI environment ready (wheels from /kaggle/input/datasets/kamalkhan/ioai-2026-wheel-dataset)\n"}
+,{"stream_name":"stdout","time":215.290653332,"data":"encoded all splits in 173.85s\n"}
+,{"stream_name":"stdout","time":223.414426828,"data":"epoch=1 score=32.3333 per_robot=[34.167, 32.833, 33.0, 30.833, 32.0, 31.167]\n"}
+,{"stream_name":"stdout","time":225.445048273,"data":"epoch=2 score=41.6389 per_robot=[42.667, 42.667, 41.0, 41.667, 40.5, 41.333]\n"}
+,{"stream_name":"stdout","time":227.480708199,"data":"epoch=3 score=45.4722 per_robot=[46.667, 46.0, 45.0, 45.667, 43.333, 46.167]\n"}
+,{"stream_name":"stdout","time":229.316176683,"data":"epoch=4 score=50.4444 per_robot=[49.167, 48.167, 52.833, 50.667, 49.667, 52.167]\n"}
+,{"stream_name":"stdout","time":231.371288707,"data":"epoch=5 score=45.2778 per_robot=[45.333, 48.333, 43.5, 46.167, 45.667, 42.667]\n"}
+,{"stream_name":"stdout","time":233.402905634,"data":"epoch=6 score=49.9722 per_robot=[49.0, 51.5, 52.167, 50.333, 48.833, 48.0]\n"}
+,{"stream_name":"stdout","time":235.434973615,"data":"epoch=7 score=49.5556 per_robot=[52.0, 49.0, 47.5, 53.0, 45.667, 50.167]\n"}
+,{"stream_name":"stdout","time":237.467314533,"data":"epoch=8 score=50.5000 per_robot=[49.833, 50.333, 51.833, 50.0, 51.0, 50.0]\n"}
+,{"stream_name":"stdout","time":237.58026707,"data":"best_epoch=8 validation=50.5000 wrote=/kaggle/working/submission.csv rows=7200 elapsed=196.14s\n"}
+,{"stream_name":"stderr","time":241.216598748,"data":"/usr/local/lib/python3.12/dist-packages/mistune.py:435: SyntaxWarning: invalid escape sequence '\\|'\n"}
+,{"stream_name":"stderr","time":241.216622323,"data":"  cells[i][c] = re.sub('\\\\\\\\\\|', '|', cell)\n"}
+,{"stream_name":"stderr","time":241.438951478,"data":"/usr/local/lib/python3.12/dist-packages/nbconvert/filters/filter_links.py:36: SyntaxWarning: invalid escape sequence '\\_'\n"}
+,{"stream_name":"stderr","time":241.438974678,"data":"  text = re.sub(r'_', '\\_', text) # Escape underscores in display text\n"}
+,{"stream_name":"stderr","time":242.217706651,"data":"[NbConvertApp] Converting notebook __script__.ipynb to html\n"}
+,{"stream_name":"stderr","time":243.530567568,"data":"[NbConvertApp] Writing 358560 bytes to __results__.html\n"}
+]

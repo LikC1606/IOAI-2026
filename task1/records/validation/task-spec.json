@@ -1,0 +1,61 @@
+{
+  "task_spec_version": 1,
+  "task_id": "find-the-order",
+  "question": "For each dialogue, reconstruct the chronological rank permutation of shuffled spoken turns.",
+  "competition_id": "ioai-2026-task-1-westlake-nlp-24",
+  "data_root": "data/official",
+  "required_imports": [
+    {
+      "module": "json",
+      "required": true
+    }
+  ],
+  "required_globs": [
+    {
+      "pattern": "train/answers.csv",
+      "minimum_count": 1
+    },
+    {
+      "pattern": "test_public/answers.csv",
+      "minimum_count": 1
+    },
+    {
+      "pattern": "test_public/prefix.csv",
+      "minimum_count": 1
+    }
+  ],
+  "metric_direction": "maximize",
+  "validation_version": "task-validation.v1",
+  "evaluator_version": "task-evaluator.v1",
+  "evaluator": {
+    "artifact": "competition/evaluator.py",
+    "callable": "score",
+    "self_tests": [
+      {
+        "name": "identity-score",
+        "case_id": "validation",
+        "candidate": {
+          "score": 0.25
+        },
+        "expected_score": 0.25
+      }
+    ]
+  },
+  "cases": [
+    {
+      "case_id": "validation",
+      "fixture": "competition/validation/fixture.json"
+    }
+  ],
+  "baseline_cases": [
+    {
+      "case_id": "validation",
+      "candidate": {
+        "score": 0
+      }
+    }
+  ],
+  "output_schema": {
+    "type": "object"
+  }
+}

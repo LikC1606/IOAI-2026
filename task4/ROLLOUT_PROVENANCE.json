@@ -1,0 +1,58 @@
+{
+  "task": 4,
+  "provenance": {
+    "boundary_utc": "2026-08-07T06:18:25.517Z",
+    "rollouts": [
+      {
+        "filename": "rollout-2026-08-07T12-18-29-019fda71-a6a2-7a22-8c18-22e99f127422.jsonl",
+        "role": "main",
+        "private_original_sha256": "f7c3250297b45472aadb8674f98c5e6099453dcb06404413229c66e6b9cde29d",
+        "redacted_sha256": "222c0023f6c2a8d277a54375aaf2183bbdb2f8f48f8289e3a400f7803f78d08b",
+        "kept_events": 1549,
+        "dropped_events": 72,
+        "first_timestamp": "2026-08-07T04:18:29.358Z",
+        "last_timestamp": "2026-08-07T06:18:14.539Z"
+      },
+      {
+        "filename": "rollout-2026-08-07T12-18-41-019fda71-d4eb-70a3-9b66-e0fb3b2d0e66.jsonl",
+        "role": "autonomous_worker_or_resume",
+        "private_original_sha256": "e2a4f52b4f01fa8e7f6dfc61244158093c40b367485166131efbbdbfe4d0d203",
+        "redacted_sha256": "e2a4f52b4f01fa8e7f6dfc61244158093c40b367485166131efbbdbfe4d0d203",
+        "kept_events": 229,
+        "dropped_events": 0,
+        "first_timestamp": "2026-08-07T04:18:41.055Z",
+        "last_timestamp": "2026-08-07T04:34:29.195Z"
+      },
+      {
+        "filename": "rollout-2026-08-07T12-18-47-019fda71-effd-7321-8ce9-2a4a57fcaa48.jsonl",
+        "role": "autonomous_worker_or_resume",
+        "private_original_sha256": "1c95db393d686208e5ce4d0bf7557eb343d693093838eb8cef69645f12e33bc8",
+        "redacted_sha256": "1c95db393d686208e5ce4d0bf7557eb343d693093838eb8cef69645f12e33bc8",
+        "kept_events": 239,
+        "dropped_events": 0,
+        "first_timestamp": "2026-08-07T04:18:47.974Z",
+        "last_timestamp": "2026-08-07T04:32:40.980Z"
+      },
+      {
+        "filename": "rollout-2026-08-07T13-21-43-019fdaab-8d94-76a0-b625-078c838b5227.jsonl",
+        "role": "autonomous_worker_or_resume",
+        "private_original_sha256": "71be87c96740c72287821089d12e09124fad371cf9d4b868572017898aefa88a",
+        "redacted_sha256": "71be87c96740c72287821089d12e09124fad371cf9d4b868572017898aefa88a",
+        "kept_events": 351,
+        "dropped_events": 0,
+        "first_timestamp": "2026-08-07T05:21:43.869Z",
+        "last_timestamp": "2026-08-07T05:26:13.218Z"
+      },
+      {
+        "filename": "rollout-2026-08-07T13-21-51-019fdaab-ace4-7b51-93b2-244d9517423a.jsonl",
+        "role": "autonomous_worker_or_resume",
+        "private_original_sha256": "ff3d1c60a3052f12e32275139170923778b6d344bc7390b3a6a2b2da49c44a62",
+        "redacted_sha256": "ff3d1c60a3052f12e32275139170923778b6d344bc7390b3a6a2b2da49c44a62",
+        "kept_events": 349,
+        "dropped_events": 0,
+        "first_timestamp": "2026-08-07T05:21:51.884Z",
+        "last_timestamp": "2026-08-07T05:26:13.166Z"
+      }
+    ]
+  }
+}

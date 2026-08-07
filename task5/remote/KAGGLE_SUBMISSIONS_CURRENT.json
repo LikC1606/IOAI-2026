@@ -1,0 +1,65 @@
+[
+  {
+    "ref": 55320652,
+    "fileName": "submission.csv",
+    "date": "2026-08-07T09:02:01.927000",
+    "description": "fine-tuned BGE local neural transition decoder",
+    "status": "SubmissionStatus.COMPLETE",
+    "publicScore": "94.17000",
+    "privateScore": ""
+  },
+  {
+    "ref": 55320296,
+    "fileName": "submission.csv",
+    "date": "2026-08-07T08:43:46.740000",
+    "description": "all-label fine-tuned local BGE sequence refit",
+    "status": "SubmissionStatus.COMPLETE",
+    "publicScore": "95.39000",
+    "privateScore": ""
+  },
+  {
+    "ref": 55320028,
+    "fileName": "submission.csv",
+    "date": "2026-08-07T08:28:12.897000",
+    "description": "fine-tuned local BGE sequence remote dev 95.688",
+    "status": "SubmissionStatus.COMPLETE",
+    "publicScore": "94.56000",
+    "privateScore": ""
+  },
+  {
+    "ref": 55319516,
+    "fileName": "submission.csv",
+    "date": "2026-08-07T08:01:30.577000",
+    "description": "all official labels cumulative sequence refit",
+    "status": "SubmissionStatus.COMPLETE",
+    "publicScore": "92.73000",
+    "privateScore": ""
+  },
+  {
+    "ref": 55319289,
+    "fileName": "submission.csv",
+    "date": "2026-08-07T07:53:07.707000",
+    "description": "cumulative sentence origin sequence remote dev 93.563",
+    "status": "SubmissionStatus.COMPLETE",
+    "publicScore": "92.48000",
+    "privateScore": ""
+  },
+  {
+    "ref": 55318761,
+    "fileName": "submission.csv",
+    "date": "2026-08-07T07:37:56.770000",
+    "description": "classical sentence seam change-point dev 94.615",
+    "status": "SubmissionStatus.COMPLETE",
+    "publicScore": "90.86000",
+    "privateScore": ""
+  },
+  {
+    "ref": 55318340,
+    "fileName": "submission.csv",
+    "date": "2026-08-07T07:25:06.867000",
+    "description": "mean fraction baseline remote reference",
+    "status": "SubmissionStatus.COMPLETE",
+    "publicScore": "28.60000",
+    "privateScore": ""
+  }
+]
