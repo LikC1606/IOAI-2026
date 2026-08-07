@@ -72,6 +72,6 @@ the report “carries no score.” The submission page calls it a report require
 This package does not decide whether the Jury treats the format deviations as
 material; it provides the exact sources and a separate truthful audit.
 
-Only v1-v8 are claimed. Post-boundary results and external-embedding experiments
-are explicitly excluded. In particular, v13/v14 used prohibited external
-embeddings and must never be presented as compliant official submissions.
+Only v1-v8 are in scope. No later Task 3 activity is inspected or used in this
+package. The bounded Kaggle record is
+`remote/KAGGLE_SUBMISSIONS_AUTONOMOUS_V1_V8.json`.

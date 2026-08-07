@@ -43,7 +43,7 @@ Runnable pre-boundary artifacts and result notes are preserved under
 `research/candidates`. The selection was reconstructed from source filesystem
 modification times no later than the boundary and corroborated by the included
 rollouts. The directory includes `v10_soft15.py` because its source was created at
-13:42:55 CST; its post-boundary remote submission/result remains excluded.
+13:42:55 CST; within this package it remains an unsubmitted research candidate.
 
 ## Autonomous evidence loop
 
@@ -54,10 +54,8 @@ online calibration 55.01666; intermediate likelihood 54.11666; and no-prior v8
 likelihood and acquisition rather than the practice centroid.
 
 The pre-boundary main rollout then began a broader softening candidate (v10) after
-recognizing the v5-v7 plateau. The source existed before supervision, but the
-scored action did not, so it is research evidence only. No centered, tail,
-dynamic-embedding, external-embedding, or user-specified semantic method is part
-of this summary's positive claim.
+recognizing the v5-v7 plateau. It remains research evidence only. No later Task 3
+method is inspected or included in this bounded research record.
 
 ## Provenance cautions
 

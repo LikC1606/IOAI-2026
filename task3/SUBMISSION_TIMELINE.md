@@ -1,8 +1,10 @@
 # Autonomous Submission Timeline
 
-Platform timestamps below come from `remote/KAGGLE_SUBMISSIONS_CURRENT.json`;
-scores and statuses come from Kaggle, not from the agent's handwritten records.
-All times are UTC on 2026-08-06. Add eight hours for CST.
+Platform timestamps below come from
+`remote/KAGGLE_SUBMISSIONS_AUTONOMOUS_V1_V8.json`; scores and statuses come from
+Kaggle, not from the agent's handwritten records. This package intentionally
+does not inspect or retain later Task 3 submission activity. All times are UTC
+on 2026-08-06. Add eight hours for CST.
 
 | Kernel version | Submission ID | UTC submitted | Candidate | Local score recorded/reproduced | Public LB | Status |
 |---:|---:|---|---|---:|---:|---|

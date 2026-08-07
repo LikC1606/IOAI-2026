@@ -23,10 +23,8 @@ Candidate artifacts show the autonomous research breadth and implementation
 process; remote payloads and Kaggle records establish what was actually submitted.
 
 `lane_prior/v10_soft15.py` is the only preserved working candidate that did not
-produce an included scored result. It was created at 13:42:55 CST, but its Kaggle
-competition submit occurred at 13:47:27 CST, after the conservative boundary.
-It is retained as research-process evidence only.
+produce an included scored result. It was created at 13:42:55 CST and is retained
+as research-process evidence only.
 
 No file first created at or after the boundary is copied into this candidate
-snapshot. In particular, centered geometry, round-two coverage/tail, dynamic
-embedding, and external-embedding routes are excluded.
+snapshot. Later Task 3 routes are outside this package and are not inspected.

@@ -62,15 +62,10 @@ Only remote submissions v1-v8 are included in the autonomous score claim. They
 were all sent, completed, and scored before the boundary. The highest included
 LB is 58.51666 (v4 and v8).
 
-The v10 source was autonomously created at approximately 13:42:55 CST, before
-the boundary, and is retained only as a pre-boundary research candidate. Its
-competition submission was sent at 13:47:27 CST, after the boundary, so neither
-that submission nor its LB is part of the autonomous result.
+An additional source created before the boundary is retained only as an
+unsubmitted research candidate. It is not represented as a scored result.
 
-## Why later work is excluded
+## Scope after the boundary
 
-The package does not attempt to infer whether any particular later implementation
-would have happened anyway. All results at or after the boundary are excluded by
-time and provenance. This includes official Continuation-Prompt variants, prompt
-modifications, worker restarts, method suggestions, and forced submission requests.
-See `EXCLUSIONS.md`.
+The package stops at the boundary. It does not inspect or make claims about any
+later Task 3 activity. See `EXCLUSIONS.md`.

@@ -28,7 +28,7 @@ Start with these documents:
 - `COMPLIANCE.md`: rules-to-evidence audit and candid limitations.
 - `REPORT_COMPLIANCE.md`: audit of the historical source-header reports.
 - `REPRODUCE.md`: exact local and Kaggle notebook reproduction procedure.
-- `EXCLUSIONS.md`: all post-boundary or rule-incompatible work excluded.
+- `EXCLUSIONS.md`: the exact Task 3 evidence-scope boundary.
 - `evidence/LOCAL_REPRODUCTION.json`: machine-readable v1-v8 verification.
 - `MANIFEST.sha256`: integrity hashes for the package.
 
