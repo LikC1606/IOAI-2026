@@ -1,0 +1,46 @@
+[{"stream_name":"stdout","time":50.621021533,"data":"context step 0500 loss=0.545747\n"}
+,{"stream_name":"stdout","time":53.220128385,"data":"context step 1000 loss=0.639961\n"}
+,{"stream_name":"stdout","time":55.795111378,"data":"context step 1500 loss=0.516718\n"}
+,{"stream_name":"stdout","time":58.373392084,"data":"context step 2000 loss=0.520306\n"}
+,{"stream_name":"stdout","time":60.962238164,"data":"context step 2500 loss=0.602972\n"}
+,{"stream_name":"stdout","time":63.56162114,"data":"context step 3000 loss=0.642790\n"}
+,{"stream_name":"stdout","time":63.561659298,"data":"params: 13426\n"}
+,{"stream_name":"stdout","time":63.842570297,"data":"public proxy [I]\n"}
+,{"stream_name":"stdout","time":63.842606662,"data":"  I: n=512, mae=5.06461e+19, scale=9.16603e+19.\n"}
+,{"stream_name":"stdout","time":63.842613226,"data":"  score = 1 - min(mae/scale, 1) = 1 - min(5.06461e+19/9.16603e+19, 1) = 0.447459.\n"}
+,{"stream_name":"stdout","time":63.842618352,"data":"\n"}
+,{"stream_name":"stdout","time":63.842622879,"data":"[O]\n"}
+,{"stream_name":"stdout","time":63.842627688,"data":"  O: n=512, mae=0.567133, scale=1.83389.\n"}
+,{"stream_name":"stdout","time":63.842632527,"data":"  score = 1 - min(mae/scale, 1) = 1 - min(0.567133/1.83389, 1) = 0.690749.\n"}
+,{"stream_name":"stdout","time":63.842637321,"data":"\n"}
+,{"stream_name":"stdout","time":63.842641768,"data":"[A]\n"}
+,{"stream_name":"stdout","time":63.842646202,"data":"  A: n=512, mae=0.273438, scale=0.\n"}
+,{"stream_name":"stdout","time":63.842650897,"data":"  constant target =\u003e using scale=1.0.\n"}
+,{"stream_name":"stdout","time":63.842655895,"data":"  score = 1 - min(mae/1.0, 1) = 0.726562.\n"}
+,{"stream_name":"stdout","time":63.842660528,"data":"\n"}
+,{"stream_name":"stdout","time":63.842665048,"data":"[I_entropy]\n"}
+,{"stream_name":"stdout","time":63.84266966,"data":"  I_entropy: n=512, runs=10, mode=std.\n"}
+,{"stream_name":"stdout","time":63.842674341,"data":"  Rule: if any run is outside [-2026,2026], point score=0.\n"}
+,{"stream_name":"stdout","time":63.842678928,"data":"  Final score = mean(point scores) = 1.\n"}
+,{"stream_name":"stdout","time":63.842683523,"data":"\n"}
+,{"stream_name":"stdout","time":63.842687909,"data":"[bg]\n"}
+,{"stream_name":"stdout","time":63.842692406,"data":"  bg: n=512, mae=0.0234375, scale=0.1.\n"}
+,{"stream_name":"stdout","time":63.842697084,"data":"  score = 1 - min(mae/scale, 1) = 1 - min(0.0234375/0.1, 1) = 0.765625.\n"}
+,{"stream_name":"stdout","time":63.84270176,"data":"\n"}
+,{"stream_name":"stdout","time":63.842706088,"data":"[param multiplier]\n"}
+,{"stream_name":"stdout","time":63.842710657,"data":"  Params: 13426 \u003c 20260 =\u003e no penalty.\n"}
+,{"stream_name":"stdout","time":63.842715568,"data":"\n"}
+,{"stream_name":"stdout","time":63.842719894,"data":"[total]\n"}
+,{"stream_name":"stdout","time":63.842724373,"data":"  Total: weighted mean of region scores * 100 = 72.6079.\n"}
+,{"stream_name":"stdout","time":66.428325034,"data":"held proxy mean {\"A_score\": 0.77783203125, \"I_entropy_score\": 1.0, \"I_score\": 0.46245748685455507, \"O_score\": 0.6895097942927771, \"bg_score\": 0.73388671875, \"total_score\": 73.27372062294664}\n"}
+,{"stream_name":"stdout","time":66.428370591,"data":"held proxy worst 69.7826947674003\n"}
+,{"stream_name":"stdout","time":69.775029637,"data":"verified: the grader can load your model (13,426 parameters)\n"}
+,{"stream_name":"stdout","time":69.780630755,"data":"wrote /kaggle/working/submission.csv (0.15 MB, 2 rows)\n"}
+,{"stream_name":"stdout","time":69.780649238,"data":"runtime_seconds=68.54\n"}
+,{"stream_name":"stderr","time":72.810949083,"data":"/usr/local/lib/python3.12/dist-packages/mistune.py:435: SyntaxWarning: invalid escape sequence '\\|'\n"}
+,{"stream_name":"stderr","time":72.810994656,"data":"  cells[i][c] = re.sub('\\\\\\\\\\|', '|', cell)\n"}
+,{"stream_name":"stderr","time":73.065390263,"data":"/usr/local/lib/python3.12/dist-packages/nbconvert/filters/filter_links.py:36: SyntaxWarning: invalid escape sequence '\\_'\n"}
+,{"stream_name":"stderr","time":73.06541146,"data":"  text = re.sub(r'_', '\\_', text) # Escape underscores in display text\n"}
+,{"stream_name":"stderr","time":73.781694402,"data":"[NbConvertApp] Converting notebook __script__.ipynb to html\n"}
+,{"stream_name":"stderr","time":75.092360389,"data":"[NbConvertApp] Writing 349442 bytes to __results__.html\n"}
+]

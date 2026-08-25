@@ -1,0 +1,44 @@
+[{"stream_name":"stdout","time":47.226909975,"data":"step 0500 loss=0.496939\n"}
+,{"stream_name":"stdout","time":48.777799079,"data":"step 1000 loss=0.468069\n"}
+,{"stream_name":"stdout","time":50.339867922,"data":"step 1500 loss=0.409045\n"}
+,{"stream_name":"stdout","time":51.939682924,"data":"step 2000 loss=0.355172\n"}
+,{"stream_name":"stdout","time":53.50714907,"data":"step 2500 loss=0.304999\n"}
+,{"stream_name":"stdout","time":53.507190431,"data":"params: 17674\n"}
+,{"stream_name":"stdout","time":62.241489824,"data":"calibration: {\"total_proxy\": 0.8964736330725296, \"thresholds\": [0.995, 0.95, 0.95], \"regions\": [0.7734015488278045, 0.7633472577961753, 0.97705078125, 0.9685685774886679]}\n"}
+,{"stream_name":"stdout","time":62.781799747,"data":"[I]\n"}
+,{"stream_name":"stdout","time":62.781836796,"data":"  I: n=512, mae=2.18083e+19, scale=9.36781e+19.\n"}
+,{"stream_name":"stdout","time":62.781841805,"data":"  score = 1 - min(mae/scale, 1) = 1 - min(2.18083e+19/9.36781e+19, 1) = 0.767199.\n"}
+,{"stream_name":"stdout","time":62.781846072,"data":"\n"}
+,{"stream_name":"stdout","time":62.781864676,"data":"[O]\n"}
+,{"stream_name":"stdout","time":62.78187096,"data":"  O: n=512, mae=0.42327, scale=1.82463.\n"}
+,{"stream_name":"stdout","time":62.781876414,"data":"  score = 1 - min(mae/scale, 1) = 1 - min(0.42327/1.82463, 1) = 0.768024.\n"}
+,{"stream_name":"stdout","time":62.781881898,"data":"\n"}
+,{"stream_name":"stdout","time":62.781886839,"data":"[A]\n"}
+,{"stream_name":"stdout","time":62.781891256,"data":"  A: n=512, mae=0.0253906, scale=0.\n"}
+,{"stream_name":"stdout","time":62.781895754,"data":"  constant target =\u003e using scale=1.0.\n"}
+,{"stream_name":"stdout","time":62.781900785,"data":"  score = 1 - min(mae/1.0, 1) = 0.974609.\n"}
+,{"stream_name":"stdout","time":62.781905258,"data":"\n"}
+,{"stream_name":"stdout","time":62.781911624,"data":"[I_entropy]\n"}
+,{"stream_name":"stdout","time":62.781918747,"data":"  I_entropy: n=512, runs=10, mode=std.\n"}
+,{"stream_name":"stdout","time":62.78192192,"data":"  Rule: if any run is outside [-2026,2026], point score=0.\n"}
+,{"stream_name":"stdout","time":62.781924997,"data":"  Final score = mean(point scores) = 1.\n"}
+,{"stream_name":"stdout","time":62.781928017,"data":"\n"}
+,{"stream_name":"stdout","time":62.781930942,"data":"[bg]\n"}
+,{"stream_name":"stdout","time":62.781934031,"data":"  bg: n=512, mae=0.00451885, scale=0.1.\n"}
+,{"stream_name":"stdout","time":62.781937238,"data":"  score = 1 - min(mae/scale, 1) = 1 - min(0.00451885/0.1, 1) = 0.954812.\n"}
+,{"stream_name":"stdout","time":62.781940519,"data":"\n"}
+,{"stream_name":"stdout","time":62.781943494,"data":"[param multiplier]\n"}
+,{"stream_name":"stdout","time":62.781946601,"data":"  Params: 17674 \u003c 20260 =\u003e no penalty.\n"}
+,{"stream_name":"stdout","time":62.781968255,"data":"\n"}
+,{"stream_name":"stdout","time":62.781973974,"data":"[total]\n"}
+,{"stream_name":"stdout","time":62.781979403,"data":"  Total: weighted mean of region scores * 100 = 89.2929.\n"}
+,{"stream_name":"stdout","time":66.617758083,"data":"verified: the grader can load your model (17,674 parameters)\n"}
+,{"stream_name":"stdout","time":66.624007607,"data":"wrote /kaggle/working/submission.csv (0.20 MB, 2 rows)\n"}
+,{"stream_name":"stdout","time":66.624031387,"data":"runtime_seconds=65.20\n"}
+,{"stream_name":"stderr","time":69.972546128,"data":"/usr/local/lib/python3.12/dist-packages/mistune.py:435: SyntaxWarning: invalid escape sequence '\\|'\n"}
+,{"stream_name":"stderr","time":69.972605774,"data":"  cells[i][c] = re.sub('\\\\\\\\\\|', '|', cell)\n"}
+,{"stream_name":"stderr","time":70.279344096,"data":"/usr/local/lib/python3.12/dist-packages/nbconvert/filters/filter_links.py:36: SyntaxWarning: invalid escape sequence '\\_'\n"}
+,{"stream_name":"stderr","time":70.279372471,"data":"  text = re.sub(r'_', '\\_', text) # Escape underscores in display text\n"}
+,{"stream_name":"stderr","time":71.090036077,"data":"[NbConvertApp] Converting notebook __script__.ipynb to html\n"}
+,{"stream_name":"stderr","time":72.563943906,"data":"[NbConvertApp] Writing 325708 bytes to __results__.html\n"}
+]

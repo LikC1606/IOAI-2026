@@ -1,0 +1,12 @@
+{
+  "schema": "deepscientist.ioai.simple-run-receipt.v1",
+  "competitionId": "ioai-2026-task-6-westlake-nlp-60",
+  "projectRoot": "/workspace/IOAI/ioai2-competition-runs-task6-20260809/ioai-2026-task-6-westlake-nlp-60/project",
+  "startedAt": "2026-08-08T16:23:20.951Z",
+  "finishedAt": "2026-08-08T18:23:20.943Z",
+  "deadlineAt": "2026-08-08T18:23:20.900Z",
+  "turns": 3,
+  "consecutiveFailures": 0,
+  "transientFailures": 1,
+  "stopReason": "deadline"
+}

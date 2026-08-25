@@ -1,0 +1,10 @@
+{
+  "purpose": "distinguish later Kaggle extraction from the autonomous agent run",
+  "agent_run_deadline_utc": "2026-08-08T18:23:20.900Z",
+  "competition_deadline_utc": "2026-08-08T18:30:00.000Z",
+  "post_run_submissions_found_by_later_extraction": [
+    {"ref": 55358042, "public_score": 76.03525, "private_score": 73.2578, "submitted_at_utc": "2026-08-08T18:39:24.750000"},
+    {"ref": 55358739, "public_score": 76.41428, "private_score": 73.74666, "submitted_at_utc": "2026-08-08T19:23:10.690000"}
+  ],
+  "claim_policy": "These later submissions are not included in SUMMARY.json best_submission_ref or the agent-run GPU/API accounting."
+}

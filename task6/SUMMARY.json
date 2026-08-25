@@ -1,0 +1,32 @@
+{
+  "package_schema": "ioai.organizer-evidence.v1",
+  "created_at": "2026-08-25",
+  "task": 6,
+  "competition": "ioai-2026-task-6-westlake-nlp-60",
+  "account_owner": "researai",
+  "agent_run": {
+    "started_at_utc": "2026-08-08T16:23:20.951Z",
+    "deadline_at_utc": "2026-08-08T18:23:20.900Z",
+    "finished_at_utc": "2026-08-08T18:23:20.943Z",
+    "stop_reason": "deadline",
+    "model": "gpt-5.6-sol",
+    "reasoning_effort": "xhigh"
+  },
+  "best_submission_ref": 55357080,
+  "best_public_score": 75.0154,
+  "public_score_scale": "0-100; normalized value 0.750154",
+  "best_private_score": 73.36234,
+  "best_submission_version": 3,
+  "target_requested_by_user": 86.5,
+  "target_normalized": 0.865,
+  "target_reached": false,
+  "submission_refs_in_agent_run": [55356406, 55356701, 55357080],
+  "trace_directory": "evidence/rollouts",
+  "restricted_materials_excluded": [
+    "input/competition/",
+    "artifacts/*.safetensors",
+    "artifacts/*.pt",
+    "codex-home/*.sqlite",
+    "raw Task 6 codex-home traces"
+  ]
+}

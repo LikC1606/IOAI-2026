@@ -1,0 +1,152 @@
+{
+  "schema": "ioai.execution-costs.v1",
+  "scope": "the six autonomous agent runs represented by the repository trace packages",
+  "currency": "USD",
+  "api_cost_method": "token telemetry is reported exactly where available; no substitute public model price is applied",
+  "api_cost_formula_if_provider_rates_are_supplied": "input_tokens/1e6*input_rate + cached_input_tokens/1e6*cached_input_rate + output_tokens/1e6*output_rate",
+  "provider_and_model": {
+    "provider": "ioai_allowed",
+    "model": "gpt-5.6-sol",
+    "reasoning_effort": "xhigh where recorded for Task 6; effort is not consistently exposed in the redacted Task 1-5 traces"
+  },
+  "api_cost_usd_total": null,
+  "api_cost_total_status": "unavailable_no_provider_invoice_or_applicable_public_rate",
+  "api_cost_total_reason": "The traces identify the private/competition provider ioai_allowed and gpt-5.6-sol, while the available public pricing page does not price that model. No invoice, rate card, or per-run charge is present in the evidence. gpt-5.3-codex public prices must not be substituted.",
+  "known_token_total_excluding_task3": 418345300,
+  "gpu_cost_usd_total": null,
+  "gpu_cost_total_status": "unavailable_no_cloud_invoice_or_rate",
+  "gpu_cost_total_reason": "The records expose Kaggle machine type and notebook wall-clock runtime, but no user cloud invoice, GPU utilization trace, or contract rate.",
+  "tasks": {
+    "task1": {
+      "competition": "ioai-2026-task-1-westlake-nlp-24",
+      "model": "gpt-5.6-sol",
+      "token_usage_scope": "formal rollout plus the separate post-boundary agent-execution trace",
+      "token_usage": {
+        "input_tokens": 30285000,
+        "cached_input_tokens": 29214208,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 95753,
+        "reasoning_output_tokens": 39099,
+        "total_tokens": 30380753
+      },
+      "api_cost_usd": null,
+      "api_cost_status": "unavailable_unpriced_ioai_provider",
+      "gpu": {
+        "accelerator": "NvidiaTeslaT4",
+        "runtime_scope": "agent-executed scored submission 55267607",
+        "runtime_seconds": 410.750263625,
+        "runtime_hours": 0.11409729545138889,
+        "gpu_cost_usd": null,
+        "cost_status": "unavailable_no_rate_or_invoice"
+      }
+    },
+    "task2": {
+      "competition": "ioai-2026-task-2-westlake-nlp-24",
+      "model": "gpt-5.6-sol",
+      "token_usage": {
+        "input_tokens": 14392706,
+        "cached_input_tokens": 13759488,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 65102,
+        "reasoning_output_tokens": 28220,
+        "total_tokens": 14457808
+      },
+      "api_cost_usd": null,
+      "api_cost_status": "unavailable_unpriced_ioai_provider",
+      "gpu": {
+        "accelerator": "NvidiaTeslaT4",
+        "runtime_scope": "two eligible remote CNN notebooks (cnn-v1 and rotation-cnn-v2)",
+        "runtime_seconds": 493.582953672,
+        "runtime_hours": 0.13710637602,
+        "gpu_cost_usd": null,
+        "cost_status": "unavailable_no_rate_or_invoice"
+      }
+    },
+    "task3": {
+      "competition": "ioai-2026-task-3-westlake-nlp-48",
+      "model": "gpt-5.6-sol",
+      "token_usage": null,
+      "token_usage_status": "redacted_unavailable",
+      "token_usage_reason": "The repository's four trace files replace cumulative token totals with [REDACTED].",
+      "api_cost_usd": null,
+      "api_cost_status": "unavailable_token_totals_redacted_and_provider_unpriced",
+      "gpu": {
+        "accelerator": "CPU",
+        "runtime_scope": "official versions v1-v8; metadata has enable_gpu=false",
+        "runtime_seconds": 0,
+        "runtime_hours": 0,
+        "gpu_cost_usd": 0,
+        "cost_status": "no_gpu_allocated"
+      }
+    },
+    "task4": {
+      "competition": "ioai-2026-task-4-westlake-nlp-24",
+      "model": "gpt-5.6-sol",
+      "token_usage": {
+        "input_tokens": 108797282,
+        "cached_input_tokens": 105440256,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 322616,
+        "reasoning_output_tokens": 123290,
+        "total_tokens": 109119898
+      },
+      "api_cost_usd": null,
+      "api_cost_status": "unavailable_unpriced_ioai_provider",
+      "gpu": {
+        "accelerator": "NvidiaTeslaT4",
+        "runtime_scope": "submitted versions v1, v2, v4; diagnostic v3 is reported separately",
+        "runtime_seconds": 775.784001944,
+        "runtime_hours": 0.21549555609555557,
+        "diagnostic_v3_runtime_seconds": 344.93654956,
+        "all_versions_including_diagnostic_runtime_seconds": 1120.720551504,
+        "gpu_cost_usd": null,
+        "cost_status": "unavailable_no_rate_or_invoice"
+      }
+    },
+    "task5": {
+      "competition": "ioai-2026-task-5-westlake-nlp-24",
+      "model": "gpt-5.6-sol",
+      "token_usage": {
+        "input_tokens": 159409014,
+        "cached_input_tokens": 154200064,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 834094,
+        "reasoning_output_tokens": 175219,
+        "total_tokens": 160243108
+      },
+      "api_cost_usd": null,
+      "api_cost_status": "unavailable_unpriced_ioai_provider",
+      "gpu": {
+        "accelerator": "NvidiaTeslaT4",
+        "runtime_scope": "T4 versions v5-v7; versions v1-v4 were CPU runs",
+        "runtime_seconds": 837.27460599,
+        "runtime_hours": 0.23257627944166667,
+        "gpu_cost_usd": null,
+        "cost_status": "unavailable_no_rate_or_invoice"
+      }
+    },
+    "task6": {
+      "competition": "ioai-2026-task-6-westlake-nlp-60",
+      "model": "gpt-5.6-sol",
+      "token_usage": {
+        "input_tokens": 103777170,
+        "cached_input_tokens": 95957888,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 366563,
+        "reasoning_output_tokens": 123021,
+        "total_tokens": 104143733
+      },
+      "api_cost_usd": null,
+      "api_cost_status": "unavailable_unpriced_ioai_provider",
+      "gpu": {
+        "accelerator": "NvidiaTeslaT4",
+        "runtime_scope": "submitted versions v1-v3",
+        "runtime_seconds": 243.721403533,
+        "runtime_hours": 0.06770038987027778,
+        "local_model_runtime_seconds_from_project_logs": 221.14,
+        "gpu_cost_usd": null,
+        "cost_status": "unavailable_no_rate_or_invoice"
+      }
+    }
+  }
+}
