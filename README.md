@@ -45,13 +45,17 @@ in [COSTS.json](COSTS.json). Both trace indexes now use the same
 human-intervention-free selection. USD API/GPU amounts are left `null` where no
 applicable rate or invoice exists.
 
-For Tasks 1 and 2, that canonical selection is the complete later two-hour
-rollout under [REPRODUCTION_TRACE_MATERIAL.md](REPRODUCTION_TRACE_MATERIAL.md):
-it contains no live human method/target prompt, but its score remains
-post-deadline and non-ranking. The original Task 1 and Task 2 run records were
+For Task 1, the canonical solution selection is the later two-hour rollout
+prefix through `task_complete`; the complete raw trace remains under
+[REPRODUCTION_TRACE_MATERIAL.md](REPRODUCTION_TRACE_MATERIAL.md). Task 2 uses
+its full later trace. Neither contains a live human method/target prompt, and
+both scores remain post-deadline and non-ranking. The original Task 1 and Task 2 run records were
 unavailable after a school-server restart; these are later fresh reproductions
 using the same configured solver/system, official competition bundle, and
 organizer constraints, not the lost original run records.
+
+Task 4's full rule classification and corrected 12-trace solver inventory are
+in [task4/RULE_DIFFERENCE_AUDIT.md](task4/RULE_DIFFERENCE_AUDIT.md).
 
 The complete 496,870,419-byte Kaggle extraction archive is delivered through
 the verified Google Drive record in

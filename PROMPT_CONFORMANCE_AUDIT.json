@@ -29,30 +29,22 @@
       },
       "live_kaggle_page_matches_repository_source": true,
       "trace_prompt_classes": {
-        "custom_continuation_prompt": 1,
         "custom_starter_prompt": 1,
         "startup_instructions": 1
       },
       "custom_prompt_events": [
         {
           "timestamp": "2026-08-05T16:25:54.536Z",
-          "trace_path": "task1/evidence/reproduction-120m/rollout.jsonl",
+          "trace_path": "task1/evidence/canonical/rollout-solution-prefix.jsonl",
           "class": "custom_starter_prompt",
           "sha256": "d280b73e5f7690416dfb6badbfccb9675c22742e49e0c3777ee50679112bbb6c",
-          "organizer_prompt_text_status": "custom"
-        },
-        {
-          "timestamp": "2026-08-05T18:25:04.940Z",
-          "trace_path": "task1/evidence/reproduction-120m/rollout.jsonl",
-          "class": "custom_continuation_prompt",
-          "sha256": "45767762b1cfb5ef65193cbfef591bf50e33b18883b39fc1e60fbe36005a42b5",
           "organizer_prompt_text_status": "custom"
         }
       ],
       "strict_exact_organizer_prompt_text_conformance": false,
       "no_live_human_prompt_events_included": true,
       "selected_result_downstream_of_custom_prompt_text": true,
-      "detail": "The custom starter appendix precedes all work. The custom continuation at 2026-08-05T18:25:04.940Z is after submission 55277782, the final Agent answer, and task_complete at 2026-08-05T18:24:58.140Z, so that continuation did not cause the selected result.",
+      "detail": "The custom starter appendix precedes all work. The canonical solution trace ends at task_complete at 2026-08-05T18:24:58.140Z and contains no continuation. The complete raw reproduction separately preserves the post-solution custom continuation beginning at 2026-08-05T18:25:04.940Z.",
       "jury_status": "not_self_certified; organizer/Jury determines recognition"
     },
     "task2": {
@@ -129,11 +121,11 @@
       },
       "live_kaggle_page_matches_repository_source": true,
       "trace_prompt_classes": {
-        "custom_continuation_prompt": 6,
-        "custom_starter_prompt": 1,
-        "inherited_custom_continuation_prompt": 4,
-        "inherited_custom_starter_prompt": 4,
-        "startup_instructions": 5
+        "custom_continuation_prompt": 10,
+        "custom_starter_prompt": 2,
+        "inherited_custom_continuation_prompt": 16,
+        "inherited_custom_starter_prompt": 10,
+        "startup_instructions": 12
       },
       "custom_prompt_events": [
         {
@@ -240,12 +232,173 @@
           "class": "inherited_custom_continuation_prompt",
           "sha256": "e77306185191fe14bdeda365fd47ee1c1ece3ff10a8f5f5de5fe34bac58db18a",
           "organizer_prompt_text_status": "custom"
+        },
+        {
+          "timestamp": "2026-08-07T05:04:06.812Z",
+          "trace_path": "task4/evidence/supplemental-rollouts/rollout-2026-08-07T13-04-06-019fda9b-6b63-7031-a6dd-52db684209be.jsonl",
+          "class": "custom_starter_prompt",
+          "sha256": "192b4282d380d9b0ca418500f1ba2d5d361726f62ff96fe742fcc6ccdc7286f3",
+          "organizer_prompt_text_status": "custom"
+        },
+        {
+          "timestamp": "2026-08-07T05:35:24.741Z",
+          "trace_path": "task4/evidence/supplemental-rollouts/rollout-2026-08-07T13-04-06-019fda9b-6b63-7031-a6dd-52db684209be.jsonl",
+          "class": "custom_continuation_prompt",
+          "sha256": "e77306185191fe14bdeda365fd47ee1c1ece3ff10a8f5f5de5fe34bac58db18a",
+          "organizer_prompt_text_status": "custom"
+        },
+        {
+          "timestamp": "2026-08-07T05:35:42.570Z",
+          "trace_path": "task4/evidence/supplemental-rollouts/rollout-2026-08-07T13-04-06-019fda9b-6b63-7031-a6dd-52db684209be.jsonl",
+          "class": "custom_continuation_prompt",
+          "sha256": "e77306185191fe14bdeda365fd47ee1c1ece3ff10a8f5f5de5fe34bac58db18a",
+          "organizer_prompt_text_status": "custom"
+        },
+        {
+          "timestamp": "2026-08-07T05:36:01.444Z",
+          "trace_path": "task4/evidence/supplemental-rollouts/rollout-2026-08-07T13-04-06-019fda9b-6b63-7031-a6dd-52db684209be.jsonl",
+          "class": "custom_continuation_prompt",
+          "sha256": "e77306185191fe14bdeda365fd47ee1c1ece3ff10a8f5f5de5fe34bac58db18a",
+          "organizer_prompt_text_status": "custom"
+        },
+        {
+          "timestamp": "2026-08-07T05:39:01.808Z",
+          "trace_path": "task4/evidence/supplemental-rollouts/rollout-2026-08-07T13-04-06-019fda9b-6b63-7031-a6dd-52db684209be.jsonl",
+          "class": "custom_continuation_prompt",
+          "sha256": "e77306185191fe14bdeda365fd47ee1c1ece3ff10a8f5f5de5fe34bac58db18a",
+          "organizer_prompt_text_status": "custom"
+        },
+        {
+          "timestamp": "2026-08-07T05:04:23.582Z",
+          "trace_path": "task4/evidence/supplemental-rollouts/rollout-2026-08-07T13-04-23-019fda9b-ade0-7912-868f-a922606fd40f.jsonl",
+          "class": "inherited_custom_starter_prompt",
+          "sha256": "192b4282d380d9b0ca418500f1ba2d5d361726f62ff96fe742fcc6ccdc7286f3",
+          "organizer_prompt_text_status": "custom"
+        },
+        {
+          "timestamp": "2026-08-07T05:04:30.528Z",
+          "trace_path": "task4/evidence/supplemental-rollouts/rollout-2026-08-07T13-04-30-019fda9b-c906-70a0-8f5c-99fc2f25fafa.jsonl",
+          "class": "inherited_custom_starter_prompt",
+          "sha256": "192b4282d380d9b0ca418500f1ba2d5d361726f62ff96fe742fcc6ccdc7286f3",
+          "organizer_prompt_text_status": "custom"
+        },
+        {
+          "timestamp": "2026-08-07T05:04:39.887Z",
+          "trace_path": "task4/evidence/supplemental-rollouts/rollout-2026-08-07T13-04-39-019fda9b-ed93-7473-96c5-f8c030d3e4bc.jsonl",
+          "class": "inherited_custom_starter_prompt",
+          "sha256": "192b4282d380d9b0ca418500f1ba2d5d361726f62ff96fe742fcc6ccdc7286f3",
+          "organizer_prompt_text_status": "custom"
+        },
+        {
+          "timestamp": "2026-08-07T05:57:14.547Z",
+          "trace_path": "task4/evidence/supplemental-rollouts/rollout-2026-08-07T13-57-14-019fdacc-1073-7f03-ac6e-346ad63c0c4f.jsonl",
+          "class": "inherited_custom_starter_prompt",
+          "sha256": "192b4282d380d9b0ca418500f1ba2d5d361726f62ff96fe742fcc6ccdc7286f3",
+          "organizer_prompt_text_status": "custom"
+        },
+        {
+          "timestamp": "2026-08-07T05:57:14.818Z",
+          "trace_path": "task4/evidence/supplemental-rollouts/rollout-2026-08-07T13-57-14-019fdacc-1073-7f03-ac6e-346ad63c0c4f.jsonl",
+          "class": "inherited_custom_continuation_prompt",
+          "sha256": "e77306185191fe14bdeda365fd47ee1c1ece3ff10a8f5f5de5fe34bac58db18a",
+          "organizer_prompt_text_status": "custom"
+        },
+        {
+          "timestamp": "2026-08-07T05:57:14.827Z",
+          "trace_path": "task4/evidence/supplemental-rollouts/rollout-2026-08-07T13-57-14-019fdacc-1073-7f03-ac6e-346ad63c0c4f.jsonl",
+          "class": "inherited_custom_continuation_prompt",
+          "sha256": "e77306185191fe14bdeda365fd47ee1c1ece3ff10a8f5f5de5fe34bac58db18a",
+          "organizer_prompt_text_status": "custom"
+        },
+        {
+          "timestamp": "2026-08-07T05:57:14.836Z",
+          "trace_path": "task4/evidence/supplemental-rollouts/rollout-2026-08-07T13-57-14-019fdacc-1073-7f03-ac6e-346ad63c0c4f.jsonl",
+          "class": "inherited_custom_continuation_prompt",
+          "sha256": "e77306185191fe14bdeda365fd47ee1c1ece3ff10a8f5f5de5fe34bac58db18a",
+          "organizer_prompt_text_status": "custom"
+        },
+        {
+          "timestamp": "2026-08-07T05:57:14.849Z",
+          "trace_path": "task4/evidence/supplemental-rollouts/rollout-2026-08-07T13-57-14-019fdacc-1073-7f03-ac6e-346ad63c0c4f.jsonl",
+          "class": "inherited_custom_continuation_prompt",
+          "sha256": "e77306185191fe14bdeda365fd47ee1c1ece3ff10a8f5f5de5fe34bac58db18a",
+          "organizer_prompt_text_status": "custom"
+        },
+        {
+          "timestamp": "2026-08-07T05:57:22.262Z",
+          "trace_path": "task4/evidence/supplemental-rollouts/rollout-2026-08-07T13-57-22-019fdacc-2e9c-78a2-b037-135a4b172944.jsonl",
+          "class": "inherited_custom_starter_prompt",
+          "sha256": "192b4282d380d9b0ca418500f1ba2d5d361726f62ff96fe742fcc6ccdc7286f3",
+          "organizer_prompt_text_status": "custom"
+        },
+        {
+          "timestamp": "2026-08-07T05:57:22.550Z",
+          "trace_path": "task4/evidence/supplemental-rollouts/rollout-2026-08-07T13-57-22-019fdacc-2e9c-78a2-b037-135a4b172944.jsonl",
+          "class": "inherited_custom_continuation_prompt",
+          "sha256": "e77306185191fe14bdeda365fd47ee1c1ece3ff10a8f5f5de5fe34bac58db18a",
+          "organizer_prompt_text_status": "custom"
+        },
+        {
+          "timestamp": "2026-08-07T05:57:22.561Z",
+          "trace_path": "task4/evidence/supplemental-rollouts/rollout-2026-08-07T13-57-22-019fdacc-2e9c-78a2-b037-135a4b172944.jsonl",
+          "class": "inherited_custom_continuation_prompt",
+          "sha256": "e77306185191fe14bdeda365fd47ee1c1ece3ff10a8f5f5de5fe34bac58db18a",
+          "organizer_prompt_text_status": "custom"
+        },
+        {
+          "timestamp": "2026-08-07T05:57:22.573Z",
+          "trace_path": "task4/evidence/supplemental-rollouts/rollout-2026-08-07T13-57-22-019fdacc-2e9c-78a2-b037-135a4b172944.jsonl",
+          "class": "inherited_custom_continuation_prompt",
+          "sha256": "e77306185191fe14bdeda365fd47ee1c1ece3ff10a8f5f5de5fe34bac58db18a",
+          "organizer_prompt_text_status": "custom"
+        },
+        {
+          "timestamp": "2026-08-07T05:57:22.585Z",
+          "trace_path": "task4/evidence/supplemental-rollouts/rollout-2026-08-07T13-57-22-019fdacc-2e9c-78a2-b037-135a4b172944.jsonl",
+          "class": "inherited_custom_continuation_prompt",
+          "sha256": "e77306185191fe14bdeda365fd47ee1c1ece3ff10a8f5f5de5fe34bac58db18a",
+          "organizer_prompt_text_status": "custom"
+        },
+        {
+          "timestamp": "2026-08-07T05:57:28.755Z",
+          "trace_path": "task4/evidence/supplemental-rollouts/rollout-2026-08-07T13-57-28-019fdacc-47fe-7bc3-8cac-d77f25b124e1.jsonl",
+          "class": "inherited_custom_starter_prompt",
+          "sha256": "192b4282d380d9b0ca418500f1ba2d5d361726f62ff96fe742fcc6ccdc7286f3",
+          "organizer_prompt_text_status": "custom"
+        },
+        {
+          "timestamp": "2026-08-07T05:57:29.020Z",
+          "trace_path": "task4/evidence/supplemental-rollouts/rollout-2026-08-07T13-57-28-019fdacc-47fe-7bc3-8cac-d77f25b124e1.jsonl",
+          "class": "inherited_custom_continuation_prompt",
+          "sha256": "e77306185191fe14bdeda365fd47ee1c1ece3ff10a8f5f5de5fe34bac58db18a",
+          "organizer_prompt_text_status": "custom"
+        },
+        {
+          "timestamp": "2026-08-07T05:57:29.031Z",
+          "trace_path": "task4/evidence/supplemental-rollouts/rollout-2026-08-07T13-57-28-019fdacc-47fe-7bc3-8cac-d77f25b124e1.jsonl",
+          "class": "inherited_custom_continuation_prompt",
+          "sha256": "e77306185191fe14bdeda365fd47ee1c1ece3ff10a8f5f5de5fe34bac58db18a",
+          "organizer_prompt_text_status": "custom"
+        },
+        {
+          "timestamp": "2026-08-07T05:57:29.044Z",
+          "trace_path": "task4/evidence/supplemental-rollouts/rollout-2026-08-07T13-57-28-019fdacc-47fe-7bc3-8cac-d77f25b124e1.jsonl",
+          "class": "inherited_custom_continuation_prompt",
+          "sha256": "e77306185191fe14bdeda365fd47ee1c1ece3ff10a8f5f5de5fe34bac58db18a",
+          "organizer_prompt_text_status": "custom"
+        },
+        {
+          "timestamp": "2026-08-07T05:57:29.057Z",
+          "trace_path": "task4/evidence/supplemental-rollouts/rollout-2026-08-07T13-57-28-019fdacc-47fe-7bc3-8cac-d77f25b124e1.jsonl",
+          "class": "inherited_custom_continuation_prompt",
+          "sha256": "e77306185191fe14bdeda365fd47ee1c1ece3ff10a8f5f5de5fe34bac58db18a",
+          "organizer_prompt_text_status": "custom"
         }
       ],
       "strict_exact_organizer_prompt_text_conformance": false,
       "no_live_human_prompt_events_included": true,
       "selected_result_downstream_of_custom_prompt_text": true,
-      "detail": "The starter has formatting changes. Six main-runtime custom continuation events begin at 2026-08-07T04:34:35.176Z; the selected submission 55316818 was sent later at 2026-08-07T06:10:48.923Z. Four inherited copies of the custom starter and four inherited copies of the continuation also appear in worker traces.",
+      "detail": "The two main solver starters have formatting changes. Ten main-runtime custom continuation events begin at 2026-08-07T04:34:35.176Z; the selected submission 55316818 was sent later at 2026-08-07T06:10:48.923Z. Ten inherited custom starters and sixteen inherited continuation copies also appear across the complete worker/parallel-solver trace set.",
       "jury_status": "not_self_certified; organizer/Jury determines recognition"
     },
     "task5": {

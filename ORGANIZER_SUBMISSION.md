@@ -11,6 +11,7 @@ trace coverage, model/cost fields, and extraction metadata.
 | Later two-hour reproduction traces for Tasks 1–2 | Complete, separately scoped | [`REPRODUCTION_TRACE_MATERIAL.md`](REPRODUCTION_TRACE_MATERIAL.md), [`REPRODUCTION_TRACE_INDEX.json`](REPRODUCTION_TRACE_INDEX.json) |
 | Prompts and visible Agent outputs | Complete | Full payloads are in every indexed JSONL trace; prompt classes and hashes are in the index |
 | Exact organizer prompt conformance | Audited; Tasks 1, 2, and 4 are non-exact | [`PROMPT_CONFORMANCE_AUDIT.md`](PROMPT_CONFORMANCE_AUDIT.md), [`PROMPT_CONFORMANCE_AUDIT.json`](PROMPT_CONFORMANCE_AUDIT.json) |
+| Task 4 competition-rule differences | Audited with disclosed deviations/interpretation risks | [`task4/RULE_DIFFERENCE_AUDIT.md`](task4/RULE_DIFFERENCE_AUDIT.md), [`task4/RULE_DIFFERENCE_AUDIT.json`](task4/RULE_DIFFERENCE_AUDIT.json) |
 | Tool calls and tool outputs | Complete | Per-task and per-file counts cover `function_call`, `function_call_output`, `custom_tool_call`, and `custom_tool_call_output` |
 | LLM(s) used | Complete | [`AUTONOMOUS_COSTS.json`](AUTONOMOUS_COSTS.json): `ioai_allowed` / `gpt-5.6-sol`; Tasks 1–4 `max`, Tasks 5–6 `xhigh` |
 | Total API costs | Complete with explicit unavailable-USD status | Exact per-task tokens and total are provided; USD is `null` because no invoice or exact provider/model rate was captured |
@@ -74,12 +75,22 @@ configured solver/system, official competition bundle, and organizer
 constraints, not the lost original run records.
 They preserve the complete observable event streams and the corresponding
 candidate/submission outcomes. Both runs contain no live human method/target
-prompt and are the canonical autonomous rollout selection for Tasks 1 and 2.
+prompt. Task 1's canonical solution material is the immutable prefix through
+`task_complete`; its complete raw stream remains in the reproduction package.
+Task 2 uses its full reproduction as the canonical selection.
 Both reproduction starter messages append a custom fresh-run-isolation section,
-so neither is claimed to satisfy the strict exact Starter Prompt rule. Task 1
-also has a custom continuation, but it arrives after the selected submission,
-final Agent answer, and `task_complete` event and therefore did not cause that
-result. See [`PROMPT_CONFORMANCE_AUDIT.md`](PROMPT_CONFORMANCE_AUDIT.md).
+so neither is claimed to satisfy the strict exact Starter Prompt rule. Task 1's
+canonical solution prefix has no continuation. Its full raw trace preserves a
+later custom continuation after the selected submission, final Agent answer,
+and `task_complete`; the 15-event suffix is outside the canonical selection.
+See [`PROMPT_CONFORMANCE_AUDIT.md`](PROMPT_CONFORMANCE_AUDIT.md).
+
+Task 4 now includes seven supplemental parallel-solver traces that were omitted
+from the first trace index. The rule audit also discloses the substantive
+non-exact continuation, a transient local `__pycache__` in the push folder, two
+noncausal arXiv searches in a parallel solver, and the interpretation question
+around local H100 development versus the final one-T4 notebook. No organizer
+acceptance is self-certified.
 They occurred after the account's official competition deadline, so their scores
 remain reference/reproduction results, not official-ranking scores, and do not
 replace the official account reconciliation. Their exact token,

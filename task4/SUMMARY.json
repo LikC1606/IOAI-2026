@@ -17,5 +17,9 @@
   "submissions_before_official_deadline": 3,
   "submissions_after_official_deadline": 0,
   "final_account_results": "remote/FINAL_ACCOUNT_RESULTS.json",
-  "historical_remote_source_retrievable": true
+  "historical_remote_source_retrievable": true,
+  "canonical_trace_files": 12,
+  "strict_exact_organizer_prompt_text_conformance": false,
+  "rule_difference_audit": "RULE_DIFFERENCE_AUDIT.json",
+  "rule_audit_status": "final_notebook_operational_rules_mostly_supported_with_disclosed_prompt_process_and_interpretation_risks"
 }

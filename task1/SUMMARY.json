@@ -28,7 +28,9 @@
     "remote_baseline_scored_submission": false
   },
   "canonical_autonomous_rollout": {
-    "trace_path": "evidence/reproduction-120m/rollout.jsonl",
+    "trace_path": "evidence/canonical/rollout-solution-prefix.jsonl",
+    "full_raw_trace_path": "evidence/reproduction-120m/rollout.jsonl",
+    "canonical_cutoff": "inclusive through task_complete at 2026-08-05T18:24:58.140Z",
     "run_kind": "later_reproduction_120m",
     "record_recovery_note": "The original Task 1 run record was unavailable after a school-server restart; this is a later fresh reproduction using the same configured solver/system, official competition bundle, and organizer constraints, not the original run record.",
     "autonomy_status": "fully_autonomous_no_live_human_intervention",
@@ -40,15 +42,14 @@
     "strict_exact_organizer_prompt_text_conformance": false,
     "user_prompt_classes": {
       "startup_instructions": 1,
-      "custom_starter_prompt": 1,
-      "custom_continuation_prompt": 1
+      "custom_starter_prompt": 1
     },
     "submission_id": 55277782,
     "candidate": "balanced_edge_fallback_v5",
     "public_score": 0.74121,
     "local_cv": 0.7676212811096714,
     "private_score": null,
-    "scope_note": "Complete observable rollout with no live human method, target-score, or forced-submission prompt. The starter appends a custom fresh-run-isolation section. A custom continuation arrives only after submission 55277782, the final Agent answer, and task_complete, so it did not cause the selected result. This is not claimed as strict exact-organizer-prompt text, and the post-deadline run remains a non-ranking reproduction result."
+    "scope_note": "Immutable observable solution prefix through task_complete with no live human method, target-score, forced-submission, or continuation prompt. The starter appends a custom fresh-run-isolation section, so this is not claimed as strict exact-organizer-prompt text. The complete raw reproduction separately preserves the 15-event post-task_complete suffix beginning with a custom continuation. The post-deadline run remains a non-ranking reproduction result."
   },
   "agent_executed_result": {
     "submission_id": 55267607,

@@ -2,7 +2,7 @@
   "schema": "ioai.autonomous-execution-costs.v1",
   "scope": "only the human-intervention-free trace material in AUTONOMOUS_TRACE_INDEX.json",
   "currency": "USD",
-  "known_token_total_all_tasks": 437247620,
+  "known_token_total_all_tasks": 572189803,
   "known_t4_runtime_seconds": 4411.426561027,
   "known_t4_runtime_hours": 1.2253962669519445,
   "api_cost_usd_total": null,
@@ -20,12 +20,12 @@
       "reasoning_effort": "max",
       "trace_scope": "canonical later two-hour autonomous reproduction; post-deadline non-ranking",
       "token_usage": {
-        "input_tokens": 40733925,
-        "cached_input_tokens": 39551232,
+        "input_tokens": 40631004,
+        "cached_input_tokens": 39450112,
         "cache_write_input_tokens": 0,
-        "output_tokens": 199891,
-        "reasoning_output_tokens": 65870,
-        "total_tokens": 40933816
+        "output_tokens": 199172,
+        "reasoning_output_tokens": 65664,
+        "total_tokens": 40830176
       },
       "api_cost_usd": null,
       "api_cost_status": "unavailable_unpriced_ioai_provider",
@@ -95,24 +95,29 @@
       "reasoning_effort": "max",
       "trace_scope": "autonomous-only material before the task boundary",
       "token_usage": {
-        "input_tokens": 108797282,
-        "cached_input_tokens": 105440256,
+        "input_tokens": 243520790,
+        "cached_input_tokens": 236503296,
         "cache_write_input_tokens": 0,
-        "output_tokens": 322616,
-        "reasoning_output_tokens": 123290,
-        "total_tokens": 109119898
+        "output_tokens": 644931,
+        "reasoning_output_tokens": 222496,
+        "total_tokens": 244165721
       },
       "api_cost_usd": null,
       "api_cost_status": "unavailable_unpriced_ioai_provider",
       "gpu": {
         "accelerator": "NvidiaTeslaT4",
-        "runtime_scope": "all autonomous versions v1-v4, including diagnostic v3",
+        "runtime_scope": "Kaggle notebook versions v1-v4, including diagnostic v3",
         "runtime_seconds": 1120.720551504,
         "runtime_hours": 0.31131126430666667,
         "submitted_versions_runtime_seconds": 775.784001944,
         "diagnostic_v3_runtime_seconds": 344.93654956,
         "gpu_cost_usd": null,
-        "cost_status": "unavailable_no_rate_or_invoice"
+        "cost_status": "unavailable_no_rate_or_invoice",
+        "local_development_accelerator": "Nvidia H100 (trace-recorded)",
+        "local_development_runtime_seconds": null,
+        "local_development_runtime_status": "unavailable_non_exhaustive_overlapping_approximate_records",
+        "local_development_gpu_cost_usd": null,
+        "local_development_cost_status": "unavailable_no_complete_runtime_or_rate"
       }
     },
     "task5": {

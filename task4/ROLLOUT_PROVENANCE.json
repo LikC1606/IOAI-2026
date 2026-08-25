@@ -53,6 +53,9 @@
         "first_timestamp": "2026-08-07T05:21:51.884Z",
         "last_timestamp": "2026-08-07T05:26:13.166Z"
       }
-    ]
+    ],
+    "supplemental_parallel_solver_provenance": "evidence/SUPPLEMENTAL_ROLLOUT_PROVENANCE.json",
+    "supplemental_trace_count": 7,
+    "complete_canonical_trace_count": 12
   }
 }

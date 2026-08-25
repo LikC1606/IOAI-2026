@@ -19,7 +19,7 @@
   "api_cost_usd_total": null,
   "api_cost_total_status": "unavailable_no_provider_invoice_or_applicable_public_rate",
   "api_cost_total_reason": "The traces identify the private/competition provider ioai_allowed and gpt-5.6-sol, while the available public pricing page does not price that model. No invoice, rate card, or per-run charge is present in the evidence. gpt-5.3-codex public prices must not be substituted.",
-  "known_token_total_all_tasks": 437247620,
+  "known_token_total_all_tasks": 572189803,
   "gpu_cost_usd_total": null,
   "gpu_cost_total_status": "unavailable_no_cloud_invoice_or_rate",
   "gpu_cost_total_reason": "The records expose Kaggle machine type and notebook wall-clock runtime, but no user cloud invoice, GPU utilization trace, or contract rate.",
@@ -29,14 +29,14 @@
       "model": "gpt-5.6-sol",
       "model_provider": "ioai_allowed",
       "reasoning_effort": "max",
-      "token_usage_scope": "later two-hour autonomous reproduction trace; post-deadline non-ranking",
+      "token_usage_scope": "later two-hour autonomous solution prefix through task_complete; post-deadline non-ranking; full raw trace cost is separately retained in REPRODUCTION_COSTS.json",
       "token_usage": {
-        "input_tokens": 40733925,
-        "cached_input_tokens": 39551232,
+        "input_tokens": 40631004,
+        "cached_input_tokens": 39450112,
         "cache_write_input_tokens": 0,
-        "output_tokens": 199891,
-        "reasoning_output_tokens": 65870,
-        "total_tokens": 40933816
+        "output_tokens": 199172,
+        "reasoning_output_tokens": 65664,
+        "total_tokens": 40830176
       },
       "api_cost_usd": null,
       "api_cost_status": "unavailable_unpriced_ioai_provider",
@@ -105,12 +105,12 @@
       "model": "gpt-5.6-sol",
       "reasoning_effort": "max",
       "token_usage": {
-        "input_tokens": 108797282,
-        "cached_input_tokens": 105440256,
+        "input_tokens": 243520790,
+        "cached_input_tokens": 236503296,
         "cache_write_input_tokens": 0,
-        "output_tokens": 322616,
-        "reasoning_output_tokens": 123290,
-        "total_tokens": 109119898
+        "output_tokens": 644931,
+        "reasoning_output_tokens": 222496,
+        "total_tokens": 244165721
       },
       "api_cost_usd": null,
       "api_cost_status": "unavailable_unpriced_ioai_provider",
@@ -122,7 +122,12 @@
         "diagnostic_v3_runtime_seconds": 344.93654956,
         "all_versions_including_diagnostic_runtime_seconds": 1120.720551504,
         "gpu_cost_usd": null,
-        "cost_status": "unavailable_no_rate_or_invoice"
+        "cost_status": "unavailable_no_rate_or_invoice",
+        "local_development_accelerator": "Nvidia H100 (trace-recorded)",
+        "local_development_runtime_seconds": null,
+        "local_development_runtime_status": "unavailable_non_exhaustive_overlapping_approximate_records",
+        "local_development_gpu_cost_usd": null,
+        "local_development_cost_status": "unavailable_no_complete_runtime_or_rate"
       }
     },
     "task5": {

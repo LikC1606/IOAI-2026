@@ -11,8 +11,10 @@ directory. The autonomous-specific classification, prompt hashes, boundaries,
 and exclusion records are in [`AUTONOMOUS_TRACE_INDEX.json`](AUTONOMOUS_TRACE_INDEX.json).
 
 The requested later fresh two-hour Task 1/2 runs are published in
-[`REPRODUCTION_TRACE_MATERIAL.md`](REPRODUCTION_TRACE_MATERIAL.md) and are now
-the canonical no-live-human autonomous rollout selection for those two tasks.
+[`REPRODUCTION_TRACE_MATERIAL.md`](REPRODUCTION_TRACE_MATERIAL.md). Task 1's
+canonical solution selection is its exact prefix through `task_complete`, while
+the full raw stream remains in the reproduction package; Task 2 uses its full
+later trace.
 They remain post-deadline, non-ranking traces for official-score purposes and
 must not be read as the official account result.
 The original Task 1 and Task 2 run records were unavailable after a
@@ -51,10 +53,10 @@ All six runs identify the same canonical LLM, `gpt-5.6-sol`, under provider
 
 | Task | Trace files | Events | User / assistant messages | Logical calls | Outer `exec` calls | Final cumulative tokens |
 |---|---:|---:|---:|---:|---:|---:|
-| 1 | 1 | 1,398 | 3 / 72 | 17 | 264 | 40,933,816 |
+| 1 | 1 | 1,383 | 2 / 70 | 17 | 262 | 40,830,176 |
 | 2 | 1 | 1,067 | 2 / 61 | 40 | 176 | 29,205,639 |
 | 3 | 4 | 2,427 | 8 / 48 | 135 | 373 | 56,373,300 |
-| 4 | 5 | 2,717 | 20 / 62 | 75 | 387 | 109,119,898 |
+| 4 | 12 | 5,881 | 50 / 118 | 198 | 753 | 244,165,721 |
 | 5 | 14 | 4,705 | 28 / 140 | 131 | 409 | 160,243,108 |
 | 6 | 3 | 1,868 | 6 / 54 | 54 | 309 | 41,371,859 |
 
@@ -74,12 +76,13 @@ rate or invoice exists; CPU/no-GPU tasks are recorded as zero GPU allocation.
 
 ## Per-task evidence map
 
-- [Task 1](task1/): complete later no-live-human reproduction rollout,
-  post-deadline result, and historical formal-prefix audit material.
+- [Task 1](task1/): canonical later solution prefix through `task_complete`,
+  full raw reproduction audit, post-deadline result, and historical formal prefix.
 - [Task 2](task2/): complete later no-live-human reproduction rollout,
   post-deadline result, and historical formal-prefix audit material.
 - [Task 3](task3/): direct trace, recovered token aggregate, and official result.
-- [Task 4](task4/): main and four worker/resume traces, with official result.
+- [Task 4](task4/): formal and supplemental parallel-solver traces (12 total),
+  rule-difference audit, and official result.
 - [Task 5](task5/): main and worker/resume traces, with late-submission fields
   explicitly separated from official result.
 - [Task 6](task6/): bounded main trace, two pre-boundary worker traces, and

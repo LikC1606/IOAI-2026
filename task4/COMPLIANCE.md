@@ -1,7 +1,8 @@
 # Task 4 Compliance and Reproduction Note
 
 This is a post-run audit. It preserves the historical version 4 source and
-separates facts known at submission time from later platform observations.
+separates facts known at submission time from later platform observations. The
+full rule-by-rule classification is in `RULE_DIFFERENCE_AUDIT.md/json`.
 
 ## Eligible scope
 
@@ -28,6 +29,22 @@ the agent-run deadline at `06:18:25.517Z`. Its extracted scores are Public
 - Output: exactly 200 rows, columns `id,delta_a,delta_b`, and 400 finite
   original-resolution tensors.
 - Remote runtime: 316 seconds, within the 600-second cap.
+
+Direct trace evidence records `--timeout 600` for all four Kernel pushes. The
+formal and supplemental trace set now includes 12 files: the seven added
+parallel-solver traces account for versions 2/3 and their contribution to the
+version-4 comparison path.
+
+Three limitations remain disclosed. A pre-push folder listing contains a local
+`submission/__pycache__/script.cpython-311.pyc`, so the instruction that the
+local folder hold exactly two files was not literally satisfied at every
+moment, although the pulled remote source is the declared script/metadata
+artifact. A parallel solver issued two arXiv search queries after version 3 had
+already been pushed; there is no evidence their results entered the final v4
+source, but the broad external-information rule makes this a Jury-interpretation
+risk. Finally, local development records mention one H100; the final submitted
+notebook itself used the required one T4 at `cuda:0`. The Hardware clause's
+scope over local development is therefore also left for Jury interpretation.
 
 Artifact hashes:
 

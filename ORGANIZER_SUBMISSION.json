@@ -24,7 +24,7 @@
         "REPRODUCTION_TRACE_INDEX.json",
         "REPRODUCTION_COSTS.json"
       ],
-      "note": "The original Task 1 and Task 2 run records were unavailable after a school-server restart. These are full redacted later 120-minute reproductions using the same configured solver/system, official competition bundle, and organizer constraints; they are canonical no-live-human autonomous rollouts, but not official-ranking results because they are post-deadline. Their starter messages append custom fresh-run-isolation text and are not claimed as exact-organizer-prompt compliant."
+      "note": "The original Task 1 and Task 2 run records were unavailable after a school-server restart. These are full redacted later 120-minute reproductions using the same configured solver/system, official competition bundle, and organizer constraints. Task 1's canonical solution selection is the exact prefix through task_complete while its full raw stream remains here; Task 2 uses its full reproduction. Both are post-deadline and non-ranking, and their custom starter appendices prevent exact-prompt claims."
     },
     "prompts_and_visible_outputs": {
       "status": "complete",
@@ -49,6 +49,15 @@
         "task4"
       ],
       "note": "No-live-human autonomy and exact-organizer-prompt conformance are separate; organizer/Jury recognition is not self-certified."
+    },
+    "task4_rule_difference_audit": {
+      "status": "complete_with_disclosed_deviations_and_jury_interpretation_risks",
+      "paths": [
+        "task4/RULE_DIFFERENCE_AUDIT.md",
+        "task4/RULE_DIFFERENCE_AUDIT.json",
+        "task4/evidence/SUPPLEMENTAL_ROLLOUT_PROVENANCE.json"
+      ],
+      "note": "The final notebook/output closely follows operational hard rules, but exact prompt conformance is false. The audit separately records the local __pycache__ folder deviation, two noncausal arXiv searches in a parallel solver, and ambiguity around local H100 development."
     },
     "tool_calls_and_outputs": {
       "status": "complete",

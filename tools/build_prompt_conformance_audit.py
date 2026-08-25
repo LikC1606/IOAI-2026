@@ -42,10 +42,10 @@ CAUSAL_FINDINGS = {
     "task1": {
         "selected_result_downstream_of_custom_prompt_text": True,
         "detail": (
-            "The custom starter appendix precedes all work. The custom continuation at "
-            "2026-08-05T18:25:04.940Z is after submission 55277782, the final Agent "
-            "answer, and task_complete at 2026-08-05T18:24:58.140Z, so that continuation "
-            "did not cause the selected result."
+            "The custom starter appendix precedes all work. The canonical solution trace "
+            "ends at task_complete at 2026-08-05T18:24:58.140Z and contains no continuation. "
+            "The complete raw reproduction separately preserves the post-solution custom "
+            "continuation beginning at 2026-08-05T18:25:04.940Z."
         ),
     },
     "task2": {
@@ -62,11 +62,11 @@ CAUSAL_FINDINGS = {
     "task4": {
         "selected_result_downstream_of_custom_prompt_text": True,
         "detail": (
-            "The starter has formatting changes. Six main-runtime custom continuation "
-            "events begin at 2026-08-07T04:34:35.176Z; the selected submission 55316818 "
-            "was sent later at 2026-08-07T06:10:48.923Z. Four inherited copies of the "
-            "custom starter and four inherited copies of the continuation also appear "
-            "in worker traces."
+            "The two main solver starters have formatting changes. Ten main-runtime custom "
+            "continuation events begin at 2026-08-07T04:34:35.176Z; the selected submission "
+            "55316818 was sent later at 2026-08-07T06:10:48.923Z. Ten inherited custom "
+            "starters and sixteen inherited continuation copies also appear across the "
+            "complete worker/parallel-solver trace set."
         ),
     },
     "task5": {
@@ -189,8 +189,9 @@ def write_markdown(audit: dict[str, Any]) -> None:
             "",
             "- Exact-prompt trace text: Tasks 3, 5, and 6.",
             "- Non-exact prompt text: Tasks 1, 2, and 4.",
-            "- Task 1's custom continuation is post-result, but its custom starter appendix",
-            "  still prevents an exact-prompt-only claim.",
+            "- Task 1's canonical solution prefix has no continuation, but its custom",
+            "  starter appendix still prevents an exact-prompt-only claim; the raw",
+            "  reproduction retains the post-result suffix separately.",
             "- Task 4's custom continuation is pre-result and substantive; its final",
             "  selected submission is downstream of it.",
             "",

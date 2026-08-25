@@ -11,50 +11,50 @@
     "task1": {
       "trace_files": [
         {
-          "path": "task1/evidence/reproduction-120m/rollout.jsonl",
-          "sha256": "ee1f08c710402e2db9408eb6ec122b17ef1c8f8dd8d2b1aab21af71c0f9deb84",
+          "path": "task1/evidence/canonical/rollout-solution-prefix.jsonl",
+          "sha256": "0886a2ed44e909f7bc927f06409448ee78d9c5ab44f894cfdf57e1760c1ed4d4",
           "role": "main",
-          "event_count": 1398,
+          "event_count": 1383,
           "event_types": {
             "compacted": 2,
-            "event_msg": 418,
-            "response_item": 970,
+            "event_msg": 412,
+            "response_item": 962,
             "session_meta": 1,
-            "turn_context": 4,
+            "turn_context": 3,
             "world_state": 3
           },
           "response_item_types": {
-            "custom_tool_call": 264,
-            "custom_tool_call_output": 263,
+            "custom_tool_call": 262,
+            "custom_tool_call_output": 262,
             "function_call": 17,
             "function_call_output": 17,
-            "message": 78,
-            "reasoning": 331
+            "message": 75,
+            "reasoning": 329
           },
           "organizer_required_event_coverage": {
-            "prompt_message_events": 6,
-            "user_prompt_events": 3,
+            "prompt_message_events": 5,
+            "user_prompt_events": 2,
             "developer_prompt_events": 3,
-            "assistant_output_events": 72,
+            "assistant_output_events": 70,
             "function_call_events": 17,
             "function_call_output_events": 17,
-            "custom_tool_call_events": 264,
-            "custom_tool_call_output_events": 263
+            "custom_tool_call_events": 262,
+            "custom_tool_call_output_events": 262
           },
           "first_timestamp": "2026-08-05T16:25:54.368Z",
-          "last_timestamp": "2026-08-05T18:25:46.003Z",
+          "last_timestamp": "2026-08-05T18:24:58.140Z",
           "message_counts": {
-            "assistant": 72,
+            "assistant": 70,
             "developer": 3,
-            "user": 3
+            "user": 2
           },
           "logical_function_calls": 17,
           "logical_function_call_names": {
             "wait": 17
           },
-          "exec_wrapper_custom_tool_calls": 264,
+          "exec_wrapper_custom_tool_calls": 262,
           "custom_tool_call_names": {
-            "exec": 264
+            "exec": 262
           },
           "models_observed": [
             "gpt-5.6-sol"
@@ -63,12 +63,12 @@
             "max"
           ],
           "token_usage_cumulative_final": {
-            "input_tokens": 40733925,
-            "cached_input_tokens": 39551232,
+            "input_tokens": 40631004,
+            "cached_input_tokens": 39450112,
             "cache_write_input_tokens": 0,
-            "output_tokens": 199891,
-            "reasoning_output_tokens": 65870,
-            "total_tokens": 40933816
+            "output_tokens": 199172,
+            "reasoning_output_tokens": 65664,
+            "total_tokens": 40830176
           }
         }
       ],
@@ -76,31 +76,31 @@
       "canonical_model": "gpt-5.6-sol",
       "model_provider": "ioai_allowed",
       "reasoning_effort": "max",
-      "event_count": 1398,
+      "event_count": 1383,
       "logical_function_calls": 17,
-      "exec_wrapper_custom_tool_calls": 264,
+      "exec_wrapper_custom_tool_calls": 262,
       "message_counts": {
-        "assistant": 72,
+        "assistant": 70,
         "developer": 3,
-        "user": 3
+        "user": 2
       },
       "response_item_types": {
-        "custom_tool_call": 264,
-        "custom_tool_call_output": 263,
+        "custom_tool_call": 262,
+        "custom_tool_call_output": 262,
         "function_call": 17,
         "function_call_output": 17,
-        "message": 78,
-        "reasoning": 331
+        "message": 75,
+        "reasoning": 329
       },
       "organizer_required_event_coverage": {
-        "assistant_output_events": 72,
-        "custom_tool_call_events": 264,
-        "custom_tool_call_output_events": 263,
+        "assistant_output_events": 70,
+        "custom_tool_call_events": 262,
+        "custom_tool_call_output_events": 262,
         "developer_prompt_events": 3,
         "function_call_events": 17,
         "function_call_output_events": 17,
-        "prompt_message_events": 6,
-        "user_prompt_events": 3
+        "prompt_message_events": 5,
+        "user_prompt_events": 2
       },
       "models_observed": [
         "gpt-5.6-sol"
@@ -109,12 +109,12 @@
         "max"
       ],
       "token_usage_cumulative_sum_across_traces": {
-        "input_tokens": 40733925,
-        "cached_input_tokens": 39551232,
+        "input_tokens": 40631004,
+        "cached_input_tokens": 39450112,
         "cache_write_input_tokens": 0,
-        "output_tokens": 199891,
-        "reasoning_output_tokens": 65870,
-        "total_tokens": 40933816
+        "output_tokens": 199172,
+        "reasoning_output_tokens": 65664,
+        "total_tokens": 40830176
       },
       "token_usage_note": "Final cumulative counters are summed once per trace."
     },
@@ -859,37 +859,488 @@
             "reasoning_output_tokens": 33615,
             "total_tokens": 26927400
           }
+        },
+        {
+          "path": "task4/evidence/supplemental-rollouts/rollout-2026-08-07T13-04-06-019fda9b-6b63-7031-a6dd-52db684209be.jsonl",
+          "sha256": "8437fc46ae6295e68f11c818aa87a7ade554beb2177815621584689a527c1899",
+          "role": "main",
+          "event_count": 997,
+          "event_types": {
+            "compacted": 1,
+            "event_msg": 283,
+            "inter_agent_communication_metadata": 36,
+            "response_item": 661,
+            "session_meta": 1,
+            "turn_context": 6,
+            "world_state": 9
+          },
+          "response_item_types": {
+            "agent_message": 36,
+            "custom_tool_call": 153,
+            "custom_tool_call_output": 153,
+            "function_call": 38,
+            "function_call_output": 37,
+            "message": 38,
+            "reasoning": 206
+          },
+          "organizer_required_event_coverage": {
+            "prompt_message_events": 9,
+            "user_prompt_events": 6,
+            "developer_prompt_events": 3,
+            "assistant_output_events": 29,
+            "function_call_events": 38,
+            "function_call_output_events": 37,
+            "custom_tool_call_events": 153,
+            "custom_tool_call_output_events": 153
+          },
+          "first_timestamp": "2026-08-07T05:04:06.680Z",
+          "last_timestamp": "2026-08-07T06:06:42.615Z",
+          "message_counts": {
+            "assistant": 29,
+            "developer": 3,
+            "user": 6
+          },
+          "logical_function_calls": 38,
+          "logical_function_call_names": {
+            "followup_task": 2,
+            "list_agents": 1,
+            "send_message": 2,
+            "spawn_agent": 6,
+            "wait": 22,
+            "wait_agent": 5
+          },
+          "exec_wrapper_custom_tool_calls": 153,
+          "custom_tool_call_names": {
+            "exec": 153
+          },
+          "models_observed": [
+            "gpt-5.6-sol"
+          ],
+          "reasoning_efforts_observed": [
+            "max"
+          ],
+          "token_usage_cumulative_final": {
+            "input_tokens": 27563702,
+            "cached_input_tokens": 26790144,
+            "cache_write_input_tokens": 0,
+            "output_tokens": 60386,
+            "reasoning_output_tokens": 19379,
+            "total_tokens": 27624088
+          }
+        },
+        {
+          "path": "task4/evidence/supplemental-rollouts/rollout-2026-08-07T13-04-23-019fda9b-ade0-7912-868f-a922606fd40f.jsonl",
+          "sha256": "3d564a5eb5a25ce6c818bf52d381bfe98c207159f93b3692a56dac4da1217823",
+          "role": "subagent",
+          "event_count": 449,
+          "event_types": {
+            "event_msg": 122,
+            "inter_agent_communication_metadata": 2,
+            "response_item": 320,
+            "session_meta": 2,
+            "turn_context": 2,
+            "world_state": 1
+          },
+          "response_item_types": {
+            "agent_message": 2,
+            "custom_tool_call": 77,
+            "custom_tool_call_output": 77,
+            "function_call": 28,
+            "function_call_output": 28,
+            "message": 8,
+            "reasoning": 100
+          },
+          "organizer_required_event_coverage": {
+            "prompt_message_events": 5,
+            "user_prompt_events": 2,
+            "developer_prompt_events": 3,
+            "assistant_output_events": 3,
+            "function_call_events": 28,
+            "function_call_output_events": 28,
+            "custom_tool_call_events": 77,
+            "custom_tool_call_output_events": 77
+          },
+          "first_timestamp": "2026-08-07T05:04:23.569Z",
+          "last_timestamp": "2026-08-07T05:35:17.871Z",
+          "message_counts": {
+            "assistant": 3,
+            "developer": 3,
+            "user": 2
+          },
+          "logical_function_calls": 28,
+          "logical_function_call_names": {
+            "list_agents": 3,
+            "send_message": 9,
+            "wait": 3,
+            "wait_agent": 13
+          },
+          "exec_wrapper_custom_tool_calls": 77,
+          "custom_tool_call_names": {
+            "exec": 77
+          },
+          "models_observed": [
+            "gpt-5.6-sol"
+          ],
+          "reasoning_efforts_observed": [
+            "max"
+          ],
+          "token_usage_cumulative_final": {
+            "input_tokens": 10170534,
+            "cached_input_tokens": 9976576,
+            "cache_write_input_tokens": 0,
+            "output_tokens": 27725,
+            "reasoning_output_tokens": 7017,
+            "total_tokens": 10198259
+          }
+        },
+        {
+          "path": "task4/evidence/supplemental-rollouts/rollout-2026-08-07T13-04-30-019fda9b-c906-70a0-8f5c-99fc2f25fafa.jsonl",
+          "sha256": "06fbf0ed13712d534c77fb19843f72b7ad4cd67a9b28142d280e39914760ffb2",
+          "role": "subagent",
+          "event_count": 460,
+          "event_types": {
+            "event_msg": 134,
+            "inter_agent_communication_metadata": 3,
+            "response_item": 316,
+            "session_meta": 2,
+            "turn_context": 2,
+            "world_state": 3
+          },
+          "response_item_types": {
+            "agent_message": 3,
+            "custom_tool_call": 62,
+            "custom_tool_call_output": 62,
+            "function_call": 38,
+            "function_call_output": 38,
+            "message": 13,
+            "reasoning": 100
+          },
+          "organizer_required_event_coverage": {
+            "prompt_message_events": 5,
+            "user_prompt_events": 2,
+            "developer_prompt_events": 3,
+            "assistant_output_events": 8,
+            "function_call_events": 38,
+            "function_call_output_events": 38,
+            "custom_tool_call_events": 62,
+            "custom_tool_call_output_events": 62
+          },
+          "first_timestamp": "2026-08-07T05:04:30.509Z",
+          "last_timestamp": "2026-08-07T05:35:12.725Z",
+          "message_counts": {
+            "assistant": 8,
+            "developer": 3,
+            "user": 2
+          },
+          "logical_function_calls": 38,
+          "logical_function_call_names": {
+            "list_agents": 3,
+            "send_message": 19,
+            "wait": 10,
+            "wait_agent": 6
+          },
+          "exec_wrapper_custom_tool_calls": 62,
+          "custom_tool_call_names": {
+            "exec": 62
+          },
+          "models_observed": [
+            "gpt-5.6-sol"
+          ],
+          "reasoning_efforts_observed": [
+            "max"
+          ],
+          "token_usage_cumulative_final": {
+            "input_tokens": 11817406,
+            "cached_input_tokens": 11587328,
+            "cache_write_input_tokens": 0,
+            "output_tokens": 38588,
+            "reasoning_output_tokens": 11091,
+            "total_tokens": 11855994
+          }
+        },
+        {
+          "path": "task4/evidence/supplemental-rollouts/rollout-2026-08-07T13-04-39-019fda9b-ed93-7473-96c5-f8c030d3e4bc.jsonl",
+          "sha256": "b9439e76fcf9134cb33987a0d67557b6d431ca28f08dffd73946ff22e7fe9bed",
+          "role": "subagent",
+          "event_count": 255,
+          "event_types": {
+            "event_msg": 68,
+            "inter_agent_communication_metadata": 2,
+            "response_item": 177,
+            "session_meta": 2,
+            "turn_context": 2,
+            "world_state": 4
+          },
+          "response_item_types": {
+            "agent_message": 2,
+            "custom_tool_call": 43,
+            "custom_tool_call_output": 43,
+            "function_call": 12,
+            "function_call_output": 12,
+            "message": 6,
+            "reasoning": 59
+          },
+          "organizer_required_event_coverage": {
+            "prompt_message_events": 5,
+            "user_prompt_events": 2,
+            "developer_prompt_events": 3,
+            "assistant_output_events": 1,
+            "function_call_events": 12,
+            "function_call_output_events": 12,
+            "custom_tool_call_events": 43,
+            "custom_tool_call_output_events": 43
+          },
+          "first_timestamp": "2026-08-07T05:04:39.867Z",
+          "last_timestamp": "2026-08-07T05:20:50.480Z",
+          "message_counts": {
+            "assistant": 1,
+            "developer": 3,
+            "user": 2
+          },
+          "logical_function_calls": 12,
+          "logical_function_call_names": {
+            "wait": 12
+          },
+          "exec_wrapper_custom_tool_calls": 43,
+          "custom_tool_call_names": {
+            "exec": 43
+          },
+          "models_observed": [
+            "gpt-5.6-sol"
+          ],
+          "reasoning_efforts_observed": [
+            "max"
+          ],
+          "token_usage_cumulative_final": {
+            "input_tokens": 3917293,
+            "cached_input_tokens": 3788544,
+            "cache_write_input_tokens": 0,
+            "output_tokens": 15779,
+            "reasoning_output_tokens": 5016,
+            "total_tokens": 3933072
+          }
+        },
+        {
+          "path": "task4/evidence/supplemental-rollouts/rollout-2026-08-07T13-57-14-019fdacc-1073-7f03-ac6e-346ad63c0c4f.jsonl",
+          "sha256": "8067b6f1186b20819703e7821096e5057ef41062cba8f86b51f3b04734a940e0",
+          "role": "subagent",
+          "event_count": 297,
+          "event_types": {
+            "compacted": 1,
+            "event_msg": 249,
+            "inter_agent_communication_metadata": 1,
+            "response_item": 31,
+            "session_meta": 2,
+            "turn_context": 7,
+            "world_state": 6
+          },
+          "response_item_types": {
+            "agent_message": 1,
+            "custom_tool_call": 4,
+            "custom_tool_call_output": 4,
+            "function_call": 1,
+            "function_call_output": 1,
+            "message": 14,
+            "reasoning": 6
+          },
+          "organizer_required_event_coverage": {
+            "prompt_message_events": 9,
+            "user_prompt_events": 6,
+            "developer_prompt_events": 3,
+            "assistant_output_events": 5,
+            "function_call_events": 1,
+            "function_call_output_events": 1,
+            "custom_tool_call_events": 4,
+            "custom_tool_call_output_events": 4
+          },
+          "first_timestamp": "2026-08-07T05:57:14.529Z",
+          "last_timestamp": "2026-08-07T05:58:52.823Z",
+          "message_counts": {
+            "assistant": 5,
+            "developer": 3,
+            "user": 6
+          },
+          "logical_function_calls": 1,
+          "logical_function_call_names": {
+            "send_message": 1
+          },
+          "exec_wrapper_custom_tool_calls": 4,
+          "custom_tool_call_names": {
+            "exec": 4
+          },
+          "models_observed": [
+            "gpt-5.6-sol"
+          ],
+          "reasoning_efforts_observed": [
+            "max"
+          ],
+          "token_usage_cumulative_final": {
+            "input_tokens": 26509665,
+            "cached_input_tokens": 25763584,
+            "cache_write_input_tokens": 0,
+            "output_tokens": 55018,
+            "reasoning_output_tokens": 16767,
+            "total_tokens": 26564683
+          }
+        },
+        {
+          "path": "task4/evidence/supplemental-rollouts/rollout-2026-08-07T13-57-22-019fdacc-2e9c-78a2-b037-135a4b172944.jsonl",
+          "sha256": "58fdff01bf52cf92664aa3794aaf497e42742641c63d5a0a4e57ecb786eb5535",
+          "role": "subagent",
+          "event_count": 377,
+          "event_types": {
+            "compacted": 1,
+            "event_msg": 269,
+            "inter_agent_communication_metadata": 1,
+            "response_item": 89,
+            "session_meta": 2,
+            "turn_context": 7,
+            "world_state": 8
+          },
+          "response_item_types": {
+            "agent_message": 1,
+            "custom_tool_call": 18,
+            "custom_tool_call_output": 18,
+            "function_call": 4,
+            "function_call_output": 4,
+            "message": 14,
+            "reasoning": 30
+          },
+          "organizer_required_event_coverage": {
+            "prompt_message_events": 9,
+            "user_prompt_events": 6,
+            "developer_prompt_events": 3,
+            "assistant_output_events": 5,
+            "function_call_events": 4,
+            "function_call_output_events": 4,
+            "custom_tool_call_events": 18,
+            "custom_tool_call_output_events": 18
+          },
+          "first_timestamp": "2026-08-07T05:57:22.247Z",
+          "last_timestamp": "2026-08-07T06:05:45.703Z",
+          "message_counts": {
+            "assistant": 5,
+            "developer": 3,
+            "user": 6
+          },
+          "logical_function_calls": 4,
+          "logical_function_call_names": {
+            "list_agents": 1,
+            "send_message": 2,
+            "wait": 1
+          },
+          "exec_wrapper_custom_tool_calls": 18,
+          "custom_tool_call_names": {
+            "exec": 18
+          },
+          "models_observed": [
+            "gpt-5.6-sol"
+          ],
+          "reasoning_efforts_observed": [
+            "max"
+          ],
+          "token_usage_cumulative_final": {
+            "input_tokens": 27925681,
+            "cached_input_tokens": 27108608,
+            "cache_write_input_tokens": 0,
+            "output_tokens": 66605,
+            "reasoning_output_tokens": 22280,
+            "total_tokens": 27992286
+          }
+        },
+        {
+          "path": "task4/evidence/supplemental-rollouts/rollout-2026-08-07T13-57-28-019fdacc-47fe-7bc3-8cac-d77f25b124e1.jsonl",
+          "sha256": "e52f63d3308e071bbe77c209df823e83f8ef3bf287b0d74d4edaab90db805312",
+          "role": "subagent",
+          "event_count": 329,
+          "event_types": {
+            "compacted": 1,
+            "event_msg": 260,
+            "inter_agent_communication_metadata": 1,
+            "response_item": 49,
+            "session_meta": 2,
+            "turn_context": 7,
+            "world_state": 9
+          },
+          "response_item_types": {
+            "agent_message": 1,
+            "custom_tool_call": 9,
+            "custom_tool_call_output": 9,
+            "function_call": 2,
+            "function_call_output": 2,
+            "message": 14,
+            "reasoning": 12
+          },
+          "organizer_required_event_coverage": {
+            "prompt_message_events": 9,
+            "user_prompt_events": 6,
+            "developer_prompt_events": 3,
+            "assistant_output_events": 5,
+            "function_call_events": 2,
+            "function_call_output_events": 2,
+            "custom_tool_call_events": 9,
+            "custom_tool_call_output_events": 9
+          },
+          "first_timestamp": "2026-08-07T05:57:28.740Z",
+          "last_timestamp": "2026-08-07T06:00:51.231Z",
+          "message_counts": {
+            "assistant": 5,
+            "developer": 3,
+            "user": 6
+          },
+          "logical_function_calls": 2,
+          "logical_function_call_names": {
+            "send_message": 2
+          },
+          "exec_wrapper_custom_tool_calls": 9,
+          "custom_tool_call_names": {
+            "exec": 9
+          },
+          "models_observed": [
+            "gpt-5.6-sol"
+          ],
+          "reasoning_efforts_observed": [
+            "max"
+          ],
+          "token_usage_cumulative_final": {
+            "input_tokens": 26819227,
+            "cached_input_tokens": 26048256,
+            "cache_write_input_tokens": 0,
+            "output_tokens": 58214,
+            "reasoning_output_tokens": 17656,
+            "total_tokens": 26877441
+          }
         }
       ],
       "canonical_model": "gpt-5.6-sol",
       "model_provider": "ioai_allowed",
       "reasoning_effort": "max",
-      "event_count": 2717,
-      "logical_function_calls": 75,
-      "exec_wrapper_custom_tool_calls": 387,
+      "event_count": 5881,
+      "logical_function_calls": 198,
+      "exec_wrapper_custom_tool_calls": 753,
       "message_counts": {
-        "assistant": 62,
-        "developer": 19,
-        "user": 20
+        "assistant": 118,
+        "developer": 40,
+        "user": 50
       },
       "response_item_types": {
-        "agent_message": 9,
-        "custom_tool_call": 387,
-        "custom_tool_call_output": 386,
-        "function_call": 75,
-        "function_call_output": 75,
-        "message": 101,
-        "reasoning": 475
+        "agent_message": 55,
+        "custom_tool_call": 753,
+        "custom_tool_call_output": 752,
+        "function_call": 198,
+        "function_call_output": 197,
+        "message": 208,
+        "reasoning": 988
       },
       "organizer_required_event_coverage": {
-        "assistant_output_events": 62,
-        "custom_tool_call_events": 387,
-        "custom_tool_call_output_events": 386,
-        "developer_prompt_events": 19,
-        "function_call_events": 75,
-        "function_call_output_events": 75,
-        "prompt_message_events": 39,
-        "user_prompt_events": 20
+        "assistant_output_events": 118,
+        "custom_tool_call_events": 753,
+        "custom_tool_call_output_events": 752,
+        "developer_prompt_events": 40,
+        "function_call_events": 198,
+        "function_call_output_events": 197,
+        "prompt_message_events": 90,
+        "user_prompt_events": 50
       },
       "models_observed": [
         "gpt-5.6-sol"
@@ -898,12 +1349,12 @@
         "max"
       ],
       "token_usage_cumulative_sum_across_traces": {
-        "input_tokens": 108797282,
-        "cached_input_tokens": 105440256,
+        "input_tokens": 243520790,
+        "cached_input_tokens": 236503296,
         "cache_write_input_tokens": 0,
-        "output_tokens": 322616,
-        "reasoning_output_tokens": 123290,
-        "total_tokens": 109119898
+        "output_tokens": 644931,
+        "reasoning_output_tokens": 222496,
+        "total_tokens": 244165721
       },
       "token_usage_note": "Final cumulative counters are summed once per trace."
     },

@@ -18,10 +18,10 @@ using the same configured solver/system and organizer constraints.
 
 | Task | Trace files | Events | User prompts | Logical calls | Tokens | Boundary (exclusive UTC) |
 |---|---:|---:|---:|---:|---:|---|
-| task1 | 1 | 1398 | 3 | 17 | 40933816 | 2026-08-05T18:25:50.634Z |
+| task1 | 1 | 1383 | 2 | 17 | 40830176 | 2026-08-05T18:25:04.940Z |
 | task2 | 1 | 1067 | 2 | 40 | 29205639 | 2026-08-05T18:20:08.972Z |
 | task3 | 4 | 2427 | 8 | 135 | 56373300 | 2026-08-06T05:46:19.450Z |
-| task4 | 5 | 2717 | 20 | 75 | 109119898 | 2026-08-07T06:18:25.517Z |
+| task4 | 12 | 5881 | 50 | 198 | 244165721 | 2026-08-07T06:18:25.517Z |
 | task5 | 14 | 4705 | 28 | 131 | 160243108 | 2026-08-07T09:04:20.519Z |
 | task6 | 3 | 1868 | 6 | 54 | 41371859 | 2026-08-08T18:09:48.833Z |
 
@@ -34,20 +34,21 @@ Verify the complete selected set with
 
 ## task1
 
-Boundary: later two-hour reproduction deadline; no live human method/target prompt was delivered.
+Boundary: canonical causal solution prefix ends at task_complete; the complete later reproduction remains in the separate reproduction audit package.
 
 Record recovery note: The original Task 1 run record was unavailable after a school-server restart. The canonical trace is a later fresh reproduction using the same configured solver/system, official competition bundle, and organizer constraints; it is not the original run record.
 
 Strict exact organizer prompt text: **no**.
-Prompt audit note: The reproduction starter contains a user-requested fresh-run-isolation appendix. Its custom continuation occurs after the selected submission, final Agent answer, and task_complete event, but the custom starter still prevents an exact-prompt-only claim.
+Prompt audit note: The reproduction starter contains a user-requested fresh-run-isolation appendix. The canonical solution prefix ends at task_complete and contains no continuation event, but the custom starter still prevents an exact-prompt-only claim. The full raw reproduction preserves the later post-solution continuation separately.
 
 Included trace files:
 
-- [`rollout.jsonl`](task1/evidence/reproduction-120m/rollout.jsonl) — 1398 events
+- [`rollout-solution-prefix.jsonl`](task1/evidence/canonical/rollout-solution-prefix.jsonl) — 1383 events
 
 Explicitly excluded:
 
-- events at or after the later two-hour reproduction deadline
+- the 15-event suffix after task_complete, beginning with the post-solution custom continuation
+- the complete 1,398-event reproduction remains available under task1/evidence/reproduction-120m and REPRODUCTION_TRACE_INDEX.json
 - the official account's earlier deadline and all post-deadline scores are outside official-ranking scope
 - the older formal-run prefix remains under task1/evidence/rollouts as historical audit material
 
@@ -93,7 +94,7 @@ Explicitly excluded:
 Boundary: run deadline; no live human method or target prompt was delivered to the solver.
 
 Strict exact organizer prompt text: **no**.
-Prompt audit note: The injected starter has formatting changes and the six main-runtime continuation events use a substantive generic workflow template rather than the exact organizer Continuation Prompt. The final selected submission is downstream of those events.
+Prompt audit note: The injected starter has formatting changes and the main-runtime continuation events use a substantive generic workflow template rather than the exact organizer Continuation Prompt. The final selected submission is downstream of those events; the complete selection includes the supplemental parallel-solver traces.
 
 Included trace files:
 
@@ -102,6 +103,13 @@ Included trace files:
 - [`rollout-2026-08-07T12-18-47-019fda71-effd-7321-8ce9-2a4a57fcaa48.jsonl`](task4/evidence/rollouts/rollout-2026-08-07T12-18-47-019fda71-effd-7321-8ce9-2a4a57fcaa48.jsonl) — 239 events
 - [`rollout-2026-08-07T13-21-43-019fdaab-8d94-76a0-b625-078c838b5227.jsonl`](task4/evidence/rollouts/rollout-2026-08-07T13-21-43-019fdaab-8d94-76a0-b625-078c838b5227.jsonl) — 351 events
 - [`rollout-2026-08-07T13-21-51-019fdaab-ace4-7b51-93b2-244d9517423a.jsonl`](task4/evidence/rollouts/rollout-2026-08-07T13-21-51-019fdaab-ace4-7b51-93b2-244d9517423a.jsonl) — 349 events
+- [`rollout-2026-08-07T13-04-06-019fda9b-6b63-7031-a6dd-52db684209be.jsonl`](task4/evidence/supplemental-rollouts/rollout-2026-08-07T13-04-06-019fda9b-6b63-7031-a6dd-52db684209be.jsonl) — 997 events
+- [`rollout-2026-08-07T13-04-23-019fda9b-ade0-7912-868f-a922606fd40f.jsonl`](task4/evidence/supplemental-rollouts/rollout-2026-08-07T13-04-23-019fda9b-ade0-7912-868f-a922606fd40f.jsonl) — 449 events
+- [`rollout-2026-08-07T13-04-30-019fda9b-c906-70a0-8f5c-99fc2f25fafa.jsonl`](task4/evidence/supplemental-rollouts/rollout-2026-08-07T13-04-30-019fda9b-c906-70a0-8f5c-99fc2f25fafa.jsonl) — 460 events
+- [`rollout-2026-08-07T13-04-39-019fda9b-ed93-7473-96c5-f8c030d3e4bc.jsonl`](task4/evidence/supplemental-rollouts/rollout-2026-08-07T13-04-39-019fda9b-ed93-7473-96c5-f8c030d3e4bc.jsonl) — 255 events
+- [`rollout-2026-08-07T13-57-14-019fdacc-1073-7f03-ac6e-346ad63c0c4f.jsonl`](task4/evidence/supplemental-rollouts/rollout-2026-08-07T13-57-14-019fdacc-1073-7f03-ac6e-346ad63c0c4f.jsonl) — 297 events
+- [`rollout-2026-08-07T13-57-22-019fdacc-2e9c-78a2-b037-135a4b172944.jsonl`](task4/evidence/supplemental-rollouts/rollout-2026-08-07T13-57-22-019fdacc-2e9c-78a2-b037-135a4b172944.jsonl) — 377 events
+- [`rollout-2026-08-07T13-57-28-019fdacc-47fe-7bc3-8cac-d77f25b124e1.jsonl`](task4/evidence/supplemental-rollouts/rollout-2026-08-07T13-57-28-019fdacc-47fe-7bc3-8cac-d77f25b124e1.jsonl) — 329 events
 
 Explicitly excluded:
 

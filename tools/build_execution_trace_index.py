@@ -188,10 +188,13 @@ def main() -> None:
     parser.parse_args()
 
     task_roots: dict[str, list[Path]] = {
-        "task1": [ROOT / "task1/evidence/reproduction-120m"],
+        "task1": [ROOT / "task1/evidence/canonical"],
         "task2": [ROOT / "task2/evidence/reproduction-120m"],
         "task3": [ROOT / "task3/evidence/rollouts"],
-        "task4": [ROOT / "task4/evidence/rollouts"],
+        "task4": [
+            ROOT / "task4/evidence/rollouts",
+            ROOT / "task4/evidence/supplemental-rollouts",
+        ],
         "task5": [ROOT / "task5/evidence/rollouts"],
     }
     task_roots["task6"] = [

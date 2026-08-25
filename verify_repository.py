@@ -69,7 +69,6 @@ FINAL_RESULTS = {
 
 EXPECTED_PROMPT_CLASSES = {
     "task1": {
-        "custom_continuation_prompt": 1,
         "custom_starter_prompt": 1,
         "startup_instructions": 1,
     },
@@ -83,11 +82,11 @@ EXPECTED_PROMPT_CLASSES = {
         "startup_instructions": 4,
     },
     "task4": {
-        "custom_continuation_prompt": 6,
-        "custom_starter_prompt": 1,
-        "inherited_custom_continuation_prompt": 4,
-        "inherited_custom_starter_prompt": 4,
-        "startup_instructions": 5,
+        "custom_continuation_prompt": 10,
+        "custom_starter_prompt": 2,
+        "inherited_custom_continuation_prompt": 16,
+        "inherited_custom_starter_prompt": 10,
+        "startup_instructions": 12,
     },
     "task5": {
         "exact_organizer_starter_prompt": 1,
@@ -164,7 +163,8 @@ def verify_final_account_result(task: int, summary: dict) -> dict[str, object]:
         assert result["separately_disclosed_agent_executed_result"]["submission_ref"] == 55267607
         assert result["official_prompt_only_autonomous_result"]["scored_submission"] is None
         canonical = summary["canonical_autonomous_rollout"]
-        assert canonical["trace_path"] == "evidence/reproduction-120m/rollout.jsonl"
+        assert canonical["trace_path"] == "evidence/canonical/rollout-solution-prefix.jsonl"
+        assert canonical["full_raw_trace_path"] == "evidence/reproduction-120m/rollout.jsonl"
         assert canonical["autonomy_status"] == "fully_autonomous_no_live_human_intervention"
         assert canonical["submission_id"] == 55277782
         assert canonical["public_score"] == 0.74121
@@ -175,7 +175,6 @@ def verify_final_account_result(task: int, summary: dict) -> dict[str, object]:
         assert canonical["user_prompt_classes"] == {
             "startup_instructions": 1,
             "custom_starter_prompt": 1,
-            "custom_continuation_prompt": 1,
         }
     elif task == 2:
         assert result["autonomous_result"]["submission_ref"] == 55260695
@@ -262,7 +261,12 @@ def verify_autonomous_material() -> dict[str, int]:
             assert sha256(path) == trace["sha256"], trace["path"]
             assert trace["last_timestamp"] < boundary, trace["path"]
             if task in {"task1", "task2"}:
-                assert "/evidence/reproduction-120m/" in trace["path"], task
+                expected_scope = (
+                    "/evidence/canonical/"
+                    if task == "task1"
+                    else "/evidence/reproduction-120m/"
+                )
+                assert expected_scope in trace["path"], task
                 assert trace["message_counts"].get("user", 0) == len(data["user_prompt_audit"]), task
                 assert set(data["user_prompt_classes"]).issubset(
                     {
@@ -313,6 +317,20 @@ def verify_autonomous_material() -> dict[str, int]:
             task in STRICT_EXACT_PROMPT_TASKS
         )
         assert data["live_kaggle_page_matches_repository_source"] is True
+    task4_rule_audit = json.loads(
+        (ROOT / "task4/RULE_DIFFERENCE_AUDIT.json").read_text(encoding="utf-8")
+    )
+    assert task4_rule_audit["audited_final_submission"]["submission_ref"] == 55316818
+    assert len(task4_rule_audit["findings"]) == 14
+    statuses = {item["rule_id"]: item["status"] for item in task4_rule_audit["findings"]}
+    assert statuses["prompt.exact_text"] == "disclosed_deviation"
+    assert statuses["submission.folder_two_files"] == "disclosed_process_deviation_remote_artifact_unaffected"
+    assert statuses["resources.external_web_research"] == "jury_interpretation_risk_noncausal_to_final_notebook"
+    assert len(index["tasks"]["task4"]["trace_files"]) == 12
+    supplemental = json.loads(
+        (ROOT / "task4/evidence/SUPPLEMENTAL_ROLLOUT_PROVENANCE.json").read_text(encoding="utf-8")
+    )
+    assert len(supplemental["traces"]) == 7
     return {
         "manifest_files": checked,
         "trace_files": trace_files,
@@ -365,6 +383,9 @@ def verify_reproduction_material() -> dict[str, int]:
         assert data["post_deadline"] is True
         assert data["ranking_eligible"] is False
         assert data["strict_exact_organizer_prompt_text_conformance"] is False
+        assert data["canonical_autonomous_trace"] is (task == "task2")
+        if task == "task1":
+            assert data["canonical_solution_prefix"] == "task1/evidence/canonical/rollout-solution-prefix.jsonl"
         trace = data["trace_file"]
         path = ROOT / trace["path"]
         assert sha256(path) == trace["published_sha256"], trace["path"]

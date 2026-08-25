@@ -1,9 +1,10 @@
 # Later two-hour reproduction traces
 
 These are full, credential-redacted traces from the later fresh 120-minute
-reproduction runs for Tasks 1 and 2. They are the canonical no-live-human
-autonomous rollouts for these two tasks, while remaining post-deadline,
-non-ranking reference material for official-score purposes.
+reproduction runs for Tasks 1 and 2. Task 1's canonical solution trace
+is the exact prefix through task_complete under `task1/evidence/canonical/`;
+the full Task 1 stream remains here for audit. Task 2 uses its full stream.
+Both remain post-deadline, non-ranking reference material.
 
 The original Task 1 and Task 2 run records were unavailable after a
 school-server restart. Each trace below is a later fresh reproduction
@@ -15,8 +16,9 @@ calls, tool outputs, lifecycle events, and cumulative token telemetry.
 Opaque encrypted reasoning is replaced by a placeholder; secrets and private
 endpoints are redacted. Both starter messages append a custom fresh-run
 isolation section and therefore do not match the organizer Starter Prompt
-exactly. The Task 1 custom continuation is after its selected submission,
-final Agent answer, and task_complete event. No-live-human autonomy is
+exactly. The full Task 1 trace preserves a custom continuation after its
+selected submission, final Agent answer, and task_complete event; that
+15-event suffix is outside the canonical Task 1 solution trace. Autonomy is
 reported separately from exact-organizer-prompt conformance.
 
 | Task | Trace events | User / assistant | Logical calls | `exec` calls | Tokens | Result |
@@ -29,8 +31,8 @@ reported separately from exact-organizer-prompt conformance.
 Do not use the scores in this table as the official final scores. They are
 results produced by later fresh runs and were submitted after the official
 competition deadline. For official account reconciliation, use
-[`FINAL_SUBMISSION_RESULTS.md`](FINAL_SUBMISSION_RESULTS.md). These same
-JSONL files are the canonical no-live-human Task 1/2 selection in
+[`FINAL_SUBMISSION_RESULTS.md`](FINAL_SUBMISSION_RESULTS.md). The canonical
+Task 1 prefix and full Task 2 trace are selected in
 [`AUTONOMOUS_TRACE_INDEX.json`](AUTONOMOUS_TRACE_INDEX.json).
 
 ## task1

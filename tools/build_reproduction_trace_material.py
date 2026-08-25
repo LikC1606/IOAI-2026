@@ -4,9 +4,10 @@
 The source JSONL files live in the private historical run archive.  This
 builder copies only their observable event envelopes after applying the same
 credential/private-endpoint/opaque-reasoning redaction used by the published
-autonomous package.  These runs are deliberately a separate, post-deadline,
-non-ranking scope; they must not replace the official or autonomous result
-records.
+autonomous package. These runs are deliberately a separate, post-deadline,
+non-ranking scope. The full Task 1 trace is retained here as raw audit evidence,
+while its canonical solution trace is the immutable prefix through
+`task_complete` selected by the autonomous index.
 """
 from __future__ import annotations
 
@@ -215,8 +216,8 @@ def main() -> None:
     index: dict[str, Any] = {
         "schema": "ioai.later-reproduction-trace-material.v1",
         "scope": "full later two-hour reproduction traces for Tasks 1 and 2",
-        "status": "canonical no-live-human autonomous trace for Tasks 1/2; post-deadline non-ranking reference material",
-        "important_boundary": "These traces are the canonical autonomous rollout selection for Tasks 1/2, but their post-deadline scores do not replace FINAL_SUBMISSION_RESULTS.md or become official-ranking results.",
+        "status": "full later no-live-human reproduction audit traces; post-deadline non-ranking reference material",
+        "important_boundary": "Task 1's canonical solution trace is the prefix through task_complete under task1/evidence/canonical; its full trace remains here. Task 2 uses the full reproduction. Neither score replaces FINAL_SUBMISSION_RESULTS.md or becomes an official-ranking result.",
         "included_prompt_types": [
             "injected startup instructions",
             "custom organizer-like starter text retained and marked non-exact",
@@ -226,8 +227,9 @@ def main() -> None:
         "compliance_limit": (
             "Both reproductions are no-live-human runs, but their starter user messages "
             "append a fresh-run-isolation section not present in the exact organizer Starter "
-            "Prompt. Task 1 also has a custom continuation after its selected submission, "
-            "final answer, and task_complete event. These traces are not claimed to satisfy "
+            "Prompt. The full Task 1 audit trace also preserves a custom continuation after "
+            "its selected submission, final answer, and task_complete event; the canonical "
+            "solution prefix excludes that causal suffix. These traces are not claimed to satisfy "
             "the strict exact-prompt rule."
         ),
         "redaction": "credentials, private endpoints, secret metadata, and encrypted_content are redacted or replaced by an opaque placeholder",
@@ -240,7 +242,15 @@ def main() -> None:
             "account": run["account"],
             "run_kind": run["run_kind"],
             "record_recovery_note": run["record_recovery_note"],
-            "canonical_autonomous_trace": True,
+            "canonical_autonomous_trace": task != "task1",
+            **(
+                {
+                    "canonical_solution_prefix": "task1/evidence/canonical/rollout-solution-prefix.jsonl",
+                    "full_trace_scope": "raw audit trace including the 15-event post-task_complete suffix",
+                }
+                if task == "task1"
+                else {}
+            ),
             "strict_exact_organizer_prompt_text_conformance": False,
             "post_deadline": run["post_deadline"],
             "ranking_eligible": run["ranking_eligible"],
@@ -280,9 +290,10 @@ def main() -> None:
         "# Later two-hour reproduction traces",
         "",
         "These are full, credential-redacted traces from the later fresh 120-minute",
-        "reproduction runs for Tasks 1 and 2. They are the canonical no-live-human",
-        "autonomous rollouts for these two tasks, while remaining post-deadline,",
-        "non-ranking reference material for official-score purposes.",
+        "reproduction runs for Tasks 1 and 2. Task 1's canonical solution trace",
+        "is the exact prefix through task_complete under `task1/evidence/canonical/`;",
+        "the full Task 1 stream remains here for audit. Task 2 uses its full stream.",
+        "Both remain post-deadline, non-ranking reference material.",
         "",
         "The original Task 1 and Task 2 run records were unavailable after a",
         "school-server restart. Each trace below is a later fresh reproduction",
@@ -294,8 +305,9 @@ def main() -> None:
         "Opaque encrypted reasoning is replaced by a placeholder; secrets and private",
         "endpoints are redacted. Both starter messages append a custom fresh-run",
         "isolation section and therefore do not match the organizer Starter Prompt",
-        "exactly. The Task 1 custom continuation is after its selected submission,",
-        "final Agent answer, and task_complete event. No-live-human autonomy is",
+        "exactly. The full Task 1 trace preserves a custom continuation after its",
+        "selected submission, final Agent answer, and task_complete event; that",
+        "15-event suffix is outside the canonical Task 1 solution trace. Autonomy is",
         "reported separately from exact-organizer-prompt conformance.",
         "",
         "| Task | Trace events | User / assistant | Logical calls | `exec` calls | Tokens | Result |",
@@ -317,8 +329,8 @@ def main() -> None:
         "Do not use the scores in this table as the official final scores. They are",
         "results produced by later fresh runs and were submitted after the official",
         "competition deadline. For official account reconciliation, use",
-        "[`FINAL_SUBMISSION_RESULTS.md`](FINAL_SUBMISSION_RESULTS.md). These same",
-        "JSONL files are the canonical no-live-human Task 1/2 selection in",
+        "[`FINAL_SUBMISSION_RESULTS.md`](FINAL_SUBMISSION_RESULTS.md). The canonical",
+        "Task 1 prefix and full Task 2 trace are selected in",
         "[`AUTONOMOUS_TRACE_INDEX.json`](AUTONOMOUS_TRACE_INDEX.json).",
         "",
     ])

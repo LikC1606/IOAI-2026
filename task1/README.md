@@ -5,10 +5,12 @@ Competition: `ioai-2026-task-1-westlake-nlp-24`.
 ## Record recovery note
 
 The original Task 1 run record was unavailable after a school-server restart.
-The canonical trace in `evidence/reproduction-120m/` is a later fresh
-reproduction using the same configured solver/system, official competition
-bundle, and organizer constraints. It is a reproduction record, not the lost
-original run record, and its post-deadline status remains explicit below.
+The canonical solution trace in `evidence/canonical/` is the immutable prefix
+of a later fresh reproduction through its `task_complete` event. The same
+configured solver/system, official competition bundle, and organizer
+constraints were used. It is a reproduction record, not the lost original run
+record, and its post-deadline status remains explicit below. The complete raw
+reproduction remains under `evidence/reproduction-120m/` for audit.
 
 This package preserves the historical formal Task 1 Agent evidence and
 separates it from the official account result and the canonical later
@@ -66,8 +68,9 @@ Start with `../ORGANIZER_SUBMISSION.md`, `COMPLIANCE.md`,
 `AUTONOMY_BOUNDARY.md`, `EXCLUSIONS.md`, and `SUMMARY.json`. The exact
 credential-redacted historical formal prefix is under `evidence/rollouts/`,
 and `ROLLOUT_PROVENANCE.json` binds it to the private original by SHA-256. The
-canonical published no-live-human rollout is the complete later two-hour trace
-under `evidence/reproduction-120m/`.
+canonical published no-live-human solution rollout is the exact prefix through
+`task_complete` under `evidence/canonical/`; the full later trace is separate
+raw audit evidence.
 
 Verify after extraction:
 
@@ -79,23 +82,26 @@ python tools/verify_package.py
 The package does not duplicate organizer competition data or model weights.
 The exact frozen candidate source, evaluator, trial receipt, remote source,
 remote log, scored output, and hash-only post-boundary provenance are included.
-The organizer-facing canonical trace is the later reproduction JSONL selected
-by the root `AUTONOMOUS_TRACE_INDEX.json`; the historical formal prefix remains
-available as separate audit material.
+The organizer-facing canonical trace is the later reproduction prefix through
+`task_complete` selected by the root `AUTONOMOUS_TRACE_INDEX.json`; the full
+reproduction and historical formal prefix remain separate audit material.
 
 ## Later 120-minute reproduction
 
-The requested later fresh run is preserved separately at
-[`evidence/reproduction-120m/rollout.jsonl`](evidence/reproduction-120m/rollout.jsonl),
-with counts, prompt classification, token telemetry, runtime, and result in the
-root [`REPRODUCTION_TRACE_INDEX.json`](../REPRODUCTION_TRACE_INDEX.json). It
-selected candidate `balanced_edge_fallback_v5` and submission `55277782`
-(Public LB `0.74121`). This is the canonical no-live-human autonomous rollout
-for Task 1, but it is post-deadline and non-ranking; it does not change the
+The requested later fresh run is preserved in full at
+[`evidence/reproduction-120m/rollout.jsonl`](evidence/reproduction-120m/rollout.jsonl).
+The canonical solution material is
+[`evidence/canonical/rollout-solution-prefix.jsonl`](evidence/canonical/rollout-solution-prefix.jsonl),
+the first 1,383 unmodified events ending at `task_complete`. The full 1,398-event
+trace, its counts, prompt classification, token telemetry, runtime, and result
+remain in [`REPRODUCTION_TRACE_INDEX.json`](../REPRODUCTION_TRACE_INDEX.json).
+The run selected `balanced_edge_fallback_v5` and submission `55277782` (Public
+LB `0.74121`). It is post-deadline and non-ranking and does not change the
 official account result.
 
 Prompt-text qualification: the reproduction starter appends a custom
-fresh-run-isolation section. A custom continuation also appears, but only after
-the selected submission, final Agent answer, and `task_complete`. The run is
-therefore disclosed as no-live-human but not strict exact-organizer-prompt text;
-see `../PROMPT_CONFORMANCE_AUDIT.md`.
+fresh-run-isolation section. The canonical solution prefix contains no
+continuation. The complete raw trace preserves a later custom continuation,
+which begins after the selected submission, final Agent answer, and
+`task_complete`. The run is therefore disclosed as no-live-human but not strict
+exact-organizer-prompt text; see `../PROMPT_CONFORMANCE_AUDIT.md`.

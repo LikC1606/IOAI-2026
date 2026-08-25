@@ -3,21 +3,30 @@
 Competition: `ioai-2026-task-4-westlake-nlp-24`.
 
 For the consolidated rule, artifact, report-correction, and reproduction audit,
-start with `COMPLIANCE.md`.
+start with `RULE_DIFFERENCE_AUDIT.md` and `COMPLIANCE.md`.
 
 The formal run used a formatting-modified copy of the organizer Starter Prompt
 plus a substantive generic runtime resume template that is not the exact
 organizer Continuation Prompt. The resume template did not inject a live
 human-selected method, candidate, score target, or forced-submission
-instruction, but this remains a prompt-text deviation. The
-additional rollout files are autonomous workers and runtime resumes; they are
-included so the multi-agent provenance is inspectable rather than collapsed
-into a single narrative.
+instruction, but this remains a prompt-text deviation. The trace set includes
+the formal main/workers and seven supplemental parallel-solver traces that
+produced versions 2/3 and the comparison evidence used by version 4.
+`evidence/SUPPLEMENTAL_ROLLOUT_PROVENANCE.json` records why they were added and
+binds them to the private originals.
 
 Accordingly, this package supports a no-live-human execution claim, not a
 strict exact-organizer-prompt claim. The final selected submission is downstream
 of the custom continuation events. See `../PROMPT_CONFORMANCE_AUDIT.md`; the
 organizer/Jury decides whether the disclosed deviation is recognized.
+
+The full rule audit also discloses three narrower risks: the local notebook
+folder contained a transient `__pycache__` before some pushes even though the
+remote source artifact was unaffected; a parallel solver made two arXiv search
+queries after version 3 was pushed without evidence that their results entered
+the final version-4 path; and local development records mention one H100 while
+the final notebook itself ran on the required one T4 at `cuda:0`. These are not
+silently recast as compliant facts; see `RULE_DIFFERENCE_AUDIT.md`.
 
 Eligible submissions:
 

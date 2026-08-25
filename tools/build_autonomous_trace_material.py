@@ -13,6 +13,10 @@ import build_execution_trace_index as trace_tools
 
 
 ROOT = Path(__file__).resolve().parents[1]
+TASK1_RAW = ROOT / "task1/evidence/reproduction-120m/rollout.jsonl"
+TASK1_SOLUTION_PREFIX = ROOT / "task1/evidence/canonical/rollout-solution-prefix.jsonl"
+TASK1_TASK_COMPLETE_UTC = "2026-08-05T18:24:58.140Z"
+TASK1_FIRST_POST_SOLUTION_PROMPT_UTC = "2026-08-05T18:25:04.940Z"
 TASK6_BOUNDARY = "2026-08-08T18:09:48.833Z"
 TASK6_MAIN_PREFIX = ROOT / (
     "task6/evidence/autonomous-only/"
@@ -21,7 +25,7 @@ TASK6_MAIN_PREFIX = ROOT / (
 
 TASK_PATHS = {
     "task1": [
-        "task1/evidence/reproduction-120m/rollout.jsonl"
+        TASK1_SOLUTION_PREFIX.relative_to(ROOT).as_posix()
     ],
     "task2": [
         "task2/evidence/reproduction-120m/rollout.jsonl"
@@ -38,6 +42,13 @@ TASK_PATHS = {
         "task4/evidence/rollouts/rollout-2026-08-07T12-18-47-019fda71-effd-7321-8ce9-2a4a57fcaa48.jsonl",
         "task4/evidence/rollouts/rollout-2026-08-07T13-21-43-019fdaab-8d94-76a0-b625-078c838b5227.jsonl",
         "task4/evidence/rollouts/rollout-2026-08-07T13-21-51-019fdaab-ace4-7b51-93b2-244d9517423a.jsonl",
+        "task4/evidence/supplemental-rollouts/rollout-2026-08-07T13-04-06-019fda9b-6b63-7031-a6dd-52db684209be.jsonl",
+        "task4/evidence/supplemental-rollouts/rollout-2026-08-07T13-04-23-019fda9b-ade0-7912-868f-a922606fd40f.jsonl",
+        "task4/evidence/supplemental-rollouts/rollout-2026-08-07T13-04-30-019fda9b-c906-70a0-8f5c-99fc2f25fafa.jsonl",
+        "task4/evidence/supplemental-rollouts/rollout-2026-08-07T13-04-39-019fda9b-ed93-7473-96c5-f8c030d3e4bc.jsonl",
+        "task4/evidence/supplemental-rollouts/rollout-2026-08-07T13-57-14-019fdacc-1073-7f03-ac6e-346ad63c0c4f.jsonl",
+        "task4/evidence/supplemental-rollouts/rollout-2026-08-07T13-57-22-019fdacc-2e9c-78a2-b037-135a4b172944.jsonl",
+        "task4/evidence/supplemental-rollouts/rollout-2026-08-07T13-57-28-019fdacc-47fe-7bc3-8cac-d77f25b124e1.jsonl",
     ],
     "task5": [
         "task5/evidence/rollouts/rollout-2026-08-07T15-04-23-019fdb09-8b16-7032-82e1-21be10be17c0.jsonl",
@@ -64,8 +75,8 @@ TASK_PATHS = {
 
 BOUNDARIES = {
     "task1": {
-        "exclusive_utc": "2026-08-05T18:25:50.634Z",
-        "basis": "later two-hour reproduction deadline; no live human method/target prompt was delivered",
+        "exclusive_utc": TASK1_FIRST_POST_SOLUTION_PROMPT_UTC,
+        "basis": "canonical causal solution prefix ends at task_complete; the complete later reproduction remains in the separate reproduction audit package",
     },
     "task2": {
         "exclusive_utc": "2026-08-05T18:20:08.972Z",
@@ -91,7 +102,8 @@ BOUNDARIES = {
 
 EXCLUSIONS = {
     "task1": [
-        "events at or after the later two-hour reproduction deadline",
+        "the 15-event suffix after task_complete, beginning with the post-solution custom continuation",
+        "the complete 1,398-event reproduction remains available under task1/evidence/reproduction-120m and REPRODUCTION_TRACE_INDEX.json",
         "the official account's earlier deadline and all post-deadline scores are outside official-ranking scope",
         "the older formal-run prefix remains under task1/evidence/rollouts as historical audit material",
     ],
@@ -121,19 +133,64 @@ PROMPT_FILE_FALLBACKS = {
 PROMPT_CONFORMANCE_NOTES = {
     "task1": (
         "The reproduction starter contains a user-requested fresh-run-isolation appendix. "
-        "Its custom continuation occurs after the selected submission, final Agent answer, "
-        "and task_complete event, but the custom starter still prevents an exact-prompt-only claim."
+        "The canonical solution prefix ends at task_complete and contains no continuation "
+        "event, but the custom starter still prevents an exact-prompt-only claim. The full "
+        "raw reproduction preserves the later post-solution continuation separately."
     ),
     "task2": (
         "The reproduction starter contains a user-requested fresh-run-isolation appendix; "
         "there is no continuation event in this reproduction."
     ),
     "task4": (
-        "The injected starter has formatting changes and the six main-runtime continuation "
+        "The injected starter has formatting changes and the main-runtime continuation "
         "events use a substantive generic workflow template rather than the exact organizer "
-        "Continuation Prompt. The final selected submission is downstream of those events."
+        "Continuation Prompt. The final selected submission is downstream of those events; "
+        "the complete selection includes the supplemental parallel-solver traces."
     ),
 }
+
+
+def build_task1_solution_prefix() -> None:
+    """Copy the immutable Task 1 event prefix through the selected task_complete."""
+    if not TASK1_RAW.is_file():
+        raise ValueError(f"missing full Task 1 reproduction trace: {TASK1_RAW}")
+    lines: list[str] = []
+    complete_count = 0
+    next_user_prompt_utc: str | None = None
+    after_complete = False
+    for line_number, line in enumerate(TASK1_RAW.read_text(encoding="utf-8").splitlines(True), 1):
+        if not line.strip():
+            continue
+        event = json.loads(line)
+        payload = event.get("payload", {})
+        if not after_complete:
+            lines.append(line)
+        if (
+            event.get("timestamp") == TASK1_TASK_COMPLETE_UTC
+            and event.get("type") == "event_msg"
+            and payload.get("type") == "task_complete"
+        ):
+            complete_count += 1
+            after_complete = True
+            continue
+        if after_complete and event.get("type") == "response_item" and payload.get("role") == "user":
+            next_user_prompt_utc = str(event.get("timestamp"))
+            break
+    if complete_count != 1:
+        raise ValueError(f"expected one selected Task 1 task_complete, found {complete_count}")
+    if next_user_prompt_utc != TASK1_FIRST_POST_SOLUTION_PROMPT_UTC:
+        raise ValueError(
+            "unexpected first post-solution Task 1 prompt: "
+            f"{next_user_prompt_utc!r}"
+        )
+    if len(lines) != 1383:
+        raise ValueError(f"unexpected Task 1 canonical prefix length: {len(lines)}")
+    TASK1_SOLUTION_PREFIX.parent.mkdir(parents=True, exist_ok=True)
+    TASK1_SOLUTION_PREFIX.write_text("".join(lines), encoding="utf-8")
+    events = trace_tools.jsonl_events(TASK1_SOLUTION_PREFIX)
+    totals = trace_tools.token_totals(events)
+    if totals is None or totals.get("total_tokens") != 40830176:
+        raise ValueError(f"unexpected Task 1 prefix token totals: {totals}")
 RECOVERY_NOTES = {
     "task1": (
         "The original Task 1 run record was unavailable after a school-server restart. "
@@ -176,13 +233,18 @@ GPU = {
     },
     "task4": {
         "accelerator": "NvidiaTeslaT4",
-        "runtime_scope": "all autonomous versions v1-v4, including diagnostic v3",
+        "runtime_scope": "Kaggle notebook versions v1-v4, including diagnostic v3",
         "runtime_seconds": 1120.720551504,
         "runtime_hours": 0.31131126430666667,
         "submitted_versions_runtime_seconds": 775.784001944,
         "diagnostic_v3_runtime_seconds": 344.93654956,
         "gpu_cost_usd": None,
         "cost_status": "unavailable_no_rate_or_invoice",
+        "local_development_accelerator": "Nvidia H100 (trace-recorded)",
+        "local_development_runtime_seconds": None,
+        "local_development_runtime_status": "unavailable_non_exhaustive_overlapping_approximate_records",
+        "local_development_gpu_cost_usd": None,
+        "local_development_cost_status": "unavailable_no_complete_runtime_or_rate",
     },
     "task5": {
         "accelerator": "NvidiaTeslaT4",
@@ -527,8 +589,13 @@ def write_manifest(index: dict[str, Any]) -> None:
         "KAGGLE_EXTRACTION_SUMMARY.json",
         "PROMPT_CONFORMANCE_AUDIT.json",
         "PROMPT_CONFORMANCE_AUDIT.md",
+        "task4/RULE_DIFFERENCE_AUDIT.json",
+        "task4/RULE_DIFFERENCE_AUDIT.md",
+        "task4/evidence/SUPPLEMENTAL_ROLLOUT_PROVENANCE.json",
         "task6/official/CONTINUE_PROMPT_EXACT.md",
         "tools/build_prompt_conformance_audit.py",
+        "tools/build_task4_rule_audit.py",
+        "tools/build_task4_supplemental_traces.py",
         "task1/evidence/SUPERVISION_BOUNDARY_EVENT.json",
         "task1/remote/FINAL_ACCOUNT_RESULTS.json",
         "task2/remote/FINAL_ACCOUNT_RESULTS.json",
@@ -551,6 +618,10 @@ def write_manifest(index: dict[str, Any]) -> None:
 
 
 def main() -> None:
+    build_task1_solution_prefix()
+    import build_task4_supplemental_traces
+
+    build_task4_supplemental_traces.build()
     validate_task6_prefix()
     index = build_index()
     (ROOT / "AUTONOMOUS_TRACE_INDEX.json").write_text(
@@ -567,6 +638,13 @@ def main() -> None:
         json.dumps(audit, ensure_ascii=False, indent=2) + "\n", encoding="utf-8"
     )
     prompt_audit.write_markdown(audit)
+    import build_task4_rule_audit
+
+    task4_audit = build_task4_rule_audit.build()
+    (ROOT / "task4/RULE_DIFFERENCE_AUDIT.json").write_text(
+        json.dumps(task4_audit, ensure_ascii=False, indent=2) + "\n", encoding="utf-8"
+    )
+    build_task4_rule_audit.write_markdown(task4_audit)
     write_manifest(index)
     print(json.dumps({task: data["event_count"] for task, data in index["tasks"].items()}))
 

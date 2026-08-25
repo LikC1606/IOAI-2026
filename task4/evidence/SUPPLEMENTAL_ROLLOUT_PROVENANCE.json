@@ -1,0 +1,144 @@
+{
+  "schema": "ioai.supplemental-rollout-provenance.v1",
+  "task": 4,
+  "competition": "ioai-2026-task-4-westlake-nlp-24",
+  "selection_reason": "Parallel autonomous solver execution produced versions 2 and 3 and the version-2 evidence used by the final version-4 path; the first organizer index omitted this separate historical run directory.",
+  "boundary_utc_exclusive": "2026-08-07T06:18:25.517Z",
+  "live_human_prompt_events_included": 0,
+  "redaction": "credentials, private endpoints, secret metadata, and opaque encrypted reasoning are redacted using tools/build_execution_trace_index.py",
+  "traces": [
+    {
+      "filename": "rollout-2026-08-07T13-04-06-019fda9b-6b63-7031-a6dd-52db684209be.jsonl",
+      "role": "main",
+      "private_original_path": "/workspace/IOAI/runs/historical/ioai2-competition-runs-task4-fastbaseline-real-subagents-20260807T1304CST/ioai-2026-task-4-westlake-nlp-24/codex-home/sessions/2026/08/07/rollout-2026-08-07T13-04-06-019fda9b-6b63-7031-a6dd-52db684209be.jsonl",
+      "private_original_sha256": "d16e6da3042601512771fe504daa1facde3cce41111f41d0e157327ca405c866",
+      "published_path": "task4/evidence/supplemental-rollouts/rollout-2026-08-07T13-04-06-019fda9b-6b63-7031-a6dd-52db684209be.jsonl",
+      "published_sha256": "8437fc46ae6295e68f11c818aa87a7ade554beb2177815621584689a527c1899",
+      "event_count": 997,
+      "first_timestamp": "2026-08-07T05:04:06.680Z",
+      "last_timestamp": "2026-08-07T06:06:42.615Z",
+      "token_usage_cumulative_final": {
+        "input_tokens": 27563702,
+        "cached_input_tokens": 26790144,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 60386,
+        "reasoning_output_tokens": 19379,
+        "total_tokens": 27624088
+      }
+    },
+    {
+      "filename": "rollout-2026-08-07T13-04-23-019fda9b-ade0-7912-868f-a922606fd40f.jsonl",
+      "role": "subagent",
+      "private_original_path": "/workspace/IOAI/runs/historical/ioai2-competition-runs-task4-fastbaseline-real-subagents-20260807T1304CST/ioai-2026-task-4-westlake-nlp-24/codex-home/sessions/2026/08/07/rollout-2026-08-07T13-04-23-019fda9b-ade0-7912-868f-a922606fd40f.jsonl",
+      "private_original_sha256": "8bab1317c5125ee10d727c7177510a80fa4e8e0e8bb33db0d12c7eb178dbb367",
+      "published_path": "task4/evidence/supplemental-rollouts/rollout-2026-08-07T13-04-23-019fda9b-ade0-7912-868f-a922606fd40f.jsonl",
+      "published_sha256": "3d564a5eb5a25ce6c818bf52d381bfe98c207159f93b3692a56dac4da1217823",
+      "event_count": 449,
+      "first_timestamp": "2026-08-07T05:04:23.569Z",
+      "last_timestamp": "2026-08-07T05:35:17.871Z",
+      "token_usage_cumulative_final": {
+        "input_tokens": 10170534,
+        "cached_input_tokens": 9976576,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 27725,
+        "reasoning_output_tokens": 7017,
+        "total_tokens": 10198259
+      }
+    },
+    {
+      "filename": "rollout-2026-08-07T13-04-30-019fda9b-c906-70a0-8f5c-99fc2f25fafa.jsonl",
+      "role": "subagent",
+      "private_original_path": "/workspace/IOAI/runs/historical/ioai2-competition-runs-task4-fastbaseline-real-subagents-20260807T1304CST/ioai-2026-task-4-westlake-nlp-24/codex-home/sessions/2026/08/07/rollout-2026-08-07T13-04-30-019fda9b-c906-70a0-8f5c-99fc2f25fafa.jsonl",
+      "private_original_sha256": "73c8cdd64c4583ec7a63ac7e7cd0a5559bafd9682065eae9ae184c7e1bc83d7f",
+      "published_path": "task4/evidence/supplemental-rollouts/rollout-2026-08-07T13-04-30-019fda9b-c906-70a0-8f5c-99fc2f25fafa.jsonl",
+      "published_sha256": "06fbf0ed13712d534c77fb19843f72b7ad4cd67a9b28142d280e39914760ffb2",
+      "event_count": 460,
+      "first_timestamp": "2026-08-07T05:04:30.509Z",
+      "last_timestamp": "2026-08-07T05:35:12.725Z",
+      "token_usage_cumulative_final": {
+        "input_tokens": 11817406,
+        "cached_input_tokens": 11587328,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 38588,
+        "reasoning_output_tokens": 11091,
+        "total_tokens": 11855994
+      }
+    },
+    {
+      "filename": "rollout-2026-08-07T13-04-39-019fda9b-ed93-7473-96c5-f8c030d3e4bc.jsonl",
+      "role": "subagent",
+      "private_original_path": "/workspace/IOAI/runs/historical/ioai2-competition-runs-task4-fastbaseline-real-subagents-20260807T1304CST/ioai-2026-task-4-westlake-nlp-24/codex-home/sessions/2026/08/07/rollout-2026-08-07T13-04-39-019fda9b-ed93-7473-96c5-f8c030d3e4bc.jsonl",
+      "private_original_sha256": "5601bda653e15baa1ecd10628c81b0f72031a038591aed4c225dbe520dcc0977",
+      "published_path": "task4/evidence/supplemental-rollouts/rollout-2026-08-07T13-04-39-019fda9b-ed93-7473-96c5-f8c030d3e4bc.jsonl",
+      "published_sha256": "b9439e76fcf9134cb33987a0d67557b6d431ca28f08dffd73946ff22e7fe9bed",
+      "event_count": 255,
+      "first_timestamp": "2026-08-07T05:04:39.867Z",
+      "last_timestamp": "2026-08-07T05:20:50.480Z",
+      "token_usage_cumulative_final": {
+        "input_tokens": 3917293,
+        "cached_input_tokens": 3788544,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 15779,
+        "reasoning_output_tokens": 5016,
+        "total_tokens": 3933072
+      }
+    },
+    {
+      "filename": "rollout-2026-08-07T13-57-14-019fdacc-1073-7f03-ac6e-346ad63c0c4f.jsonl",
+      "role": "subagent",
+      "private_original_path": "/workspace/IOAI/runs/historical/ioai2-competition-runs-task4-fastbaseline-real-subagents-20260807T1304CST/ioai-2026-task-4-westlake-nlp-24/codex-home/sessions/2026/08/07/rollout-2026-08-07T13-57-14-019fdacc-1073-7f03-ac6e-346ad63c0c4f.jsonl",
+      "private_original_sha256": "91e77e643185b8600034013c3b2e35b8dd84adac14d1273496b21ec47dd4376a",
+      "published_path": "task4/evidence/supplemental-rollouts/rollout-2026-08-07T13-57-14-019fdacc-1073-7f03-ac6e-346ad63c0c4f.jsonl",
+      "published_sha256": "8067b6f1186b20819703e7821096e5057ef41062cba8f86b51f3b04734a940e0",
+      "event_count": 297,
+      "first_timestamp": "2026-08-07T05:57:14.529Z",
+      "last_timestamp": "2026-08-07T05:58:52.823Z",
+      "token_usage_cumulative_final": {
+        "input_tokens": 26509665,
+        "cached_input_tokens": 25763584,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 55018,
+        "reasoning_output_tokens": 16767,
+        "total_tokens": 26564683
+      }
+    },
+    {
+      "filename": "rollout-2026-08-07T13-57-22-019fdacc-2e9c-78a2-b037-135a4b172944.jsonl",
+      "role": "subagent",
+      "private_original_path": "/workspace/IOAI/runs/historical/ioai2-competition-runs-task4-fastbaseline-real-subagents-20260807T1304CST/ioai-2026-task-4-westlake-nlp-24/codex-home/sessions/2026/08/07/rollout-2026-08-07T13-57-22-019fdacc-2e9c-78a2-b037-135a4b172944.jsonl",
+      "private_original_sha256": "0b04a2524c97faeb495fd03838fc79f6662c5286481a0f937b74daf56b20f58b",
+      "published_path": "task4/evidence/supplemental-rollouts/rollout-2026-08-07T13-57-22-019fdacc-2e9c-78a2-b037-135a4b172944.jsonl",
+      "published_sha256": "58fdff01bf52cf92664aa3794aaf497e42742641c63d5a0a4e57ecb786eb5535",
+      "event_count": 377,
+      "first_timestamp": "2026-08-07T05:57:22.247Z",
+      "last_timestamp": "2026-08-07T06:05:45.703Z",
+      "token_usage_cumulative_final": {
+        "input_tokens": 27925681,
+        "cached_input_tokens": 27108608,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 66605,
+        "reasoning_output_tokens": 22280,
+        "total_tokens": 27992286
+      }
+    },
+    {
+      "filename": "rollout-2026-08-07T13-57-28-019fdacc-47fe-7bc3-8cac-d77f25b124e1.jsonl",
+      "role": "subagent",
+      "private_original_path": "/workspace/IOAI/runs/historical/ioai2-competition-runs-task4-fastbaseline-real-subagents-20260807T1304CST/ioai-2026-task-4-westlake-nlp-24/codex-home/sessions/2026/08/07/rollout-2026-08-07T13-57-28-019fdacc-47fe-7bc3-8cac-d77f25b124e1.jsonl",
+      "private_original_sha256": "6dcf4985b026a3933b8b8964a28724d904249b7551a9a95dc1c7b2582670f24e",
+      "published_path": "task4/evidence/supplemental-rollouts/rollout-2026-08-07T13-57-28-019fdacc-47fe-7bc3-8cac-d77f25b124e1.jsonl",
+      "published_sha256": "e52f63d3308e071bbe77c209df823e83f8ef3bf287b0d74d4edaab90db805312",
+      "event_count": 329,
+      "first_timestamp": "2026-08-07T05:57:28.740Z",
+      "last_timestamp": "2026-08-07T06:00:51.231Z",
+      "token_usage_cumulative_final": {
+        "input_tokens": 26819227,
+        "cached_input_tokens": 26048256,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 58214,
+        "reasoning_output_tokens": 17656,
+        "total_tokens": 26877441
+      }
+    }
+  ]
+}

@@ -9,8 +9,11 @@ into an official-prompt-only result.
 The original Task 1 run record was unavailable after a school-server restart.
 The published `evidence/reproduction-120m/rollout.jsonl` is a later fresh
 reproduction using the same configured solver/system, official competition
-bundle, and organizer constraints. It is clearly separated from the lost
-original run and from the official account result.
+bundle, and organizer constraints. Its first 1,383 unmodified events through
+`task_complete` are selected as the canonical solution trace at
+`evidence/canonical/rollout-solution-prefix.jsonl`; the complete trace is kept
+as raw audit evidence. Both are separated from the lost original run and the
+official account result.
 
 ## Status
 
@@ -65,14 +68,15 @@ plaintext secrets. Because it refreshes `VERIFY_REPORT.json`, regenerate the
 manifest if that report changes. This package supports organizer review; the
 Jury decides recognition and eligibility.
 
-The later 120-minute reproduction trace is published at
+The later 120-minute reproduction trace is published in full at
 `evidence/reproduction-120m/rollout.jsonl` and indexed in
-`../REPRODUCTION_TRACE_INDEX.json`. Its `55277782` / `0.74121` result is
-the canonical no-live-human Task 1 rollout. Its score is still post-deadline
-reference evidence only; it is not an official-ranking result or a replacement
-for the official account reconciliation.
+`../REPRODUCTION_TRACE_INDEX.json`. Its canonical solution trace is
+`evidence/canonical/rollout-solution-prefix.jsonl`. The `55277782` / `0.74121`
+score is post-deadline reference evidence only; it is not an official-ranking
+result or a replacement for the official account reconciliation.
 
 This reproduction is not claimed as strict exact-organizer-prompt text. Its
-starter appends a custom fresh-run-isolation section; its custom continuation
-arrives only after the selected submission, final Agent answer, and
-`task_complete`. See `../PROMPT_CONFORMANCE_AUDIT.md` for hashes and timestamps.
+starter appends a custom fresh-run-isolation section. The canonical prefix has
+no continuation; the complete raw trace retains a later custom continuation
+after the selected submission, final Agent answer, and `task_complete`. See
+`../PROMPT_CONFORMANCE_AUDIT.md` for hashes and timestamps.
