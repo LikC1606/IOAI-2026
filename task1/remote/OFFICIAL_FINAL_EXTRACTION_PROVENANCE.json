@@ -1,0 +1,53 @@
+{
+  "schema": "ioai.extracted-official-final-artifact-candidate.v1",
+  "task": 1,
+  "official_submission_refs": [55267333, 55267368],
+  "official_scores": {
+    "public": 0.77751,
+    "private": 0.80474
+  },
+  "archive": "ioai-kaggle-fetch-researai-20260813.tar.gz",
+  "archive_sha256": "eb14e52057c3cfca21972993fb73c2addaf9f214abc9c6f38b88bca97d93fe3c",
+  "kernel_linked_candidate": {
+    "kernel_slug": "ioai-2026-task1-pairwise-kemeny",
+    "kernel_version_directory": 5,
+    "archive_source_path": "ioai-kaggle-fetch/ioai-2026-task-1-westlake-nlp-24/researai/ioai-2026-task1-pairwise-kemeny/v5/kernel-source.py",
+    "archive_metadata_path": "ioai-kaggle-fetch/ioai-2026-task-1-westlake-nlp-24/researai/ioai-2026-task1-pairwise-kemeny/v5/kernel-version-metadata.json",
+    "archive_output_path": "ioai-kaggle-fetch/ioai-2026-task-1-westlake-nlp-24/researai/ioai-2026-task1-pairwise-kemeny/v5/submission.csv",
+    "archive_log_path": "ioai-kaggle-fetch/ioai-2026-task-1-westlake-nlp-24/researai/ioai-2026-task1-pairwise-kemeny/v5/run.log.json.gz",
+    "source_sha256": "546e889764600c23ba6203cf8b03a5f13bc467374c968f9770f1de71f6f41d56",
+    "output_sha256": "a663e8add16554c12a4458890e3de557794f83b0eb1f72209e132af3aacd2470",
+    "log_gzip_sha256": "e79e43f3b8532d59feb455acc4ea1a0292718fc368524ab04511625f97bf3e40",
+    "observed_runtime_seconds": 423.866203825,
+    "submission_record_script_version_id": 340342513,
+    "submission_descriptions": {
+      "55267333": "V5 strong speaker parity diverse PMI beams plus full Qwen rerank",
+      "55267368": "v5 V1 recovered strong-speaker diverse Kemeny full-dialogue rerank"
+    }
+  },
+  "candidate_metadata_summary": {
+    "enable_gpu": true,
+    "machine_shape": "NvidiaTeslaT4",
+    "enable_internet": false,
+    "enable_tpu": false,
+    "competition_data_sources": ["ioai-2026-task-1-westlake-nlp-24"],
+    "dataset_data_sources": ["kamalkhan/ioai-2026-wheel-dataset"],
+    "model_data_sources": [],
+    "kernel_data_sources": [],
+    "cuda_device_strings": ["cuda:0"],
+    "multi_device_suspicion": false,
+    "network_call_patterns": []
+  },
+  "candidate_output_observation": {
+    "header": ["filename", "prediction"],
+    "data_row_count": 200,
+    "produced_output_file": true,
+    "reused_from_disk": false
+  },
+  "candidate_source_report_observation": {
+    "technical_report_heading_present": true,
+    "numbered_sections_observed": 10
+  },
+  "confidence": "kernel_linked_candidate_not_byte_confirmed_exact_version",
+  "limitation": "The extraction's matched_version_confidence is empty and _version_confirmed is false. The candidate is the strongest archive match by kernel, version directory, submission descriptions, and timing, but this package does not claim that its source/output bytes are proven to be the exact bytes scored for the tied refs. It also cannot bind either official final ref to the lost autonomous trace."
+}

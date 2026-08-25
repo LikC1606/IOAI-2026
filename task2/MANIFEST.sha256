@@ -1,12 +1,12 @@
-02440197e965b5e5ae436b12fad85d3a3e702d6f3f403ee02100c72a094cbc14  ./COMPLIANCE.md
+a94af6c129166476ba7b39bb2008277107c586240ccb8f984d6580ee82f1e24f  ./COMPLIANCE.md
 da81d11e8c52f7bb08f547f2b21821ff7eb93dbafa26d976e66c74469bf5a4ef  ./EXCLUSIONS.md
 7970a41ccadd529050695dd8bb4b58344ab6b8f624739e70bb370dad6e115ebc  ./README.md
 b4a97f1253c8912a4b0eaeb6de499c5fb035c00a256da92a7d9cdd67b5c9d32d  ./ROLLOUT_PROVENANCE.json
 6c3809db49303a2c1e82ad3a13d011d8c5294ed3f9b0b0ff7ce16ec7ec30a274  ./SUMMARY.json
 9d4f1918cb840bd0620be0243bd35e46fe894ae3220a7ec194f15c3c6080e417  ./environment/AGENTS-ACTUALLY-INJECTED.md
 9c14138c3d800345d8164329138020508a1bbce6f1286f40026a018b78acfa4e  ./environment/session.json
-a7dc48c7a837b3536d835c17fdee63db6fe27b79cd1cc577cbf4e15672f45014  ./evidence/rollouts/rollout-2026-08-05T13-30-31-019fd066-e338-71a0-9d8e-6e1d154c5a79.jsonl
 429c4a133ea7c661f48fdf4f547baf481a0fd12c209449d5804df662ee95d3a8  ./evidence/reproduction-120m/rollout.jsonl
+a7dc48c7a837b3536d835c17fdee63db6fe27b79cd1cc577cbf4e15672f45014  ./evidence/rollouts/rollout-2026-08-05T13-30-31-019fd066-e338-71a0-9d8e-6e1d154c5a79.jsonl
 4071b14be2814b2ef34bed23d43b59e3007eb2da063b71898ffbc04f1af7ea28  ./excluded/current-tree-notebook/__pycache__/ioai-2026-structured-extratrees-v1.cpython-311.pyc
 d86b5df898a6593bf86779398141b725e8bde4f3499a9ef5b777f13ffd060e92  ./excluded/current-tree-notebook/ioai-2026-structured-extratrees-v1.py
 231324d381483318048d8a49def6ae98310f6f22fe05f4fbf1864d3ce943d86a  ./excluded/current-tree-notebook/kernel-metadata.json
@@ -35,9 +35,10 @@ fbe001a56ef12f475c4172114fcc9f68100c451810cd5adb05a3132bb7a38ead  ./official/CON
 efba6048f15009d494c156f9dfc8124c6f0595b240157181c4db599a6abe1a99  ./records/authorization.json
 e739ca200839b295fb1f3f771b62aeb97444449e85e9d6d3849e2eeff7d44819  ./records/local-film-attempt-output.json
 1ad88e6eb6d8686fd774d6babda79515cdee6d2ae4a6b6b9c6994db5a0ca5c32  ./records/local-tree-attempt-output.json
-f78effb86a6c3b086034964df942e634a1974cd8df8080f30afa4b24ff891e83  ./remote/KAGGLE_SUBMISSIONS_CURRENT.json
 ce3e8ae79f39597df3d956079f3a3d32597b5b9fe3b422a46f2d9e18bd3953e9  ./remote/FINAL_ACCOUNT_RESULTS.json
+f78effb86a6c3b086034964df942e634a1974cd8df8080f30afa4b24ff891e83  ./remote/KAGGLE_SUBMISSIONS_CURRENT.json
 6626f18107173a7720cfd2af7fa6e738f882fb69ffb994ee677bcd091d978511  ./remote/KAGGLE_SUBMISSIONS_ELIGIBLE.json
+b6b332249bdd3848324444521f24a0506c1dbba55c4a5885144d7f6d0b8ba9df  ./remote/OFFICIAL_FINAL_EXTRACTION_PROVENANCE.json
 17292d28b6b78341524cfe5d340b24b64699d4724aadd770bf1a89c65defd467  ./remote/cnn-v1/ioai-task2-westlake-cnn-v1.log
 1f266fa58369f1d6ac7a9d14a915416c3bfa5de5f47998a4d820af4363e8bca9  ./remote/cnn-v1/submission.csv
 070fe51ea6a142b36fd28ca9a251708e4616fc4093b52d90fcfd5bc0f3dd5293  ./remote/rotation-cnn-v2/ioai-task2-westlake-rotation-cnn-v2.log

@@ -1053,6 +1053,16 @@ def verify_cross_task_rule_audit() -> dict[str, object]:
     task3_final = json.loads(
         (ROOT / "task3/remote/FINAL_ACCOUNT_RESULTS.json").read_text(encoding="utf-8")
     )
+    task3_session = json.loads(
+        (ROOT / "task3/environment/session.json").read_text(encoding="utf-8")
+    )
+    task3_submission_copy = (
+        ROOT / "task3/official/SUBMISSION_WORKING_COPY.md"
+    ).read_text(encoding="utf-8")
+    assert task3_session["deadlineAt"] == "2026-08-06T06:26:44.395Z"
+    assert task3_final["official_competition_deadline_utc"] == "2026-08-06T06:30:00Z"
+    assert "official Kaggle\ndeadline was `2026-08-06T06:30:00Z`" in task3_submission_copy
+    assert "run deadline `2026-08-06T06:26:44.395Z`" in task3_submission_copy
     assert task3_final["submission_counts"]["before_autonomy_boundary"] == (
         task3_summary["submissions_before_autonomy_boundary"]
     )
@@ -1197,6 +1207,33 @@ def verify_requirement_evidence_matrix() -> dict[str, object]:
             assert item["requirement"] and item["official_source"] and item["scope"]
             assert item["evidence"] and item["note"]
             assert all((ROOT / evidence).exists() for evidence in item["evidence"]), (task, requirement)
+
+    # Task 1/2 extraction records are candidates, not silently upgraded final
+    # artifacts.  Check the provenance records' explicit uncertainty and the
+    # metadata observations used by the matrix.
+    expected_candidate_refs = {1: [55267333, 55267368], 2: 55261432}
+    for number in (1, 2):
+        candidate = json.loads(
+            (ROOT / f"task{number}/remote/OFFICIAL_FINAL_EXTRACTION_PROVENANCE.json").read_text(
+                encoding="utf-8"
+            )
+        )
+        assert candidate["schema"] == "ioai.extracted-official-final-artifact-candidate.v1"
+        assert candidate["confidence"] == "kernel_linked_candidate_not_byte_confirmed_exact_version"
+        assert candidate["archive_sha256"] == (
+            "eb14e52057c3cfca21972993fb73c2addaf9f214abc9c6f38b88bca97d93fe3c"
+        )
+        refs = candidate.get("official_submission_refs", candidate.get("official_submission_ref"))
+        assert refs == expected_candidate_refs[number]
+        metadata = candidate["candidate_metadata_summary"]
+        assert metadata["enable_internet"] is False
+        assert metadata["machine_shape"] == "NvidiaTeslaT4"
+        assert metadata["cuda_device_strings"] == ["cuda:0"]
+        assert metadata["multi_device_suspicion"] is False
+        output = candidate["candidate_output_observation"]
+        assert output["produced_output_file"] is True
+        assert output["reused_from_disk"] is False
+        assert output["data_row_count"] in {200, 7200}
 
     # Exact prompt snapshots must be byte-equal to the stored page bodies.
     for task in (4, 5, 6):
@@ -1478,7 +1515,18 @@ def main() -> None:
         "repository_visibility": "private_authorized_review_only_while_restricted_data_is_present",
         "restricted_path": "task3/input/competition/",
         "handling_instructions": "task3/DATA_PROVENANCE.md",
+        "audit": "ACCESS_CONTROL_AUDIT.json",
+        "audit_markdown": "ACCESS_CONTROL_AUDIT.md",
     }
+    access_audit = json.loads((ROOT / "ACCESS_CONTROL_AUDIT.json").read_text(encoding="utf-8"))
+    assert access_audit["schema"] == "ioai.access-control-audit.v1"
+    assert access_audit["repository"]["visibility"] == "PRIVATE"
+    assert access_audit["repository"]["restricted_path"] == "task3/input/competition/"
+    assert access_audit["external_drive_archive"]["sha256"] == (
+        "eb14e52057c3cfca21972993fb73c2addaf9f214abc9c6f38b88bca97d93fe3c"
+    )
+    assert access_audit["archive_content_audit"]["data_like_path_heuristic_matches"] == 0
+    assert (ROOT / "ACCESS_CONTROL_AUDIT.md").is_file()
     assert set(checklist["task_packages"]) == {f"task{i}" for i in range(1, 7)}
     expected_official_sources = {
         "task1": [
@@ -1497,6 +1545,7 @@ def main() -> None:
             "task3/official/CONTINUE_PROMPT_EXACT.md",
             "task3/official/OVERVIEW_WORKING_COPY.md",
             "task3/official/SUBMISSION_WORKING_COPY.md",
+            "task3/official/README.md",
         ],
         "task4": [
             "task4/official/OFFICIAL_PAGES_FULL.json",
@@ -1546,6 +1595,10 @@ def main() -> None:
         "tasks1_2_formal_prefix_audit": [
             "FORMAL_PREFIX_AUDIT.md",
             "FORMAL_PREFIX_AUDIT.json",
+        ],
+        "tasks1_2_official_final_extraction_candidates": [
+            "task1/remote/OFFICIAL_FINAL_EXTRACTION_PROVENANCE.json",
+            "task2/remote/OFFICIAL_FINAL_EXTRACTION_PROVENANCE.json",
         ],
         "task4_supplemental_trace_and_rule_audit": [
             "task4/evidence/SUPPLEMENTAL_ROLLOUT_PROVENANCE.json",

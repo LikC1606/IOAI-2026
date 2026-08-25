@@ -10,6 +10,8 @@ current record does not support a claim that all six tasks are strictly
 compliant.
 The field-by-field [`REQUIREMENT_EVIDENCE_MATRIX.md`](REQUIREMENT_EVIDENCE_MATRIX.md)
 indexes the same limits against 11 concrete requirements per task.
+The channel/access distinction is recorded in
+[`ACCESS_CONTROL_AUDIT.md`](ACCESS_CONTROL_AUDIT.md).
 
 > **Access note:** `task3/input/competition/` contains organizer data that is
 > restricted to authorized reviewers. Keep this repository private and follow
@@ -29,13 +31,15 @@ indexes the same limits against 11 concrete requirements per task.
    scope, exact-prompt, provenance, budget, hardware, and reporting audits.
 5. [`REQUIREMENT_EVIDENCE_MATRIX.md`](REQUIREMENT_EVIDENCE_MATRIX.md) — one
    row per rule field with scope-labeled status and direct evidence paths.
-6. [`AUTONOMOUS_TRACE_MATERIAL.md`](AUTONOMOUS_TRACE_MATERIAL.md) and
+6. [`ACCESS_CONTROL_AUDIT.md`](ACCESS_CONTROL_AUDIT.md) — GitHub Private,
+   external Drive delivery, and archive-content handling scope.
+7. [`AUTONOMOUS_TRACE_MATERIAL.md`](AUTONOMOUS_TRACE_MATERIAL.md) and
    [`EXECUTION_TRACES.md`](EXECUTION_TRACES.md) — selected traces, event
    envelopes, boundaries, and token accounting; see also
    [`COSTS.json`](COSTS.json) for compute/accounting fields.
-7. `task1/` through `task6/` — task-specific source, outputs, reports, and
+8. `task1/` through `task6/` — task-specific source, outputs, reports, and
    compliance notes.
-8. [`KAGGLE_EXTRACTION_DELIVERY.json`](KAGGLE_EXTRACTION_DELIVERY.json) — the
+9. [`KAGGLE_EXTRACTION_DELIVERY.json`](KAGGLE_EXTRACTION_DELIVERY.json) — the
    complete external Kaggle extraction archive and Drive delivery record.
 
 ## Scope labels used throughout

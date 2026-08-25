@@ -11,6 +11,10 @@ task: autonomy, trace alignment, prompt, notebook flow, budget, runtime,
 resources, hardware, output, report, and deadline). This index is deliberately
 scope-labeled and is not a self-issued compliance certificate.
 
+Before sharing, check [`ACCESS_CONTROL_AUDIT.md`](ACCESS_CONTROL_AUDIT.md): the
+GitHub repository is Private, while the external Drive extraction has its own
+link-access scope and a separately documented content scan.
+
 ## Fast verification route
 
 From the repository root, run:
@@ -67,9 +71,11 @@ make the minimum factual findings first and defer only the policy questions:
    independently verified.
 4. For Tasks 1 and 2, keep three scopes separate: the bounded exact-prompt
    formal prefix, the requested later two-hour no-live-human reproduction, and
-   the account's automatic official final. The formal prefix is not silently
-   promoted to a complete historical run, and the reproduction is not used as
-   causal evidence for the official final.
+   the account's automatic official final. The extraction also provides a
+   kernel-linked source/output candidate for each official final, but neither
+   candidate has byte-confirmed exact-version binding. The formal prefix is not
+   silently promoted to a complete historical run, and the reproduction is not
+   used as causal evidence for the official final.
 5. For Task 3, decide whether the published 15-submission rule counts the 16
    post-deadline account submissions. The package records 11 before and 16
    after the deadline and does not choose an enforcement interpretation.
@@ -108,6 +114,9 @@ make the minimum factual findings first and defer only the policy questions:
   `RULE_COMPLIANCE_AUDIT.json`.
 - Official account reconciliation: `FINAL_SUBMISSION_RESULTS.md` and each
   `taskN/remote/FINAL_ACCOUNT_RESULTS.json`.
+- Task 1/2 external final-result candidates (not exact-version claims):
+  `task1/remote/OFFICIAL_FINAL_EXTRACTION_PROVENANCE.json` and
+  `task2/remote/OFFICIAL_FINAL_EXTRACTION_PROVENANCE.json`.
 - Task 4 detailed audit: `task4/RULE_DIFFERENCE_AUDIT.md` and
   `task4/RULE_DIFFERENCE_AUDIT.json`.
 - Task 6 artifact and evaluator evidence: `task6/ARTIFACT_PROVENANCE.json`,

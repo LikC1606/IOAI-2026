@@ -25,7 +25,10 @@ kaggle competitions submissions ioai-2026-task-3-westlake-nlp-48
 ```
 
 Do not pass `--timeout` to `kaggle kernels push`. `-f submission.csv` names the
-completed notebook output; it is not a local upload. The submit command must be
-sent before 2026-08-06T06:26:44.395Z. Scoring may finish later. Validate locally,
-download and inspect the remote CSV, and confirm identical payloads before every
-scored submission.
+completed notebook output; it is not a local upload. The official Kaggle
+deadline was `2026-08-06T06:30:00Z`; the formal Agent harness used the earlier
+run deadline `2026-08-06T06:26:44.395Z`. These are separate boundaries. The
+submit command had to be sent before the official deadline for ranking, while
+the formal run was configured to stop earlier. Scoring could finish later.
+Validate locally, download and inspect the remote CSV, and confirm identical
+payloads before every scored submission.

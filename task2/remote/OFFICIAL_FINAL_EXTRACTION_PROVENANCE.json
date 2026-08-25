@@ -1,0 +1,56 @@
+{
+  "schema": "ioai.extracted-official-final-artifact-candidate.v1",
+  "task": 2,
+  "official_submission_ref": 55261432,
+  "official_scores": {
+    "public": 0.63583,
+    "private": 0.625
+  },
+  "archive": "ioai-kaggle-fetch-researai-20260813.tar.gz",
+  "archive_sha256": "eb14e52057c3cfca21972993fb73c2addaf9f214abc9c6f38b88bca97d93fe3c",
+  "kernel_linked_candidate": {
+    "kernel_slug": "ioai-2026-structured-extratrees-v1",
+    "kernel_version_directory": 1,
+    "archive_source_path": "ioai-kaggle-fetch/ioai-2026-task-2-westlake-nlp-24/researai/ioai-2026-structured-extratrees-v1/v1/kernel-source.py",
+    "archive_metadata_path": "ioai-kaggle-fetch/ioai-2026-task-2-westlake-nlp-24/researai/ioai-2026-structured-extratrees-v1/v1/kernel-version-metadata.json",
+    "archive_output_path": "ioai-kaggle-fetch/ioai-2026-task-2-westlake-nlp-24/researai/ioai-2026-structured-extratrees-v1/v1/submission.csv",
+    "archive_log_path": "ioai-kaggle-fetch/ioai-2026-task-2-westlake-nlp-24/researai/ioai-2026-structured-extratrees-v1/v1/run.log.json.gz",
+    "source_sha256": "e2f3211c999bd5564f9e9deb494d28122fe12a6d1dc4a39b3807732f494f8884",
+    "output_sha256": "de4f2b9a949585eafd5d085200ce3759d32d86dba9c1f5cb39c277f05e9a56b6",
+    "log_gzip_sha256": "d3d504f6dfe8137b0fba64224593b1881f06b227116ecb5d7916114b22be5540",
+    "observed_runtime_seconds": 118.58038651,
+    "submission_record_script_version_id": 340299118,
+    "submission_timestamp_utc": "2026-08-05T06:46:18.437Z"
+  },
+  "candidate_metadata_summary": {
+    "enable_gpu": true,
+    "machine_shape": "NvidiaTeslaT4",
+    "enable_internet": false,
+    "enable_tpu": false,
+    "competition_data_sources": ["ioai-2026-task-2-westlake-nlp-24"],
+    "dataset_data_sources": ["kamalkhan/ioai-2026-wheel-dataset"],
+    "model_data_sources": [],
+    "kernel_data_sources": [],
+    "cuda_device_strings": ["cuda:0"],
+    "multi_device_suspicion": false,
+    "network_call_patterns": []
+  },
+  "candidate_output_observation": {
+    "header": ["id", "prediction"],
+    "data_row_count": 7200,
+    "produced_output_file": true,
+    "reused_from_disk": false
+  },
+  "candidate_source_report_observation": {
+    "technical_report_heading_present": true,
+    "report_content_observed": true
+  },
+  "conflicting_local_snapshot": {
+    "path": "task2/excluded/current-tree-notebook/",
+    "identified_submission_ref": 55262303,
+    "identified_public_score": 0.63416,
+    "note": "The tracked excluded/current-tree snapshot is later ExtraTrees v3 evidence, not the official final ref 55261432. It must not be cited as the exact official-final source/output."
+  },
+  "confidence": "kernel_linked_candidate_not_byte_confirmed_exact_version",
+  "limitation": "The extraction's matched_version_confidence is empty and _version_confirmed is false. The candidate is strongly identified by the v1 kernel slug/path, submission description, timestamp, and account record, but the archive metadata cannot independently prove that v1 bytes are the exact bytes scored for ref 55261432. The candidate is also downstream of the formal autonomy boundary."
+}

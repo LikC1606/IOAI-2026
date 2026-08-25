@@ -21,6 +21,10 @@ artifact scope, known deviations, and Jury-interpretation risks.
 > and follow [`task3/DATA_PROVENANCE.md`](task3/DATA_PROVENANCE.md) before
 > sharing or publishing any copy.
 
+The separate repository/Drive distinction is documented in
+[`ACCESS_CONTROL_AUDIT.md`](ACCESS_CONTROL_AUDIT.md). GitHub Private status does
+not automatically apply to the external Google Drive extraction link.
+
 ## Task-package entry points
 
 | Task | Package README | Official-page snapshots | Machine-readable summary | Compliance note | Integrity manifest |
@@ -36,6 +40,7 @@ Special evidence is linked here for quick review:
 
 - Tasks 1–2 later reproductions: [`REPRODUCTION_TRACE_MATERIAL.md`](REPRODUCTION_TRACE_MATERIAL.md), [`REPRODUCTION_TRACE_INDEX.json`](REPRODUCTION_TRACE_INDEX.json), and [`REPRODUCTION_COSTS.json`](REPRODUCTION_COSTS.json).
 - Tasks 1–2 bounded formal prefixes: [`FORMAL_PREFIX_AUDIT.md`](FORMAL_PREFIX_AUDIT.md) and [`FORMAL_PREFIX_AUDIT.json`](FORMAL_PREFIX_AUDIT.json).
+- Tasks 1–2 external final-result candidates: [`task1/remote/OFFICIAL_FINAL_EXTRACTION_PROVENANCE.json`](task1/remote/OFFICIAL_FINAL_EXTRACTION_PROVENANCE.json) and [`task2/remote/OFFICIAL_FINAL_EXTRACTION_PROVENANCE.json`](task2/remote/OFFICIAL_FINAL_EXTRACTION_PROVENANCE.json). These are kernel-linked candidates from the Kaggle extraction; neither has byte-confirmed exact-version binding to the official final ref.
 - Task 4 supplemental trace provenance: [`task4/evidence/SUPPLEMENTAL_ROLLOUT_PROVENANCE.json`](task4/evidence/SUPPLEMENTAL_ROLLOUT_PROVENANCE.json) and [`task4/RULE_DIFFERENCE_AUDIT.md`](task4/RULE_DIFFERENCE_AUDIT.md).
 - Task 6 exact v3 artifact chain: [`task6/ARTIFACT_PROVENANCE.json`](task6/ARTIFACT_PROVENANCE.json), [`task6/RULE_DIFFERENCE_AUDIT.md`](task6/RULE_DIFFERENCE_AUDIT.md), and [`task6/evidence/EVALUATOR_BATCHING_PROVENANCE.json`](task6/evidence/EVALUATOR_BATCHING_PROVENANCE.json).
 
@@ -49,6 +54,7 @@ Special evidence is linked here for quick review:
 | Exact organizer prompt conformance | Audited; canonical Task 1/2 reproductions and Task 4 are non-exact, while the supplemental Task 1/2 formal prefixes are exact-prompt bounded evidence | [`PROMPT_CONFORMANCE_AUDIT.md`](PROMPT_CONFORMANCE_AUDIT.md), [`PROMPT_CONFORMANCE_AUDIT.json`](PROMPT_CONFORMANCE_AUDIT.json), [`FORMAL_PREFIX_AUDIT.md`](FORMAL_PREFIX_AUDIT.md) |
 | Cross-task rule compliance | Audited; known deviations and evidence/interpretation limits remain | [`RULE_COMPLIANCE_AUDIT.md`](RULE_COMPLIANCE_AUDIT.md), [`RULE_COMPLIANCE_AUDIT.json`](RULE_COMPLIANCE_AUDIT.json) |
 | Rule-by-rule evidence map | Complete, scope-labeled for 11 requirements per Task | [`REQUIREMENT_EVIDENCE_MATRIX.md`](REQUIREMENT_EVIDENCE_MATRIX.md), [`REQUIREMENT_EVIDENCE_MATRIX.json`](REQUIREMENT_EVIDENCE_MATRIX.json) |
+| Access-control and delivery scope | Audited separately for Private GitHub, external Drive, and archive content limits | [`ACCESS_CONTROL_AUDIT.md`](ACCESS_CONTROL_AUDIT.md), [`ACCESS_CONTROL_AUDIT.json`](ACCESS_CONTROL_AUDIT.json) |
 | Task 4 competition-rule differences | Audited with disclosed prompt, process, and hardware limits | [`task4/RULE_DIFFERENCE_AUDIT.md`](task4/RULE_DIFFERENCE_AUDIT.md), [`task4/RULE_DIFFERENCE_AUDIT.json`](task4/RULE_DIFFERENCE_AUDIT.json) |
 | Task 6 exact artifacts and rule differences | Exact v3 artifacts complete; evaluator batch behavior measured and disclosed, not treated as a compliance blocker | [`task6/ARTIFACT_PROVENANCE.json`](task6/ARTIFACT_PROVENANCE.json), [`task6/RULE_DIFFERENCE_AUDIT.md`](task6/RULE_DIFFERENCE_AUDIT.md) |
 | Read-only artifact replay | Task 1 provenance/package verifier, Task 2 eligible v2 exact source/output chain, all eight Task 3 source/output replays, Task 4 hash-only output chain, Task 5 exact v6 output chain, and Task 6 exact v3 replay pass | [`task1/tools/verify_package.py`](task1/tools/verify_package.py), Task 2 `remote/rotation-cnn-v2/`, [`task3/evidence/verify_artifacts.py`](task3/evidence/verify_artifacts.py), `task4/remote/V4_OUTPUT_PROVENANCE.json`, `task5/V6_SOURCE_PROVENANCE.json`, and `python3 verify_repository.py` |

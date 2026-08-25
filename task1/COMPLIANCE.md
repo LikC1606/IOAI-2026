@@ -91,9 +91,14 @@ after the selected submission, final Agent answer, and `task_complete`. See
 
 - The official final refs `55267333` / `55267368` are not bound to either the
   lost original trace or the later reproduction. The GitHub task package does
-  not contain their exact notebook/source/output as a trace-linked final
-  artifact set. They may appear in the separately delivered Kaggle extraction,
-  but that does not establish autonomous causality.
+  not contain a trace-linked final artifact set. The separately delivered
+  Kaggle extraction contains a strongly identified kernel-linked candidate
+  (`ioai-2026-task1-pairwise-kemeny`, archive directory `v5`) with source,
+  metadata, log, and output hashes; see
+  [`remote/OFFICIAL_FINAL_EXTRACTION_PROVENANCE.json`](remote/OFFICIAL_FINAL_EXTRACTION_PROVENANCE.json).
+  Its `matched_version_confidence` is empty, so it must not be described as
+  the exact source/output bytes scored for either tied ref, and it does not
+  establish autonomous causality.
 - The later reproduction searched AI4Code, sentence-ordering and Qwen method
   material before candidate selection. No external runtime data, weights, or
   runtime resource were added beyond organizer-supplied resources. This is
