@@ -9,7 +9,8 @@ into an official-prompt-only result.
 The complete original Task 1 run record was unavailable after a school-server
 restart. A bounded pre-boundary formal prefix is nevertheless preserved under
 `evidence/rollouts/`, with its private-source and published-file hashes in
-`ROLLOUT_PROVENANCE.json`. The published
+`ROLLOUT_PROVENANCE.json`; its exact prompt, boundary, and scope are summarized
+in [`../FORMAL_PREFIX_AUDIT.md`](../FORMAL_PREFIX_AUDIT.md). The published
 `evidence/reproduction-120m/rollout.jsonl` is a later fresh reproduction using
 the same configured solver/system, official competition bundle, and organizer
 constraints. Its first 1,383 unmodified events through `task_complete` are

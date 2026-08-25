@@ -148,6 +148,51 @@ def verify_publication_safety() -> dict[str, int]:
     return {"tracked_text_files": scanned, "tracked_binary_files": binary}
 
 
+def verify_markdown_links() -> dict[str, int]:
+    """Ensure every tracked Markdown link to a local path resolves.
+
+    External links are intentionally not fetched here: network availability is
+    not a repository-integrity property.  Local links, including links with an
+    anchor fragment, must resolve so an organizer can follow every advertised
+    evidence path from the published Markdown.
+    """
+    pattern = re.compile(r"\[[^\]]*\]\(([^)]+)\)")
+    tracked = subprocess.check_output(["git", "ls-files", "-z"], cwd=ROOT).split(b"\0")
+    local_links = 0
+    external_links = 0
+    missing: list[tuple[str, str]] = []
+    for raw_path in tracked:
+        if not raw_path or not raw_path.decode("utf-8").endswith(".md"):
+            continue
+        relative_path = raw_path.decode("utf-8")
+        path = ROOT / relative_path
+        text = path.read_text(encoding="utf-8", errors="replace")
+        for raw_target in pattern.findall(text):
+            target = raw_target.strip()
+            if target.startswith("<") and target.endswith(">"):
+                target = target[1:-1]
+            if target.startswith(("http://", "https://", "mailto:")):
+                external_links += 1
+                continue
+            target = target.split("#", 1)[0]
+            if not target:
+                continue
+            local_links += 1
+            resolved = (path.parent / target).resolve()
+            if not resolved.is_relative_to(ROOT.resolve()) or not resolved.exists():
+                missing.append((relative_path, raw_target))
+    assert not missing, missing
+    return {
+        "tracked_markdown_files": sum(
+            1
+            for raw_path in tracked
+            if raw_path and raw_path.decode("utf-8").endswith(".md")
+        ),
+        "local_links": local_links,
+        "external_links_not_fetched": external_links,
+    }
+
+
 def verify_manifest(root: Path) -> int:
     checked = 0
     manifest = root / "MANIFEST.sha256"
@@ -214,6 +259,20 @@ def verify_final_account_result(task: int, summary: dict) -> dict[str, object]:
             "startup_instructions": 1,
             "custom_starter_prompt": 1,
         }
+        formal_prefix = summary["supplemental_formal_prefix"]
+        assert (ROOT / "task1" / formal_prefix["audit_path"]).resolve() == (
+            ROOT / "FORMAL_PREFIX_AUDIT.json"
+        ).resolve()
+        assert formal_prefix == {
+            "audit_path": "../FORMAL_PREFIX_AUDIT.json",
+            "trace_path": "evidence/rollouts/rollout-2026-08-05T17-20-55-019fd139-d180-7171-ac0b-c037e11866eb.jsonl",
+            "trace_sha256": "bcfb0c6ffca945638aedd4b3771915bc88abf72ca29843b457e966427684eb89",
+            "event_count": 350,
+            "boundary_utc_exclusive": "2026-08-05T10:16:52.222Z",
+            "strict_exact_organizer_prompt_text_conformance": True,
+            "preboundary_submission_ref": None,
+            "scope": "bounded_preboundary_historical_audit_only; not the later reproduction and not trace evidence for the official final refs",
+        }
     elif task == 2:
         assert result["autonomous_result"]["submission_ref"] == 55260695
         canonical = summary["canonical_autonomous_rollout"]
@@ -228,6 +287,22 @@ def verify_final_account_result(task: int, summary: dict) -> dict[str, object]:
         assert canonical["user_prompt_classes"] == {
             "startup_instructions": 1,
             "custom_starter_prompt": 1,
+        }
+        formal_prefix = summary["supplemental_formal_prefix"]
+        assert (ROOT / "task2" / formal_prefix["audit_path"]).resolve() == (
+            ROOT / "FORMAL_PREFIX_AUDIT.json"
+        ).resolve()
+        assert formal_prefix == {
+            "audit_path": "../FORMAL_PREFIX_AUDIT.json",
+            "trace_path": "evidence/rollouts/rollout-2026-08-05T13-30-31-019fd066-e338-71a0-9d8e-6e1d154c5a79.jsonl",
+            "trace_sha256": "a7dc48c7a837b3536d835c17fdee63db6fe27b79cd1cc577cbf4e15672f45014",
+            "event_count": 705,
+            "boundary_utc_exclusive": "2026-08-05T06:24:47.549Z",
+            "strict_exact_organizer_prompt_text_conformance": True,
+            "preboundary_submission_ref": 55260695,
+            "preboundary_public_score": 0.55416,
+            "preboundary_private_score": 0.54833,
+            "scope": "bounded_preboundary_historical_audit_only; exact-prompt eligible v2 artifact chain; not the later reproduction or the official final",
         }
     elif task == 3:
         assert result["official_deadline_best_private"] == {
@@ -1162,6 +1237,7 @@ def main() -> None:
     report["task6_exact_artifacts"] = verify_task6_artifacts()
     report["cross_task_rule_audit"] = verify_cross_task_rule_audit()
     report["publication_safety"] = verify_publication_safety()
+    report["markdown_links"] = verify_markdown_links()
     delivery = json.loads((ROOT / "KAGGLE_EXTRACTION_DELIVERY.json").read_text(encoding="utf-8"))
     assert delivery["archive"]["size_bytes"] == 496870419
     assert delivery["archive"]["entry_count"] == 1401

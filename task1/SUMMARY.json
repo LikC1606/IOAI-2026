@@ -32,7 +32,7 @@
     "full_raw_trace_path": "evidence/reproduction-120m/rollout.jsonl",
     "canonical_cutoff": "inclusive through task_complete at 2026-08-05T18:24:58.140Z",
     "run_kind": "later_reproduction_120m",
-    "record_recovery_note": "The original Task 1 run record was unavailable after a school-server restart; this is a later fresh reproduction using the same configured solver/system, official competition bundle, and organizer constraints, not the original run record.",
+    "record_recovery_note": "The complete original Task 1 run record was unavailable after a school-server restart. A bounded exact-prompt formal prefix remains as supplemental historical audit evidence; this is a later fresh reproduction using the same configured solver/system, official competition bundle, and organizer constraints, not a replacement for the incomplete original record.",
     "autonomy_status": "fully_autonomous_no_live_human_intervention",
     "run_window_start_utc": "2026-08-05T16:25:50.693Z",
     "boundary_utc_exclusive": "2026-08-05T18:25:50.634Z",
@@ -50,6 +50,16 @@
     "local_cv": 0.7676212811096714,
     "private_score": null,
     "scope_note": "Immutable observable solution prefix through task_complete with no live human method, target-score, forced-submission, or continuation prompt. The starter appends a custom fresh-run-isolation section, so this is not claimed as strict exact-organizer-prompt text. The complete raw reproduction separately preserves the 15-event post-task_complete suffix beginning with a custom continuation. The post-deadline run remains a non-ranking reproduction result."
+  },
+  "supplemental_formal_prefix": {
+    "audit_path": "../FORMAL_PREFIX_AUDIT.json",
+    "trace_path": "evidence/rollouts/rollout-2026-08-05T17-20-55-019fd139-d180-7171-ac0b-c037e11866eb.jsonl",
+    "trace_sha256": "bcfb0c6ffca945638aedd4b3771915bc88abf72ca29843b457e966427684eb89",
+    "event_count": 350,
+    "boundary_utc_exclusive": "2026-08-05T10:16:52.222Z",
+    "strict_exact_organizer_prompt_text_conformance": true,
+    "preboundary_submission_ref": null,
+    "scope": "bounded_preboundary_historical_audit_only; not the later reproduction and not trace evidence for the official final refs"
   },
   "agent_executed_result": {
     "submission_id": 55267607,

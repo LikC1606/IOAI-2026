@@ -21,6 +21,11 @@ original record, and its post-deadline status remains explicit below.
 The canonical published no-live-human rollout is
 the complete later two-hour trace under `evidence/reproduction-120m/`; the
 earlier formal run is retained as separate historical audit material.
+The machine-readable cross-task audit is
+[`../FORMAL_PREFIX_AUDIT.md`](../FORMAL_PREFIX_AUDIT.md): it records 705
+events, exact Starter and Continuation Prompt conformance, the exclusive
+`2026-08-05T06:24:47.549Z` boundary, and the eligible pre-boundary v2
+submission `55260695` (Public `0.55416`, Private `0.54833`).
 
 The formal solver began at 05:30:32 UTC. Before the conservative autonomy
 boundary it received only the injected startup instructions, the organizer

@@ -79,6 +79,12 @@ canonical published no-live-human solution rollout is the exact prefix through
 `task_complete` under `evidence/canonical/`; the full later trace is separate
 raw audit evidence.
 
+The machine-readable cross-task audit is
+[`../FORMAL_PREFIX_AUDIT.md`](../FORMAL_PREFIX_AUDIT.md): it records 350
+events, exact Starter Prompt conformance, the exclusive
+`2026-08-05T10:16:52.222Z` boundary, and the fact that no scored submission
+was sent before that boundary.
+
 Verify after extraction:
 
 ```bash

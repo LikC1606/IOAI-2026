@@ -29,6 +29,34 @@ credentials and private endpoints. It should print `"all_ok": true`.
 The repository must remain private while the restricted Task 3 competition
 bundle is present; see `task3/DATA_PROVENANCE.md`.
 
+## Suggested adjudication order
+
+The package intentionally separates mechanical evidence from decisions that
+cannot be reconstructed from the preserved records. A reviewer can therefore
+make the minimum factual findings first and defer only the policy questions:
+
+1. Confirm the six task manifests, the autonomous/reproduction manifests, the
+   formal-prefix audit, and `python3 verify_repository.py`.
+2. Treat Tasks 3, 5, and 6 as the exact-prompt, trace-aligned positive set
+   supported by the preserved artifacts. Their task-specific report, budget,
+   and technical disclosures remain part of the record.
+3. For Task 4, decide whether the disclosed formatting-modified Starter,
+   substantive generic continuation, transient local `__pycache__`, and local
+   H100 development are acceptable under the competition wording. The final
+   v4 source, T4 output provenance, deadline timestamp, and remote metadata are
+   independently verified.
+4. For Tasks 1 and 2, keep three scopes separate: the bounded exact-prompt
+   formal prefix, the requested later two-hour no-live-human reproduction, and
+   the account's automatic official final. The formal prefix is not silently
+   promoted to a complete historical run, and the reproduction is not used as
+   causal evidence for the official final.
+5. For Task 3, decide whether the published 15-submission rule counts the 16
+   post-deadline account submissions. The package records 11 before and 16
+   after the deadline and does not choose an enforcement interpretation.
+6. Record any exception or interpretation in writing. The repository's
+   `all_ok` result means internal evidence consistency, not organizer
+   acceptance.
+
 ## Six-task adjudication matrix
 
 | Task | Evidence-supported positive finding | Open organizer/Jury determination |
