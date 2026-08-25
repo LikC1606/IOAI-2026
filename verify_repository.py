@@ -196,11 +196,26 @@ def verify_markdown_links() -> dict[str, int]:
 def verify_manifest(root: Path) -> int:
     checked = 0
     manifest = root / "MANIFEST.sha256"
+    listed_paths: set[str] = set()
     for line in manifest.read_text(encoding="utf-8").splitlines():
         expected, relative = line.split(maxsplit=1)
         relative = relative.removeprefix("*").removeprefix("./")
+        listed_paths.add(relative)
         assert sha256(root / relative) == expected, f"{root.name}/{relative}"
         checked += 1
+    tracked_raw = subprocess.check_output(
+        ["git", "ls-files", "-z", "--", f"{root.name}/"], cwd=ROOT
+    )
+    tracked_paths = {
+        item.decode("utf-8").removeprefix(f"{root.name}/")
+        for item in tracked_raw.split(b"\0")
+        if item and item.decode("utf-8") != f"{root.name}/MANIFEST.sha256"
+    }
+    assert listed_paths == tracked_paths, {
+        "task": root.name,
+        "listed_not_tracked": sorted(listed_paths - tracked_paths),
+        "tracked_not_listed": sorted(tracked_paths - listed_paths),
+    }
     return checked
 
 
@@ -1161,13 +1176,17 @@ def verify_kaggle_extraction_summary() -> dict[str, object]:
         assert binding["source_sha256"] == extraction_sha, task
         assert binding["competition"] == competition, task
         assert binding["deadline_utc"] == source["deadline_utc"].replace(" ", "T") + "Z", task
+        assert task_summary["official_competition_deadline_utc"] == binding["deadline_utc"], task
         for field in ("submissions", "submissions_after_deadline", "versions_captured", "kernels"):
             assert binding[field] == source[field], (task, field)
+        if "captured_account_notebook_versions" in task_summary:
+            assert task_summary["captured_account_notebook_versions"] == source["versions_captured"], task
 
         final = json.loads(
             (ROOT / task / "remote" / "FINAL_ACCOUNT_RESULTS.json").read_text(encoding="utf-8")
         )
         assert final["competition"] == competition, task
+        assert final["official_competition_deadline_utc"] == binding["deadline_utc"], task
         counts = final["submission_counts"]
         assert counts["all_account"] == source["submissions"], task
         assert counts["after_official_deadline"] == source["submissions_after_deadline"], task
