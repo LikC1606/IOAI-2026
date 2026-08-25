@@ -2,6 +2,11 @@
 
 Competition: `ioai-2026-task-2-westlake-nlp-24`.
 
+For the cross-task checklist and official-result reconciliation, start with
+`../ORGANIZER_SUBMISSION.md` and `../FINAL_SUBMISSION_RESULTS.md`. For this
+task's evidence, start with `COMPLIANCE.md`, `SUMMARY.json`, and
+`AUTONOMY_BOUNDARY.md`.
+
 ## Record recovery note
 
 The original Task 2 run record was unavailable after a school-server restart.
@@ -10,8 +15,7 @@ reproduction using the same configured solver/system, official competition
 bundle, and organizer constraints. It is a reproduction record, not the lost
 original run record, and its post-deadline status remains explicit below.
 
-For the consolidated rule, artifact, report-correction, and reproduction audit,
-start with `COMPLIANCE.md`. The canonical published no-live-human rollout is
+The canonical published no-live-human rollout is
 the complete later two-hour trace under `evidence/reproduction-120m/`; the
 earlier formal run is retained as separate historical audit material.
 

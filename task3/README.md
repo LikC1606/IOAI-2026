@@ -32,6 +32,8 @@ account scopes are separated in `remote/FINAL_ACCOUNT_RESULTS.json`.
 
 Start with these documents:
 
+- `../ORGANIZER_SUBMISSION.md`: cross-task deliverable checklist.
+- `../FINAL_SUBMISSION_RESULTS.md`: official account-result reconciliation.
 - `AUTONOMY_BOUNDARY.md`: exact inclusion boundary and input audit.
 - `SUBMISSION_TIMELINE.md`: all autonomous remote submissions and scores.
 - `COMPLIANCE.md`: rules-to-evidence audit and candid limitations.

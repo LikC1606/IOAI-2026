@@ -2,8 +2,10 @@
 
 Competition: `ioai-2026-task-4-westlake-nlp-24`.
 
-For the consolidated rule, artifact, report-correction, and reproduction audit,
-start with `RULE_DIFFERENCE_AUDIT.md` and `COMPLIANCE.md`.
+For the cross-task checklist and official-result reconciliation, start with
+`../ORGANIZER_SUBMISSION.md` and `../FINAL_SUBMISSION_RESULTS.md`. For the
+task-specific rule, artifact, report-correction, and reproduction audit, start
+with `RULE_DIFFERENCE_AUDIT.md` and `COMPLIANCE.md`.
 
 The formal run used a formatting-modified copy of the organizer Starter Prompt
 plus a substantive generic runtime resume template that is not the exact

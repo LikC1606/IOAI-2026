@@ -5,6 +5,9 @@ Kaggle account: `researai`<br>
 Agent run: 2026-08-08 16:23:20.951Z–18:23:20.943Z<br>
 Model: `gpt-5.6-sol`, reasoning effort `xhigh`
 
+For the cross-task checklist and official-result reconciliation, start with
+`../ORGANIZER_SUBMISSION.md` and `../FINAL_SUBMISSION_RESULTS.md`.
+
 Start with [`COMPLIANCE.md`](COMPLIANCE.md),
 [`RULE_DIFFERENCE_AUDIT.md`](RULE_DIFFERENCE_AUDIT.md), and
 [`ARTIFACT_PROVENANCE.json`](ARTIFACT_PROVENANCE.json). The official result is

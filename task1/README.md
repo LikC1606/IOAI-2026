@@ -2,6 +2,11 @@
 
 Competition: `ioai-2026-task-1-westlake-nlp-24`.
 
+For the cross-task checklist and official-result reconciliation, start with
+`../ORGANIZER_SUBMISSION.md` and `../FINAL_SUBMISSION_RESULTS.md`. For this
+task's evidence, start with `COMPLIANCE.md`, `SUMMARY.json`, and
+`AUTONOMY_BOUNDARY.md`.
+
 ## Record recovery note
 
 The original Task 1 run record was unavailable after a school-server restart.
@@ -64,8 +69,7 @@ separates execution attribution, strict autonomy, deadline eligibility, and
 possible exceptional recognition. The current status remains pending; only a
 written organizer decision can change it to "Organizer-approved exception."
 
-Start with `../ORGANIZER_SUBMISSION.md`, `COMPLIANCE.md`,
-`AUTONOMY_BOUNDARY.md`, `EXCLUSIONS.md`, and `SUMMARY.json`. The exact
+The exact
 credential-redacted historical formal prefix is under `evidence/rollouts/`,
 and `ROLLOUT_PROVENANCE.json` binds it to the private original by SHA-256. The
 canonical published no-live-human solution rollout is the exact prefix through

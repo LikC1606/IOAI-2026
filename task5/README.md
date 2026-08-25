@@ -2,8 +2,10 @@
 
 Competition: `ioai-2026-task-5-westlake-nlp-24`.
 
-For the consolidated rule, artifact, report-correction, and reproduction audit,
-start with `COMPLIANCE.md`. `V6_SOURCE_PROVENANCE.json` records why the preserved
+For the cross-task checklist and official-result reconciliation, start with
+`../ORGANIZER_SUBMISSION.md` and `../FINAL_SUBMISSION_RESULTS.md`. For the
+task-specific rule, artifact, report-correction, and reproduction audit, start
+with `COMPLIANCE.md`. `V6_SOURCE_PROVENANCE.json` records why the preserved
 local source is attributed to historical Kernel version 6 despite Kaggle's 403
 response for the historical source endpoint.
 
