@@ -87,8 +87,9 @@ make the minimum factual findings first and defer only the policy questions:
    final refs reuse one Notebook version; Task 2's eligible v2 pair reuses one
    version; Task 3 has a repeated version immediately before the deadline.
    Task 1 and Task 3 also exceed the literal extracted budget counts. The
-   package records these conflicts and leaves only any post-deadline exception
-   scope to organizer adjudication.
+   package records these as separate literal conflicts; any exception or
+   enforcement scope for pre-deadline version reuse and post-deadline activity
+   remains for organizer adjudication.
 6. For Task 3, decide whether the published 15-submission rule counts the 16
    post-deadline account submissions in addition to the 11 before deadline.
 7. Record any exception or interpretation in writing. The repository's
@@ -101,7 +102,7 @@ make the minimum factual findings first and defer only the policy questions:
 |---|---|---|
 | 1 | A complete observable, no-live-human later 120-minute reproduction is preserved, with a canonical prefix through `task_complete`; a bounded exact-prompt formal prefix is also retained after the complete original record became unavailable following a school-server restart. | Whether the later reproduction or supplemental formal prefix may satisfy the requested trace deliverable; whether the custom starter appendix is acceptable; and whether the literal 38/20 version count and duplicate official-final version receive an exception. Neither reproduction is causal evidence for official final refs `55267333`/`55267368`. |
 | 2 | A complete observable, no-live-human later 120-minute reproduction is preserved; the exact-prompt formal prefix and eligible v2 submission `55260695` are separately recorded. | Whether the later reproduction may satisfy the requested trace deliverable despite being post-deadline and custom-starter based, and whether the duplicate use of scriptVersionId `340290308` is excused. Official final `55261432` is downstream of the modified formal boundary and is not attributed to the later reproduction. |
-| 3 | Eight scored submissions, including the tied official Public-best refs `55289569`/`55289823`, are in exact-prompt autonomous scope before the supervision boundary. | The account history has 27 submissions (16 after deadline) against the published 15 and repeats scriptVersionId `340521169` immediately before the deadline. The package records the literal conflicts; only any post-deadline exception scope remains for organizer decision. |
+| 3 | Eight scored submissions, including the tied official Public-best refs `55289569`/`55289823`, are in exact-prompt autonomous scope before the supervision boundary. | The account history has 27 submissions (16 after deadline) against the published 15 and repeats scriptVersionId `340521169` immediately before the deadline. The package records the count excess and pre-deadline version reuse as separate literal conflicts; any exception or enforcement scope remains for organizer decision. |
 | 4 | Final submission `55316818` is trace-aligned, before deadline, notebook-only, one-T4, and has exact output/artifact evidence; all 12 selected solver traces are indexed. | Whether the formatting-modified starter and substantive generic continuation are acceptable operational deviations; whether the transient local `__pycache__` affects the two-file folder rule. |
 | 5 | Final v6 submission `55320296` is trace-aligned, exact-prompt, before deadline, notebook-only, one-T4, and its output/log are preserved. | Whether the trace-preserved v6 source is sufficient when Kaggle now returns 403 for the historical source pull, and whether the historical report-format limitations are material. |
 | 6 | Final v3 submission `55357080` is trace-aligned and exact-prompt; notebook metadata, decoded source, weights, CSV, parameter count, and hashes verify exactly. | Whether the measured evaluator-batch dependence and the historical report's factual range/dropout errors affect eligibility. They are disclosed technical/report facts, not silently removed or declared harmless by this package. |

@@ -92,7 +92,7 @@
   "submissions_after_official_deadline": 15,
   "captured_account_notebook_versions": 38,
   "published_version_limit": 20,
-  "version_budget_status": "literal_count_exceeds_limit_and_official_final_version_reused; post_deadline_exception_scope_requires_organizer",
+  "version_budget_status": "literal_count_exceeds_limit_and_official_final_version_reused; organizer_adjudication_required",
   "submission_version_audit": {
     "path": "../SUBMISSION_VERSION_AUDIT.json",
     "task_key": "task1",

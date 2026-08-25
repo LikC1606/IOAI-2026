@@ -99,7 +99,7 @@
             "task1/SUMMARY.json",
             "KAGGLE_EXTRACTION_SUMMARY.json"
           ],
-          "note": "The extraction captures 38 versions versus the published 20 and shows scriptVersionId 340342513 used for both official refs 55267333/55267368 (plus 340345171 used three times). The literal rule is not met; the organizer may decide whether post-deadline audit/reproduction activity receives an exception."
+          "note": "The extraction captures 38 versions versus the published 20 and shows scriptVersionId 340342513 used for both official refs 55267333/55267368 (plus 340345171 used three times). The literal count and pre-deadline version-reuse rule are not met; any post-deadline exception scope is a separate organizer decision."
         },
         "runtime_cap": {
           "requirement": "Each Kernel run must be capped at 600 seconds.",
@@ -373,7 +373,7 @@
             "task3/SUMMARY.json",
             "RULE_COMPLIANCE_AUDIT.md"
           ],
-          "note": "27 account submissions were captured (11 before and 16 after deadline) against a published limit of 15. The extraction also shows scriptVersionId 340521169 used for refs 55290807 and 55290810 immediately before the deadline. The literal conflicts are disclosed; the organizer may decide whether post-deadline activity receives an exception."
+          "note": "27 account submissions were captured (11 before and 16 after deadline) against a published limit of 15. The extraction also shows scriptVersionId 340521169 used for refs 55290807 and 55290810 immediately before the deadline. The count excess and pre-deadline version reuse are separate literal conflicts; any exception or enforcement scope remains an organizer decision."
         },
         "runtime_cap": {
           "requirement": "One 600-second CPU budget covers the round.",

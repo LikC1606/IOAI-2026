@@ -24,7 +24,9 @@ it does not decide whether the organizer grants an exception.
 Task 1's tied official-final refs are the same extracted scriptVersionId.
 Task 2's repeated version is the formal autonomous v2 pair, while its official
 final ref is not in that duplicate group. Task 3's duplicate pair was sent
-immediately before the official deadline and is not its selected official final.
+immediately before the official deadline and is not its selected official final;
+that pre-deadline reuse is a separate literal conflict from the question of how
+the 16 post-deadline submissions are counted.
 
 The full records, source hashes, timestamps, and deadline offsets are in
 [`SUBMISSION_VERSION_AUDIT.json`](SUBMISSION_VERSION_AUDIT.json).
