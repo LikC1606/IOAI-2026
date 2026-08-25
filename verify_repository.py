@@ -3,6 +3,7 @@ from __future__ import annotations
 
 import hashlib
 import json
+import re
 import subprocess
 import sys
 from pathlib import Path
@@ -110,6 +111,40 @@ def sha256(path: Path) -> str:
         for block in iter(lambda: stream.read(1024 * 1024), b""):
             value.update(block)
     return value.hexdigest()
+
+
+def verify_publication_safety() -> dict[str, int]:
+    """Reject common unredacted credential and private-endpoint patterns."""
+    patterns = {
+        "kaggle_token": re.compile(r"KGAT_[A-Za-z0-9_-]{12,}"),
+        "openai_key": re.compile(r"(?<![A-Za-z0-9_-])sk-(?:proj-)?[A-Za-z0-9_]{24,}"),
+        "private_endpoint": re.compile(
+            r"https?://(?:codex\.aiswing\.fun|api\.smilecodex\.space|127\.0\.0\.1:\d+)",
+            re.IGNORECASE,
+        ),
+    }
+    scanned = 0
+    binary = 0
+    findings: list[tuple[str, str]] = []
+    tracked = subprocess.check_output(["git", "ls-files", "-z"], cwd=ROOT).split(b"\0")
+    for raw_path in tracked:
+        if not raw_path:
+            continue
+        path = ROOT / raw_path.decode("utf-8")
+        try:
+            content = path.read_bytes()
+        except OSError:
+            continue
+        if b"\0" in content[:8192]:
+            binary += 1
+            continue
+        scanned += 1
+        text = content.decode("utf-8", errors="replace")
+        for name, pattern in patterns.items():
+            if pattern.search(text):
+                findings.append((str(path.relative_to(ROOT)), name))
+    assert not findings, findings
+    return {"tracked_text_files": scanned, "tracked_binary_files": binary}
 
 
 def verify_manifest(root: Path) -> int:
@@ -594,6 +629,7 @@ def main() -> None:
     report["later_reproduction_material"] = verify_reproduction_material()
     report["task6_exact_artifacts"] = verify_task6_artifacts()
     report["cross_task_rule_audit"] = verify_cross_task_rule_audit()
+    report["publication_safety"] = verify_publication_safety()
     delivery = json.loads((ROOT / "KAGGLE_EXTRACTION_DELIVERY.json").read_text(encoding="utf-8"))
     assert delivery["archive"]["size_bytes"] == 496870419
     assert delivery["archive"]["entry_count"] == 1401
@@ -641,14 +677,83 @@ def main() -> None:
         for paths in checklist["special_evidence"].values()
         for path in paths
     )
-    assert checklist["requirements"]["cross_task_rule_compliance"][
+    requirements = checklist["requirements"]
+    expected_requirement_statuses = {
+        "execution_traces_all_six_tasks": "complete_selected_observable_prefixes_with_provenance_limits",
+        "later_two_hour_reproduction_traces_task1_task2": "complete_separately_scoped_post_deadline_reference",
+        "prompts_and_visible_outputs": "complete_for_selected_observable_trace_scope",
+        "exact_organizer_prompt_conformance": "audited_with_non_exact_tasks",
+        "cross_task_rule_compliance": "audited_known_deviations_and_evidence_limits_remain",
+        "task4_rule_difference_audit": "complete_with_disclosed_prompt_process_and_hardware_limits",
+        "task6_exact_artifact_and_rule_audit": "exact_v3_artifacts_complete_measured_batch_behavior_disclosed_not_a_compliance_blocker",
+        "tool_calls_and_outputs": "complete_for_selected_observable_trace_scope",
+        "llms_used": "complete",
+        "api_costs": "token_accounting_complete_usd_unavailable",
+        "gpu_compute_and_costs_per_task": "remote_selected_scope_complete_local_h100_and_usd_incomplete",
+        "kaggle_extraction": "complete_external_archive",
+        "official_final_submission_results": "complete_score_reconciliation_not_all_results_trace_bound",
+        "human_intervention_exclusion": "complete_for_selected_scope",
+    }
+    assert set(requirements) == set(expected_requirement_statuses)
+    for name, expected_status in expected_requirement_statuses.items():
+        assert requirements[name]["status"] == expected_status, name
+
+    # Every path advertised in the organizer-facing requirements must resolve
+    # to a repository file. This prevents a green verifier when the checklist
+    # has drifted to a renamed, omitted, or mistyped deliverable.
+    for name, requirement in requirements.items():
+        advertised_paths: list[str] = []
+        if "path" in requirement:
+            advertised_paths.append(requirement["path"])
+        advertised_paths.extend(requirement.get("paths", []))
+        for key in ("selection_path", "manifest_path"):
+            if key in requirement:
+                advertised_paths.append(requirement[key])
+        assert advertised_paths, f"requirement has no evidence path: {name}"
+        for relative in advertised_paths:
+            target = (ROOT / relative).resolve()
+            assert target.is_relative_to(ROOT.resolve()), (name, relative)
+            assert target.is_file(), (name, relative)
+
+    assert requirements["execution_traces_all_six_tasks"]["paths"] == [
+        "AUTONOMOUS_TRACE_MATERIAL.md",
+        "AUTONOMOUS_TRACE_INDEX.json",
+    ]
+    assert requirements["later_two_hour_reproduction_traces_task1_task2"]["paths"] == [
+        "REPRODUCTION_TRACE_MATERIAL.md",
+        "REPRODUCTION_TRACE_INDEX.json",
+        "REPRODUCTION_COSTS.json",
+    ]
+    prompt_requirement = requirements["exact_organizer_prompt_conformance"]
+    assert prompt_requirement["strict_exact_prompt_tasks"] == ["task3", "task5", "task6"]
+    assert prompt_requirement["non_exact_prompt_tasks"] == ["task1", "task2", "task4"]
+    assert requirements["cross_task_rule_compliance"][
         "all_six_strictly_compliant_claim_supported"
     ] is False
-    assert checklist["requirements"]["api_costs"]["status"] == (
-        "token_accounting_complete_usd_unavailable"
+    tool_requirement = requirements["tool_calls_and_outputs"]
+    assert tool_requirement["event_types"] == [
+        "function_call",
+        "function_call_output",
+        "custom_tool_call",
+        "custom_tool_call_output",
+    ]
+    llm_requirement = requirements["llms_used"]
+    assert llm_requirement["model"] == "gpt-5.6-sol"
+    assert llm_requirement["provider"] == "ioai_allowed"
+    assert llm_requirement["reasoning_effort"] == {
+        "task1": "max",
+        "task2": "max",
+        "task3": "max",
+        "task4": "max",
+        "task5": "xhigh",
+        "task6": "xhigh",
+    }
+    assert requirements["api_costs"]["usd_total"] is None
+    assert requirements["human_intervention_exclusion"]["selection_path"] == (
+        "AUTONOMOUS_TRACE_INDEX.json"
     )
-    assert checklist["requirements"]["gpu_compute_and_costs_per_task"]["status"] == (
-        "remote_selected_scope_complete_local_h100_and_usd_incomplete"
+    assert requirements["human_intervention_exclusion"]["manifest_path"] == (
+        "AUTONOMOUS_MATERIAL_MANIFEST.sha256"
     )
     forbidden = ("你让他继续优化 找到高分了再提交", "Extend this run by 35 minutes")
     for path in ROOT.rglob("*"):

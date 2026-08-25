@@ -20,9 +20,11 @@ sha256sum -c REPRODUCTION_MATERIAL_MANIFEST.sha256
 
 `verify_repository.py` checks the six task packages, score records, selected
 trace boundaries, prompt classifications, event-type coverage, exact Task 6
-artifacts, extraction metadata, and all material hashes. It should print
-`"all_ok": true`. The repository must remain private while the restricted
-Task 3 competition bundle is present; see `task3/DATA_PROVENANCE.md`.
+artifacts, extraction metadata, all advertised checklist paths, and all
+material hashes. It also scans tracked text for common unredacted credentials
+and private endpoints. It should print `"all_ok": true`. The repository must
+remain private while the restricted Task 3 competition bundle is present; see
+`task3/DATA_PROVENANCE.md`.
 
 ## Six-task adjudication matrix
 
@@ -41,13 +43,16 @@ Task 3 competition bundle is present; see `task3/DATA_PROVENANCE.md`.
   `AUTONOMOUS_TRACE_INDEX.json`, and `AUTONOMOUS_MATERIAL_MANIFEST.sha256`.
 - Later Task 1/2 reproductions: `REPRODUCTION_TRACE_MATERIAL.md`,
   `REPRODUCTION_TRACE_INDEX.json`, and `REPRODUCTION_COSTS.json`.
-- Exact prompt comparison: `PROMPT_CONFORMANCE_AUDIT.md/json`.
-- Cross-task findings: `RULE_COMPLIANCE_AUDIT.md/json`.
+- Exact prompt comparison: `PROMPT_CONFORMANCE_AUDIT.md` and
+  `PROMPT_CONFORMANCE_AUDIT.json`.
+- Cross-task findings: `RULE_COMPLIANCE_AUDIT.md` and
+  `RULE_COMPLIANCE_AUDIT.json`.
 - Official account reconciliation: `FINAL_SUBMISSION_RESULTS.md` and each
   `taskN/remote/FINAL_ACCOUNT_RESULTS.json`.
-- Task 4 detailed audit: `task4/RULE_DIFFERENCE_AUDIT.md/json`.
+- Task 4 detailed audit: `task4/RULE_DIFFERENCE_AUDIT.md` and
+  `task4/RULE_DIFFERENCE_AUDIT.json`.
 - Task 6 artifact and evaluator evidence: `task6/ARTIFACT_PROVENANCE.json`,
-  `task6/RULE_DIFFERENCE_AUDIT.md/json`, and
+  `task6/RULE_DIFFERENCE_AUDIT.md`, `task6/RULE_DIFFERENCE_AUDIT.json`, and
   `task6/evidence/EVALUATOR_BATCHING_PROVENANCE.json`.
 - Extraction archive: `KAGGLE_EXTRACTION_DELIVERY.json` and the linked Drive
   archive. Its archive hash and size are recorded there and in the verifier.
