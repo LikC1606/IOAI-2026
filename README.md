@@ -39,6 +39,16 @@ compliant.
 | **Canonical autonomous rollout** | The selected no-live-human trace and result for the package's stated boundary; for Tasks 1–2 it is a later post-deadline reproduction, not the lost original run. |
 | **Historical/reproduction evidence** | Other preserved submissions, reports, source copies, or later runs retained for audit context but not substituted for the official result. |
 
+## Similar-looking index files
+
+| File | Use it for |
+|---|---|
+| [`EXECUTION_TRACE_INDEX.json`](EXECUTION_TRACE_INDEX.json) / [`EXECUTION_TRACE_INDEX.md`](EXECUTION_TRACE_INDEX.md) | One inventory of the 35 selected redacted trace files, event counts, tool-call counts, and token totals. |
+| [`AUTONOMOUS_TRACE_INDEX.json`](AUTONOMOUS_TRACE_INDEX.json) / [`AUTONOMOUS_TRACE_MATERIAL.md`](AUTONOMOUS_TRACE_MATERIAL.md) | The authoritative autonomous-scope classification: boundaries, prompt classes, exclusions, and exact-prompt status. |
+| [`REPRODUCTION_TRACE_INDEX.json`](REPRODUCTION_TRACE_INDEX.json) / [`REPRODUCTION_TRACE_MATERIAL.md`](REPRODUCTION_TRACE_MATERIAL.md) | The separate full later two-hour Task 1/2 reproductions; these are post-deadline reference material. |
+| [`COSTS.json`](COSTS.json) / [`AUTONOMOUS_COSTS.json`](AUTONOMOUS_COSTS.json) | Token, model, accelerator-runtime, and unavailable-USD fields for the selected 35-trace scope. |
+| [`REPRODUCTION_COSTS.json`](REPRODUCTION_COSTS.json) | Cost and token fields for the separate full Task 1/2 reproduction traces. |
+
 | Task | Competition | Official final Public LB | Status |
 |---|---|---:|---|
 | [Task 1](task1/) | `ioai-2026-task-1-westlake-nlp-24` | 0.77751 | Private 0.80474; tied refs `55267333` / `55267368`; final not trace-bound |
