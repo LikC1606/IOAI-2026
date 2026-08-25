@@ -8,17 +8,24 @@ known deviations, Jury-interpretation risks, and unavailable evidence; the
 current record does not support a claim that all six tasks are strictly
 compliant.
 
+> **Access note:** `task3/input/competition/` contains organizer data that is
+> restricted to authorized reviewers. Keep this repository private and follow
+> [`task3/DATA_PROVENANCE.md`](task3/DATA_PROVENANCE.md) before sharing or
+> publishing any copy.
+
 ## Recommended review order
 
 1. [`ORGANIZER_SUBMISSION.md`](ORGANIZER_SUBMISSION.md) — complete deliverable
    checklist and evidence links.
 2. [`FINAL_SUBMISSION_RESULTS.md`](FINAL_SUBMISSION_RESULTS.md) — official
    account results separated from autonomous and later reproduction results.
-3. [`RULE_COMPLIANCE_AUDIT.md`](RULE_COMPLIANCE_AUDIT.md) — cross-task scope,
-   prompt, provenance, budget, hardware, and reporting audit.
+3. [`RULE_COMPLIANCE_AUDIT.md`](RULE_COMPLIANCE_AUDIT.md) and
+   [`PROMPT_CONFORMANCE_AUDIT.md`](PROMPT_CONFORMANCE_AUDIT.md) — cross-task
+   scope, exact-prompt, provenance, budget, hardware, and reporting audits.
 4. [`AUTONOMOUS_TRACE_MATERIAL.md`](AUTONOMOUS_TRACE_MATERIAL.md) and
-   [`EXECUTION_TRACES.md`](EXECUTION_TRACES.md) — how to read the selected
-   traces, event envelopes, boundaries, and token accounting.
+   [`EXECUTION_TRACES.md`](EXECUTION_TRACES.md) — selected traces, event
+   envelopes, boundaries, and token accounting; see also
+   [`COSTS.json`](COSTS.json) for compute/accounting fields.
 5. `task1/` through `task6/` — task-specific source, outputs, reports, and
    compliance notes.
 6. [`KAGGLE_EXTRACTION_DELIVERY.json`](KAGGLE_EXTRACTION_DELIVERY.json) — the
