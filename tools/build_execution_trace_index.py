@@ -19,6 +19,7 @@ from typing import Any
 
 
 ROOT = Path(__file__).resolve().parents[1]
+TASK3_TOKEN_USAGE = ROOT / "task3/evidence/AUTONOMOUS_TOKEN_USAGE.json"
 DEFAULT_TASK6_RAW = Path(
     "/workspace/IOAI/ioai2-competition-runs-task6-20260809/"
     "ioai-2026-task-6-westlake-nlp-60/codex-home/sessions/2026/08/09"
@@ -183,10 +184,18 @@ def main() -> None:
     # formal pre-boundary rollout.
     task_roots["task1"].append(ROOT / "task1/evidence/submission-execution")
     task_roots["task6"] = [task6_output]
+    token_overrides: dict[str, dict[str, int]] = {}
+    if TASK3_TOKEN_USAGE.is_file():
+        token_data = json.loads(TASK3_TOKEN_USAGE.read_text(encoding="utf-8"))
+        token_overrides = {
+            item["repository_trace_path"]: item["token_usage"]
+            for item in token_data.get("traces", [])
+        }
+
     index: dict[str, Any] = {
         "schema": "ioai.execution-trace-index.v1",
         "generated_by": "tools/build_execution_trace_index.py",
-        "scope": "observable prompts, visible outputs, tool-call envelopes, and token telemetry",
+        "scope": "full observable trace package, including separately disclosed post-boundary material where present",
         "redaction": {
             "task1_to_task5": "repository-provided redacted traces",
             "task6": "credentials/private endpoints removed; encrypted_content replaced by an opaque placeholder",
@@ -202,7 +211,11 @@ def main() -> None:
                 role_hint = None
                 if "submission-execution" in path.parts:
                     role_hint = "agent-executed-after-supervision-boundary"
-                files.append(trace_record(path, relative, role_hint=role_hint))
+                record = trace_record(path, relative, role_hint=role_hint)
+                if relative in token_overrides:
+                    record["token_usage_cumulative_final"] = token_overrides[relative]
+                    record["token_usage_source"] = "task3/evidence/AUTONOMOUS_TOKEN_USAGE.json"
+                files.append(record)
         files.sort(key=lambda item: item["path"])
         all_tokens = [item["token_usage_cumulative_final"] for item in files if item["token_usage_cumulative_final"]]
         aggregate: dict[str, int] | None
@@ -223,7 +236,12 @@ def main() -> None:
             "message_counts": dict(sorted(sum((Counter(item["message_counts"]) for item in files), Counter()).items())),
             "models_observed": sorted({model for item in files for model in item["models_observed"]}),
             "token_usage_cumulative_sum_across_traces": aggregate,
-            "token_usage_note": "Task 3 is null because the repository redaction replaced token totals with [REDACTED].",
+            "token_usage_note": (
+                "Task 3 totals were recovered from the matching local private originals; "
+                "only aggregate telemetry and original hashes are published."
+                if task_name == "task3"
+                else "Final cumulative counters are summed once per trace."
+            ),
         }
 
     (ROOT / "EXECUTION_TRACE_INDEX.json").write_text(

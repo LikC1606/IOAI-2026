@@ -1,0 +1,68 @@
+{
+  "schema": "ioai.autonomous-token-usage.v1",
+  "competition": "ioai-2026-task-3-westlake-nlp-48",
+  "boundary_utc_exclusive": "2026-08-06T05:46:19.450Z",
+  "source_note": "Exact cumulative counters recovered from the matching local private originals after the run directory was moved under /workspace/IOAI/runs/historical. Raw originals are not published.",
+  "traces": [
+    {
+      "repository_trace_path": "task3/evidence/rollouts/rollout-2026-08-06T12-34-49-019fd55a-3edf-7801-b6a1-f1313393ff34.jsonl",
+      "private_original_sha256": "86122f5e248c14a6ec8a767d5510d3dcb3e84c84e7cd47b487d23734bb2e785c",
+      "counter_timestamp_utc": "2026-08-06T05:46:08.146Z",
+      "token_usage": {
+        "input_tokens": 29003653,
+        "cached_input_tokens": 25207296,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 82397,
+        "reasoning_output_tokens": 28407,
+        "total_tokens": 29086050
+      }
+    },
+    {
+      "repository_trace_path": "task3/evidence/rollouts/rollout-2026-08-06T12-40-25-019fd55f-61f3-74c2-a87f-66ce5288dc56.jsonl",
+      "private_original_sha256": "a9b518a97df12a376e3633859b92d7a8a20dedbfa8123e4f453a122131f11404",
+      "counter_timestamp_utc": "2026-08-06T05:36:36.503Z",
+      "token_usage": {
+        "input_tokens": 14544129,
+        "cached_input_tokens": 12544512,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 66424,
+        "reasoning_output_tokens": 16797,
+        "total_tokens": 14610553
+      }
+    },
+    {
+      "repository_trace_path": "task3/evidence/rollouts/rollout-2026-08-06T12-41-11-019fd560-1290-7bb1-af1d-8fd44c84aad5.jsonl",
+      "private_original_sha256": "8585adfffd4b3064ef66a6f66f63787ddd8fc73b1f570945eef122e1c0fd94b6",
+      "counter_timestamp_utc": "2026-08-06T05:11:59.166Z",
+      "token_usage": {
+        "input_tokens": 5997679,
+        "cached_input_tokens": 5398784,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 47689,
+        "reasoning_output_tokens": 14967,
+        "total_tokens": 6045368
+      }
+    },
+    {
+      "repository_trace_path": "task3/evidence/rollouts/rollout-2026-08-06T12-41-42-019fd560-8eec-78c1-92c9-3ab2e67b1bd8.jsonl",
+      "private_original_sha256": "1735693100b38bcd4c64b3d2e631d2a2d67b2de3581dd22ec0353628bbdef980",
+      "counter_timestamp_utc": "2026-08-06T05:08:04.127Z",
+      "token_usage": {
+        "input_tokens": 6586064,
+        "cached_input_tokens": 5929984,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 45265,
+        "reasoning_output_tokens": 12495,
+        "total_tokens": 6631329
+      }
+    }
+  ],
+  "aggregate": {
+    "input_tokens": 56131525,
+    "cached_input_tokens": 49080576,
+    "cache_write_input_tokens": 0,
+    "output_tokens": 241775,
+    "reasoning_output_tokens": 72666,
+    "total_tokens": 56373300
+  }
+}

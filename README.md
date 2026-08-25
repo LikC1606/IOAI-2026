@@ -16,20 +16,30 @@ No final leaderboard placement is claimed. Task 6's private score is shown only
 as a historical Kaggle submission field recovered by the later extraction; it is
 not presented as a final-board or ranking claim.
 
+The organizer-facing, human-intervention-free execution package starts at
+[AUTONOMOUS_TRACE_MATERIAL.md](AUTONOMOUS_TRACE_MATERIAL.md), with the
+machine-readable [AUTONOMOUS_TRACE_INDEX.json](AUTONOMOUS_TRACE_INDEX.json) and
+[AUTONOMOUS_COSTS.json](AUTONOMOUS_COSTS.json), verified by
+[AUTONOMOUS_MATERIAL_MANIFEST.sha256](AUTONOMOUS_MATERIAL_MANIFEST.sha256). It retains startup/organizer
+prompts, Agent outputs, worker assignments, tool calls, and tool outputs, but
+causally excludes every live human intervention prompt and all later events.
+
 Each directory contains its own README, official prompts/pages, environment
 record, solver evidence, solution artifacts, remote records, and summary.
-Tasks 1-5 retain their original SHA-256 manifests. Task 6 additionally includes
+Tasks 1-5 maintain task-specific SHA-256 manifests. Task 6 additionally includes
 the redacted five-trace set and compact v1-v3 remote logs; raw `codex-home`
 databases, model artifacts, and competition inputs are excluded. Task-specific
 limitations are disclosed in the corresponding README, `COMPLIANCE.md`,
 `EXCLUSIONS.md`, or boundary documents.
 
-The cross-task observable execution record is [EXECUTION_TRACES.md](EXECUTION_TRACES.md),
+The broader audit record, including separately disclosed supervised material,
+is [EXECUTION_TRACES.md](EXECUTION_TRACES.md),
 with machine-readable [EXECUTION_TRACE_INDEX.json](EXECUTION_TRACE_INDEX.json)
 and [EXECUTION_TRACE_INDEX.md](EXECUTION_TRACE_INDEX.md). Token counters,
 provider/model attribution, API-cost limitations, and GPU runtime accounting are
-in [COSTS.json](COSTS.json). USD API/GPU amounts are left `null` where no
-applicable rate or invoice exists.
+in [COSTS.json](COSTS.json). Do not use that broader index as the autonomous
+submission material. USD API/GPU amounts are left `null` where no applicable
+rate or invoice exists.
 
 These files are evidence for organizer review, not a self-issued compliance
 certificate. The organizer or Jury remains the final authority.

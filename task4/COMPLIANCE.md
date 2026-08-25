@@ -5,8 +5,10 @@ separates facts known at submission time from later platform observations.
 
 ## Eligible scope
 
-The formal solver used the organizer Starter Prompt and exact organizer
-Continuation Prompt. No human method suggestion was found in solver inputs.
+The formal solver used the organizer Starter Prompt and a preconfigured generic
+runtime resume template. The template contained no live human method, candidate,
+target-score, or forced-submission instruction. No human method suggestion was
+found in solver inputs.
 Submission `55316818` was sent at `2026-08-07T06:10:48.923Z`, 7 minutes 36
 seconds before the formal `06:18:25.517Z` deadline. Its Public LB is `98.41`;
 no Private/final LB is available in the captured records.

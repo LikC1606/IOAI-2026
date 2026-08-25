@@ -1,8 +1,10 @@
 # Task 3 execution traces and cost record
 
-This is the Task 3 entry point for the cross-task execution record. The full
-index is at [`../EXECUTION_TRACE_INDEX.md`](../EXECUTION_TRACE_INDEX.md), and
-the machine-readable cost ledger is [`../COSTS.json`](../COSTS.json).
+This is the Task 3 entry point for the cross-task execution record. The
+human-intervention-free selection is in
+[`../AUTONOMOUS_TRACE_INDEX.json`](../AUTONOMOUS_TRACE_INDEX.json), with costs
+in [`../AUTONOMOUS_COSTS.json`](../AUTONOMOUS_COSTS.json). The broader audit
+index remains at [`../EXECUTION_TRACE_INDEX.md`](../EXECUTION_TRACE_INDEX.md).
 
 ## Trace files
 
@@ -34,15 +36,20 @@ jq 'select(.type == "response_item" and (.payload.role == "user" or .payload.rol
 
 - Provider: `ioai_allowed`
 - Model: `gpt-5.6-sol`
-- Token total: unavailable. The four shareable traces replace cumulative token
-  counters with `[REDACTED]`; no exact total is recoverable from this package.
+- Token total: **56,373,300**. The four shareable JSONL traces replace their
+  counters with `[REDACTED]`, but exact cumulative totals were recovered from
+  matching local private originals after locating their moved historical run
+  directory. Per-trace totals and original hashes are published in
+  [`evidence/AUTONOMOUS_TOKEN_USAGE.json`](evidence/AUTONOMOUS_TOKEN_USAGE.json);
+  the credential-bearing originals are not published.
 - USD API cost: unavailable. No applicable provider rate card or invoice was
   captured, so no public model price is substituted.
-- GPU: none. The official v1-v8 notebook metadata has `enable_gpu=false`, with
-  recorded CPU runtime of 0 seconds and GPU cost of USD 0.
+- GPU: none. The official v1-v8 notebook metadata has `enable_gpu=false`, so
+  GPU runtime and GPU cost are both zero. CPU wall-clock is not represented as
+  GPU compute.
 
-This limitation is explicit rather than an estimate. The remaining event-level
-execution evidence is still complete within the redaction boundary. The exact
+The USD limitation is explicit rather than an estimate. The event-level
+execution evidence is complete within the redaction boundary. The exact
 submission scores and provenance are documented in [`README.md`](README.md),
 [`SUBMISSION_TIMELINE.md`](SUBMISSION_TIMELINE.md), and
 [`evidence/ROLLOUT_PROVENANCE.md`](evidence/ROLLOUT_PROVENANCE.md).

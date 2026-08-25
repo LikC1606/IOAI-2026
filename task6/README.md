@@ -44,6 +44,15 @@ copied into this repository.
 See the cross-task [execution trace index](../EXECUTION_TRACE_INDEX.json),
 [trace guide](../EXECUTION_TRACES.md), and [cost manifest](../COSTS.json).
 
+For the human-intervention-free submission material, the main trace stops
+strictly before `2026-08-08T18:09:48.833Z`, the first human-triggered resume
+prompt. The later 0.865/86.5 target prompt, every downstream event, and the two
+workers spawned after that resume are excluded. The bounded main prefix is in
+[`evidence/autonomous-only/`](evidence/autonomous-only/), and the authoritative
+selection is the root
+[`AUTONOMOUS_TRACE_INDEX.json`](../AUTONOMOUS_TRACE_INDEX.json). Versions v1-v3
+and their scores were already produced before this boundary.
+
 ## Remote provenance
 
 `remote/v1-kernel.log` through `remote/v3-kernel.log` are the compact logs for

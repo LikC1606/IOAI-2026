@@ -1,4 +1,4 @@
-"""Verify independent Task 1-5 manifests and core summary claims."""
+"""Verify task manifests, core score claims, and autonomous trace material."""
 from __future__ import annotations
 
 import hashlib
@@ -35,6 +35,45 @@ def verify_manifest(root: Path) -> int:
     return checked
 
 
+def verify_autonomous_material() -> dict[str, int]:
+    checked = 0
+    manifest = ROOT / "AUTONOMOUS_MATERIAL_MANIFEST.sha256"
+    for line in manifest.read_text(encoding="utf-8").splitlines():
+        expected, relative = line.split(maxsplit=1)
+        target = (ROOT / relative).resolve()
+        assert target.is_relative_to(ROOT.resolve()), relative
+        assert sha256(target) == expected, relative
+        checked += 1
+
+    index = json.loads((ROOT / "AUTONOMOUS_TRACE_INDEX.json").read_text(encoding="utf-8"))
+    trace_files = 0
+    events = 0
+    tokens = 0
+    for task, data in index["tasks"].items():
+        assert data["manual_human_prompt_events_included"] == 0, task
+        assert len(data["user_prompt_audit"]) == data["message_counts"].get("user", 0), task
+        boundary = data["boundary"]["exclusive_utc"]
+        task_tokens = 0
+        for trace in data["trace_files"]:
+            path = ROOT / trace["path"]
+            assert sha256(path) == trace["sha256"], trace["path"]
+            assert trace["last_timestamp"] < boundary, trace["path"]
+            task_tokens += trace["token_usage_cumulative_final"]["total_tokens"]
+            trace_files += 1
+            events += trace["event_count"]
+        assert task_tokens == data["token_usage_cumulative_sum_across_traces"]["total_tokens"], task
+        tokens += task_tokens
+
+    costs = json.loads((ROOT / "AUTONOMOUS_COSTS.json").read_text(encoding="utf-8"))
+    assert costs["known_token_total_all_tasks"] == tokens
+    return {
+        "manifest_files": checked,
+        "trace_files": trace_files,
+        "events": events,
+        "tokens": tokens,
+    }
+
+
 def main() -> None:
     report = {"tasks": {}}
     for task in range(1, 6):
@@ -55,6 +94,7 @@ def main() -> None:
             "manifest_files": verify_manifest(root),
             "recorded_score": score,
         }
+    report["autonomous_material"] = verify_autonomous_material()
     report["all_ok"] = True
     print(json.dumps(report, indent=2))
 

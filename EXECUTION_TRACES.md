@@ -1,6 +1,12 @@
 # Agent execution traces: Tasks 1–6
 
 This package records the observable execution of the six competition agents.
+For organizer-facing material with every live human intervention and its causal
+suffix excluded, use [`AUTONOMOUS_TRACE_MATERIAL.md`](AUTONOMOUS_TRACE_MATERIAL.md)
+and [`AUTONOMOUS_TRACE_INDEX.json`](AUTONOMOUS_TRACE_INDEX.json). This document
+describes the broader audit record and therefore includes Task 1's separately
+labelled supervised submission trace and Task 6's later continuation segment.
+
 The machine-readable index is [`EXECUTION_TRACE_INDEX.json`](EXECUTION_TRACE_INDEX.json);
 the individual JSONL files are under each `taskN/evidence/rollouts/` directory.
 Task 6 was imported from a local capture with
@@ -36,15 +42,18 @@ instructions are not evidence that another model executed the run.
 |---|---:|---:|---:|---:|---:|---:|
 | 1 | 2 | 775 | 5 / 40 | 16 (`wait` ×16) | 133 | 30,380,753 |
 | 2 | 1 | 705 | 3 / 27 | 4 (`wait` ×4) | 128 | 14,457,808 |
-| 3 | 4 | 2,427 | 8 / 48 | 135 | 373 | unavailable — redacted |
+| 3 | 4 | 2,427 | 8 / 48 | 135 | 373 | 56,373,300 — recovered aggregate |
 | 4 | 5 | 2,717 | 20 / 62 | 75 | 387 | 109,119,898 |
 | 5 | 14 | 4,705 | 28 / 140 | 131 | 409 | 160,243,108 |
 | 6 | 5 | 2,871 | 14 / 67 | 63 | 341 | 104,143,733 |
 
 The token column is the sum of the final cumulative counters from each trace in
 that task. It is not a sum of every intermediate `token_count` event. Task 3's
-redaction removed those counters, so its API cost cannot be reconstructed from
-the repository without inventing data.
+shareable JSONL redaction removed those counters, but the matching local private
+originals were recovered under `runs/historical`; their hashes match the
+recorded provenance. Only exact aggregate telemetry is published in
+[`task3/evidence/AUTONOMOUS_TOKEN_USAGE.json`](task3/evidence/AUTONOMOUS_TOKEN_USAGE.json),
+not the private originals.
 
 ## Observable tool-call mix
 

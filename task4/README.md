@@ -5,11 +5,12 @@ Competition: `ioai-2026-task-4-westlake-nlp-24`.
 For the consolidated rule, artifact, report-correction, and reproduction audit,
 start with `COMPLIANCE.md`.
 
-The formal run used the organizer Starter Prompt and exact organizer
-Continuation Prompt. No human method suggestion was found in solver-role inputs.
-The additional rollout files are autonomous workers and official-prompt resumes;
-they are included so the multi-agent provenance is inspectable rather than
-collapsed into a single narrative.
+The formal run used the organizer Starter Prompt plus a preconfigured generic
+runtime resume template. The resume template did not inject a human-selected
+method, candidate, score target, or forced-submission instruction. The
+additional rollout files are autonomous workers and runtime resumes; they are
+included so the multi-agent provenance is inspectable rather than collapsed
+into a single narrative.
 
 Eligible submissions:
 
