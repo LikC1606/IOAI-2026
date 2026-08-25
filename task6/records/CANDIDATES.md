@@ -2,10 +2,10 @@
 
 ## Breakthrough Objective
 
-Reach the requested **86.5 public-LB score** (0.865 normalized) by retaining the
+Improve the autonomous v3 Public score of **75.01540** by retaining the
 near-perfect entropy/background baseline and adding stable A/O/I accuracy under
-plausible geometry shifts. The current measurable bottleneck is a minimum
-11.5-point public gap, chiefly A/background support and hidden I geometry.
+plausible geometry shifts. The measured bottleneck is chiefly A/background
+support and hidden I geometry.
 
 ## Key Bottleneck And Score Budget
 

@@ -1,0 +1,47 @@
+{
+  "schema": "ioai.kaggle-account-result-reconciliation.v1",
+  "task": 5,
+  "competition": "ioai-2026-task-5-westlake-nlp-24",
+  "account": "researai",
+  "extraction_source_sha256": "d72861924dd58ad649c70bca45cdcda276253d88a5dcd2a51cb8da402b5b5820",
+  "official_competition_deadline_utc": "2026-08-07T09:00:00Z",
+  "agent_run_deadline_utc": "2026-08-07T09:04:20.519Z",
+  "submission_counts": {
+    "all_account": 7,
+    "before_official_deadline": 6,
+    "after_official_deadline": 1,
+    "before_agent_run_deadline": 7,
+    "autonomous": 7
+  },
+  "official_final_result": {
+    "selection_basis": "highest Public score among submissions sent before the official deadline",
+    "submission_refs": [55320296],
+    "public_score": 95.39,
+    "private_score": 96.06
+  },
+  "official_deadline_best_public_and_private": {
+    "submission_ref": 55320296,
+    "submitted_at_utc": "2026-08-07T08:43:46.740Z",
+    "seconds_before_official_deadline": 973.26,
+    "public_score": 95.39,
+    "private_score": 96.06,
+    "description": "all-label fine-tuned local BGE sequence refit"
+  },
+  "all_account_best_public": {
+    "submission_ref": 55320296,
+    "public_score": 95.39,
+    "private_score": 96.06
+  },
+  "latest_account_and_best_private": {
+    "submission_ref": 55320652,
+    "submitted_at_utc": "2026-08-07T09:02:01.927Z",
+    "seconds_after_official_deadline": 121.927,
+    "seconds_before_agent_run_deadline": 138.592,
+    "public_score": 94.17,
+    "private_score": 96.31,
+    "official_deadline_eligible": false,
+    "autonomous": true,
+    "description": "fine-tuned BGE local neural transition decoder"
+  },
+  "selection_note": "Under the automatic highest-Public-before-deadline rule, version 6 is the official final result. Version 7 is the chronological last submission and all-account best Private score but was submitted after the official competition deadline."
+}

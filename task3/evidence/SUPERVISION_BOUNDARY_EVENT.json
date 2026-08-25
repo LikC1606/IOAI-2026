@@ -1,1 +1,10 @@
-{"timestamp":"2026-08-06T05:46:19.450Z","type":"response_item","payload":{"type":"message","role":"user","content":[{"type":"input_text","text":"对的 修正一下。然后用 continue prompt 让它重新读agent.md 后继续"}]}}
+{
+  "schema": "ioai.excluded-supervision-boundary.v1",
+  "timestamp": "2026-08-06T05:46:19.450Z",
+  "event_type": "response_item.message",
+  "role": "user",
+  "classification": "first_non_read_only_supervisory_instruction",
+  "content_in_repository": false,
+  "content_sha256": "f1315a23c0537eea48b8c61c35e8776d6ff57a7a0faa976b036dad120dfbb7b8",
+  "policy": "The prompt body and every causally downstream event are excluded from organizer-facing material."
+}

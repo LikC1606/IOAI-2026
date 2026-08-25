@@ -16,10 +16,19 @@ The document-edit/reread instruction itself is therefore classified as a rule
 violation for the autonomous claim, rather than as part of the allowed startup.
 
 The eight fully scored pre-boundary submissions are v1-v8. The highest verified
-Public Leaderboard score is **58.51666**, reached independently by v4 and v8.
+Public Leaderboard score is **58.51666** and the corresponding extracted Private
+score is **51.61666**, reached independently by v4 and v8.
 Submission IDs are 55289569 and 55289823. v8 removes the practice-centroid prior
 while preserving the v4 likelihood/acquisition mechanism, so the tie is useful
 ablation evidence.
+
+The later Kaggle extraction found 27 account submissions in total. This does not
+change the autonomous claim. Chronologically, the account's last submission is
+`55306794` (Public `41.16666`, Private `41.15000`); the highest Private score
+among all account submissions is `55.48333` on `55290027`, submitted 67.763
+seconds after the autonomy boundary but before the official competition
+deadline. Exact autonomous, official-deadline, all-account-best, and latest
+account scopes are separated in `remote/FINAL_ACCOUNT_RESULTS.json`.
 
 Start with these documents:
 

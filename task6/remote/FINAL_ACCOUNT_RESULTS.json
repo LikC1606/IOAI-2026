@@ -1,0 +1,63 @@
+{
+  "schema": "ioai.kaggle-account-result-reconciliation.v1",
+  "task": 6,
+  "competition": "ioai-2026-task-6-westlake-nlp-60",
+  "account": "researai",
+  "extraction_source_sha256": "220c181eafc7be3db00a8bc1a955c7af351d62e3e73384fb0adfbf941221b50f",
+  "official_competition_deadline_utc": "2026-08-08T18:30:00Z",
+  "agent_run_deadline_utc": "2026-08-08T18:23:20.900Z",
+  "autonomy_boundary_utc_exclusive": "2026-08-08T18:09:48.833Z",
+  "submission_counts": {
+    "all_account": 6,
+    "before_official_deadline": 4,
+    "after_official_deadline": 2,
+    "before_autonomy_boundary": 3,
+    "after_autonomy_boundary_before_agent_run_deadline": 1
+  },
+  "official_final_result": {
+    "selection_basis": "highest Public score among submissions sent before the official deadline",
+    "submission_refs": [55357080],
+    "public_score": 75.0154,
+    "private_score": 73.36234
+  },
+  "autonomous_and_official_deadline_best": {
+    "submission_ref": 55357080,
+    "submitted_at_utc": "2026-08-08T17:48:06.160Z",
+    "public_score": 75.0154,
+    "private_score": 73.36234,
+    "description": "Lane-density conditioned hidden-shift model"
+  },
+  "excluded_post_autonomy_pre_run_deadline_submission": {
+    "submission_ref": 55357740,
+    "submitted_at_utc": "2026-08-08T18:22:30.080Z",
+    "seconds_before_official_deadline": 449.92,
+    "public_score": 58.15133,
+    "private_score": 57.05126,
+    "autonomous": false,
+    "description": "hard-routed Fourier model with dropout entropy branch"
+  },
+  "post_official_deadline_submissions": [
+    {
+      "submission_ref": 55358042,
+      "submitted_at_utc": "2026-08-08T18:39:24.750Z",
+      "public_score": 76.03525,
+      "private_score": 73.2578
+    },
+    {
+      "submission_ref": 55358739,
+      "submitted_at_utc": "2026-08-08T19:23:10.690Z",
+      "public_score": 76.41428,
+      "private_score": 73.74666
+    }
+  ],
+  "latest_account_and_all_account_best": {
+    "submission_ref": 55358739,
+    "submitted_at_utc": "2026-08-08T19:23:10.690Z",
+    "public_score": 76.41428,
+    "private_score": 73.74666,
+    "official_deadline_eligible": false,
+    "autonomous": false,
+    "description": "19,592-parameter density-conditioned routed model with bounded dropout entropy"
+  },
+  "selection_note": "Under the automatic highest-Public-before-deadline rule, 55357080 is the official final result. The chronological last and all-account numerical best is the post-deadline 55358739."
+}

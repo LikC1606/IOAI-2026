@@ -1,10 +1,10 @@
 {
   "schema": "ioai.execution-trace-index.v1",
   "generated_by": "tools/build_execution_trace_index.py",
-  "scope": "full observable trace package, including separately disclosed post-boundary material where present",
+  "scope": "published observable trace package; Task 1 has a separately disclosed supervised segment, while Task 6 is autonomous-only",
   "redaction": {
     "task1_to_task5": "repository-provided redacted traces",
-    "task6": "credentials/private endpoints removed; encrypted_content replaced by an opaque placeholder",
+    "task6": "pre-human-intervention prefix only; credentials/private endpoints removed; encrypted_content replaced by an opaque placeholder",
     "raw_task6_not_in_repository": true
   },
   "tasks": {
@@ -413,8 +413,7 @@
             "exec": 277
           },
           "models_observed": [
-            "gpt-5.6-sol",
-            "gpt-5.6-sol-max"
+            "gpt-5.6-sol"
           ],
           "token_usage_cumulative_final": {
             "input_tokens": 48595136,
@@ -538,8 +537,7 @@
             "exec": 14
           },
           "models_observed": [
-            "gpt-5.6-sol",
-            "gpt-5.6-terra"
+            "gpt-5.6-sol"
           ],
           "token_usage_cumulative_final": {
             "input_tokens": 27014281,
@@ -603,9 +601,7 @@
         "user": 20
       },
       "models_observed": [
-        "gpt-5.6-sol",
-        "gpt-5.6-sol-max",
-        "gpt-5.6-terra"
+        "gpt-5.6-sol"
       ],
       "token_usage_cumulative_sum_across_traces": {
         "input_tokens": 108797282,
@@ -1225,49 +1221,49 @@
     "task6": {
       "trace_files": [
         {
-          "path": "task6/evidence/rollouts/rollout-2026-08-09T00-23-24-019fe22f-b2b8-7191-a6ec-39dea000da9f.jsonl",
-          "sha256": "80e17c82be60a61fb363353f4e417e2814029af2b49d8a63c3ff6fcf6e92dca7",
+          "path": "task6/evidence/autonomous-only/rollout-2026-08-09T00-23-24-019fe22f-b2b8-7191-a6ec-39dea000da9f-autonomous-prefix.jsonl",
+          "sha256": "56884e23ad8cb17ab5227cc3ba2e550ac907fd6b65d2983f0dc6be2c59a6507b",
           "role": "main",
-          "event_count": 1348,
+          "event_count": 1173,
           "event_types": {
             "compacted": 1,
-            "event_msg": 409,
+            "event_msg": 352,
             "inter_agent_communication_metadata": 12,
-            "response_item": 913,
+            "response_item": 799,
             "session_meta": 1,
-            "turn_context": 4,
-            "world_state": 8
+            "turn_context": 3,
+            "world_state": 5
           },
           "first_timestamp": "2026-08-08T16:23:24.789Z",
-          "last_timestamp": "2026-08-08T18:23:18.088Z",
+          "last_timestamp": "2026-08-08T18:09:48.770Z",
           "message_counts": {
-            "assistant": 37,
+            "assistant": 29,
             "developer": 3,
-            "user": 4
+            "user": 2
           },
-          "logical_function_calls": 36,
+          "logical_function_calls": 27,
           "logical_function_call_names": {
-            "followup_task": 3,
-            "list_agents": 5,
-            "send_message": 4,
-            "spawn_agent": 4,
-            "wait": 18,
+            "followup_task": 2,
+            "list_agents": 3,
+            "send_message": 2,
+            "spawn_agent": 2,
+            "wait": 16,
             "wait_agent": 2
           },
-          "exec_wrapper_custom_tool_calls": 236,
+          "exec_wrapper_custom_tool_calls": 212,
           "custom_tool_call_names": {
-            "exec": 236
+            "exec": 212
           },
           "models_observed": [
             "gpt-5.6-sol"
           ],
           "token_usage_cumulative_final": {
-            "input_tokens": 32237637,
-            "cached_input_tokens": 29907200,
+            "input_tokens": 29321227,
+            "cached_input_tokens": 27202048,
             "cache_write_input_tokens": 0,
-            "output_tokens": 101809,
-            "reasoning_output_tokens": 32476,
-            "total_tokens": 32339446
+            "output_tokens": 88987,
+            "reasoning_output_tokens": 27965,
+            "total_tokens": 29410214
           }
         },
         {
@@ -1352,106 +1348,28 @@
             "reasoning_output_tokens": 21070,
             "total_tokens": 5646611
           }
-        },
-        {
-          "path": "task6/evidence/rollouts/rollout-2026-08-09T02-10-50-019fe292-0fce-7f73-9f85-0bfc38fe76dd.jsonl",
-          "sha256": "839e71c808b6712fd5d98ed58f8af597992552e0ddc0f15e669915b2a87ea04a",
-          "role": "subagent",
-          "event_count": 418,
-          "event_types": {
-            "compacted": 1,
-            "event_msg": 370,
-            "inter_agent_communication_metadata": 4,
-            "response_item": 31,
-            "session_meta": 2,
-            "turn_context": 4,
-            "world_state": 6
-          },
-          "first_timestamp": "2026-08-08T18:10:51.003Z",
-          "last_timestamp": "2026-08-08T18:14:00.932Z",
-          "message_counts": {
-            "assistant": 3,
-            "developer": 5,
-            "user": 3
-          },
-          "logical_function_calls": 0,
-          "logical_function_call_names": {},
-          "exec_wrapper_custom_tool_calls": 5,
-          "custom_tool_call_names": {
-            "exec": 5
-          },
-          "models_observed": [
-            "gpt-5.6-sol"
-          ],
-          "token_usage_cumulative_final": {
-            "input_tokens": 29633254,
-            "cached_input_tokens": 27484928,
-            "cache_write_input_tokens": 0,
-            "output_tokens": 91889,
-            "reasoning_output_tokens": 28661,
-            "total_tokens": 29725143
-          }
-        },
-        {
-          "path": "task6/evidence/rollouts/rollout-2026-08-09T02-12-36-019fe293-ac6b-7451-a0a4-39d4cae3e7f0.jsonl",
-          "sha256": "64620cee9f356d1ecc8a3b464cdb5ec2f9d6a1e800c8202f7aec6fd4ce6c1dc5",
-          "role": "subagent",
-          "event_count": 410,
-          "event_types": {
-            "compacted": 1,
-            "event_msg": 375,
-            "inter_agent_communication_metadata": 1,
-            "response_item": 20,
-            "session_meta": 2,
-            "turn_context": 4,
-            "world_state": 7
-          },
-          "first_timestamp": "2026-08-08T18:12:36.631Z",
-          "last_timestamp": "2026-08-08T18:13:55.911Z",
-          "message_counts": {
-            "assistant": 2,
-            "developer": 5,
-            "user": 3
-          },
-          "logical_function_calls": 0,
-          "logical_function_call_names": {},
-          "exec_wrapper_custom_tool_calls": 3,
-          "custom_tool_call_names": {
-            "exec": 3
-          },
-          "models_observed": [
-            "gpt-5.6-sol"
-          ],
-          "token_usage_cumulative_final": {
-            "input_tokens": 30026000,
-            "cached_input_tokens": 27879936,
-            "cache_write_input_tokens": 0,
-            "output_tokens": 91499,
-            "reasoning_output_tokens": 28667,
-            "total_tokens": 30117499
-          }
         }
       ],
       "canonical_model": "gpt-5.6-sol",
       "model_provider": "ioai_allowed",
-      "event_count": 2871,
-      "logical_function_calls": 63,
-      "exec_wrapper_custom_tool_calls": 341,
+      "event_count": 1868,
+      "logical_function_calls": 54,
+      "exec_wrapper_custom_tool_calls": 309,
       "message_counts": {
-        "assistant": 67,
-        "developer": 23,
-        "user": 14
+        "assistant": 54,
+        "developer": 13,
+        "user": 6
       },
       "models_observed": [
         "gpt-5.6-sol"
       ],
       "token_usage_cumulative_sum_across_traces": {
-        "input_tokens": 103777170,
-        "cached_input_tokens": 95957888,
+        "input_tokens": 41201506,
+        "cached_input_tokens": 37887872,
         "cache_write_input_tokens": 0,
-        "output_tokens": 366563,
-        "reasoning_output_tokens": 123021,
-        "total_tokens": 104143733
+        "output_tokens": 170353,
+        "reasoning_output_tokens": 61182,
+        "total_tokens": 41371859
       },
       "token_usage_note": "Final cumulative counters are summed once per trace."
     }

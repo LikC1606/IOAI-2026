@@ -1,0 +1,55 @@
+{
+  "schema": "ioai.kaggle-account-result-reconciliation.v1",
+  "task": 3,
+  "competition": "ioai-2026-task-3-westlake-nlp-48",
+  "account": "researai",
+  "extraction_source_sha256": "b1492e3213fad6ae0c77a2a97f02e4e39542f18b9aee950af1349d55cd60588e",
+  "official_competition_deadline_utc": "2026-08-06T06:30:00Z",
+  "autonomy_boundary_utc_exclusive": "2026-08-06T05:46:19.450Z",
+  "submission_counts": {
+    "all_account": 27,
+    "before_official_deadline": 11,
+    "after_official_deadline": 16,
+    "before_autonomy_boundary": 8
+  },
+  "official_final_result": {
+    "selection_basis": "highest Public score among submissions sent before the official deadline",
+    "submission_refs": [55289569, 55289823],
+    "public_score": 58.51666,
+    "private_score": 51.61666,
+    "tie_note": "The extraction does not expose the selected-for-final flag; both eligible tied submissions have identical Public and Private scores."
+  },
+  "autonomous_result": {
+    "best_public_score": 58.51666,
+    "corresponding_private_score": 51.61666,
+    "submission_refs": [55289569, 55289823]
+  },
+  "official_deadline_best_public": {
+    "score": 58.51666,
+    "submission_refs": [55289569, 55289823]
+  },
+  "official_deadline_best_private": {
+    "score": 55.48333,
+    "submission_ref": 55290027,
+    "public_score": 53.43333,
+    "submitted_at_utc": "2026-08-06T05:47:27.213Z",
+    "autonomous": false
+  },
+  "all_account_best_public": {
+    "score": 58.51666,
+    "submission_refs": [55289569, 55289823, 55297433, 55305269]
+  },
+  "all_account_best_private": {
+    "score": 55.48333,
+    "submission_ref": 55290027,
+    "public_score": 53.43333
+  },
+  "latest_account_submission": {
+    "submission_ref": 55306794,
+    "submitted_at_utc": "2026-08-06T20:45:05.597Z",
+    "public_score": 41.16666,
+    "private_score": 41.15,
+    "description": "mechanism probe: block uncertainty ensemble soft posterior"
+  },
+  "selection_note": "The official final score follows the competition's automatic highest-Public-before-deadline rule. The extraction does not expose which tied Task 3 ref Kaggle selected; latest, best Private, and autonomous scopes remain separate."
+}

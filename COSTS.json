@@ -1,6 +1,6 @@
 {
   "schema": "ioai.execution-costs.v1",
-  "scope": "the broader observable trace package, including separately disclosed post-boundary segments where present; use AUTONOMOUS_COSTS.json for human-intervention-free material",
+  "scope": "the published observable trace package; Task 1 includes its separately disclosed supervised submission segment, while Task 6 is autonomous-only; use AUTONOMOUS_COSTS.json for the uniformly human-intervention-free selection",
   "currency": "USD",
   "api_cost_method": "token telemetry is reported exactly where available; no substitute public model price is applied",
   "api_cost_formula_if_provider_rates_are_supplied": "(input_tokens-cached_input_tokens)/1e6*input_rate + cached_input_tokens/1e6*cached_input_rate + output_tokens/1e6*output_rate",
@@ -12,7 +12,7 @@
   "api_cost_usd_total": null,
   "api_cost_total_status": "unavailable_no_provider_invoice_or_applicable_public_rate",
   "api_cost_total_reason": "The traces identify the private/competition provider ioai_allowed and gpt-5.6-sol, while the available public pricing page does not price that model. No invoice, rate card, or per-run charge is present in the evidence. gpt-5.3-codex public prices must not be substituted.",
-  "known_token_total_all_tasks": 474718600,
+  "known_token_total_all_tasks": 411946726,
   "gpu_cost_usd_total": null,
   "gpu_cost_total_status": "unavailable_no_cloud_invoice_or_rate",
   "gpu_cost_total_reason": "The records expose Kaggle machine type and notebook wall-clock runtime, but no user cloud invoice, GPU utilization trace, or contract rate.",
@@ -136,12 +136,12 @@
       "competition": "ioai-2026-task-6-westlake-nlp-60",
       "model": "gpt-5.6-sol",
       "token_usage": {
-        "input_tokens": 103777170,
-        "cached_input_tokens": 95957888,
+        "input_tokens": 41201506,
+        "cached_input_tokens": 37887872,
         "cache_write_input_tokens": 0,
-        "output_tokens": 366563,
-        "reasoning_output_tokens": 123021,
-        "total_tokens": 104143733
+        "output_tokens": 170353,
+        "reasoning_output_tokens": 61182,
+        "total_tokens": 41371859
       },
       "api_cost_usd": null,
       "api_cost_status": "unavailable_unpriced_ioai_provider",

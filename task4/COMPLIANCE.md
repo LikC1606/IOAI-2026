@@ -9,9 +9,10 @@ The formal solver used the organizer Starter Prompt and a preconfigured generic
 runtime resume template. The template contained no live human method, candidate,
 target-score, or forced-submission instruction. No human method suggestion was
 found in solver inputs.
-Submission `55316818` was sent at `2026-08-07T06:10:48.923Z`, 7 minutes 36
-seconds before the formal `06:18:25.517Z` deadline. Its Public LB is `98.41`;
-no Private/final LB is available in the captured records.
+Submission `55316818` was sent at `2026-08-07T06:10:48.923Z`, 251.077 seconds
+before the official Kaggle deadline at `06:15:00Z` and 456.594 seconds before
+the agent-run deadline at `06:18:25.517Z`. Its extracted scores are Public
+`98.41` and Private `98.32`.
 
 ## Submission and resource audit
 
@@ -45,7 +46,9 @@ two Public scores and estimates the refined T4 runtime because version 4's own
 result was not yet known. Post-run evidence establishes version 4 Public LB
 `98.41` and actual remote runtime about 316 seconds. Those later facts are
 documented here rather than inserted into the immutable source report. No
-Private score is inferred from the local checks or Public LB.
+Private score is inferred from the local checks or Public LB; the `98.32` value
+comes directly from the later Kaggle extraction recorded in
+`remote/FINAL_ACCOUNT_RESULTS.json`.
 
 ## Reproduce
 

@@ -9,19 +9,15 @@ appears in the solver's output.
 
 The first non-read-only supervisory instruction was received by the controlling
 session at **2026-08-06 13:46:19.450 CST**
-(`2026-08-06T05:46:19.450Z`):
-
-> 对的 修正一下。然后用 continue prompt 让它重新读agent.md 后继续
-
-The exact redacted event is preserved in
+(`2026-08-06T05:46:19.450Z`). Its prompt body is not published. The timestamp,
+classification, and SHA-256 of the excluded body are preserved in
 `evidence/SUPERVISION_BOUNDARY_EVENT.json`. Although the solver did not receive
 the modified instructions until later, this package adopts the earlier external
 supervision time. This is deliberately stricter than a “first method injection”
 boundary.
 
-The follow-up at `2026-08-06T05:50:50.061Z` (“use the official Continue Prompt,
-but add reread `agent.md`”) is also excluded. It confirms the interpretation but
-does not move the boundary later.
+The later custom continuation is also excluded. It confirms the interpretation
+but does not move the boundary later.
 
 Read-only status requests and observations did not send messages to or alter the
 running solver. They are therefore not solver inputs. Once the message above was
@@ -54,7 +50,7 @@ and does not substitute the later, fuller project file.
 Three child-agent rollouts were created autonomously by the main solver and are
 included because they began and finished before the boundary. Their tasks came
 from the main solver, not from human messages. All included rollout events have
-timestamps at or before the boundary.
+timestamps strictly before the boundary.
 
 ## Included score claim
 
@@ -67,5 +63,7 @@ unsubmitted research candidate. It is not represented as a scored result.
 
 ## Scope after the boundary
 
-The package stops at the boundary. It does not inspect or make claims about any
-later Task 3 activity. See `EXCLUSIONS.md`.
+The autonomous trace package stops at the boundary. Later account submissions
+are reported only as post-run Kaggle accounting in
+`remote/FINAL_ACCOUNT_RESULTS.json`; they are not solver inputs or autonomous
+score evidence. See `EXCLUSIONS.md`.

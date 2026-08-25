@@ -1,11 +1,12 @@
 #!/usr/bin/env python3
-"""Index observable agent traces and import a redacted Task 6 trace set.
+"""Index the observable agent traces selected for repository publication.
 
-The repository already contains redacted Task 1--5 JSONL files.  Task 6 was
-captured locally, so this helper copies it into the package after removing
-credentials, private transport endpoints, and opaque encrypted reasoning.
-The JSONL events retain user/developer prompts, visible assistant messages,
-tool-call envelopes, tool outputs, timestamps, and token-count telemetry.
+Task 6 was captured locally and redacted before publication.  Its repository
+selection contains only the prefix before the first live human intervention;
+the complete source and post-intervention worker traces remain outside the
+repository.  The selected JSONL events retain startup/organizer prompts,
+visible assistant messages, tool-call envelopes, tool outputs, timestamps,
+and token-count telemetry.
 """
 from __future__ import annotations
 
@@ -129,8 +130,10 @@ def trace_record(path: Path, relative: str, role_hint: str | None = None) -> dic
             meta = payload
             if role is None:
                 role = "subagent" if meta.get("thread_source") == "subagent" else "main"
-        text = json.dumps(event, ensure_ascii=False)
-        models.update(re.findall(r"\bgpt-[0-9]+\.[0-9]+-[A-Za-z0-9-]+\b", text))
+        # Only turn_context identifies the model executing this trace. Model
+        # names printed by unrelated shell processes are not execution evidence.
+        if event.get("type") == "turn_context" and isinstance(payload.get("model"), str):
+            models.add(payload["model"])
     return {
         "path": relative,
         "sha256": sha256(path),
@@ -149,32 +152,9 @@ def trace_record(path: Path, relative: str, role_hint: str | None = None) -> dic
     }
 
 
-def import_task6(raw_dir: Path, output_dir: Path) -> list[Path]:
-    output_dir.mkdir(parents=True, exist_ok=True)
-    imported: list[Path] = []
-    for source in sorted(raw_dir.glob("*.jsonl")):
-        target = output_dir / source.name
-        with source.open(encoding="utf-8") as source_handle, target.open("w", encoding="utf-8") as target_handle:
-            for line in source_handle:
-                if not line.strip():
-                    continue
-                target_handle.write(
-                    json.dumps(redact(json.loads(line)), ensure_ascii=False, separators=(",", ":"))
-                    + "\n"
-                )
-        imported.append(target)
-    return imported
-
-
 def main() -> None:
     parser = argparse.ArgumentParser()
-    parser.add_argument("--task6-raw", type=Path, default=DEFAULT_TASK6_RAW)
-    args = parser.parse_args()
-
-    task6_output = ROOT / "task6/evidence/rollouts"
-    if not args.task6_raw.is_dir():
-        raise SystemExit(f"Task 6 raw trace directory not found: {args.task6_raw}")
-    import_task6(args.task6_raw, task6_output)
+    parser.parse_args()
 
     task_roots: dict[str, list[Path]] = {
         f"task{task}": [ROOT / f"task{task}/evidence/rollouts"] for task in range(1, 6)
@@ -183,7 +163,10 @@ def main() -> None:
     # It is part of the observable run and must be counted separately from the
     # formal pre-boundary rollout.
     task_roots["task1"].append(ROOT / "task1/evidence/submission-execution")
-    task_roots["task6"] = [task6_output]
+    task_roots["task6"] = [
+        ROOT / "task6/evidence/autonomous-only",
+        ROOT / "task6/evidence/rollouts",
+    ]
     token_overrides: dict[str, dict[str, int]] = {}
     if TASK3_TOKEN_USAGE.is_file():
         token_data = json.loads(TASK3_TOKEN_USAGE.read_text(encoding="utf-8"))
@@ -195,10 +178,10 @@ def main() -> None:
     index: dict[str, Any] = {
         "schema": "ioai.execution-trace-index.v1",
         "generated_by": "tools/build_execution_trace_index.py",
-        "scope": "full observable trace package, including separately disclosed post-boundary material where present",
+        "scope": "published observable trace package; Task 1 has a separately disclosed supervised segment, while Task 6 is autonomous-only",
         "redaction": {
             "task1_to_task5": "repository-provided redacted traces",
-            "task6": "credentials/private endpoints removed; encrypted_content replaced by an opaque placeholder",
+            "task6": "pre-human-intervention prefix only; credentials/private endpoints removed; encrypted_content replaced by an opaque placeholder",
             "raw_task6_not_in_repository": True,
         },
         "tasks": {},

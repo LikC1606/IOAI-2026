@@ -1,0 +1,36 @@
+{
+  "schema": "ioai.excluded-supervised-trace-provenance.v1",
+  "autonomy_boundary_utc_exclusive": "2026-08-08T18:09:48.833Z",
+  "excluded_prompt_bodies_in_repository": false,
+  "excluded_prompt_hashes": [
+    {
+      "timestamp": "2026-08-08T18:09:48.833Z",
+      "classification": "first_human_triggered_resume",
+      "sha256": "d8e078c7874adfe709ad55f2e4c469797a25ef6bb84f83348924ec95bfe8ab69"
+    },
+    {
+      "timestamp": "2026-08-08T18:14:21.148Z",
+      "classification": "human_target_score_continuation",
+      "sha256": "acc03a4f2dafce7ce2c7020b0e52cbf356632b03c4a90ac54eda49cfe3e8ff10"
+    }
+  ],
+  "excluded_trace_sources": [
+    {
+      "former_repository_path": "task6/evidence/rollouts/rollout-2026-08-09T00-23-24-019fe22f-b2b8-7191-a6ec-39dea000da9f.jsonl",
+      "sha256": "80e17c82be60a61fb363353f4e417e2814029af2b49d8a63c3ff6fcf6e92dca7",
+      "reason": "complete main trace contains the excluded prompts and causal suffix"
+    },
+    {
+      "former_repository_path": "task6/evidence/rollouts/rollout-2026-08-09T02-10-50-019fe292-0fce-7f73-9f85-0bfc38fe76dd.jsonl",
+      "sha256": "839e71c808b6712fd5d98ed58f8af597992552e0ddc0f15e669915b2a87ea04a",
+      "reason": "worker spawned after the first human-triggered resume"
+    },
+    {
+      "former_repository_path": "task6/evidence/rollouts/rollout-2026-08-09T02-12-36-019fe293-ac6b-7451-a0a4-39d4cae3e7f0.jsonl",
+      "sha256": "64620cee9f356d1ecc8a3b464cdb5ec2f9d6a1e800c8202f7aec6fd4ce6c1dc5",
+      "reason": "worker spawned after the human target-score continuation"
+    }
+  ],
+  "published_main_prefix": "task6/evidence/autonomous-only/rollout-2026-08-09T00-23-24-019fe22f-b2b8-7191-a6ec-39dea000da9f-autonomous-prefix.jsonl",
+  "policy": "Only the strict pre-boundary main prefix and workers created before the boundary are published."
+}

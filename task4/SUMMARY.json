@@ -4,7 +4,18 @@
   "competition": "ioai-2026-task-4-westlake-nlp-24",
   "account_owner": "researai",
   "boundary_utc_exclusive": "2026-08-07T06:18:25.517Z",
+  "boundary_type": "agent_run_deadline",
+  "official_competition_deadline_utc": "2026-08-07T06:15:00Z",
+  "official_final_submission_refs": [55316818],
+  "official_final_public_score": 98.41,
+  "official_final_private_score": 98.32,
   "best_submission_ref": 55316818,
   "best_public_score": 98.41,
+  "best_private_score": 98.32,
+  "latest_account_submission_ref": 55316818,
+  "account_submission_count": 3,
+  "submissions_before_official_deadline": 3,
+  "submissions_after_official_deadline": 0,
+  "final_account_results": "remote/FINAL_ACCOUNT_RESULTS.json",
   "historical_remote_source_retrievable": true
 }

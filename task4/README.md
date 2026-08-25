@@ -14,15 +14,16 @@ into a single narrative.
 
 Eligible submissions:
 
-| Kernel version | Submission | UTC sent | Public LB |
-|---:|---:|---|---:|
-| 1 | 55315359 | 05:08:49.403 | 98.23 |
-| 2 | 55316194 | 05:41:32.143 | 98.36 |
-| 4 | 55316818 | 06:10:48.923 | **98.41** |
+| Kernel version | Submission | UTC sent | Public LB | Private LB |
+|---:|---:|---|---:|---:|
+| 1 | 55315359 | 05:08:49.403 | 98.23 | 98.14 |
+| 2 | 55316194 | 05:41:32.143 | 98.36 | 98.27 |
+| 4 | 55316818 | 06:10:48.923 | **98.41** | **98.32** |
 
 Version 3 was an autonomous diagnostic Kernel but was not submitted. Version 4
-was accepted 7 minutes 36 seconds before the 06:18:25.517 UTC deadline and ran
-on one Tesla T4 in about 316 seconds. Its exact current remote source matches
+was accepted 4 minutes 11.077 seconds before the official Kaggle deadline at
+06:15:00 UTC and 7 minutes 36.594 seconds before the agent-run deadline at
+06:18:25.517 UTC. It ran on one Tesla T4 in about 316 seconds. Its exact current remote source matches
 `notebooks/script.py` with SHA-256
 `d467bc5a1e7c83ae7da780aaf01fb6ac001fd326e514495cae3a9279b7b6301b`.
 
@@ -35,6 +36,10 @@ CSV remains retrievable from Kernel
 `researai/ioai-2026-task-4-westlake-nlp-24-solution`, version 4.
 
 The score became visible just after the local run deadline. The scored action
-itself was sent before the deadline, and the project record states the organizer
+itself was sent before both deadlines, and the project record states the organizer
 rule that an already-sent notebook may finish scoring afterward. No later model
 tuning or resubmission is included.
+
+The organizer-requested extraction later restored all three Private scores. The
+latest, highest Public, highest Private, official-deadline, and autonomous result
+are all submission `55316818`; see `remote/FINAL_ACCOUNT_RESULTS.json`.

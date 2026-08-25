@@ -6,5 +6,18 @@
   "boundary_utc_exclusive": "2026-08-06T05:46:19.450Z",
   "best_submission_refs": [55289569, 55289823],
   "best_public_score": 58.51666,
+  "best_private_score": 51.61666,
+  "score_scope": "autonomous submissions before the supervision boundary",
+  "official_competition_deadline_utc": "2026-08-06T06:30:00Z",
+  "official_final_submission_refs": [55289569, 55289823],
+  "official_final_public_score": 58.51666,
+  "official_final_private_score": 51.61666,
+  "account_submission_count": 27,
+  "latest_account_submission_ref": 55306794,
+  "latest_account_public_score": 41.16666,
+  "latest_account_private_score": 41.15,
+  "all_account_best_public_score": 58.51666,
+  "all_account_best_private_score": 55.48333,
+  "final_account_results": "remote/FINAL_ACCOUNT_RESULTS.json",
   "historical_remote_source_retrievable": true
 }

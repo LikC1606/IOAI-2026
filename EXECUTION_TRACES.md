@@ -4,14 +4,15 @@ This package records the observable execution of the six competition agents.
 For organizer-facing material with every live human intervention and its causal
 suffix excluded, use [`AUTONOMOUS_TRACE_MATERIAL.md`](AUTONOMOUS_TRACE_MATERIAL.md)
 and [`AUTONOMOUS_TRACE_INDEX.json`](AUTONOMOUS_TRACE_INDEX.json). This document
-describes the broader audit record and therefore includes Task 1's separately
-labelled supervised submission trace and Task 6's later continuation segment.
+describes the published audit record. Task 1 retains a separately labelled
+supervised submission trace; Task 6 publishes only its autonomous prefix and
+pre-boundary workers.
 
 The machine-readable index is [`EXECUTION_TRACE_INDEX.json`](EXECUTION_TRACE_INDEX.json);
 the individual JSONL files are under each `taskN/evidence/rollouts/` directory.
-Task 6 was imported from a local capture with
-[`tools/build_execution_trace_index.py`](tools/build_execution_trace_index.py),
-then redacted before it was added to the repository.
+Task 6 was imported and redacted from a local capture. The complete main trace
+and post-intervention workers are excluded; hash-only provenance is in
+[`task6/evidence/SUPERVISED_EXCLUSIONS.json`](task6/evidence/SUPERVISED_EXCLUSIONS.json).
 
 ## What is represented
 
@@ -29,7 +30,8 @@ The traces do not publish hidden chain-of-thought. Task 6's opaque
 `encrypted_content` fields are replaced with `[OMITTED_OPAQUE_REASONING]`; all
 observable prompts, outputs, and tool-call envelopes remain available. Kaggle,
 OAuth, proxy, and API credentials/private endpoints are redacted. Raw Task 6
-SQLite state and the original `codex-home` traces are not included.
+SQLite state, original `codex-home` traces, live human prompt bodies, and causal
+post-intervention suffixes are not included.
 
 ## Cross-task accounting
 
@@ -45,7 +47,7 @@ instructions are not evidence that another model executed the run.
 | 3 | 4 | 2,427 | 8 / 48 | 135 | 373 | 56,373,300 — recovered aggregate |
 | 4 | 5 | 2,717 | 20 / 62 | 75 | 387 | 109,119,898 |
 | 5 | 14 | 4,705 | 28 / 140 | 131 | 409 | 160,243,108 |
-| 6 | 5 | 2,871 | 14 / 67 | 63 | 341 | 104,143,733 |
+| 6 | 3 | 1,868 | 6 / 54 | 54 | 309 | 41,371,859 |
 
 The token column is the sum of the final cumulative counters from each trace in
 that task. It is not a sum of every intermediate `token_count` event. Task 3's
@@ -67,7 +69,7 @@ The most useful cross-task view is:
 | 3 | `wait` ×106, `send_message` ×20, `list_agents` ×5, `spawn_agent` ×3, `wait_agent` ×1 |
 | 4 | `wait` ×65, `send_message` ×4, `spawn_agent` ×4, `list_agents` ×2 |
 | 5 | `wait` ×60, `send_message` ×35, `spawn_agent` ×13, `wait_agent` ×12, `list_agents` ×7, `followup_task` ×4 |
-| 6 | `wait` ×35, `send_message` ×13, `list_agents` ×6, `spawn_agent` ×4, `followup_task` ×3, `wait_agent` ×2 |
+| 6 | `wait` ×33, `send_message` ×11, `list_agents` ×4, `spawn_agent` ×2, `followup_task` ×2, `wait_agent` ×2 |
 
 For full prompts and outputs, search the JSONL rather than relying on this
 summary. For example, the following shows visible user prompts and assistant
@@ -76,7 +78,7 @@ messages without printing tool payloads:
 ```bash
 jq 'select(.type == "response_item" and (.payload.role == "user" or .payload.role == "assistant")) |
     {timestamp, role: .payload.role, content: .payload.content}' \
-  task6/evidence/rollouts/rollout-*.jsonl
+  task6/evidence/autonomous-only/rollout-*.jsonl task6/evidence/rollouts/rollout-*.jsonl
 ```
 
 The index also contains a SHA-256 for every trace file so an organizer can
@@ -102,5 +104,5 @@ manifest for later completion if the provider supplies rates.
   main and subagent traces; token telemetry is redacted.
 - [Task 4](task4/): main and four worker/resume traces.
 - [Task 5](task5/): main trace and thirteen worker/resume traces.
-- [Task 6](task6/): main trace and four redacted subagent traces, plus the
-  official prompts, experiment/submission ledgers, and v1–v3 remote logs.
+- [Task 6](task6/): bounded main trace and two pre-boundary worker traces, plus
+  the official prompts, experiment/submission ledgers, and v1–v3 remote logs.

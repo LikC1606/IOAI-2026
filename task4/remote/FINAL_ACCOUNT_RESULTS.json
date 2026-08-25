@@ -1,0 +1,36 @@
+{
+  "schema": "ioai.kaggle-account-result-reconciliation.v1",
+  "task": 4,
+  "competition": "ioai-2026-task-4-westlake-nlp-24",
+  "account": "researai",
+  "extraction_source_sha256": "8afbfb3ad2a6a6fd0711b03e92db38fb6a46fb038ac2a106a4bb4356a9b94038",
+  "official_competition_deadline_utc": "2026-08-07T06:15:00Z",
+  "agent_run_deadline_utc": "2026-08-07T06:18:25.517Z",
+  "submission_counts": {
+    "all_account": 3,
+    "before_official_deadline": 3,
+    "after_official_deadline": 0,
+    "autonomous": 3
+  },
+  "official_final_result": {
+    "selection_basis": "highest Public score among submissions sent before the official deadline",
+    "submission_refs": [55316818],
+    "public_score": 98.41,
+    "private_score": 98.32
+  },
+  "autonomous_and_official_deadline_best": {
+    "submission_ref": 55316818,
+    "submitted_at_utc": "2026-08-07T06:10:48.923Z",
+    "seconds_before_official_deadline": 251.077,
+    "public_score": 98.41,
+    "private_score": 98.32,
+    "description": "fine-quantized dual-margin PGD with minimum-norm refinement"
+  },
+  "latest_account_submission": {
+    "submission_ref": 55316818,
+    "submitted_at_utc": "2026-08-07T06:10:48.923Z",
+    "public_score": 98.41,
+    "private_score": 98.32
+  },
+  "selection_note": "The latest, best Public, best Private, official-deadline, and autonomous records are the same submission."
+}

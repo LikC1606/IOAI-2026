@@ -13,12 +13,13 @@ more. The exact rules and submission envelope are preserved in
 [`official/OVERVIEW.md`](official/OVERVIEW.md) and
 [`official/SUBMISSION.md`](official/SUBMISSION.md).
 
-## Run result
+## Autonomous result and final account reconciliation
 
-The user-requested target was 86.5 public LB (0.865 normalized). The run stopped
-at its deadline with version 3 as the in-run incumbent: submission `55357080`,
-public `75.01540`, private `73.36234`. This is a score on Kaggle's 0–100 display
-scale; it is not a 0–1 score. The target was not reached.
+Before the first live human intervention, version 3 was the autonomous incumbent:
+submission `55357080`, Public `75.01540`, Private `73.36234`. This is a score on
+Kaggle's 0–100 display scale; it is not a 0–1 score. A later target instruction
+was received only after the autonomous boundary and its body and causal suffix
+are not published as organizer-facing trace material.
 
 | Version | Mechanism | Public LB | Private LB | Remote runtime |
 |---:|---|---:|---:|---:|
@@ -33,10 +34,11 @@ experiment and submission ledgers are retained as JSONL in `records/`.
 
 ## Execution trace
 
-The five JSONL files in [`evidence/rollouts/`](evidence/rollouts/) are
-credential-redacted copies of the main agent and four subagent traces. They
-retain observable user/developer prompts, visible assistant messages, logical
-tool-call envelopes, tool outputs, timestamps, and cumulative token telemetry.
+The published autonomous trace set has a bounded main trace in
+[`evidence/autonomous-only/`](evidence/autonomous-only/) and two pre-boundary
+worker traces in [`evidence/rollouts/`](evidence/rollouts/). They retain
+startup/organizer user context, developer prompts, visible assistant messages,
+logical tool-call envelopes, tool outputs, timestamps, and cumulative token telemetry.
 Opaque encrypted reasoning is replaced by a marker; it is not interpreted or
 claimed as an output. The raw `codex-home` trace files and SQLite state are not
 copied into this repository.
@@ -44,23 +46,30 @@ copied into this repository.
 See the cross-task [execution trace index](../EXECUTION_TRACE_INDEX.json),
 [trace guide](../EXECUTION_TRACES.md), and [cost manifest](../COSTS.json).
 
-For the human-intervention-free submission material, the main trace stops
+The main trace stops
 strictly before `2026-08-08T18:09:48.833Z`, the first human-triggered resume
-prompt. The later 0.865/86.5 target prompt, every downstream event, and the two
-workers spawned after that resume are excluded. The bounded main prefix is in
-[`evidence/autonomous-only/`](evidence/autonomous-only/), and the authoritative
-selection is the root
+prompt. The later human target-score prompt, every downstream event, and the two
+workers spawned after that resume are excluded from the repository; only their
+timestamps and hashes are retained in
+[`evidence/SUPERVISED_EXCLUSIONS.json`](evidence/SUPERVISED_EXCLUSIONS.json).
+The authoritative trace selection is the root
 [`AUTONOMOUS_TRACE_INDEX.json`](../AUTONOMOUS_TRACE_INDEX.json). Versions v1-v3
 and their scores were already produced before this boundary.
 
 ## Remote provenance
 
 `remote/v1-kernel.log` through `remote/v3-kernel.log` are the compact logs for
-the three versions that belong to this agent run. `remote/kernel-metadata.json`
+the three autonomous versions. `remote/kernel-metadata.json`
 records the T4, Internet-off, competition-only notebook configuration. The
-Kaggle extraction performed later found additional post-deadline submissions;
-they are intentionally excluded from the autonomous-run claim (see
-[`remote/POST_RUN_SUBMISSIONS_NOTE.json`](remote/POST_RUN_SUBMISSIONS_NOTE.json)).
+Kaggle extraction found six account submissions in total: v1-v3 before the
+autonomy boundary, `55357740` after that boundary but before both run and
+competition deadlines, and `55358042`/`55358739` after the official deadline.
+All three later submissions are excluded from the autonomous claim. The
+chronological last and all-account numerical best is `55358739`, Public
+`76.41428`, Private `73.74666`; it is post-deadline and non-autonomous. See
+[`remote/FINAL_ACCOUNT_RESULTS.json`](remote/FINAL_ACCOUNT_RESULTS.json) and
+[`remote/POST_RUN_SUBMISSIONS_NOTE.json`](remote/POST_RUN_SUBMISSIONS_NOTE.json).
 
-No private/final leaderboard claim is made beyond the scores explicitly recorded
-above.
+The extraction does not expose a selected-for-final flag, so no final placement
+is inferred. Latest, all-account best, official-deadline, and autonomous scopes
+are reported separately.

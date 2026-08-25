@@ -1,21 +1,21 @@
 # Autonomous Submission Timeline
 
 Platform timestamps below come from
-`remote/KAGGLE_SUBMISSIONS_AUTONOMOUS_V1_V8.json`; scores and statuses come from
-Kaggle, not from the agent's handwritten records. This package intentionally
-does not inspect or retain later Task 3 submission activity. All times are UTC
-on 2026-08-06. Add eight hours for CST.
+`remote/KAGGLE_SUBMISSIONS_AUTONOMOUS_V1_V8.json`; extracted Private scores and
+the final account reconciliation are in `remote/FINAL_ACCOUNT_RESULTS.json`.
+Scores and statuses come from Kaggle, not from the agent's handwritten records.
+All times are UTC on 2026-08-06. Add eight hours for CST.
 
-| Kernel version | Submission ID | UTC submitted | Candidate | Local score recorded/reproduced | Public LB | Status |
-|---:|---:|---|---|---:|---:|---|
-| 1 | 55288941 | 04:46:56.707 | official starter | 92.58 | 32.50000 | COMPLETE |
-| 2 | 55289364 | 05:08:22.643 | soft posterior + practice prior | 99.20 | 45.70000 | COMPLETE |
-| 3 | 55289414 | 05:11:54.600 | bounded-sign posterior | 99.05 | 40.75000 | COMPLETE |
-| 4 | 55289569 | 05:21:32.723 | calibrated soft posterior | 98.63 | **58.51666** | COMPLETE |
-| 5 | 55289661 | 05:26:08.787 | practice-secret penalty | 90.72 | 45.70000 | COMPLETE |
-| 6 | 55289751 | 05:32:01.070 | online likelihood calibration | 99.05 | 55.01666 | COMPLETE |
-| 7 | 55289779 | 05:33:35.703 | interpolated soft likelihood | 98.95 | 54.11666 | COMPLETE |
-| 8 | 55289823 | 05:35:41.457 | v4 likelihood without practice prior | 96.62 current reproduction | **58.51666** | COMPLETE |
+| Kernel version | Submission ID | UTC submitted | Candidate | Local score recorded/reproduced | Public LB | Private LB | Status |
+|---:|---:|---|---|---:|---:|---:|---|
+| 1 | 55288941 | 04:46:56.707 | official starter | 92.58 | 32.50000 | 36.36666 | COMPLETE |
+| 2 | 55289364 | 05:08:22.643 | soft posterior + practice prior | 99.20 | 45.70000 | 37.96666 | COMPLETE |
+| 3 | 55289414 | 05:11:54.600 | bounded-sign posterior | 99.05 | 40.75000 | 35.81666 | COMPLETE |
+| 4 | 55289569 | 05:21:32.723 | calibrated soft posterior | 98.63 | **58.51666** | **51.61666** | COMPLETE |
+| 5 | 55289661 | 05:26:08.787 | practice-secret penalty | 90.72 | 45.70000 | 37.96666 | COMPLETE |
+| 6 | 55289751 | 05:32:01.070 | online likelihood calibration | 99.05 | 55.01666 | 51.03333 | COMPLETE |
+| 7 | 55289779 | 05:33:35.703 | interpolated soft likelihood | 98.95 | 54.11666 | 44.81666 | COMPLETE |
+| 8 | 55289823 | 05:35:41.457 | v4 likelihood without practice prior | 96.62 current reproduction | **58.51666** | **51.61666** | COMPLETE |
 
 The autonomy boundary is 05:46:19.450 UTC, more than ten minutes after v8 was
 sent and scored. The filtered platform subset is stored at

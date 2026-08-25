@@ -8,9 +8,10 @@ that a later reconstruction was downloaded from Kaggle.
 The formal run lasted from `2026-08-07T07:04:20.561Z` to
 `09:04:20.519Z`. The main solver received the organizer Starter Prompt and no
 Continuation Prompt or custom method instruction. Controller status questions
-were not solver inputs. All seven submissions were sent before the deadline;
-v6 submission `55320296` at `08:43:46.740Z` is best at Public LB `95.39`.
-No Private/final LB is available.
+were not solver inputs. Versions 1–6 were sent before the official Kaggle
+deadline at `09:00:00Z`; version 7 at `09:02:01.927Z` was before the agent-run
+deadline but 121.927 seconds after the official deadline. Submission v6
+`55320296` is the official-deadline best at Public `95.39`, Private `96.06`.
 
 ## Submission and resource audit
 
@@ -45,7 +46,8 @@ The source contains ten report paragraphs. It correctly says v6 Public LB was
 pending and gives a local H100 runtime plus conservative T4 projection. Later
 platform evidence establishes Public LB `95.39` and actual remote runtime about
 289.3 seconds. Those later facts are disclosed here rather than backfilled into
-the historical source. No Private score is claimed.
+the historical source. The Private scores cited in this audit come directly
+from the later Kaggle extraction, not from inference.
 
 ## Reproduce
 

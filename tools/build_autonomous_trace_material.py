@@ -13,10 +13,6 @@ import build_execution_trace_index as trace_tools
 
 ROOT = Path(__file__).resolve().parents[1]
 TASK6_BOUNDARY = "2026-08-08T18:09:48.833Z"
-TASK6_MAIN_SOURCE = ROOT / (
-    "task6/evidence/rollouts/"
-    "rollout-2026-08-09T00-23-24-019fe22f-b2b8-7191-a6ec-39dea000da9f.jsonl"
-)
 TASK6_MAIN_PREFIX = ROOT / (
     "task6/evidence/autonomous-only/"
     "rollout-2026-08-09T00-23-24-019fe22f-b2b8-7191-a6ec-39dea000da9f-autonomous-prefix.jsonl"
@@ -100,7 +96,7 @@ EXCLUSIONS = {
     "task5": ["events at or after the run deadline"],
     "task6": [
         "main-trace events at or after 18:09:48.833Z",
-        "the 0.865/86.5 target prompt at 18:14:21.148Z and everything after it",
+        "the later human target-score prompt at 18:14:21.148Z and everything after it",
         "two worker traces spawned after the human-triggered resume",
     ],
 }
@@ -182,19 +178,13 @@ GPU = {
 }
 
 
-def write_task6_prefix() -> None:
-    TASK6_MAIN_PREFIX.parent.mkdir(parents=True, exist_ok=True)
-    with TASK6_MAIN_SOURCE.open(encoding="utf-8") as source, TASK6_MAIN_PREFIX.open(
-        "w", encoding="utf-8"
-    ) as target:
-        for line in source:
-            if not line.strip():
-                continue
-            event = json.loads(line)
-            timestamp = str(event.get("timestamp", ""))
-            if timestamp and timestamp >= TASK6_BOUNDARY:
-                continue
-            target.write(line if line.endswith("\n") else line + "\n")
+def validate_task6_prefix() -> None:
+    if not TASK6_MAIN_PREFIX.is_file():
+        raise ValueError(f"missing bounded Task 6 main trace: {TASK6_MAIN_PREFIX}")
+    for event in trace_tools.jsonl_events(TASK6_MAIN_PREFIX):
+        timestamp = str(event.get("timestamp", ""))
+        if timestamp and timestamp >= TASK6_BOUNDARY:
+            raise ValueError(f"post-boundary Task 6 event in {TASK6_MAIN_PREFIX}: {timestamp}")
 
 
 def message_text(payload: dict[str, Any]) -> str:
@@ -207,8 +197,12 @@ def message_text(payload: dict[str, Any]) -> str:
 
 def classify_prompts(task: str, path: Path, role: str) -> list[dict[str, str]]:
     messages: list[dict[str, str]] = []
-    main_ordinal = 0
-    subagent_ordinal = 0
+    starter = STARTER_FILES[task].read_text(encoding="utf-8")
+    continuation = (
+        CONTINUATION_FILES[task].read_text(encoding="utf-8")
+        if task in CONTINUATION_FILES
+        else None
+    )
     for event in trace_tools.jsonl_events(path):
         payload = event.get("payload", {})
         if event.get("type") != "response_item" or payload.get("role") != "user":
@@ -218,31 +212,26 @@ def classify_prompts(task: str, path: Path, role: str) -> list[dict[str, str]]:
         marker = next((value for value in MANUAL_MARKERS if value in lowered), None)
         if marker:
             raise ValueError(f"manual prompt marker {marker!r} found in {path}")
-        if role == "main":
-            main_ordinal += 1
-            if main_ordinal == 1:
-                if not text.startswith("# AGENTS.md instructions"):
-                    raise ValueError(f"unexpected startup prompt in {path}")
-                prompt_class = "startup_instructions"
-            elif main_ordinal == 2:
-                if text != STARTER_FILES[task].read_text(encoding="utf-8"):
-                    raise ValueError(f"Starter Prompt mismatch in {path}")
-                prompt_class = "organizer_starter_prompt"
-            elif task == "task2" and main_ordinal == 3:
-                if text != CONTINUATION_FILES[task].read_text(encoding="utf-8"):
-                    raise ValueError(f"organizer Continuation Prompt mismatch in {path}")
-                prompt_class = "exact_organizer_continuation_prompt"
-            elif task == "task4":
-                if text != CONTINUATION_FILES[task].read_text(encoding="utf-8"):
-                    raise ValueError(f"runtime resume template mismatch in {path}")
-                prompt_class = "preconfigured_runtime_resume_template"
-            else:
-                raise ValueError(f"unclassified main user prompt in {path} at {event.get('timestamp')}")
-        else:
-            subagent_ordinal += 1
+        if text.startswith("# AGENTS.md instructions"):
+            prompt_class = "startup_instructions"
+        elif text == starter:
             prompt_class = (
-                "startup_instructions" if text.startswith("# AGENTS.md instructions")
-                else "agent_generated_worker_assignment"
+                "organizer_starter_prompt"
+                if role == "main"
+                else "inherited_organizer_starter_prompt"
+            )
+        elif continuation is not None and text == continuation:
+            base_class = (
+                "exact_organizer_continuation_prompt"
+                if task == "task2"
+                else "preconfigured_runtime_resume_template"
+            )
+            prompt_class = base_class if role == "main" else f"inherited_{base_class}"
+        elif role != "main":
+            prompt_class = "agent_generated_worker_assignment"
+        else:
+            raise ValueError(
+                f"unclassified main user prompt in {path} at {event.get('timestamp')}"
             )
         messages.append(
             {
@@ -319,7 +308,8 @@ def build_index() -> dict[str, Any]:
             "organizer Starter Prompt",
             "exact organizer Continuation Prompt where applicable",
             "preconfigured runtime resume templates without a human method or target",
-            "assignments generated by the main agent for its workers",
+            "organizer context inherited by forked worker traces",
+            "assignments generated by the main agent for its workers where represented as user-role input",
         ],
         "excluded_prompt_types": [
             "live human method, target-score, forced-submission, or custom continuation instructions",
@@ -339,10 +329,10 @@ def write_markdown(index: dict[str, Any]) -> None:
         "prompt. Exclusion is causal: once a disallowed prompt arrives, that prompt",
         "and every later event are omitted rather than deleting only the message.",
         "",
-        "Startup instructions, organizer prompts, preconfigured runtime resume",
-        "templates, and assignments generated by the main agent for its workers are",
-        "retained and classified. They are part of the execution environment, not",
-        "live human method suggestions. Hidden chain-of-thought is not published.",
+        "Startup instructions, organizer prompts, inherited organizer context,",
+        "preconfigured runtime resume templates, and observable worker assignments",
+        "are retained and classified. They are part of the execution environment,",
+        "not live human method suggestions. Hidden chain-of-thought is not published.",
         "",
         "| Task | Trace files | Events | User prompts | Logical calls | Tokens | Boundary (exclusive UTC) |",
         "|---|---:|---:|---:|---:|---:|---|",
@@ -426,6 +416,13 @@ def write_manifest(index: dict[str, Any]) -> None:
         "task3/evidence/AUTONOMOUS_TOKEN_USAGE.json",
         "tools/build_autonomous_trace_material.py",
         "tools/build_execution_trace_index.py",
+        "FINAL_SUBMISSION_RESULTS.md",
+        "task3/evidence/SUPERVISION_BOUNDARY_EVENT.json",
+        "task3/remote/FINAL_ACCOUNT_RESULTS.json",
+        "task4/remote/FINAL_ACCOUNT_RESULTS.json",
+        "task5/remote/FINAL_ACCOUNT_RESULTS.json",
+        "task6/evidence/SUPERVISED_EXCLUSIONS.json",
+        "task6/remote/FINAL_ACCOUNT_RESULTS.json",
     }
     for data in index["tasks"].values():
         relative_paths.update(item["path"] for item in data["trace_files"])
@@ -439,7 +436,7 @@ def write_manifest(index: dict[str, Any]) -> None:
 
 
 def main() -> None:
-    write_task6_prefix()
+    validate_task6_prefix()
     index = build_index()
     (ROOT / "AUTONOMOUS_TRACE_INDEX.json").write_text(
         json.dumps(index, ensure_ascii=False, indent=2) + "\n", encoding="utf-8"

@@ -11,7 +11,7 @@ The JSONL files are credential-redacted observable traces; see
 | task3 | 4 | 2427 | 135 | 373 | 56373300 |
 | task4 | 5 | 2717 | 75 | 387 | 109119898 |
 | task5 | 14 | 4705 | 131 | 409 | 160243108 |
-| task6 | 5 | 2871 | 63 | 341 | 104143733 |
+| task6 | 3 | 1868 | 54 | 309 | 41371859 |
 
 ## Files
 
@@ -43,8 +43,6 @@ The JSONL files are credential-redacted observable traces; see
 | task5 | subagent | 402 | `4653a18d04cd8e40651e24a7c707692989546c2e40bb07dda8f2fd3eb9c866d4` | `task5/evidence/rollouts/rollout-2026-08-07T16-05-40-019fdb41-a587-7410-8926-ba38fb7da71d.jsonl` |
 | task5 | subagent | 396 | `4536a98d9fd32a9448ec6c528ce59a29f7fedad98fbecf194c0c81ae91a7730f` | `task5/evidence/rollouts/rollout-2026-08-07T16-23-09-019fdb51-a930-7953-9c40-be02d0c93136.jsonl` |
 | task5 | subagent | 357 | `f2b7101d6c24109c2d01a12880454d06a5426b4287547f7018f1d96c66144d7e` | `task5/evidence/rollouts/rollout-2026-08-07T16-23-36-019fdb52-12da-7931-b44c-82fe30560795.jsonl` |
-| task6 | main | 1348 | `80e17c82be60a61fb363353f4e417e2814029af2b49d8a63c3ff6fcf6e92dca7` | `task6/evidence/rollouts/rollout-2026-08-09T00-23-24-019fe22f-b2b8-7191-a6ec-39dea000da9f.jsonl` |
+| task6 | main | 1173 | `56884e23ad8cb17ab5227cc3ba2e550ac907fd6b65d2983f0dc6be2c59a6507b` | `task6/evidence/autonomous-only/rollout-2026-08-09T00-23-24-019fe22f-b2b8-7191-a6ec-39dea000da9f-autonomous-prefix.jsonl` |
 | task6 | subagent | 346 | `71ec1e6011b5d8f56eb9b3e23153f3e604fe6105f579f026022259d1b7e41eae` | `task6/evidence/rollouts/rollout-2026-08-09T00-23-42-019fe22f-f897-7d10-b27c-2c6586c55a27.jsonl` |
 | task6 | subagent | 349 | `e8db254c402a2054402b8d07818de3aed0fb220bc02a5f9082ef2a81e58f395b` | `task6/evidence/rollouts/rollout-2026-08-09T00-30-10-019fe235-e3a2-7173-bac5-0ba0451f279f.jsonl` |
-| task6 | subagent | 418 | `839e71c808b6712fd5d98ed58f8af597992552e0ddc0f15e669915b2a87ea04a` | `task6/evidence/rollouts/rollout-2026-08-09T02-10-50-019fe292-0fce-7f73-9f85-0bfc38fe76dd.jsonl` |
-| task6 | subagent | 410 | `64620cee9f356d1ecc8a3b464cdb5ec2f9d6a1e800c8202f7aec6fd4ce6c1dc5` | `task6/evidence/rollouts/rollout-2026-08-09T02-12-36-019fe293-ac6b-7451-a0a4-39d4cae3e7f0.jsonl` |
