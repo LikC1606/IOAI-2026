@@ -39,6 +39,25 @@ compliant.
 | **Canonical autonomous rollout** | The selected no-live-human trace and result for the package's stated boundary; for Tasks 1–2 it is a later post-deadline reproduction, not the lost original run. |
 | **Historical/reproduction evidence** | Other preserved submissions, reports, source copies, or later runs retained for audit context but not substituted for the official result. |
 
+## Official result and scope summary
+
+| Task | Competition | Official final Public LB | Status |
+|---|---|---:|---|
+| [Task 1](task1/) | `ioai-2026-task-1-westlake-nlp-24` | 0.77751 | Private 0.80474; tied refs `55267333` / `55267368`; final not trace-bound |
+| [Task 2](task2/) | `ioai-2026-task-2-westlake-nlp-24` | 0.63583 | Private 0.62500; `55261432`; final not trace-bound |
+| [Task 3](task3/) ([trace + costs](task3/EXECUTION_AND_COSTS.md)) | `ioai-2026-task-3-westlake-nlp-48` | 58.51666 | Private 51.61666; trace-aligned; budget/report disclosures |
+| [Task 4](task4/) | `ioai-2026-task-4-westlake-nlp-24` | 98.41 | Private 98.32; `55316818`; trace-aligned, non-exact continuation |
+| [Task 5](task5/) | `ioai-2026-task-5-westlake-nlp-24` | 95.39 | Private 96.06; `55320296`; v7 was late; source provenance disclosed |
+| [Task 6](task6/) | `ioai-2026-task-6-westlake-nlp-60` | 75.01540 | Private 73.36234; `55357080`; batch behavior measured, not a blocker |
+
+No final leaderboard placement is claimed. The final-score rows apply the
+preserved automatic highest-Public-before-deadline rule to the extracted account
+records; extracted Private scores remain historical submission fields, not
+placement claims. For Tasks 1–6,
+[`FINAL_SUBMISSION_RESULTS.md`](FINAL_SUBMISSION_RESULTS.md) separates the
+official result, autonomous scope, chronological last account submission, and
+all-account numerical maxima.
+
 ## Similar-looking index files
 
 | File | Use it for |
@@ -71,25 +90,6 @@ for t in 1 2 3 4 5 6; do (cd task$t && sha256sum -c MANIFEST.sha256); done
 sha256sum -c AUTONOMOUS_MATERIAL_MANIFEST.sha256
 sha256sum -c REPRODUCTION_MATERIAL_MANIFEST.sha256
 ```
-
-## Official result and scope summary
-
-| Task | Competition | Official final Public LB | Status |
-|---|---|---:|---|
-| [Task 1](task1/) | `ioai-2026-task-1-westlake-nlp-24` | 0.77751 | Private 0.80474; tied refs `55267333` / `55267368`; final not trace-bound |
-| [Task 2](task2/) | `ioai-2026-task-2-westlake-nlp-24` | 0.63583 | Private 0.62500; `55261432`; final not trace-bound |
-| [Task 3](task3/) ([trace + costs](task3/EXECUTION_AND_COSTS.md)) | `ioai-2026-task-3-westlake-nlp-48` | 58.51666 | Private 51.61666; trace-aligned; budget/report disclosures |
-| [Task 4](task4/) | `ioai-2026-task-4-westlake-nlp-24` | 98.41 | Private 98.32; `55316818`; trace-aligned, non-exact continuation |
-| [Task 5](task5/) | `ioai-2026-task-5-westlake-nlp-24` | 95.39 | Private 96.06; `55320296`; v7 was late; source provenance disclosed |
-| [Task 6](task6/) | `ioai-2026-task-6-westlake-nlp-60` | 75.01540 | Private 73.36234; `55357080`; batch behavior measured, not a blocker |
-
-No final leaderboard placement is claimed. The final-score rows apply the
-preserved automatic highest-Public-before-deadline rule to the extracted account
-records; extracted Private scores remain historical submission fields, not
-placement claims. For Tasks 1–6,
-[`FINAL_SUBMISSION_RESULTS.md`](FINAL_SUBMISSION_RESULTS.md) separates the
-official result, autonomous scope, chronological last account submission, and
-all-account numerical maxima.
 
 The organizer-facing, human-intervention-free execution package starts at
 [AUTONOMOUS_TRACE_MATERIAL.md](AUTONOMOUS_TRACE_MATERIAL.md), with the
