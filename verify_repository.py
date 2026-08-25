@@ -993,6 +993,13 @@ def verify_cross_task_rule_audit() -> dict[str, object]:
         "published_limit": 15,
     }
     task3_summary = json.loads((ROOT / "task3/SUMMARY.json").read_text(encoding="utf-8"))
+    assert task3_summary["submissions_before_autonomy_boundary"] == 8
+    task3_final = json.loads(
+        (ROOT / "task3/remote/FINAL_ACCOUNT_RESULTS.json").read_text(encoding="utf-8")
+    )
+    assert task3_final["submission_counts"]["before_autonomy_boundary"] == (
+        task3_summary["submissions_before_autonomy_boundary"]
+    )
     assert {
         "all_account": task3_summary["account_submission_count"],
         "before_official_deadline": task3_summary["submissions_before_official_deadline"],

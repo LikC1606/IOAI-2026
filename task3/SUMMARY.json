@@ -16,6 +16,7 @@
   "strict_exact_organizer_prompt_text_conformance": true,
   "external_method_research_status": "method_background_only_not_treated_as_compliance_issue",
   "account_submission_count": 27,
+  "submissions_before_autonomy_boundary": 8,
   "submissions_before_official_deadline": 11,
   "submissions_after_official_deadline": 16,
   "published_scored_submission_limit": 15,
