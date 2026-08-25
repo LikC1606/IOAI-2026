@@ -80,3 +80,24 @@ starter appends a custom fresh-run-isolation section. The canonical prefix has
 no continuation; the complete raw trace retains a later custom continuation
 after the selected submission, final Agent answer, and `task_complete`. See
 `../PROMPT_CONFORMANCE_AUDIT.md` for hashes and timestamps.
+
+## Additional rule and material limits
+
+- The official final refs `55267333` / `55267368` are not bound to either the
+  lost original trace or the later reproduction. The GitHub task package does
+  not contain their exact notebook/source/output as a trace-linked final
+  artifact set. They may appear in the separately delivered Kaggle extraction,
+  but that does not establish autonomous causality.
+- The later reproduction searched AI4Code, sentence-ordering and Qwen method
+  material before candidate selection. No external runtime data or weights were
+  added beyond organizer-supplied resources, but the method information may
+  have influenced the reproduced solution. Whether method literature is
+  prohibited "externally generated information" is a Jury-interpretation risk.
+- The extraction captured 38 Task 1 notebook versions across the account,
+  compared with the published 20-version limit. Many are post-deadline,
+  including later reproduction activity. The package cannot establish from the
+  current summary whether the Jury counts only competition-window versions or
+  every captured version, so this is disclosed as an account-history budget
+  risk rather than silently marked compliant.
+- API USD, GPU USD, and the original lost run's compute total remain
+  unavailable. Cost records cover the selected later reproduction only.

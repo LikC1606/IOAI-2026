@@ -1,0 +1,41 @@
+{
+  "schema": "ioai.task6-v3-artifact-provenance.v1",
+  "competition": "ioai-2026-task-6-westlake-nlp-60",
+  "submission_ref": 55357080,
+  "kernel_version": 3,
+  "public_score": 75.0154,
+  "private_score": 73.36234,
+  "autonomous_before_boundary": true,
+  "artifacts": {
+    "notebook_source": {
+      "path": "notebooks/v3/script.py",
+      "size_bytes": 17701,
+      "sha256": "f9a8fbdcbcf2be4b327ca3961726feebe19a2d4d54c6a257bca5e6f60a45e267"
+    },
+    "kernel_metadata": {
+      "path": "notebooks/v3/kernel-metadata.json",
+      "size_bytes": 443,
+      "sha256": "3e9aeeba013f32d01e54b9e65f233573285c40fe34d1021d0d043683fe2676d8"
+    },
+    "decoded_submitted_source": {
+      "path": "remote/v3/custom_model.py",
+      "size_bytes": 2635,
+      "sha256": "f325541e9ec0df6b4e286528c46070976407a66003912477f05d38134c80822a"
+    },
+    "remote_submission_output": {
+      "path": "remote/v3/submission.csv",
+      "size_bytes": 152545,
+      "sha256": "6695d583492eae631f778f6f7846fe498836f250ae47c585a770b1073c79e53c",
+      "header": ["id", "model_b64", "code_b64"],
+      "ids": ["leaderboard-a", "leaderboard-b"],
+      "payloads_identical": true
+    }
+  },
+  "cross_checks": {
+    "decoded_csv_source_matches_custom_model_byte_for_byte": true,
+    "model_state_dict_loads_into_decoded_source_architecture": true,
+    "parameter_count": 13426,
+    "verification_script": "tools/verify_v3_artifacts.py"
+  },
+  "provenance_limit": "The exact files were recovered from the preserved original Task 6 project and v3 Kaggle output. The notebook source was not independently re-downloaded from a historical Kaggle source endpoint during this packaging pass; CSV decoding independently binds the submitted custom_model.py and weights."
+}

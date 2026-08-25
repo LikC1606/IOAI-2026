@@ -7,17 +7,19 @@ trace coverage, model/cost fields, and extraction metadata.
 
 | Organizer requirement | Status | Evidence |
 |---|---|---|
-| Execution traces for Tasks 1–6 | Complete | [`AUTONOMOUS_TRACE_MATERIAL.md`](AUTONOMOUS_TRACE_MATERIAL.md), [`AUTONOMOUS_TRACE_INDEX.json`](AUTONOMOUS_TRACE_INDEX.json) |
-| Later two-hour reproduction traces for Tasks 1–2 | Complete, separately scoped | [`REPRODUCTION_TRACE_MATERIAL.md`](REPRODUCTION_TRACE_MATERIAL.md), [`REPRODUCTION_TRACE_INDEX.json`](REPRODUCTION_TRACE_INDEX.json) |
-| Prompts and visible Agent outputs | Complete | Full payloads are in every indexed JSONL trace; prompt classes and hashes are in the index |
+| Execution traces for Tasks 1–6 | Complete selected observable prefixes; provenance limits disclosed | [`AUTONOMOUS_TRACE_MATERIAL.md`](AUTONOMOUS_TRACE_MATERIAL.md), [`AUTONOMOUS_TRACE_INDEX.json`](AUTONOMOUS_TRACE_INDEX.json) |
+| Later two-hour reproduction traces for Tasks 1–2 | Complete, separately scoped post-deadline reproductions; not the lost originals | [`REPRODUCTION_TRACE_MATERIAL.md`](REPRODUCTION_TRACE_MATERIAL.md), [`REPRODUCTION_TRACE_INDEX.json`](REPRODUCTION_TRACE_INDEX.json) |
+| Prompts and visible Agent outputs | Complete within selected observable trace scope | Full payloads are in every indexed JSONL trace; prompt classes and hashes are in the index |
 | Exact organizer prompt conformance | Audited; Tasks 1, 2, and 4 are non-exact | [`PROMPT_CONFORMANCE_AUDIT.md`](PROMPT_CONFORMANCE_AUDIT.md), [`PROMPT_CONFORMANCE_AUDIT.json`](PROMPT_CONFORMANCE_AUDIT.json) |
+| Cross-task rule compliance | Audited; known deviations and Jury risks remain | [`RULE_COMPLIANCE_AUDIT.md`](RULE_COMPLIANCE_AUDIT.md), [`RULE_COMPLIANCE_AUDIT.json`](RULE_COMPLIANCE_AUDIT.json) |
 | Task 4 competition-rule differences | Audited with disclosed deviations/interpretation risks | [`task4/RULE_DIFFERENCE_AUDIT.md`](task4/RULE_DIFFERENCE_AUDIT.md), [`task4/RULE_DIFFERENCE_AUDIT.json`](task4/RULE_DIFFERENCE_AUDIT.json) |
-| Tool calls and tool outputs | Complete | Per-task and per-file counts cover `function_call`, `function_call_output`, `custom_tool_call`, and `custom_tool_call_output` |
+| Task 6 exact artifacts and rule differences | Exact v3 artifacts complete; serious batch-dependence risk disclosed | [`task6/ARTIFACT_PROVENANCE.json`](task6/ARTIFACT_PROVENANCE.json), [`task6/RULE_DIFFERENCE_AUDIT.md`](task6/RULE_DIFFERENCE_AUDIT.md) |
+| Tool calls and tool outputs | Complete within selected observable trace scope | Per-task and per-file counts cover `function_call`, `function_call_output`, `custom_tool_call`, and `custom_tool_call_output` |
 | LLM(s) used | Complete | [`AUTONOMOUS_COSTS.json`](AUTONOMOUS_COSTS.json): `ioai_allowed` / `gpt-5.6-sol`; Tasks 1–4 `max`, Tasks 5–6 `xhigh` |
-| Total API costs | Complete with explicit unavailable-USD status | Exact per-task tokens and total are provided; USD is `null` because no invoice or exact provider/model rate was captured |
-| GPU compute/cost per task | Complete | Exact observed accelerator seconds/hours are provided; USD is `null` where no invoice/rate exists, and `0` where no GPU was allocated |
+| Total API costs | Token accounting complete; USD unavailable | Exact per-task tokens and total are provided; USD is `null` because no invoice or exact provider/model rate was captured |
+| GPU compute/cost per task | Kaggle remote selected scope complete; local H100 accounting and USD incomplete | Observed remote accelerator seconds/hours and known local observations are provided; exhaustive local runtime and USD are unavailable |
 | Kaggle extraction results | Complete | [`KAGGLE_EXTRACTION_DELIVERY.json`](KAGGLE_EXTRACTION_DELIVERY.json), [`KAGGLE_EXTRACTION_SUMMARY.json`](KAGGLE_EXTRACTION_SUMMARY.json), and the linked Drive archive |
-| Final submitted results matching Kaggle | Complete | [`FINAL_SUBMISSION_RESULTS.md`](FINAL_SUBMISSION_RESULTS.md) and six task-level `FINAL_ACCOUNT_RESULTS.json` files |
+| Final submitted results matching Kaggle | Score reconciliation complete; Tasks 1–2 are not final-trace-bound | [`FINAL_SUBMISSION_RESULTS.md`](FINAL_SUBMISSION_RESULTS.md) and six task-level `FINAL_ACCOUNT_RESULTS.json` files |
 
 ## Human-intervention-free trace scope
 
@@ -38,6 +40,12 @@ conformance. Live Kaggle prompt pages were checked for all six tasks. Tasks 3,
 5, and 6 match the exact organizer prompt text in the selected traces. Tasks 1,
 2, and 4 contain custom prompt text and are disclosed as non-exact; this
 repository does not self-certify Jury acceptance.
+
+Trace-package completeness is not a compliance certificate. Task 1 and Task 2
+do not bind their official final result to an original autonomous trace; Task 4
+has a known exact-continuation deviation; and Tasks 3, 5, and 6 have the
+task-specific Jury risks summarized in
+[`RULE_COMPLIANCE_AUDIT.md`](RULE_COMPLIANCE_AUDIT.md).
 
 ## Kaggle extraction archive
 
@@ -61,7 +69,8 @@ sha256sum -c REPRODUCTION_MATERIAL_MANIFEST.sha256
 
 The USD cost fields deliberately remain `null` rather than pricing
 `gpt-5.6-sol` with a different model's public rate or inventing a Kaggle GPU
-invoice.
+invoice. The local H100 total is also incomplete for Tasks 4–6; the cost files
+record only supported observations and do not extrapolate a total.
 
 ## Later two-hour reproduction scope
 

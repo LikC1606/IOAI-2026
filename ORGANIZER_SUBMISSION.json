@@ -1,6 +1,6 @@
 {
   "schema": "ioai.organizer-submission-index.v1",
-  "status": "complete_with_explicit_cost_and_prompt_conformance_limits",
+  "status": "complete_evidence_package_with_known_compliance_and_cost_limits",
   "tasks": [
     "task1",
     "task2",
@@ -11,7 +11,7 @@
   ],
   "requirements": {
     "execution_traces_all_six_tasks": {
-      "status": "complete",
+      "status": "complete_selected_observable_prefixes_with_provenance_limits",
       "paths": [
         "AUTONOMOUS_TRACE_MATERIAL.md",
         "AUTONOMOUS_TRACE_INDEX.json"
@@ -27,7 +27,7 @@
       "note": "The original Task 1 and Task 2 run records were unavailable after a school-server restart. These are full redacted later 120-minute reproductions using the same configured solver/system, official competition bundle, and organizer constraints. Task 1's canonical solution selection is the exact prefix through task_complete while its full raw stream remains here; Task 2 uses its full reproduction. Both are post-deadline and non-ranking, and their custom starter appendices prevent exact-prompt claims."
     },
     "prompts_and_visible_outputs": {
-      "status": "complete",
+      "status": "complete_for_selected_observable_trace_scope",
       "path": "AUTONOMOUS_TRACE_INDEX.json",
       "payload_location": "trace_files[].path",
       "note": "Startup/organizer prompts, worker assignments, developer messages, and visible assistant messages are retained in the selected JSONL files."
@@ -50,6 +50,15 @@
       ],
       "note": "No-live-human autonomy and exact-organizer-prompt conformance are separate; organizer/Jury recognition is not self-certified."
     },
+    "cross_task_rule_compliance": {
+      "status": "audited_known_deviations_and_jury_risks_remain",
+      "paths": [
+        "RULE_COMPLIANCE_AUDIT.md",
+        "RULE_COMPLIANCE_AUDIT.json"
+      ],
+      "all_six_strictly_compliant_claim_supported": false,
+      "note": "Tasks 1 and 2 are not official-final/trace aligned; Tasks 1, 2, and 4 are non-exact-prompt; Tasks 3, 5, and 6 retain disclosed task-specific Jury risks."
+    },
     "task4_rule_difference_audit": {
       "status": "complete_with_disclosed_deviations_and_jury_interpretation_risks",
       "paths": [
@@ -59,8 +68,20 @@
       ],
       "note": "The final notebook/output closely follows operational hard rules, but exact prompt conformance is false. The audit separately records the local __pycache__ folder deviation, two noncausal arXiv searches in a parallel solver, and ambiguity around local H100 development."
     },
+    "task6_exact_artifact_and_rule_audit": {
+      "status": "exact_v3_artifacts_complete_serious_batch_dependence_risk_disclosed",
+      "paths": [
+        "task6/ARTIFACT_PROVENANCE.json",
+        "task6/RULE_DIFFERENCE_AUDIT.md",
+        "task6/RULE_DIFFERENCE_AUDIT.json",
+        "task6/notebooks/v3/script.py",
+        "task6/notebooks/v3/kernel-metadata.json",
+        "task6/remote/v3/submission.csv",
+        "task6/remote/v3/custom_model.py"
+      ]
+    },
     "tool_calls_and_outputs": {
-      "status": "complete",
+      "status": "complete_for_selected_observable_trace_scope",
       "path": "AUTONOMOUS_TRACE_INDEX.json",
       "coverage_field": "tasks.*.organizer_required_event_coverage",
       "event_types": [
@@ -85,14 +106,15 @@
       }
     },
     "api_costs": {
-      "status": "complete_unavailable_usd_disclosure",
+      "status": "token_accounting_complete_usd_unavailable",
       "path": "AUTONOMOUS_COSTS.json",
       "usd_total": null,
       "reason": "No invoice or exact ioai_allowed/gpt-5.6-sol rate card was captured; exact tokens and a completion formula are provided without substituting another model's price."
     },
     "gpu_compute_and_costs_per_task": {
-      "status": "complete_with_unavailable_usd_where_unbilled",
-      "path": "AUTONOMOUS_COSTS.json"
+      "status": "remote_selected_scope_complete_local_h100_and_usd_incomplete",
+      "path": "AUTONOMOUS_COSTS.json",
+      "note": "Tasks 4-6 have trace-recorded local H100 development but no exhaustive non-overlapping local runtime total; no applicable rate or invoice was captured."
     },
     "kaggle_extraction": {
       "status": "complete_external_archive",
@@ -102,7 +124,7 @@
       ]
     },
     "official_final_submission_results": {
-      "status": "complete",
+      "status": "complete_score_reconciliation_not_all_results_trace_bound",
       "paths": [
         "FINAL_SUBMISSION_RESULTS.md",
         "task1/remote/FINAL_ACCOUNT_RESULTS.json",
@@ -111,10 +133,11 @@
         "task4/remote/FINAL_ACCOUNT_RESULTS.json",
         "task5/remote/FINAL_ACCOUNT_RESULTS.json",
         "task6/remote/FINAL_ACCOUNT_RESULTS.json"
-      ]
+      ],
+      "note": "Task 1 and Task 2 official final results are not bound to the selected later reproduction traces."
     },
     "human_intervention_exclusion": {
-      "status": "complete",
+      "status": "complete_for_selected_scope",
       "selection_path": "AUTONOMOUS_TRACE_INDEX.json",
       "manifest_path": "AUTONOMOUS_MATERIAL_MANIFEST.sha256",
       "rule": "The first excluded live-human prompt and every causally downstream event are outside the selected trace set. Boundary evidence is hash-only."

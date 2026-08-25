@@ -85,3 +85,12 @@ sha256sum reproduced-v4/submission.csv
 The final digest should be the historical CSV hash above while version 4
 remains the Kernel's retrievable current output. A new push would create a new
 version and is unnecessary for artifact verification.
+
+## Compute-accounting limit
+
+The historical report records 161 seconds for the complete refined local H100
+body, but other local diagnostics overlap and are not exhaustively attributable.
+The 1,120.720551504 seconds of Kaggle T4 runtime are complete for versions v1-v4;
+the total local development GPU time and all GPU USD remain unavailable. Root
+cost files therefore separate observed remote runtime from incomplete local
+development accounting.

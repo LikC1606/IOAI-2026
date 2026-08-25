@@ -31,12 +31,14 @@ only as intended by the task. v6 uses earlier officially returned comparison
 histories causally within the same graded round; it does not inspect grader files.
 
 External web research by the development agent is not embedded in or called by
-the submitted program and did not introduce an external runtime resource. The
-exact submitted source and attached-source metadata are preserved for inspection.
-If the organizers interpret the development-time external-research restriction
-more broadly than the runtime/data/model restrictions stated on the official
-page, they should make the final determination; this package does not conceal the
-rollout evidence.
+the submitted program and did not introduce an external runtime resource.
+However, at `04:46:32Z` the Agent explicitly said targeted literature on noisy
+generalized binary search and preference querying would guide the acquisition
+rule, then searched noisy GBS, Bayesian active learning, dueling bandits and
+entropy pursuit at `04:46:35Z`. The winning v4/v8 family was developed later and
+uses soft posterior and entropy acquisition. This supports a potentially causal
+development-time relationship; it must not be described as noncausal. Whether
+method literature is prohibited external information remains for the Jury.
 
 ## Reproducibility evidence
 
@@ -77,3 +79,10 @@ solely as extracted Kaggle score/time accounting and are not used as execution
 or autonomous score evidence. The bounded Kaggle record is
 `remote/KAGGLE_SUBMISSIONS_AUTONOMOUS_V1_V8.json`; the cross-scope reconciliation
 is `remote/FINAL_ACCOUNT_RESULTS.json`.
+
+The official budget is 15 scored submissions. The extraction records 27 account
+submissions: 11 before the official deadline and 16 after it. The autonomous
+competition-window work stayed below 15, but the all-account history exceeds the
+published total. Whether post-deadline audit/reproduction submissions are
+excluded from organizer enforcement requires a Jury decision; the repository
+does not mark the total as compliant.

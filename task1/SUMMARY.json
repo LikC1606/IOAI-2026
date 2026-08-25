@@ -64,6 +64,12 @@
   ],
   "official_final_public_score": 0.77751,
   "official_final_private_score": 0.80474,
+  "official_final_trace_alignment": false,
+  "official_final_trace_alignment_limit": "Original record unavailable; later autonomous reproduction is a different post-deadline submission.",
+  "captured_account_notebook_versions": 38,
+  "published_version_limit": 20,
+  "version_budget_status": "jury_interpretation_risk_post_deadline_activity_included",
+  "external_method_research_status": "potentially_causal_in_later_reproduction",
   "rollout_provenance": {
     "filename": "rollout-2026-08-05T17-20-55-019fd139-d180-7171-ac0b-c037e11866eb.jsonl",
     "private_original_path": "/workspace/IOAI/next-task/ioai-2026-task-1-westlake-nlp-24/codex-home/sessions/2026/08/05/rollout-2026-08-05T17-20-55-019fd139-d180-7171-ac0b-c037e11866eb.jsonl",

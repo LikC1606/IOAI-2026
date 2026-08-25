@@ -5,6 +5,12 @@ Kaggle account: `researai`<br>
 Agent run: 2026-08-08 16:23:20.951Z–18:23:20.943Z<br>
 Model: `gpt-5.6-sol`, reasoning effort `xhigh`
 
+Start with [`COMPLIANCE.md`](COMPLIANCE.md),
+[`RULE_DIFFERENCE_AUDIT.md`](RULE_DIFFERENCE_AUDIT.md), and
+[`ARTIFACT_PROVENANCE.json`](ARTIFACT_PROVENANCE.json). The official result is
+trace-aligned, but the v3 model's use of evaluator-batch context is a serious
+Jury-interpretation risk and is not presented as cleanly compliant.
+
 The solver approximated a protected procedural 2-D field with a trained
 `torch.nn.Module`. The official evaluator scores five equally weighted regions
 (`I`, `O`, `A`, `I_entropy`, and background), requires dropout-derived inference
@@ -31,6 +37,27 @@ The candidate frontier and validation evidence are in
 [`records/CANDIDATES.md`](records/CANDIDATES.md) and
 [`records/TASK_KNOWLEDGE.md`](records/TASK_KNOWLEDGE.md). The chronological
 experiment and submission ledgers are retained as JSONL in `records/`.
+
+## Exact v3 artifacts
+
+The historical notebook and metadata are preserved at `notebooks/v3/`. The
+exact remote `submission.csv` and its decoded submitted `custom_model.py` are
+under `remote/v3/`. The decoded CSV source is byte-identical to the preserved
+source, the safetensors weights load into it, and the model has 13,426
+parameters. Verify with:
+
+```bash
+python3 tools/verify_v3_artifacts.py
+sha256sum -c MANIFEST.sha256
+```
+
+The same verifier demonstrates that the model is not pointwise: changing the
+other coordinates in a batch changes internal outputs for 100/100 fixed test
+points and final predictions for 5/100 in the deterministic fixture. See the
+rule audit for why this is a serious risk rather than an organizer-confirmed
+violation. The non-redistributed official evaluator source is bound by hash and
+function/call-site locators in
+[`evidence/EVALUATOR_BATCHING_PROVENANCE.json`](evidence/EVALUATOR_BATCHING_PROVENANCE.json).
 
 ## Execution trace
 
@@ -73,3 +100,11 @@ chronological last and all-account numerical best is `55358739`, Public
 The extraction does not expose a selected-for-final flag, so no final placement
 is inferred. Latest, all-account best, official-deadline, and autonomous scopes
 are reported separately.
+
+## Historical report correction
+
+The exact v3 report says the entropy branch uses seven differently scaled
+dropout bits with range `[-1016,1016]`. The submitted source actually uses eight
+equal-scale centered dropout units and can reach `[-2000,2000]`, still inside
+the official `[-2026,2026]` bound. The historical notebook remains immutable;
+the discrepancy is disclosed in `COMPLIANCE.md`.

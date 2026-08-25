@@ -1,0 +1,2 @@
+# Preserve the exact historical Task 6 submission bytes, including CRLF.
+task6/remote/v3/submission.csv binary

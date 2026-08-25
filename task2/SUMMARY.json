@@ -15,6 +15,12 @@
   ],
   "official_final_public_score": 0.63583,
   "official_final_private_score": 0.625,
+  "official_final_trace_alignment": false,
+  "official_final_trace_alignment_limit": "Official ExtraTrees final is downstream of the formal supervision boundary; later reproduction is a different post-deadline submission.",
+  "captured_account_notebook_versions": 18,
+  "published_version_limit": 20,
+  "version_budget_status": "within_limit",
+  "external_method_research_status": "potentially_causal_in_later_reproduction",
   "historical_remote_source_retrievable": true,
   "canonical_autonomous_rollout": {
     "trace_path": "evidence/reproduction-120m/rollout.jsonl",

@@ -22,6 +22,7 @@
   "official_final_submission_refs": [55357080],
   "official_final_public_score": 75.0154,
   "official_final_private_score": 73.36234,
+  "official_final_trace_alignment": true,
   "submission_refs_in_autonomous_material": [55356406, 55356701, 55357080],
   "excluded_post_autonomy_pre_run_deadline_submission_ref": 55357740,
   "latest_account_submission_ref": 55358739,
@@ -32,6 +33,25 @@
   "submissions_before_official_deadline": 4,
   "submissions_after_official_deadline": 2,
   "final_account_results": "remote/FINAL_ACCOUNT_RESULTS.json",
+  "strict_exact_organizer_prompt_text_conformance": true,
+  "exact_v3_artifacts": {
+    "notebook_source": "notebooks/v3/script.py",
+    "kernel_metadata": "notebooks/v3/kernel-metadata.json",
+    "remote_submission_output": "remote/v3/submission.csv",
+    "decoded_submitted_source": "remote/v3/custom_model.py",
+    "provenance": "ARTIFACT_PROVENANCE.json",
+    "manifest": "MANIFEST.sha256"
+  },
+  "rule_difference_audit": "RULE_DIFFERENCE_AUDIT.json",
+  "rule_audit_status": "serious_jury_interpretation_risk_evaluator_batch_dependence",
+  "batch_dependence_fixture": {
+    "test_points": 100,
+    "component_changes": 100,
+    "final_prediction_changes": 5,
+    "max_final_change": 1.0
+  },
+  "historical_report_factual_error_disclosed": true,
+  "local_gpu_accounting_status": "v3_candidate_31.03_seconds_known_exhaustive_total_unavailable",
   "trace_directories": ["evidence/autonomous-only", "evidence/rollouts"],
   "restricted_materials_excluded": [
     "input/competition/",

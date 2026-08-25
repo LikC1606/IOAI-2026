@@ -1,0 +1,25 @@
+{
+  "schema": "ioai.task6-rule-difference-audit.v1",
+  "submission_ref": 55357080,
+  "bottom_line": "Trace-aligned exact-prompt autonomous result with a mechanically valid envelope, but serious Jury risk from evaluator-batch-dependent geometry inference.",
+  "statuses": {
+    "result.trace_alignment": "evidence_supported_compliant",
+    "prompt.exact_text": "evidence_supported_compliant",
+    "submission.notebook_only": "evidence_supported_compliant",
+    "submission.deadline": "evidence_supported_compliant",
+    "submission.version_budget": "evidence_supported_compliant",
+    "submission.timeout": "evidence_supported_compliant",
+    "resources.remote_metadata": "evidence_supported_compliant",
+    "model.envelope_and_parameters": "evidence_supported_compliant",
+    "model.dropout_randomness": "evidence_supported_compliant",
+    "model.evaluator_batch_dependence": "serious_jury_interpretation_risk",
+    "protected_field.hidden_geometry": "serious_jury_interpretation_risk",
+    "source.technical_report": "disclosed_factual_error",
+    "resources.external_web_research": "evidence_supported_no_search_found",
+    "hardware.local_development": "jury_interpretation_risk_and_accounting_incomplete",
+    "cost.total_usd": "unavailable_not_complete_numeric_total"
+  },
+  "artifact_provenance": "ARTIFACT_PROVENANCE.json",
+  "official_evaluator_batching_provenance": "evidence/EVALUATOR_BATCHING_PROVENANCE.json",
+  "verification_script": "tools/verify_v3_artifacts.py"
+}

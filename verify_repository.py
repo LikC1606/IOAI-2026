@@ -3,6 +3,8 @@ from __future__ import annotations
 
 import hashlib
 import json
+import subprocess
+import sys
 from pathlib import Path
 
 
@@ -306,6 +308,21 @@ def verify_autonomous_material() -> dict[str, int]:
 
     costs = json.loads((ROOT / "AUTONOMOUS_COSTS.json").read_text(encoding="utf-8"))
     assert costs["known_token_total_all_tasks"] == tokens
+    assert costs["api_cost_total_status"] == (
+        "unavailable_no_provider_invoice_or_applicable_public_rate"
+    )
+    assert costs["api_cost_usd_total"] is None
+    assert costs["gpu_compute_accounting_status"] == (
+        "remote_kaggle_runtime_complete_selected_scope_local_development_incomplete"
+    )
+    assert costs["gpu_cost_total_status"] == (
+        "incomplete_local_runtime_and_unavailable_rate"
+    )
+    assert costs["gpu_cost_usd_total"] is None
+    for task in ("task4", "task5", "task6"):
+        gpu = costs["tasks"][task]["gpu"]
+        assert gpu["local_development_runtime_seconds"] is None, task
+        assert gpu["local_development_gpu_cost_usd"] is None, task
     prompt_audit = json.loads(
         (ROOT / "PROMPT_CONFORMANCE_AUDIT.json").read_text(encoding="utf-8")
     )
@@ -339,14 +356,134 @@ def verify_autonomous_material() -> dict[str, int]:
     }
 
 
+def verify_task6_artifacts() -> dict[str, object]:
+    """Run the exact v3 verifier and bind its result to the provenance audit."""
+    expected = {
+        "notebooks/v3/script.py": "f9a8fbdcbcf2be4b327ca3961726feebe19a2d4d54c6a257bca5e6f60a45e267",
+        "notebooks/v3/kernel-metadata.json": "3e9aeeba013f32d01e54b9e65f233573285c40fe34d1021d0d043683fe2676d8",
+        "remote/v3/custom_model.py": "f325541e9ec0df6b4e286528c46070976407a66003912477f05d38134c80822a",
+        "remote/v3/submission.csv": "6695d583492eae631f778f6f7846fe498836f250ae47c585a770b1073c79e53c",
+    }
+    task_root = ROOT / "task6"
+    for relative, digest in expected.items():
+        assert sha256(task_root / relative) == digest, f"task6/{relative}"
+
+    completed = subprocess.run(
+        [sys.executable, str(task_root / "tools/verify_v3_artifacts.py")],
+        cwd=task_root,
+        check=True,
+        capture_output=True,
+        text=True,
+    )
+    result = json.loads(completed.stdout)
+    assert result["all_ok"] is True
+    assert result["rows"] == 2
+    assert result["payloads_identical"] is True
+    assert result["decoded_source_exact_match"] is True
+    assert result["parameter_count"] == 13_426
+    assert result["batch_dependence"] == {
+        "test_points": 100,
+        "component_changes": 100,
+        "final_prediction_changes": 5,
+        "max_final_change": 1.0,
+    }
+    assert result["historical_report_discrepancy_present"] is True
+
+    provenance = json.loads(
+        (task_root / "ARTIFACT_PROVENANCE.json").read_text(encoding="utf-8")
+    )
+    assert provenance["submission_ref"] == 55357080
+    assert provenance["cross_checks"]["parameter_count"] == 13_426
+    for key, relative in {
+        "notebook_source": "notebooks/v3/script.py",
+        "kernel_metadata": "notebooks/v3/kernel-metadata.json",
+        "decoded_submitted_source": "remote/v3/custom_model.py",
+        "remote_submission_output": "remote/v3/submission.csv",
+    }.items():
+        artifact = provenance["artifacts"][key]
+        assert artifact["path"] == relative
+        assert artifact["sha256"] == expected[relative]
+
+    rule_audit = json.loads(
+        (task_root / "RULE_DIFFERENCE_AUDIT.json").read_text(encoding="utf-8")
+    )
+    assert rule_audit["statuses"]["result.trace_alignment"] == (
+        "evidence_supported_compliant"
+    )
+    assert rule_audit["statuses"]["prompt.exact_text"] == (
+        "evidence_supported_compliant"
+    )
+    assert rule_audit["statuses"]["model.evaluator_batch_dependence"] == (
+        "serious_jury_interpretation_risk"
+    )
+    assert rule_audit["statuses"]["source.technical_report"] == (
+        "disclosed_factual_error"
+    )
+    evaluator = json.loads(
+        (task_root / "evidence/EVALUATOR_BATCHING_PROVENANCE.json").read_text(
+            encoding="utf-8"
+        )
+    )
+    assert evaluator["logical_source_path"] == "field/metrics/field_score.py"
+    assert evaluator["source_sha256"] == (
+        "a26781f14ac47eddf71aa320888b8d28c454cf13c3bba95b011ad8e827f8eb1d"
+    )
+    assert evaluator["source_in_repository"] is False
+    assert evaluator["observed_function"]["name"] == "_predict_model_random_batches"
+    assert evaluator["observed_function"]["definition_line_in_preserved_copy"] == 196
+    assert rule_audit["official_evaluator_batching_provenance"] == (
+        "evidence/EVALUATOR_BATCHING_PROVENANCE.json"
+    )
+    return result
+
+
+def verify_cross_task_rule_audit() -> dict[str, object]:
+    audit = json.loads((ROOT / "RULE_COMPLIANCE_AUDIT.json").read_text(encoding="utf-8"))
+    assert audit["all_six_strictly_compliant_claim_supported"] is False
+    tasks = audit["tasks"]
+    assert tasks["task1"]["official_final_trace_alignment"] is False
+    assert tasks["task2"]["official_final_trace_alignment"] is False
+    assert tasks["task3"]["official_final_trace_alignment"] is True
+    assert tasks["task3"]["submission_counts"] == {
+        "all_account": 27,
+        "before_official_deadline": 11,
+        "after_official_deadline": 16,
+        "published_limit": 15,
+    }
+    assert tasks["task4"]["strict_exact_organizer_prompt_text_conformance"] is False
+    assert tasks["task4"]["selected_trace_files"] == 12
+    assert tasks["task5"]["official_final_trace_alignment"] is True
+    assert tasks["task6"]["batch_dependence_fixture"]["final_prediction_changes"] == 5
+    assert audit["cost_accounting"]["local_gpu_runtime"] == "incomplete_tasks_4_to_6"
+    return {
+        "tasks": len(tasks),
+        "all_six_strictly_compliant_claim_supported": False,
+    }
+
+
 def verify_execution_accounting() -> dict[str, int]:
     index = json.loads((ROOT / "EXECUTION_TRACE_INDEX.json").read_text(encoding="utf-8"))
     costs = json.loads((ROOT / "COSTS.json").read_text(encoding="utf-8"))
+    assert costs["api_cost_total_status"] == (
+        "unavailable_no_provider_invoice_or_applicable_public_rate"
+    )
+    assert costs["api_cost_usd_total"] is None
+    assert costs["gpu_compute_accounting_status"] == (
+        "remote_kaggle_runtime_complete_selected_scope_local_development_incomplete"
+    )
+    assert costs["gpu_cost_total_status"] == (
+        "incomplete_local_runtime_and_unavailable_rate"
+    )
+    assert costs["gpu_cost_usd_total"] is None
     tokens = 0
     traces = 0
     for task, data in index["tasks"].items():
         task_tokens = data["token_usage_cumulative_sum_across_traces"]["total_tokens"]
         assert costs["tasks"][task]["token_usage"]["total_tokens"] == task_tokens, task
+        if task in {"task4", "task5", "task6"}:
+            gpu = costs["tasks"][task]["gpu"]
+            assert gpu["local_development_runtime_seconds"] is None, task
+            assert gpu["local_development_gpu_cost_usd"] is None, task
         tokens += task_tokens
         traces += len(data["trace_files"])
     assert costs["known_token_total_all_tasks"] == tokens
@@ -429,8 +566,16 @@ def main() -> None:
         else:
             assert summary["best_submission_ref"] == submission
             assert summary["best_public_score"] == score
+        expected_alignment = task >= 3
+        assert summary["official_final_trace_alignment"] is expected_alignment, task
+        if task == 3:
+            assert summary["account_submission_count"] == 27
+            assert summary["published_scored_submission_limit"] == 15
+            assert summary["historical_report_status"] == (
+                "nonconforming_length_and_v8_local_score_error_disclosed"
+            )
         task_report = {
-            "manifest_files": verify_manifest(root) if task <= 5 else 0,
+            "manifest_files": verify_manifest(root),
             "recorded_score": score,
         }
         task_report["final_account_result"] = verify_final_account_result(task, summary)
@@ -438,13 +583,26 @@ def main() -> None:
     report["autonomous_material"] = verify_autonomous_material()
     report["published_execution_accounting"] = verify_execution_accounting()
     report["later_reproduction_material"] = verify_reproduction_material()
+    report["task6_exact_artifacts"] = verify_task6_artifacts()
+    report["cross_task_rule_audit"] = verify_cross_task_rule_audit()
     delivery = json.loads((ROOT / "KAGGLE_EXTRACTION_DELIVERY.json").read_text(encoding="utf-8"))
     assert delivery["archive"]["size_bytes"] == 496870419
     assert delivery["archive"]["entry_count"] == 1401
     assert delivery["archive"]["sha256"] == "eb14e52057c3cfca21972993fb73c2addaf9f214abc9c6f38b88bca97d93fe3c"
     assert delivery["google_drive"]["file_id"] == "1c9yRn5SUo6LOPDrHLrAVjj-9JLFti9Vz"
     checklist = json.loads((ROOT / "ORGANIZER_SUBMISSION.json").read_text(encoding="utf-8"))
-    assert checklist["status"] == "complete_with_explicit_cost_and_prompt_conformance_limits"
+    assert checklist["status"] == (
+        "complete_evidence_package_with_known_compliance_and_cost_limits"
+    )
+    assert checklist["requirements"]["cross_task_rule_compliance"][
+        "all_six_strictly_compliant_claim_supported"
+    ] is False
+    assert checklist["requirements"]["api_costs"]["status"] == (
+        "token_accounting_complete_usd_unavailable"
+    )
+    assert checklist["requirements"]["gpu_compute_and_costs_per_task"]["status"] == (
+        "remote_selected_scope_complete_local_h100_and_usd_incomplete"
+    )
     forbidden = ("你让他继续优化 找到高分了再提交", "Extend this run by 35 minutes")
     for path in ROOT.rglob("*"):
         if not path.is_file() or ".git" in path.parts:

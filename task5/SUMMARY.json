@@ -9,6 +9,9 @@
   "official_final_submission_refs": [55320296],
   "official_final_public_score": 95.39,
   "official_final_private_score": 96.06,
+  "official_final_trace_alignment": true,
+  "strict_exact_organizer_prompt_text_conformance": true,
+  "external_method_research_status": "used_in_route_justification_jury_interpretation_risk",
   "best_submission_ref": 55320296,
   "best_public_score": 95.39,
   "best_private_score_before_official_deadline": 96.06,
@@ -21,5 +24,6 @@
   "submissions_after_official_deadline": 1,
   "final_account_results": "remote/FINAL_ACCOUNT_RESULTS.json",
   "historical_remote_source_retrievable": false,
-  "historical_remote_output_included": true
+  "historical_remote_output_included": true,
+  "local_gpu_accounting_status": "selected_path_24.8_seconds_known_exhaustive_total_unavailable"
 }

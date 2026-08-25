@@ -1,0 +1,24 @@
+{
+  "schema": "ioai.task6-evaluator-batching-provenance.v1",
+  "source_role": "organizer_supplied_competition_evaluator",
+  "logical_source_path": "field/metrics/field_score.py",
+  "source_sha256": "a26781f14ac47eddf71aa320888b8d28c454cf13c3bba95b011ad8e827f8eb1d",
+  "source_in_repository": false,
+  "exclusion_reason": "Competition input is not redistributed in the compact Task 6 package; the Jury can compare this digest with its organizer copy.",
+  "observed_function": {
+    "name": "_predict_model_random_batches",
+    "definition_line_in_preserved_copy": 196,
+    "docstring_lines_in_preserved_copy": [202, 205],
+    "behavior": [
+      "permutes all input indices with a seeded NumPy generator",
+      "uses deterministic irregular batch sizes drawn with rng.integers(113, 389)",
+      "calls the submitted model separately on each permuted batch",
+      "restores predictions to their original index order"
+    ]
+  },
+  "observed_call_sites_in_preserved_copy": {
+    "ordinary_region_predictions": [517, 524],
+    "entropy_repeated_predictions": [544, 555]
+  },
+  "claim_scope": "This establishes the evaluator batching behavior used in the Task 6 audit. It does not by itself establish that every batch-dependent model violates a written rule or record a Jury ruling."
+}

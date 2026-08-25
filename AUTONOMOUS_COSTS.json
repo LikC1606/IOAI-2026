@@ -10,8 +10,9 @@
   "api_cost_total_reason": "No invoice or exact ioai_allowed/gpt-5.6-sol rate card was captured; another model's public price is not substituted.",
   "api_cost_formula_if_provider_rates_are_supplied": "(input_tokens-cached_input_tokens)/1e6*input_rate + cached_input_tokens/1e6*cached_input_rate + output_tokens/1e6*output_rate",
   "gpu_cost_usd_total": null,
-  "gpu_cost_total_status": "unavailable_no_cloud_invoice_or_rate",
-  "gpu_cost_total_reason": "Exact observed accelerator runtimes are reported per task, but no billable rate or invoice was captured.",
+  "gpu_cost_total_status": "incomplete_local_runtime_and_unavailable_rate",
+  "gpu_cost_total_reason": "Observed Kaggle T4 runtimes are reported, but Tasks 4-6 also used local H100 development and the exhaustive non-overlapping local runtime is unavailable. No billable rate or invoice was captured.",
+  "gpu_compute_accounting_status": "remote_kaggle_runtime_complete_selected_scope_local_development_incomplete",
   "tasks": {
     "task1": {
       "competition": "ioai-2026-task-1-westlake-nlp-24",
@@ -116,6 +117,8 @@
         "local_development_accelerator": "Nvidia H100 (trace-recorded)",
         "local_development_runtime_seconds": null,
         "local_development_runtime_status": "unavailable_non_exhaustive_overlapping_approximate_records",
+        "known_selected_body_local_runtime_seconds": 161.0,
+        "known_selected_body_runtime_source": "historical final notebook technical report",
         "local_development_gpu_cost_usd": null,
         "local_development_cost_status": "unavailable_no_complete_runtime_or_rate"
       }
@@ -142,7 +145,14 @@
         "runtime_seconds": 837.27460599,
         "runtime_hours": 0.23257627944166667,
         "gpu_cost_usd": null,
-        "cost_status": "unavailable_no_rate_or_invoice"
+        "cost_status": "unavailable_no_rate_or_invoice",
+        "local_development_accelerator": "Nvidia H100 (trace-recorded)",
+        "local_development_runtime_seconds": null,
+        "local_development_runtime_status": "unavailable_multiple_overlapping_runs",
+        "known_selected_path_local_runtime_seconds": 24.8,
+        "known_selected_path_runtime_source": "historical v6 technical report",
+        "local_development_gpu_cost_usd": null,
+        "local_development_cost_status": "unavailable_no_complete_runtime_or_rate"
       }
     },
     "task6": {
@@ -167,7 +177,14 @@
         "runtime_seconds": 243.721403533,
         "runtime_hours": 0.06770038987027778,
         "gpu_cost_usd": null,
-        "cost_status": "unavailable_no_rate_or_invoice"
+        "cost_status": "unavailable_no_rate_or_invoice",
+        "local_development_accelerator": "Nvidia H100 (trace-recorded)",
+        "local_development_runtime_seconds": null,
+        "local_development_runtime_status": "unavailable_multiple_experiment_records_not_exhaustively_allocated",
+        "known_v3_candidate_local_runtime_seconds": 31.03,
+        "known_v3_candidate_runtime_source": "records/experiments.jsonl and historical v3 technical report",
+        "local_development_gpu_cost_usd": null,
+        "local_development_cost_status": "unavailable_no_complete_runtime_or_rate"
       }
     }
   }

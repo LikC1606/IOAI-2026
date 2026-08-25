@@ -12,6 +12,12 @@ rule. Tasks 1, 2, and 4 contain custom prompt text and are disclosed as
 non-exact; organizer/Jury recognition is not assumed. Hidden chain-of-thought
 is not published.
 
+Completeness here means completeness of the selected observable prefix, not
+proof of competition-rule compliance. Tasks 1 and 2 do not bind the official
+final result to an original autonomous trace; Tasks 3 and 5 disclose potentially
+causal external-method research; and Task 6 discloses a serious
+evaluator-batch-dependence risk. See `RULE_COMPLIANCE_AUDIT.md/json`.
+
 For Tasks 1 and 2, the original run records were unavailable after a
 school-server restart; the selected traces are later fresh reproductions
 using the same configured solver/system and organizer constraints.

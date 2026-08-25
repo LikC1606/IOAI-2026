@@ -1,0 +1,127 @@
+{
+  "schema": "ioai.cross-task-rule-compliance-audit.v1",
+  "overall_status": "not_self_certified_known_deviations_and_jury_risks_disclosed",
+  "all_six_strictly_compliant_claim_supported": false,
+  "classification_definitions": {
+    "known_deviation": "Direct repository evidence conflicts with a stated requirement or the provenance scope needed for the claim.",
+    "jury_interpretation_risk": "The facts are established but the published wording does not resolve how the Jury applies the rule.",
+    "evidence_unavailable": "A historical fact cannot be reconstructed from retained records and is not replaced with a post-run assertion."
+  },
+  "trace_scope_status": "complete_selected_observable_prefixes_with_disclosed_provenance_limits",
+  "tasks": {
+    "task1": {
+      "official_final_submission_refs": [55267333, 55267368],
+      "official_final_trace_alignment": false,
+      "strict_exact_organizer_prompt_text_conformance": false,
+      "strict_claim_status": "not_supported",
+      "primary_classifications": ["known_deviation", "evidence_unavailable"],
+      "risks": [
+        "original_run_trace_unavailable_after_school_server_restart",
+        "later_reproduction_is_post_deadline_different_submission",
+        "custom_starter_prompt",
+        "potentially_causal_external_method_research_in_reproduction",
+        "38_captured_versions_vs_published_limit_20_jury_scope_unclear"
+      ],
+      "evidence": ["task1/COMPLIANCE.md", "task1/SUMMARY.json"]
+    },
+    "task2": {
+      "official_final_submission_refs": [55261432],
+      "official_final_trace_alignment": false,
+      "strict_exact_organizer_prompt_text_conformance": false,
+      "strict_claim_status": "not_supported",
+      "primary_classifications": ["known_deviation", "evidence_unavailable"],
+      "risks": [
+        "original_run_trace_unavailable_after_school_server_restart",
+        "official_final_downstream_of_formal_supervision_boundary",
+        "later_reproduction_is_post_deadline_different_submission",
+        "custom_starter_prompt",
+        "potentially_causal_external_method_research_in_reproduction"
+      ],
+      "captured_versions": 18,
+      "published_version_limit": 20,
+      "evidence": ["task2/COMPLIANCE.md", "task2/SUMMARY.json"]
+    },
+    "task3": {
+      "official_final_submission_refs": [55289569, 55289823],
+      "official_final_trace_alignment": true,
+      "strict_exact_organizer_prompt_text_conformance": true,
+      "strict_claim_status": "jury_review_required",
+      "primary_classifications": ["jury_interpretation_risk", "known_deviation"],
+      "risks": [
+        "potentially_causal_external_method_research",
+        "27_all_account_submissions_vs_published_limit_15_with_16_post_deadline",
+        "historical_report_length_and_score_errors"
+      ],
+      "submission_counts": {
+        "all_account": 27,
+        "before_official_deadline": 11,
+        "after_official_deadline": 16,
+        "published_limit": 15
+      },
+      "evidence": ["task3/COMPLIANCE.md", "task3/REPORT_COMPLIANCE.md", "task3/SUMMARY.json"]
+    },
+    "task4": {
+      "official_final_submission_refs": [55316818],
+      "official_final_trace_alignment": true,
+      "strict_exact_organizer_prompt_text_conformance": false,
+      "strict_claim_status": "not_supported_for_exact_prompt_rule",
+      "primary_classifications": ["known_deviation", "jury_interpretation_risk"],
+      "risks": [
+        "substantive_non_exact_continuation",
+        "transient_local_push_folder_pycache",
+        "two_apparently_noncausal_arxiv_searches",
+        "local_h100_hardware_scope_interpretation"
+      ],
+      "selected_trace_files": 12,
+      "evidence": ["task4/RULE_DIFFERENCE_AUDIT.json", "task4/COMPLIANCE.md", "task4/SUMMARY.json"]
+    },
+    "task5": {
+      "official_final_submission_refs": [55320296],
+      "official_final_trace_alignment": true,
+      "strict_exact_organizer_prompt_text_conformance": true,
+      "strict_claim_status": "jury_review_required",
+      "primary_classifications": ["jury_interpretation_risk", "evidence_unavailable"],
+      "risks": [
+        "external_literature_used_in_route_justification",
+        "historical_v6_source_preserved_from_trace_but_not_independently_redownloaded",
+        "exhaustive_local_h100_runtime_unavailable"
+      ],
+      "evidence": ["task5/COMPLIANCE.md", "task5/V6_SOURCE_PROVENANCE.json", "task5/SUMMARY.json"]
+    },
+    "task6": {
+      "official_final_submission_refs": [55357080],
+      "official_final_trace_alignment": true,
+      "strict_exact_organizer_prompt_text_conformance": true,
+      "strict_claim_status": "serious_jury_review_required",
+      "primary_classifications": ["jury_interpretation_risk", "known_deviation"],
+      "risks": [
+        "evaluator_batch_dependent_predictions",
+        "hidden_geometry_or_protected_field_rule_interpretation",
+        "historical_report_dropout_and_range_error",
+        "exhaustive_local_h100_runtime_unavailable"
+      ],
+      "batch_dependence_fixture": {
+        "test_points": 100,
+        "component_changes": 100,
+        "final_prediction_changes": 5,
+        "max_final_change": 1.0
+      },
+      "evidence": [
+        "task6/RULE_DIFFERENCE_AUDIT.json",
+        "task6/ARTIFACT_PROVENANCE.json",
+        "task6/evidence/EVALUATOR_BATCHING_PROVENANCE.json",
+        "task6/COMPLIANCE.md",
+        "task6/SUMMARY.json"
+      ]
+    }
+  },
+  "cost_accounting": {
+    "token_accounting": "complete_for_selected_trace_scope",
+    "api_usd": "unavailable_no_provider_invoice_or_applicable_rate",
+    "kaggle_remote_runtime": "complete_for_selected_recorded_scope",
+    "local_gpu_runtime": "incomplete_tasks_4_to_6",
+    "gpu_usd": "unavailable_no_complete_runtime_rate_or_invoice",
+    "evidence": ["AUTONOMOUS_COSTS.json", "COSTS.json"]
+  },
+  "self_certification": "none; organizer/Jury determines recognition"
+}

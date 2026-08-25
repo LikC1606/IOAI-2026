@@ -2,7 +2,11 @@
 
 Organizer-review materials for IOAI 2026 Tasks 1-6. Start with
 [`ORGANIZER_SUBMISSION.md`](ORGANIZER_SUBMISSION.md), which maps every requested
-deliverable to its exact evidence path and machine-verifiable status.
+deliverable to its exact evidence path and machine-verifiable status. The
+cross-task [`RULE_COMPLIANCE_AUDIT.md`](RULE_COMPLIANCE_AUDIT.md) separates
+known deviations, Jury-interpretation risks, and unavailable evidence; the
+current record does not support a claim that all six tasks are strictly
+compliant.
 
 | Task | Competition | Official final Public LB | Status |
 |---|---|---:|---|
@@ -31,9 +35,11 @@ causally excludes every live human intervention prompt and all later events.
 
 Each directory contains its own README, official prompts/pages, environment
 record, solver evidence, solution artifacts, remote records, and summary.
-Tasks 1-5 maintain task-specific SHA-256 manifests. Task 6 includes the bounded
-main trace, two pre-boundary worker traces, and compact v1-v3 remote logs; raw
-`codex-home` databases, post-intervention traces, model artifacts, and competition inputs are excluded. Task-specific
+All six tasks maintain task-specific SHA-256 manifests. Task 6 includes the
+bounded main trace, two pre-boundary worker traces, exact final v3 notebook,
+metadata, submitted CSV and decoded model source, plus compact v1-v3 remote
+logs; raw `codex-home` databases, post-intervention traces, intermediate model
+artifacts, and competition inputs are excluded. Task-specific
 limitations are disclosed in the corresponding README, `COMPLIANCE.md`,
 `EXCLUSIONS.md`, or boundary documents.
 
@@ -55,7 +61,9 @@ using the same configured solver/system, official competition bundle, and
 organizer constraints, not the lost original run records.
 
 Task 4's full rule classification and corrected 12-trace solver inventory are
-in [task4/RULE_DIFFERENCE_AUDIT.md](task4/RULE_DIFFERENCE_AUDIT.md).
+in [task4/RULE_DIFFERENCE_AUDIT.md](task4/RULE_DIFFERENCE_AUDIT.md). Task 6's
+exact v3 artifact audit and serious evaluator-batch-dependence risk are in
+[task6/RULE_DIFFERENCE_AUDIT.md](task6/RULE_DIFFERENCE_AUDIT.md).
 
 The complete 496,870,419-byte Kaggle extraction archive is delivered through
 the verified Google Drive record in
