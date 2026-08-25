@@ -121,6 +121,20 @@ CONTINUATION_FILES = {
     "task2": ROOT / "task2/official/CONTINUE_PROMPT.md",
     "task4": ROOT / "task4/official/continue.md",
 }
+RECOVERY_NOTES = {
+    "task1": (
+        "The original Task 1 run record was unavailable after a school-server restart. "
+        "The canonical trace is a later fresh reproduction using the same configured "
+        "solver/system, official competition bundle, and organizer constraints; it is "
+        "not the original run record."
+    ),
+    "task2": (
+        "The original Task 2 run record was unavailable after a school-server restart. "
+        "The canonical trace is a later fresh reproduction using the same configured "
+        "solver/system, official competition bundle, and organizer constraints; it is "
+        "not the original run record."
+    ),
+}
 
 GPU = {
     "task1": {
@@ -294,6 +308,7 @@ def build_index() -> dict[str, Any]:
         tasks[task] = {
             "boundary": BOUNDARIES[task],
             "excluded_material": EXCLUSIONS[task],
+            **({"record_recovery_note": RECOVERY_NOTES[task]} if task in RECOVERY_NOTES else {}),
             "trace_files": records,
             "canonical_model": "gpt-5.6-sol",
             "model_provider": "ioai_allowed",
@@ -364,6 +379,10 @@ def write_markdown(index: dict[str, Any]) -> None:
         "are retained and classified. They are part of the execution environment,",
         "not live human method suggestions. Hidden chain-of-thought is not published.",
         "",
+        "For Tasks 1 and 2, the original run records were unavailable after a",
+        "school-server restart; the selected traces are later fresh reproductions",
+        "using the same configured solver/system and organizer constraints.",
+        "",
         "| Task | Trace files | Events | User prompts | Logical calls | Tokens | Boundary (exclusive UTC) |",
         "|---|---:|---:|---:|---:|---:|---|",
     ]
@@ -387,6 +406,8 @@ def write_markdown(index: dict[str, Any]) -> None:
     )
     for task, data in index["tasks"].items():
         lines.extend(["", f"## {task}", "", f"Boundary: {data['boundary']['basis']}.", ""])
+        if "record_recovery_note" in data:
+            lines.extend([f"Record recovery note: {data['record_recovery_note']}", ""])
         lines.append("Included trace files:")
         lines.append("")
         for item in data["trace_files"]:

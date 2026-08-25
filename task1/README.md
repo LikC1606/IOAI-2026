@@ -2,6 +2,14 @@
 
 Competition: `ioai-2026-task-1-westlake-nlp-24`.
 
+## Record recovery note
+
+The original Task 1 run record was unavailable after a school-server restart.
+The canonical trace in `evidence/reproduction-120m/` is a later fresh
+reproduction using the same configured solver/system, official competition
+bundle, and organizer constraints. It is a reproduction record, not the lost
+original run record, and its post-deadline status remains explicit below.
+
 This package preserves the historical formal Task 1 Agent evidence and
 separates it from the official account result and the canonical later
 no-live-human reproduction rollout. It is evidence for organizer review, not a

@@ -4,6 +4,10 @@ Generated from the JSON index by `tools/build_execution_trace_index.py`.
 The JSONL files are credential-redacted observable traces; see
 [`EXECUTION_TRACES.md`](EXECUTION_TRACES.md) for interpretation and limits.
 
+Task 1 and Task 2 records were recovered as later fresh reproductions
+after the original run records became unavailable following a school-server
+restart; their notes and scope are recorded in the JSON index.
+
 | Task | Files | Events | Logical calls | Outer exec calls | Tokens |
 |---|---:|---:|---:|---:|---:|
 | task1 | 1 | 1398 | 17 | 264 | 40933816 |

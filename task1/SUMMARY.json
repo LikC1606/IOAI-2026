@@ -30,6 +30,7 @@
   "canonical_autonomous_rollout": {
     "trace_path": "evidence/reproduction-120m/rollout.jsonl",
     "run_kind": "later_reproduction_120m",
+    "record_recovery_note": "The original Task 1 run record was unavailable after a school-server restart; this is a later fresh reproduction using the same configured solver/system, official competition bundle, and organizer constraints, not the original run record.",
     "autonomy_status": "fully_autonomous_no_live_human_intervention",
     "run_window_start_utc": "2026-08-05T16:25:50.693Z",
     "boundary_utc_exclusive": "2026-08-05T18:25:50.634Z",

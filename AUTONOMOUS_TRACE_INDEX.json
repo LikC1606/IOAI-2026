@@ -25,6 +25,7 @@
         "the official account's earlier deadline and all post-deadline scores are outside official-ranking scope",
         "the older formal-run prefix remains under task1/evidence/rollouts as historical audit material"
       ],
+      "record_recovery_note": "The original Task 1 run record was unavailable after a school-server restart. The canonical trace is a later fresh reproduction using the same configured solver/system, official competition bundle, and organizer constraints; it is not the original run record.",
       "trace_files": [
         {
           "path": "task1/evidence/reproduction-120m/rollout.jsonl",
@@ -162,6 +163,7 @@
         "the official account's earlier deadline and all post-deadline scores are outside official-ranking scope",
         "the older formal-run prefix remains under task2/evidence/rollouts as historical audit material"
       ],
+      "record_recovery_note": "The original Task 2 run record was unavailable after a school-server restart. The canonical trace is a later fresh reproduction using the same configured solver/system, official competition bundle, and organizer constraints; it is not the original run record.",
       "trace_files": [
         {
           "path": "task2/evidence/reproduction-120m/rollout.jsonl",

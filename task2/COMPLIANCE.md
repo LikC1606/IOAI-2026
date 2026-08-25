@@ -4,6 +4,14 @@ This post-run note consolidates the positive claim and known limitations. It
 does not modify the historical notebook source or include any post-boundary
 method as support for the claimed result.
 
+## Record recovery note
+
+The original Task 2 run record was unavailable after a school-server restart.
+The published `evidence/reproduction-120m/rollout.jsonl` is a later fresh
+reproduction using the same configured solver/system, official competition
+bundle, and organizer constraints. It is clearly separated from the lost
+original run and from the official account result.
+
 ## Eligible scope
 
 The formal run began at `2026-08-05T05:30:32Z`. Its conservative autonomy

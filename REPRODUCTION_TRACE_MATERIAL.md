@@ -5,6 +5,11 @@ reproduction runs for Tasks 1 and 2. They are the canonical no-live-human
 autonomous rollouts for these two tasks, while remaining post-deadline,
 non-ranking reference material for official-score purposes.
 
+The original Task 1 and Task 2 run records were unavailable after a
+school-server restart. Each trace below is a later fresh reproduction
+using the same configured solver/system, official competition bundle, and
+organizer constraints; neither is the original run record.
+
 The JSONL retains startup/organizer prompts, visible Agent messages, tool
 calls, tool outputs, lifecycle events, and cumulative token telemetry.
 Opaque encrypted reasoning is replaced by a placeholder; secrets and private
@@ -28,6 +33,7 @@ JSONL files are the canonical no-live-human Task 1/2 selection in
 ## task1
 
 Competition: `ioai-2026-task-1-westlake-nlp-24`; account: `researai`.
+Record recovery note: The original Task 1 run record was unavailable after a school-server restart. This is a later fresh reproduction using the same configured solver/system, official competition bundle, and organizer constraints; it is not the original run record.
 Run window: `2026-08-05T16:25:50.693Z` to `2026-08-05T18:25:50.634Z`.
 Official Kaggle deadline: `2026-08-05T10:50:00Z` (the run starts after it).
 Trace: [`rollout.jsonl`](task1/evidence/reproduction-120m/rollout.jsonl) — 1398 events; SHA-256 `ee1f08c710402e2db9408eb6ec122b17ef1c8f8dd8d2b1aab21af71c0f9deb84`.
@@ -44,6 +50,7 @@ Observed compute: {"accelerator": "NvidiaTeslaT4", "notebook_versions": 6, "obse
 ## task2
 
 Competition: `ioai-2026-task-2-westlake-nlp-24`; account: `researai`.
+Record recovery note: The original Task 2 run record was unavailable after a school-server restart. This is a later fresh reproduction using the same configured solver/system, official competition bundle, and organizer constraints; it is not the original run record.
 Run window: `2026-08-05T16:20:09.021Z` to `2026-08-05T18:20:08.972Z`.
 Official Kaggle deadline: `2026-08-05T07:35:00Z` (the run starts after it).
 Trace: [`rollout.jsonl`](task2/evidence/reproduction-120m/rollout.jsonl) — 1067 events; SHA-256 `429c4a133ea7c661f48fdf4f547baf481a0fd12c209449d5804df662ee95d3a8`.

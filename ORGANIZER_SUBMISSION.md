@@ -61,6 +61,10 @@ At the request to use the later fresh two-hour runs for Tasks 1 and 2, the full
 credential-redacted traces are published separately under
 [`task1/evidence/reproduction-120m/`](task1/evidence/reproduction-120m/) and
 [`task2/evidence/reproduction-120m/`](task2/evidence/reproduction-120m/).
+The original Task 1 and Task 2 run records were unavailable after a
+school-server restart; these are later fresh reproductions using the same
+configured solver/system, official competition bundle, and organizer
+constraints, not the lost original run records.
 They preserve the complete observable event streams and the corresponding
 candidate/submission outcomes. Both runs contain no live human method/target
 prompt and are the canonical autonomous rollout selection for Tasks 1 and 2.

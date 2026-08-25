@@ -25,6 +25,18 @@ DEFAULT_TASK6_RAW = Path(
     "/workspace/IOAI/ioai2-competition-runs-task6-20260809/"
     "ioai-2026-task-6-westlake-nlp-60/codex-home/sessions/2026/08/09"
 )
+RECOVERY_NOTES = {
+    "task1": (
+        "The original Task 1 run record was unavailable after a school-server restart; "
+        "the selected trace is a later fresh reproduction using the same configured "
+        "solver/system and organizer constraints, not the original run record."
+    ),
+    "task2": (
+        "The original Task 2 run record was unavailable after a school-server restart; "
+        "the selected trace is a later fresh reproduction using the same configured "
+        "solver/system and organizer constraints, not the original run record."
+    ),
+}
 
 PRIVATE_ENDPOINT_RE = re.compile(
     r"https?://(?:codex\.aiswing\.fun|api\.smilecodex\.space|127\.0\.0\.1:\d+)",
@@ -227,6 +239,7 @@ def main() -> None:
             aggregate = None
         index["tasks"][task_name] = {
             "trace_files": files,
+            **({"record_recovery_note": RECOVERY_NOTES[task_name]} if task_name in RECOVERY_NOTES else {}),
             "canonical_model": "gpt-5.6-sol",
             "model_provider": "ioai_allowed",
             "reasoning_effort": "max" if task_name in {"task1", "task2", "task3", "task4"} else "xhigh",
@@ -279,6 +292,10 @@ def main() -> None:
         "Generated from the JSON index by `tools/build_execution_trace_index.py`.",
         "The JSONL files are credential-redacted observable traces; see",
         "[`EXECUTION_TRACES.md`](EXECUTION_TRACES.md) for interpretation and limits.",
+        "",
+        "Task 1 and Task 2 records were recovered as later fresh reproductions",
+        "after the original run records became unavailable following a school-server",
+        "restart; their notes and scope are recorded in the JSON index.",
         "",
         "| Task | Files | Events | Logical calls | Outer exec calls | Tokens |",
         "|---|---:|---:|---:|---:|---:|",

@@ -26,6 +26,11 @@ RUNS: dict[str, dict[str, Any]] = {
         "competition": "ioai-2026-task-1-westlake-nlp-24",
         "account": "researai",
         "run_kind": "later_reproduction_120m",
+        "record_recovery_note": (
+            "The original Task 1 run record was unavailable after a school-server restart. "
+            "This is a later fresh reproduction using the same configured solver/system, "
+            "official competition bundle, and organizer constraints; it is not the original run record."
+        ),
         "post_deadline": True,
         "ranking_eligible": False,
         "source": Path(
@@ -80,6 +85,11 @@ RUNS: dict[str, dict[str, Any]] = {
         "competition": "ioai-2026-task-2-westlake-nlp-24",
         "account": "researai",
         "run_kind": "later_reproduction_120m",
+        "record_recovery_note": (
+            "The original Task 2 run record was unavailable after a school-server restart. "
+            "This is a later fresh reproduction using the same configured solver/system, "
+            "official competition bundle, and organizer constraints; it is not the original run record."
+        ),
         "post_deadline": True,
         "ranking_eligible": False,
         "source": Path(
@@ -219,6 +229,7 @@ def main() -> None:
             "competition": run["competition"],
             "account": run["account"],
             "run_kind": run["run_kind"],
+            "record_recovery_note": run["record_recovery_note"],
             "canonical_autonomous_trace": True,
             "post_deadline": run["post_deadline"],
             "ranking_eligible": run["ranking_eligible"],
@@ -262,6 +273,11 @@ def main() -> None:
         "autonomous rollouts for these two tasks, while remaining post-deadline,",
         "non-ranking reference material for official-score purposes.",
         "",
+        "The original Task 1 and Task 2 run records were unavailable after a",
+        "school-server restart. Each trace below is a later fresh reproduction",
+        "using the same configured solver/system, official competition bundle, and",
+        "organizer constraints; neither is the original run record.",
+        "",
         "The JSONL retains startup/organizer prompts, visible Agent messages, tool",
         "calls, tool outputs, lifecycle events, and cumulative token telemetry.",
         "Opaque encrypted reasoning is replaced by a placeholder; secrets and private",
@@ -298,6 +314,7 @@ def main() -> None:
             f"## {task}",
             "",
             f"Competition: `{data['competition']}`; account: `{data['account']}`.",
+            f"Record recovery note: {data['record_recovery_note']}",
             f"Run window: `{data['window']['start_utc']}` to `{data['window']['deadline_utc']}`.",
             f"Official Kaggle deadline: `{data['official_deadline_utc']}` (the run starts after it).",
             f"Trace: [`rollout.jsonl`]({trace['path']}) — {trace['event_count']} events; SHA-256 `{trace['published_sha256']}`.",
@@ -327,6 +344,7 @@ def main() -> None:
         "tasks": {
             task: {
                 "competition": run["competition"],
+                "record_recovery_note": run["record_recovery_note"],
                 "model_provider": "ioai_allowed",
                 "model": "gpt-5.6-sol",
                 "reasoning_effort": "max",

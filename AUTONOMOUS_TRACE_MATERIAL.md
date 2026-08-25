@@ -10,6 +10,10 @@ preconfigured runtime resume templates, and observable worker assignments
 are retained and classified. They are part of the execution environment,
 not live human method suggestions. Hidden chain-of-thought is not published.
 
+For Tasks 1 and 2, the original run records were unavailable after a
+school-server restart; the selected traces are later fresh reproductions
+using the same configured solver/system and organizer constraints.
+
 | Task | Trace files | Events | User prompts | Logical calls | Tokens | Boundary (exclusive UTC) |
 |---|---:|---:|---:|---:|---:|---|
 | task1 | 1 | 1398 | 3 | 17 | 40933816 | 2026-08-05T18:25:50.634Z |
@@ -30,6 +34,8 @@ Verify the complete selected set with
 
 Boundary: later two-hour reproduction deadline; no live human method/target prompt was delivered.
 
+Record recovery note: The original Task 1 run record was unavailable after a school-server restart. The canonical trace is a later fresh reproduction using the same configured solver/system, official competition bundle, and organizer constraints; it is not the original run record.
+
 Included trace files:
 
 - [`rollout.jsonl`](task1/evidence/reproduction-120m/rollout.jsonl) — 1398 events
@@ -43,6 +49,8 @@ Explicitly excluded:
 ## task2
 
 Boundary: later two-hour reproduction deadline; no live human method/target prompt was delivered.
+
+Record recovery note: The original Task 2 run record was unavailable after a school-server restart. The canonical trace is a later fresh reproduction using the same configured solver/system, official competition bundle, and organizer constraints; it is not the original run record.
 
 Included trace files:
 

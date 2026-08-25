@@ -4,6 +4,14 @@ This is a post-run organizer-review note. It does not alter the historical
 submission, claim an organizer decision, or convert a supervised late result
 into an official-prompt-only result.
 
+## Record recovery note
+
+The original Task 1 run record was unavailable after a school-server restart.
+The published `evidence/reproduction-120m/rollout.jsonl` is a later fresh
+reproduction using the same configured solver/system, official competition
+bundle, and organizer constraints. It is clearly separated from the lost
+original run and from the official account result.
+
 ## Status
 
 | Question | Evidence-backed answer |

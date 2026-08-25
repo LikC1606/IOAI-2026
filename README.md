@@ -48,7 +48,10 @@ applicable rate or invoice exists.
 For Tasks 1 and 2, that canonical selection is the complete later two-hour
 rollout under [REPRODUCTION_TRACE_MATERIAL.md](REPRODUCTION_TRACE_MATERIAL.md):
 it contains no live human method/target prompt, but its score remains
-post-deadline and non-ranking.
+post-deadline and non-ranking. The original Task 1 and Task 2 run records were
+unavailable after a school-server restart; these are later fresh reproductions
+using the same configured solver/system, official competition bundle, and
+organizer constraints, not the lost original run records.
 
 The complete 496,870,419-byte Kaggle extraction archive is delivered through
 the verified Google Drive record in
