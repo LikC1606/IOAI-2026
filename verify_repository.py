@@ -603,6 +603,21 @@ def main() -> None:
     assert checklist["status"] == (
         "complete_evidence_package_with_known_compliance_and_cost_limits"
     )
+    assert checklist["access_control"] == {
+        "repository_visibility": "private_authorized_review_only_while_restricted_data_is_present",
+        "restricted_path": "task3/input/competition/",
+        "handling_instructions": "task3/DATA_PROVENANCE.md",
+    }
+    assert set(checklist["task_packages"]) == {f"task{i}" for i in range(1, 7)}
+    for task, paths in checklist["task_packages"].items():
+        number = task.removeprefix("task")
+        assert paths == {
+            "readme": f"task{number}/README.md",
+            "summary": f"task{number}/SUMMARY.json",
+            "compliance": f"task{number}/COMPLIANCE.md",
+            "manifest": f"task{number}/MANIFEST.sha256",
+        }
+        assert all((ROOT / path).is_file() for path in paths.values()), task
     assert checklist["requirements"]["cross_task_rule_compliance"][
         "all_six_strictly_compliant_claim_supported"
     ] is False

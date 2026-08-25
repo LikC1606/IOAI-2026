@@ -9,6 +9,49 @@
     "task5",
     "task6"
   ],
+  "access_control": {
+    "repository_visibility": "private_authorized_review_only_while_restricted_data_is_present",
+    "restricted_path": "task3/input/competition/",
+    "handling_instructions": "task3/DATA_PROVENANCE.md"
+  },
+  "task_packages": {
+    "task1": {
+      "readme": "task1/README.md",
+      "summary": "task1/SUMMARY.json",
+      "compliance": "task1/COMPLIANCE.md",
+      "manifest": "task1/MANIFEST.sha256"
+    },
+    "task2": {
+      "readme": "task2/README.md",
+      "summary": "task2/SUMMARY.json",
+      "compliance": "task2/COMPLIANCE.md",
+      "manifest": "task2/MANIFEST.sha256"
+    },
+    "task3": {
+      "readme": "task3/README.md",
+      "summary": "task3/SUMMARY.json",
+      "compliance": "task3/COMPLIANCE.md",
+      "manifest": "task3/MANIFEST.sha256"
+    },
+    "task4": {
+      "readme": "task4/README.md",
+      "summary": "task4/SUMMARY.json",
+      "compliance": "task4/COMPLIANCE.md",
+      "manifest": "task4/MANIFEST.sha256"
+    },
+    "task5": {
+      "readme": "task5/README.md",
+      "summary": "task5/SUMMARY.json",
+      "compliance": "task5/COMPLIANCE.md",
+      "manifest": "task5/MANIFEST.sha256"
+    },
+    "task6": {
+      "readme": "task6/README.md",
+      "summary": "task6/SUMMARY.json",
+      "compliance": "task6/COMPLIANCE.md",
+      "manifest": "task6/MANIFEST.sha256"
+    }
+  },
   "requirements": {
     "execution_traces_all_six_tasks": {
       "status": "complete_selected_observable_prefixes_with_provenance_limits",
