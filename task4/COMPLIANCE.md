@@ -20,6 +20,12 @@ the agent-run deadline at `06:18:25.517Z`. Its extracted scores are Public
 
 ## Submission and resource audit
 
+The complete account extraction captures 4 notebook versions against the
+published limit of 20 and finds no repeated `scriptVersionId` among the three
+Task 4 submissions. The per-task binding and source records are in
+[`../SUBMISSION_VERSION_AUDIT.json`](../SUBMISSION_VERSION_AUDIT.json) and
+`SUMMARY.json`.
+
 - Private Kaggle Kernel:
   `researai/ioai-2026-task-4-westlake-nlp-24-solution`, version 4.
 - Metadata: one `NvidiaTeslaT4`, Internet disabled, competition and official
@@ -58,7 +64,10 @@ The 190,117,536-byte CSV is not duplicated in this compact package. Its hash,
 schema, row count, runtime, Kernel/version, and retrieval path are recorded in
 `remote/V4_OUTPUT_PROVENANCE.json`. The organizer-requested Kaggle extraction
 archive also contains the exact output bytes and matching source/output hashes;
-the extraction metadata reports an empty `matched_version_confidence`, so the
+the archive member sizes are recorded there as 32,002 bytes for the source,
+190,117,536 bytes for the CSV, 3,494 bytes for metadata, and 4,002 compressed
+bytes for the run log. The extraction metadata reports an empty
+`matched_version_confidence`, so the
 archive strengthens byte identity without silently converting linked-ref
 matching into an exact-version claim. The compact-package omission is a
 disclosed storage choice, not evidence that the output was locally uploaded.

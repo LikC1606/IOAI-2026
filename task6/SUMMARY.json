@@ -54,6 +54,17 @@
   },
   "rule_difference_audit": "RULE_DIFFERENCE_AUDIT.json",
   "rule_audit_status": "exact_v3_artifacts_complete_with_measured_evaluator_batch_behavior_not_treated_as_compliance_issue",
+  "submission_version_audit": {
+    "path": "../SUBMISSION_VERSION_AUDIT.json",
+    "task_key": "task6",
+    "official_budget_kind": "notebook_versions",
+    "official_budget_limit": 20,
+    "observed_budget_count": 8,
+    "literal_budget_conflict": false,
+    "literal_version_reuse_conflict": false,
+    "duplicate_script_version_group_count": 0,
+    "combined_literal_status": "evidence_supported_account_extraction_scope"
+  },
   "batch_dependence_fixture": {
     "test_points": 100,
     "component_changes": 100,

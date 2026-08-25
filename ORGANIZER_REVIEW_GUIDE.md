@@ -55,6 +55,10 @@ version count, and kernel count. The verifier compares those bindings with
 `KAGGLE_EXTRACTION_SUMMARY.json` and with each task's
 `remote/FINAL_ACCOUNT_RESULTS.json`; a green result means these records agree,
 not that the account history is automatically rule-compliant.
+Each task summary also carries a `submission_version_audit` binding with the
+applicable budget kind/limit, observed count, duplicate-version count, and
+combined literal status. The verifier cross-checks those fields against the
+complete extracted ref/version audit.
 
 ## Suggested adjudication order
 

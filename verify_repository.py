@@ -816,6 +816,10 @@ def verify_task4_artifacts() -> dict[str, object]:
     )
     assert extraction["archive_source_sha256"] == sha256(source)
     assert extraction["archive_output_sha256"] == provenance["sha256"]
+    assert extraction["archive_source_size_bytes"] == source.stat().st_size
+    assert extraction["archive_output_size_bytes"] == provenance["size_bytes"]
+    assert extraction["archive_metadata_size_bytes"] == 3494
+    assert extraction["archive_log_gzip_size_bytes"] == 4002
     assert extraction["archive_metadata_sha256"] == (
         "3da88345f245f7b46fadb08385c29b8999da7299cb1513013b002f33431735cc"
     )
@@ -1134,6 +1138,12 @@ def verify_cross_task_rule_audit() -> dict[str, object]:
         ROOT / "task4/notebooks/REMOTE_CURRENT_V4.py"
     )
     assert task4_extraction["archive_output_sha256"] == task4_provenance["sha256"]
+    assert task4_extraction["archive_source_size_bytes"] == (
+        ROOT / "task4/notebooks/REMOTE_CURRENT_V4.py"
+    ).stat().st_size
+    assert task4_extraction["archive_output_size_bytes"] == task4_provenance[
+        "size_bytes"
+    ]
     assert task4_extraction["archive_metadata_observation"]["matched_version_confidence"] == []
     assert task4_extraction["archive_metadata_observation"]["kernel_version_directory"] == 4
     task4_final = json.loads(
@@ -1368,6 +1378,34 @@ def verify_submission_version_audit() -> dict[str, object]:
         rules = next(page["content"] for page in pages if page.get("name") == "rules")
         assert item["one_submission_per_version_rule"] in rules
         summary = json.loads((ROOT / f"{task}/SUMMARY.json").read_text(encoding="utf-8"))
+        summary_audit = summary["submission_version_audit"]
+        assert summary_audit["path"] == "../SUBMISSION_VERSION_AUDIT.json"
+        assert summary_audit["task_key"] == task
+        assert summary_audit["official_budget_kind"] == item["official_budget_kind"]
+        assert summary_audit["official_budget_limit"] == item["official_budget_limit"]
+        assert summary_audit["observed_budget_count"] == item["observed_budget_count"]
+        assert summary_audit["literal_budget_conflict"] is (
+            item["observed_budget_count"] > item["official_budget_limit"]
+        )
+        assert summary_audit["literal_version_reuse_conflict"] is bool(
+            item["duplicate_script_version_groups"]
+        )
+        assert summary_audit["duplicate_script_version_group_count"] == len(
+            item["duplicate_script_version_groups"]
+        )
+        assert summary_audit["combined_literal_status"] == item[
+            "combined_budget_and_reuse_status"
+        ]
+        if task == "task1":
+            assert summary_audit["official_final_refs_share_script_version_id"] == 340342513
+        elif task in {"task2", "task3"}:
+            repeated_group = item["duplicate_script_version_groups"][0]
+            assert summary_audit["reused_script_version_id"] == repeated_group[
+                "script_version_id"
+            ]
+            assert summary_audit["reused_submission_refs"] == repeated_group[
+                "submission_refs"
+            ]
         final_refs = summary["official_final_submission_refs"]
         assert item["official_final_submission_refs"] == final_refs
     assert audit["tasks"]["task1"]["official_final_refs_affected_by_version_reuse"] == [
@@ -1642,6 +1680,12 @@ def main() -> None:
         "builder": "tools/build_requirement_evidence_matrix.py",
         "status": "complete_scope_labeled_rule_by_rule_index_not_a_compliance_certificate",
     }
+    submission_limits = checklist["requirements"]["submission_version_limits"]
+    assert submission_limits["task_summary_paths"] == [
+        f"task{i}/SUMMARY.json" for i in range(1, 7)
+    ]
+    for relative in submission_limits["task_summary_paths"]:
+        assert (ROOT / relative).is_file()
     assert (ROOT / checklist["requirement_evidence_matrix"]["json"]).is_file()
     assert (ROOT / checklist["requirement_evidence_matrix"]["markdown"]).is_file()
     assert checklist["access_control"] == {

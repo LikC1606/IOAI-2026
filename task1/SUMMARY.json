@@ -96,8 +96,14 @@
   "submission_version_audit": {
     "path": "../SUBMISSION_VERSION_AUDIT.json",
     "task_key": "task1",
+    "official_budget_kind": "notebook_versions",
+    "official_budget_limit": 20,
+    "observed_budget_count": 38,
+    "literal_budget_conflict": true,
     "literal_version_reuse_conflict": true,
-    "official_final_refs_share_script_version_id": 340342513
+    "duplicate_script_version_group_count": 2,
+    "official_final_refs_share_script_version_id": 340342513,
+    "combined_literal_status": "known_deviation_under_published_wording"
   },
   "external_method_research_status": "method_background_only_not_treated_as_compliance_issue",
   "rollout_provenance": {

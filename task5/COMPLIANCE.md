@@ -15,6 +15,12 @@ deadline but 121.927 seconds after the official deadline. Submission v6
 
 ## Submission and resource audit
 
+The complete account extraction captures 7 notebook versions against the
+published limit of 15 and finds no repeated `scriptVersionId` among the seven
+Task 5 submissions. The per-task binding and source records are in
+[`../SUBMISSION_VERSION_AUDIT.json`](../SUBMISSION_VERSION_AUDIT.json) and
+`SUMMARY.json`.
+
 - Private Kernel `researai/ioai-2026-ghost-of-the-machine-solution`, version 6,
   submitted through the notebook-only workflow.
 - Metadata: one `NvidiaTeslaT4`, Internet disabled, competition and official

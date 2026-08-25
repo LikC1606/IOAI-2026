@@ -191,6 +191,14 @@
         "SUBMISSION_VERSION_AUDIT.md",
         "SUBMISSION_VERSION_AUDIT.json"
       ],
+      "task_summary_paths": [
+        "task1/SUMMARY.json",
+        "task2/SUMMARY.json",
+        "task3/SUMMARY.json",
+        "task4/SUMMARY.json",
+        "task5/SUMMARY.json",
+        "task6/SUMMARY.json"
+      ],
       "note": "Checks extracted task budgets and the published one-submission-per-Notebook-version rule. Tasks 1 and 3 exceed the literal captured budget; Tasks 1, 2, and 3 contain repeated scriptVersionId submissions. No exception is assumed."
     },
     "task4_rule_difference_audit": {

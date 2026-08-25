@@ -162,10 +162,12 @@ the verified Google Drive record in
 six-competition summary is
 [`KAGGLE_EXTRACTION_SUMMARY.json`](KAGGLE_EXTRACTION_SUMMARY.json).
 Each task summary also carries an `extraction_summary_binding` (source hash,
-competition, deadline, submission totals, captured versions, and kernel count),
-and `verify_repository.py` cross-checks those bindings against the extracted
-account-result records. This is an integrity check between evidence files, not
-an organizer compliance decision.
+competition, deadline, submission totals, captured versions, and kernel count)
+and a `submission_version_audit` binding (budget kind/limit, observed count,
+duplicate-version count, and literal status). `verify_repository.py`
+cross-checks these bindings against the extracted account-result records and
+the complete ref/version audit. This is an integrity check between evidence
+files, not an organizer compliance decision.
 
 These files are evidence for organizer review, not a self-issued compliance
 certificate. The organizer or Jury remains the final authority.

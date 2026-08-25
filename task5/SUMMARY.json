@@ -35,5 +35,16 @@
   "final_account_results": "remote/FINAL_ACCOUNT_RESULTS.json",
   "historical_remote_source_retrievable": false,
   "historical_remote_output_included": true,
+  "submission_version_audit": {
+    "path": "../SUBMISSION_VERSION_AUDIT.json",
+    "task_key": "task5",
+    "official_budget_kind": "notebook_versions",
+    "official_budget_limit": 15,
+    "observed_budget_count": 7,
+    "literal_budget_conflict": false,
+    "literal_version_reuse_conflict": false,
+    "duplicate_script_version_group_count": 0,
+    "combined_literal_status": "evidence_supported_account_extraction_scope"
+  },
   "local_gpu_accounting_status": "selected_path_24.8_seconds_known_exhaustive_total_unavailable"
 }

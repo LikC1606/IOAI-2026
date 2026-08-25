@@ -13,6 +13,12 @@ at `2026-08-08T18:09:48.833Z` and before the official deadline. The selected
 main and worker traces contain the exact organizer Starter Prompt and no
 Continuation Prompt or live-human method instruction.
 
+The complete account extraction captures 8 notebook versions against the
+published limit of 20 and finds no repeated `scriptVersionId` among the six
+Task 6 submissions. The per-task binding and source records are in
+[`../SUBMISSION_VERSION_AUDIT.json`](../SUBMISSION_VERSION_AUDIT.json) and
+`SUMMARY.json`.
+
 ## Exact submitted artifacts
 
 The exact v3 notebook source and metadata are under `notebooks/v3/`. The exact

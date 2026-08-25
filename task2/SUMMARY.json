@@ -36,9 +36,15 @@
   "submission_version_audit": {
     "path": "../SUBMISSION_VERSION_AUDIT.json",
     "task_key": "task2",
+    "official_budget_kind": "notebook_versions",
+    "official_budget_limit": 20,
+    "observed_budget_count": 18,
+    "literal_budget_conflict": false,
     "literal_version_reuse_conflict": true,
+    "duplicate_script_version_group_count": 1,
     "reused_script_version_id": 340290308,
-    "reused_submission_refs": [55260462, 55260695]
+    "reused_submission_refs": [55260462, 55260695],
+    "combined_literal_status": "known_deviation_under_published_wording"
   },
   "external_method_research_status": "method_background_only_not_treated_as_compliance_issue",
   "historical_remote_source_retrievable": true,

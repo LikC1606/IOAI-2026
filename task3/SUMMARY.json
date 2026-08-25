@@ -34,9 +34,15 @@
   "submission_version_audit": {
     "path": "../SUBMISSION_VERSION_AUDIT.json",
     "task_key": "task3",
+    "official_budget_kind": "scored_submissions",
+    "official_budget_limit": 15,
+    "observed_budget_count": 27,
+    "literal_budget_conflict": true,
     "literal_version_reuse_conflict": true,
+    "duplicate_script_version_group_count": 1,
     "reused_script_version_id": 340521169,
-    "reused_submission_refs": [55290807, 55290810]
+    "reused_submission_refs": [55290807, 55290810],
+    "combined_literal_status": "known_deviation_under_published_wording"
   },
   "historical_report_status": "nonconforming_length_and_v8_local_score_error_disclosed",
   "latest_account_submission_ref": 55306794,
