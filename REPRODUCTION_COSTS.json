@@ -1,0 +1,63 @@
+{
+  "schema": "ioai.later-reproduction-costs.v1",
+  "scope": "full later two-hour reproduction traces for Tasks 1 and 2",
+  "currency": "USD",
+  "api_cost_usd_total": null,
+  "api_cost_status": "unavailable_no_provider_invoice_or_applicable_rate",
+  "gpu_cost_usd_total": null,
+  "gpu_cost_status": "unavailable_no_invoice_or_rate",
+  "tasks": {
+    "task1": {
+      "competition": "ioai-2026-task-1-westlake-nlp-24",
+      "model_provider": "ioai_allowed",
+      "model": "gpt-5.6-sol",
+      "reasoning_effort": "max",
+      "trace_token_usage": {
+        "input_tokens": 40733925,
+        "cached_input_tokens": 39551232,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 199891,
+        "reasoning_output_tokens": 65870,
+        "total_tokens": 40933816
+      },
+      "api_cost_usd": null,
+      "gpu": {
+        "accelerator": "NvidiaTeslaT4",
+        "notebook_versions": 6,
+        "observed_notebook_runtime_seconds": 1946.54,
+        "observed_notebook_runtime_note": "Sum of the six recorded remote runtime fields: 62.48 + 83.02 + 315.35 + 600 + 285.69 + 600.",
+        "gpu_cost_usd": null,
+        "cost_status": "unavailable_no_invoice_or_rate"
+      }
+    },
+    "task2": {
+      "competition": "ioai-2026-task-2-westlake-nlp-24",
+      "model_provider": "ioai_allowed",
+      "model": "gpt-5.6-sol",
+      "reasoning_effort": "max",
+      "trace_token_usage": {
+        "input_tokens": 29066864,
+        "cached_input_tokens": 28332800,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 138775,
+        "reasoning_output_tokens": 45072,
+        "total_tokens": 29205639
+      },
+      "api_cost_usd": null,
+      "gpu": {
+        "accelerator": "NvidiaTeslaT4",
+        "gpu_versions": [
+          2
+        ],
+        "observed_gpu_runtime_seconds": 263.17,
+        "cpu_versions": [
+          1,
+          3
+        ],
+        "observed_cpu_runtime_seconds": 441.25,
+        "gpu_cost_usd": null,
+        "cost_status": "unavailable_no_invoice_or_rate"
+      }
+    }
+  }
+}

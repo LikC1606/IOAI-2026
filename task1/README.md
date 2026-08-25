@@ -72,3 +72,13 @@ The exact frozen candidate source, evaluator, trial receipt, remote source,
 remote log, scored output, and hash-only post-boundary provenance are included.
 The organizer-facing trace is the pre-boundary JSONL selected by the root
 `AUTONOMOUS_TRACE_INDEX.json`.
+
+## Later 120-minute reproduction
+
+The requested later fresh run is preserved separately at
+[`evidence/reproduction-120m/rollout.jsonl`](evidence/reproduction-120m/rollout.jsonl),
+with counts, prompt classification, token telemetry, runtime, and result in the
+root [`REPRODUCTION_TRACE_INDEX.json`](../REPRODUCTION_TRACE_INDEX.json). It
+selected candidate `balanced_edge_fallback_v5` and submission `55277782`
+(Public LB `0.74121`). This run is post-deadline and non-ranking; it does not
+change the formal autonomous scope or the official account result.

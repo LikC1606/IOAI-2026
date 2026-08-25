@@ -56,3 +56,9 @@ trial, unscored baseline, scored receipt, source/output hashes, and absence of
 plaintext secrets. Because it refreshes `VERIFY_REPORT.json`, regenerate the
 manifest if that report changes. This package supports organizer review; the
 Jury decides recognition and eligibility.
+
+The separate later 120-minute reproduction trace is published at
+`evidence/reproduction-120m/rollout.jsonl` and indexed in
+`../REPRODUCTION_TRACE_INDEX.json`. Its `55277782` / `0.74121` result is
+post-deadline reference evidence only; it is not used to rewrite the official
+account result or the autonomous claim.

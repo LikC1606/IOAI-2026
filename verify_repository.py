@@ -274,6 +274,58 @@ def verify_execution_accounting() -> dict[str, int]:
     return {"trace_files": traces, "tokens": tokens}
 
 
+def verify_reproduction_material() -> dict[str, int]:
+    """Verify the separately scoped later Task 1/2 reproduction package."""
+    manifest = ROOT / "REPRODUCTION_MATERIAL_MANIFEST.sha256"
+    checked = 0
+    for line in manifest.read_text(encoding="utf-8").splitlines():
+        expected, relative = line.split(maxsplit=1)
+        target = (ROOT / relative).resolve()
+        assert target.is_relative_to(ROOT.resolve()), relative
+        assert sha256(target) == expected, relative
+        checked += 1
+
+    index = json.loads((ROOT / "REPRODUCTION_TRACE_INDEX.json").read_text(encoding="utf-8"))
+    assert index["schema"] == "ioai.later-reproduction-trace-material.v1"
+    events = 0
+    tokens = 0
+    traces = 0
+    allowed_prompt_classes = {
+        "startup_instructions",
+        "organizer_starter_prompt",
+        "preconfigured_runtime_resume_template",
+    }
+    for task in ("task1", "task2"):
+        data = index["tasks"][task]
+        assert data["post_deadline"] is True
+        assert data["ranking_eligible"] is False
+        trace = data["trace_file"]
+        path = ROOT / trace["path"]
+        assert sha256(path) == trace["published_sha256"], trace["path"]
+        line_count = 0
+        max_tokens = None
+        with path.open(encoding="utf-8") as handle:
+            for line in handle:
+                if not line.strip():
+                    continue
+                line_count += 1
+                event = json.loads(line)
+                payload = event.get("payload", {})
+                if event.get("type") == "event_msg" and payload.get("type") == "token_count":
+                    total = payload.get("info", {}).get("total_token_usage", {})
+                    if isinstance(total.get("total_tokens"), int):
+                        max_tokens = max(max_tokens or 0, total["total_tokens"])
+        assert line_count == trace["event_count"], task
+        assert max_tokens == trace["token_usage_cumulative_final"]["total_tokens"], task
+        assert trace["manual_human_prompt_events_included"] == 0, task
+        assert set(trace["user_prompt_classes"]).issubset(allowed_prompt_classes), task
+        assert sum(trace["user_prompt_classes"].values()) == trace["message_counts"]["user"], task
+        events += line_count
+        tokens += max_tokens
+        traces += 1
+    return {"manifest_files": checked, "trace_files": traces, "events": events, "tokens": tokens}
+
+
 def main() -> None:
     report = {"tasks": {}}
     for task in range(1, 7):
@@ -298,6 +350,7 @@ def main() -> None:
         report["tasks"][f"task{task}"] = task_report
     report["autonomous_material"] = verify_autonomous_material()
     report["published_execution_accounting"] = verify_execution_accounting()
+    report["later_reproduction_material"] = verify_reproduction_material()
     delivery = json.loads((ROOT / "KAGGLE_EXTRACTION_DELIVERY.json").read_text(encoding="utf-8"))
     assert delivery["archive"]["size_bytes"] == 496870419
     assert delivery["archive"]["entry_count"] == 1401

@@ -8,6 +8,7 @@ trace coverage, model/cost fields, and extraction metadata.
 | Organizer requirement | Status | Evidence |
 |---|---|---|
 | Execution traces for Tasks 1–6 | Complete | [`AUTONOMOUS_TRACE_MATERIAL.md`](AUTONOMOUS_TRACE_MATERIAL.md), [`AUTONOMOUS_TRACE_INDEX.json`](AUTONOMOUS_TRACE_INDEX.json) |
+| Later two-hour reproduction traces for Tasks 1–2 | Complete, separately scoped | [`REPRODUCTION_TRACE_MATERIAL.md`](REPRODUCTION_TRACE_MATERIAL.md), [`REPRODUCTION_TRACE_INDEX.json`](REPRODUCTION_TRACE_INDEX.json) |
 | Prompts and visible Agent outputs | Complete | Full payloads are in every indexed JSONL trace; prompt classes and hashes are in the index |
 | Tool calls and tool outputs | Complete | Per-task and per-file counts cover `function_call`, `function_call_output`, `custom_tool_call`, and `custom_tool_call_output` |
 | LLM(s) used | Complete | [`AUTONOMOUS_COSTS.json`](AUTONOMOUS_COSTS.json): `ioai_allowed` / `gpt-5.6-sol`; Tasks 1–4 `max`, Tasks 5–6 `xhigh` |
@@ -47,8 +48,24 @@ python3 tools/build_execution_trace_index.py
 python3 tools/build_autonomous_trace_material.py
 python3 verify_repository.py
 sha256sum -c AUTONOMOUS_MATERIAL_MANIFEST.sha256
+sha256sum -c REPRODUCTION_MATERIAL_MANIFEST.sha256
 ```
 
 The USD cost fields deliberately remain `null` rather than pricing
 `gpt-5.6-sol` with a different model's public rate or inventing a Kaggle GPU
 invoice.
+
+## Later two-hour reproduction scope
+
+At the request to use the later fresh two-hour runs for Tasks 1 and 2, the full
+credential-redacted traces are published separately under
+[`task1/evidence/reproduction-120m/`](task1/evidence/reproduction-120m/) and
+[`task2/evidence/reproduction-120m/`](task2/evidence/reproduction-120m/).
+They preserve the complete observable event streams and the corresponding
+candidate/submission outcomes. Both runs occurred after the account's official
+competition deadline, so their scores are reference/reproduction results, not
+official-ranking or autonomous-only scores. They do not overwrite the formal
+autonomous prefixes or the official account reconciliation. Their exact token,
+runtime, and unavailable-USD disclosures are in
+[`REPRODUCTION_COSTS.json`](REPRODUCTION_COSTS.json), with hashes in
+[`REPRODUCTION_MATERIAL_MANIFEST.sha256`](REPRODUCTION_MATERIAL_MANIFEST.sha256).

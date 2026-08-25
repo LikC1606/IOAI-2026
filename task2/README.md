@@ -41,3 +41,13 @@ for audit but has no bearing on the positive score claim.
 All modified/custom prompts at or after the boundary and every causally
 downstream event are outside this autonomous claim. Their bodies are not part
 of the organizer-facing trace material.
+
+## Later 120-minute reproduction
+
+The requested later fresh run is preserved separately at
+[`evidence/reproduction-120m/rollout.jsonl`](evidence/reproduction-120m/rollout.jsonl),
+with counts, prompt classification, token telemetry, runtime, and result in the
+root [`REPRODUCTION_TRACE_INDEX.json`](../REPRODUCTION_TRACE_INDEX.json). Its
+best scored candidate was `tree_film_blend_65_35_full_labels`, submission
+`55277682` (Public LB `0.675`). This run is post-deadline and non-ranking; it
+does not replace the bounded autonomous trace or the official account result.

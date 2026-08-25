@@ -10,6 +10,12 @@ individual credential-redacted JSONL files are under each `taskN/evidence/rollou
 directory. The autonomous-specific classification, prompt hashes, boundaries,
 and exclusion records are in [`AUTONOMOUS_TRACE_INDEX.json`](AUTONOMOUS_TRACE_INDEX.json).
 
+The requested later fresh two-hour Task 1/2 runs are published as a separate
+scope in [`REPRODUCTION_TRACE_MATERIAL.md`](REPRODUCTION_TRACE_MATERIAL.md) and
+[`REPRODUCTION_TRACE_INDEX.json`](REPRODUCTION_TRACE_INDEX.json). They are full
+post-deadline, non-ranking reproduction traces and must not be read as the
+official account result or as a replacement for the autonomous-only prefixes.
+
 ## What is represented
 
 Each JSONL line is one timestamped event. In `response_item` events:

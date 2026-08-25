@@ -17,6 +17,15 @@
         "AUTONOMOUS_TRACE_INDEX.json"
       ]
     },
+    "later_two_hour_reproduction_traces_task1_task2": {
+      "status": "complete_separately_scoped_post_deadline_reference",
+      "paths": [
+        "REPRODUCTION_TRACE_MATERIAL.md",
+        "REPRODUCTION_TRACE_INDEX.json",
+        "REPRODUCTION_COSTS.json"
+      ],
+      "note": "Full redacted later 120-minute traces; not official-ranking or autonomous-only results."
+    },
     "prompts_and_visible_outputs": {
       "status": "complete",
       "path": "AUTONOMOUS_TRACE_INDEX.json",

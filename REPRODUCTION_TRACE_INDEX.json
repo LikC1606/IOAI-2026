@@ -1,0 +1,302 @@
+{
+  "schema": "ioai.later-reproduction-trace-material.v1",
+  "scope": "full later two-hour reproduction traces for Tasks 1 and 2",
+  "status": "post-deadline non-ranking reference material",
+  "important_boundary": "These traces do not replace AUTONOMOUS_TRACE_INDEX.json or FINAL_SUBMISSION_RESULTS.md and must not be represented as official-ranking autonomous results.",
+  "included_prompt_types": [
+    "injected startup instructions",
+    "organizer Starter Prompt",
+    "preconfigured runtime resume template without a human method or target"
+  ],
+  "redaction": "credentials, private endpoints, secret metadata, and encrypted_content are redacted or replaced by an opaque placeholder",
+  "tasks": {
+    "task1": {
+      "competition": "ioai-2026-task-1-westlake-nlp-24",
+      "account": "researai",
+      "run_kind": "later_reproduction_120m",
+      "post_deadline": true,
+      "ranking_eligible": false,
+      "window": {
+        "start_utc": "2026-08-05T16:25:50.693Z",
+        "deadline_utc": "2026-08-05T18:25:50.634Z",
+        "trace_first_event_utc": "2026-08-05T16:25:54.368Z",
+        "trace_last_event_utc": "2026-08-05T18:25:46.003Z"
+      },
+      "official_deadline_utc": "2026-08-05T10:50:00Z",
+      "official_deadline_basis": "The competition account's official deadline predates this fresh reproduction; it is not an official-ranking run.",
+      "trace_file": {
+        "path": "task1/evidence/reproduction-120m/rollout.jsonl",
+        "source_sha256": "15ef9c2409fe6a31a16ee78c508bfdc15dc19ddb6cf54f18d0feeb0d73b4dd55",
+        "published_sha256": "ee1f08c710402e2db9408eb6ec122b17ef1c8f8dd8d2b1aab21af71c0f9deb84",
+        "event_count": 1398,
+        "first_timestamp": "2026-08-05T16:25:54.368Z",
+        "last_timestamp": "2026-08-05T18:25:46.003Z",
+        "event_types": {
+          "compacted": 2,
+          "event_msg": 418,
+          "response_item": 970,
+          "session_meta": 1,
+          "turn_context": 4,
+          "world_state": 3
+        },
+        "response_item_types": {
+          "custom_tool_call": 264,
+          "custom_tool_call_output": 263,
+          "function_call": 17,
+          "function_call_output": 17,
+          "message": 78,
+          "reasoning": 331
+        },
+        "message_counts": {
+          "assistant": 72,
+          "developer": 3,
+          "user": 3
+        },
+        "organizer_required_event_coverage": {
+          "prompt_message_events": 6,
+          "user_prompt_events": 3,
+          "developer_prompt_events": 3,
+          "assistant_output_events": 72,
+          "function_call_events": 17,
+          "function_call_output_events": 17,
+          "custom_tool_call_events": 264,
+          "custom_tool_call_output_events": 263
+        },
+        "logical_function_calls": 17,
+        "logical_function_call_names": {
+          "wait": 17
+        },
+        "exec_wrapper_custom_tool_calls": 264,
+        "custom_tool_call_names": {
+          "exec": 264
+        },
+        "models_observed": [
+          "gpt-5.6-sol"
+        ],
+        "reasoning_efforts_observed": [
+          "max"
+        ],
+        "token_usage_cumulative_final": {
+          "input_tokens": 40733925,
+          "cached_input_tokens": 39551232,
+          "cache_write_input_tokens": 0,
+          "output_tokens": 199891,
+          "reasoning_output_tokens": 65870,
+          "total_tokens": 40933816
+        },
+        "user_prompt_audit": [
+          {
+            "timestamp": "2026-08-05T16:25:54.450Z",
+            "class": "startup_instructions",
+            "sha256": "6767f89fb7a0fc07c86e0fdb244ecdeb0089eb6f3b1f5a8addd0351aeff9f7de"
+          },
+          {
+            "timestamp": "2026-08-05T16:25:54.536Z",
+            "class": "organizer_starter_prompt",
+            "sha256": "d280b73e5f7690416dfb6badbfccb9675c22742e49e0c3777ee50679112bbb6c"
+          },
+          {
+            "timestamp": "2026-08-05T18:25:04.940Z",
+            "class": "preconfigured_runtime_resume_template",
+            "sha256": "45767762b1cfb5ef65193cbfef591bf50e33b18883b39fc1e60fbe36005a42b5"
+          }
+        ],
+        "user_prompt_classes": {
+          "organizer_starter_prompt": 1,
+          "preconfigured_runtime_resume_template": 1,
+          "startup_instructions": 1
+        },
+        "manual_human_prompt_events_included": 0
+      },
+      "result": {
+        "selected_submission": {
+          "submission_id": "55277782",
+          "kernel": "researai/ioai-task1-fresh-20260806-002520",
+          "version": 5,
+          "candidate": "balanced_edge_fallback_v5",
+          "public_lb": 0.74121,
+          "local_cv": 0.7676212811096714,
+          "runtime_seconds": 285.69,
+          "status": "COMPLETE"
+        },
+        "other_versions": [
+          {
+            "version": 1,
+            "candidate": "edge_explicit_speaker_v1",
+            "status": "ERROR",
+            "runtime_seconds": 62.48
+          },
+          {
+            "version": 2,
+            "candidate": "edge_explicit_speaker_v2_official_env",
+            "status": "ERROR",
+            "runtime_seconds": 83.02
+          },
+          {
+            "version": 3,
+            "candidate": "edge_explicit_speaker_v3_mount_retry",
+            "status": "ERROR",
+            "runtime_seconds": 315.35
+          },
+          {
+            "version": 4,
+            "candidate": "global_reranker_production_b8_v4",
+            "status": "TIMEOUT",
+            "runtime_seconds": 600.0
+          },
+          {
+            "version": 6,
+            "candidate": "reduced_global_plain_conversation_v6",
+            "status": "TIMEOUT",
+            "runtime_seconds": 600.0
+          }
+        ]
+      },
+      "gpu": {
+        "accelerator": "NvidiaTeslaT4",
+        "notebook_versions": 6,
+        "observed_notebook_runtime_seconds": 1946.54,
+        "observed_notebook_runtime_note": "Sum of the six recorded remote runtime fields: 62.48 + 83.02 + 315.35 + 600 + 285.69 + 600.",
+        "gpu_cost_usd": null,
+        "cost_status": "unavailable_no_invoice_or_rate"
+      }
+    },
+    "task2": {
+      "competition": "ioai-2026-task-2-westlake-nlp-24",
+      "account": "researai",
+      "run_kind": "later_reproduction_120m",
+      "post_deadline": true,
+      "ranking_eligible": false,
+      "window": {
+        "start_utc": "2026-08-05T16:20:09.021Z",
+        "deadline_utc": "2026-08-05T18:20:08.972Z",
+        "trace_first_event_utc": "2026-08-05T16:20:11.567Z",
+        "trace_last_event_utc": "2026-08-05T18:20:07.628Z"
+      },
+      "official_deadline_utc": "2026-08-05T07:35:00Z",
+      "official_deadline_basis": "The competition account's official deadline predates this fresh reproduction; it is not an official-ranking run.",
+      "trace_file": {
+        "path": "task2/evidence/reproduction-120m/rollout.jsonl",
+        "source_sha256": "20d3e6d9c6c7e7aafdccdb90f862ffdc215e9801c43ef0c112e23417cf071609",
+        "published_sha256": "429c4a133ea7c661f48fdf4f547baf481a0fd12c209449d5804df662ee95d3a8",
+        "event_count": 1067,
+        "first_timestamp": "2026-08-05T16:20:11.567Z",
+        "last_timestamp": "2026-08-05T18:20:07.628Z",
+        "event_types": {
+          "compacted": 1,
+          "event_msg": 330,
+          "response_item": 731,
+          "session_meta": 1,
+          "turn_context": 2,
+          "world_state": 2
+        },
+        "response_item_types": {
+          "custom_tool_call": 176,
+          "custom_tool_call_output": 176,
+          "function_call": 40,
+          "function_call_output": 40,
+          "message": 66,
+          "reasoning": 233
+        },
+        "message_counts": {
+          "assistant": 61,
+          "developer": 3,
+          "user": 2
+        },
+        "organizer_required_event_coverage": {
+          "prompt_message_events": 5,
+          "user_prompt_events": 2,
+          "developer_prompt_events": 3,
+          "assistant_output_events": 61,
+          "function_call_events": 40,
+          "function_call_output_events": 40,
+          "custom_tool_call_events": 176,
+          "custom_tool_call_output_events": 176
+        },
+        "logical_function_calls": 40,
+        "logical_function_call_names": {
+          "wait": 40
+        },
+        "exec_wrapper_custom_tool_calls": 176,
+        "custom_tool_call_names": {
+          "exec": 176
+        },
+        "models_observed": [
+          "gpt-5.6-sol"
+        ],
+        "reasoning_efforts_observed": [
+          "max"
+        ],
+        "token_usage_cumulative_final": {
+          "input_tokens": 29066864,
+          "cached_input_tokens": 28332800,
+          "cache_write_input_tokens": 0,
+          "output_tokens": 138775,
+          "reasoning_output_tokens": 45072,
+          "total_tokens": 29205639
+        },
+        "user_prompt_audit": [
+          {
+            "timestamp": "2026-08-05T16:20:11.632Z",
+            "class": "startup_instructions",
+            "sha256": "cda2b91e5566a266ab06df66c9a59a90b1cbbf853b412e0cdbec7a4baa8f00df"
+          },
+          {
+            "timestamp": "2026-08-05T16:20:11.693Z",
+            "class": "organizer_starter_prompt",
+            "sha256": "17aa893c998a4344232ac44532c85717e3819d5559544133760b68e2c90f0736"
+          }
+        ],
+        "user_prompt_classes": {
+          "organizer_starter_prompt": 1,
+          "startup_instructions": 1
+        },
+        "manual_human_prompt_events_included": 0
+      },
+      "result": {
+        "selected_submission": {
+          "submission_id": "55277682",
+          "kernel": "researai/ioai-2026-task-2-westlake-nlp-24-solution",
+          "version": 2,
+          "candidate": "tree_film_blend_65_35_full_labels",
+          "public_lb": 0.675,
+          "local_cv": 0.6713888889,
+          "runtime_seconds": 263.17,
+          "status": "COMPLETE_SCORED"
+        },
+        "other_versions": [
+          {
+            "version": 1,
+            "candidate": "structured_lgbm_v2_per_robot_full_labels",
+            "submission_id": "55276740",
+            "public_lb": 0.66944,
+            "status": "COMPLETE_SCORED",
+            "runtime_seconds": 220.27
+          },
+          {
+            "version": 3,
+            "candidate": "soft_pooled_robot_tree_full_labels",
+            "submission_id": "55277932",
+            "public_lb": 0.67,
+            "status": "COMPLETE_SCORED",
+            "runtime_seconds": 220.98
+          }
+        ]
+      },
+      "gpu": {
+        "accelerator": "NvidiaTeslaT4",
+        "gpu_versions": [
+          2
+        ],
+        "observed_gpu_runtime_seconds": 263.17,
+        "cpu_versions": [
+          1,
+          3
+        ],
+        "observed_cpu_runtime_seconds": 441.25,
+        "gpu_cost_usd": null,
+        "cost_status": "unavailable_no_invoice_or_rate"
+      }
+    }
+  }
+}
