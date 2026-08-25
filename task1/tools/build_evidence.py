@@ -17,7 +17,7 @@ PROJECT = RUN / "project"
 ROLLOUT = RUN / "codex-home/sessions/2026/08/05/rollout-2026-08-05T17-20-55-019fd139-d180-7171-ac0b-c037e11866eb.jsonl"
 CONTROLLER_ROLLOUT = Path("/workspace/.codex/sessions/2026/08/04/rollout-2026-08-04T21-48-47-019fcd08-b264-72b3-93f3-3afaf2cf41af.jsonl")
 BOUNDARY = "2026-08-05T10:16:52.222Z"
-BOUNDARY_TEXT = "你让他继续优化 找到高分了再提交"
+BOUNDARY_PROMPT_SHA256 = "ceb37189447555a6ab309c5860fc37f6ea82abb2573c68531b6a32105623dfb4"
 COMPETITION = "ioai-2026-task-1-westlake-nlp-24"
 
 KAGGLE_TOKEN = re.compile(r"KGAT_[A-Za-z0-9_-]+")
@@ -79,23 +79,21 @@ def user_message(event: dict) -> str:
 
 def build_rollout() -> dict:
     target = ROOT / "evidence/rollouts" / ROLLOUT.name
-    execution_target = ROOT / "evidence/submission-execution" / f"{ROLLOUT.stem}-post-boundary.jsonl"
     target.parent.mkdir(parents=True, exist_ok=True)
-    execution_target.parent.mkdir(parents=True, exist_ok=True)
     kept = execution_kept = 0
     first_timestamp = last_timestamp = None
     execution_first_timestamp = execution_last_timestamp = None
+    excluded_digest = hashlib.sha256()
     agents_body = None
-    with (
-        ROLLOUT.open(encoding="utf-8") as source,
-        target.open("w", encoding="utf-8") as output,
-        execution_target.open("w", encoding="utf-8") as execution_output,
-    ):
+    with ROLLOUT.open(encoding="utf-8") as source, target.open("w", encoding="utf-8") as output:
         for line in source:
             event = json.loads(line)
             timestamp = str(event.get("timestamp", ""))
             if timestamp and timestamp >= BOUNDARY:
-                execution_output.write(json.dumps(redact(event), ensure_ascii=False, separators=(",", ":")) + "\n")
+                encoded = (
+                    json.dumps(redact(event), ensure_ascii=False, separators=(",", ":")) + "\n"
+                ).encode("utf-8")
+                excluded_digest.update(encoded)
                 execution_kept += 1
                 execution_first_timestamp = execution_first_timestamp or timestamp
                 execution_last_timestamp = timestamp or execution_last_timestamp
@@ -120,13 +118,13 @@ def build_rollout() -> dict:
         "dropped_events": execution_kept,
         "first_timestamp": first_timestamp,
         "last_timestamp": last_timestamp,
-        "agent_execution_trace": {
-            "filename": str(execution_target.relative_to(ROOT)),
-            "redacted_sha256": digest(execution_target),
+        "excluded_post_boundary_suffix": {
+            "content_in_repository": False,
+            "redacted_sha256": excluded_digest.hexdigest(),
             "kept_events": execution_kept,
             "first_timestamp": execution_first_timestamp,
             "last_timestamp": execution_last_timestamp,
-            "classification": "agent-executed-after-supervision-boundary",
+            "classification": "excluded_agent_execution_after_supervision_boundary",
         },
     }
 
@@ -143,20 +141,39 @@ def extract_boundary_event() -> dict:
             prefix_digest.update(raw_line)
             prefix_bytes += len(raw_line)
             prefix_lines += 1
-            if event.get("timestamp") == BOUNDARY and user_message(event) == BOUNDARY_TEXT:
+            text = user_message(event)
+            if (
+                event.get("timestamp") == BOUNDARY
+                and hashlib.sha256(text.encode("utf-8")).hexdigest() == BOUNDARY_PROMPT_SHA256
+            ):
                 matches.append(redact(event))
                 boundary_line_sha256 = hashlib.sha256(raw_line).hexdigest()
                 break
     if len(matches) != 1:
         raise RuntimeError(f"Expected one supervision boundary event, found {len(matches)}")
-    write_json(ROOT / "evidence/SUPERVISION_BOUNDARY_EVENT.json", matches[0])
+    private_event = json.dumps(matches[0], indent=2, ensure_ascii=False) + "\n"
+    write_json(
+        ROOT / "evidence/SUPERVISION_BOUNDARY_EVENT.json",
+        {
+            "schema": "ioai.supervision-boundary-hash-record.v1",
+            "timestamp": BOUNDARY,
+            "classification": "first material human instruction received by the controlling session",
+            "role": "user",
+            "content_in_repository": False,
+            "prompt_content_sha256": BOUNDARY_PROMPT_SHA256,
+            "private_event_with_body_sha256": hashlib.sha256(private_event.encode("utf-8")).hexdigest(),
+            "private_source_line_sha256": boundary_line_sha256,
+            "exclusion_rule": "The boundary event and every causally downstream event are excluded from organizer-facing trace material.",
+        },
+    )
     return {
         "private_original_path": str(CONTROLLER_ROLLOUT),
         "private_original_prefix_through_boundary_sha256": prefix_digest.hexdigest(),
         "private_original_prefix_bytes": prefix_bytes,
         "private_original_prefix_lines": prefix_lines,
         "private_boundary_line_sha256": boundary_line_sha256,
-        "extracted_event_sha256": digest(ROOT / "evidence/SUPERVISION_BOUNDARY_EVENT.json"),
+        "private_extracted_event_with_body_sha256": hashlib.sha256(private_event.encode("utf-8")).hexdigest(),
+        "prompt_body_in_repository": False,
     }
 
 
@@ -272,7 +289,8 @@ def write_summary(rollout_info: dict, controller_info: dict) -> None:
         "account_owner": "researai",
         "formal_run": {
             "joined_at_utc": "2026-08-05T09:20:36.326Z",
-            "deadline_utc": "2026-08-05T10:30:00.000Z",
+            "agent_run_deadline_utc": "2026-08-05T10:30:00.000Z",
+            "official_competition_deadline_utc": "2026-08-05T10:50:00.000Z",
             "boundary_utc_exclusive": BOUNDARY,
             "boundary_basis": "first material supervisory instruction received by the controlling session",
             "official_starter_sha256": digest(ROOT / "official/STARTER_PROMPT.md"),
@@ -282,7 +300,7 @@ def write_summary(rollout_info: dict, controller_info: dict) -> None:
             "agent_executed_submission": 55267607,
             "agent_executed_public_score": 0.78049,
             "submission_actor": "formal_solver_agent",
-            "submission_execution_evidence": rollout_info["agent_execution_trace"]["filename"],
+            "submission_execution_evidence": "hash-only provenance; post-boundary trace is not in organizer-facing material",
             "official_prompt_only_autonomous_submission": None,
             "official_ranking_eligible": False,
             "best_pre_boundary_local_trial": "trial-605da205",
@@ -298,6 +316,9 @@ def write_summary(rollout_info: dict, controller_info: dict) -> None:
             "autonomy_status": "agent-executed-after-human-supervision",
             "ranking_status": "submitted-after-official-deadline",
         },
+        "official_final_submission_refs": [55267333, 55267368],
+        "official_final_public_score": 0.77751,
+        "official_final_private_score": 0.80474,
         "rollout_provenance": rollout_info,
         "controller_provenance": controller_info,
     }

@@ -6,7 +6,7 @@ The JSONL files are credential-redacted observable traces; see
 
 | Task | Files | Events | Logical calls | Outer exec calls | Tokens |
 |---|---:|---:|---:|---:|---:|
-| task1 | 2 | 775 | 16 | 133 | 30380753 |
+| task1 | 1 | 350 | 3 | 60 | 6789266 |
 | task2 | 1 | 705 | 4 | 128 | 14457808 |
 | task3 | 4 | 2427 | 135 | 373 | 56373300 |
 | task4 | 5 | 2717 | 75 | 387 | 109119898 |
@@ -18,7 +18,6 @@ The JSONL files are credential-redacted observable traces; see
 | Task | Role | Events | SHA-256 | Path |
 |---|---|---:|---|---|
 | task1 | main | 350 | `bcfb0c6ffca945638aedd4b3771915bc88abf72ca29843b457e966427684eb89` | `task1/evidence/rollouts/rollout-2026-08-05T17-20-55-019fd139-d180-7171-ac0b-c037e11866eb.jsonl` |
-| task1 | agent-executed-after-supervision-boundary | 425 | `390d1fa9399fe42bfd31412659af9156a8e98542713ad2b6371ee51efefe870b` | `task1/evidence/submission-execution/rollout-2026-08-05T17-20-55-019fd139-d180-7171-ac0b-c037e11866eb-post-boundary.jsonl` |
 | task2 | main | 705 | `a7dc48c7a837b3536d835c17fdee63db6fe27b79cd1cc577cbf4e15672f45014` | `task2/evidence/rollouts/rollout-2026-08-05T13-30-31-019fd066-e338-71a0-9d8e-6e1d154c5a79.jsonl` |
 | task3 | main | 990 | `44c7225a3b4a9840d68ffbc330f7bd954c8158d9d05272977c7dbaf41f31122a` | `task3/evidence/rollouts/rollout-2026-08-06T12-34-49-019fd55a-3edf-7801-b6a1-f1313393ff34.jsonl` |
 | task3 | subagent | 690 | `f4d78c9539763ff7784dd20e71b3a293ce05aed41f5278f558ac978abf35bffb` | `task3/evidence/rollouts/rollout-2026-08-06T12-40-25-019fd55f-61f3-74c2-a87f-66ce5288dc56.jsonl` |

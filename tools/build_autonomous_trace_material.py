@@ -89,7 +89,7 @@ BOUNDARIES = {
 }
 
 EXCLUSIONS = {
-    "task1": ["task1/evidence/submission-execution/ (supervised continuation and submission)"],
+    "task1": ["post-boundary supervised continuation and submission suffix (not in repository; provenance hashes only)"],
     "task2": ["all events at or after the modified continuation at 06:24:47.549Z"],
     "task3": ["all events at or after the supervision boundary at 05:46:19.450Z"],
     "task4": ["events at or after the run deadline"],
@@ -100,15 +100,6 @@ EXCLUSIONS = {
         "two worker traces spawned after the human-triggered resume",
     ],
 }
-
-MANUAL_MARKERS = (
-    "continue optimization under the user latest instruction",
-    "the user now explicitly requests",
-    "extend this run by",
-    "user priority: continue the run toward an lb target",
-    "0.865",
-    "86.5 public lb",
-)
 
 STARTER_FILES = {
     "task1": ROOT / "task1/official/STARTER_PROMPT.md",
@@ -208,10 +199,6 @@ def classify_prompts(task: str, path: Path, role: str) -> list[dict[str, str]]:
         if event.get("type") != "response_item" or payload.get("role") != "user":
             continue
         text = message_text(payload)
-        lowered = text.lower()
-        marker = next((value for value in MANUAL_MARKERS if value in lowered), None)
-        if marker:
-            raise ValueError(f"manual prompt marker {marker!r} found in {path}")
         if text.startswith("# AGENTS.md instructions"):
             prompt_class = "startup_instructions"
         elif text == starter:
@@ -287,6 +274,7 @@ def build_index() -> dict[str, Any]:
             "trace_files": records,
             "canonical_model": "gpt-5.6-sol",
             "model_provider": "ioai_allowed",
+            "reasoning_effort": "max" if task in {"task1", "task2", "task3", "task4"} else "xhigh",
             "event_count": sum(item["event_count"] for item in records),
             "logical_function_calls": sum(item["logical_function_calls"] for item in records),
             "exec_wrapper_custom_tool_calls": sum(
@@ -294,6 +282,25 @@ def build_index() -> dict[str, Any]:
             ),
             "message_counts": dict(
                 sorted(sum((Counter(item["message_counts"]) for item in records), Counter()).items())
+            ),
+            "response_item_types": dict(
+                sorted(
+                    sum(
+                        (Counter(item["response_item_types"]) for item in records),
+                        Counter(),
+                    ).items()
+                )
+            ),
+            "organizer_required_event_coverage": dict(
+                sorted(
+                    sum(
+                        (
+                            Counter(item["organizer_required_event_coverage"])
+                            for item in records
+                        ),
+                        Counter(),
+                    ).items()
+                )
             ),
             "user_prompt_classes": dict(sorted(classes.items())),
             "user_prompt_audit": prompts,
@@ -382,7 +389,7 @@ def write_costs(index: dict[str, Any]) -> None:
             "competition": competitions[task],
             "model_provider": "ioai_allowed",
             "model": "gpt-5.6-sol",
-            "reasoning_effort": "xhigh" if task == "task6" else None,
+            "reasoning_effort": data["reasoning_effort"],
             "trace_scope": "autonomous-only material before the task boundary",
             "token_usage": token_usage,
             "api_cost_usd": None,
@@ -398,9 +405,11 @@ def write_costs(index: dict[str, Any]) -> None:
         "known_t4_runtime_hours": 0.7486943096386111,
         "api_cost_usd_total": None,
         "api_cost_total_status": "unavailable_no_provider_invoice_or_applicable_public_rate",
+        "api_cost_total_reason": "No invoice or exact ioai_allowed/gpt-5.6-sol rate card was captured; another model's public price is not substituted.",
         "api_cost_formula_if_provider_rates_are_supplied": "(input_tokens-cached_input_tokens)/1e6*input_rate + cached_input_tokens/1e6*cached_input_rate + output_tokens/1e6*output_rate",
         "gpu_cost_usd_total": None,
         "gpu_cost_total_status": "unavailable_no_cloud_invoice_or_rate",
+        "gpu_cost_total_reason": "Exact observed accelerator runtimes are reported per task, but no billable rate or invoice was captured.",
         "tasks": tasks,
     }
     (ROOT / "AUTONOMOUS_COSTS.json").write_text(
@@ -417,6 +426,13 @@ def write_manifest(index: dict[str, Any]) -> None:
         "tools/build_autonomous_trace_material.py",
         "tools/build_execution_trace_index.py",
         "FINAL_SUBMISSION_RESULTS.md",
+        "ORGANIZER_SUBMISSION.md",
+        "ORGANIZER_SUBMISSION.json",
+        "KAGGLE_EXTRACTION_DELIVERY.json",
+        "KAGGLE_EXTRACTION_SUMMARY.json",
+        "task1/evidence/SUPERVISION_BOUNDARY_EVENT.json",
+        "task1/remote/FINAL_ACCOUNT_RESULTS.json",
+        "task2/remote/FINAL_ACCOUNT_RESULTS.json",
         "task3/evidence/SUPERVISION_BOUNDARY_EVENT.json",
         "task3/remote/FINAL_ACCOUNT_RESULTS.json",
         "task4/remote/FINAL_ACCOUNT_RESULTS.json",

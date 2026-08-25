@@ -110,16 +110,19 @@ def token_totals(events: list[dict[str, Any]]) -> dict[str, int] | None:
 def trace_record(path: Path, relative: str, role_hint: str | None = None) -> dict[str, Any]:
     events = jsonl_events(path)
     event_types = Counter(str(event.get("type")) for event in events)
+    response_item_types: Counter[str] = Counter()
     function_calls: Counter[str] = Counter()
     custom_calls: Counter[str] = Counter()
     roles = Counter()
     timestamps = [str(event["timestamp"]) for event in events if event.get("timestamp")]
     models: set[str] = set()
+    reasoning_efforts: set[str] = set()
     role = role_hint
     for event in events:
         payload = event.get("payload", {})
         if event.get("type") == "response_item":
-            item_type = payload.get("type")
+            item_type = str(payload.get("type", "<unknown>"))
+            response_item_types[item_type] += 1
             if item_type == "function_call":
                 function_calls[str(payload.get("name", "<unknown>"))] += 1
             elif item_type == "custom_tool_call":
@@ -134,12 +137,27 @@ def trace_record(path: Path, relative: str, role_hint: str | None = None) -> dic
         # names printed by unrelated shell processes are not execution evidence.
         if event.get("type") == "turn_context" and isinstance(payload.get("model"), str):
             models.add(payload["model"])
+            effort = payload.get("effort") or payload.get("reasoning_effort")
+            if isinstance(effort, str):
+                reasoning_efforts.add(effort)
+    coverage = {
+        "prompt_message_events": roles.get("user", 0) + roles.get("developer", 0),
+        "user_prompt_events": roles.get("user", 0),
+        "developer_prompt_events": roles.get("developer", 0),
+        "assistant_output_events": roles.get("assistant", 0),
+        "function_call_events": response_item_types.get("function_call", 0),
+        "function_call_output_events": response_item_types.get("function_call_output", 0),
+        "custom_tool_call_events": response_item_types.get("custom_tool_call", 0),
+        "custom_tool_call_output_events": response_item_types.get("custom_tool_call_output", 0),
+    }
     return {
         "path": relative,
         "sha256": sha256(path),
         "role": role or "unknown",
         "event_count": len(events),
         "event_types": dict(sorted(event_types.items())),
+        "response_item_types": dict(sorted(response_item_types.items())),
+        "organizer_required_event_coverage": coverage,
         "first_timestamp": min(timestamps) if timestamps else None,
         "last_timestamp": max(timestamps) if timestamps else None,
         "message_counts": dict(sorted(roles.items())),
@@ -148,6 +166,7 @@ def trace_record(path: Path, relative: str, role_hint: str | None = None) -> dic
         "exec_wrapper_custom_tool_calls": sum(custom_calls.values()),
         "custom_tool_call_names": dict(sorted(custom_calls.items())),
         "models_observed": sorted(models),
+        "reasoning_efforts_observed": sorted(reasoning_efforts),
         "token_usage_cumulative_final": token_totals(events),
     }
 
@@ -159,10 +178,6 @@ def main() -> None:
     task_roots: dict[str, list[Path]] = {
         f"task{task}": [ROOT / f"task{task}/evidence/rollouts"] for task in range(1, 6)
     }
-    # Task 1 deliberately has a second, post-boundary agent-execution trace.
-    # It is part of the observable run and must be counted separately from the
-    # formal pre-boundary rollout.
-    task_roots["task1"].append(ROOT / "task1/evidence/submission-execution")
     task_roots["task6"] = [
         ROOT / "task6/evidence/autonomous-only",
         ROOT / "task6/evidence/rollouts",
@@ -178,9 +193,9 @@ def main() -> None:
     index: dict[str, Any] = {
         "schema": "ioai.execution-trace-index.v1",
         "generated_by": "tools/build_execution_trace_index.py",
-        "scope": "published observable trace package; Task 1 has a separately disclosed supervised segment, while Task 6 is autonomous-only",
+        "scope": "published human-intervention-free observable trace package for Tasks 1-6",
         "redaction": {
-            "task1_to_task5": "repository-provided redacted traces",
+            "task1_to_task5": "repository-provided redacted pre-intervention traces",
             "task6": "pre-human-intervention prefix only; credentials/private endpoints removed; encrypted_content replaced by an opaque placeholder",
             "raw_task6_not_in_repository": True,
         },
@@ -191,10 +206,7 @@ def main() -> None:
         for trace_root in trace_roots:
             for path in sorted(trace_root.glob("*.jsonl")):
                 relative = path.relative_to(ROOT).as_posix()
-                role_hint = None
-                if "submission-execution" in path.parts:
-                    role_hint = "agent-executed-after-supervision-boundary"
-                record = trace_record(path, relative, role_hint=role_hint)
+                record = trace_record(path, relative)
                 if relative in token_overrides:
                     record["token_usage_cumulative_final"] = token_overrides[relative]
                     record["token_usage_source"] = "task3/evidence/AUTONOMOUS_TOKEN_USAGE.json"
@@ -213,11 +225,38 @@ def main() -> None:
             "trace_files": files,
             "canonical_model": "gpt-5.6-sol",
             "model_provider": "ioai_allowed",
+            "reasoning_effort": "max" if task_name in {"task1", "task2", "task3", "task4"} else "xhigh",
             "event_count": sum(item["event_count"] for item in files),
             "logical_function_calls": sum(item["logical_function_calls"] for item in files),
             "exec_wrapper_custom_tool_calls": sum(item["exec_wrapper_custom_tool_calls"] for item in files),
             "message_counts": dict(sorted(sum((Counter(item["message_counts"]) for item in files), Counter()).items())),
+            "response_item_types": dict(
+                sorted(
+                    sum(
+                        (Counter(item["response_item_types"]) for item in files),
+                        Counter(),
+                    ).items()
+                )
+            ),
+            "organizer_required_event_coverage": dict(
+                sorted(
+                    sum(
+                        (
+                            Counter(item["organizer_required_event_coverage"])
+                            for item in files
+                        ),
+                        Counter(),
+                    ).items()
+                )
+            ),
             "models_observed": sorted({model for item in files for model in item["models_observed"]}),
+            "reasoning_efforts_observed": sorted(
+                {
+                    effort
+                    for item in files
+                    for effort in item["reasoning_efforts_observed"]
+                }
+            ),
             "token_usage_cumulative_sum_across_traces": aggregate,
             "token_usage_note": (
                 "Task 3 totals were recovered from the matching local private originals; "

@@ -1,18 +1,25 @@
 {
   "schema": "ioai.execution-costs.v1",
-  "scope": "the published observable trace package; Task 1 includes its separately disclosed supervised submission segment, while Task 6 is autonomous-only; use AUTONOMOUS_COSTS.json for the uniformly human-intervention-free selection",
+  "scope": "the published human-intervention-free observable trace package for Tasks 1-6",
   "currency": "USD",
   "api_cost_method": "token telemetry is reported exactly where available; no substitute public model price is applied",
   "api_cost_formula_if_provider_rates_are_supplied": "(input_tokens-cached_input_tokens)/1e6*input_rate + cached_input_tokens/1e6*cached_input_rate + output_tokens/1e6*output_rate",
   "provider_and_model": {
     "provider": "ioai_allowed",
     "model": "gpt-5.6-sol",
-    "reasoning_effort": "xhigh where recorded for Task 6; effort is not consistently exposed in the redacted Task 1-5 traces"
+    "reasoning_effort_by_task": {
+      "task1": "max",
+      "task2": "max",
+      "task3": "max",
+      "task4": "max",
+      "task5": "xhigh",
+      "task6": "xhigh"
+    }
   },
   "api_cost_usd_total": null,
   "api_cost_total_status": "unavailable_no_provider_invoice_or_applicable_public_rate",
   "api_cost_total_reason": "The traces identify the private/competition provider ioai_allowed and gpt-5.6-sol, while the available public pricing page does not price that model. No invoice, rate card, or per-run charge is present in the evidence. gpt-5.3-codex public prices must not be substituted.",
-  "known_token_total_all_tasks": 411946726,
+  "known_token_total_all_tasks": 388355239,
   "gpu_cost_usd_total": null,
   "gpu_cost_total_status": "unavailable_no_cloud_invoice_or_rate",
   "gpu_cost_total_reason": "The records expose Kaggle machine type and notebook wall-clock runtime, but no user cloud invoice, GPU utilization trace, or contract rate.",
@@ -20,29 +27,34 @@
     "task1": {
       "competition": "ioai-2026-task-1-westlake-nlp-24",
       "model": "gpt-5.6-sol",
-      "token_usage_scope": "formal rollout plus the separate post-boundary agent-execution trace",
+      "model_provider": "ioai_allowed",
+      "reasoning_effort": "max",
+      "token_usage_scope": "autonomous-only pre-boundary trace",
       "token_usage": {
-        "input_tokens": 30285000,
-        "cached_input_tokens": 29214208,
+        "input_tokens": 6756124,
+        "cached_input_tokens": 6488320,
         "cache_write_input_tokens": 0,
-        "output_tokens": 95753,
-        "reasoning_output_tokens": 39099,
-        "total_tokens": 30380753
+        "output_tokens": 33142,
+        "reasoning_output_tokens": 14771,
+        "total_tokens": 6789266
       },
       "api_cost_usd": null,
       "api_cost_status": "unavailable_unpriced_ioai_provider",
       "gpu": {
-        "accelerator": "NvidiaTeslaT4",
-        "runtime_scope": "agent-executed scored submission 55267607",
-        "runtime_seconds": 410.750263625,
-        "runtime_hours": 0.11409729545138889,
-        "gpu_cost_usd": null,
-        "cost_status": "unavailable_no_rate_or_invoice"
+        "accelerator": "CPU",
+        "runtime_scope": "pre-boundary baseline notebook; metadata has enable_gpu=false",
+        "runtime_seconds": 0,
+        "runtime_hours": 0,
+        "observed_cpu_log_seconds": 69.886003607,
+        "gpu_cost_usd": 0,
+        "cost_status": "no_gpu_allocated"
       }
     },
     "task2": {
       "competition": "ioai-2026-task-2-westlake-nlp-24",
+      "model_provider": "ioai_allowed",
       "model": "gpt-5.6-sol",
+      "reasoning_effort": "max",
       "token_usage": {
         "input_tokens": 14392706,
         "cached_input_tokens": 13759488,
@@ -64,7 +76,9 @@
     },
     "task3": {
       "competition": "ioai-2026-task-3-westlake-nlp-48",
+      "model_provider": "ioai_allowed",
       "model": "gpt-5.6-sol",
+      "reasoning_effort": "max",
       "token_usage": {
         "input_tokens": 56131525,
         "cached_input_tokens": 49080576,
@@ -88,7 +102,9 @@
     },
     "task4": {
       "competition": "ioai-2026-task-4-westlake-nlp-24",
+      "model_provider": "ioai_allowed",
       "model": "gpt-5.6-sol",
+      "reasoning_effort": "max",
       "token_usage": {
         "input_tokens": 108797282,
         "cached_input_tokens": 105440256,
@@ -112,7 +128,9 @@
     },
     "task5": {
       "competition": "ioai-2026-task-5-westlake-nlp-24",
+      "model_provider": "ioai_allowed",
       "model": "gpt-5.6-sol",
+      "reasoning_effort": "xhigh",
       "token_usage": {
         "input_tokens": 159409014,
         "cached_input_tokens": 154200064,
@@ -134,7 +152,9 @@
     },
     "task6": {
       "competition": "ioai-2026-task-6-westlake-nlp-60",
+      "model_provider": "ioai_allowed",
       "model": "gpt-5.6-sol",
+      "reasoning_effort": "xhigh",
       "token_usage": {
         "input_tokens": 41201506,
         "cached_input_tokens": 37887872,

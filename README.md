@@ -1,12 +1,13 @@
 # IOAI 2026 Evidence Records
 
-Organizer-review materials for IOAI 2026 Tasks 1-6, preserved as six
-independent task directories.
+Organizer-review materials for IOAI 2026 Tasks 1-6. Start with
+[`ORGANIZER_SUBMISSION.md`](ORGANIZER_SUBMISSION.md), which maps every requested
+deliverable to its exact evidence path and machine-verifiable status.
 
 | Task | Competition | Official final Public LB | Status |
 |---|---|---:|---|
-| [Task 1](task1/) | `ioai-2026-task-1-westlake-nlp-24` | 0.78049 | Agent-executed; supervised continuation and late-submission status disclosed |
-| [Task 2](task2/) | `ioai-2026-task-2-westlake-nlp-24` | 0.55416 | Best submission before conservative autonomy boundary |
+| [Task 1](task1/) | `ioai-2026-task-1-westlake-nlp-24` | 0.77751 | Private 0.80474; tied refs `55267333` / `55267368` |
+| [Task 2](task2/) | `ioai-2026-task-2-westlake-nlp-24` | 0.63583 | Private 0.62500; submission `55261432` |
 | [Task 3](task3/) ([trace + costs](task3/EXECUTION_AND_COSTS.md)) | `ioai-2026-task-3-westlake-nlp-48` | 58.51666 | Private 51.61666; two eligible submissions tie exactly |
 | [Task 4](task4/) | `ioai-2026-task-4-westlake-nlp-24` | 98.41 | Private 98.32; submission `55316818` |
 | [Task 5](task5/) | `ioai-2026-task-5-westlake-nlp-24` | 95.39 | Private 96.06; submission `55320296`; v7 was late |
@@ -15,7 +16,7 @@ independent task directories.
 No final leaderboard placement is claimed. The final-score rows apply the
 preserved automatic highest-Public-before-deadline rule to the extracted account
 records; extracted Private scores remain historical submission fields, not
-placement claims. For Tasks 3–6,
+placement claims. For Tasks 1–6,
 [`FINAL_SUBMISSION_RESULTS.md`](FINAL_SUBMISSION_RESULTS.md) separates the
 official result, autonomous scope, chronological last account submission, and
 all-account numerical maxima.
@@ -36,14 +37,19 @@ main trace, two pre-boundary worker traces, and compact v1-v3 remote logs; raw
 limitations are disclosed in the corresponding README, `COMPLIANCE.md`,
 `EXCLUSIONS.md`, or boundary documents.
 
-The broader audit record, including separately disclosed supervised material,
-is [EXECUTION_TRACES.md](EXECUTION_TRACES.md),
+The published trace overview is [EXECUTION_TRACES.md](EXECUTION_TRACES.md),
 with machine-readable [EXECUTION_TRACE_INDEX.json](EXECUTION_TRACE_INDEX.json)
 and [EXECUTION_TRACE_INDEX.md](EXECUTION_TRACE_INDEX.md). Token counters,
 provider/model attribution, API-cost limitations, and GPU runtime accounting are
-in [COSTS.json](COSTS.json). Do not use that broader index as the autonomous
-submission material. USD API/GPU amounts are left `null` where no applicable
-rate or invoice exists.
+in [COSTS.json](COSTS.json). Both trace indexes now use the same
+human-intervention-free selection. USD API/GPU amounts are left `null` where no
+applicable rate or invoice exists.
+
+The complete 496,870,419-byte Kaggle extraction archive is delivered through
+the verified Google Drive record in
+[`KAGGLE_EXTRACTION_DELIVERY.json`](KAGGLE_EXTRACTION_DELIVERY.json); its
+six-competition summary is
+[`KAGGLE_EXTRACTION_SUMMARY.json`](KAGGLE_EXTRACTION_SUMMARY.json).
 
 These files are evidence for organizer review, not a self-issued compliance
 certificate. The organizer or Jury remains the final authority.

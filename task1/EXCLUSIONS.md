@@ -28,19 +28,19 @@ The preserved submission record identifies:
 - Local score: `0.785577`
 - Public LB: `0.78049`
 
-This result is attributed to the formal solver Agent because the preserved
-post-boundary trace shows the Agent executing the Kaggle CLI submission flow.
-It is the package's main Agent-executed score.
+This result remains labelled as a separately disclosed Agent-executed score in
+the historical receipt and provenance. The post-boundary trace itself is not
+part of the organizer-facing repository material.
 
 Two limitations remain and are disclosed separately from actor attribution:
 
 1. It was developed and submitted after material human supervision.
-2. It was sent after the official `2026-08-05T10:30:00Z` deadline. The
-   organizer Overview states that a late submission may score but does not
-   appear on the leaderboard and does not count for final ranking.
+2. It was sent after the official Kaggle deadline
+   `2026-08-05T10:50:00Z`. The formal Agent run's own deadline was the earlier
+   `10:30:00Z`.
 
 The exact receipt, submitted script, Kernel metadata, Kaggle log, CSV, final
-trial record, and Agent execution trace are retained. A later controller
+trial record, and hash-only execution provenance are retained. A later controller
 summary was deliberately omitted because it is not primary execution evidence
 and contained private runtime details. Root `MANIFEST.sha256` covers every
 retained artifact.
@@ -51,8 +51,9 @@ not itself change either limitation or the result's current eligibility status.
 
 ## Evidence limits
 
-The redacted rollout excludes post-boundary events by construction. Private
-originals remain available locally for organizer-supervised inspection and are
-bound by hashes. Competition audio, labels, and model checkpoints are not
+The published rollout excludes the boundary event and all post-boundary events
+by construction. Private originals remain available locally for
+organizer-supervised inspection and are bound by hashes. Competition audio,
+labels, and model checkpoints are not
 redistributed because the organizer already owns them and the competition rules
 restrict data distribution.

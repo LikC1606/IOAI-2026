@@ -10,15 +10,13 @@
       "all_events_pre_boundary": true,
       "private_original_sha256": "caeff9bb37bef475044391ca35ba834a3aaf144278b66b50adffbc023127e3d6"
     },
-    "agent_submission_execution": {
-      "submission_actor": "formal_solver_agent",
-      "submission": 55267607,
-      "post_boundary_user_inputs": 3,
-      "trace_sha256": "390d1fa9399fe42bfd31412659af9156a8e98542713ad2b6371ee51efefe870b"
+    "excluded_post_boundary_suffix": {
+      "content_in_repository": false,
+      "redacted_sha256": "390d1fa9399fe42bfd31412659af9156a8e98542713ad2b6371ee51efefe870b"
     },
     "boundary": {
       "exclusive_utc": "2026-08-05T10:16:52.222Z",
-      "event_exact": true
+      "hash_only": true
     },
     "local_trial": {
       "trial": "trial-605da205",

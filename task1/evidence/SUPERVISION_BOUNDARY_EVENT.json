@@ -1,18 +1,11 @@
 {
+  "schema": "ioai.supervision-boundary-hash-record.v1",
   "timestamp": "2026-08-05T10:16:52.222Z",
-  "type": "response_item",
-  "payload": {
-    "type": "message",
-    "id": "msg_019fd16d-0afe-7f20-b0e1-9976a28d69c3",
-    "role": "user",
-    "content": [
-      {
-        "type": "input_text",
-        "text": "你让他继续优化 找到高分了再提交"
-      }
-    ],
-    "internal_chat_message_metadata_passthrough": {
-      "turn_id": "019fd16d-09e9-7510-b11c-d41c385b25e2"
-    }
-  }
+  "classification": "first material human instruction received by the controlling session",
+  "role": "user",
+  "content_in_repository": false,
+  "prompt_content_sha256": "ceb37189447555a6ab309c5860fc37f6ea82abb2573c68531b6a32105623dfb4",
+  "private_event_with_body_sha256": "ddcebef4570218182a89379d97d351a300d2d2f1133fc0fd3e6d8c06e4e0dbf1",
+  "private_source_line_sha256": "bd61e0bea2da1ca9492e483ac895c4c5492c7646a9bd6757c5c957c5728126d9",
+  "exclusion_rule": "The boundary event and every causally downstream event are excluded from organizer-facing trace material."
 }

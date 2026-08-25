@@ -1,0 +1,67 @@
+{
+  "tool_version": "1.0.0",
+  "username": "researai",
+  "generated_utc": "2026-08-13T10:01:47.284619+00:00",
+  "competitions": [
+    {
+      "competition": "ioai-2026-task-1-westlake-nlp-24",
+      "launch_utc": "2026-08-05 08:25:00",
+      "deadline_utc": "2026-08-05 10:50:00",
+      "window_minutes": 145.0,
+      "submissions": 30,
+      "submissions_after_deadline": 15,
+      "kernels": 14,
+      "versions_captured": 38
+    },
+    {
+      "competition": "ioai-2026-task-2-westlake-nlp-24",
+      "launch_utc": "2026-08-05 04:55:00",
+      "deadline_utc": "2026-08-05 07:35:00",
+      "window_minutes": 160.0,
+      "submissions": 16,
+      "submissions_after_deadline": 11,
+      "kernels": 11,
+      "versions_captured": 18
+    },
+    {
+      "competition": "ioai-2026-task-3-westlake-nlp-48",
+      "launch_utc": "2026-08-06 04:25:00",
+      "deadline_utc": "2026-08-06 06:30:00",
+      "window_minutes": 125.0,
+      "submissions": 27,
+      "submissions_after_deadline": 16,
+      "kernels": 2,
+      "versions_captured": 30
+    },
+    {
+      "competition": "ioai-2026-task-4-westlake-nlp-24",
+      "launch_utc": "2026-08-07 04:10:00",
+      "deadline_utc": "2026-08-07 06:15:00",
+      "window_minutes": 125.0,
+      "submissions": 3,
+      "submissions_after_deadline": 0,
+      "kernels": 1,
+      "versions_captured": 4
+    },
+    {
+      "competition": "ioai-2026-task-5-westlake-nlp-24",
+      "launch_utc": "2026-08-07 06:55:00",
+      "deadline_utc": "2026-08-07 09:00:00",
+      "window_minutes": 125.0,
+      "submissions": 7,
+      "submissions_after_deadline": 1,
+      "kernels": 1,
+      "versions_captured": 7
+    },
+    {
+      "competition": "ioai-2026-task-6-westlake-nlp-60",
+      "launch_utc": "2026-08-08 15:55:00",
+      "deadline_utc": "2026-08-08 18:30:00",
+      "window_minutes": 155.0,
+      "submissions": 6,
+      "submissions_after_deadline": 2,
+      "kernels": 5,
+      "versions_captured": 8
+    }
+  ]
+}

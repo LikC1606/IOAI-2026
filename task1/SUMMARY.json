@@ -6,7 +6,8 @@
   "account_owner": "researai",
   "formal_run": {
     "joined_at_utc": "2026-08-05T09:20:36.326Z",
-    "deadline_utc": "2026-08-05T10:30:00.000Z",
+    "agent_run_deadline_utc": "2026-08-05T10:30:00.000Z",
+    "official_competition_deadline_utc": "2026-08-05T10:50:00.000Z",
     "boundary_utc_exclusive": "2026-08-05T10:16:52.222Z",
     "boundary_basis": "first material supervisory instruction received by the controlling session",
     "official_starter_sha256": "cf6b223cb3d385fb2214c86cdd89cbf914f800d80af5ad5b642b61738e2cf2fb",
@@ -16,7 +17,7 @@
     "agent_executed_submission": 55267607,
     "agent_executed_public_score": 0.78049,
     "submission_actor": "formal_solver_agent",
-    "submission_execution_evidence": "evidence/submission-execution/rollout-2026-08-05T17-20-55-019fd139-d180-7171-ac0b-c037e11866eb-post-boundary.jsonl",
+    "submission_execution_evidence": "hash-only provenance; post-boundary trace is not in organizer-facing material",
     "official_prompt_only_autonomous_submission": null,
     "official_ranking_eligible": false,
     "best_pre_boundary_local_trial": "trial-605da205",
@@ -32,6 +33,12 @@
     "autonomy_status": "agent-executed-after-human-supervision",
     "ranking_status": "submitted-after-official-deadline"
   },
+  "official_final_submission_refs": [
+    55267333,
+    55267368
+  ],
+  "official_final_public_score": 0.77751,
+  "official_final_private_score": 0.80474,
   "rollout_provenance": {
     "filename": "rollout-2026-08-05T17-20-55-019fd139-d180-7171-ac0b-c037e11866eb.jsonl",
     "private_original_path": "/workspace/IOAI/next-task/ioai-2026-task-1-westlake-nlp-24/codex-home/sessions/2026/08/05/rollout-2026-08-05T17-20-55-019fd139-d180-7171-ac0b-c037e11866eb.jsonl",
@@ -42,13 +49,13 @@
     "dropped_events": 425,
     "first_timestamp": "2026-08-05T09:20:55.426Z",
     "last_timestamp": "2026-08-05T09:52:58.695Z",
-    "agent_execution_trace": {
-      "filename": "evidence/submission-execution/rollout-2026-08-05T17-20-55-019fd139-d180-7171-ac0b-c037e11866eb-post-boundary.jsonl",
+    "excluded_post_boundary_suffix": {
+      "content_in_repository": false,
       "redacted_sha256": "390d1fa9399fe42bfd31412659af9156a8e98542713ad2b6371ee51efefe870b",
       "kept_events": 425,
       "first_timestamp": "2026-08-05T10:17:35.568Z",
       "last_timestamp": "2026-08-05T11:04:39.466Z",
-      "classification": "agent-executed-after-supervision-boundary"
+      "classification": "excluded_agent_execution_after_supervision_boundary"
     }
   },
   "controller_provenance": {
@@ -57,6 +64,7 @@
     "private_original_prefix_bytes": 28229759,
     "private_original_prefix_lines": 11432,
     "private_boundary_line_sha256": "bd61e0bea2da1ca9492e483ac895c4c5492c7646a9bd6757c5c957c5728126d9",
-    "extracted_event_sha256": "ddcebef4570218182a89379d97d351a300d2d2f1133fc0fd3e6d8c06e4e0dbf1"
+    "private_extracted_event_with_body_sha256": "ddcebef4570218182a89379d97d351a300d2d2f1133fc0fd3e6d8c06e4e0dbf1",
+    "prompt_body_in_repository": false
   }
 }

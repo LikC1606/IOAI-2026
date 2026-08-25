@@ -7,15 +7,17 @@
   "known_t4_runtime_hours": 0.748694309638611,
   "api_cost_usd_total": null,
   "api_cost_total_status": "unavailable_no_provider_invoice_or_applicable_public_rate",
+  "api_cost_total_reason": "No invoice or exact ioai_allowed/gpt-5.6-sol rate card was captured; another model's public price is not substituted.",
   "api_cost_formula_if_provider_rates_are_supplied": "(input_tokens-cached_input_tokens)/1e6*input_rate + cached_input_tokens/1e6*cached_input_rate + output_tokens/1e6*output_rate",
   "gpu_cost_usd_total": null,
   "gpu_cost_total_status": "unavailable_no_cloud_invoice_or_rate",
+  "gpu_cost_total_reason": "Exact observed accelerator runtimes are reported per task, but no billable rate or invoice was captured.",
   "tasks": {
     "task1": {
       "competition": "ioai-2026-task-1-westlake-nlp-24",
       "model_provider": "ioai_allowed",
       "model": "gpt-5.6-sol",
-      "reasoning_effort": null,
+      "reasoning_effort": "max",
       "trace_scope": "autonomous-only material before the task boundary",
       "token_usage": {
         "input_tokens": 6756124,
@@ -41,7 +43,7 @@
       "competition": "ioai-2026-task-2-westlake-nlp-24",
       "model_provider": "ioai_allowed",
       "model": "gpt-5.6-sol",
-      "reasoning_effort": null,
+      "reasoning_effort": "max",
       "trace_scope": "autonomous-only material before the task boundary",
       "token_usage": {
         "input_tokens": 14392706,
@@ -66,7 +68,7 @@
       "competition": "ioai-2026-task-3-westlake-nlp-48",
       "model_provider": "ioai_allowed",
       "model": "gpt-5.6-sol",
-      "reasoning_effort": null,
+      "reasoning_effort": "max",
       "trace_scope": "autonomous-only material before the task boundary",
       "token_usage": {
         "input_tokens": 56131525,
@@ -91,7 +93,7 @@
       "competition": "ioai-2026-task-4-westlake-nlp-24",
       "model_provider": "ioai_allowed",
       "model": "gpt-5.6-sol",
-      "reasoning_effort": null,
+      "reasoning_effort": "max",
       "trace_scope": "autonomous-only material before the task boundary",
       "token_usage": {
         "input_tokens": 108797282,
@@ -118,7 +120,7 @@
       "competition": "ioai-2026-task-5-westlake-nlp-24",
       "model_provider": "ioai_allowed",
       "model": "gpt-5.6-sol",
-      "reasoning_effort": null,
+      "reasoning_effort": "xhigh",
       "trace_scope": "autonomous-only material before the task boundary",
       "token_usage": {
         "input_tokens": 159409014,

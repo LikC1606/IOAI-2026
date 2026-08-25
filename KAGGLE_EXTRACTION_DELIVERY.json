@@ -1,0 +1,43 @@
+{
+  "schema": "ioai.kaggle-extraction-delivery.v1",
+  "organizer_request_status": "complete",
+  "account": "researai",
+  "accounts_processed": [
+    "researai"
+  ],
+  "generated_utc": "2026-08-13T10:01:47.284619+00:00",
+  "extraction_tool": {
+    "filename": "ioai-kaggle-extraction.py",
+    "version": "1.0.0",
+    "sha256": "0a7f7b5d3fcc55182bcefe3a5aa2bf9924294c4473cef8194939e94590ba88f1"
+  },
+  "archive": {
+    "filename": "ioai-kaggle-fetch-researai-20260813.tar.gz",
+    "size_bytes": 496870419,
+    "sha256": "eb14e52057c3cfca21972993fb73c2addaf9f214abc9c6f38b88bca97d93fe3c",
+    "entry_count": 1401,
+    "repository_storage": "external_due_to_GitHub_file_size_limit"
+  },
+  "google_drive": {
+    "file_id": "1c9yRn5SUo6LOPDrHLrAVjj-9JLFti9Vz",
+    "web_view_link": "https://drive.google.com/file/d/1c9yRn5SUo6LOPDrHLrAVjj-9JLFti9Vz/view?usp=drivesdk",
+    "remote_name_and_size_verified": true
+  },
+  "repository_summary": "KAGGLE_EXTRACTION_SUMMARY.json",
+  "covered_competitions": [
+    "ioai-2026-task-1-westlake-nlp-24",
+    "ioai-2026-task-2-westlake-nlp-24",
+    "ioai-2026-task-3-westlake-nlp-48",
+    "ioai-2026-task-4-westlake-nlp-24",
+    "ioai-2026-task-5-westlake-nlp-24",
+    "ioai-2026-task-6-westlake-nlp-60"
+  ],
+  "all_submissions_source_sha256": {
+    "task1": "922375f34f447965c28bf7d7d089427376cac9e00afee2e739360f6275b60c04",
+    "task2": "cd78ff77983ad75afb301ee1bdf7bc79962ff9dc5a7efa91d19110e3dee740b2",
+    "task3": "b1492e3213fad6ae0c77a2a97f02e4e39542f18b9aee950af1349d55cd60588e",
+    "task4": "8afbfb3ad2a6a6fd0711b03e92db38fb6a46fb038ac2a106a4bb4356a9b94038",
+    "task5": "d72861924dd58ad649c70bca45cdcda276253d88a5dcd2a51cb8da402b5b5820",
+    "task6": "220c181eafc7be3db00a8bc1a955c7af351d62e3e73384fb0adfbf941221b50f"
+  }
+}

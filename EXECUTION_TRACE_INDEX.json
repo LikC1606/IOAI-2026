@@ -1,9 +1,9 @@
 {
   "schema": "ioai.execution-trace-index.v1",
   "generated_by": "tools/build_execution_trace_index.py",
-  "scope": "published observable trace package; Task 1 has a separately disclosed supervised segment, while Task 6 is autonomous-only",
+  "scope": "published human-intervention-free observable trace package for Tasks 1-6",
   "redaction": {
-    "task1_to_task5": "repository-provided redacted traces",
+    "task1_to_task5": "repository-provided redacted pre-intervention traces",
     "task6": "pre-human-intervention prefix only; credentials/private endpoints removed; encrypted_content replaced by an opaque placeholder",
     "raw_task6_not_in_repository": true
   },
@@ -21,6 +21,24 @@
             "session_meta": 1,
             "turn_context": 1,
             "world_state": 1
+          },
+          "response_item_types": {
+            "custom_tool_call": 60,
+            "custom_tool_call_output": 60,
+            "function_call": 3,
+            "function_call_output": 3,
+            "message": 23,
+            "reasoning": 76
+          },
+          "organizer_required_event_coverage": {
+            "prompt_message_events": 5,
+            "user_prompt_events": 2,
+            "developer_prompt_events": 3,
+            "assistant_output_events": 18,
+            "function_call_events": 3,
+            "function_call_output_events": 3,
+            "custom_tool_call_events": 60,
+            "custom_tool_call_output_events": 60
           },
           "first_timestamp": "2026-08-05T09:20:55.426Z",
           "last_timestamp": "2026-08-05T09:52:58.695Z",
@@ -40,6 +58,9 @@
           "models_observed": [
             "gpt-5.6-sol"
           ],
+          "reasoning_efforts_observed": [
+            "max"
+          ],
           "token_usage_cumulative_final": {
             "input_tokens": 6756124,
             "cached_input_tokens": 6488320,
@@ -48,67 +69,50 @@
             "reasoning_output_tokens": 14771,
             "total_tokens": 6789266
           }
-        },
-        {
-          "path": "task1/evidence/submission-execution/rollout-2026-08-05T17-20-55-019fd139-d180-7171-ac0b-c037e11866eb-post-boundary.jsonl",
-          "sha256": "390d1fa9399fe42bfd31412659af9156a8e98542713ad2b6371ee51efefe870b",
-          "role": "agent-executed-after-supervision-boundary",
-          "event_count": 425,
-          "event_types": {
-            "compacted": 1,
-            "event_msg": 142,
-            "response_item": 277,
-            "turn_context": 4,
-            "world_state": 1
-          },
-          "first_timestamp": "2026-08-05T10:17:35.568Z",
-          "last_timestamp": "2026-08-05T11:04:39.466Z",
-          "message_counts": {
-            "assistant": 22,
-            "developer": 1,
-            "user": 3
-          },
-          "logical_function_calls": 13,
-          "logical_function_call_names": {
-            "wait": 13
-          },
-          "exec_wrapper_custom_tool_calls": 73,
-          "custom_tool_call_names": {
-            "exec": 73
-          },
-          "models_observed": [
-            "gpt-5.6-sol"
-          ],
-          "token_usage_cumulative_final": {
-            "input_tokens": 23528876,
-            "cached_input_tokens": 22725888,
-            "cache_write_input_tokens": 0,
-            "output_tokens": 62611,
-            "reasoning_output_tokens": 24328,
-            "total_tokens": 23591487
-          }
         }
       ],
       "canonical_model": "gpt-5.6-sol",
       "model_provider": "ioai_allowed",
-      "event_count": 775,
-      "logical_function_calls": 16,
-      "exec_wrapper_custom_tool_calls": 133,
+      "reasoning_effort": "max",
+      "event_count": 350,
+      "logical_function_calls": 3,
+      "exec_wrapper_custom_tool_calls": 60,
       "message_counts": {
-        "assistant": 40,
-        "developer": 4,
-        "user": 5
+        "assistant": 18,
+        "developer": 3,
+        "user": 2
+      },
+      "response_item_types": {
+        "custom_tool_call": 60,
+        "custom_tool_call_output": 60,
+        "function_call": 3,
+        "function_call_output": 3,
+        "message": 23,
+        "reasoning": 76
+      },
+      "organizer_required_event_coverage": {
+        "assistant_output_events": 18,
+        "custom_tool_call_events": 60,
+        "custom_tool_call_output_events": 60,
+        "developer_prompt_events": 3,
+        "function_call_events": 3,
+        "function_call_output_events": 3,
+        "prompt_message_events": 5,
+        "user_prompt_events": 2
       },
       "models_observed": [
         "gpt-5.6-sol"
       ],
+      "reasoning_efforts_observed": [
+        "max"
+      ],
       "token_usage_cumulative_sum_across_traces": {
-        "input_tokens": 30285000,
-        "cached_input_tokens": 29214208,
+        "input_tokens": 6756124,
+        "cached_input_tokens": 6488320,
         "cache_write_input_tokens": 0,
-        "output_tokens": 95753,
-        "reasoning_output_tokens": 39099,
-        "total_tokens": 30380753
+        "output_tokens": 33142,
+        "reasoning_output_tokens": 14771,
+        "total_tokens": 6789266
       },
       "token_usage_note": "Final cumulative counters are summed once per trace."
     },
@@ -126,6 +130,24 @@
             "session_meta": 1,
             "turn_context": 4,
             "world_state": 2
+          },
+          "response_item_types": {
+            "custom_tool_call": 128,
+            "custom_tool_call_output": 127,
+            "function_call": 4,
+            "function_call_output": 4,
+            "message": 33,
+            "reasoning": 155
+          },
+          "organizer_required_event_coverage": {
+            "prompt_message_events": 6,
+            "user_prompt_events": 3,
+            "developer_prompt_events": 3,
+            "assistant_output_events": 27,
+            "function_call_events": 4,
+            "function_call_output_events": 4,
+            "custom_tool_call_events": 128,
+            "custom_tool_call_output_events": 127
           },
           "first_timestamp": "2026-08-05T05:30:31.777Z",
           "last_timestamp": "2026-08-05T06:24:47.487Z",
@@ -145,6 +167,9 @@
           "models_observed": [
             "gpt-5.6-sol"
           ],
+          "reasoning_efforts_observed": [
+            "max"
+          ],
           "token_usage_cumulative_final": {
             "input_tokens": 14392706,
             "cached_input_tokens": 13759488,
@@ -157,6 +182,7 @@
       ],
       "canonical_model": "gpt-5.6-sol",
       "model_provider": "ioai_allowed",
+      "reasoning_effort": "max",
       "event_count": 705,
       "logical_function_calls": 4,
       "exec_wrapper_custom_tool_calls": 128,
@@ -165,8 +191,29 @@
         "developer": 3,
         "user": 3
       },
+      "response_item_types": {
+        "custom_tool_call": 128,
+        "custom_tool_call_output": 127,
+        "function_call": 4,
+        "function_call_output": 4,
+        "message": 33,
+        "reasoning": 155
+      },
+      "organizer_required_event_coverage": {
+        "assistant_output_events": 27,
+        "custom_tool_call_events": 128,
+        "custom_tool_call_output_events": 127,
+        "developer_prompt_events": 3,
+        "function_call_events": 4,
+        "function_call_output_events": 4,
+        "prompt_message_events": 6,
+        "user_prompt_events": 3
+      },
       "models_observed": [
         "gpt-5.6-sol"
+      ],
+      "reasoning_efforts_observed": [
+        "max"
       ],
       "token_usage_cumulative_sum_across_traces": {
         "input_tokens": 14392706,
@@ -194,6 +241,25 @@
             "turn_context": 2,
             "world_state": 5
           },
+          "response_item_types": {
+            "agent_message": 21,
+            "custom_tool_call": 171,
+            "custom_tool_call_output": 171,
+            "function_call": 32,
+            "function_call_output": 32,
+            "message": 35,
+            "reasoning": 216
+          },
+          "organizer_required_event_coverage": {
+            "prompt_message_events": 5,
+            "user_prompt_events": 2,
+            "developer_prompt_events": 3,
+            "assistant_output_events": 30,
+            "function_call_events": 32,
+            "function_call_output_events": 32,
+            "custom_tool_call_events": 171,
+            "custom_tool_call_output_events": 171
+          },
           "first_timestamp": "2026-08-06T04:34:49.335Z",
           "last_timestamp": "2026-08-06T05:46:08.146Z",
           "message_counts": {
@@ -214,6 +280,9 @@
           },
           "models_observed": [
             "gpt-5.6-sol"
+          ],
+          "reasoning_efforts_observed": [
+            "max"
           ],
           "token_usage_cumulative_final": {
             "input_tokens": 29003653,
@@ -238,6 +307,25 @@
             "turn_context": 2,
             "world_state": 1
           },
+          "response_item_types": {
+            "agent_message": 3,
+            "custom_tool_call": 106,
+            "custom_tool_call_output": 106,
+            "function_call": 54,
+            "function_call_output": 54,
+            "message": 9,
+            "reasoning": 125
+          },
+          "organizer_required_event_coverage": {
+            "prompt_message_events": 5,
+            "user_prompt_events": 2,
+            "developer_prompt_events": 3,
+            "assistant_output_events": 4,
+            "function_call_events": 54,
+            "function_call_output_events": 54,
+            "custom_tool_call_events": 106,
+            "custom_tool_call_output_events": 106
+          },
           "first_timestamp": "2026-08-06T04:40:25.894Z",
           "last_timestamp": "2026-08-06T05:36:36.602Z",
           "message_counts": {
@@ -256,6 +344,9 @@
           },
           "models_observed": [
             "gpt-5.6-sol"
+          ],
+          "reasoning_efforts_observed": [
+            "max"
           ],
           "token_usage_cumulative_final": {
             "input_tokens": 14544129,
@@ -280,6 +371,25 @@
             "turn_context": 2,
             "world_state": 3
           },
+          "response_item_types": {
+            "agent_message": 1,
+            "custom_tool_call": 51,
+            "custom_tool_call_output": 51,
+            "function_call": 25,
+            "function_call_output": 25,
+            "message": 12,
+            "reasoning": 79
+          },
+          "organizer_required_event_coverage": {
+            "prompt_message_events": 5,
+            "user_prompt_events": 2,
+            "developer_prompt_events": 3,
+            "assistant_output_events": 7,
+            "function_call_events": 25,
+            "function_call_output_events": 25,
+            "custom_tool_call_events": 51,
+            "custom_tool_call_output_events": 51
+          },
           "first_timestamp": "2026-08-06T04:41:11.098Z",
           "last_timestamp": "2026-08-06T05:11:59.273Z",
           "message_counts": {
@@ -299,6 +409,9 @@
           },
           "models_observed": [
             "gpt-5.6-sol"
+          ],
+          "reasoning_efforts_observed": [
+            "max"
           ],
           "token_usage_cumulative_final": {
             "input_tokens": 5997679,
@@ -323,6 +436,25 @@
             "turn_context": 2,
             "world_state": 4
           },
+          "response_item_types": {
+            "agent_message": 1,
+            "custom_tool_call": 45,
+            "custom_tool_call_output": 45,
+            "function_call": 24,
+            "function_call_output": 24,
+            "message": 12,
+            "reasoning": 72
+          },
+          "organizer_required_event_coverage": {
+            "prompt_message_events": 5,
+            "user_prompt_events": 2,
+            "developer_prompt_events": 3,
+            "assistant_output_events": 7,
+            "function_call_events": 24,
+            "function_call_output_events": 24,
+            "custom_tool_call_events": 45,
+            "custom_tool_call_output_events": 45
+          },
           "first_timestamp": "2026-08-06T04:41:42.932Z",
           "last_timestamp": "2026-08-06T05:08:04.165Z",
           "message_counts": {
@@ -344,6 +476,9 @@
           "models_observed": [
             "gpt-5.6-sol"
           ],
+          "reasoning_efforts_observed": [
+            "max"
+          ],
           "token_usage_cumulative_final": {
             "input_tokens": 6586064,
             "cached_input_tokens": 5929984,
@@ -357,6 +492,7 @@
       ],
       "canonical_model": "gpt-5.6-sol",
       "model_provider": "ioai_allowed",
+      "reasoning_effort": "max",
       "event_count": 2427,
       "logical_function_calls": 135,
       "exec_wrapper_custom_tool_calls": 373,
@@ -365,8 +501,30 @@
         "developer": 12,
         "user": 8
       },
+      "response_item_types": {
+        "agent_message": 26,
+        "custom_tool_call": 373,
+        "custom_tool_call_output": 373,
+        "function_call": 135,
+        "function_call_output": 135,
+        "message": 68,
+        "reasoning": 492
+      },
+      "organizer_required_event_coverage": {
+        "assistant_output_events": 48,
+        "custom_tool_call_events": 373,
+        "custom_tool_call_output_events": 373,
+        "developer_prompt_events": 12,
+        "function_call_events": 135,
+        "function_call_output_events": 135,
+        "prompt_message_events": 20,
+        "user_prompt_events": 8
+      },
       "models_observed": [
         "gpt-5.6-sol"
+      ],
+      "reasoning_efforts_observed": [
+        "max"
       ],
       "token_usage_cumulative_sum_across_traces": {
         "input_tokens": 56131525,
@@ -394,6 +552,25 @@
             "turn_context": 8,
             "world_state": 8
           },
+          "response_item_types": {
+            "agent_message": 4,
+            "custom_tool_call": 277,
+            "custom_tool_call_output": 276,
+            "function_call": 50,
+            "function_call_output": 50,
+            "message": 68,
+            "reasoning": 344
+          },
+          "organizer_required_event_coverage": {
+            "prompt_message_events": 12,
+            "user_prompt_events": 8,
+            "developer_prompt_events": 4,
+            "assistant_output_events": 56,
+            "function_call_events": 50,
+            "function_call_output_events": 50,
+            "custom_tool_call_events": 277,
+            "custom_tool_call_output_events": 276
+          },
           "first_timestamp": "2026-08-07T04:18:29.358Z",
           "last_timestamp": "2026-08-07T06:18:14.539Z",
           "message_counts": {
@@ -414,6 +591,9 @@
           },
           "models_observed": [
             "gpt-5.6-sol"
+          ],
+          "reasoning_efforts_observed": [
+            "max"
           ],
           "token_usage_cumulative_final": {
             "input_tokens": 48595136,
@@ -437,6 +617,25 @@
             "turn_context": 2,
             "world_state": 1
           },
+          "response_item_types": {
+            "agent_message": 1,
+            "custom_tool_call": 39,
+            "custom_tool_call_output": 39,
+            "function_call": 13,
+            "function_call_output": 13,
+            "message": 9,
+            "reasoning": 47
+          },
+          "organizer_required_event_coverage": {
+            "prompt_message_events": 6,
+            "user_prompt_events": 2,
+            "developer_prompt_events": 4,
+            "assistant_output_events": 3,
+            "function_call_events": 13,
+            "function_call_output_events": 13,
+            "custom_tool_call_events": 39,
+            "custom_tool_call_output_events": 39
+          },
           "first_timestamp": "2026-08-07T04:18:41.055Z",
           "last_timestamp": "2026-08-07T04:34:29.195Z",
           "message_counts": {
@@ -456,6 +655,9 @@
           },
           "models_observed": [
             "gpt-5.6-sol"
+          ],
+          "reasoning_efforts_observed": [
+            "max"
           ],
           "token_usage_cumulative_final": {
             "input_tokens": 3322501,
@@ -479,6 +681,25 @@
             "turn_context": 2,
             "world_state": 3
           },
+          "response_item_types": {
+            "agent_message": 2,
+            "custom_tool_call": 44,
+            "custom_tool_call_output": 44,
+            "function_call": 9,
+            "function_call_output": 9,
+            "message": 5,
+            "reasoning": 54
+          },
+          "organizer_required_event_coverage": {
+            "prompt_message_events": 5,
+            "user_prompt_events": 2,
+            "developer_prompt_events": 3,
+            "assistant_output_events": 0,
+            "function_call_events": 9,
+            "function_call_output_events": 9,
+            "custom_tool_call_events": 44,
+            "custom_tool_call_output_events": 44
+          },
           "first_timestamp": "2026-08-07T04:18:47.974Z",
           "last_timestamp": "2026-08-07T04:32:40.980Z",
           "message_counts": {
@@ -496,6 +717,9 @@
           },
           "models_observed": [
             "gpt-5.6-sol"
+          ],
+          "reasoning_efforts_observed": [
+            "max"
           ],
           "token_usage_cumulative_final": {
             "input_tokens": 3021818,
@@ -520,6 +744,25 @@
             "turn_context": 5,
             "world_state": 5
           },
+          "response_item_types": {
+            "agent_message": 1,
+            "custom_tool_call": 14,
+            "custom_tool_call_output": 14,
+            "function_call": 2,
+            "function_call_output": 2,
+            "message": 9,
+            "reasoning": 16
+          },
+          "organizer_required_event_coverage": {
+            "prompt_message_events": 8,
+            "user_prompt_events": 4,
+            "developer_prompt_events": 4,
+            "assistant_output_events": 1,
+            "function_call_events": 2,
+            "function_call_output_events": 2,
+            "custom_tool_call_events": 14,
+            "custom_tool_call_output_events": 14
+          },
           "first_timestamp": "2026-08-07T05:21:43.869Z",
           "last_timestamp": "2026-08-07T05:26:13.218Z",
           "message_counts": {
@@ -538,6 +781,9 @@
           },
           "models_observed": [
             "gpt-5.6-sol"
+          ],
+          "reasoning_efforts_observed": [
+            "max"
           ],
           "token_usage_cumulative_final": {
             "input_tokens": 27014281,
@@ -562,6 +808,25 @@
             "turn_context": 5,
             "world_state": 7
           },
+          "response_item_types": {
+            "agent_message": 1,
+            "custom_tool_call": 13,
+            "custom_tool_call_output": 13,
+            "function_call": 1,
+            "function_call_output": 1,
+            "message": 10,
+            "reasoning": 14
+          },
+          "organizer_required_event_coverage": {
+            "prompt_message_events": 8,
+            "user_prompt_events": 4,
+            "developer_prompt_events": 4,
+            "assistant_output_events": 2,
+            "function_call_events": 1,
+            "function_call_output_events": 1,
+            "custom_tool_call_events": 13,
+            "custom_tool_call_output_events": 13
+          },
           "first_timestamp": "2026-08-07T05:21:51.884Z",
           "last_timestamp": "2026-08-07T05:26:13.166Z",
           "message_counts": {
@@ -580,6 +845,9 @@
           "models_observed": [
             "gpt-5.6-sol"
           ],
+          "reasoning_efforts_observed": [
+            "max"
+          ],
           "token_usage_cumulative_final": {
             "input_tokens": 26843546,
             "cached_input_tokens": 25933568,
@@ -592,6 +860,7 @@
       ],
       "canonical_model": "gpt-5.6-sol",
       "model_provider": "ioai_allowed",
+      "reasoning_effort": "max",
       "event_count": 2717,
       "logical_function_calls": 75,
       "exec_wrapper_custom_tool_calls": 387,
@@ -600,8 +869,30 @@
         "developer": 19,
         "user": 20
       },
+      "response_item_types": {
+        "agent_message": 9,
+        "custom_tool_call": 387,
+        "custom_tool_call_output": 386,
+        "function_call": 75,
+        "function_call_output": 75,
+        "message": 101,
+        "reasoning": 475
+      },
+      "organizer_required_event_coverage": {
+        "assistant_output_events": 62,
+        "custom_tool_call_events": 387,
+        "custom_tool_call_output_events": 386,
+        "developer_prompt_events": 19,
+        "function_call_events": 75,
+        "function_call_output_events": 75,
+        "prompt_message_events": 39,
+        "user_prompt_events": 20
+      },
       "models_observed": [
         "gpt-5.6-sol"
+      ],
+      "reasoning_efforts_observed": [
+        "max"
       ],
       "token_usage_cumulative_sum_across_traces": {
         "input_tokens": 108797282,
@@ -629,6 +920,25 @@
             "turn_context": 2,
             "world_state": 15
           },
+          "response_item_types": {
+            "agent_message": 45,
+            "custom_tool_call": 170,
+            "custom_tool_call_output": 170,
+            "function_call": 64,
+            "function_call_output": 64,
+            "message": 54,
+            "reasoning": 228
+          },
+          "organizer_required_event_coverage": {
+            "prompt_message_events": 5,
+            "user_prompt_events": 2,
+            "developer_prompt_events": 3,
+            "assistant_output_events": 49,
+            "function_call_events": 64,
+            "function_call_output_events": 64,
+            "custom_tool_call_events": 170,
+            "custom_tool_call_output_events": 170
+          },
           "first_timestamp": "2026-08-07T07:04:23.719Z",
           "last_timestamp": "2026-08-07T09:04:16.292Z",
           "message_counts": {
@@ -652,6 +962,9 @@
           "models_observed": [
             "gpt-5.6-sol"
           ],
+          "reasoning_efforts_observed": [
+            "xhigh"
+          ],
           "token_usage_cumulative_final": {
             "input_tokens": 29892364,
             "cached_input_tokens": 29050112,
@@ -674,6 +987,25 @@
             "turn_context": 2,
             "world_state": 2
           },
+          "response_item_types": {
+            "agent_message": 1,
+            "custom_tool_call": 21,
+            "custom_tool_call_output": 21,
+            "function_call": 7,
+            "function_call_output": 7,
+            "message": 13,
+            "reasoning": 30
+          },
+          "organizer_required_event_coverage": {
+            "prompt_message_events": 7,
+            "user_prompt_events": 2,
+            "developer_prompt_events": 5,
+            "assistant_output_events": 6,
+            "function_call_events": 7,
+            "function_call_output_events": 7,
+            "custom_tool_call_events": 21,
+            "custom_tool_call_output_events": 21
+          },
           "first_timestamp": "2026-08-07T07:10:16.334Z",
           "last_timestamp": "2026-08-07T07:26:45.361Z",
           "message_counts": {
@@ -692,6 +1024,9 @@
           },
           "models_observed": [
             "gpt-5.6-sol"
+          ],
+          "reasoning_efforts_observed": [
+            "xhigh"
           ],
           "token_usage_cumulative_final": {
             "input_tokens": 1968285,
@@ -715,6 +1050,25 @@
             "turn_context": 2,
             "world_state": 3
           },
+          "response_item_types": {
+            "agent_message": 1,
+            "custom_tool_call": 18,
+            "custom_tool_call_output": 18,
+            "function_call": 3,
+            "function_call_output": 3,
+            "message": 15,
+            "reasoning": 28
+          },
+          "organizer_required_event_coverage": {
+            "prompt_message_events": 7,
+            "user_prompt_events": 2,
+            "developer_prompt_events": 5,
+            "assistant_output_events": 8,
+            "function_call_events": 3,
+            "function_call_output_events": 3,
+            "custom_tool_call_events": 18,
+            "custom_tool_call_output_events": 18
+          },
           "first_timestamp": "2026-08-07T07:10:32.690Z",
           "last_timestamp": "2026-08-07T07:23:01.562Z",
           "message_counts": {
@@ -733,6 +1087,9 @@
           },
           "models_observed": [
             "gpt-5.6-sol"
+          ],
+          "reasoning_efforts_observed": [
+            "xhigh"
           ],
           "token_usage_cumulative_final": {
             "input_tokens": 1572991,
@@ -756,6 +1113,25 @@
             "turn_context": 2,
             "world_state": 4
           },
+          "response_item_types": {
+            "agent_message": 1,
+            "custom_tool_call": 26,
+            "custom_tool_call_output": 26,
+            "function_call": 9,
+            "function_call_output": 9,
+            "message": 12,
+            "reasoning": 38
+          },
+          "organizer_required_event_coverage": {
+            "prompt_message_events": 7,
+            "user_prompt_events": 2,
+            "developer_prompt_events": 5,
+            "assistant_output_events": 5,
+            "function_call_events": 9,
+            "function_call_output_events": 9,
+            "custom_tool_call_events": 26,
+            "custom_tool_call_output_events": 26
+          },
           "first_timestamp": "2026-08-07T07:10:46.859Z",
           "last_timestamp": "2026-08-07T07:26:56.931Z",
           "message_counts": {
@@ -774,6 +1150,9 @@
           },
           "models_observed": [
             "gpt-5.6-sol"
+          ],
+          "reasoning_efforts_observed": [
+            "xhigh"
           ],
           "token_usage_cumulative_final": {
             "input_tokens": 2298509,
@@ -797,6 +1176,25 @@
             "turn_context": 2,
             "world_state": 5
           },
+          "response_item_types": {
+            "agent_message": 1,
+            "custom_tool_call": 23,
+            "custom_tool_call_output": 23,
+            "function_call": 7,
+            "function_call_output": 7,
+            "message": 13,
+            "reasoning": 34
+          },
+          "organizer_required_event_coverage": {
+            "prompt_message_events": 7,
+            "user_prompt_events": 2,
+            "developer_prompt_events": 5,
+            "assistant_output_events": 6,
+            "function_call_events": 7,
+            "function_call_output_events": 7,
+            "custom_tool_call_events": 23,
+            "custom_tool_call_output_events": 23
+          },
           "first_timestamp": "2026-08-07T07:23:21.912Z",
           "last_timestamp": "2026-08-07T07:36:12.145Z",
           "message_counts": {
@@ -815,6 +1213,9 @@
           },
           "models_observed": [
             "gpt-5.6-sol"
+          ],
+          "reasoning_efforts_observed": [
+            "xhigh"
           ],
           "token_usage_cumulative_final": {
             "input_tokens": 4077565,
@@ -838,6 +1239,25 @@
             "turn_context": 2,
             "world_state": 6
           },
+          "response_item_types": {
+            "agent_message": 2,
+            "custom_tool_call": 22,
+            "custom_tool_call_output": 22,
+            "function_call": 7,
+            "function_call_output": 7,
+            "message": 13,
+            "reasoning": 30
+          },
+          "organizer_required_event_coverage": {
+            "prompt_message_events": 7,
+            "user_prompt_events": 2,
+            "developer_prompt_events": 5,
+            "assistant_output_events": 6,
+            "function_call_events": 7,
+            "function_call_output_events": 7,
+            "custom_tool_call_events": 22,
+            "custom_tool_call_output_events": 22
+          },
           "first_timestamp": "2026-08-07T07:35:11.375Z",
           "last_timestamp": "2026-08-07T07:45:40.687Z",
           "message_counts": {
@@ -856,6 +1276,9 @@
           },
           "models_observed": [
             "gpt-5.6-sol"
+          ],
+          "reasoning_efforts_observed": [
+            "xhigh"
           ],
           "token_usage_cumulative_final": {
             "input_tokens": 6624218,
@@ -879,6 +1302,25 @@
             "turn_context": 2,
             "world_state": 7
           },
+          "response_item_types": {
+            "agent_message": 1,
+            "custom_tool_call": 17,
+            "custom_tool_call_output": 17,
+            "function_call": 5,
+            "function_call_output": 5,
+            "message": 13,
+            "reasoning": 23
+          },
+          "organizer_required_event_coverage": {
+            "prompt_message_events": 7,
+            "user_prompt_events": 2,
+            "developer_prompt_events": 5,
+            "assistant_output_events": 6,
+            "function_call_events": 5,
+            "function_call_output_events": 5,
+            "custom_tool_call_events": 17,
+            "custom_tool_call_output_events": 17
+          },
           "first_timestamp": "2026-08-07T07:35:25.090Z",
           "last_timestamp": "2026-08-07T07:43:05.801Z",
           "message_counts": {
@@ -897,6 +1339,9 @@
           },
           "models_observed": [
             "gpt-5.6-sol"
+          ],
+          "reasoning_efforts_observed": [
+            "xhigh"
           ],
           "token_usage_cumulative_final": {
             "input_tokens": 6374071,
@@ -920,6 +1365,25 @@
             "turn_context": 2,
             "world_state": 8
           },
+          "response_item_types": {
+            "agent_message": 2,
+            "custom_tool_call": 18,
+            "custom_tool_call_output": 18,
+            "function_call": 4,
+            "function_call_output": 4,
+            "message": 15,
+            "reasoning": 27
+          },
+          "organizer_required_event_coverage": {
+            "prompt_message_events": 7,
+            "user_prompt_events": 2,
+            "developer_prompt_events": 5,
+            "assistant_output_events": 8,
+            "function_call_events": 4,
+            "function_call_output_events": 4,
+            "custom_tool_call_events": 18,
+            "custom_tool_call_output_events": 18
+          },
           "first_timestamp": "2026-08-07T07:36:47.214Z",
           "last_timestamp": "2026-08-07T07:46:53.211Z",
           "message_counts": {
@@ -938,6 +1402,9 @@
           },
           "models_observed": [
             "gpt-5.6-sol"
+          ],
+          "reasoning_efforts_observed": [
+            "xhigh"
           ],
           "token_usage_cumulative_final": {
             "input_tokens": 6827022,
@@ -961,6 +1428,25 @@
             "turn_context": 3,
             "world_state": 9
           },
+          "response_item_types": {
+            "agent_message": 4,
+            "custom_tool_call": 18,
+            "custom_tool_call_output": 18,
+            "function_call": 6,
+            "function_call_output": 6,
+            "message": 18,
+            "reasoning": 32
+          },
+          "organizer_required_event_coverage": {
+            "prompt_message_events": 7,
+            "user_prompt_events": 2,
+            "developer_prompt_events": 5,
+            "assistant_output_events": 11,
+            "function_call_events": 6,
+            "function_call_output_events": 6,
+            "custom_tool_call_events": 18,
+            "custom_tool_call_output_events": 18
+          },
           "first_timestamp": "2026-08-07T07:58:45.176Z",
           "last_timestamp": "2026-08-07T08:13:06.912Z",
           "message_counts": {
@@ -980,6 +1466,9 @@
           },
           "models_observed": [
             "gpt-5.6-sol"
+          ],
+          "reasoning_efforts_observed": [
+            "xhigh"
           ],
           "token_usage_cumulative_final": {
             "input_tokens": 13564619,
@@ -1003,6 +1492,25 @@
             "turn_context": 2,
             "world_state": 10
           },
+          "response_item_types": {
+            "agent_message": 1,
+            "custom_tool_call": 8,
+            "custom_tool_call_output": 8,
+            "function_call": 2,
+            "function_call_output": 2,
+            "message": 12,
+            "reasoning": 14
+          },
+          "organizer_required_event_coverage": {
+            "prompt_message_events": 7,
+            "user_prompt_events": 2,
+            "developer_prompt_events": 5,
+            "assistant_output_events": 5,
+            "function_call_events": 2,
+            "function_call_output_events": 2,
+            "custom_tool_call_events": 8,
+            "custom_tool_call_output_events": 8
+          },
           "first_timestamp": "2026-08-07T07:58:59.118Z",
           "last_timestamp": "2026-08-07T08:07:29.346Z",
           "message_counts": {
@@ -1021,6 +1529,9 @@
           },
           "models_observed": [
             "gpt-5.6-sol"
+          ],
+          "reasoning_efforts_observed": [
+            "xhigh"
           ],
           "token_usage_cumulative_final": {
             "input_tokens": 12735642,
@@ -1044,6 +1555,25 @@
             "turn_context": 2,
             "world_state": 11
           },
+          "response_item_types": {
+            "agent_message": 1,
+            "custom_tool_call": 11,
+            "custom_tool_call_output": 11,
+            "function_call": 1,
+            "function_call_output": 1,
+            "message": 12,
+            "reasoning": 15
+          },
+          "organizer_required_event_coverage": {
+            "prompt_message_events": 7,
+            "user_prompt_events": 2,
+            "developer_prompt_events": 5,
+            "assistant_output_events": 5,
+            "function_call_events": 1,
+            "function_call_output_events": 1,
+            "custom_tool_call_events": 11,
+            "custom_tool_call_output_events": 11
+          },
           "first_timestamp": "2026-08-07T07:59:18.615Z",
           "last_timestamp": "2026-08-07T08:05:02.996Z",
           "message_counts": {
@@ -1061,6 +1591,9 @@
           },
           "models_observed": [
             "gpt-5.6-sol"
+          ],
+          "reasoning_efforts_observed": [
+            "xhigh"
           ],
           "token_usage_cumulative_final": {
             "input_tokens": 13099530,
@@ -1084,6 +1617,25 @@
             "turn_context": 3,
             "world_state": 12
           },
+          "response_item_types": {
+            "agent_message": 3,
+            "custom_tool_call": 30,
+            "custom_tool_call_output": 30,
+            "function_call": 6,
+            "function_call_output": 6,
+            "message": 15,
+            "reasoning": 42
+          },
+          "organizer_required_event_coverage": {
+            "prompt_message_events": 7,
+            "user_prompt_events": 2,
+            "developer_prompt_events": 5,
+            "assistant_output_events": 8,
+            "function_call_events": 6,
+            "function_call_output_events": 6,
+            "custom_tool_call_events": 30,
+            "custom_tool_call_output_events": 30
+          },
           "first_timestamp": "2026-08-07T08:05:40.418Z",
           "last_timestamp": "2026-08-07T08:51:53.692Z",
           "message_counts": {
@@ -1102,6 +1654,9 @@
           },
           "models_observed": [
             "gpt-5.6-sol"
+          ],
+          "reasoning_efforts_observed": [
+            "xhigh"
           ],
           "token_usage_cumulative_final": {
             "input_tokens": 17971525,
@@ -1125,6 +1680,25 @@
             "turn_context": 3,
             "world_state": 13
           },
+          "response_item_types": {
+            "agent_message": 3,
+            "custom_tool_call": 16,
+            "custom_tool_call_output": 16,
+            "function_call": 7,
+            "function_call_output": 7,
+            "message": 16,
+            "reasoning": 29
+          },
+          "organizer_required_event_coverage": {
+            "prompt_message_events": 7,
+            "user_prompt_events": 2,
+            "developer_prompt_events": 5,
+            "assistant_output_events": 9,
+            "function_call_events": 7,
+            "function_call_output_events": 7,
+            "custom_tool_call_events": 16,
+            "custom_tool_call_output_events": 16
+          },
           "first_timestamp": "2026-08-07T08:23:09.928Z",
           "last_timestamp": "2026-08-07T08:52:49.852Z",
           "message_counts": {
@@ -1143,6 +1717,9 @@
           },
           "models_observed": [
             "gpt-5.6-sol"
+          ],
+          "reasoning_efforts_observed": [
+            "xhigh"
           ],
           "token_usage_cumulative_final": {
             "input_tokens": 21599503,
@@ -1166,6 +1743,25 @@
             "turn_context": 3,
             "world_state": 14
           },
+          "response_item_types": {
+            "agent_message": 3,
+            "custom_tool_call": 11,
+            "custom_tool_call_output": 11,
+            "function_call": 3,
+            "function_call_output": 3,
+            "message": 15,
+            "reasoning": 19
+          },
+          "organizer_required_event_coverage": {
+            "prompt_message_events": 7,
+            "user_prompt_events": 2,
+            "developer_prompt_events": 5,
+            "assistant_output_events": 8,
+            "function_call_events": 3,
+            "function_call_output_events": 3,
+            "custom_tool_call_events": 11,
+            "custom_tool_call_output_events": 11
+          },
           "first_timestamp": "2026-08-07T08:23:36.970Z",
           "last_timestamp": "2026-08-07T08:49:57.354Z",
           "message_counts": {
@@ -1185,6 +1781,9 @@
           "models_observed": [
             "gpt-5.6-sol"
           ],
+          "reasoning_efforts_observed": [
+            "xhigh"
+          ],
           "token_usage_cumulative_final": {
             "input_tokens": 20803170,
             "cached_input_tokens": 20358912,
@@ -1197,6 +1796,7 @@
       ],
       "canonical_model": "gpt-5.6-sol",
       "model_provider": "ioai_allowed",
+      "reasoning_effort": "xhigh",
       "event_count": 4705,
       "logical_function_calls": 131,
       "exec_wrapper_custom_tool_calls": 409,
@@ -1205,8 +1805,30 @@
         "developer": 68,
         "user": 28
       },
+      "response_item_types": {
+        "agent_message": 69,
+        "custom_tool_call": 409,
+        "custom_tool_call_output": 409,
+        "function_call": 131,
+        "function_call_output": 131,
+        "message": 236,
+        "reasoning": 589
+      },
+      "organizer_required_event_coverage": {
+        "assistant_output_events": 140,
+        "custom_tool_call_events": 409,
+        "custom_tool_call_output_events": 409,
+        "developer_prompt_events": 68,
+        "function_call_events": 131,
+        "function_call_output_events": 131,
+        "prompt_message_events": 96,
+        "user_prompt_events": 28
+      },
       "models_observed": [
         "gpt-5.6-sol"
+      ],
+      "reasoning_efforts_observed": [
+        "xhigh"
       ],
       "token_usage_cumulative_sum_across_traces": {
         "input_tokens": 159409014,
@@ -1234,6 +1856,25 @@
             "turn_context": 3,
             "world_state": 5
           },
+          "response_item_types": {
+            "agent_message": 12,
+            "custom_tool_call": 212,
+            "custom_tool_call_output": 212,
+            "function_call": 27,
+            "function_call_output": 27,
+            "message": 34,
+            "reasoning": 275
+          },
+          "organizer_required_event_coverage": {
+            "prompt_message_events": 5,
+            "user_prompt_events": 2,
+            "developer_prompt_events": 3,
+            "assistant_output_events": 29,
+            "function_call_events": 27,
+            "function_call_output_events": 27,
+            "custom_tool_call_events": 212,
+            "custom_tool_call_output_events": 212
+          },
           "first_timestamp": "2026-08-08T16:23:24.789Z",
           "last_timestamp": "2026-08-08T18:09:48.770Z",
           "message_counts": {
@@ -1257,6 +1898,9 @@
           "models_observed": [
             "gpt-5.6-sol"
           ],
+          "reasoning_efforts_observed": [
+            "xhigh"
+          ],
           "token_usage_cumulative_final": {
             "input_tokens": 29321227,
             "cached_input_tokens": 27202048,
@@ -1279,6 +1923,25 @@
             "turn_context": 3,
             "world_state": 2
           },
+          "response_item_types": {
+            "agent_message": 4,
+            "custom_tool_call": 49,
+            "custom_tool_call_output": 49,
+            "function_call": 11,
+            "function_call_output": 11,
+            "message": 25,
+            "reasoning": 83
+          },
+          "organizer_required_event_coverage": {
+            "prompt_message_events": 7,
+            "user_prompt_events": 2,
+            "developer_prompt_events": 5,
+            "assistant_output_events": 18,
+            "function_call_events": 11,
+            "function_call_output_events": 11,
+            "custom_tool_call_events": 49,
+            "custom_tool_call_output_events": 49
+          },
           "first_timestamp": "2026-08-08T16:23:42.537Z",
           "last_timestamp": "2026-08-08T17:41:29.253Z",
           "message_counts": {
@@ -1297,6 +1960,9 @@
           },
           "models_observed": [
             "gpt-5.6-sol"
+          ],
+          "reasoning_efforts_observed": [
+            "xhigh"
           ],
           "token_usage_cumulative_final": {
             "input_tokens": 6279995,
@@ -1320,6 +1986,25 @@
             "turn_context": 2,
             "world_state": 3
           },
+          "response_item_types": {
+            "agent_message": 2,
+            "custom_tool_call": 48,
+            "custom_tool_call_output": 48,
+            "function_call": 16,
+            "function_call_output": 16,
+            "message": 14,
+            "reasoning": 87
+          },
+          "organizer_required_event_coverage": {
+            "prompt_message_events": 7,
+            "user_prompt_events": 2,
+            "developer_prompt_events": 5,
+            "assistant_output_events": 7,
+            "function_call_events": 16,
+            "function_call_output_events": 16,
+            "custom_tool_call_events": 48,
+            "custom_tool_call_output_events": 48
+          },
           "first_timestamp": "2026-08-08T16:30:10.377Z",
           "last_timestamp": "2026-08-08T17:15:39.743Z",
           "message_counts": {
@@ -1340,6 +2025,9 @@
           "models_observed": [
             "gpt-5.6-sol"
           ],
+          "reasoning_efforts_observed": [
+            "xhigh"
+          ],
           "token_usage_cumulative_final": {
             "input_tokens": 5600284,
             "cached_input_tokens": 4908032,
@@ -1352,6 +2040,7 @@
       ],
       "canonical_model": "gpt-5.6-sol",
       "model_provider": "ioai_allowed",
+      "reasoning_effort": "xhigh",
       "event_count": 1868,
       "logical_function_calls": 54,
       "exec_wrapper_custom_tool_calls": 309,
@@ -1360,8 +2049,30 @@
         "developer": 13,
         "user": 6
       },
+      "response_item_types": {
+        "agent_message": 18,
+        "custom_tool_call": 309,
+        "custom_tool_call_output": 309,
+        "function_call": 54,
+        "function_call_output": 54,
+        "message": 73,
+        "reasoning": 445
+      },
+      "organizer_required_event_coverage": {
+        "assistant_output_events": 54,
+        "custom_tool_call_events": 309,
+        "custom_tool_call_output_events": 309,
+        "developer_prompt_events": 13,
+        "function_call_events": 54,
+        "function_call_output_events": 54,
+        "prompt_message_events": 19,
+        "user_prompt_events": 6
+      },
       "models_observed": [
         "gpt-5.6-sol"
+      ],
+      "reasoning_efforts_observed": [
+        "xhigh"
       ],
       "token_usage_cumulative_sum_across_traces": {
         "input_tokens": 41201506,

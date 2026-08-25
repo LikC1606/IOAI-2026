@@ -9,11 +9,16 @@ method as support for the claimed result.
 The formal run began at `2026-08-05T05:30:32Z`. Its conservative autonomy
 boundary is `2026-08-05T06:24:47.549Z`, when the first modified Continuation
 Prompt arrived. Submission `55260695` was sent at `06:19:10.890Z`, before that
-boundary and the `07:00:00Z` competition deadline. Its Public LB is `0.55416`;
-no Private/final LB is present in the captured records.
+boundary, the `07:00:00Z` Agent run deadline, and the official `07:35:00Z`
+Kaggle deadline. Its Public / Private scores are `0.55416 / 0.54833`.
 
 The later ExtraTrees score `0.63583` is excluded. It cannot be used to support
 this autonomous claim even though it is higher. See `EXCLUSIONS.md`.
+
+It is nevertheless the account's official final result: submission `55261432`,
+Public 0.63583 / Private 0.62500, selected as the highest Public score before
+the official Kaggle deadline. Official account result and autonomous trace
+scope are intentionally reported as separate facts.
 
 ## Submission and resource audit
 
@@ -41,7 +46,8 @@ The source begins with nine logical report paragraphs and states validation
 `54.78`. The exact remote log reports best epoch 13 validation `54.8056`. The
 source also could not include its later-known Public LB `0.55416`. These are
 documentation gaps, disclosed here rather than repaired in the historical
-source. No Private score is claimed.
+source. The Private score above comes from the later organizer-requested Kaggle
+extraction rather than the historical source report.
 
 ## Reproduce
 

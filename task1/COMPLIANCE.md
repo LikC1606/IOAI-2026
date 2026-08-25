@@ -11,18 +11,23 @@ into an official-prompt-only result.
 | Was submission 55267607 executed by the formal solver Agent? | Yes |
 | Was it produced under only the official Starter/Continuation prompts? | No |
 | Was it sent before the official deadline? | No |
-| Public LB | 0.78049 |
-| Private/final LB | Not available |
+| Agent-executed Public / Private | 0.78049 / 0.76808 |
+| Official final Public / Private | 0.77751 / 0.80474 |
 | Organizer exception | Pending; not assumed |
 
 The exclusive autonomy boundary is `2026-08-05T10:16:52.222Z`. The scored
 submission was sent at `2026-08-05T10:54:51.343Z`, after both the first material
-human continuation instruction and the `10:30:00Z` deadline. See
+human continuation instruction and the official `10:50:00Z` Kaggle deadline.
+The formal Agent run had an earlier `10:30:00Z` deadline. See
 `AUTONOMY_BOUNDARY.md` and `ORGANIZER_REVIEW_REQUEST.md` for the exact scope.
 
 Before that boundary, the Agent produced a valid 200-row remote baseline and a
 local score of 0.6827101986420873, but did not send a competition submission.
 It is evidence of autonomous work, not an autonomous leaderboard score.
+
+The account's official final result is the exact tie `55267333` / `55267368`,
+Public 0.77751 and Private 0.80474. It comes from the organizer-requested Kaggle
+extraction and is not attributed to the human-intervention-free trace.
 
 ## Scored artifact
 
@@ -46,7 +51,7 @@ sha256sum -c MANIFEST.sha256
 python tools/verify_package.py
 ```
 
-`tools/verify_package.py` verifies the boundary, submission actor trace, local
+`tools/verify_package.py` verifies the boundary hashes, local
 trial, unscored baseline, scored receipt, source/output hashes, and absence of
 plaintext secrets. Because it refreshes `VERIFY_REPORT.json`, regenerate the
 manifest if that report changes. This package supports organizer review; the

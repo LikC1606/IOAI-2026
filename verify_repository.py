@@ -17,6 +17,22 @@ EXPECTED = {
 }
 
 FINAL_RESULTS = {
+    1: {
+        "source_sha256": "922375f34f447965c28bf7d7d089427376cac9e00afee2e739360f6275b60c04",
+        "counts": (30, 15, 15),
+        "refs": [55267333, 55267368],
+        "public": 0.77751,
+        "private": 0.80474,
+        "latest": (55300144, 0.81854, 0.82775),
+    },
+    2: {
+        "source_sha256": "cd78ff77983ad75afb301ee1bdf7bc79962ff9dc5a7efa91d19110e3dee740b2",
+        "counts": (16, 5, 11),
+        "refs": [55261432],
+        "public": 0.63583,
+        "private": 0.625,
+        "latest": (55280319, 0.65888, 0.66166),
+    },
     3: {
         "source_sha256": "b1492e3213fad6ae0c77a2a97f02e4e39542f18b9aee950af1349d55cd60588e",
         "counts": (27, 11, 16),
@@ -120,6 +136,8 @@ def verify_final_account_result(task: int, summary: dict) -> dict[str, object]:
     assert summary["official_final_private_score"] == expected["private"]
 
     latest_key = {
+        1: "latest_account_and_best_private",
+        2: "latest_account_submission",
         3: "latest_account_submission",
         4: "latest_account_submission",
         5: "latest_account_and_best_private",
@@ -132,7 +150,12 @@ def verify_final_account_result(task: int, summary: dict) -> dict[str, object]:
         latest["private_score"],
     ) == expected["latest"]
 
-    if task == 3:
+    if task == 1:
+        assert result["separately_disclosed_agent_executed_result"]["submission_ref"] == 55267607
+        assert result["official_prompt_only_autonomous_result"]["scored_submission"] is None
+    elif task == 2:
+        assert result["autonomous_result"]["submission_ref"] == 55260695
+    elif task == 3:
         assert result["official_deadline_best_private"] == {
             "score": 55.48333,
             "submission_ref": 55290027,
@@ -181,6 +204,18 @@ def verify_autonomous_material() -> dict[str, int]:
         assert data["manual_human_prompt_events_included"] == 0, task
         assert len(data["user_prompt_audit"]) == data["message_counts"].get("user", 0), task
         boundary = data["boundary"]["exclusive_utc"]
+        assert data["canonical_model"] == "gpt-5.6-sol", task
+        assert data["model_provider"] == "ioai_allowed", task
+        assert data["reasoning_effort"] in {"max", "xhigh"}, task
+        for field in (
+            "prompt_message_events",
+            "assistant_output_events",
+            "function_call_events",
+            "function_call_output_events",
+            "custom_tool_call_events",
+            "custom_tool_call_output_events",
+        ):
+            assert field in data["organizer_required_event_coverage"], (task, field)
         task_tokens = 0
         for trace in data["trace_files"]:
             path = ROOT / trace["path"]
@@ -200,6 +235,11 @@ def verify_autonomous_material() -> dict[str, int]:
     )
     assert task3_boundary["content_in_repository"] is False
     assert "content" not in task3_boundary
+    task1_boundary = json.loads(
+        (ROOT / "task1/evidence/SUPERVISION_BOUNDARY_EVENT.json").read_text(encoding="utf-8")
+    )
+    assert task1_boundary["content_in_repository"] is False
+    assert "content" not in task1_boundary and "payload" not in task1_boundary
     task6_exclusions = json.loads(
         (ROOT / "task6/evidence/SUPERVISED_EXCLUSIONS.json").read_text(encoding="utf-8")
     )
@@ -254,11 +294,28 @@ def main() -> None:
             "manifest_files": verify_manifest(root) if task <= 5 else 0,
             "recorded_score": score,
         }
-        if task >= 3:
-            task_report["final_account_result"] = verify_final_account_result(task, summary)
+        task_report["final_account_result"] = verify_final_account_result(task, summary)
         report["tasks"][f"task{task}"] = task_report
     report["autonomous_material"] = verify_autonomous_material()
     report["published_execution_accounting"] = verify_execution_accounting()
+    delivery = json.loads((ROOT / "KAGGLE_EXTRACTION_DELIVERY.json").read_text(encoding="utf-8"))
+    assert delivery["archive"]["size_bytes"] == 496870419
+    assert delivery["archive"]["entry_count"] == 1401
+    assert delivery["archive"]["sha256"] == "eb14e52057c3cfca21972993fb73c2addaf9f214abc9c6f38b88bca97d93fe3c"
+    assert delivery["google_drive"]["file_id"] == "1c9yRn5SUo6LOPDrHLrAVjj-9JLFti9Vz"
+    checklist = json.loads((ROOT / "ORGANIZER_SUBMISSION.json").read_text(encoding="utf-8"))
+    assert checklist["status"] == "complete_with_explicit_cost_limits"
+    forbidden = ("你让他继续优化 找到高分了再提交", "Extend this run by 35 minutes")
+    for path in ROOT.rglob("*"):
+        if not path.is_file() or ".git" in path.parts:
+            continue
+        if path == Path(__file__):
+            continue
+        try:
+            text = path.read_text(encoding="utf-8")
+        except (UnicodeDecodeError, OSError):
+            continue
+        assert not any(marker in text for marker in forbidden), path
     report["all_ok"] = True
     print(json.dumps(report, indent=2))
 

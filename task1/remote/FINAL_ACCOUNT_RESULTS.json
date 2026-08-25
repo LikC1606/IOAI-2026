@@ -1,0 +1,62 @@
+{
+  "schema": "ioai.kaggle-account-result-reconciliation.v1",
+  "task": 1,
+  "competition": "ioai-2026-task-1-westlake-nlp-24",
+  "account": "researai",
+  "extraction_source_sha256": "922375f34f447965c28bf7d7d089427376cac9e00afee2e739360f6275b60c04",
+  "official_competition_deadline_utc": "2026-08-05T10:50:00Z",
+  "agent_run_deadline_utc": "2026-08-05T10:30:00Z",
+  "autonomy_boundary_utc_exclusive": "2026-08-05T10:16:52.222Z",
+  "submission_counts": {
+    "all_account": 30,
+    "before_official_deadline": 15,
+    "after_official_deadline": 15,
+    "official_prompt_only_scored": 0
+  },
+  "official_final_result": {
+    "selection_basis": "highest Public score among submissions sent before the official deadline",
+    "submission_refs": [
+      55267333,
+      55267368
+    ],
+    "public_score": 0.77751,
+    "private_score": 0.80474,
+    "tie_note": "The extraction does not expose the selected-for-final flag; both eligible tied submissions have identical Public and Private scores."
+  },
+  "official_prompt_only_autonomous_result": {
+    "scored_submission": null,
+    "note": "The pre-boundary baseline produced a valid output but was not sent to the competition."
+  },
+  "separately_disclosed_agent_executed_result": {
+    "submission_ref": 55267607,
+    "submitted_at_utc": "2026-08-05T10:54:51.343Z",
+    "seconds_after_official_deadline": 291.343,
+    "public_score": 0.78049,
+    "private_score": 0.76808,
+    "official_deadline_eligible": false,
+    "autonomous": false
+  },
+  "official_deadline_best_public_and_private": {
+    "score_submission_refs": [
+      55267333,
+      55267368
+    ],
+    "public_score": 0.77751,
+    "private_score": 0.80474
+  },
+  "all_account_best_public": {
+    "submission_ref": 55279931,
+    "submitted_at_utc": "2026-08-05T20:13:10.250Z",
+    "public_score": 0.81885,
+    "private_score": 0.8186,
+    "official_deadline_eligible": false
+  },
+  "latest_account_and_best_private": {
+    "submission_ref": 55300144,
+    "submitted_at_utc": "2026-08-06T14:00:38.463Z",
+    "public_score": 0.81854,
+    "private_score": 0.82775,
+    "official_deadline_eligible": false
+  },
+  "selection_note": "The official final result is distinct from the autonomous pre-boundary work, the separately disclosed late Agent-executed submission, the chronological last account submission, and post-deadline numerical maxima."
+}

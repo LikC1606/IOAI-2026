@@ -19,13 +19,14 @@ and not ranking-eligible under the published rules**.
 | Local score | `0.785577` |
 | Public Leaderboard score | `0.78049` |
 | Kaggle submission time | `2026-08-05T10:54:51.343Z` |
-| Published deadline | `2026-08-05T10:30:00.000Z` |
+| Agent run deadline | `2026-08-05T10:30:00.000Z` |
+| Official Kaggle deadline | `2026-08-05T10:50:00.000Z` |
 | Conservative supervision boundary | `2026-08-05T10:16:52.222Z` |
 
 The exact submitted source, Kernel metadata, remote log, generated CSV,
-submission receipt, local trial record, and credential-redacted Agent execution
-trace are preserved under `submission/agent-executed-55267607/` and
-`evidence/submission-execution/`. Their hashes are covered by
+submission receipt, local trial record, and hash-only execution provenance are
+preserved under `submission/agent-executed-55267607/` and
+`ROLLOUT_PROVENANCE.json`. Their hashes are covered by
 `MANIFEST.sha256`.
 
 ## Attribution and eligibility are different claims
@@ -35,7 +36,8 @@ formal solver Agent. That attribution does not establish strict autonomy: the
 controlling session had already received material human continuation,
 optimization, and submission-priority instructions. It also does not override
 the timestamp: Kaggle received the submission 24 minutes and 51 seconds after
-the published deadline.
+the Agent run deadline and 4 minutes 51 seconds after the official Kaggle
+deadline.
 
 Accordingly, the evidence supports the statement "the Agent executed the
 submission and obtained Public score `0.78049`." It does not support the

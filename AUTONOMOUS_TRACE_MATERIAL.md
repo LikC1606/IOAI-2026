@@ -36,7 +36,7 @@ Included trace files:
 
 Explicitly excluded:
 
-- task1/evidence/submission-execution/ (supervised continuation and submission)
+- post-boundary supervised continuation and submission suffix (not in repository; provenance hashes only)
 
 ## task2
 

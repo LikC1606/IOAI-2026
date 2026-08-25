@@ -1,0 +1,58 @@
+{
+  "schema": "ioai.kaggle-account-result-reconciliation.v1",
+  "task": 2,
+  "competition": "ioai-2026-task-2-westlake-nlp-24",
+  "account": "researai",
+  "extraction_source_sha256": "cd78ff77983ad75afb301ee1bdf7bc79962ff9dc5a7efa91d19110e3dee740b2",
+  "official_competition_deadline_utc": "2026-08-05T07:35:00Z",
+  "agent_run_deadline_utc": "2026-08-05T07:00:00Z",
+  "autonomy_boundary_utc_exclusive": "2026-08-05T06:24:47.549Z",
+  "submission_counts": {
+    "all_account": 16,
+    "before_official_deadline": 5,
+    "after_official_deadline": 11,
+    "before_autonomy_boundary": 2
+  },
+  "official_final_result": {
+    "selection_basis": "highest Public score among submissions sent before the official deadline",
+    "submission_refs": [
+      55261432
+    ],
+    "public_score": 0.63583,
+    "private_score": 0.625
+  },
+  "autonomous_result": {
+    "submission_ref": 55260695,
+    "submitted_at_utc": "2026-08-05T06:19:10.890Z",
+    "public_score": 0.55416,
+    "private_score": 0.54833
+  },
+  "official_deadline_best_private": {
+    "submission_ref": 55261913,
+    "submitted_at_utc": "2026-08-05T07:06:32.137Z",
+    "public_score": 0.63138,
+    "private_score": 0.63666
+  },
+  "all_account_best_public": {
+    "submission_ref": 55274835,
+    "submitted_at_utc": "2026-08-05T15:53:47.857Z",
+    "public_score": 0.67972,
+    "private_score": 0.66,
+    "official_deadline_eligible": false
+  },
+  "all_account_best_private": {
+    "submission_ref": 55277682,
+    "submitted_at_utc": "2026-08-05T17:59:48.353Z",
+    "public_score": 0.675,
+    "private_score": 0.67027,
+    "official_deadline_eligible": false
+  },
+  "latest_account_submission": {
+    "submission_ref": 55280319,
+    "submitted_at_utc": "2026-08-05T20:34:57.803Z",
+    "public_score": 0.65888,
+    "private_score": 0.66166,
+    "official_deadline_eligible": false
+  },
+  "selection_note": "The official final result is distinct from the human-intervention-free trace result, the best Private submission before the official deadline, the chronological last account submission, and post-deadline numerical maxima."
+}

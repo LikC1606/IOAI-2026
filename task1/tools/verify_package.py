@@ -164,29 +164,21 @@ def main() -> None:
     assert provenance["supervising_controller"]["private_boundary_line_sha256"] == CONTROLLER_BOUNDARY_LINE_HASH
     report["checks"]["rollout"] = {"user_inputs": 2, "all_events_pre_boundary": True, "private_original_sha256": PRIVATE_ROLLOUT_HASH}
 
-    execution = ROOT / provenance["formal_solver"]["agent_execution_trace"]["filename"]
-    assert provenance["formal_solver"]["agent_execution_trace"]["redacted_sha256"] == sha256(execution)
-    execution_messages = rollout_user_messages(execution, "post")
-    assert [timestamp for timestamp, _ in execution_messages] == [
-        "2026-08-05T10:17:36.121Z",
-        "2026-08-05T10:24:03.008Z",
-        "2026-08-05T10:34:16.100Z",
-    ]
-    execution_text = execution.read_text(encoding="utf-8")
-    assert "kaggle competitions submit" in execution_text
-    assert "55267607" in execution_text
-    report["checks"]["agent_submission_execution"] = {
-        "submission_actor": "formal_solver_agent",
-        "submission": 55267607,
-        "post_boundary_user_inputs": 3,
-        "trace_sha256": sha256(execution),
+    excluded = provenance["formal_solver"]["excluded_post_boundary_suffix"]
+    assert excluded["content_in_repository"] is False
+    assert excluded["redacted_sha256"] == "390d1fa9399fe42bfd31412659af9156a8e98542713ad2b6371ee51efefe870b"
+    assert not (ROOT / "evidence/submission-execution").exists()
+    report["checks"]["excluded_post_boundary_suffix"] = {
+        "content_in_repository": False,
+        "redacted_sha256": excluded["redacted_sha256"],
     }
 
     boundary = load_json(ROOT / "evidence/SUPERVISION_BOUNDARY_EVENT.json")
     assert boundary["timestamp"] == BOUNDARY
-    assert boundary["payload"]["role"] == "user"
-    assert boundary["payload"]["content"][0]["text"] == "你让他继续优化 找到高分了再提交"
-    report["checks"]["boundary"] = {"exclusive_utc": BOUNDARY, "event_exact": True}
+    assert boundary["role"] == "user"
+    assert boundary["content_in_repository"] is False
+    assert "content" not in boundary and "payload" not in boundary
+    report["checks"]["boundary"] = {"exclusive_utc": BOUNDARY, "hash_only": True}
 
     source = ROOT / "records/trial-605da205/FROZEN_CANDIDATE_SOURCE.py"
     result = load_json(ROOT / "records/trial-605da205/result.json")
@@ -231,7 +223,10 @@ def main() -> None:
     assert summary["positive_claim"]["best_pre_boundary_local_score"] == 0.6827101986420873
     assert summary["agent_executed_result"]["submission_id"] == 55267607
     assert summary["agent_executed_result"]["public_score"] == 0.78049
-    assert summary["agent_executed_result"]["submitted_at_utc"] > summary["formal_run"]["deadline_utc"]
+    assert summary["agent_executed_result"]["submitted_at_utc"] > summary["formal_run"]["official_competition_deadline_utc"]
+    assert summary["official_final_submission_refs"] == [55267333, 55267368]
+    assert summary["official_final_public_score"] == 0.77751
+    assert summary["official_final_private_score"] == 0.80474
 
     submissions = load_json(ROOT / "remote/KAGGLE_SUBMISSIONS_CURRENT.json")
     excluded_remote = next(item for item in submissions if item["ref"] == 55267607)

@@ -1,0 +1,88 @@
+{
+  "schema": "ioai.organizer-submission-index.v1",
+  "status": "complete_with_explicit_cost_limits",
+  "tasks": [
+    "task1",
+    "task2",
+    "task3",
+    "task4",
+    "task5",
+    "task6"
+  ],
+  "requirements": {
+    "execution_traces_all_six_tasks": {
+      "status": "complete",
+      "paths": [
+        "AUTONOMOUS_TRACE_MATERIAL.md",
+        "AUTONOMOUS_TRACE_INDEX.json"
+      ]
+    },
+    "prompts_and_visible_outputs": {
+      "status": "complete",
+      "path": "AUTONOMOUS_TRACE_INDEX.json",
+      "payload_location": "trace_files[].path",
+      "note": "Startup/organizer prompts, worker assignments, developer messages, and visible assistant messages are retained in the selected JSONL files."
+    },
+    "tool_calls_and_outputs": {
+      "status": "complete",
+      "path": "AUTONOMOUS_TRACE_INDEX.json",
+      "coverage_field": "tasks.*.organizer_required_event_coverage",
+      "event_types": [
+        "function_call",
+        "function_call_output",
+        "custom_tool_call",
+        "custom_tool_call_output"
+      ]
+    },
+    "llms_used": {
+      "status": "complete",
+      "path": "AUTONOMOUS_COSTS.json",
+      "model": "gpt-5.6-sol",
+      "provider": "ioai_allowed",
+      "reasoning_effort": {
+        "task1": "max",
+        "task2": "max",
+        "task3": "max",
+        "task4": "max",
+        "task5": "xhigh",
+        "task6": "xhigh"
+      }
+    },
+    "api_costs": {
+      "status": "complete_unavailable_usd_disclosure",
+      "path": "AUTONOMOUS_COSTS.json",
+      "usd_total": null,
+      "reason": "No invoice or exact ioai_allowed/gpt-5.6-sol rate card was captured; exact tokens and a completion formula are provided without substituting another model's price."
+    },
+    "gpu_compute_and_costs_per_task": {
+      "status": "complete_with_unavailable_usd_where_unbilled",
+      "path": "AUTONOMOUS_COSTS.json"
+    },
+    "kaggle_extraction": {
+      "status": "complete_external_archive",
+      "paths": [
+        "KAGGLE_EXTRACTION_DELIVERY.json",
+        "KAGGLE_EXTRACTION_SUMMARY.json"
+      ]
+    },
+    "official_final_submission_results": {
+      "status": "complete",
+      "paths": [
+        "FINAL_SUBMISSION_RESULTS.md",
+        "task1/remote/FINAL_ACCOUNT_RESULTS.json",
+        "task2/remote/FINAL_ACCOUNT_RESULTS.json",
+        "task3/remote/FINAL_ACCOUNT_RESULTS.json",
+        "task4/remote/FINAL_ACCOUNT_RESULTS.json",
+        "task5/remote/FINAL_ACCOUNT_RESULTS.json",
+        "task6/remote/FINAL_ACCOUNT_RESULTS.json"
+      ]
+    },
+    "human_intervention_exclusion": {
+      "status": "complete",
+      "selection_path": "AUTONOMOUS_TRACE_INDEX.json",
+      "manifest_path": "AUTONOMOUS_MATERIAL_MANIFEST.sha256",
+      "rule": "The first excluded live-human prompt and every causally downstream event are outside the selected trace set. Boundary evidence is hash-only."
+    }
+  },
+  "verification_command": "python3 verify_repository.py"
+}
