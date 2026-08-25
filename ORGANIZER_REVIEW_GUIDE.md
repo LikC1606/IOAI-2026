@@ -60,7 +60,9 @@ bundle is present; see `task3/DATA_PROVENANCE.md`.
   `task6/evidence/EVALUATOR_BATCHING_PROVENANCE.json`.
 - Extraction archive: `KAGGLE_EXTRACTION_DELIVERY.json` and the linked Drive
   archive. Its archive hash and size are recorded there and in the verifier.
-- Final notebook/output chains: Task 4 is verified from its exact source,
+- Final notebook/output chains: Task 2 is verified from the autonomous eligible
+  v2 source, exact 7,200-row CSV, metadata, log, and score record. Task 4 is
+  verified from its exact source,
   metadata, log, and hash-only 190 MB output provenance; Task 5 is verified
   from the trace-preserved v6 source, exact archived CSV/log, metadata, and
   hashes; Task 6 is replayed from the exact v3 envelope and decoded source.

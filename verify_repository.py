@@ -609,6 +609,72 @@ def verify_task4_artifacts() -> dict[str, object]:
     }
 
 
+def verify_task2_artifacts() -> dict[str, object]:
+    """Verify the autonomous eligible Task 2 v2 notebook artifact chain."""
+    root = ROOT / "task2"
+    source = root / "notebooks/rotation-cnn-v2/ioai-task2-westlake-rotation-cnn-v2.py"
+    remote_source = root / "notebooks/rotation-v2-remote/ioai-task2-westlake-rotation-cnn-v2.py"
+    csv_path = root / "remote/rotation-cnn-v2/submission.csv"
+    log_path = root / "remote/rotation-cnn-v2/ioai-task2-westlake-rotation-cnn-v2.log"
+    expected_source_sha256 = "942c8b7b33247ae7117ae1f008e704bf17672bb9c75559cdd7a0bac7cb35ef43"
+    expected_csv_sha256 = "19cfbca1f4bdede69bb03a77b862e2a4a9495710dde92d31d0da595eb9ac09ba"
+    expected_log_sha256 = "070fe51ea6a142b36fd28ca9a251708e4616fc4093b52d90fcfd5bc0f3dd5293"
+    assert source.read_bytes() == remote_source.read_bytes()
+    assert sha256(source) == expected_source_sha256
+    assert sha256(csv_path) == expected_csv_sha256
+    assert sha256(log_path) == expected_log_sha256
+    metadata = json.loads(
+        (root / "notebooks/rotation-cnn-v2/kernel-metadata.json").read_text(encoding="utf-8")
+    )
+    _verify_gpu_notebook_metadata(
+        metadata,
+        "ioai-2026-task-2-westlake-nlp-24",
+        "researai/ioai-task2-westlake-rotation-cnn-v2",
+    )
+    with csv_path.open(newline="", encoding="utf-8") as handle:
+        reader = csv.DictReader(handle)
+        assert reader.fieldnames == ["id", "prediction"]
+        rows = list(reader)
+    assert len(rows) == 7200
+    ids = [row["id"] for row in rows]
+    assert len(set(ids)) == 7200
+    assert all(row["prediction"].isdigit() and 0 <= int(row["prediction"]) <= 5 for row in rows)
+    log = json.loads(log_path.read_text(encoding="utf-8"))
+    messages = "".join(str(item.get("data", "")) for item in log)
+    assert "IOAI environment ready (wheels from /kaggle/input/datasets/kamalkhan/ioai-2026-wheel-dataset)" in messages
+    assert "best_epoch=13 validation=54.8056 wrote=/kaggle/working/submission.csv rows=7200" in messages
+    max_time = max(float(item["time"]) for item in log)
+    assert max_time < 300
+    eligible = json.loads(
+        (root / "remote/KAGGLE_SUBMISSIONS_ELIGIBLE.json").read_text(encoding="utf-8")
+    )
+    eligible_v2 = next(item for item in eligible if item["ref"] == 55260695)
+    assert eligible_v2["publicScore"] == "0.55416"
+    assert eligible_v2["status"] == "SubmissionStatus.COMPLETE"
+    final = json.loads((root / "remote/FINAL_ACCOUNT_RESULTS.json").read_text(encoding="utf-8"))
+    summary = json.loads((root / "SUMMARY.json").read_text(encoding="utf-8"))
+    assert final["autonomous_result"] == {
+        "submission_ref": 55260695,
+        "submitted_at_utc": "2026-08-05T06:19:10.890Z",
+        "public_score": 0.55416,
+        "private_score": 0.54833,
+    }
+    assert summary["best_submission_ref"] == 55260695
+    assert summary["best_public_score"] == 0.55416
+    assert summary["best_private_score"] == 0.54833
+    assert summary["official_final_trace_alignment"] is False
+    return {
+        "all_ok": True,
+        "source_exact": True,
+        "csv_hash_and_contract": True,
+        "rows": 7200,
+        "metadata_contract": True,
+        "remote_log_runtime_seconds": max_time,
+        "autonomous_submission_ref": 55260695,
+        "autonomous_public_score": 0.55416,
+    }
+
+
 def verify_task5_artifacts() -> dict[str, object]:
     """Verify exact archived Task 5 v6 output/log and trace-preserved source."""
     root = ROOT / "task5"
@@ -860,6 +926,7 @@ def main() -> None:
     report["published_execution_accounting"] = verify_execution_accounting()
     report["later_reproduction_material"] = verify_reproduction_material()
     report["task1_package_replay"] = verify_task1_package()
+    report["task2_artifact_chain"] = verify_task2_artifacts()
     report["task3_package_replay"] = verify_task3_package()
     report["task4_artifact_chain"] = verify_task4_artifacts()
     report["task5_artifact_chain"] = verify_task5_artifacts()
