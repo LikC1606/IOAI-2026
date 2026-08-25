@@ -11,9 +11,9 @@ trace coverage, model/cost fields, and extraction metadata.
 | Later two-hour reproduction traces for Tasks 1–2 | Complete, separately scoped post-deadline reproductions; not the lost originals | [`REPRODUCTION_TRACE_MATERIAL.md`](REPRODUCTION_TRACE_MATERIAL.md), [`REPRODUCTION_TRACE_INDEX.json`](REPRODUCTION_TRACE_INDEX.json) |
 | Prompts and visible Agent outputs | Complete within selected observable trace scope | Full payloads are in every indexed JSONL trace; prompt classes and hashes are in the index |
 | Exact organizer prompt conformance | Audited; Tasks 1, 2, and 4 are non-exact | [`PROMPT_CONFORMANCE_AUDIT.md`](PROMPT_CONFORMANCE_AUDIT.md), [`PROMPT_CONFORMANCE_AUDIT.json`](PROMPT_CONFORMANCE_AUDIT.json) |
-| Cross-task rule compliance | Audited; known deviations and Jury risks remain | [`RULE_COMPLIANCE_AUDIT.md`](RULE_COMPLIANCE_AUDIT.md), [`RULE_COMPLIANCE_AUDIT.json`](RULE_COMPLIANCE_AUDIT.json) |
-| Task 4 competition-rule differences | Audited with disclosed deviations/interpretation risks | [`task4/RULE_DIFFERENCE_AUDIT.md`](task4/RULE_DIFFERENCE_AUDIT.md), [`task4/RULE_DIFFERENCE_AUDIT.json`](task4/RULE_DIFFERENCE_AUDIT.json) |
-| Task 6 exact artifacts and rule differences | Exact v3 artifacts complete; serious batch-dependence risk disclosed | [`task6/ARTIFACT_PROVENANCE.json`](task6/ARTIFACT_PROVENANCE.json), [`task6/RULE_DIFFERENCE_AUDIT.md`](task6/RULE_DIFFERENCE_AUDIT.md) |
+| Cross-task rule compliance | Audited; known deviations and evidence/interpretation limits remain | [`RULE_COMPLIANCE_AUDIT.md`](RULE_COMPLIANCE_AUDIT.md), [`RULE_COMPLIANCE_AUDIT.json`](RULE_COMPLIANCE_AUDIT.json) |
+| Task 4 competition-rule differences | Audited with disclosed prompt, process, and hardware limits | [`task4/RULE_DIFFERENCE_AUDIT.md`](task4/RULE_DIFFERENCE_AUDIT.md), [`task4/RULE_DIFFERENCE_AUDIT.json`](task4/RULE_DIFFERENCE_AUDIT.json) |
+| Task 6 exact artifacts and rule differences | Exact v3 artifacts complete; evaluator batch behavior measured and disclosed, not treated as a compliance blocker | [`task6/ARTIFACT_PROVENANCE.json`](task6/ARTIFACT_PROVENANCE.json), [`task6/RULE_DIFFERENCE_AUDIT.md`](task6/RULE_DIFFERENCE_AUDIT.md) |
 | Tool calls and tool outputs | Complete within selected observable trace scope | Per-task and per-file counts cover `function_call`, `function_call_output`, `custom_tool_call`, and `custom_tool_call_output` |
 | LLM(s) used | Complete | [`AUTONOMOUS_COSTS.json`](AUTONOMOUS_COSTS.json): `ioai_allowed` / `gpt-5.6-sol`; Tasks 1–4 `max`, Tasks 5–6 `xhigh` |
 | Total API costs | Token accounting complete; USD unavailable | Exact per-task tokens and total are provided; USD is `null` because no invoice or exact provider/model rate was captured |
@@ -43,8 +43,8 @@ repository does not self-certify Jury acceptance.
 
 Trace-package completeness is not a compliance certificate. Task 1 and Task 2
 do not bind their official final result to an original autonomous trace; Task 4
-has a known exact-continuation deviation; and Tasks 3, 5, and 6 have the
-task-specific Jury risks summarized in
+has a known exact-continuation deviation; and the remaining task-specific
+prompt, budget, hardware, report, and provenance limits are summarized in
 [`RULE_COMPLIANCE_AUDIT.md`](RULE_COMPLIANCE_AUDIT.md).
 
 ## Kaggle extraction archive
@@ -96,10 +96,10 @@ See [`PROMPT_CONFORMANCE_AUDIT.md`](PROMPT_CONFORMANCE_AUDIT.md).
 
 Task 4 now includes seven supplemental parallel-solver traces that were omitted
 from the first trace index. The rule audit also discloses the substantive
-non-exact continuation, a transient local `__pycache__` in the push folder, two
-noncausal arXiv searches in a parallel solver, and the interpretation question
-around local H100 development versus the final one-T4 notebook. No organizer
-acceptance is self-certified.
+non-exact continuation, a transient local `__pycache__` in the push folder, the
+method-background arXiv searches (not treated as a compliance issue), and the
+interpretation question around local H100 development versus the final one-T4
+notebook. No organizer acceptance is self-certified.
 They occurred after the account's official competition deadline, so their scores
 remain reference/reproduction results, not official-ranking scores, and do not
 replace the official account reconciliation. Their exact token,

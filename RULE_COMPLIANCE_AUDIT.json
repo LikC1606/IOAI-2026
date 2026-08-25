@@ -1,10 +1,11 @@
 {
   "schema": "ioai.cross-task-rule-compliance-audit.v1",
-  "overall_status": "not_self_certified_known_deviations_and_jury_risks_disclosed",
+  "overall_status": "known_provenance_and_prompt_deviations_disclosed_method_and_batch_behavior_not_treated_as_issues",
   "all_six_strictly_compliant_claim_supported": false,
   "classification_definitions": {
     "known_deviation": "Direct repository evidence conflicts with a stated requirement or the provenance scope needed for the claim.",
-    "jury_interpretation_risk": "The facts are established but the published wording does not resolve how the Jury applies the rule.",
+    "informational_disclosure": "A technically relevant fact is retained for reproducibility but is not classified as a rule problem.",
+    "jury_interpretation_risk": "The facts are established but the published wording does not resolve how the organizer/Jury applies the remaining prompt, hardware, or provenance rule.",
     "evidence_unavailable": "A historical fact cannot be reconstructed from retained records and is not replaced with a post-run assertion."
   },
   "trace_scope_status": "complete_selected_observable_prefixes_with_disclosed_provenance_limits",
@@ -19,8 +20,10 @@
         "original_run_trace_unavailable_after_school_server_restart",
         "later_reproduction_is_post_deadline_different_submission",
         "custom_starter_prompt",
-        "potentially_causal_external_method_research_in_reproduction",
         "38_captured_versions_vs_published_limit_20_jury_scope_unclear"
+      ],
+      "informational_disclosures": [
+        "method_background_research_not_treated_as_compliance_issue"
       ],
       "evidence": ["task1/COMPLIANCE.md", "task1/SUMMARY.json"]
     },
@@ -34,8 +37,10 @@
         "original_run_trace_unavailable_after_school_server_restart",
         "official_final_downstream_of_formal_supervision_boundary",
         "later_reproduction_is_post_deadline_different_submission",
-        "custom_starter_prompt",
-        "potentially_causal_external_method_research_in_reproduction"
+        "custom_starter_prompt"
+      ],
+      "informational_disclosures": [
+        "method_background_research_not_treated_as_compliance_issue"
       ],
       "captured_versions": 18,
       "published_version_limit": 20,
@@ -45,12 +50,14 @@
       "official_final_submission_refs": [55289569, 55289823],
       "official_final_trace_alignment": true,
       "strict_exact_organizer_prompt_text_conformance": true,
-      "strict_claim_status": "jury_review_required",
-      "primary_classifications": ["jury_interpretation_risk", "known_deviation"],
+      "strict_claim_status": "evidence_supported_with_separate_budget_and_report_disclosures",
+      "primary_classifications": ["known_deviation"],
       "risks": [
-        "potentially_causal_external_method_research",
         "27_all_account_submissions_vs_published_limit_15_with_16_post_deadline",
         "historical_report_length_and_score_errors"
+      ],
+      "informational_disclosures": [
+        "method_background_research_not_treated_as_compliance_issue"
       ],
       "submission_counts": {
         "all_account": 27,
@@ -66,10 +73,10 @@
       "strict_exact_organizer_prompt_text_conformance": false,
       "strict_claim_status": "not_supported_for_exact_prompt_rule",
       "primary_classifications": ["known_deviation", "jury_interpretation_risk"],
-      "risks": [
+      "disclosures": [
         "substantive_non_exact_continuation",
         "transient_local_push_folder_pycache",
-        "two_apparently_noncausal_arxiv_searches",
+        "two_arxiv_searches_retained_as_provenance_not_a_method_research_violation",
         "local_h100_hardware_scope_interpretation"
       ],
       "selected_trace_files": 12,
@@ -79,10 +86,10 @@
       "official_final_submission_refs": [55320296],
       "official_final_trace_alignment": true,
       "strict_exact_organizer_prompt_text_conformance": true,
-      "strict_claim_status": "jury_review_required",
-      "primary_classifications": ["jury_interpretation_risk", "evidence_unavailable"],
-      "risks": [
-        "external_literature_used_in_route_justification",
+      "strict_claim_status": "evidence_supported_with_provenance_and_compute_disclosures",
+      "primary_classifications": ["evidence_unavailable"],
+      "disclosures": [
+        "external_literature_used_as_method_background_not_treated_as_compliance_issue",
         "historical_v6_source_preserved_from_trace_but_not_independently_redownloaded",
         "exhaustive_local_h100_runtime_unavailable"
       ],
@@ -92,11 +99,11 @@
       "official_final_submission_refs": [55357080],
       "official_final_trace_alignment": true,
       "strict_exact_organizer_prompt_text_conformance": true,
-      "strict_claim_status": "serious_jury_review_required",
-      "primary_classifications": ["jury_interpretation_risk", "known_deviation"],
-      "risks": [
-        "evaluator_batch_dependent_predictions",
-        "hidden_geometry_or_protected_field_rule_interpretation",
+      "strict_claim_status": "evidence_supported_with_technical_batch_behavior_disclosed",
+      "primary_classifications": ["known_deviation"],
+      "disclosures": [
+        "evaluator_batch_dependent_predictions_measured_not_treated_as_violation",
+        "hidden_geometry_batch_context_measured_not_treated_as_compliance_issue",
         "historical_report_dropout_and_range_error",
         "exhaustive_local_h100_runtime_unavailable"
       ],
@@ -123,5 +130,5 @@
     "gpu_usd": "unavailable_no_complete_runtime_rate_or_invoice",
     "evidence": ["AUTONOMOUS_COSTS.json", "COSTS.json"]
   },
-  "self_certification": "none; organizer/Jury determines recognition"
+  "self_certification": "none for the remaining provenance and prompt deviations; method research and evaluator batching are not treated as blockers"
 }

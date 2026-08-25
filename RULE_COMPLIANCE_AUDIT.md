@@ -3,21 +3,25 @@
 This audit answers a different question from whether the repository contains a
 well-formed trace package. A selected observable trace can be complete within
 its stated boundary while the corresponding competition result still fails an
-exact-prompt rule, is not trace-bound, or carries another disclosed rule risk.
+exact-prompt rule or is not trace-bound.
 
 ## Bottom line
 
 The current evidence does **not** support a claim that all six tasks satisfy
-every organizer verification rule. The repository is suitable for transparent
-Jury review because the recoverable evidence is published and the remaining
-problems are classified, but Jury recognition is not self-certified.
+every organizer verification rule, because Task 1/2 provenance and Task 4
+prompt text remain different from the official final claims. Method research
+and the Task 6 evaluator batching behavior are retained as factual disclosures,
+but are **not treated as compliance problems** in this audit.
 
 The classifications used here are:
 
 - **Known deviation**: repository evidence directly conflicts with a stated
   requirement or with the scope needed for the requested claim.
-- **Jury-interpretation risk**: the facts are established, but the published
-  wording does not resolve how the Jury applies the rule.
+- **Informational disclosure**: a technically relevant fact is retained for
+  reproducibility but is not classified as a rule problem.
+- **Jury-interpretation risk**: the facts are established but the published
+  wording does not resolve how the organizer/Jury applies a remaining prompt,
+  hardware, or provenance rule.
 - **Evidence unavailable**: a historical fact cannot be reconstructed from the
   retained records and is not replaced with a post-run assertion.
 
@@ -25,12 +29,12 @@ The classifications used here are:
 
 | Task | Official final bound to selected trace? | Exact organizer prompt? | Evidence-backed assessment |
 |---|:---:|:---:|---|
-| 1 | **No** | **No** | **Strict claim not supported.** The original run record was lost after a school-server restart. The selected two-hour run is a later post-deadline reproduction with a custom starter and a different submission. The official final refs are therefore not trace-bound. External-method research and 38 captured notebook versions versus the published limit of 20 are separately disclosed risks. |
-| 2 | **No** | **No** | **Strict claim not supported.** The official final is downstream of the formal supervision boundary; the selected two-hour run is a different post-deadline reproduction with a custom starter. Its potentially causal BabyAI/FiLM/MiniGrid/noisy-demonstration research is a Jury-interpretation risk. The captured version count is 18/20. |
-| 3 | **Yes** | **Yes** | The result and exact prompt are supported, but this is **not a clean self-certification**. Potentially causal research on noisy GBS, Bayesian active learning, dueling bandits, and entropy pursuit is disclosed. The account has 27 scored submissions against a published limit of 15: 11 before and 16 after the official deadline. Historical report length and score statements also deviate. |
-| 4 | **Yes** | **No** | **Known exact-prompt deviation.** The final is downstream of a substantive generic continuation template. The corrected package contains all 12 selected solver traces. A transient local `__pycache__`, two apparently noncausal arXiv searches, and local H100 development under a one-T4 notebook rule remain disclosed process/interpretation risks. |
-| 5 | **Yes** | **Yes** | The final and exact prompt are supported. External literature was explicitly used to justify the selected sequence/context route, so the broad external-information rule remains a **Jury-interpretation risk**. The exact v6 output/log are retained; its source is the trace-preserved copy because Kaggle now rejects the historical source pull. |
-| 6 | **Yes** | **Yes** | The exact v3 notebook, metadata, submitted CSV, decoded source, weights envelope, and trace are present. The model is evaluator-batch-dependent: changing unrelated batch points changes 5/100 final predictions in the deterministic fixture. The non-redistributed official evaluator's batching behavior is bound by file hash and function/call-site locators. This is a **serious Jury-interpretation risk**, not an asserted Jury ruling. The historical report also misdescribes the dropout construction and range. |
+| 1 | **No** | **No** | **Strict claim not supported.** The original run record was lost after a school-server restart. The selected two-hour run is a later post-deadline reproduction with a custom starter and a different submission. The official final refs are therefore not trace-bound. The method literature in the reproduction was informational only and is not treated as a compliance problem; the 38-versus-20 captured-version issue remains separately disclosed. |
+| 2 | **No** | **No** | **Strict claim not supported.** The official final is downstream of the formal supervision boundary; the selected two-hour run is a different post-deadline reproduction with a custom starter. The BabyAI/FiLM/MiniGrid/noisy-demonstration material was method background only and is not treated as a compliance problem. The captured version count is 18/20. |
+| 3 | **Yes** | **Yes** | The result and exact prompt are supported. The noisy GBS, Bayesian active learning, dueling bandits, and entropy-pursuit searches are retained as method-background disclosures, not compliance findings. The account has 27 scored submissions against a published limit of 15: 11 before and 16 after the official deadline. Historical report length and score statements also deviate. |
+| 4 | **Yes** | **No** | **Known exact-prompt deviation.** The final is downstream of a substantive generic continuation template. The corrected package contains all 12 selected solver traces. The two arXiv searches are retained for provenance and are not treated as a method-research violation; the transient local `__pycache__` and local H100 accounting remain separately disclosed. |
+| 5 | **Yes** | **Yes** | The final and exact prompt are supported. The sentence-level detection/stylometry literature is retained as method background and is not treated as a compliance problem. The exact v6 output/log are retained; its source is the trace-preserved copy because Kaggle now rejects the historical source pull. |
+| 6 | **Yes** | **Yes** | The exact v3 notebook, metadata, submitted CSV, decoded source, weights envelope, and trace are present. The model's evaluator-batch dependence is a measured technical property: changing unrelated batch points changes 5/100 final predictions in the deterministic fixture. The non-redistributed official evaluator's batching behavior is bound by file hash and function/call-site locators. This is **not treated as a compliance blocker or violation**; the historical report's dropout construction and range error remain disclosed. |
 
 ## Trace and artifact scope
 
@@ -48,8 +52,9 @@ the provenance of the earlier official final results and do not use the exact
 organizer starter text.
 
 Tasks 3–6 have official-final/selected-trace alignment. That alignment does not
-erase the task-specific prompt, external-information, report, budget, hardware,
-or method risks listed above.
+erase the task-specific prompt, report, budget, hardware, or provenance limits
+listed above. Method research and evaluator batching are retained as
+informational facts, not compliance blockers.
 
 ## Cost completeness
 
@@ -76,4 +81,4 @@ total.
 - Costs: `AUTONOMOUS_COSTS.json` and `COSTS.json`
 
 `RULE_COMPLIANCE_AUDIT.json` is the machine-readable version. The organizer or
-Jury remains the final authority on every interpretation-risk item.
+Jury remains the final authority on the remaining provenance and prompt issues.

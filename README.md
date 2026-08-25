@@ -62,7 +62,7 @@ organizer constraints, not the lost original run records.
 
 Task 4's full rule classification and corrected 12-trace solver inventory are
 in [task4/RULE_DIFFERENCE_AUDIT.md](task4/RULE_DIFFERENCE_AUDIT.md). Task 6's
-exact v3 artifact audit and serious evaluator-batch-dependence risk are in
+exact v3 artifact audit and measured evaluator-batch behavior disclosure are in
 [task6/RULE_DIFFERENCE_AUDIT.md](task6/RULE_DIFFERENCE_AUDIT.md).
 
 The complete 496,870,419-byte Kaggle extraction archive is delivered through

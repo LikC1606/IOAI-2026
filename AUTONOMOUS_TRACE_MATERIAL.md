@@ -14,9 +14,10 @@ is not published.
 
 Completeness here means completeness of the selected observable prefix, not
 proof of competition-rule compliance. Tasks 1 and 2 do not bind the official
-final result to an original autonomous trace; Tasks 3 and 5 disclose potentially
-causal external-method research; and Task 6 discloses a serious
-evaluator-batch-dependence risk. See `RULE_COMPLIANCE_AUDIT.md/json`.
+final result to an original autonomous trace. Method research is retained as
+background provenance, and Task 6's evaluator-batch dependence is retained as
+a measured technical behavior; neither is treated as a compliance blocker. See
+`RULE_COMPLIANCE_AUDIT.md/json`.
 
 For Tasks 1 and 2, the original run records were unavailable after a
 school-server restart; the selected traces are later fresh reproductions

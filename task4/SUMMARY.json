@@ -22,6 +22,6 @@
   "official_final_trace_alignment": true,
   "strict_exact_organizer_prompt_text_conformance": false,
   "rule_difference_audit": "RULE_DIFFERENCE_AUDIT.json",
-  "rule_audit_status": "final_notebook_operational_rules_mostly_supported_with_disclosed_prompt_process_and_interpretation_risks",
+  "rule_audit_status": "final_notebook_operational_rules_mostly_supported_with_disclosed_prompt_process_and_hardware_accounting_limits",
   "local_gpu_accounting_status": "selected_body_161_seconds_known_exhaustive_total_unavailable"
 }

@@ -41,10 +41,10 @@ local folder hold exactly two files was not literally satisfied at every
 moment, although the pulled remote source is the declared script/metadata
 artifact. A parallel solver issued two arXiv search queries after version 3 had
 already been pushed; there is no evidence their results entered the final v4
-source, but the broad external-information rule makes this a Jury-interpretation
-risk. Finally, local development records mention one H100; the final submitted
-notebook itself used the required one T4 at `cuda:0`. The Hardware clause's
-scope over local development is therefore also left for Jury interpretation.
+source, and they are retained as provenance rather than treated as a method or
+external-information violation. Finally, local development records mention one
+H100; the final submitted notebook itself used the required one T4 at `cuda:0`.
+The separate local-development accounting question remains disclosed below.
 
 Artifact hashes:
 

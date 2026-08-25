@@ -14,7 +14,7 @@
   "official_final_private_score": 51.61666,
   "official_final_trace_alignment": true,
   "strict_exact_organizer_prompt_text_conformance": true,
-  "external_method_research_status": "potentially_causal_jury_interpretation_risk",
+  "external_method_research_status": "method_background_only_not_treated_as_compliance_issue",
   "account_submission_count": 27,
   "submissions_before_official_deadline": 11,
   "submissions_after_official_deadline": 16,

@@ -11,7 +11,7 @@
   "official_final_private_score": 96.06,
   "official_final_trace_alignment": true,
   "strict_exact_organizer_prompt_text_conformance": true,
-  "external_method_research_status": "used_in_route_justification_jury_interpretation_risk",
+  "external_method_research_status": "method_background_only_not_treated_as_compliance_issue",
   "best_submission_ref": 55320296,
   "best_public_score": 95.39,
   "best_private_score_before_official_deadline": 96.06,

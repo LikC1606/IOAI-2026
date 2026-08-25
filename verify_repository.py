@@ -342,7 +342,9 @@ def verify_autonomous_material() -> dict[str, int]:
     statuses = {item["rule_id"]: item["status"] for item in task4_rule_audit["findings"]}
     assert statuses["prompt.exact_text"] == "disclosed_deviation"
     assert statuses["submission.folder_two_files"] == "disclosed_process_deviation_remote_artifact_unaffected"
-    assert statuses["resources.external_web_research"] == "jury_interpretation_risk_noncausal_to_final_notebook"
+    assert statuses["resources.external_web_research"] == (
+        "informational_method_background_not_a_compliance_issue"
+    )
     assert len(index["tasks"]["task4"]["trace_files"]) == 12
     supplemental = json.loads(
         (ROOT / "task4/evidence/SUPPLEMENTAL_ROLLOUT_PROVENANCE.json").read_text(encoding="utf-8")
@@ -414,7 +416,10 @@ def verify_task6_artifacts() -> dict[str, object]:
         "evidence_supported_compliant"
     )
     assert rule_audit["statuses"]["model.evaluator_batch_dependence"] == (
-        "serious_jury_interpretation_risk"
+        "measured_technical_behavior_not_treated_as_compliance_issue"
+    )
+    assert rule_audit["statuses"]["protected_field.hidden_geometry"] == (
+        "measured_technical_behavior_not_treated_as_compliance_issue"
     )
     assert rule_audit["statuses"]["source.technical_report"] == (
         "disclosed_factual_error"
@@ -454,6 +459,10 @@ def verify_cross_task_rule_audit() -> dict[str, object]:
     assert tasks["task4"]["selected_trace_files"] == 12
     assert tasks["task5"]["official_final_trace_alignment"] is True
     assert tasks["task6"]["batch_dependence_fixture"]["final_prediction_changes"] == 5
+    for task in ("task1", "task2", "task3"):
+        assert audit["tasks"][task]["informational_disclosures"] == [
+            "method_background_research_not_treated_as_compliance_issue"
+        ]
     assert audit["cost_accounting"]["local_gpu_runtime"] == "incomplete_tasks_4_to_6"
     return {
         "tasks": len(tasks),

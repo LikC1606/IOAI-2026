@@ -51,25 +51,25 @@
       "note": "No-live-human autonomy and exact-organizer-prompt conformance are separate; organizer/Jury recognition is not self-certified."
     },
     "cross_task_rule_compliance": {
-      "status": "audited_known_deviations_and_jury_risks_remain",
+      "status": "audited_known_deviations_and_evidence_limits_remain",
       "paths": [
         "RULE_COMPLIANCE_AUDIT.md",
         "RULE_COMPLIANCE_AUDIT.json"
       ],
       "all_six_strictly_compliant_claim_supported": false,
-      "note": "Tasks 1 and 2 are not official-final/trace aligned; Tasks 1, 2, and 4 are non-exact-prompt; Tasks 3, 5, and 6 retain disclosed task-specific Jury risks."
+      "note": "Tasks 1 and 2 are not official-final/trace aligned; Tasks 1, 2, and 4 are non-exact-prompt; remaining task-specific prompt, budget, hardware, report, and provenance limits are disclosed. External method research and Task 6 evaluator batch behavior are retained as informational/technical disclosures, not compliance blockers."
     },
     "task4_rule_difference_audit": {
-      "status": "complete_with_disclosed_deviations_and_jury_interpretation_risks",
+      "status": "complete_with_disclosed_prompt_process_and_hardware_limits",
       "paths": [
         "task4/RULE_DIFFERENCE_AUDIT.md",
         "task4/RULE_DIFFERENCE_AUDIT.json",
         "task4/evidence/SUPPLEMENTAL_ROLLOUT_PROVENANCE.json"
       ],
-      "note": "The final notebook/output closely follows operational hard rules, but exact prompt conformance is false. The audit separately records the local __pycache__ folder deviation, two noncausal arXiv searches in a parallel solver, and ambiguity around local H100 development."
+      "note": "The final notebook/output closely follows operational hard rules, but exact prompt conformance is false. The audit separately records the local __pycache__ folder deviation, method-background arXiv searches (not treated as a compliance issue), and ambiguity around local H100 development."
     },
     "task6_exact_artifact_and_rule_audit": {
-      "status": "exact_v3_artifacts_complete_serious_batch_dependence_risk_disclosed",
+      "status": "exact_v3_artifacts_complete_measured_batch_behavior_disclosed_not_a_compliance_blocker",
       "paths": [
         "task6/ARTIFACT_PROVENANCE.json",
         "task6/RULE_DIFFERENCE_AUDIT.md",

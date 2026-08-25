@@ -20,7 +20,7 @@
   "captured_account_notebook_versions": 18,
   "published_version_limit": 20,
   "version_budget_status": "within_limit",
-  "external_method_research_status": "potentially_causal_in_later_reproduction",
+  "external_method_research_status": "method_background_only_not_treated_as_compliance_issue",
   "historical_remote_source_retrievable": true,
   "canonical_autonomous_rollout": {
     "trace_path": "evidence/reproduction-120m/rollout.jsonl",

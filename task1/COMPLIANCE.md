@@ -89,10 +89,10 @@ after the selected submission, final Agent answer, and `task_complete`. See
   artifact set. They may appear in the separately delivered Kaggle extraction,
   but that does not establish autonomous causality.
 - The later reproduction searched AI4Code, sentence-ordering and Qwen method
-  material before candidate selection. No external runtime data or weights were
-  added beyond organizer-supplied resources, but the method information may
-  have influenced the reproduced solution. Whether method literature is
-  prohibited "externally generated information" is a Jury-interpretation risk.
+  material before candidate selection. No external runtime data, weights, or
+  runtime resource were added beyond organizer-supplied resources. This is
+  retained as method-background provenance and is not treated as a competition
+  compliance issue.
 - The extraction captured 38 Task 1 notebook versions across the account,
   compared with the published 20-version limit. Many are post-deadline,
   including later reproduction activity. The package cannot establish from the

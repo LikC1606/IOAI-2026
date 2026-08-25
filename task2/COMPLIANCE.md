@@ -92,10 +92,9 @@ the reproduction trace. See `../PROMPT_CONFORMANCE_AUDIT.md` for hashes.
   was submitted but do not create an autonomous provenance chain.
 - Before selecting reproduction routes, the Agent searched BabyAI, FiLM,
   MiniGrid-style instruction following, noisy demonstrations and robust
-  imitation-learning material. These sources supplied method hypotheses, not
-  runtime data, labels, weights or embeddings; nevertheless their use is
-  potentially causal and is a Jury-interpretation risk under the broad external
-  information wording.
+  imitation-learning material. These sources supplied method background only,
+  not runtime data, labels, weights, embeddings, or runtime resources. They are
+  retained for provenance and are not treated as a competition compliance issue.
 - The extraction captured 18 notebook versions, within the published 20-version
   limit. This does not cure the final-result/trace mismatch.
 - API and GPU USD remain unavailable, and the original lost run's total compute

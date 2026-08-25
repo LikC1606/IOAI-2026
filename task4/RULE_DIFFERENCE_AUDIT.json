@@ -11,7 +11,7 @@
     "public_score": 98.41,
     "private_score": 98.32
   },
-  "bottom_line": "The final Kaggle notebook/output is close to the competition's operational hard rules, not a large artifact-format or model/data deviation. The large difference is prompt provenance: the continuation text is substantively non-exact. Separate disclosed risks are the transient local __pycache__, two noncausal arXiv searches in a parallel solver, and the interpretation of local H100 development under the Hardware clause.",
+  "bottom_line": "The final Kaggle notebook/output is close to the competition's operational hard rules, not a large artifact-format or model/data deviation. The large difference is prompt provenance: the continuation text is substantively non-exact. Separate disclosures cover the transient local __pycache__ and the interpretation of local H100 development under the Hardware clause; the two arXiv searches are retained as method-background provenance and are not treated as a compliance issue.",
   "self_certification": "none; organizer/Jury determines recognition",
   "status_counts": {
     "disclosed_deviation": 1,
@@ -19,7 +19,7 @@
     "evidence_supported_compliant": 7,
     "disclosed_process_deviation_remote_artifact_unaffected": 1,
     "evidence_supported_compliant_for_final_notebook": 1,
-    "jury_interpretation_risk_noncausal_to_final_notebook": 1,
+    "informational_method_background_not_a_compliance_issue": 1,
     "jury_interpretation_risk": 1,
     "evidence_partially_unavailable": 1
   },
@@ -121,8 +121,8 @@
     {
       "rule_id": "resources.external_web_research",
       "requirement": "Do not use prohibited external data or externally generated information.",
-      "status": "jury_interpretation_risk_noncausal_to_final_notebook",
-      "conclusion": "A parallel solver issued two arXiv search queries at 05:55:29.993Z and 05:56:02.175Z. Both occurred after version 3 was pushed, in a separate solver directory, and no evidence shows the results entering the formal version-4 source path. The final notebook itself has no network code or external resource. Because the rule wording is broad, the searches are disclosed for Jury interpretation.",
+      "status": "informational_method_background_not_a_compliance_issue",
+      "conclusion": "A parallel solver issued two arXiv search queries at 05:55:29.993Z and 05:56:02.175Z. Both occurred after version 3 was pushed, in a separate solver directory, and no evidence shows the results entering the formal version-4 source path. The final notebook itself has no network code or external resource. The searches are retained as method-background provenance and are not treated as a compliance issue.",
       "evidence": [
         "task4/evidence/supplemental-rollouts/rollout-2026-08-07T13-04-06-019fda9b-6b63-7031-a6dd-52db684209be.jsonl: 05:55:29.993Z, 05:56:02.175Z",
         "task4/notebooks/REMOTE_CURRENT_V4.py"

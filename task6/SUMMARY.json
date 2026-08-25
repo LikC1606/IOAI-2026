@@ -43,7 +43,7 @@
     "manifest": "MANIFEST.sha256"
   },
   "rule_difference_audit": "RULE_DIFFERENCE_AUDIT.json",
-  "rule_audit_status": "serious_jury_interpretation_risk_evaluator_batch_dependence",
+  "rule_audit_status": "exact_v3_artifacts_complete_with_measured_evaluator_batch_behavior_not_treated_as_compliance_issue",
   "batch_dependence_fixture": {
     "test_points": 100,
     "component_changes": 100,

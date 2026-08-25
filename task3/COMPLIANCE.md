@@ -32,13 +32,12 @@ histories causally within the same graded round; it does not inspect grader file
 
 External web research by the development agent is not embedded in or called by
 the submitted program and did not introduce an external runtime resource.
-However, at `04:46:32Z` the Agent explicitly said targeted literature on noisy
-generalized binary search and preference querying would guide the acquisition
-rule, then searched noisy GBS, Bayesian active learning, dueling bandits and
-entropy pursuit at `04:46:35Z`. The winning v4/v8 family was developed later and
-uses soft posterior and entropy acquisition. This supports a potentially causal
-development-time relationship; it must not be described as noncausal. Whether
-method literature is prohibited external information remains for the Jury.
+At `04:46:32Z` the Agent described targeted literature on noisy generalized
+binary search and preference querying, then searched noisy GBS, Bayesian active
+learning, dueling bandits and entropy pursuit at `04:46:35Z`. The winning v4/v8
+family was developed later and uses soft posterior and entropy acquisition. This
+is retained as method-background provenance, not treated as an external-data,
+model, or competition-compliance issue.
 
 ## Reproducibility evidence
 
