@@ -606,6 +606,8 @@ def write_manifest(index: dict[str, Any]) -> None:
         "AUTONOMOUS_TRACE_MATERIAL.md",
         "COSTS.json",
         "task3/evidence/AUTONOMOUS_TOKEN_USAGE.json",
+        "task1/tools/verify_package.py",
+        "task3/evidence/verify_artifacts.py",
         "tools/build_autonomous_trace_material.py",
         "tools/build_execution_trace_index.py",
         "FINAL_SUBMISSION_RESULTS.md",

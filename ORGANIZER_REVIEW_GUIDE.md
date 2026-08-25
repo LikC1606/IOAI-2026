@@ -21,10 +21,11 @@ sha256sum -c REPRODUCTION_MATERIAL_MANIFEST.sha256
 `verify_repository.py` checks the six task packages, score records, selected
 trace boundaries, prompt classifications, event-type coverage, exact Task 6
 artifacts, extraction metadata, all advertised checklist paths, and all
-material hashes. It also scans tracked text for common unredacted credentials
-and private endpoints. It should print `"all_ok": true`. The repository must
-remain private while the restricted Task 3 competition bundle is present; see
-`task3/DATA_PROVENANCE.md`.
+material hashes. It also runs the Task 1 package/provenance verifier and all
+eight Task 3 source/output replays, and scans tracked text for common
+unredacted credentials and private endpoints. It should print `"all_ok": true`.
+The repository must remain private while the restricted Task 3 competition
+bundle is present; see `task3/DATA_PROVENANCE.md`.
 
 ## Six-task adjudication matrix
 

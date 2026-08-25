@@ -59,13 +59,15 @@ From `task1/`:
 
 ```bash
 sha256sum -c MANIFEST.sha256
-python tools/verify_package.py
+python tools/verify_package.py --no-write-report
 ```
 
-`tools/verify_package.py` verifies the boundary hashes, local
+The read-only flag keeps the archived `VERIFY_REPORT.json` unchanged during
+review. Without the flag, the verifier also refreshes that report, so the task
+manifest must be regenerated if the report changes. The verifier checks the boundary hashes, local
 trial, unscored baseline, scored receipt, source/output hashes, and absence of
 plaintext secrets. Because it refreshes `VERIFY_REPORT.json`, regenerate the
-manifest if that report changes. This package supports organizer review; the
+manifest if the default write-enabled mode changes that report. This package supports organizer review; the
 Jury decides recognition and eligibility.
 
 The later 120-minute reproduction trace is published in full at

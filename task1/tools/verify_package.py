@@ -119,6 +119,15 @@ def check_csv() -> dict:
 
 
 def main() -> None:
+    import argparse
+
+    parser = argparse.ArgumentParser()
+    parser.add_argument(
+        "--no-write-report",
+        action="store_true",
+        help="verify without replacing VERIFY_REPORT.json (for aggregate read-only audits)",
+    )
+    args = parser.parse_args()
     report = {"checks": {}}
 
     for path in ROOT.rglob("*.json"):
@@ -255,7 +264,10 @@ def main() -> None:
     report["checks"]["python_compile"] = len(python_files)
     report["checks"]["secrets"] = scan_secrets()
     report["all_ok"] = True
-    (ROOT / "VERIFY_REPORT.json").write_text(json.dumps(report, indent=2) + "\n", encoding="utf-8")
+    if not args.no_write_report:
+        (ROOT / "VERIFY_REPORT.json").write_text(
+            json.dumps(report, indent=2) + "\n", encoding="utf-8"
+        )
     print(json.dumps(report, indent=2))
 
 

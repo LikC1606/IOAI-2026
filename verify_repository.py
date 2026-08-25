@@ -477,6 +477,56 @@ def verify_task6_artifacts() -> dict[str, object]:
     return result
 
 
+def verify_task1_package() -> dict[str, object]:
+    """Run the full Task 1 provenance/package verifier without writing files."""
+    completed = subprocess.run(
+        [sys.executable, "tools/verify_package.py", "--no-write-report"],
+        cwd=ROOT / "task1",
+        check=True,
+        capture_output=True,
+        text=True,
+        timeout=600,
+    )
+    result = json.loads(completed.stdout)
+    assert result["all_ok"] is True
+    assert result["checks"]["official_prompts"]["starter_sha256"]
+    assert result["checks"]["official_prompts"]["continue_sha256"]
+    assert result["checks"]["boundary"]["hash_only"] is True
+    assert result["checks"]["secrets"]["plaintext_secret_findings"] == 0
+    return {
+        "all_ok": result["all_ok"],
+        "checks": sorted(result["checks"]),
+    }
+
+
+def verify_task3_package() -> dict[str, object]:
+    """Replay all eight preserved Task 3 sources against the supplied data."""
+    completed = subprocess.run(
+        [sys.executable, "evidence/verify_artifacts.py"],
+        cwd=ROOT / "task3",
+        check=True,
+        capture_output=True,
+        text=True,
+        timeout=600,
+    )
+    result = json.loads(completed.stdout)
+    assert result["all_ok"] is True
+    assert len(result["results"]) == 8
+    assert all(
+        item["csv_contract_ok"]
+        and item["decoded_source_matches"]
+        and item["local_contract_ok"]
+        and item["starter_executable_outside_player_preserved"]
+        for item in result["results"]
+    )
+    return {
+        "all_ok": result["all_ok"],
+        "versions": len(result["results"]),
+        "source_csv_contracts": all(item["csv_contract_ok"] for item in result["results"]),
+        "local_contracts": all(item["local_contract_ok"] for item in result["results"]),
+    }
+
+
 def verify_cross_task_rule_audit() -> dict[str, object]:
     audit = json.loads((ROOT / "RULE_COMPLIANCE_AUDIT.json").read_text(encoding="utf-8"))
     assert audit["all_six_strictly_compliant_claim_supported"] is False
@@ -627,6 +677,8 @@ def main() -> None:
     report["autonomous_material"] = verify_autonomous_material()
     report["published_execution_accounting"] = verify_execution_accounting()
     report["later_reproduction_material"] = verify_reproduction_material()
+    report["task1_package_replay"] = verify_task1_package()
+    report["task3_package_replay"] = verify_task3_package()
     report["task6_exact_artifacts"] = verify_task6_artifacts()
     report["cross_task_rule_audit"] = verify_cross_task_rule_audit()
     report["publication_safety"] = verify_publication_safety()
