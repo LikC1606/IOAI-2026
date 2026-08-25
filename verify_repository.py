@@ -531,6 +531,31 @@ def verify_cross_task_rule_audit() -> dict[str, object]:
     audit = json.loads((ROOT / "RULE_COMPLIANCE_AUDIT.json").read_text(encoding="utf-8"))
     assert audit["all_six_strictly_compliant_claim_supported"] is False
     tasks = audit["tasks"]
+    prompt_audit = json.loads(
+        (ROOT / "PROMPT_CONFORMANCE_AUDIT.json").read_text(encoding="utf-8")
+    )
+    for task_number in range(1, 7):
+        task = f"task{task_number}"
+        summary = json.loads((ROOT / task / "SUMMARY.json").read_text(encoding="utf-8"))
+        rule = tasks[task]
+        prompt = prompt_audit["tasks"][task]
+        assert summary["official_final_submission_refs"] == rule["official_final_submission_refs"]
+        assert summary["official_final_trace_alignment"] is rule["official_final_trace_alignment"]
+        assert summary["official_final_trace_alignment"] is (
+            task_number >= 3
+        ), task
+        summary_prompt_status = summary.get("strict_exact_organizer_prompt_text_conformance")
+        if summary_prompt_status is None:
+            summary_prompt_status = summary["canonical_autonomous_rollout"][
+                "strict_exact_organizer_prompt_text_conformance"
+            ]
+        assert summary_prompt_status is rule["strict_exact_organizer_prompt_text_conformance"]
+        assert prompt["strict_exact_organizer_prompt_text_conformance"] is (
+            rule["strict_exact_organizer_prompt_text_conformance"]
+        )
+        assert prompt["live_kaggle_page_matches_repository_source"] is True
+        assert prompt["no_live_human_prompt_events_included"] is True
+
     assert tasks["task1"]["official_final_trace_alignment"] is False
     assert tasks["task2"]["official_final_trace_alignment"] is False
     assert tasks["task3"]["official_final_trace_alignment"] is True
@@ -540,10 +565,23 @@ def verify_cross_task_rule_audit() -> dict[str, object]:
         "after_official_deadline": 16,
         "published_limit": 15,
     }
+    task3_summary = json.loads((ROOT / "task3/SUMMARY.json").read_text(encoding="utf-8"))
+    assert {
+        "all_account": task3_summary["account_submission_count"],
+        "before_official_deadline": task3_summary["submissions_before_official_deadline"],
+        "after_official_deadline": task3_summary["submissions_after_official_deadline"],
+        "published_limit": task3_summary["published_scored_submission_limit"],
+    } == tasks["task3"]["submission_counts"]
     assert tasks["task4"]["strict_exact_organizer_prompt_text_conformance"] is False
     assert tasks["task4"]["selected_trace_files"] == 12
+    assert json.loads((ROOT / "task4/SUMMARY.json").read_text(encoding="utf-8"))[
+        "canonical_trace_files"
+    ] == tasks["task4"]["selected_trace_files"]
     assert tasks["task5"]["official_final_trace_alignment"] is True
     assert tasks["task6"]["batch_dependence_fixture"]["final_prediction_changes"] == 5
+    assert json.loads((ROOT / "task6/SUMMARY.json").read_text(encoding="utf-8"))[
+        "batch_dependence_fixture"
+    ] == tasks["task6"]["batch_dependence_fixture"]
     for task in ("task1", "task2", "task3"):
         assert audit["tasks"][task]["informational_disclosures"] == [
             "method_background_research_not_treated_as_compliance_issue"
