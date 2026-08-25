@@ -2,9 +2,9 @@
   "schema": "ioai.autonomous-execution-costs.v1",
   "scope": "only the human-intervention-free trace material in AUTONOMOUS_TRACE_INDEX.json",
   "currency": "USD",
-  "known_token_total_all_tasks": 388355239,
-  "known_t4_runtime_seconds": 2695.299514699,
-  "known_t4_runtime_hours": 0.748694309638611,
+  "known_token_total_all_tasks": 437247620,
+  "known_t4_runtime_seconds": 4411.426561027,
+  "known_t4_runtime_hours": 1.2253962669519445,
   "api_cost_usd_total": null,
   "api_cost_total_status": "unavailable_no_provider_invoice_or_applicable_public_rate",
   "api_cost_total_reason": "No invoice or exact ioai_allowed/gpt-5.6-sol rate card was captured; another model's public price is not substituted.",
@@ -18,25 +18,24 @@
       "model_provider": "ioai_allowed",
       "model": "gpt-5.6-sol",
       "reasoning_effort": "max",
-      "trace_scope": "autonomous-only material before the task boundary",
+      "trace_scope": "canonical later two-hour autonomous reproduction; post-deadline non-ranking",
       "token_usage": {
-        "input_tokens": 6756124,
-        "cached_input_tokens": 6488320,
+        "input_tokens": 40733925,
+        "cached_input_tokens": 39551232,
         "cache_write_input_tokens": 0,
-        "output_tokens": 33142,
-        "reasoning_output_tokens": 14771,
-        "total_tokens": 6789266
+        "output_tokens": 199891,
+        "reasoning_output_tokens": 65870,
+        "total_tokens": 40933816
       },
       "api_cost_usd": null,
       "api_cost_status": "unavailable_unpriced_ioai_provider",
       "gpu": {
-        "accelerator": "CPU",
-        "runtime_scope": "pre-boundary baseline notebook; metadata has enable_gpu=false",
-        "runtime_seconds": 0,
-        "runtime_hours": 0,
-        "observed_cpu_log_seconds": 69.886003607,
-        "gpu_cost_usd": 0,
-        "cost_status": "no_gpu_allocated"
+        "accelerator": "NvidiaTeslaT4",
+        "runtime_scope": "all six notebook versions in the later 120-minute reproduction",
+        "runtime_seconds": 1946.54,
+        "runtime_hours": 0.5407055555555556,
+        "gpu_cost_usd": null,
+        "cost_status": "unavailable_no_rate_or_invoice"
       }
     },
     "task2": {
@@ -44,22 +43,22 @@
       "model_provider": "ioai_allowed",
       "model": "gpt-5.6-sol",
       "reasoning_effort": "max",
-      "trace_scope": "autonomous-only material before the task boundary",
+      "trace_scope": "canonical later two-hour autonomous reproduction; post-deadline non-ranking",
       "token_usage": {
-        "input_tokens": 14392706,
-        "cached_input_tokens": 13759488,
+        "input_tokens": 29066864,
+        "cached_input_tokens": 28332800,
         "cache_write_input_tokens": 0,
-        "output_tokens": 65102,
-        "reasoning_output_tokens": 28220,
-        "total_tokens": 14457808
+        "output_tokens": 138775,
+        "reasoning_output_tokens": 45072,
+        "total_tokens": 29205639
       },
       "api_cost_usd": null,
       "api_cost_status": "unavailable_unpriced_ioai_provider",
       "gpu": {
         "accelerator": "NvidiaTeslaT4",
-        "runtime_scope": "two pre-boundary eligible remote CNN notebooks",
-        "runtime_seconds": 493.582953672,
-        "runtime_hours": 0.13710637602,
+        "runtime_scope": "version 2 in the later 120-minute reproduction; versions 1 and 3 were CPU",
+        "runtime_seconds": 263.17,
+        "runtime_hours": 0.07310277777777778,
         "gpu_cost_usd": null,
         "cost_status": "unavailable_no_rate_or_invoice"
       }

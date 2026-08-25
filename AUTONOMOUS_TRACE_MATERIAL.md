@@ -12,8 +12,8 @@ not live human method suggestions. Hidden chain-of-thought is not published.
 
 | Task | Trace files | Events | User prompts | Logical calls | Tokens | Boundary (exclusive UTC) |
 |---|---:|---:|---:|---:|---:|---|
-| task1 | 1 | 350 | 2 | 3 | 6789266 | 2026-08-05T10:16:52.222Z |
-| task2 | 1 | 705 | 3 | 4 | 14457808 | 2026-08-05T06:24:47.549Z |
+| task1 | 1 | 1398 | 3 | 17 | 40933816 | 2026-08-05T18:25:50.634Z |
+| task2 | 1 | 1067 | 2 | 40 | 29205639 | 2026-08-05T18:20:08.972Z |
 | task3 | 4 | 2427 | 8 | 135 | 56373300 | 2026-08-06T05:46:19.450Z |
 | task4 | 5 | 2717 | 20 | 75 | 109119898 | 2026-08-07T06:18:25.517Z |
 | task5 | 14 | 4705 | 28 | 131 | 160243108 | 2026-08-07T09:04:20.519Z |
@@ -28,27 +28,31 @@ Verify the complete selected set with
 
 ## task1
 
-Boundary: first material human instruction received by the controlling session.
+Boundary: later two-hour reproduction deadline; no live human method/target prompt was delivered.
 
 Included trace files:
 
-- [`rollout-2026-08-05T17-20-55-019fd139-d180-7171-ac0b-c037e11866eb.jsonl`](task1/evidence/rollouts/rollout-2026-08-05T17-20-55-019fd139-d180-7171-ac0b-c037e11866eb.jsonl) — 350 events
+- [`rollout.jsonl`](task1/evidence/reproduction-120m/rollout.jsonl) — 1398 events
 
 Explicitly excluded:
 
-- post-boundary supervised continuation and submission suffix (not in repository; provenance hashes only)
+- events at or after the later two-hour reproduction deadline
+- the official account's earlier deadline and all post-deadline scores are outside official-ranking scope
+- the older formal-run prefix remains under task1/evidence/rollouts as historical audit material
 
 ## task2
 
-Boundary: first modified/custom continuation prompt.
+Boundary: later two-hour reproduction deadline; no live human method/target prompt was delivered.
 
 Included trace files:
 
-- [`rollout-2026-08-05T13-30-31-019fd066-e338-71a0-9d8e-6e1d154c5a79.jsonl`](task2/evidence/rollouts/rollout-2026-08-05T13-30-31-019fd066-e338-71a0-9d8e-6e1d154c5a79.jsonl) — 705 events
+- [`rollout.jsonl`](task2/evidence/reproduction-120m/rollout.jsonl) — 1067 events
 
 Explicitly excluded:
 
-- all events at or after the modified continuation at 06:24:47.549Z
+- events at or after the later two-hour reproduction deadline
+- the official account's earlier deadline and all post-deadline scores are outside official-ranking scope
+- the older formal-run prefix remains under task2/evidence/rollouts as historical audit material
 
 ## task3
 

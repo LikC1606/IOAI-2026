@@ -3,6 +3,7 @@
   "task": 2,
   "competition": "ioai-2026-task-2-westlake-nlp-24",
   "account_owner": "researai",
+  "formal_run_scope": "historical_formal_run_audit_only; canonical published rollout is the later 120-minute reproduction",
   "boundary_utc_exclusive": "2026-08-05T06:24:47.549Z",
   "agent_run_deadline_utc": "2026-08-05T07:00:00Z",
   "official_competition_deadline_utc": "2026-08-05T07:35:00Z",
@@ -14,5 +15,25 @@
   ],
   "official_final_public_score": 0.63583,
   "official_final_private_score": 0.625,
-  "historical_remote_source_retrievable": true
+  "historical_remote_source_retrievable": true,
+  "canonical_autonomous_rollout": {
+    "trace_path": "evidence/reproduction-120m/rollout.jsonl",
+    "run_kind": "later_reproduction_120m",
+    "autonomy_status": "fully_autonomous_no_live_human_intervention",
+    "run_window_start_utc": "2026-08-05T16:20:09.021Z",
+    "boundary_utc_exclusive": "2026-08-05T18:20:08.972Z",
+    "post_deadline": true,
+    "ranking_eligible": false,
+    "manual_human_prompt_events_included": 0,
+    "user_prompt_classes": {
+      "startup_instructions": 1,
+      "organizer_starter_prompt": 1
+    },
+    "submission_id": 55277682,
+    "candidate": "tree_film_blend_65_35_full_labels",
+    "public_score": 0.675,
+    "local_cv": 0.6713888889,
+    "private_score": null,
+    "scope_note": "Complete observable rollout with no live human method, target-score, forced-submission, or custom continuation prompt; the run began after the official deadline, so this is a non-ranking reproduction result."
+  }
 }

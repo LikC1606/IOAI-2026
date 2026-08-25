@@ -19,7 +19,7 @@
   "api_cost_usd_total": null,
   "api_cost_total_status": "unavailable_no_provider_invoice_or_applicable_public_rate",
   "api_cost_total_reason": "The traces identify the private/competition provider ioai_allowed and gpt-5.6-sol, while the available public pricing page does not price that model. No invoice, rate card, or per-run charge is present in the evidence. gpt-5.3-codex public prices must not be substituted.",
-  "known_token_total_all_tasks": 388355239,
+  "known_token_total_all_tasks": 437247620,
   "gpu_cost_usd_total": null,
   "gpu_cost_total_status": "unavailable_no_cloud_invoice_or_rate",
   "gpu_cost_total_reason": "The records expose Kaggle machine type and notebook wall-clock runtime, but no user cloud invoice, GPU utilization trace, or contract rate.",
@@ -29,25 +29,24 @@
       "model": "gpt-5.6-sol",
       "model_provider": "ioai_allowed",
       "reasoning_effort": "max",
-      "token_usage_scope": "autonomous-only pre-boundary trace",
+      "token_usage_scope": "later two-hour autonomous reproduction trace; post-deadline non-ranking",
       "token_usage": {
-        "input_tokens": 6756124,
-        "cached_input_tokens": 6488320,
+        "input_tokens": 40733925,
+        "cached_input_tokens": 39551232,
         "cache_write_input_tokens": 0,
-        "output_tokens": 33142,
-        "reasoning_output_tokens": 14771,
-        "total_tokens": 6789266
+        "output_tokens": 199891,
+        "reasoning_output_tokens": 65870,
+        "total_tokens": 40933816
       },
       "api_cost_usd": null,
       "api_cost_status": "unavailable_unpriced_ioai_provider",
       "gpu": {
-        "accelerator": "CPU",
-        "runtime_scope": "pre-boundary baseline notebook; metadata has enable_gpu=false",
-        "runtime_seconds": 0,
-        "runtime_hours": 0,
-        "observed_cpu_log_seconds": 69.886003607,
-        "gpu_cost_usd": 0,
-        "cost_status": "no_gpu_allocated"
+        "accelerator": "NvidiaTeslaT4",
+        "runtime_scope": "all six notebook versions in the later two-hour reproduction",
+        "runtime_seconds": 1946.54,
+        "runtime_hours": 0.5407055555555556,
+        "gpu_cost_usd": null,
+        "cost_status": "unavailable_no_rate_or_invoice"
       }
     },
     "task2": {
@@ -56,20 +55,20 @@
       "model": "gpt-5.6-sol",
       "reasoning_effort": "max",
       "token_usage": {
-        "input_tokens": 14392706,
-        "cached_input_tokens": 13759488,
+        "input_tokens": 29066864,
+        "cached_input_tokens": 28332800,
         "cache_write_input_tokens": 0,
-        "output_tokens": 65102,
-        "reasoning_output_tokens": 28220,
-        "total_tokens": 14457808
+        "output_tokens": 138775,
+        "reasoning_output_tokens": 45072,
+        "total_tokens": 29205639
       },
       "api_cost_usd": null,
       "api_cost_status": "unavailable_unpriced_ioai_provider",
       "gpu": {
         "accelerator": "NvidiaTeslaT4",
-        "runtime_scope": "two eligible remote CNN notebooks (cnn-v1 and rotation-cnn-v2)",
-        "runtime_seconds": 493.582953672,
-        "runtime_hours": 0.13710637602,
+        "runtime_scope": "version 2 in the later two-hour reproduction; versions 1 and 3 were CPU",
+        "runtime_seconds": 263.17,
+        "runtime_hours": 0.07310277777777778,
         "gpu_cost_usd": null,
         "cost_status": "unavailable_no_rate_or_invoice"
       }

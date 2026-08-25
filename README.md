@@ -45,6 +45,11 @@ in [COSTS.json](COSTS.json). Both trace indexes now use the same
 human-intervention-free selection. USD API/GPU amounts are left `null` where no
 applicable rate or invoice exists.
 
+For Tasks 1 and 2, that canonical selection is the complete later two-hour
+rollout under [REPRODUCTION_TRACE_MATERIAL.md](REPRODUCTION_TRACE_MATERIAL.md):
+it contains no live human method/target prompt, but its score remains
+post-deadline and non-ranking.
+
 The complete 496,870,419-byte Kaggle extraction archive is delivered through
 the verified Google Drive record in
 [`KAGGLE_EXTRACTION_DELIVERY.json`](KAGGLE_EXTRACTION_DELIVERY.json); its

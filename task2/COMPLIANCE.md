@@ -64,8 +64,9 @@ it is shown for authorized reproduction, not as a request to resubmit. The
 historical source, output, remote log, submission ledger, prompt snapshot, and
 bounded rollout are already included for offline review.
 
-The requested later 120-minute reproduction is published separately at
+The requested later 120-minute reproduction is published at
 `evidence/reproduction-120m/rollout.jsonl` and indexed in
 `../REPRODUCTION_TRACE_INDEX.json`. Its best result (`55277682`, Public
-`0.675`) is post-deadline non-ranking reference evidence, not a replacement for
-the bounded autonomous result or the official account result.
+`0.675`) is the canonical no-live-human Task 2 rollout. It is still
+post-deadline non-ranking reference evidence, not a replacement for the official
+account result.

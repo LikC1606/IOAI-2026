@@ -1,8 +1,8 @@
 {
   "schema": "ioai.later-reproduction-trace-material.v1",
   "scope": "full later two-hour reproduction traces for Tasks 1 and 2",
-  "status": "post-deadline non-ranking reference material",
-  "important_boundary": "These traces do not replace AUTONOMOUS_TRACE_INDEX.json or FINAL_SUBMISSION_RESULTS.md and must not be represented as official-ranking autonomous results.",
+  "status": "canonical no-live-human autonomous trace for Tasks 1/2; post-deadline non-ranking reference material",
+  "important_boundary": "These traces are the canonical autonomous rollout selection for Tasks 1/2, but their post-deadline scores do not replace FINAL_SUBMISSION_RESULTS.md or become official-ranking results.",
   "included_prompt_types": [
     "injected startup instructions",
     "organizer Starter Prompt",
@@ -14,6 +14,7 @@
       "competition": "ioai-2026-task-1-westlake-nlp-24",
       "account": "researai",
       "run_kind": "later_reproduction_120m",
+      "canonical_autonomous_trace": true,
       "post_deadline": true,
       "ranking_eligible": false,
       "window": {
@@ -165,6 +166,7 @@
       "competition": "ioai-2026-task-2-westlake-nlp-24",
       "account": "researai",
       "run_kind": "later_reproduction_120m",
+      "canonical_autonomous_trace": true,
       "post_deadline": true,
       "ranking_eligible": false,
       "window": {

@@ -1,11 +1,12 @@
-5eab5f105270e4d330fe3e9db618a636c610731533995da0541e80cccb28d287  ./COMPLIANCE.md
+b97f41f514af511cbac072935e61fc1b3c1b9ae76741487bdfb8452e16e7cd7b  ./COMPLIANCE.md
 da81d11e8c52f7bb08f547f2b21821ff7eb93dbafa26d976e66c74469bf5a4ef  ./EXCLUSIONS.md
-ae44bc874f2d0527f07293f87c09b1302dfa9f2a2fa5910ea44d3d089bbb020e  ./README.md
+81f4f98d1ead05bb8673a6e8b4509ed1aa6682271728e5a3d95f3a494e885fc5  ./README.md
 b4a97f1253c8912a4b0eaeb6de499c5fb035c00a256da92a7d9cdd67b5c9d32d  ./ROLLOUT_PROVENANCE.json
-25ab5d110e3aea6eff2b36b22a9733efdccf243a7f8f614966af66a19280a18b  ./SUMMARY.json
+dc0fcd8a700e7a1761cfb44d41169b5255feb2fb0a3ebed976d1c875ae948a36  ./SUMMARY.json
 9d4f1918cb840bd0620be0243bd35e46fe894ae3220a7ec194f15c3c6080e417  ./environment/AGENTS-ACTUALLY-INJECTED.md
 9c14138c3d800345d8164329138020508a1bbce6f1286f40026a018b78acfa4e  ./environment/session.json
 a7dc48c7a837b3536d835c17fdee63db6fe27b79cd1cc577cbf4e15672f45014  ./evidence/rollouts/rollout-2026-08-05T13-30-31-019fd066-e338-71a0-9d8e-6e1d154c5a79.jsonl
+429c4a133ea7c661f48fdf4f547baf481a0fd12c209449d5804df662ee95d3a8  ./evidence/reproduction-120m/rollout.jsonl
 4071b14be2814b2ef34bed23d43b59e3007eb2da063b71898ffbc04f1af7ea28  ./excluded/current-tree-notebook/__pycache__/ioai-2026-structured-extratrees-v1.cpython-311.pyc
 d86b5df898a6593bf86779398141b725e8bde4f3499a9ef5b777f13ffd060e92  ./excluded/current-tree-notebook/ioai-2026-structured-extratrees-v1.py
 231324d381483318048d8a49def6ae98310f6f22fe05f4fbf1864d3ce943d86a  ./excluded/current-tree-notebook/kernel-metadata.json

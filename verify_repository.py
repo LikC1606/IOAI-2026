@@ -153,8 +153,33 @@ def verify_final_account_result(task: int, summary: dict) -> dict[str, object]:
     if task == 1:
         assert result["separately_disclosed_agent_executed_result"]["submission_ref"] == 55267607
         assert result["official_prompt_only_autonomous_result"]["scored_submission"] is None
+        canonical = summary["canonical_autonomous_rollout"]
+        assert canonical["trace_path"] == "evidence/reproduction-120m/rollout.jsonl"
+        assert canonical["autonomy_status"] == "fully_autonomous_no_live_human_intervention"
+        assert canonical["submission_id"] == 55277782
+        assert canonical["public_score"] == 0.74121
+        assert canonical["post_deadline"] is True
+        assert canonical["ranking_eligible"] is False
+        assert canonical["manual_human_prompt_events_included"] == 0
+        assert canonical["user_prompt_classes"] == {
+            "startup_instructions": 1,
+            "organizer_starter_prompt": 1,
+            "preconfigured_runtime_resume_template": 1,
+        }
     elif task == 2:
         assert result["autonomous_result"]["submission_ref"] == 55260695
+        canonical = summary["canonical_autonomous_rollout"]
+        assert canonical["trace_path"] == "evidence/reproduction-120m/rollout.jsonl"
+        assert canonical["autonomy_status"] == "fully_autonomous_no_live_human_intervention"
+        assert canonical["submission_id"] == 55277682
+        assert canonical["public_score"] == 0.675
+        assert canonical["post_deadline"] is True
+        assert canonical["ranking_eligible"] is False
+        assert canonical["manual_human_prompt_events_included"] == 0
+        assert canonical["user_prompt_classes"] == {
+            "startup_instructions": 1,
+            "organizer_starter_prompt": 1,
+        }
     elif task == 3:
         assert result["official_deadline_best_private"] == {
             "score": 55.48333,
@@ -221,6 +246,16 @@ def verify_autonomous_material() -> dict[str, int]:
             path = ROOT / trace["path"]
             assert sha256(path) == trace["sha256"], trace["path"]
             assert trace["last_timestamp"] < boundary, trace["path"]
+            if task in {"task1", "task2"}:
+                assert "/evidence/reproduction-120m/" in trace["path"], task
+                assert trace["message_counts"].get("user", 0) == len(data["user_prompt_audit"]), task
+                assert set(data["user_prompt_classes"]).issubset(
+                    {
+                        "startup_instructions",
+                        "organizer_starter_prompt",
+                        "preconfigured_runtime_resume_template",
+                    }
+                ), task
             task_tokens += trace["token_usage_cumulative_final"]["total_tokens"]
             trace_files += 1
             events += trace["event_count"]

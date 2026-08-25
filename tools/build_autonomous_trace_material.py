@@ -20,10 +20,10 @@ TASK6_MAIN_PREFIX = ROOT / (
 
 TASK_PATHS = {
     "task1": [
-        "task1/evidence/rollouts/rollout-2026-08-05T17-20-55-019fd139-d180-7171-ac0b-c037e11866eb.jsonl"
+        "task1/evidence/reproduction-120m/rollout.jsonl"
     ],
     "task2": [
-        "task2/evidence/rollouts/rollout-2026-08-05T13-30-31-019fd066-e338-71a0-9d8e-6e1d154c5a79.jsonl"
+        "task2/evidence/reproduction-120m/rollout.jsonl"
     ],
     "task3": [
         "task3/evidence/rollouts/rollout-2026-08-06T12-34-49-019fd55a-3edf-7801-b6a1-f1313393ff34.jsonl",
@@ -63,12 +63,12 @@ TASK_PATHS = {
 
 BOUNDARIES = {
     "task1": {
-        "exclusive_utc": "2026-08-05T10:16:52.222Z",
-        "basis": "first material human instruction received by the controlling session",
+        "exclusive_utc": "2026-08-05T18:25:50.634Z",
+        "basis": "later two-hour reproduction deadline; no live human method/target prompt was delivered",
     },
     "task2": {
-        "exclusive_utc": "2026-08-05T06:24:47.549Z",
-        "basis": "first modified/custom continuation prompt",
+        "exclusive_utc": "2026-08-05T18:20:08.972Z",
+        "basis": "later two-hour reproduction deadline; no live human method/target prompt was delivered",
     },
     "task3": {
         "exclusive_utc": "2026-08-06T05:46:19.450Z",
@@ -89,8 +89,16 @@ BOUNDARIES = {
 }
 
 EXCLUSIONS = {
-    "task1": ["post-boundary supervised continuation and submission suffix (not in repository; provenance hashes only)"],
-    "task2": ["all events at or after the modified continuation at 06:24:47.549Z"],
+    "task1": [
+        "events at or after the later two-hour reproduction deadline",
+        "the official account's earlier deadline and all post-deadline scores are outside official-ranking scope",
+        "the older formal-run prefix remains under task1/evidence/rollouts as historical audit material",
+    ],
+    "task2": [
+        "events at or after the later two-hour reproduction deadline",
+        "the official account's earlier deadline and all post-deadline scores are outside official-ranking scope",
+        "the older formal-run prefix remains under task2/evidence/rollouts as historical audit material",
+    ],
     "task3": ["all events at or after the supervision boundary at 05:46:19.450Z"],
     "task4": ["events at or after the run deadline"],
     "task5": ["events at or after the run deadline"],
@@ -116,19 +124,18 @@ CONTINUATION_FILES = {
 
 GPU = {
     "task1": {
-        "accelerator": "CPU",
-        "runtime_scope": "pre-boundary baseline notebook; metadata has enable_gpu=false",
-        "runtime_seconds": 0,
-        "runtime_hours": 0,
-        "observed_cpu_log_seconds": 69.886003607,
-        "gpu_cost_usd": 0,
-        "cost_status": "no_gpu_allocated",
+        "accelerator": "NvidiaTeslaT4",
+        "runtime_scope": "all six notebook versions in the later 120-minute reproduction",
+        "runtime_seconds": 1946.54,
+        "runtime_hours": 0.5407055555555556,
+        "gpu_cost_usd": None,
+        "cost_status": "unavailable_no_rate_or_invoice",
     },
     "task2": {
         "accelerator": "NvidiaTeslaT4",
-        "runtime_scope": "two pre-boundary eligible remote CNN notebooks",
-        "runtime_seconds": 493.582953672,
-        "runtime_hours": 0.13710637602,
+        "runtime_scope": "version 2 in the later 120-minute reproduction; versions 1 and 3 were CPU",
+        "runtime_seconds": 263.17,
+        "runtime_hours": 0.07310277777777778,
         "gpu_cost_usd": None,
         "cost_status": "unavailable_no_rate_or_invoice",
     },
@@ -199,7 +206,23 @@ def classify_prompts(task: str, path: Path, role: str) -> list[dict[str, str]]:
         if event.get("type") != "response_item" or payload.get("role") != "user":
             continue
         text = message_text(payload)
-        if text.startswith("# AGENTS.md instructions"):
+        text_hash = hashlib.sha256(text.encode("utf-8")).hexdigest()
+        reproduction_prompt_hashes = {
+            "task1": {
+                "organizer_starter_prompt": "d280b73e5f7690416dfb6badbfccb9675c22742e49e0c3777ee50679112bbb6c",
+                "preconfigured_runtime_resume_template": "45767762b1cfb5ef65193cbfef591bf50e33b18883b39fc1e60fbe36005a42b5",
+            },
+            "task2": {
+                "organizer_starter_prompt": "17aa893c998a4344232ac44532c85717e3819d5559544133760b68e2c90f0736",
+            },
+        }
+        if "reproduction-120m" in path.parts and text_hash in reproduction_prompt_hashes[task].values():
+            prompt_class = next(
+                label for label, digest in reproduction_prompt_hashes[task].items() if digest == text_hash
+            )
+        elif "reproduction-120m" in path.parts and text.startswith("# AGENTS.md instructions"):
+            prompt_class = "startup_instructions"
+        elif text.startswith("# AGENTS.md instructions"):
             prompt_class = "startup_instructions"
         elif text == starter:
             prompt_class = (
@@ -390,7 +413,11 @@ def write_costs(index: dict[str, Any]) -> None:
             "model_provider": "ioai_allowed",
             "model": "gpt-5.6-sol",
             "reasoning_effort": data["reasoning_effort"],
-            "trace_scope": "autonomous-only material before the task boundary",
+            "trace_scope": (
+                "canonical later two-hour autonomous reproduction; post-deadline non-ranking"
+                if task in {"task1", "task2"}
+                else "autonomous-only material before the task boundary"
+            ),
             "token_usage": token_usage,
             "api_cost_usd": None,
             "api_cost_status": "unavailable_unpriced_ioai_provider",
@@ -401,8 +428,8 @@ def write_costs(index: dict[str, Any]) -> None:
         "scope": "only the human-intervention-free trace material in AUTONOMOUS_TRACE_INDEX.json",
         "currency": "USD",
         "known_token_total_all_tasks": total,
-        "known_t4_runtime_seconds": 2695.299514699,
-        "known_t4_runtime_hours": 0.7486943096386111,
+        "known_t4_runtime_seconds": 4411.426561027,
+        "known_t4_runtime_hours": 1.2253962669519445,
         "api_cost_usd_total": None,
         "api_cost_total_status": "unavailable_no_provider_invoice_or_applicable_public_rate",
         "api_cost_total_reason": "No invoice or exact ioai_allowed/gpt-5.6-sol rate card was captured; another model's public price is not substituted.",

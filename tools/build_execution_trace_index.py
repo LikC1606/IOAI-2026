@@ -176,7 +176,11 @@ def main() -> None:
     parser.parse_args()
 
     task_roots: dict[str, list[Path]] = {
-        f"task{task}": [ROOT / f"task{task}/evidence/rollouts"] for task in range(1, 6)
+        "task1": [ROOT / "task1/evidence/reproduction-120m"],
+        "task2": [ROOT / "task2/evidence/reproduction-120m"],
+        "task3": [ROOT / "task3/evidence/rollouts"],
+        "task4": [ROOT / "task4/evidence/rollouts"],
+        "task5": [ROOT / "task5/evidence/rollouts"],
     }
     task_roots["task6"] = [
         ROOT / "task6/evidence/autonomous-only",

@@ -1,9 +1,9 @@
 # Later two-hour reproduction traces
 
 These are full, credential-redacted traces from the later fresh 120-minute
-reproduction runs for Tasks 1 and 2. They are post-deadline, non-ranking
-reference material. The official account results and the autonomous-only
-prefix package remain separate and are not overwritten by this material.
+reproduction runs for Tasks 1 and 2. They are the canonical no-live-human
+autonomous rollouts for these two tasks, while remaining post-deadline,
+non-ranking reference material for official-score purposes.
 
 The JSONL retains startup/organizer prompts, visible Agent messages, tool
 calls, tool outputs, lifecycle events, and cumulative token telemetry.
@@ -21,8 +21,9 @@ runtime-resume template, not a human method or target-score instruction.
 Do not use the scores in this table as the official final scores. They are
 results produced by later fresh runs and were submitted after the official
 competition deadline. For official account reconciliation, use
-[`FINAL_SUBMISSION_RESULTS.md`](FINAL_SUBMISSION_RESULTS.md). For the strict
-human-intervention-free material, use [`AUTONOMOUS_TRACE_INDEX.json`](AUTONOMOUS_TRACE_INDEX.json).
+[`FINAL_SUBMISSION_RESULTS.md`](FINAL_SUBMISSION_RESULTS.md). These same
+JSONL files are the canonical no-live-human Task 1/2 selection in
+[`AUTONOMOUS_TRACE_INDEX.json`](AUTONOMOUS_TRACE_INDEX.json).
 
 ## task1
 

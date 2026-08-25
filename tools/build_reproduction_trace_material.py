@@ -203,8 +203,8 @@ def main() -> None:
     index: dict[str, Any] = {
         "schema": "ioai.later-reproduction-trace-material.v1",
         "scope": "full later two-hour reproduction traces for Tasks 1 and 2",
-        "status": "post-deadline non-ranking reference material",
-        "important_boundary": "These traces do not replace AUTONOMOUS_TRACE_INDEX.json or FINAL_SUBMISSION_RESULTS.md and must not be represented as official-ranking autonomous results.",
+        "status": "canonical no-live-human autonomous trace for Tasks 1/2; post-deadline non-ranking reference material",
+        "important_boundary": "These traces are the canonical autonomous rollout selection for Tasks 1/2, but their post-deadline scores do not replace FINAL_SUBMISSION_RESULTS.md or become official-ranking results.",
         "included_prompt_types": [
             "injected startup instructions",
             "organizer Starter Prompt",
@@ -219,6 +219,7 @@ def main() -> None:
             "competition": run["competition"],
             "account": run["account"],
             "run_kind": run["run_kind"],
+            "canonical_autonomous_trace": True,
             "post_deadline": run["post_deadline"],
             "ranking_eligible": run["ranking_eligible"],
             "window": run["window"],
@@ -257,9 +258,9 @@ def main() -> None:
         "# Later two-hour reproduction traces",
         "",
         "These are full, credential-redacted traces from the later fresh 120-minute",
-        "reproduction runs for Tasks 1 and 2. They are post-deadline, non-ranking",
-        "reference material. The official account results and the autonomous-only",
-        "prefix package remain separate and are not overwritten by this material.",
+        "reproduction runs for Tasks 1 and 2. They are the canonical no-live-human",
+        "autonomous rollouts for these two tasks, while remaining post-deadline,",
+        "non-ranking reference material for official-score purposes.",
         "",
         "The JSONL retains startup/organizer prompts, visible Agent messages, tool",
         "calls, tool outputs, lifecycle events, and cumulative token telemetry.",
@@ -286,8 +287,9 @@ def main() -> None:
         "Do not use the scores in this table as the official final scores. They are",
         "results produced by later fresh runs and were submitted after the official",
         "competition deadline. For official account reconciliation, use",
-        "[`FINAL_SUBMISSION_RESULTS.md`](FINAL_SUBMISSION_RESULTS.md). For the strict",
-        "human-intervention-free material, use [`AUTONOMOUS_TRACE_INDEX.json`](AUTONOMOUS_TRACE_INDEX.json).",
+        "[`FINAL_SUBMISSION_RESULTS.md`](FINAL_SUBMISSION_RESULTS.md). These same",
+        "JSONL files are the canonical no-live-human Task 1/2 selection in",
+        "[`AUTONOMOUS_TRACE_INDEX.json`](AUTONOMOUS_TRACE_INDEX.json).",
         "",
     ])
     for task, data in index["tasks"].items():

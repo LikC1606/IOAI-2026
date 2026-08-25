@@ -24,7 +24,7 @@
         "REPRODUCTION_TRACE_INDEX.json",
         "REPRODUCTION_COSTS.json"
       ],
-      "note": "Full redacted later 120-minute traces; not official-ranking or autonomous-only results."
+      "note": "Full redacted later 120-minute traces; canonical no-live-human autonomous rollouts, but not official-ranking results because they are post-deadline."
     },
     "prompts_and_visible_outputs": {
       "status": "complete",

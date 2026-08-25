@@ -62,10 +62,11 @@ credential-redacted traces are published separately under
 [`task1/evidence/reproduction-120m/`](task1/evidence/reproduction-120m/) and
 [`task2/evidence/reproduction-120m/`](task2/evidence/reproduction-120m/).
 They preserve the complete observable event streams and the corresponding
-candidate/submission outcomes. Both runs occurred after the account's official
-competition deadline, so their scores are reference/reproduction results, not
-official-ranking or autonomous-only scores. They do not overwrite the formal
-autonomous prefixes or the official account reconciliation. Their exact token,
+candidate/submission outcomes. Both runs contain no live human method/target
+prompt and are the canonical autonomous rollout selection for Tasks 1 and 2.
+They occurred after the account's official competition deadline, so their scores
+remain reference/reproduction results, not official-ranking scores, and do not
+replace the official account reconciliation. Their exact token,
 runtime, and unavailable-USD disclosures are in
 [`REPRODUCTION_COSTS.json`](REPRODUCTION_COSTS.json), with hashes in
 [`REPRODUCTION_MATERIAL_MANIFEST.sha256`](REPRODUCTION_MATERIAL_MANIFEST.sha256).

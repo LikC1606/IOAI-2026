@@ -3,7 +3,9 @@
 Competition: `ioai-2026-task-2-westlake-nlp-24`.
 
 For the consolidated rule, artifact, report-correction, and reproduction audit,
-start with `COMPLIANCE.md`.
+start with `COMPLIANCE.md`. The canonical published no-live-human rollout is
+the complete later two-hour trace under `evidence/reproduction-120m/`; the
+earlier formal run is retained as separate historical audit material.
 
 The formal solver began at 05:30:32 UTC. Before the conservative autonomy
 boundary it received only the injected startup instructions, the organizer
@@ -49,5 +51,6 @@ The requested later fresh run is preserved separately at
 with counts, prompt classification, token telemetry, runtime, and result in the
 root [`REPRODUCTION_TRACE_INDEX.json`](../REPRODUCTION_TRACE_INDEX.json). Its
 best scored candidate was `tree_film_blend_65_35_full_labels`, submission
-`55277682` (Public LB `0.675`). This run is post-deadline and non-ranking; it
-does not replace the bounded autonomous trace or the official account result.
+`55277682` (Public LB `0.675`). This is the canonical no-live-human autonomous
+rollout for Task 2, but it is post-deadline and non-ranking; it does not replace
+the official account result.

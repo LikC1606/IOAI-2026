@@ -2,9 +2,9 @@
 
 Competition: `ioai-2026-task-1-westlake-nlp-24`.
 
-This package preserves the formal Task 1 Agent evidence and separates the
-official account result, strict human-intervention-free scope, and a later
-Agent-executed reference result. It is evidence for organizer review, not a
+This package preserves the historical formal Task 1 Agent evidence and
+separates it from the official account result and the canonical later
+no-live-human reproduction rollout. It is evidence for organizer review, not a
 self-issued compliance certificate.
 
 ## Defensible result
@@ -56,9 +56,10 @@ written organizer decision can change it to "Organizer-approved exception."
 
 Start with `../ORGANIZER_SUBMISSION.md`, `COMPLIANCE.md`,
 `AUTONOMY_BOUNDARY.md`, `EXCLUSIONS.md`, and `SUMMARY.json`. The exact
-credential-redacted pre-boundary
-solver trace is under `evidence/rollouts/`, and `ROLLOUT_PROVENANCE.json` binds
-it to the private original by SHA-256.
+credential-redacted historical formal prefix is under `evidence/rollouts/`,
+and `ROLLOUT_PROVENANCE.json` binds it to the private original by SHA-256. The
+canonical published no-live-human rollout is the complete later two-hour trace
+under `evidence/reproduction-120m/`.
 
 Verify after extraction:
 
@@ -70,8 +71,9 @@ python tools/verify_package.py
 The package does not duplicate organizer competition data or model weights.
 The exact frozen candidate source, evaluator, trial receipt, remote source,
 remote log, scored output, and hash-only post-boundary provenance are included.
-The organizer-facing trace is the pre-boundary JSONL selected by the root
-`AUTONOMOUS_TRACE_INDEX.json`.
+The organizer-facing canonical trace is the later reproduction JSONL selected
+by the root `AUTONOMOUS_TRACE_INDEX.json`; the historical formal prefix remains
+available as separate audit material.
 
 ## Later 120-minute reproduction
 
@@ -80,5 +82,6 @@ The requested later fresh run is preserved separately at
 with counts, prompt classification, token telemetry, runtime, and result in the
 root [`REPRODUCTION_TRACE_INDEX.json`](../REPRODUCTION_TRACE_INDEX.json). It
 selected candidate `balanced_edge_fallback_v5` and submission `55277782`
-(Public LB `0.74121`). This run is post-deadline and non-ranking; it does not
-change the formal autonomous scope or the official account result.
+(Public LB `0.74121`). This is the canonical no-live-human autonomous rollout
+for Task 1, but it is post-deadline and non-ranking; it does not change the
+official account result.

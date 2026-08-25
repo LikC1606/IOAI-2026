@@ -6,15 +6,15 @@ prompt. The single entry point is
 [`ORGANIZER_SUBMISSION.md`](ORGANIZER_SUBMISSION.md).
 
 The machine-readable index is [`EXECUTION_TRACE_INDEX.json`](EXECUTION_TRACE_INDEX.json);
-individual credential-redacted JSONL files are under each `taskN/evidence/rollouts`
+individual credential-redacted JSONL files are under each task's evidence
 directory. The autonomous-specific classification, prompt hashes, boundaries,
 and exclusion records are in [`AUTONOMOUS_TRACE_INDEX.json`](AUTONOMOUS_TRACE_INDEX.json).
 
-The requested later fresh two-hour Task 1/2 runs are published as a separate
-scope in [`REPRODUCTION_TRACE_MATERIAL.md`](REPRODUCTION_TRACE_MATERIAL.md) and
-[`REPRODUCTION_TRACE_INDEX.json`](REPRODUCTION_TRACE_INDEX.json). They are full
-post-deadline, non-ranking reproduction traces and must not be read as the
-official account result or as a replacement for the autonomous-only prefixes.
+The requested later fresh two-hour Task 1/2 runs are published in
+[`REPRODUCTION_TRACE_MATERIAL.md`](REPRODUCTION_TRACE_MATERIAL.md) and are now
+the canonical no-live-human autonomous rollout selection for those two tasks.
+They remain post-deadline, non-ranking traces for official-score purposes and
+must not be read as the official account result.
 
 ## What is represented
 
@@ -36,9 +36,9 @@ metadata are redacted.
 
 The first excluded human prompt and all events causally downstream of it are
 outside this package. Boundary records contain timestamp, classification, and
-cryptographic hashes only; they do not reproduce human prompt bodies. Task 1's
-later supervised submission suffix is retained only as hash provenance, not as
-organizer-facing trace material.
+cryptographic hashes only; they do not reproduce human prompt bodies. The older
+formal Task 1 run's later supervised submission suffix is retained only as hash
+provenance, not as organizer-facing trace material.
 
 ## Cross-task accounting
 
@@ -47,8 +47,8 @@ All six runs identify the same canonical LLM, `gpt-5.6-sol`, under provider
 
 | Task | Trace files | Events | User / assistant messages | Logical calls | Outer `exec` calls | Final cumulative tokens |
 |---|---:|---:|---:|---:|---:|---:|
-| 1 | 1 | 350 | 2 / 18 | 3 | 60 | 6,789,266 |
-| 2 | 1 | 705 | 3 / 27 | 4 | 128 | 14,457,808 |
+| 1 | 1 | 1,398 | 3 / 72 | 17 | 264 | 40,933,816 |
+| 2 | 1 | 1,067 | 2 / 61 | 40 | 176 | 29,205,639 |
 | 3 | 4 | 2,427 | 8 / 48 | 135 | 373 | 56,373,300 |
 | 4 | 5 | 2,717 | 20 / 62 | 75 | 387 | 109,119,898 |
 | 5 | 14 | 4,705 | 28 / 140 | 131 | 409 | 160,243,108 |
@@ -70,10 +70,10 @@ rate or invoice exists; CPU/no-GPU tasks are recorded as zero GPU allocation.
 
 ## Per-task evidence map
 
-- [Task 1](task1/): pre-boundary formal rollout, official account-result
-  reconciliation, and hash-only supervised-suffix provenance.
-- [Task 2](task2/): bounded main trace plus autonomous and official account
-  results kept as separate scopes.
+- [Task 1](task1/): complete later no-live-human reproduction rollout,
+  post-deadline result, and historical formal-prefix audit material.
+- [Task 2](task2/): complete later no-live-human reproduction rollout,
+  post-deadline result, and historical formal-prefix audit material.
 - [Task 3](task3/): direct trace, recovered token aggregate, and official result.
 - [Task 4](task4/): main and four worker/resume traces, with official result.
 - [Task 5](task5/): main and worker/resume traces, with late-submission fields

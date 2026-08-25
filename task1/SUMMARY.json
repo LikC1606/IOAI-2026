@@ -5,6 +5,7 @@
   "competition": "ioai-2026-task-1-westlake-nlp-24",
   "account_owner": "researai",
   "formal_run": {
+    "scope": "historical_formal_run_audit_only; not the canonical autonomous rollout",
     "joined_at_utc": "2026-08-05T09:20:36.326Z",
     "agent_run_deadline_utc": "2026-08-05T10:30:00.000Z",
     "official_competition_deadline_utc": "2026-08-05T10:50:00.000Z",
@@ -25,6 +26,27 @@
     "candidate_id": "candidate-prefix-identity-b5aad75d324f",
     "remote_baseline_kernel": "researai/ioai-task-1-prefix-baseline",
     "remote_baseline_scored_submission": false
+  },
+  "canonical_autonomous_rollout": {
+    "trace_path": "evidence/reproduction-120m/rollout.jsonl",
+    "run_kind": "later_reproduction_120m",
+    "autonomy_status": "fully_autonomous_no_live_human_intervention",
+    "run_window_start_utc": "2026-08-05T16:25:50.693Z",
+    "boundary_utc_exclusive": "2026-08-05T18:25:50.634Z",
+    "post_deadline": true,
+    "ranking_eligible": false,
+    "manual_human_prompt_events_included": 0,
+    "user_prompt_classes": {
+      "startup_instructions": 1,
+      "organizer_starter_prompt": 1,
+      "preconfigured_runtime_resume_template": 1
+    },
+    "submission_id": 55277782,
+    "candidate": "balanced_edge_fallback_v5",
+    "public_score": 0.74121,
+    "local_cv": 0.7676212811096714,
+    "private_score": null,
+    "scope_note": "Complete observable rollout with no live human method, target-score, forced-submission, or custom continuation prompt; the run began after the official deadline, so this is a non-ranking reproduction result."
   },
   "agent_executed_result": {
     "submission_id": 55267607,
