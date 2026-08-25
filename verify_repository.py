@@ -1,6 +1,7 @@
 """Verify task manifests, core score claims, and autonomous trace material."""
 from __future__ import annotations
 
+import csv
 import hashlib
 import json
 import re
@@ -527,6 +528,149 @@ def verify_task3_package() -> dict[str, object]:
     }
 
 
+def _verify_gpu_notebook_metadata(
+    metadata: dict[str, object], competition: str, kernel: str
+) -> None:
+    assert metadata["id"] == kernel
+    assert metadata["is_private"] is True
+    assert metadata["enable_gpu"] is True
+    assert metadata["enable_internet"] is False
+    assert metadata["machine_shape"] == "NvidiaTeslaT4"
+    assert metadata["dataset_sources"] == ["kamalkhan/ioai-2026-wheel-dataset"]
+    assert metadata["competition_sources"] == [competition]
+    assert metadata["kernel_sources"] == []
+    assert metadata["model_sources"] == []
+
+
+def verify_task4_artifacts() -> dict[str, object]:
+    """Verify the archived Task 4 source/log and hash-only large-output chain."""
+    root = ROOT / "task4"
+    source = root / "notebooks/REMOTE_CURRENT_V4.py"
+    local_source = root / "notebooks/script.py"
+    log_path = root / "remote/V4_KERNEL.log"
+    provenance = json.loads(
+        (root / "remote/V4_OUTPUT_PROVENANCE.json").read_text(encoding="utf-8")
+    )
+    final = json.loads(
+        (root / "remote/FINAL_ACCOUNT_RESULTS.json").read_text(encoding="utf-8")
+    )
+    assert source.read_bytes() == local_source.read_bytes()
+    assert sha256(source) == "d467bc5a1e7c83ae7da780aaf01fb6ac001fd326e514495cae3a9279b7b6301b"
+    assert sha256(log_path) == "bc7cfde1adb09278a12c9d623422d07039f3bdac3afe22c5041ea5653832b535"
+    assert provenance == {
+        "competition": "ioai-2026-task-4-westlake-nlp-24",
+        "kernel": "researai/ioai-2026-task-4-westlake-nlp-24-solution",
+        "version": 4,
+        "submission_ref": 55316818,
+        "remote_filename": "submission.csv",
+        "size_bytes": 190117536,
+        "sha256": "bdb202711d6494bc94c331d549b0fa7956aa1d9eb585c247ae0dfce723f76542",
+        "rows": 200,
+        "columns": ["id", "delta_a", "delta_b"],
+        "remote_runtime_seconds": 316,
+        "public_score": 98.41,
+        "stored_in_compact_package": False,
+        "reason_not_stored": provenance["reason_not_stored"],
+    }
+    summary = json.loads((root / "SUMMARY.json").read_text(encoding="utf-8"))
+    assert summary["official_final_submission_refs"] == [provenance["submission_ref"]]
+    assert summary["official_final_public_score"] == provenance["public_score"]
+    assert summary["official_final_trace_alignment"] is True
+    assert final["official_final_result"]["submission_refs"] == [provenance["submission_ref"]]
+    assert final["official_final_result"]["public_score"] == provenance["public_score"]
+    assert final["autonomous_and_official_deadline_best"]["seconds_before_official_deadline"] > 0
+    local_metadata = json.loads(
+        (root / "notebooks/kernel-metadata.json").read_text(encoding="utf-8")
+    )
+    remote_metadata = json.loads(
+        (root / "notebooks/REMOTE_CURRENT_METADATA.json").read_text(encoding="utf-8")
+    )
+    for metadata in (local_metadata, remote_metadata):
+        _verify_gpu_notebook_metadata(
+            metadata,
+            "ioai-2026-task-4-westlake-nlp-24",
+            "researai/ioai-2026-task-4-westlake-nlp-24-solution",
+        )
+    log = json.loads(log_path.read_text(encoding="utf-8"))
+    messages = "".join(str(item.get("data", "")) for item in log)
+    assert "Device: cuda:0" in messages
+    assert "completed 200 of 200 rows" in messages
+    assert "wrote /kaggle/working/submission.csv with 200 rows 190117536 bytes" in messages
+    max_time = max(float(item["time"]) for item in log)
+    assert max_time < 600
+    return {
+        "all_ok": True,
+        "source_exact": True,
+        "metadata_contract": True,
+        "remote_log_runtime_seconds": max_time,
+        "remote_output_in_repository": False,
+        "remote_output_provenance_sha256": provenance["sha256"],
+        "limitation": "exact 190117536-byte CSV is hash-only in this compact repository",
+    }
+
+
+def verify_task5_artifacts() -> dict[str, object]:
+    """Verify exact archived Task 5 v6 output/log and trace-preserved source."""
+    root = ROOT / "task5"
+    provenance = json.loads((root / "V6_SOURCE_PROVENANCE.json").read_text(encoding="utf-8"))
+    source = root / provenance["source"]["path"]
+    csv_path = root / provenance["remote_result"]["output_path"]
+    log_path = root / provenance["remote_result"]["log_path"]
+    assert source.stat().st_size == provenance["source"]["size_bytes"]
+    assert sha256(source) == provenance["source"]["sha256"]
+    assert provenance["preserved_run_copy"]["byte_identical_to_packaged_source"] is True
+    assert provenance["preserved_run_copy"]["sha256_at_package_audit"] == sha256(source)
+    assert sha256(csv_path) == provenance["remote_result"]["output_sha256"]
+    assert sha256(log_path) == provenance["remote_result"]["log_sha256"]
+    with csv_path.open(newline="", encoding="utf-8") as handle:
+        reader = csv.DictReader(handle)
+        assert reader.fieldnames == ["id", "boundary_char_index"]
+        rows = list(reader)
+    assert len(rows) == 760
+    assert len({row["id"] for row in rows}) == 760
+    assert all(
+        row["boundary_char_index"].lstrip("-").isdigit()
+        and int(row["boundary_char_index"]) >= 0
+        for row in rows
+    )
+    final = json.loads(
+        (root / "remote/FINAL_ACCOUNT_RESULTS.json").read_text(encoding="utf-8")
+    )
+    summary = json.loads((root / "SUMMARY.json").read_text(encoding="utf-8"))
+    assert summary["official_final_submission_refs"] == [provenance["submission_ref"]]
+    assert summary["official_final_public_score"] == provenance["remote_result"]["public_score"]
+    assert summary["official_final_trace_alignment"] is True
+    assert final["official_final_result"]["submission_refs"] == [provenance["submission_ref"]]
+    assert final["official_final_result"]["public_score"] == provenance["remote_result"]["public_score"]
+    assert final["official_deadline_best_public_and_private"]["submitted_at_utc"] == (
+        provenance["remote_result"]["submitted_at_utc"]
+    )
+    for metadata_path in (
+        root / "notebooks/kernel-metadata.json",
+        root / "notebooks/REMOTE_CURRENT_METADATA.json",
+    ):
+        _verify_gpu_notebook_metadata(
+            json.loads(metadata_path.read_text(encoding="utf-8")),
+            "ioai-2026-task-5-westlake-nlp-24",
+            "researai/ioai-2026-ghost-of-the-machine-solution",
+        )
+    log = json.loads(log_path.read_text(encoding="utf-8"))
+    messages = "".join(str(item.get("data", "")) for item in log)
+    assert "device=cuda:0 gpu=Tesla T4" in messages
+    assert "wrote /kaggle/working/submission.csv with 760 rows" in messages
+    max_time = max(float(item["time"]) for item in log)
+    assert max_time < 600
+    return {
+        "all_ok": True,
+        "source_hash_and_trace_provenance": True,
+        "csv_hash_and_contract": True,
+        "rows": 760,
+        "metadata_contract": True,
+        "remote_log_runtime_seconds": max_time,
+        "limitation": provenance["limitation"],
+    }
+
+
 def verify_cross_task_rule_audit() -> dict[str, object]:
     audit = json.loads((ROOT / "RULE_COMPLIANCE_AUDIT.json").read_text(encoding="utf-8"))
     assert audit["all_six_strictly_compliant_claim_supported"] is False
@@ -717,6 +861,8 @@ def main() -> None:
     report["later_reproduction_material"] = verify_reproduction_material()
     report["task1_package_replay"] = verify_task1_package()
     report["task3_package_replay"] = verify_task3_package()
+    report["task4_artifact_chain"] = verify_task4_artifacts()
+    report["task5_artifact_chain"] = verify_task5_artifacts()
     report["task6_exact_artifacts"] = verify_task6_artifacts()
     report["cross_task_rule_audit"] = verify_cross_task_rule_audit()
     report["publication_safety"] = verify_publication_safety()
