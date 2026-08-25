@@ -29,6 +29,12 @@ credentials and private endpoints. It should print `"all_ok": true`.
 The repository must remain private while the restricted Task 3 competition
 bundle is present; see `task3/DATA_PROVENANCE.md`.
 
+In the verifier output, `package_positive_claim` is deliberately scope-labeled
+and is separate from `final_account_result`. In particular, Task 1's positive
+claim is the separately disclosed post-supervision/post-deadline Agent-executed
+result, while Task 2's is the bounded pre-boundary formal result; neither field
+is presented as those accounts' official final or as the later reproduction.
+
 The extraction cross-check is deliberately explicit: each `taskN/SUMMARY.json`
 contains an `extraction_summary_binding` with the source hash, competition
 slug, deadline, account submission count, post-deadline count, captured
@@ -82,7 +88,10 @@ make the minimum factual findings first and defer only the policy questions:
   `AUTONOMOUS_TRACE_INDEX.json`, and `AUTONOMOUS_MATERIAL_MANIFEST.sha256`.
 - Official rules, Starter Prompts, and Continuation Prompts: the
   `official_sources` arrays in `ORGANIZER_SUBMISSION.json` point to the exact
-  per-task snapshots; these are checked by `verify_repository.py`.
+  per-task snapshots; these are checked by `verify_repository.py`. Task 3's
+  exact continuation is also available directly at
+  `task3/official/CONTINUE_PROMPT_EXACT.md`, with byte equality checked against
+  the full official-page snapshot.
 - Later Task 1/2 reproductions: `REPRODUCTION_TRACE_MATERIAL.md`,
   `REPRODUCTION_TRACE_INDEX.json`, and `REPRODUCTION_COSTS.json`.
 - Supplemental bounded formal prefixes for Tasks 1–2:

@@ -20,6 +20,15 @@ EXPECTED = {
     6: (55357080, 75.0154),
 }
 
+PACKAGE_POSITIVE_CLAIM_SCOPES = {
+    1: "separately_disclosed_agent_executed_after_supervision_and_official_deadline",
+    2: "supplemental_exact_prompt_preboundary_formal_result_not_official_final",
+    3: "trace_aligned_exact_prompt_official_final",
+    4: "trace_aligned_non_exact_prompt_official_final",
+    5: "trace_aligned_exact_prompt_official_final",
+    6: "trace_aligned_exact_prompt_official_final",
+}
+
 FINAL_RESULTS = {
     1: {
         "source_sha256": "922375f34f447965c28bf7d7d089427376cac9e00afee2e739360f6275b60c04",
@@ -1017,6 +1026,18 @@ def verify_cross_task_rule_audit() -> dict[str, object]:
         )
         assert prompt["live_kaggle_page_matches_repository_source"] is True
         assert prompt["no_live_human_prompt_events_included"] is True
+        if task_number == 3:
+            official_pages = json.loads(
+                (ROOT / "task3/official/OFFICIAL_PAGES_FULL.json").read_text(encoding="utf-8")
+            )
+            continuation = next(
+                item["content"]
+                for item in official_pages
+                if item.get("name") == "Continuation Prompt"
+            )
+            assert (
+                ROOT / "task3/official/CONTINUE_PROMPT_EXACT.md"
+            ).read_text(encoding="utf-8") == continuation
 
     assert tasks["task1"]["official_final_trace_alignment"] is False
     assert tasks["task2"]["official_final_trace_alignment"] is False
@@ -1356,7 +1377,11 @@ def main() -> None:
             )
         task_report = {
             "manifest_files": verify_manifest(root),
-            "recorded_score": score,
+            "package_positive_claim": {
+                "scope": PACKAGE_POSITIVE_CLAIM_SCOPES[task],
+                "submission_refs": submission if isinstance(submission, list) else [submission],
+                "public_score": score,
+            },
         }
         task_report["final_account_result"] = verify_final_account_result(task, summary)
         report["tasks"][f"task{task}"] = task_report
@@ -1412,6 +1437,7 @@ def main() -> None:
         "task3": [
             "task3/official/OFFICIAL_PAGES_FULL.json",
             "task3/official/STARTER_PROMPT_SUBSTITUTED.md",
+            "task3/official/CONTINUE_PROMPT_EXACT.md",
             "task3/official/OVERVIEW_WORKING_COPY.md",
             "task3/official/SUBMISSION_WORKING_COPY.md",
         ],

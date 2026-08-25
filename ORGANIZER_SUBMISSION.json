@@ -43,6 +43,7 @@
       "official_sources": [
         "task3/official/OFFICIAL_PAGES_FULL.json",
         "task3/official/STARTER_PROMPT_SUBSTITUTED.md",
+        "task3/official/CONTINUE_PROMPT_EXACT.md",
         "task3/official/OVERVIEW_WORKING_COPY.md",
         "task3/official/SUBMISSION_WORKING_COPY.md"
       ],

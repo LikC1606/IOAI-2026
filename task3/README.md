@@ -36,6 +36,8 @@ Start with these documents:
 - `../FINAL_SUBMISSION_RESULTS.md`: official account-result reconciliation.
 - `AUTONOMY_BOUNDARY.md`: exact inclusion boundary and input audit.
 - `SUBMISSION_TIMELINE.md`: all autonomous remote submissions and scores.
+- `official/CONTINUE_PROMPT_EXACT.md`: direct human-readable copy of the exact
+  Continuation Prompt extracted from `official/OFFICIAL_PAGES_FULL.json`.
 - `COMPLIANCE.md`: rules-to-evidence audit and candid limitations.
 - `REPORT_COMPLIANCE.md`: audit of the historical source-header reports.
 - `SUPPLEMENTARY_TECHNICAL_REPORT.md`: nine-paragraph explanation of v8 with
