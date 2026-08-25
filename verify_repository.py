@@ -445,6 +445,18 @@ def verify_task6_artifacts() -> dict[str, object]:
     rule_audit = json.loads(
         (task_root / "RULE_DIFFERENCE_AUDIT.json").read_text(encoding="utf-8")
     )
+    summary = json.loads((task_root / "SUMMARY.json").read_text(encoding="utf-8"))
+    assert summary["official_final_submission_refs"] == [provenance["submission_ref"]]
+    assert summary["official_final_public_score"] == provenance["public_score"]
+    assert summary["official_final_private_score"] == provenance["private_score"]
+    assert summary["strict_exact_organizer_prompt_text_conformance"] is True
+    assert summary["exact_v3_artifacts"]["provenance"] == "ARTIFACT_PROVENANCE.json"
+    assert summary["rule_difference_audit"] == "RULE_DIFFERENCE_AUDIT.json"
+    assert summary["batch_dependence_fixture"] == result["batch_dependence"]
+    assert summary["historical_report_factual_error_disclosed"] is True
+    assert summary["local_gpu_accounting_status"] == (
+        "v3_candidate_31.03_seconds_known_exhaustive_total_unavailable"
+    )
     assert rule_audit["statuses"]["result.trace_alignment"] == (
         "evidence_supported_compliant"
     )
@@ -573,9 +585,31 @@ def verify_task4_artifacts() -> dict[str, object]:
         "reason_not_stored": provenance["reason_not_stored"],
     }
     summary = json.loads((root / "SUMMARY.json").read_text(encoding="utf-8"))
+    rule_audit = json.loads((root / "RULE_DIFFERENCE_AUDIT.json").read_text(encoding="utf-8"))
+    rule_statuses = {
+        item["rule_id"]: item["status"] for item in rule_audit["findings"]
+    }
+    audited = rule_audit["audited_final_submission"]
+    assert rule_statuses["prompt.exact_text"] == "disclosed_deviation"
+    assert rule_statuses["submission.folder_two_files"] == (
+        "disclosed_process_deviation_remote_artifact_unaffected"
+    )
+    assert rule_statuses["resources.external_web_research"] == (
+        "informational_method_background_not_a_compliance_issue"
+    )
+    assert rule_statuses["hardware.local_development"] == "jury_interpretation_risk"
+    assert audited["submission_ref"] == provenance["submission_ref"]
+    assert audited["kernel_version"] == provenance["version"] == 4
+    assert audited["source_sha256"] == sha256(source)
+    assert audited["output_sha256"] == provenance["sha256"]
+    assert audited["public_score"] == provenance["public_score"]
+    assert audited["private_score"] == final["official_final_result"]["private_score"]
     assert summary["official_final_submission_refs"] == [provenance["submission_ref"]]
     assert summary["official_final_public_score"] == provenance["public_score"]
+    assert summary["official_final_private_score"] == provenance.get("private_score", audited["private_score"])
     assert summary["official_final_trace_alignment"] is True
+    assert summary["strict_exact_organizer_prompt_text_conformance"] is False
+    assert summary["rule_difference_audit"] == "RULE_DIFFERENCE_AUDIT.json"
     assert final["official_final_result"]["submission_refs"] == [provenance["submission_ref"]]
     assert final["official_final_result"]["public_score"] == provenance["public_score"]
     assert final["autonomous_and_official_deadline_best"]["seconds_before_official_deadline"] > 0
@@ -703,6 +737,17 @@ def verify_task5_artifacts() -> dict[str, object]:
         (root / "remote/FINAL_ACCOUNT_RESULTS.json").read_text(encoding="utf-8")
     )
     summary = json.loads((root / "SUMMARY.json").read_text(encoding="utf-8"))
+    compliance = (root / "COMPLIANCE.md").read_text(encoding="utf-8")
+    assert provenance["classification"] == (
+        "preserved formal-run source; not independently redownloaded historical source"
+    )
+    assert summary["historical_remote_source_retrievable"] is False
+    assert summary["historical_remote_output_included"] is True
+    assert "HTTP 403" in provenance["limitation"]
+    assert "independent post-run source download" in provenance["limitation"]
+    assert "HTTP 403" in compliance
+    assert "preserved from the formal run" in compliance
+    assert "source is\ntherefore classified as the source preserved from the formal run" in compliance
     assert summary["official_final_submission_refs"] == [provenance["submission_ref"]]
     assert summary["official_final_public_score"] == provenance["remote_result"]["public_score"]
     assert summary["official_final_trace_alignment"] is True
@@ -784,14 +829,88 @@ def verify_cross_task_rule_audit() -> dict[str, object]:
     } == tasks["task3"]["submission_counts"]
     assert tasks["task4"]["strict_exact_organizer_prompt_text_conformance"] is False
     assert tasks["task4"]["selected_trace_files"] == 12
-    assert json.loads((ROOT / "task4/SUMMARY.json").read_text(encoding="utf-8"))[
-        "canonical_trace_files"
-    ] == tasks["task4"]["selected_trace_files"]
+    task4_summary = json.loads((ROOT / "task4/SUMMARY.json").read_text(encoding="utf-8"))
+    task4_rule = json.loads((ROOT / "task4/RULE_DIFFERENCE_AUDIT.json").read_text(encoding="utf-8"))
+    task4_provenance = json.loads(
+        (ROOT / "task4/remote/V4_OUTPUT_PROVENANCE.json").read_text(encoding="utf-8")
+    )
+    task4_final = json.loads(
+        (ROOT / "task4/remote/FINAL_ACCOUNT_RESULTS.json").read_text(encoding="utf-8")
+    )
+    assert task4_summary["canonical_trace_files"] == tasks["task4"]["selected_trace_files"]
+    assert task4_summary["rule_difference_audit"] == "RULE_DIFFERENCE_AUDIT.json"
+    assert task4_rule["audited_final_submission"]["submission_ref"] == task4_summary[
+        "official_final_submission_refs"
+    ][0]
+    assert task4_summary["official_final_submission_refs"][0] == task4_provenance[
+        "submission_ref"
+    ]
+    assert task4_provenance["submission_ref"] == task4_final["official_final_result"][
+        "submission_refs"
+    ][0]
+    assert task4_rule["audited_final_submission"]["source_sha256"] == sha256(
+        ROOT / "task4/notebooks/REMOTE_CURRENT_V4.py"
+    )
+    assert task4_rule["audited_final_submission"]["output_sha256"] == task4_provenance[
+        "sha256"
+    ]
+    assert task4_rule["audited_final_submission"]["public_score"] == task4_provenance[
+        "public_score"
+    ]
+    assert task4_rule["audited_final_submission"]["private_score"] == task4_final[
+        "official_final_result"
+    ]["private_score"]
+    task4_statuses = {item["rule_id"]: item["status"] for item in task4_rule["findings"]}
+    assert task4_statuses["prompt.exact_text"] == "disclosed_deviation"
+    assert task4_statuses["submission.folder_two_files"] == (
+        "disclosed_process_deviation_remote_artifact_unaffected"
+    )
+    assert task4_statuses["resources.external_web_research"] == (
+        "informational_method_background_not_a_compliance_issue"
+    )
+    assert task4_statuses["hardware.local_development"] == "jury_interpretation_risk"
+    assert {
+        "substantive_non_exact_continuation",
+        "transient_local_push_folder_pycache",
+        "two_arxiv_searches_retained_as_provenance_not_a_method_research_violation",
+        "local_h100_hardware_scope_interpretation",
+    }.issubset(set(tasks["task4"]["disclosures"]))
     assert tasks["task5"]["official_final_trace_alignment"] is True
     assert tasks["task6"]["batch_dependence_fixture"]["final_prediction_changes"] == 5
-    assert json.loads((ROOT / "task6/SUMMARY.json").read_text(encoding="utf-8"))[
-        "batch_dependence_fixture"
-    ] == tasks["task6"]["batch_dependence_fixture"]
+    task5_summary = json.loads((ROOT / "task5/SUMMARY.json").read_text(encoding="utf-8"))
+    task5_provenance = json.loads((ROOT / "task5/V6_SOURCE_PROVENANCE.json").read_text(encoding="utf-8"))
+    task5_compliance = (ROOT / "task5/COMPLIANCE.md").read_text(encoding="utf-8")
+    assert task5_provenance["classification"] == (
+        "preserved formal-run source; not independently redownloaded historical source"
+    )
+    assert task5_summary["historical_remote_source_retrievable"] is False
+    assert "HTTP 403" in task5_provenance["limitation"]
+    assert "HTTP 403" in task5_compliance
+    assert {
+        "external_literature_used_as_method_background_not_treated_as_compliance_issue",
+        "historical_v6_source_preserved_from_trace_but_not_independently_redownloaded",
+        "exhaustive_local_h100_runtime_unavailable",
+    }.issubset(set(tasks["task5"]["disclosures"]))
+    task6_summary = json.loads((ROOT / "task6/SUMMARY.json").read_text(encoding="utf-8"))
+    task6_rule = json.loads((ROOT / "task6/RULE_DIFFERENCE_AUDIT.json").read_text(encoding="utf-8"))
+    assert task6_summary["batch_dependence_fixture"] == tasks["task6"]["batch_dependence_fixture"]
+    assert task6_summary["rule_difference_audit"] == "RULE_DIFFERENCE_AUDIT.json"
+    assert task6_summary["historical_report_factual_error_disclosed"] is True
+    assert task6_rule["statuses"]["result.trace_alignment"] == "evidence_supported_compliant"
+    assert task6_rule["statuses"]["prompt.exact_text"] == "evidence_supported_compliant"
+    assert task6_rule["statuses"]["model.evaluator_batch_dependence"] == (
+        "measured_technical_behavior_not_treated_as_compliance_issue"
+    )
+    assert task6_rule["statuses"]["protected_field.hidden_geometry"] == (
+        "measured_technical_behavior_not_treated_as_compliance_issue"
+    )
+    assert task6_rule["statuses"]["source.technical_report"] == "disclosed_factual_error"
+    assert {
+        "evaluator_batch_dependent_predictions_measured_not_treated_as_violation",
+        "hidden_geometry_batch_context_measured_not_treated_as_compliance_issue",
+        "historical_report_dropout_and_range_error",
+        "exhaustive_local_h100_runtime_unavailable",
+    }.issubset(set(tasks["task6"]["disclosures"]))
     for task in ("task1", "task2", "task3"):
         assert audit["tasks"][task]["informational_disclosures"] == [
             "method_background_research_not_treated_as_compliance_issue"
