@@ -618,6 +618,27 @@ def main() -> None:
             "manifest": f"task{number}/MANIFEST.sha256",
         }
         assert all((ROOT / path).is_file() for path in paths.values()), task
+    assert checklist["special_evidence"] == {
+        "tasks1_2_reproductions": [
+            "REPRODUCTION_TRACE_MATERIAL.md",
+            "REPRODUCTION_TRACE_INDEX.json",
+            "REPRODUCTION_COSTS.json",
+        ],
+        "task4_supplemental_trace_and_rule_audit": [
+            "task4/evidence/SUPPLEMENTAL_ROLLOUT_PROVENANCE.json",
+            "task4/RULE_DIFFERENCE_AUDIT.md",
+        ],
+        "task6_exact_artifact_chain": [
+            "task6/ARTIFACT_PROVENANCE.json",
+            "task6/RULE_DIFFERENCE_AUDIT.md",
+            "task6/evidence/EVALUATOR_BATCHING_PROVENANCE.json",
+        ],
+    }
+    assert all(
+        (ROOT / path).is_file()
+        for paths in checklist["special_evidence"].values()
+        for path in paths
+    )
     assert checklist["requirements"]["cross_task_rule_compliance"][
         "all_six_strictly_compliant_claim_supported"
     ] is False

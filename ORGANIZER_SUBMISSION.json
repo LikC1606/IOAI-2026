@@ -52,6 +52,22 @@
       "manifest": "task6/MANIFEST.sha256"
     }
   },
+  "special_evidence": {
+    "tasks1_2_reproductions": [
+      "REPRODUCTION_TRACE_MATERIAL.md",
+      "REPRODUCTION_TRACE_INDEX.json",
+      "REPRODUCTION_COSTS.json"
+    ],
+    "task4_supplemental_trace_and_rule_audit": [
+      "task4/evidence/SUPPLEMENTAL_ROLLOUT_PROVENANCE.json",
+      "task4/RULE_DIFFERENCE_AUDIT.md"
+    ],
+    "task6_exact_artifact_chain": [
+      "task6/ARTIFACT_PROVENANCE.json",
+      "task6/RULE_DIFFERENCE_AUDIT.md",
+      "task6/evidence/EVALUATOR_BATCHING_PROVENANCE.json"
+    ]
+  },
   "requirements": {
     "execution_traces_all_six_tasks": {
       "status": "complete_selected_observable_prefixes_with_provenance_limits",
