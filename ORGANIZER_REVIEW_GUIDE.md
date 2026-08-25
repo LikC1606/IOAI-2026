@@ -91,7 +91,9 @@ make the minimum factual findings first and defer only the policy questions:
   `task6/RULE_DIFFERENCE_AUDIT.md`, `task6/RULE_DIFFERENCE_AUDIT.json`, and
   `task6/evidence/EVALUATOR_BATCHING_PROVENANCE.json`.
 - Extraction archive: `KAGGLE_EXTRACTION_DELIVERY.json` and the linked Drive
-  archive. Its archive hash and size are recorded there and in the verifier.
+  archive. Its archive hash and size are recorded there and in the verifier;
+  the delivery record also contains a live HTTP 200 HEAD check with matching
+  `Content-Length`, filename, and byte-range support.
 - Final notebook/output chains: Task 2 is verified from the autonomous eligible
   v2 source, exact 7,200-row CSV, metadata, log, and score record. Task 4 is
   verified from its exact source,

@@ -21,7 +21,17 @@
   "google_drive": {
     "file_id": "1c9yRn5SUo6LOPDrHLrAVjj-9JLFti9Vz",
     "web_view_link": "https://drive.google.com/file/d/1c9yRn5SUo6LOPDrHLrAVjj-9JLFti9Vz/view?usp=drivesdk",
-    "remote_name_and_size_verified": true
+    "remote_name_and_size_verified": true,
+    "live_head_check": {
+      "checked_utc": "2026-08-25T20:56:21Z",
+      "view_http_status": 200,
+      "download_get_http_status": 200,
+      "download_head_http_status": 200,
+      "content_length_bytes": 496870419,
+      "content_type": "application/octet-stream",
+      "content_disposition_filename": "ioai-kaggle-fetch-researai-20260813.tar.gz",
+      "accept_ranges": "bytes"
+    }
   },
   "repository_summary": "KAGGLE_EXTRACTION_SUMMARY.json",
   "covered_competitions": [

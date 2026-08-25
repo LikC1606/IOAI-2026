@@ -693,6 +693,26 @@ def verify_formal_prefix_audit() -> dict[str, object]:
             ROOT / spec["starter"]
         )
         assert item["provenance_file"] == f"{task}/ROLLOUT_PROVENANCE.json"
+        provenance = json.loads(
+            (ROOT / item["provenance_file"]).read_text(encoding="utf-8")
+        )
+        if task == "task1":
+            provenance_rollout = provenance["formal_solver"]
+            assert provenance["supervising_controller"]["prompt_body_in_repository"] is False
+        else:
+            assert provenance["provenance"]["boundary_prompt_body_in_repository"] is False
+            assert provenance["provenance"]["causal_suffix_in_repository"] is False
+            provenance_rollout = provenance["provenance"]["rollouts"][0]
+        assert provenance_rollout["filename"] == path.name
+        assert provenance_rollout["redacted_sha256"] == spec["trace_sha256"]
+        assert provenance_rollout["kept_events"] == spec["events"]
+        assert provenance_rollout["last_timestamp"] == item["last_timestamp_utc"]
+        assert provenance_rollout["first_timestamp"] == item["first_timestamp_utc"]
+        if task == "task1":
+            assert provenance_rollout["boundary_utc_exclusive"] == spec["boundary"]
+            assert provenance_rollout["excluded_post_boundary_suffix"]["content_in_repository"] is False
+        else:
+            assert provenance["provenance"]["boundary_utc"] == spec["boundary"]
 
     task2_result = audit["tasks"]["task2"]["preboundary_submission"]
     assert task2_result == {
@@ -1284,6 +1304,13 @@ def main() -> None:
     assert delivery["archive"]["entry_count"] == 1401
     assert delivery["archive"]["sha256"] == "eb14e52057c3cfca21972993fb73c2addaf9f214abc9c6f38b88bca97d93fe3c"
     assert delivery["google_drive"]["file_id"] == "1c9yRn5SUo6LOPDrHLrAVjj-9JLFti9Vz"
+    live_drive = delivery["google_drive"]["live_head_check"]
+    assert live_drive["view_http_status"] == 200
+    assert live_drive["download_get_http_status"] == 200
+    assert live_drive["download_head_http_status"] == 200
+    assert live_drive["content_length_bytes"] == delivery["archive"]["size_bytes"]
+    assert live_drive["content_disposition_filename"] == delivery["archive"]["filename"]
+    assert live_drive["accept_ranges"] == "bytes"
     checklist = json.loads((ROOT / "ORGANIZER_SUBMISSION.json").read_text(encoding="utf-8"))
     assert checklist["status"] == (
         "complete_evidence_package_with_known_compliance_and_cost_limits"
@@ -1423,6 +1450,10 @@ def main() -> None:
     prompt_requirement = requirements["exact_organizer_prompt_conformance"]
     assert prompt_requirement["strict_exact_prompt_tasks"] == ["task3", "task5", "task6"]
     assert prompt_requirement["non_exact_prompt_tasks"] == ["task1", "task2", "task4"]
+    assert prompt_requirement["supplemental_formal_prefix_exact_prompt_tasks"] == [
+        "task1",
+        "task2",
+    ]
     assert requirements["cross_task_rule_compliance"][
         "all_six_strictly_compliant_claim_supported"
     ] is False

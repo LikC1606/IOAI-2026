@@ -148,6 +148,10 @@
         "task2",
         "task4"
       ],
+      "supplemental_formal_prefix_exact_prompt_tasks": [
+        "task1",
+        "task2"
+      ],
       "note": "No-live-human autonomy and exact-organizer-prompt conformance are separate; organizer/Jury recognition is not self-certified."
     },
     "cross_task_rule_compliance": {
