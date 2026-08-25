@@ -4,6 +4,7 @@ from __future__ import annotations
 import csv
 import hashlib
 import json
+import math
 import re
 import subprocess
 import sys
@@ -113,6 +114,24 @@ EXPECTED_PROMPT_CLASSES = {
     },
 }
 STRICT_EXACT_PROMPT_TASKS = {"task3", "task5", "task6"}
+TOKEN_FIELDS = (
+    "input_tokens",
+    "cached_input_tokens",
+    "cache_write_input_tokens",
+    "output_tokens",
+    "reasoning_output_tokens",
+    "total_tokens",
+)
+
+
+def verify_token_vector(tokens: dict[str, int], context: str) -> None:
+    """Check the arithmetic and monotonicity invariants of token telemetry."""
+    assert all(
+        isinstance(tokens[field], int) and tokens[field] >= 0 for field in TOKEN_FIELDS
+    ), context
+    assert tokens["cached_input_tokens"] <= tokens["input_tokens"], context
+    assert tokens["reasoning_output_tokens"] <= tokens["output_tokens"], context
+    assert tokens["total_tokens"] == tokens["input_tokens"] + tokens["output_tokens"], context
 
 
 def sha256(path: Path) -> str:
@@ -362,8 +381,11 @@ def verify_final_account_result(task: int, summary: dict) -> dict[str, object]:
 def verify_autonomous_material() -> dict[str, int]:
     checked = 0
     manifest = ROOT / "AUTONOMOUS_MATERIAL_MANIFEST.sha256"
+    manifest_paths: set[str] = set()
     for line in manifest.read_text(encoding="utf-8").splitlines():
         expected, relative = line.split(maxsplit=1)
+        assert relative not in manifest_paths, relative
+        manifest_paths.add(relative)
         target = (ROOT / relative).resolve()
         assert target.is_relative_to(ROOT.resolve()), relative
         assert sha256(target) == expected, relative
@@ -395,6 +417,7 @@ def verify_autonomous_material() -> dict[str, int]:
         task_tokens = 0
         for trace in data["trace_files"]:
             path = ROOT / trace["path"]
+            assert trace["path"] in manifest_paths, trace["path"]
             assert sha256(path) == trace["sha256"], trace["path"]
             assert trace["last_timestamp"] < boundary, trace["path"]
             if task in {"task1", "task2"}:
@@ -442,6 +465,7 @@ def verify_autonomous_material() -> dict[str, int]:
     assert not (ROOT / "task6/official/continue.md").exists()
 
     costs = json.loads((ROOT / "AUTONOMOUS_COSTS.json").read_text(encoding="utf-8"))
+    assert costs["schema"] == "ioai.autonomous-execution-costs.v1"
     assert costs["known_token_total_all_tasks"] == tokens
     assert costs["api_cost_total_status"] == (
         "unavailable_no_provider_invoice_or_applicable_public_rate"
@@ -454,10 +478,29 @@ def verify_autonomous_material() -> dict[str, int]:
         "incomplete_local_runtime_and_unavailable_rate"
     )
     assert costs["gpu_cost_usd_total"] is None
+    observed_t4_seconds = sum(
+        float(costs["tasks"][task]["gpu"]["runtime_seconds"])
+        for task in costs["tasks"]
+        if costs["tasks"][task]["gpu"]["accelerator"] == "NvidiaTeslaT4"
+    )
+    assert math.isclose(
+        costs["known_t4_runtime_seconds"], observed_t4_seconds, rel_tol=0, abs_tol=1e-9
+    )
+    assert math.isclose(
+        costs["known_t4_runtime_hours"], costs["known_t4_runtime_seconds"] / 3600,
+        rel_tol=0, abs_tol=1e-12,
+    )
     for task in ("task4", "task5", "task6"):
         gpu = costs["tasks"][task]["gpu"]
         assert gpu["local_development_runtime_seconds"] is None, task
         assert gpu["local_development_gpu_cost_usd"] is None, task
+    for task, data in index["tasks"].items():
+        aggregate = data["token_usage_cumulative_sum_across_traces"]
+        assert aggregate is not None, task
+        verify_token_vector(aggregate, task)
+        assert costs["tasks"][task]["token_usage"] == {
+            field: aggregate[field] for field in TOKEN_FIELDS
+        }, task
     prompt_audit = json.loads(
         (ROOT / "PROMPT_CONFORMANCE_AUDIT.json").read_text(encoding="utf-8")
     )
@@ -871,6 +914,11 @@ def verify_task4_artifacts() -> dict[str, object]:
     assert audited["output_sha256"] == provenance["sha256"]
     assert audited["public_score"] == provenance["public_score"]
     assert audited["private_score"] == final["official_final_result"]["private_score"]
+    version_finding = next(
+        item for item in rule_audit["findings"] if item["rule_id"] == "submission.version_budget"
+    )
+    assert "SUBMISSION_VERSION_AUDIT.json: tasks.task4" in version_finding["evidence"]
+    assert "four captured Task 4 notebook versions" in version_finding["conclusion"]
     assert summary["official_final_submission_refs"] == [provenance["submission_ref"]]
     assert summary["official_final_public_score"] == provenance["public_score"]
     assert summary["official_final_private_score"] == provenance.get("private_score", audited["private_score"])
@@ -1486,6 +1534,8 @@ def verify_kaggle_extraction_summary() -> dict[str, object]:
 def verify_execution_accounting() -> dict[str, int]:
     index = json.loads((ROOT / "EXECUTION_TRACE_INDEX.json").read_text(encoding="utf-8"))
     costs = json.loads((ROOT / "COSTS.json").read_text(encoding="utf-8"))
+    assert index["schema"] == "ioai.execution-trace-index.v1"
+    assert costs["schema"] == "ioai.execution-costs.v1"
     assert costs["api_cost_total_status"] == (
         "unavailable_no_provider_invoice_or_applicable_public_rate"
     )
@@ -1510,19 +1560,38 @@ def verify_execution_accounting() -> dict[str, int]:
         assert cost_task["reasoning_effort"] in {"max", "xhigh"}, task
         assert cost_task["api_cost_usd"] is None, task
         token_usage = cost_task["token_usage"]
-        assert set(token_usage) >= {
-            "input_tokens",
-            "cached_input_tokens",
-            "cache_write_input_tokens",
-            "output_tokens",
-            "reasoning_output_tokens",
-            "total_tokens",
+        assert set(token_usage) >= set(TOKEN_FIELDS), task
+        verify_token_vector(token_usage, task)
+        assert token_usage == {
+            field: data["token_usage_cumulative_sum_across_traces"][field]
+            for field in TOKEN_FIELDS
         }, task
         gpu = cost_task["gpu"]
         assert "accelerator" in gpu and "runtime_seconds" in gpu, task
+        assert float(gpu["runtime_seconds"]) >= 0, task
+        assert math.isclose(
+            float(gpu["runtime_hours"]), float(gpu["runtime_seconds"]) / 3600,
+            rel_tol=0, abs_tol=1e-12,
+        ), task
         assert gpu["gpu_cost_usd"] is None or gpu["gpu_cost_usd"] == 0, task
         task_tokens = data["token_usage_cumulative_sum_across_traces"]["total_tokens"]
         assert costs["tasks"][task]["token_usage"]["total_tokens"] == task_tokens, task
+        # COSTS.json is the public execution-accounting view.  Keep its
+        # per-task model and complete token vector in lockstep with the
+        # autonomous index so a stale summary cannot silently pass on total
+        # tokens alone.
+        public_cost_task = costs["tasks"][task]
+        assert public_cost_task["competition"] == cost_task["competition"], task
+        assert public_cost_task["model_provider"] == cost_task["model_provider"], task
+        assert public_cost_task["model"] == cost_task["model"], task
+        assert public_cost_task["reasoning_effort"] == cost_task["reasoning_effort"], task
+        assert public_cost_task["token_usage"] == token_usage, task
+        public_gpu = public_cost_task["gpu"]
+        assert float(public_gpu["runtime_seconds"]) >= 0, task
+        assert math.isclose(
+            float(public_gpu["runtime_hours"]), float(public_gpu["runtime_seconds"]) / 3600,
+            rel_tol=0, abs_tol=1e-12,
+        ), task
         if task in {"task4", "task5", "task6"}:
             gpu = costs["tasks"][task]["gpu"]
             assert gpu["local_development_runtime_seconds"] is None, task
@@ -1539,8 +1608,11 @@ def verify_reproduction_material() -> dict[str, int]:
     """Verify the separately scoped later Task 1/2 reproduction package."""
     manifest = ROOT / "REPRODUCTION_MATERIAL_MANIFEST.sha256"
     checked = 0
+    manifest_paths: set[str] = set()
     for line in manifest.read_text(encoding="utf-8").splitlines():
         expected, relative = line.split(maxsplit=1)
+        assert relative not in manifest_paths, relative
+        manifest_paths.add(relative)
         target = (ROOT / relative).resolve()
         assert target.is_relative_to(ROOT.resolve()), relative
         assert sha256(target) == expected, relative
@@ -1548,6 +1620,7 @@ def verify_reproduction_material() -> dict[str, int]:
 
     index = json.loads((ROOT / "REPRODUCTION_TRACE_INDEX.json").read_text(encoding="utf-8"))
     costs = json.loads((ROOT / "REPRODUCTION_COSTS.json").read_text(encoding="utf-8"))
+    assert costs["schema"] == "ioai.later-reproduction-costs.v1"
     assert costs["api_cost_usd_total"] is None
     assert costs["gpu_cost_usd_total"] is None
     assert index["schema"] == "ioai.later-reproduction-trace-material.v1"
@@ -1569,9 +1642,11 @@ def verify_reproduction_material() -> dict[str, int]:
         assert cost_task["model"] == "gpt-5.6-sol", task
         assert cost_task["reasoning_effort"] == "max", task
         assert cost_task["api_cost_usd"] is None, task
-        assert cost_task["trace_token_usage"]["total_tokens"] == data[
-            "trace_file"
-        ]["token_usage_cumulative_final"]["total_tokens"], task
+        trace_tokens = data["trace_file"]["token_usage_cumulative_final"]
+        verify_token_vector(trace_tokens, task)
+        assert cost_task["trace_token_usage"] == {
+            field: trace_tokens[field] for field in TOKEN_FIELDS
+        }, task
         assert cost_task["gpu"]["gpu_cost_usd"] is None, task
         assert data["post_deadline"] is True
         assert data["ranking_eligible"] is False
@@ -1581,6 +1656,7 @@ def verify_reproduction_material() -> dict[str, int]:
             assert data["canonical_solution_prefix"] == "task1/evidence/canonical/rollout-solution-prefix.jsonl"
         trace = data["trace_file"]
         path = ROOT / trace["path"]
+        assert trace["path"] in manifest_paths, trace["path"]
         assert sha256(path) == trace["published_sha256"], trace["path"]
         line_count = 0
         max_tokens = None

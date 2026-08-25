@@ -210,8 +210,17 @@ def build() -> dict[str, Any]:
             "submission.version_budget",
             "Use no more than 20 notebook versions; submit each version at most once.",
             "evidence_supported_compliant",
-            "Four versions were created; versions 1, 2, and 4 were submitted once and version 3 was not submitted.",
-            ["task4/records/submissions.jsonl", "task4/remote/KAGGLE_SUBMISSIONS_CURRENT.json"],
+            (
+                "The complete extraction records four captured Task 4 notebook versions "
+                "against the 20-version limit; three competition submissions are present, "
+                "with versions 1, 2, and 4 submitted once and version 3 not submitted. "
+                "No repeated scriptVersionId is present in the extracted Task 4 records."
+            ),
+            [
+                "task4/records/submissions.jsonl",
+                "task4/remote/KAGGLE_SUBMISSIONS_CURRENT.json",
+                "SUBMISSION_VERSION_AUDIT.json: tasks.task4",
+            ],
         ),
         finding(
             "submission.deadline_and_final_selection",
