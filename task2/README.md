@@ -62,3 +62,8 @@ best scored candidate was `tree_film_blend_65_35_full_labels`, submission
 `55277682` (Public LB `0.675`). This is the canonical no-live-human autonomous
 rollout for Task 2, but it is post-deadline and non-ranking; it does not replace
 the official account result.
+
+Prompt-text qualification: the reproduction starter appends a custom
+fresh-run-isolation section, and no continuation occurs in that trace. The run
+is disclosed as no-live-human but not strict exact-organizer-prompt text; see
+`../PROMPT_CONFORMANCE_AUDIT.md`.

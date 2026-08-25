@@ -17,6 +17,7 @@ from pathlib import Path
 from typing import Any
 
 import build_execution_trace_index as trace_tools
+import build_autonomous_trace_material as autonomous_material
 
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -150,15 +151,16 @@ def message_text(payload: dict[str, Any]) -> str:
 
 
 def prompt_class(task: str, text: str) -> str:
-    run = RUNS[task]
-    project = run["project"]
     if text.startswith("# AGENTS.md instructions"):
         return "startup_instructions"
-    if text == (project / "official/start.md").read_text(encoding="utf-8"):
-        return "organizer_starter_prompt"
-    continuation = project / "official/continue.md"
-    if continuation.is_file() and text == continuation.read_text(encoding="utf-8"):
-        return "preconfigured_runtime_resume_template"
+    if text == autonomous_material.exact_organizer_prompt(task, "Starter Prompt"):
+        return "exact_organizer_starter_prompt"
+    if text == autonomous_material.exact_organizer_prompt(task, "Continuation Prompt"):
+        return "exact_organizer_continuation_prompt"
+    if text.startswith("Solve the Kaggle competition"):
+        return "custom_starter_prompt"
+    if text.startswith("Continue solving the Kaggle competition"):
+        return "custom_continuation_prompt"
     return "unclassified_user_prompt"
 
 
@@ -217,9 +219,17 @@ def main() -> None:
         "important_boundary": "These traces are the canonical autonomous rollout selection for Tasks 1/2, but their post-deadline scores do not replace FINAL_SUBMISSION_RESULTS.md or become official-ranking results.",
         "included_prompt_types": [
             "injected startup instructions",
-            "organizer Starter Prompt",
-            "preconfigured runtime resume template without a human method or target",
+            "custom organizer-like starter text retained and marked non-exact",
+            "custom runtime continuation text retained and marked non-exact where present",
         ],
+        "strict_exact_organizer_prompt_text_conformance": False,
+        "compliance_limit": (
+            "Both reproductions are no-live-human runs, but their starter user messages "
+            "append a fresh-run-isolation section not present in the exact organizer Starter "
+            "Prompt. Task 1 also has a custom continuation after its selected submission, "
+            "final answer, and task_complete event. These traces are not claimed to satisfy "
+            "the strict exact-prompt rule."
+        ),
         "redaction": "credentials, private endpoints, secret metadata, and encrypted_content are redacted or replaced by an opaque placeholder",
         "tasks": {},
     }
@@ -231,6 +241,7 @@ def main() -> None:
             "run_kind": run["run_kind"],
             "record_recovery_note": run["record_recovery_note"],
             "canonical_autonomous_trace": True,
+            "strict_exact_organizer_prompt_text_conformance": False,
             "post_deadline": run["post_deadline"],
             "ranking_eligible": run["ranking_eligible"],
             "window": run["window"],
@@ -278,11 +289,14 @@ def main() -> None:
         "using the same configured solver/system, official competition bundle, and",
         "organizer constraints; neither is the original run record.",
         "",
-        "The JSONL retains startup/organizer prompts, visible Agent messages, tool",
+        "The JSONL retains startup and actual user prompts, visible Agent messages, tool",
         "calls, tool outputs, lifecycle events, and cumulative token telemetry.",
         "Opaque encrypted reasoning is replaced by a placeholder; secrets and private",
-        "endpoints are redacted. The Task 1 final continuation is a preconfigured",
-        "runtime-resume template, not a human method or target-score instruction.",
+        "endpoints are redacted. Both starter messages append a custom fresh-run",
+        "isolation section and therefore do not match the organizer Starter Prompt",
+        "exactly. The Task 1 custom continuation is after its selected submission,",
+        "final Agent answer, and task_complete event. No-live-human autonomy is",
+        "reported separately from exact-organizer-prompt conformance.",
         "",
         "| Task | Trace events | User / assistant | Logical calls | `exec` calls | Tokens | Result |",
         "|---|---:|---:|---:|---:|---:|---|",

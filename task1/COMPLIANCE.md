@@ -71,3 +71,8 @@ The later 120-minute reproduction trace is published at
 the canonical no-live-human Task 1 rollout. Its score is still post-deadline
 reference evidence only; it is not an official-ranking result or a replacement
 for the official account reconciliation.
+
+This reproduction is not claimed as strict exact-organizer-prompt text. Its
+starter appends a custom fresh-run-isolation section; its custom continuation
+arrives only after the selected submission, final Agent answer, and
+`task_complete`. See `../PROMPT_CONFORMANCE_AUDIT.md` for hashes and timestamps.

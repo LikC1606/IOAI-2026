@@ -5,9 +5,11 @@
   "important_boundary": "These traces are the canonical autonomous rollout selection for Tasks 1/2, but their post-deadline scores do not replace FINAL_SUBMISSION_RESULTS.md or become official-ranking results.",
   "included_prompt_types": [
     "injected startup instructions",
-    "organizer Starter Prompt",
-    "preconfigured runtime resume template without a human method or target"
+    "custom organizer-like starter text retained and marked non-exact",
+    "custom runtime continuation text retained and marked non-exact where present"
   ],
+  "strict_exact_organizer_prompt_text_conformance": false,
+  "compliance_limit": "Both reproductions are no-live-human runs, but their starter user messages append a fresh-run-isolation section not present in the exact organizer Starter Prompt. Task 1 also has a custom continuation after its selected submission, final answer, and task_complete event. These traces are not claimed to satisfy the strict exact-prompt rule.",
   "redaction": "credentials, private endpoints, secret metadata, and encrypted_content are redacted or replaced by an opaque placeholder",
   "tasks": {
     "task1": {
@@ -16,6 +18,7 @@
       "run_kind": "later_reproduction_120m",
       "record_recovery_note": "The original Task 1 run record was unavailable after a school-server restart. This is a later fresh reproduction using the same configured solver/system, official competition bundle, and organizer constraints; it is not the original run record.",
       "canonical_autonomous_trace": true,
+      "strict_exact_organizer_prompt_text_conformance": false,
       "post_deadline": true,
       "ranking_eligible": false,
       "window": {
@@ -94,18 +97,18 @@
           },
           {
             "timestamp": "2026-08-05T16:25:54.536Z",
-            "class": "organizer_starter_prompt",
+            "class": "custom_starter_prompt",
             "sha256": "d280b73e5f7690416dfb6badbfccb9675c22742e49e0c3777ee50679112bbb6c"
           },
           {
             "timestamp": "2026-08-05T18:25:04.940Z",
-            "class": "preconfigured_runtime_resume_template",
+            "class": "custom_continuation_prompt",
             "sha256": "45767762b1cfb5ef65193cbfef591bf50e33b18883b39fc1e60fbe36005a42b5"
           }
         ],
         "user_prompt_classes": {
-          "organizer_starter_prompt": 1,
-          "preconfigured_runtime_resume_template": 1,
+          "custom_continuation_prompt": 1,
+          "custom_starter_prompt": 1,
           "startup_instructions": 1
         },
         "manual_human_prompt_events_included": 0
@@ -169,6 +172,7 @@
       "run_kind": "later_reproduction_120m",
       "record_recovery_note": "The original Task 2 run record was unavailable after a school-server restart. This is a later fresh reproduction using the same configured solver/system, official competition bundle, and organizer constraints; it is not the original run record.",
       "canonical_autonomous_trace": true,
+      "strict_exact_organizer_prompt_text_conformance": false,
       "post_deadline": true,
       "ranking_eligible": false,
       "window": {
@@ -247,12 +251,12 @@
           },
           {
             "timestamp": "2026-08-05T16:20:11.693Z",
-            "class": "organizer_starter_prompt",
+            "class": "custom_starter_prompt",
             "sha256": "17aa893c998a4344232ac44532c85717e3819d5559544133760b68e2c90f0736"
           }
         ],
         "user_prompt_classes": {
-          "organizer_starter_prompt": 1,
+          "custom_starter_prompt": 1,
           "startup_instructions": 1
         },
         "manual_human_prompt_events_included": 0

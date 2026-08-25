@@ -78,3 +78,7 @@ The requested later 120-minute reproduction is published at
 `0.675`) is the canonical no-live-human Task 2 rollout. It is still
 post-deadline non-ranking reference evidence, not a replacement for the official
 account result.
+
+This reproduction is not claimed as strict exact-organizer-prompt text. Its
+starter appends a custom fresh-run-isolation section; no continuation occurs in
+the reproduction trace. See `../PROMPT_CONFORMANCE_AUDIT.md` for hashes.

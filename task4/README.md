@@ -5,12 +5,19 @@ Competition: `ioai-2026-task-4-westlake-nlp-24`.
 For the consolidated rule, artifact, report-correction, and reproduction audit,
 start with `COMPLIANCE.md`.
 
-The formal run used the organizer Starter Prompt plus a preconfigured generic
-runtime resume template. The resume template did not inject a human-selected
-method, candidate, score target, or forced-submission instruction. The
+The formal run used a formatting-modified copy of the organizer Starter Prompt
+plus a substantive generic runtime resume template that is not the exact
+organizer Continuation Prompt. The resume template did not inject a live
+human-selected method, candidate, score target, or forced-submission
+instruction, but this remains a prompt-text deviation. The
 additional rollout files are autonomous workers and runtime resumes; they are
 included so the multi-agent provenance is inspectable rather than collapsed
 into a single narrative.
+
+Accordingly, this package supports a no-live-human execution claim, not a
+strict exact-organizer-prompt claim. The final selected submission is downstream
+of the custom continuation events. See `../PROMPT_CONFORMANCE_AUDIT.md`; the
+organizer/Jury decides whether the disclosed deviation is recognized.
 
 Eligible submissions:
 

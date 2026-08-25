@@ -68,29 +68,39 @@ FINAL_RESULTS = {
 }
 
 EXPECTED_PROMPT_CLASSES = {
+    "task1": {
+        "custom_continuation_prompt": 1,
+        "custom_starter_prompt": 1,
+        "startup_instructions": 1,
+    },
+    "task2": {
+        "custom_starter_prompt": 1,
+        "startup_instructions": 1,
+    },
     "task3": {
-        "inherited_organizer_starter_prompt": 3,
-        "organizer_starter_prompt": 1,
+        "exact_organizer_starter_prompt": 1,
+        "inherited_exact_organizer_starter_prompt": 3,
         "startup_instructions": 4,
     },
     "task4": {
-        "inherited_organizer_starter_prompt": 4,
-        "inherited_preconfigured_runtime_resume_template": 4,
-        "organizer_starter_prompt": 1,
-        "preconfigured_runtime_resume_template": 6,
+        "custom_continuation_prompt": 6,
+        "custom_starter_prompt": 1,
+        "inherited_custom_continuation_prompt": 4,
+        "inherited_custom_starter_prompt": 4,
         "startup_instructions": 5,
     },
     "task5": {
-        "inherited_organizer_starter_prompt": 13,
-        "organizer_starter_prompt": 1,
+        "exact_organizer_starter_prompt": 1,
+        "inherited_exact_organizer_starter_prompt": 13,
         "startup_instructions": 14,
     },
     "task6": {
-        "inherited_organizer_starter_prompt": 2,
-        "organizer_starter_prompt": 1,
+        "exact_organizer_starter_prompt": 1,
+        "inherited_exact_organizer_starter_prompt": 2,
         "startup_instructions": 3,
     },
 }
+STRICT_EXACT_PROMPT_TASKS = {"task3", "task5", "task6"}
 
 
 def sha256(path: Path) -> str:
@@ -161,10 +171,11 @@ def verify_final_account_result(task: int, summary: dict) -> dict[str, object]:
         assert canonical["post_deadline"] is True
         assert canonical["ranking_eligible"] is False
         assert canonical["manual_human_prompt_events_included"] == 0
+        assert canonical["strict_exact_organizer_prompt_text_conformance"] is False
         assert canonical["user_prompt_classes"] == {
             "startup_instructions": 1,
-            "organizer_starter_prompt": 1,
-            "preconfigured_runtime_resume_template": 1,
+            "custom_starter_prompt": 1,
+            "custom_continuation_prompt": 1,
         }
     elif task == 2:
         assert result["autonomous_result"]["submission_ref"] == 55260695
@@ -176,9 +187,10 @@ def verify_final_account_result(task: int, summary: dict) -> dict[str, object]:
         assert canonical["post_deadline"] is True
         assert canonical["ranking_eligible"] is False
         assert canonical["manual_human_prompt_events_included"] == 0
+        assert canonical["strict_exact_organizer_prompt_text_conformance"] is False
         assert canonical["user_prompt_classes"] == {
             "startup_instructions": 1,
-            "organizer_starter_prompt": 1,
+            "custom_starter_prompt": 1,
         }
     elif task == 3:
         assert result["official_deadline_best_private"] == {
@@ -227,6 +239,9 @@ def verify_autonomous_material() -> dict[str, int]:
     tokens = 0
     for task, data in index["tasks"].items():
         assert data["manual_human_prompt_events_included"] == 0, task
+        assert data["strict_exact_organizer_prompt_text_conformance"] == (
+            task in STRICT_EXACT_PROMPT_TASKS
+        ), task
         assert len(data["user_prompt_audit"]) == data["message_counts"].get("user", 0), task
         boundary = data["boundary"]["exclusive_utc"]
         assert data["canonical_model"] == "gpt-5.6-sol", task
@@ -252,8 +267,10 @@ def verify_autonomous_material() -> dict[str, int]:
                 assert set(data["user_prompt_classes"]).issubset(
                     {
                         "startup_instructions",
-                        "organizer_starter_prompt",
-                        "preconfigured_runtime_resume_template",
+                        "exact_organizer_starter_prompt",
+                        "exact_organizer_continuation_prompt",
+                        "custom_starter_prompt",
+                        "custom_continuation_prompt",
                     }
                 ), task
             task_tokens += trace["token_usage_cumulative_final"]["total_tokens"]
@@ -285,6 +302,17 @@ def verify_autonomous_material() -> dict[str, int]:
 
     costs = json.loads((ROOT / "AUTONOMOUS_COSTS.json").read_text(encoding="utf-8"))
     assert costs["known_token_total_all_tasks"] == tokens
+    prompt_audit = json.loads(
+        (ROOT / "PROMPT_CONFORMANCE_AUDIT.json").read_text(encoding="utf-8")
+    )
+    assert prompt_audit["strict_exact_prompt_tasks"] == ["task3", "task5", "task6"]
+    assert prompt_audit["non_exact_prompt_tasks"] == ["task1", "task2", "task4"]
+    for task, data in prompt_audit["tasks"].items():
+        assert data["trace_prompt_classes"] == index["tasks"][task]["user_prompt_classes"]
+        assert data["strict_exact_organizer_prompt_text_conformance"] == (
+            task in STRICT_EXACT_PROMPT_TASKS
+        )
+        assert data["live_kaggle_page_matches_repository_source"] is True
     return {
         "manifest_files": checked,
         "trace_files": trace_files,
@@ -327,13 +355,16 @@ def verify_reproduction_material() -> dict[str, int]:
     traces = 0
     allowed_prompt_classes = {
         "startup_instructions",
-        "organizer_starter_prompt",
-        "preconfigured_runtime_resume_template",
+        "exact_organizer_starter_prompt",
+        "exact_organizer_continuation_prompt",
+        "custom_starter_prompt",
+        "custom_continuation_prompt",
     }
     for task in ("task1", "task2"):
         data = index["tasks"][task]
         assert data["post_deadline"] is True
         assert data["ranking_eligible"] is False
+        assert data["strict_exact_organizer_prompt_text_conformance"] is False
         trace = data["trace_file"]
         path = ROOT / trace["path"]
         assert sha256(path) == trace["published_sha256"], trace["path"]
@@ -392,7 +423,7 @@ def main() -> None:
     assert delivery["archive"]["sha256"] == "eb14e52057c3cfca21972993fb73c2addaf9f214abc9c6f38b88bca97d93fe3c"
     assert delivery["google_drive"]["file_id"] == "1c9yRn5SUo6LOPDrHLrAVjj-9JLFti9Vz"
     checklist = json.loads((ROOT / "ORGANIZER_SUBMISSION.json").read_text(encoding="utf-8"))
-    assert checklist["status"] == "complete_with_explicit_cost_limits"
+    assert checklist["status"] == "complete_with_explicit_cost_and_prompt_conformance_limits"
     forbidden = ("你让他继续优化 找到高分了再提交", "Extend this run by 35 minutes")
     for path in ROOT.rglob("*"):
         if not path.is_file() or ".git" in path.parts:

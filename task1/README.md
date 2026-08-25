@@ -93,3 +93,9 @@ selected candidate `balanced_edge_fallback_v5` and submission `55277782`
 (Public LB `0.74121`). This is the canonical no-live-human autonomous rollout
 for Task 1, but it is post-deadline and non-ranking; it does not change the
 official account result.
+
+Prompt-text qualification: the reproduction starter appends a custom
+fresh-run-isolation section. A custom continuation also appears, but only after
+the selected submission, final Agent answer, and `task_complete`. The run is
+therefore disclosed as no-live-human but not strict exact-organizer-prompt text;
+see `../PROMPT_CONFORMANCE_AUDIT.md`.

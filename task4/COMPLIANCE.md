@@ -5,10 +5,13 @@ separates facts known at submission time from later platform observations.
 
 ## Eligible scope
 
-The formal solver used the organizer Starter Prompt and a preconfigured generic
-runtime resume template. The template contained no live human method, candidate,
-target-score, or forced-submission instruction. No human method suggestion was
-found in solver inputs.
+The formal solver used a formatting-modified copy of the organizer Starter
+Prompt and a substantive generic runtime resume template rather than the exact
+organizer Continuation Prompt. The template contained no live human method,
+candidate, target-score, or forced-submission instruction, but it remains a
+prompt-text deviation and the final submission is downstream of it. This note
+therefore does not claim strict exact-organizer-prompt compliance; see
+`../PROMPT_CONFORMANCE_AUDIT.md`. Organizer/Jury recognition is not assumed.
 Submission `55316818` was sent at `2026-08-07T06:10:48.923Z`, 251.077 seconds
 before the official Kaggle deadline at `06:15:00Z` and 456.594 seconds before
 the agent-run deadline at `06:18:25.517Z`. Its extracted scores are Public

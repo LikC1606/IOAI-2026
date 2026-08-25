@@ -10,11 +10,14 @@ school-server restart. Each trace below is a later fresh reproduction
 using the same configured solver/system, official competition bundle, and
 organizer constraints; neither is the original run record.
 
-The JSONL retains startup/organizer prompts, visible Agent messages, tool
+The JSONL retains startup and actual user prompts, visible Agent messages, tool
 calls, tool outputs, lifecycle events, and cumulative token telemetry.
 Opaque encrypted reasoning is replaced by a placeholder; secrets and private
-endpoints are redacted. The Task 1 final continuation is a preconfigured
-runtime-resume template, not a human method or target-score instruction.
+endpoints are redacted. Both starter messages append a custom fresh-run
+isolation section and therefore do not match the organizer Starter Prompt
+exactly. The Task 1 custom continuation is after its selected submission,
+final Agent answer, and task_complete event. No-live-human autonomy is
+reported separately from exact-organizer-prompt conformance.
 
 | Task | Trace events | User / assistant | Logical calls | `exec` calls | Tokens | Result |
 |---|---:|---:|---:|---:|---:|---|
@@ -40,8 +43,8 @@ Trace: [`rollout.jsonl`](task1/evidence/reproduction-120m/rollout.jsonl) — 139
 
 Prompt classes:
 
-- `organizer_starter_prompt`: 1
-- `preconfigured_runtime_resume_template`: 1
+- `custom_continuation_prompt`: 1
+- `custom_starter_prompt`: 1
 - `startup_instructions`: 1
 
 Selected reproduction result: submission `55277782`, candidate `balanced_edge_fallback_v5`, Public LB `0.74121`, local CV `0.7676212811096714`.
@@ -57,7 +60,7 @@ Trace: [`rollout.jsonl`](task2/evidence/reproduction-120m/rollout.jsonl) — 106
 
 Prompt classes:
 
-- `organizer_starter_prompt`: 1
+- `custom_starter_prompt`: 1
 - `startup_instructions`: 1
 
 Selected reproduction result: submission `55277682`, candidate `tree_film_blend_65_35_full_labels`, Public LB `0.675`, local CV `0.6713888889`.

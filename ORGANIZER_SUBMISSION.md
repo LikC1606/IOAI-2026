@@ -10,6 +10,7 @@ trace coverage, model/cost fields, and extraction metadata.
 | Execution traces for Tasks 1–6 | Complete | [`AUTONOMOUS_TRACE_MATERIAL.md`](AUTONOMOUS_TRACE_MATERIAL.md), [`AUTONOMOUS_TRACE_INDEX.json`](AUTONOMOUS_TRACE_INDEX.json) |
 | Later two-hour reproduction traces for Tasks 1–2 | Complete, separately scoped | [`REPRODUCTION_TRACE_MATERIAL.md`](REPRODUCTION_TRACE_MATERIAL.md), [`REPRODUCTION_TRACE_INDEX.json`](REPRODUCTION_TRACE_INDEX.json) |
 | Prompts and visible Agent outputs | Complete | Full payloads are in every indexed JSONL trace; prompt classes and hashes are in the index |
+| Exact organizer prompt conformance | Audited; Tasks 1, 2, and 4 are non-exact | [`PROMPT_CONFORMANCE_AUDIT.md`](PROMPT_CONFORMANCE_AUDIT.md), [`PROMPT_CONFORMANCE_AUDIT.json`](PROMPT_CONFORMANCE_AUDIT.json) |
 | Tool calls and tool outputs | Complete | Per-task and per-file counts cover `function_call`, `function_call_output`, `custom_tool_call`, and `custom_tool_call_output` |
 | LLM(s) used | Complete | [`AUTONOMOUS_COSTS.json`](AUTONOMOUS_COSTS.json): `ioai_allowed` / `gpt-5.6-sol`; Tasks 1–4 `max`, Tasks 5–6 `xhigh` |
 | Total API costs | Complete with explicit unavailable-USD status | Exact per-task tokens and total are provided; USD is `null` because no invoice or exact provider/model rate was captured |
@@ -30,6 +31,12 @@ human prompt bodies.
 Hidden chain-of-thought and opaque encrypted reasoning are not published.
 Credentials, private endpoints, and secret metadata are redacted. These
 omissions do not remove observable prompts, Agent responses, or tool envelopes.
+
+No-live-human autonomy is not treated as proof of exact-organizer-prompt
+conformance. Live Kaggle prompt pages were checked for all six tasks. Tasks 3,
+5, and 6 match the exact organizer prompt text in the selected traces. Tasks 1,
+2, and 4 contain custom prompt text and are disclosed as non-exact; this
+repository does not self-certify Jury acceptance.
 
 ## Kaggle extraction archive
 
@@ -68,6 +75,11 @@ constraints, not the lost original run records.
 They preserve the complete observable event streams and the corresponding
 candidate/submission outcomes. Both runs contain no live human method/target
 prompt and are the canonical autonomous rollout selection for Tasks 1 and 2.
+Both reproduction starter messages append a custom fresh-run-isolation section,
+so neither is claimed to satisfy the strict exact Starter Prompt rule. Task 1
+also has a custom continuation, but it arrives after the selected submission,
+final Agent answer, and `task_complete` event and therefore did not cause that
+result. See [`PROMPT_CONFORMANCE_AUDIT.md`](PROMPT_CONFORMANCE_AUDIT.md).
 They occurred after the account's official competition deadline, so their scores
 remain reference/reproduction results, not official-ranking scores, and do not
 replace the official account reconciliation. Their exact token,

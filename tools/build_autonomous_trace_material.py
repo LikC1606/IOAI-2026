@@ -4,6 +4,7 @@ from __future__ import annotations
 
 import hashlib
 import json
+import re
 from collections import Counter
 from pathlib import Path
 from typing import Any
@@ -109,17 +110,29 @@ EXCLUSIONS = {
     ],
 }
 
-STARTER_FILES = {
-    "task1": ROOT / "task1/official/STARTER_PROMPT.md",
-    "task2": ROOT / "task2/official/STARTER_PROMPT.md",
-    "task3": ROOT / "task3/official/STARTER_PROMPT_SUBSTITUTED.md",
-    "task4": ROOT / "task4/official/start.md",
-    "task5": ROOT / "task5/official/start.md",
-    "task6": ROOT / "task6/official/start.md",
+COMPETITIONS = {
+    f"task{i}": f"ioai-2026-task-{i}-westlake-nlp-{60 if i == 6 else 48 if i == 3 else 24}"
+    for i in range(1, 7)
 }
-CONTINUATION_FILES = {
-    "task2": ROOT / "task2/official/CONTINUE_PROMPT.md",
-    "task4": ROOT / "task4/official/continue.md",
+PROMPT_FILE_FALLBACKS = {
+    ("task6", "Starter Prompt"): ROOT / "task6/official/start.md",
+    ("task6", "Continuation Prompt"): ROOT / "task6/official/CONTINUE_PROMPT_EXACT.md",
+}
+PROMPT_CONFORMANCE_NOTES = {
+    "task1": (
+        "The reproduction starter contains a user-requested fresh-run-isolation appendix. "
+        "Its custom continuation occurs after the selected submission, final Agent answer, "
+        "and task_complete event, but the custom starter still prevents an exact-prompt-only claim."
+    ),
+    "task2": (
+        "The reproduction starter contains a user-requested fresh-run-isolation appendix; "
+        "there is no continuation event in this reproduction."
+    ),
+    "task4": (
+        "The injected starter has formatting changes and the six main-runtime continuation "
+        "events use a substantive generic workflow template rather than the exact organizer "
+        "Continuation Prompt. The final selected submission is downstream of those events."
+    ),
 }
 RECOVERY_NOTES = {
     "task1": (
@@ -207,50 +220,59 @@ def message_text(payload: dict[str, Any]) -> str:
     return "\n".join(parts)
 
 
-def classify_prompts(task: str, path: Path, role: str) -> list[dict[str, str]]:
-    messages: list[dict[str, str]] = []
-    starter = STARTER_FILES[task].read_text(encoding="utf-8")
-    continuation = (
-        CONTINUATION_FILES[task].read_text(encoding="utf-8")
-        if task in CONTINUATION_FILES
-        else None
-    )
+def exact_organizer_prompt(task: str, page_name: str) -> str:
+    """Return the slug-substituted prompt published on the Kaggle page."""
+    snapshot = ROOT / f"{task}/official/OFFICIAL_PAGES_FULL.json"
+    if snapshot.is_file():
+        pages = json.loads(snapshot.read_text(encoding="utf-8"))
+        content = next(
+            item["content"] for item in pages if item.get("name") == page_name
+        )
+        blocks = re.findall(r"```(?:[^\n]*)\n(.*?)```", content, re.DOTALL)
+        if not blocks:
+            raise ValueError(f"no fenced exact prompt in {snapshot}: {page_name}")
+        return blocks[-1].replace("<COMPETITION-SLUG>", COMPETITIONS[task])
+    fallback = PROMPT_FILE_FALLBACKS.get((task, page_name))
+    if fallback is None or not fallback.is_file():
+        raise ValueError(f"no official prompt source for {task}: {page_name}")
+    return fallback.read_text(encoding="utf-8")
+
+
+def classify_prompts(task: str, path: Path, role: str) -> list[dict[str, Any]]:
+    messages: list[dict[str, Any]] = []
+    starter = exact_organizer_prompt(task, "Starter Prompt")
+    continuation = exact_organizer_prompt(task, "Continuation Prompt")
     for event in trace_tools.jsonl_events(path):
         payload = event.get("payload", {})
         if event.get("type") != "response_item" or payload.get("role") != "user":
             continue
         text = message_text(payload)
-        text_hash = hashlib.sha256(text.encode("utf-8")).hexdigest()
-        reproduction_prompt_hashes = {
-            "task1": {
-                "organizer_starter_prompt": "d280b73e5f7690416dfb6badbfccb9675c22742e49e0c3777ee50679112bbb6c",
-                "preconfigured_runtime_resume_template": "45767762b1cfb5ef65193cbfef591bf50e33b18883b39fc1e60fbe36005a42b5",
-            },
-            "task2": {
-                "organizer_starter_prompt": "17aa893c998a4344232ac44532c85717e3819d5559544133760b68e2c90f0736",
-            },
-        }
-        if "reproduction-120m" in path.parts and text_hash in reproduction_prompt_hashes[task].values():
-            prompt_class = next(
-                label for label, digest in reproduction_prompt_hashes[task].items() if digest == text_hash
-            )
-        elif "reproduction-120m" in path.parts and text.startswith("# AGENTS.md instructions"):
-            prompt_class = "startup_instructions"
-        elif text.startswith("# AGENTS.md instructions"):
+        if text.startswith("# AGENTS.md instructions"):
             prompt_class = "startup_instructions"
         elif text == starter:
             prompt_class = (
-                "organizer_starter_prompt"
+                "exact_organizer_starter_prompt"
                 if role == "main"
-                else "inherited_organizer_starter_prompt"
+                else "inherited_exact_organizer_starter_prompt"
             )
-        elif continuation is not None and text == continuation:
-            base_class = (
+        elif text == continuation:
+            prompt_class = (
                 "exact_organizer_continuation_prompt"
-                if task == "task2"
-                else "preconfigured_runtime_resume_template"
+                if role == "main"
+                else "inherited_exact_organizer_continuation_prompt"
             )
-            prompt_class = base_class if role == "main" else f"inherited_{base_class}"
+        elif text.startswith("Solve the Kaggle competition"):
+            prompt_class = (
+                "custom_starter_prompt"
+                if role == "main"
+                else "inherited_custom_starter_prompt"
+            )
+        elif text.startswith("Continue solving the Kaggle competition"):
+            prompt_class = (
+                "custom_continuation_prompt"
+                if role == "main"
+                else "inherited_custom_continuation_prompt"
+            )
         elif role != "main":
             prompt_class = "agent_generated_worker_assignment"
         else:
@@ -263,6 +285,13 @@ def classify_prompts(task: str, path: Path, role: str) -> list[dict[str, str]]:
                 "trace_path": path.relative_to(ROOT).as_posix(),
                 "class": prompt_class,
                 "sha256": hashlib.sha256(text.encode("utf-8")).hexdigest(),
+                "organizer_prompt_text_status": (
+                    "exact"
+                    if "exact_organizer_" in prompt_class
+                    else "custom"
+                    if "custom_" in prompt_class
+                    else "not_applicable"
+                ),
             }
         )
     return messages
@@ -293,7 +322,7 @@ def build_index() -> dict[str, Any]:
     tasks: dict[str, Any] = {}
     for task, relative_paths in TASK_PATHS.items():
         records: list[dict[str, Any]] = []
-        prompts: list[dict[str, str]] = []
+        prompts: list[dict[str, Any]] = []
         for relative in relative_paths:
             path = ROOT / relative
             role_hint = "main" if path == TASK6_MAIN_PREFIX else None
@@ -305,6 +334,9 @@ def build_index() -> dict[str, Any]:
             records.append(record)
         token_usage = aggregate_tokens(records)
         classes = Counter(item["class"] for item in prompts)
+        custom_prompt_events = sum(
+            count for name, count in classes.items() if "custom_" in name
+        )
         tasks[task] = {
             "boundary": BOUNDARIES[task],
             "excluded_material": EXCLUSIONS[task],
@@ -343,6 +375,12 @@ def build_index() -> dict[str, Any]:
             "user_prompt_classes": dict(sorted(classes.items())),
             "user_prompt_audit": prompts,
             "manual_human_prompt_events_included": 0,
+            "strict_exact_organizer_prompt_text_conformance": custom_prompt_events == 0,
+            "custom_prompt_event_count_including_inherited_context": custom_prompt_events,
+            "prompt_conformance_note": PROMPT_CONFORMANCE_NOTES.get(
+                task,
+                "All starter/continuation prompt events match the exact organizer text; no continuation was needed where none is present.",
+            ),
             "token_usage_cumulative_sum_across_traces": token_usage,
         }
     return {
@@ -350,14 +388,18 @@ def build_index() -> dict[str, Any]:
         "definition": "observable competition-agent trace prefixes before any live human intervention prompt",
         "included_prompt_types": [
             "startup/system instructions actually injected",
-            "organizer Starter Prompt",
-            "exact organizer Continuation Prompt where applicable",
-            "preconfigured runtime resume templates without a human method or target",
+            "exact organizer Starter/Continuation Prompt events where actually matched",
+            "custom preconfigured prompt events retained for audit and explicitly marked non-exact",
             "organizer context inherited by forked worker traces",
             "assignments generated by the main agent for its workers where represented as user-role input",
         ],
+        "compliance_limit": (
+            "No-live-human autonomy and exact-organizer-prompt conformance are separate. "
+            "Tasks 1, 2, and 4 contain custom prompt text and are not claimed here to satisfy "
+            "the strict exact-prompt rule; organizer/Jury recognition is not assumed."
+        ),
         "excluded_prompt_types": [
-            "live human method, target-score, forced-submission, or custom continuation instructions",
+            "live-human method, target-score, forced-submission, or custom continuation instructions at the task boundary",
             "all events causally downstream of an excluded prompt",
         ],
         "redaction": "credentials, private endpoints, secret metadata, and opaque encrypted reasoning are not published",
@@ -374,10 +416,12 @@ def write_markdown(index: dict[str, Any]) -> None:
         "prompt. Exclusion is causal: once a disallowed prompt arrives, that prompt",
         "and every later event are omitted rather than deleting only the message.",
         "",
-        "Startup instructions, organizer prompts, inherited organizer context,",
-        "preconfigured runtime resume templates, and observable worker assignments",
-        "are retained and classified. They are part of the execution environment,",
-        "not live human method suggestions. Hidden chain-of-thought is not published.",
+        "Startup instructions, organizer prompts, inherited context, custom runtime",
+        "prompt text, and observable worker assignments are retained and classified.",
+        "No-live-human autonomy is not treated as proof of the separate exact-prompt",
+        "rule. Tasks 1, 2, and 4 contain custom prompt text and are disclosed as",
+        "non-exact; organizer/Jury recognition is not assumed. Hidden chain-of-thought",
+        "is not published.",
         "",
         "For Tasks 1 and 2, the original run records were unavailable after a",
         "school-server restart; the selected traces are later fresh reproductions",
@@ -408,6 +452,13 @@ def write_markdown(index: dict[str, Any]) -> None:
         lines.extend(["", f"## {task}", "", f"Boundary: {data['boundary']['basis']}.", ""])
         if "record_recovery_note" in data:
             lines.extend([f"Record recovery note: {data['record_recovery_note']}", ""])
+        lines.extend(
+            [
+                f"Strict exact organizer prompt text: **{'yes' if data['strict_exact_organizer_prompt_text_conformance'] else 'no'}**.",
+                f"Prompt audit note: {data['prompt_conformance_note']}",
+                "",
+            ]
+        )
         lines.append("Included trace files:")
         lines.append("")
         for item in data["trace_files"]:
@@ -422,15 +473,11 @@ def write_markdown(index: dict[str, Any]) -> None:
 def write_costs(index: dict[str, Any]) -> None:
     tasks = {}
     total = 0
-    competitions = {
-        f"task{i}": f"ioai-2026-task-{i}-westlake-nlp-{60 if i == 6 else 48 if i == 3 else 24}"
-        for i in range(1, 7)
-    }
     for task, data in index["tasks"].items():
         token_usage = data["token_usage_cumulative_sum_across_traces"]
         total += token_usage["total_tokens"]
         tasks[task] = {
-            "competition": competitions[task],
+            "competition": COMPETITIONS[task],
             "model_provider": "ioai_allowed",
             "model": "gpt-5.6-sol",
             "reasoning_effort": data["reasoning_effort"],
@@ -478,6 +525,10 @@ def write_manifest(index: dict[str, Any]) -> None:
         "ORGANIZER_SUBMISSION.json",
         "KAGGLE_EXTRACTION_DELIVERY.json",
         "KAGGLE_EXTRACTION_SUMMARY.json",
+        "PROMPT_CONFORMANCE_AUDIT.json",
+        "PROMPT_CONFORMANCE_AUDIT.md",
+        "task6/official/CONTINUE_PROMPT_EXACT.md",
+        "tools/build_prompt_conformance_audit.py",
         "task1/evidence/SUPERVISION_BOUNDARY_EVENT.json",
         "task1/remote/FINAL_ACCOUNT_RESULTS.json",
         "task2/remote/FINAL_ACCOUNT_RESULTS.json",
@@ -507,6 +558,15 @@ def main() -> None:
     )
     write_markdown(index)
     write_costs(index)
+    # Build after writing AUTONOMOUS_TRACE_INDEX.json because the prompt audit
+    # compares the exact official pages with that canonical trace selection.
+    import build_prompt_conformance_audit as prompt_audit
+
+    audit = prompt_audit.build()
+    (ROOT / "PROMPT_CONFORMANCE_AUDIT.json").write_text(
+        json.dumps(audit, ensure_ascii=False, indent=2) + "\n", encoding="utf-8"
+    )
+    prompt_audit.write_markdown(audit)
     write_manifest(index)
     print(json.dumps({task: data["event_count"] for task, data in index["tasks"].items()}))
 

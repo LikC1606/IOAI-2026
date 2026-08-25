@@ -37,17 +37,18 @@
     "post_deadline": true,
     "ranking_eligible": false,
     "manual_human_prompt_events_included": 0,
+    "strict_exact_organizer_prompt_text_conformance": false,
     "user_prompt_classes": {
       "startup_instructions": 1,
-      "organizer_starter_prompt": 1,
-      "preconfigured_runtime_resume_template": 1
+      "custom_starter_prompt": 1,
+      "custom_continuation_prompt": 1
     },
     "submission_id": 55277782,
     "candidate": "balanced_edge_fallback_v5",
     "public_score": 0.74121,
     "local_cv": 0.7676212811096714,
     "private_score": null,
-    "scope_note": "Complete observable rollout with no live human method, target-score, forced-submission, or custom continuation prompt; the run began after the official deadline, so this is a non-ranking reproduction result."
+    "scope_note": "Complete observable rollout with no live human method, target-score, or forced-submission prompt. The starter appends a custom fresh-run-isolation section. A custom continuation arrives only after submission 55277782, the final Agent answer, and task_complete, so it did not cause the selected result. This is not claimed as strict exact-organizer-prompt text, and the post-deadline run remains a non-ranking reproduction result."
   },
   "agent_executed_result": {
     "submission_id": 55267607,

@@ -1,6 +1,6 @@
 {
   "schema": "ioai.organizer-submission-index.v1",
-  "status": "complete_with_explicit_cost_limits",
+  "status": "complete_with_explicit_cost_and_prompt_conformance_limits",
   "tasks": [
     "task1",
     "task2",
@@ -24,13 +24,31 @@
         "REPRODUCTION_TRACE_INDEX.json",
         "REPRODUCTION_COSTS.json"
       ],
-      "note": "The original Task 1 and Task 2 run records were unavailable after a school-server restart. These are full redacted later 120-minute reproductions using the same configured solver/system, official competition bundle, and organizer constraints; they are canonical no-live-human autonomous rollouts, but not official-ranking results because they are post-deadline."
+      "note": "The original Task 1 and Task 2 run records were unavailable after a school-server restart. These are full redacted later 120-minute reproductions using the same configured solver/system, official competition bundle, and organizer constraints; they are canonical no-live-human autonomous rollouts, but not official-ranking results because they are post-deadline. Their starter messages append custom fresh-run-isolation text and are not claimed as exact-organizer-prompt compliant."
     },
     "prompts_and_visible_outputs": {
       "status": "complete",
       "path": "AUTONOMOUS_TRACE_INDEX.json",
       "payload_location": "trace_files[].path",
       "note": "Startup/organizer prompts, worker assignments, developer messages, and visible assistant messages are retained in the selected JSONL files."
+    },
+    "exact_organizer_prompt_conformance": {
+      "status": "audited_with_non_exact_tasks",
+      "paths": [
+        "PROMPT_CONFORMANCE_AUDIT.md",
+        "PROMPT_CONFORMANCE_AUDIT.json"
+      ],
+      "strict_exact_prompt_tasks": [
+        "task3",
+        "task5",
+        "task6"
+      ],
+      "non_exact_prompt_tasks": [
+        "task1",
+        "task2",
+        "task4"
+      ],
+      "note": "No-live-human autonomy and exact-organizer-prompt conformance are separate; organizer/Jury recognition is not self-certified."
     },
     "tool_calls_and_outputs": {
       "status": "complete",

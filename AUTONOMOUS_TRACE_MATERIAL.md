@@ -5,10 +5,12 @@ observable competition-agent execution before any live human intervention
 prompt. Exclusion is causal: once a disallowed prompt arrives, that prompt
 and every later event are omitted rather than deleting only the message.
 
-Startup instructions, organizer prompts, inherited organizer context,
-preconfigured runtime resume templates, and observable worker assignments
-are retained and classified. They are part of the execution environment,
-not live human method suggestions. Hidden chain-of-thought is not published.
+Startup instructions, organizer prompts, inherited context, custom runtime
+prompt text, and observable worker assignments are retained and classified.
+No-live-human autonomy is not treated as proof of the separate exact-prompt
+rule. Tasks 1, 2, and 4 contain custom prompt text and are disclosed as
+non-exact; organizer/Jury recognition is not assumed. Hidden chain-of-thought
+is not published.
 
 For Tasks 1 and 2, the original run records were unavailable after a
 school-server restart; the selected traces are later fresh reproductions
@@ -36,6 +38,9 @@ Boundary: later two-hour reproduction deadline; no live human method/target prom
 
 Record recovery note: The original Task 1 run record was unavailable after a school-server restart. The canonical trace is a later fresh reproduction using the same configured solver/system, official competition bundle, and organizer constraints; it is not the original run record.
 
+Strict exact organizer prompt text: **no**.
+Prompt audit note: The reproduction starter contains a user-requested fresh-run-isolation appendix. Its custom continuation occurs after the selected submission, final Agent answer, and task_complete event, but the custom starter still prevents an exact-prompt-only claim.
+
 Included trace files:
 
 - [`rollout.jsonl`](task1/evidence/reproduction-120m/rollout.jsonl) — 1398 events
@@ -52,6 +57,9 @@ Boundary: later two-hour reproduction deadline; no live human method/target prom
 
 Record recovery note: The original Task 2 run record was unavailable after a school-server restart. The canonical trace is a later fresh reproduction using the same configured solver/system, official competition bundle, and organizer constraints; it is not the original run record.
 
+Strict exact organizer prompt text: **no**.
+Prompt audit note: The reproduction starter contains a user-requested fresh-run-isolation appendix; there is no continuation event in this reproduction.
+
 Included trace files:
 
 - [`rollout.jsonl`](task2/evidence/reproduction-120m/rollout.jsonl) — 1067 events
@@ -65,6 +73,9 @@ Explicitly excluded:
 ## task3
 
 Boundary: first non-read-only supervisory instruction received by the controlling session.
+
+Strict exact organizer prompt text: **yes**.
+Prompt audit note: All starter/continuation prompt events match the exact organizer text; no continuation was needed where none is present.
 
 Included trace files:
 
@@ -81,6 +92,9 @@ Explicitly excluded:
 
 Boundary: run deadline; no live human method or target prompt was delivered to the solver.
 
+Strict exact organizer prompt text: **no**.
+Prompt audit note: The injected starter has formatting changes and the six main-runtime continuation events use a substantive generic workflow template rather than the exact organizer Continuation Prompt. The final selected submission is downstream of those events.
+
 Included trace files:
 
 - [`rollout-2026-08-07T12-18-29-019fda71-a6a2-7a22-8c18-22e99f127422.jsonl`](task4/evidence/rollouts/rollout-2026-08-07T12-18-29-019fda71-a6a2-7a22-8c18-22e99f127422.jsonl) — 1549 events
@@ -96,6 +110,9 @@ Explicitly excluded:
 ## task5
 
 Boundary: run deadline; controller status questions were not solver inputs.
+
+Strict exact organizer prompt text: **yes**.
+Prompt audit note: All starter/continuation prompt events match the exact organizer text; no continuation was needed where none is present.
 
 Included trace files:
 
@@ -121,6 +138,9 @@ Explicitly excluded:
 ## task6
 
 Boundary: first human-triggered resume prompt delivered after the autonomous start.
+
+Strict exact organizer prompt text: **yes**.
+Prompt audit note: All starter/continuation prompt events match the exact organizer text; no continuation was needed where none is present.
 
 Included trace files:
 

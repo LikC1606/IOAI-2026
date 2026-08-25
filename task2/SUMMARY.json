@@ -26,15 +26,16 @@
     "post_deadline": true,
     "ranking_eligible": false,
     "manual_human_prompt_events_included": 0,
+    "strict_exact_organizer_prompt_text_conformance": false,
     "user_prompt_classes": {
       "startup_instructions": 1,
-      "organizer_starter_prompt": 1
+      "custom_starter_prompt": 1
     },
     "submission_id": 55277682,
     "candidate": "tree_film_blend_65_35_full_labels",
     "public_score": 0.675,
     "local_cv": 0.6713888889,
     "private_score": null,
-    "scope_note": "Complete observable rollout with no live human method, target-score, forced-submission, or custom continuation prompt; the run began after the official deadline, so this is a non-ranking reproduction result."
+    "scope_note": "Complete observable rollout with no live human method, target-score, forced-submission, or continuation prompt. The starter appends a custom fresh-run-isolation section, so this is not claimed as strict exact-organizer-prompt text. The run began after the official deadline and remains a non-ranking reproduction result."
   }
 }

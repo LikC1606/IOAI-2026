@@ -1,0 +1,318 @@
+{
+  "schema": "ioai.prompt-conformance-audit.v1",
+  "scope": "canonical traces selected by AUTONOMOUS_TRACE_INDEX.json",
+  "comparison": "Exact Unicode text after replacing <COMPETITION-SLUG>; only final newline is normalized.",
+  "live_kaggle_cli_verification": {
+    "verified_utc": "2026-08-25T12:26:55Z",
+    "account": "researai",
+    "command_pattern": "KAGGLE_COMPETITION=<slug> kaggle competitions pages list --page-name '<Starter Prompt|Continuation Prompt>' --content --format json",
+    "result": "All 12 live prompt bodies match the stored official sources and normalized hashes."
+  },
+  "rule_reference": {
+    "ioai_rules_format": "https://ioai-official.org/ai-model-track/rules-format/",
+    "competition_pages": "Each Kaggle competition Overview contains Starter Prompt and Continuation Prompt pages marked for exact use."
+  },
+  "important_distinction": "No-live-human autonomy does not itself prove exact-organizer-prompt conformance. Custom preconfigured or appended prompt text is disclosed even when it contains no live human method or target suggestion.",
+  "tasks": {
+    "task1": {
+      "competition": "ioai-2026-task-1-westlake-nlp-24",
+      "official_prompt_source": "task1/official/OFFICIAL_PAGES_FULL.json",
+      "official_prompt_hashes": {
+        "starter": {
+          "normalized_length": 1688,
+          "normalized_sha256": "f5c9018277ed64ee0f145fd4b9137277746cb1e4749aa011b1fb54310dcb73f4"
+        },
+        "continuation": {
+          "normalized_length": 1822,
+          "normalized_sha256": "f47d39855e6dc9a05e807a07aa190b9a365a846015c2c0db19db443c6cc5a1bf"
+        }
+      },
+      "live_kaggle_page_matches_repository_source": true,
+      "trace_prompt_classes": {
+        "custom_continuation_prompt": 1,
+        "custom_starter_prompt": 1,
+        "startup_instructions": 1
+      },
+      "custom_prompt_events": [
+        {
+          "timestamp": "2026-08-05T16:25:54.536Z",
+          "trace_path": "task1/evidence/reproduction-120m/rollout.jsonl",
+          "class": "custom_starter_prompt",
+          "sha256": "d280b73e5f7690416dfb6badbfccb9675c22742e49e0c3777ee50679112bbb6c",
+          "organizer_prompt_text_status": "custom"
+        },
+        {
+          "timestamp": "2026-08-05T18:25:04.940Z",
+          "trace_path": "task1/evidence/reproduction-120m/rollout.jsonl",
+          "class": "custom_continuation_prompt",
+          "sha256": "45767762b1cfb5ef65193cbfef591bf50e33b18883b39fc1e60fbe36005a42b5",
+          "organizer_prompt_text_status": "custom"
+        }
+      ],
+      "strict_exact_organizer_prompt_text_conformance": false,
+      "no_live_human_prompt_events_included": true,
+      "selected_result_downstream_of_custom_prompt_text": true,
+      "detail": "The custom starter appendix precedes all work. The custom continuation at 2026-08-05T18:25:04.940Z is after submission 55277782, the final Agent answer, and task_complete at 2026-08-05T18:24:58.140Z, so that continuation did not cause the selected result.",
+      "jury_status": "not_self_certified; organizer/Jury determines recognition"
+    },
+    "task2": {
+      "competition": "ioai-2026-task-2-westlake-nlp-24",
+      "official_prompt_source": "task2/official/OFFICIAL_PAGES_FULL.json",
+      "official_prompt_hashes": {
+        "starter": {
+          "normalized_length": 1797,
+          "normalized_sha256": "0d9e449a25d03ee9b067a063a05954dd66eb4b0636112c8f80602348badd55fd"
+        },
+        "continuation": {
+          "normalized_length": 1511,
+          "normalized_sha256": "e32045e13d252359b7b6201a1c64d00bd6db3f583b538933511f0e08d60e98fc"
+        }
+      },
+      "live_kaggle_page_matches_repository_source": true,
+      "trace_prompt_classes": {
+        "custom_starter_prompt": 1,
+        "startup_instructions": 1
+      },
+      "custom_prompt_events": [
+        {
+          "timestamp": "2026-08-05T16:20:11.693Z",
+          "trace_path": "task2/evidence/reproduction-120m/rollout.jsonl",
+          "class": "custom_starter_prompt",
+          "sha256": "17aa893c998a4344232ac44532c85717e3819d5559544133760b68e2c90f0736",
+          "organizer_prompt_text_status": "custom"
+        }
+      ],
+      "strict_exact_organizer_prompt_text_conformance": false,
+      "no_live_human_prompt_events_included": true,
+      "selected_result_downstream_of_custom_prompt_text": true,
+      "detail": "The custom starter appendix precedes all work. No continuation event occurs in the later reproduction trace.",
+      "jury_status": "not_self_certified; organizer/Jury determines recognition"
+    },
+    "task3": {
+      "competition": "ioai-2026-task-3-westlake-nlp-48",
+      "official_prompt_source": "task3/official/OFFICIAL_PAGES_FULL.json",
+      "official_prompt_hashes": {
+        "starter": {
+          "normalized_length": 2509,
+          "normalized_sha256": "7f219b0aa91b84df541a7107c4fee509dc765f2123aeb88fcb70ed09000c0952"
+        },
+        "continuation": {
+          "normalized_length": 1829,
+          "normalized_sha256": "c6d589f35bf3c61c537dd5ca944ee3fd785bedfffc4e6098ccdd4fd700d5b162"
+        }
+      },
+      "live_kaggle_page_matches_repository_source": true,
+      "trace_prompt_classes": {
+        "exact_organizer_starter_prompt": 1,
+        "inherited_exact_organizer_starter_prompt": 3,
+        "startup_instructions": 4
+      },
+      "custom_prompt_events": [],
+      "strict_exact_organizer_prompt_text_conformance": true,
+      "no_live_human_prompt_events_included": true,
+      "selected_result_downstream_of_custom_prompt_text": false,
+      "detail": "The selected traces contain exact organizer Starter Prompt text and no continuation event.",
+      "jury_status": "not_self_certified; organizer/Jury determines recognition"
+    },
+    "task4": {
+      "competition": "ioai-2026-task-4-westlake-nlp-24",
+      "official_prompt_source": "task4/official/OFFICIAL_PAGES_FULL.json",
+      "official_prompt_hashes": {
+        "starter": {
+          "normalized_length": 2010,
+          "normalized_sha256": "c92f3a6300b4003e6ae4be991643c7a2a588a3b998b8a3873125fca204fca017"
+        },
+        "continuation": {
+          "normalized_length": 1908,
+          "normalized_sha256": "f6ffbc8d4db8e7235424287327b7ac546facda42b63adaabe5479c259145ac21"
+        }
+      },
+      "live_kaggle_page_matches_repository_source": true,
+      "trace_prompt_classes": {
+        "custom_continuation_prompt": 6,
+        "custom_starter_prompt": 1,
+        "inherited_custom_continuation_prompt": 4,
+        "inherited_custom_starter_prompt": 4,
+        "startup_instructions": 5
+      },
+      "custom_prompt_events": [
+        {
+          "timestamp": "2026-08-07T04:18:29.613Z",
+          "trace_path": "task4/evidence/rollouts/rollout-2026-08-07T12-18-29-019fda71-a6a2-7a22-8c18-22e99f127422.jsonl",
+          "class": "custom_starter_prompt",
+          "sha256": "192b4282d380d9b0ca418500f1ba2d5d361726f62ff96fe742fcc6ccdc7286f3",
+          "organizer_prompt_text_status": "custom"
+        },
+        {
+          "timestamp": "2026-08-07T04:34:35.176Z",
+          "trace_path": "task4/evidence/rollouts/rollout-2026-08-07T12-18-29-019fda71-a6a2-7a22-8c18-22e99f127422.jsonl",
+          "class": "custom_continuation_prompt",
+          "sha256": "e77306185191fe14bdeda365fd47ee1c1ece3ff10a8f5f5de5fe34bac58db18a",
+          "organizer_prompt_text_status": "custom"
+        },
+        {
+          "timestamp": "2026-08-07T04:37:59.324Z",
+          "trace_path": "task4/evidence/rollouts/rollout-2026-08-07T12-18-29-019fda71-a6a2-7a22-8c18-22e99f127422.jsonl",
+          "class": "custom_continuation_prompt",
+          "sha256": "e77306185191fe14bdeda365fd47ee1c1ece3ff10a8f5f5de5fe34bac58db18a",
+          "organizer_prompt_text_status": "custom"
+        },
+        {
+          "timestamp": "2026-08-07T05:32:24.950Z",
+          "trace_path": "task4/evidence/rollouts/rollout-2026-08-07T12-18-29-019fda71-a6a2-7a22-8c18-22e99f127422.jsonl",
+          "class": "custom_continuation_prompt",
+          "sha256": "e77306185191fe14bdeda365fd47ee1c1ece3ff10a8f5f5de5fe34bac58db18a",
+          "organizer_prompt_text_status": "custom"
+        },
+        {
+          "timestamp": "2026-08-07T05:36:16.016Z",
+          "trace_path": "task4/evidence/rollouts/rollout-2026-08-07T12-18-29-019fda71-a6a2-7a22-8c18-22e99f127422.jsonl",
+          "class": "custom_continuation_prompt",
+          "sha256": "e77306185191fe14bdeda365fd47ee1c1ece3ff10a8f5f5de5fe34bac58db18a",
+          "organizer_prompt_text_status": "custom"
+        },
+        {
+          "timestamp": "2026-08-07T05:38:19.275Z",
+          "trace_path": "task4/evidence/rollouts/rollout-2026-08-07T12-18-29-019fda71-a6a2-7a22-8c18-22e99f127422.jsonl",
+          "class": "custom_continuation_prompt",
+          "sha256": "e77306185191fe14bdeda365fd47ee1c1ece3ff10a8f5f5de5fe34bac58db18a",
+          "organizer_prompt_text_status": "custom"
+        },
+        {
+          "timestamp": "2026-08-07T05:38:47.667Z",
+          "trace_path": "task4/evidence/rollouts/rollout-2026-08-07T12-18-29-019fda71-a6a2-7a22-8c18-22e99f127422.jsonl",
+          "class": "custom_continuation_prompt",
+          "sha256": "e77306185191fe14bdeda365fd47ee1c1ece3ff10a8f5f5de5fe34bac58db18a",
+          "organizer_prompt_text_status": "custom"
+        },
+        {
+          "timestamp": "2026-08-07T04:18:41.071Z",
+          "trace_path": "task4/evidence/rollouts/rollout-2026-08-07T12-18-41-019fda71-d4eb-70a3-9b66-e0fb3b2d0e66.jsonl",
+          "class": "inherited_custom_starter_prompt",
+          "sha256": "192b4282d380d9b0ca418500f1ba2d5d361726f62ff96fe742fcc6ccdc7286f3",
+          "organizer_prompt_text_status": "custom"
+        },
+        {
+          "timestamp": "2026-08-07T04:18:47.993Z",
+          "trace_path": "task4/evidence/rollouts/rollout-2026-08-07T12-18-47-019fda71-effd-7321-8ce9-2a4a57fcaa48.jsonl",
+          "class": "inherited_custom_starter_prompt",
+          "sha256": "192b4282d380d9b0ca418500f1ba2d5d361726f62ff96fe742fcc6ccdc7286f3",
+          "organizer_prompt_text_status": "custom"
+        },
+        {
+          "timestamp": "2026-08-07T05:21:43.891Z",
+          "trace_path": "task4/evidence/rollouts/rollout-2026-08-07T13-21-43-019fdaab-8d94-76a0-b625-078c838b5227.jsonl",
+          "class": "inherited_custom_starter_prompt",
+          "sha256": "192b4282d380d9b0ca418500f1ba2d5d361726f62ff96fe742fcc6ccdc7286f3",
+          "organizer_prompt_text_status": "custom"
+        },
+        {
+          "timestamp": "2026-08-07T05:21:44.042Z",
+          "trace_path": "task4/evidence/rollouts/rollout-2026-08-07T13-21-43-019fdaab-8d94-76a0-b625-078c838b5227.jsonl",
+          "class": "inherited_custom_continuation_prompt",
+          "sha256": "e77306185191fe14bdeda365fd47ee1c1ece3ff10a8f5f5de5fe34bac58db18a",
+          "organizer_prompt_text_status": "custom"
+        },
+        {
+          "timestamp": "2026-08-07T05:21:44.092Z",
+          "trace_path": "task4/evidence/rollouts/rollout-2026-08-07T13-21-43-019fdaab-8d94-76a0-b625-078c838b5227.jsonl",
+          "class": "inherited_custom_continuation_prompt",
+          "sha256": "e77306185191fe14bdeda365fd47ee1c1ece3ff10a8f5f5de5fe34bac58db18a",
+          "organizer_prompt_text_status": "custom"
+        },
+        {
+          "timestamp": "2026-08-07T05:21:51.902Z",
+          "trace_path": "task4/evidence/rollouts/rollout-2026-08-07T13-21-51-019fdaab-ace4-7b51-93b2-244d9517423a.jsonl",
+          "class": "inherited_custom_starter_prompt",
+          "sha256": "192b4282d380d9b0ca418500f1ba2d5d361726f62ff96fe742fcc6ccdc7286f3",
+          "organizer_prompt_text_status": "custom"
+        },
+        {
+          "timestamp": "2026-08-07T05:21:52.041Z",
+          "trace_path": "task4/evidence/rollouts/rollout-2026-08-07T13-21-51-019fdaab-ace4-7b51-93b2-244d9517423a.jsonl",
+          "class": "inherited_custom_continuation_prompt",
+          "sha256": "e77306185191fe14bdeda365fd47ee1c1ece3ff10a8f5f5de5fe34bac58db18a",
+          "organizer_prompt_text_status": "custom"
+        },
+        {
+          "timestamp": "2026-08-07T05:21:52.082Z",
+          "trace_path": "task4/evidence/rollouts/rollout-2026-08-07T13-21-51-019fdaab-ace4-7b51-93b2-244d9517423a.jsonl",
+          "class": "inherited_custom_continuation_prompt",
+          "sha256": "e77306185191fe14bdeda365fd47ee1c1ece3ff10a8f5f5de5fe34bac58db18a",
+          "organizer_prompt_text_status": "custom"
+        }
+      ],
+      "strict_exact_organizer_prompt_text_conformance": false,
+      "no_live_human_prompt_events_included": true,
+      "selected_result_downstream_of_custom_prompt_text": true,
+      "detail": "The starter has formatting changes. Six main-runtime custom continuation events begin at 2026-08-07T04:34:35.176Z; the selected submission 55316818 was sent later at 2026-08-07T06:10:48.923Z. Four inherited copies of the custom starter and four inherited copies of the continuation also appear in worker traces.",
+      "jury_status": "not_self_certified; organizer/Jury determines recognition"
+    },
+    "task5": {
+      "competition": "ioai-2026-task-5-westlake-nlp-24",
+      "official_prompt_source": "task5/official/OFFICIAL_PAGES_FULL.json",
+      "official_prompt_hashes": {
+        "starter": {
+          "normalized_length": 1836,
+          "normalized_sha256": "c52cb147324def2436dc6c60b0c2a5d67454d94eb56e35e8e679f9a3bf7e4681"
+        },
+        "continuation": {
+          "normalized_length": 1559,
+          "normalized_sha256": "0acd3348752c3f145334b5a9e07e27f9b3f9ef6bf12316d6835cd35eca61a9ae"
+        }
+      },
+      "live_kaggle_page_matches_repository_source": true,
+      "trace_prompt_classes": {
+        "exact_organizer_starter_prompt": 1,
+        "inherited_exact_organizer_starter_prompt": 13,
+        "startup_instructions": 14
+      },
+      "custom_prompt_events": [],
+      "strict_exact_organizer_prompt_text_conformance": true,
+      "no_live_human_prompt_events_included": true,
+      "selected_result_downstream_of_custom_prompt_text": false,
+      "detail": "The selected traces contain exact organizer Starter Prompt text and no continuation event.",
+      "jury_status": "not_self_certified; organizer/Jury determines recognition"
+    },
+    "task6": {
+      "competition": "ioai-2026-task-6-westlake-nlp-60",
+      "official_prompt_source": {
+        "starter": "task6/official/start.md",
+        "continuation": "task6/official/CONTINUE_PROMPT_EXACT.md"
+      },
+      "official_prompt_hashes": {
+        "starter": {
+          "normalized_length": 3297,
+          "normalized_sha256": "1f9ab9a60ff7c52faff799b1c26e1370f1b02db6b55c9911bee52e8725882911"
+        },
+        "continuation": {
+          "normalized_length": 3028,
+          "normalized_sha256": "81cc3563c50cb0f1bb667b6fd103cc1a01374a7a9a3d5d80a2015fba00c23986"
+        }
+      },
+      "live_kaggle_page_matches_repository_source": true,
+      "trace_prompt_classes": {
+        "exact_organizer_starter_prompt": 1,
+        "inherited_exact_organizer_starter_prompt": 2,
+        "startup_instructions": 3
+      },
+      "custom_prompt_events": [],
+      "strict_exact_organizer_prompt_text_conformance": true,
+      "no_live_human_prompt_events_included": true,
+      "selected_result_downstream_of_custom_prompt_text": false,
+      "detail": "The selected pre-intervention traces contain exact organizer Starter Prompt text and no continuation event.",
+      "jury_status": "not_self_certified; organizer/Jury determines recognition"
+    }
+  },
+  "strict_exact_prompt_tasks": [
+    "task3",
+    "task5",
+    "task6"
+  ],
+  "non_exact_prompt_tasks": [
+    "task1",
+    "task2",
+    "task4"
+  ],
+  "overall_jury_recognition": "not guaranteed; organizer/Jury determination required"
+}
