@@ -29,6 +29,7 @@ resolved from the preserved historical records.
 Special evidence is linked here for quick review:
 
 - Tasks 1–2 later reproductions: [`REPRODUCTION_TRACE_MATERIAL.md`](REPRODUCTION_TRACE_MATERIAL.md), [`REPRODUCTION_TRACE_INDEX.json`](REPRODUCTION_TRACE_INDEX.json), and [`REPRODUCTION_COSTS.json`](REPRODUCTION_COSTS.json).
+- Tasks 1–2 bounded formal prefixes: [`FORMAL_PREFIX_AUDIT.md`](FORMAL_PREFIX_AUDIT.md) and [`FORMAL_PREFIX_AUDIT.json`](FORMAL_PREFIX_AUDIT.json).
 - Task 4 supplemental trace provenance: [`task4/evidence/SUPPLEMENTAL_ROLLOUT_PROVENANCE.json`](task4/evidence/SUPPLEMENTAL_ROLLOUT_PROVENANCE.json) and [`task4/RULE_DIFFERENCE_AUDIT.md`](task4/RULE_DIFFERENCE_AUDIT.md).
 - Task 6 exact v3 artifact chain: [`task6/ARTIFACT_PROVENANCE.json`](task6/ARTIFACT_PROVENANCE.json), [`task6/RULE_DIFFERENCE_AUDIT.md`](task6/RULE_DIFFERENCE_AUDIT.md), and [`task6/evidence/EVALUATOR_BATCHING_PROVENANCE.json`](task6/evidence/EVALUATOR_BATCHING_PROVENANCE.json).
 
@@ -108,10 +109,12 @@ At the request to use the later fresh two-hour runs for Tasks 1 and 2, the full
 credential-redacted traces are published separately under
 [`task1/evidence/reproduction-120m/`](task1/evidence/reproduction-120m/) and
 [`task2/evidence/reproduction-120m/`](task2/evidence/reproduction-120m/).
-The original Task 1 and Task 2 run records were unavailable after a
-school-server restart; these are later fresh reproductions using the same
+The complete original Task 1 and Task 2 run records were unavailable after a
+school-server restart; bounded pre-boundary formal prefixes remain as separate
+historical audit evidence. These are later fresh reproductions using the same
 configured solver/system, official competition bundle, and organizer
-constraints, not the lost original run records.
+constraints, not replacements for the incomplete original records. See
+[`FORMAL_PREFIX_AUDIT.md`](FORMAL_PREFIX_AUDIT.md).
 They preserve the complete observable event streams and the corresponding
 candidate/submission outcomes. Both runs contain no live human method/target
 prompt. Task 1's canonical solution material is the immutable prefix through

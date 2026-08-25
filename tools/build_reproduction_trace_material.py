@@ -29,9 +29,10 @@ RUNS: dict[str, dict[str, Any]] = {
         "account": "researai",
         "run_kind": "later_reproduction_120m",
         "record_recovery_note": (
-            "The original Task 1 run record was unavailable after a school-server restart. "
+            "The complete original Task 1 run record was unavailable after a school-server "
+            "restart; a bounded formal prefix remains as separate historical audit material. "
             "This is a later fresh reproduction using the same configured solver/system, "
-            "official competition bundle, and organizer constraints; it is not the original run record."
+            "official competition bundle, and organizer constraints."
         ),
         "post_deadline": True,
         "ranking_eligible": False,
@@ -88,9 +89,10 @@ RUNS: dict[str, dict[str, Any]] = {
         "account": "researai",
         "run_kind": "later_reproduction_120m",
         "record_recovery_note": (
-            "The original Task 2 run record was unavailable after a school-server restart. "
+            "The complete original Task 2 run record was unavailable after a school-server "
+            "restart; a bounded formal prefix remains as separate historical audit material. "
             "This is a later fresh reproduction using the same configured solver/system, "
-            "official competition bundle, and organizer constraints; it is not the original run record."
+            "official competition bundle, and organizer constraints."
         ),
         "post_deadline": True,
         "ranking_eligible": False,
@@ -295,10 +297,10 @@ def main() -> None:
         "the full Task 1 stream remains here for audit. Task 2 uses its full stream.",
         "Both remain post-deadline, non-ranking reference material.",
         "",
-        "The original Task 1 and Task 2 run records were unavailable after a",
-        "school-server restart. Each trace below is a later fresh reproduction",
-        "using the same configured solver/system, official competition bundle, and",
-        "organizer constraints; neither is the original run record.",
+        "The complete original Task 1 and Task 2 run records were unavailable after",
+        "a school-server restart. Bounded formal prefixes remain as separate historical",
+        "audit material. Each trace below is a later fresh reproduction using the same",
+        "configured solver/system, official competition bundle, and organizer constraints.",
         "",
         "The JSONL retains startup and actual user prompts, visible Agent messages, tool",
         "calls, tool outputs, lifecycle events, and cumulative token telemetry.",

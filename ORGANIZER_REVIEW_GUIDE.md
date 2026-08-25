@@ -33,8 +33,8 @@ bundle is present; see `task3/DATA_PROVENANCE.md`.
 
 | Task | Evidence-supported positive finding | Open organizer/Jury determination |
 |---|---|---|
-| 1 | A complete observable, no-live-human later 120-minute reproduction is preserved, with a canonical prefix through `task_complete`; the original run record was lost after a school-server restart. | Whether this later reproduction may substitute for the lost original trace; whether its custom starter appendix is acceptable. It must not be treated as causal evidence for official final refs `55267333`/`55267368`. |
-| 2 | A complete observable, no-live-human later 120-minute reproduction is preserved; the formal pre-boundary submission `55260695` is separately recorded. | Whether the later reproduction may satisfy the requested trace deliverable despite being post-deadline and custom-starter based. Official final `55261432` is downstream of the formal boundary and is not attributed to that trace. |
+| 1 | A complete observable, no-live-human later 120-minute reproduction is preserved, with a canonical prefix through `task_complete`; a bounded exact-prompt formal prefix is also retained after the complete original record became unavailable following a school-server restart. | Whether the later reproduction or supplemental formal prefix may satisfy the requested trace deliverable; whether the custom starter appendix is acceptable. Neither is causal evidence for official final refs `55267333`/`55267368`. |
+| 2 | A complete observable, no-live-human later 120-minute reproduction is preserved; the exact-prompt formal prefix and eligible v2 submission `55260695` are separately recorded. | Whether the later reproduction may satisfy the requested trace deliverable despite being post-deadline and custom-starter based. Official final `55261432` is downstream of the modified formal boundary and is not attributed to the later reproduction. |
 | 3 | Eight scored submissions, including the tied official Public-best refs `55289569`/`55289823`, are in exact-prompt autonomous scope before the supervision boundary. | Whether the 27 captured account submissions (16 after the deadline) count against the published 15-submission rule, or whether enforcement is limited to scored competition-window submissions. The package does not decide this. |
 | 4 | Final submission `55316818` is trace-aligned, before deadline, notebook-only, one-T4, and has exact output/artifact evidence; all 12 selected solver traces are indexed. | Whether the formatting-modified starter and substantive generic continuation are acceptable operational deviations; whether the transient local `__pycache__` affects the two-file folder rule. |
 | 5 | Final v6 submission `55320296` is trace-aligned, exact-prompt, before deadline, notebook-only, one-T4, and its output/log are preserved. | Whether the trace-preserved v6 source is sufficient when Kaggle now returns 403 for the historical source pull, and whether the historical report-format limitations are material. |
@@ -49,6 +49,8 @@ bundle is present; see `task3/DATA_PROVENANCE.md`.
   per-task snapshots; these are checked by `verify_repository.py`.
 - Later Task 1/2 reproductions: `REPRODUCTION_TRACE_MATERIAL.md`,
   `REPRODUCTION_TRACE_INDEX.json`, and `REPRODUCTION_COSTS.json`.
+- Supplemental bounded formal prefixes for Tasks 1–2:
+  `FORMAL_PREFIX_AUDIT.md` and `FORMAL_PREFIX_AUDIT.json`.
 - Exact prompt comparison: `PROMPT_CONFORMANCE_AUDIT.md` and
   `PROMPT_CONFORMANCE_AUDIT.json`.
 - Cross-task findings: `RULE_COMPLIANCE_AUDIT.md` and

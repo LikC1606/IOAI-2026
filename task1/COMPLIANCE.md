@@ -6,14 +6,17 @@ into an official-prompt-only result.
 
 ## Record recovery note
 
-The original Task 1 run record was unavailable after a school-server restart.
-The published `evidence/reproduction-120m/rollout.jsonl` is a later fresh
-reproduction using the same configured solver/system, official competition
-bundle, and organizer constraints. Its first 1,383 unmodified events through
-`task_complete` are selected as the canonical solution trace at
-`evidence/canonical/rollout-solution-prefix.jsonl`; the complete trace is kept
-as raw audit evidence. Both are separated from the lost original run and the
-official account result.
+The complete original Task 1 run record was unavailable after a school-server
+restart. A bounded pre-boundary formal prefix is nevertheless preserved under
+`evidence/rollouts/`, with its private-source and published-file hashes in
+`ROLLOUT_PROVENANCE.json`. The published
+`evidence/reproduction-120m/rollout.jsonl` is a later fresh reproduction using
+the same configured solver/system, official competition bundle, and organizer
+constraints. Its first 1,383 unmodified events through `task_complete` are
+selected as the canonical solution trace at
+`evidence/canonical/rollout-solution-prefix.jsonl`; the complete reproduction
+trace is kept as raw audit evidence. The formal prefix, later reproduction, and
+official account result remain separate scopes.
 
 ## Status
 

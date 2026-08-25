@@ -1,0 +1,65 @@
+{
+  "schema": "ioai.formal-prefix-audit.v1",
+  "scope": "Supplemental bounded pre-intervention prefixes from the original formal Task 1/2 runs; these do not replace the requested later two-hour reproductions and do not make the official final results trace-bound.",
+  "recovery_statement": "The complete original run records were unavailable after a school-server restart. The bounded redacted prefixes through the applicable autonomy boundaries remain preserved, with private-source and published-file hashes recorded below.",
+  "tasks": {
+    "task1": {
+      "competition": "ioai-2026-task-1-westlake-nlp-24",
+      "trace_path": "task1/evidence/rollouts/rollout-2026-08-05T17-20-55-019fd139-d180-7171-ac0b-c037e11866eb.jsonl",
+      "published_trace_sha256": "bcfb0c6ffca945638aedd4b3771915bc88abf72ca29843b457e966427684eb89",
+      "private_original_sha256": "caeff9bb37bef475044391ca35ba834a3aaf144278b66b50adffbc023127e3d6",
+      "event_count": 350,
+      "first_timestamp_utc": "2026-08-05T09:20:55.426Z",
+      "last_timestamp_utc": "2026-08-05T09:52:58.695Z",
+      "boundary_exclusive_utc": "2026-08-05T10:16:52.222Z",
+      "boundary_basis": "first material supervisory instruction received by the controlling session",
+      "prompt_conformance": {
+        "strict_exact_organizer_prompt_text": true,
+        "starter_prompt_sha256": "cf6b223cb3d385fb2214c86cdd89cbf914f800d80af5ad5b642b61738e2cf2fb",
+        "continuation_prompt_events_before_boundary": 0,
+        "user_prompt_classes": {
+          "startup_instructions": 1,
+          "exact_organizer_starter_prompt": 1
+        }
+      },
+      "preboundary_submission": null,
+      "result_relation": "No scored competition submission was sent before the formal autonomy boundary. The later Agent-executed submission 55267607 was after the boundary and after the official deadline. The official final refs 55267333/55267368 are not trace-bound.",
+      "canonical_selection_relation": "The requested later two-hour reproduction remains the canonical Task 1 autonomous material; this formal prefix is supplemental historical audit evidence only.",
+      "provenance_file": "task1/ROLLOUT_PROVENANCE.json"
+    },
+    "task2": {
+      "competition": "ioai-2026-task-2-westlake-nlp-24",
+      "trace_path": "task2/evidence/rollouts/rollout-2026-08-05T13-30-31-019fd066-e338-71a0-9d8e-6e1d154c5a79.jsonl",
+      "published_trace_sha256": "a7dc48c7a837b3536d835c17fdee63db6fe27b79cd1cc577cbf4e15672f45014",
+      "private_original_sha256": "0573b7a06093526fa9d81856ec370801e66fff4404e2c6811909db8ef292b09d",
+      "event_count": 705,
+      "first_timestamp_utc": "2026-08-05T05:30:31.777Z",
+      "last_timestamp_utc": "2026-08-05T06:24:47.487Z",
+      "boundary_exclusive_utc": "2026-08-05T06:24:47.549Z",
+      "boundary_basis": "first modified/custom continuation prompt received by the solver",
+      "prompt_conformance": {
+        "strict_exact_organizer_prompt_text": true,
+        "starter_prompt_sha256": "6e91132b190ef077ff9af4cc1c6e538155f71333c18d7666c13e752e0e7d693a",
+        "continuation_prompt_sha256": "fbe001a56ef12f475c4172114fcc9f68100c451810cd5adb05a3132bb7a38ead",
+        "user_prompt_classes": {
+          "startup_instructions": 1,
+          "exact_organizer_starter_prompt": 1,
+          "exact_organizer_continuation_prompt": 1
+        }
+      },
+      "preboundary_submission": {
+        "submission_ref": 55260695,
+        "kernel_version": 2,
+        "submitted_at_utc": "2026-08-05T06:19:10.890Z",
+        "public_score": 0.55416,
+        "private_score": 0.54833,
+        "trace_alignment": true,
+        "artifact_chain": "task2/remote/rotation-cnn-v2/"
+      },
+      "result_relation": "Submission 55260695 is the formal exact-prompt, pre-boundary eligible result. The account's official final 55261432 is a later ExtraTrees result downstream of the modified continuation boundary and is not trace-bound.",
+      "canonical_selection_relation": "The requested later two-hour reproduction remains the canonical Task 2 autonomous material; this formal prefix and its v2 artifact chain are supplemental historical audit evidence.",
+      "provenance_file": "task2/ROLLOUT_PROVENANCE.json"
+    }
+  },
+  "organizer_decision_required": "The organizer/Jury determines whether the bounded formal prefixes, later reproductions, and their separate result scopes satisfy the requested submission policy. No acceptance is self-certified."
+}

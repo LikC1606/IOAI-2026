@@ -9,7 +9,7 @@
   "tasks": {
     "task1": {
       "competition": "ioai-2026-task-1-westlake-nlp-24",
-      "record_recovery_note": "The original Task 1 run record was unavailable after a school-server restart. This is a later fresh reproduction using the same configured solver/system, official competition bundle, and organizer constraints; it is not the original run record.",
+      "record_recovery_note": "The complete original Task 1 run record was unavailable after a school-server restart; a bounded formal prefix remains as separate historical audit material. This is a later fresh reproduction using the same configured solver/system, official competition bundle, and organizer constraints.",
       "model_provider": "ioai_allowed",
       "model": "gpt-5.6-sol",
       "reasoning_effort": "max",
@@ -33,7 +33,7 @@
     },
     "task2": {
       "competition": "ioai-2026-task-2-westlake-nlp-24",
-      "record_recovery_note": "The original Task 2 run record was unavailable after a school-server restart. This is a later fresh reproduction using the same configured solver/system, official competition bundle, and organizer constraints; it is not the original run record.",
+      "record_recovery_note": "The complete original Task 2 run record was unavailable after a school-server restart; a bounded formal prefix remains as separate historical audit material. This is a later fresh reproduction using the same configured solver/system, official competition bundle, and organizer constraints.",
       "model_provider": "ioai_allowed",
       "model": "gpt-5.6-sol",
       "reasoning_effort": "max",

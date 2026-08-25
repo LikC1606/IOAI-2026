@@ -24,11 +24,12 @@ autonomous-trace result.
 
 ## Scope notes
 
-- The original Task 1 and Task 2 run records were unavailable after a
-  school-server restart. Their canonical no-live-human traces are later fresh
-  reproductions run with the same configured solver/system, official
-  competition bundle, and organizer constraints; they are not the lost
-  original run records.
+- The complete original Task 1 and Task 2 run records were unavailable after a
+  school-server restart. Bounded pre-boundary formal prefixes remain as
+  supplemental evidence, while their canonical no-live-human traces are later
+  fresh reproductions run with the same configured solver/system, official
+  competition bundle, and organizer constraints. Neither later reproduction is
+  the incomplete original record; see `FORMAL_PREFIX_AUDIT.md/json`.
 - Task 1's separately preserved Agent-executed submission `55267607` scored
   Public 0.78049 / Private 0.76808 but was submitted 291.343 seconds after the
   official Kaggle deadline and after human intervention. It is not the official

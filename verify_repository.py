@@ -540,6 +540,103 @@ def verify_task3_package() -> dict[str, object]:
     }
 
 
+def verify_formal_prefix_audit() -> dict[str, object]:
+    """Verify the supplemental bounded formal Task 1/2 prefixes.
+
+    These prefixes are deliberately separate from the requested later
+    reproduction selection.  Checking them here prevents a reviewer-facing
+    audit from silently losing the exact-prompt formal evidence that remains
+    after the complete original records became unavailable.
+    """
+    audit = json.loads((ROOT / "FORMAL_PREFIX_AUDIT.json").read_text(encoding="utf-8"))
+    assert audit["schema"] == "ioai.formal-prefix-audit.v1"
+    assert (ROOT / "FORMAL_PREFIX_AUDIT.md").is_file()
+    expected = {
+        "task1": {
+            "events": 350,
+            "boundary": "2026-08-05T10:16:52.222Z",
+            "trace_sha256": "bcfb0c6ffca945638aedd4b3771915bc88abf72ca29843b457e966427684eb89",
+            "prompt_count": 2,
+            "starter": "task1/official/STARTER_PROMPT.md",
+            "continuation": None,
+        },
+        "task2": {
+            "events": 705,
+            "boundary": "2026-08-05T06:24:47.549Z",
+            "trace_sha256": "a7dc48c7a837b3536d835c17fdee63db6fe27b79cd1cc577cbf4e15672f45014",
+            "prompt_count": 3,
+            "starter": "task2/official/STARTER_PROMPT.md",
+            "continuation": "task2/official/CONTINUE_PROMPT.md",
+        },
+    }
+    for task, spec in expected.items():
+        item = audit["tasks"][task]
+        path = ROOT / item["trace_path"]
+        assert path.is_file()
+        assert sha256(path) == spec["trace_sha256"]
+        events = []
+        with path.open(encoding="utf-8") as handle:
+            for line in handle:
+                if line.strip():
+                    events.append(json.loads(line))
+        assert len(events) == spec["events"]
+        assert item["event_count"] == len(events)
+        timestamps = [str(event.get("timestamp")) for event in events if event.get("timestamp")]
+        assert timestamps
+        assert min(timestamps) == item["first_timestamp_utc"]
+        assert max(timestamps) == item["last_timestamp_utc"]
+        assert all(timestamp < spec["boundary"] for timestamp in timestamps)
+        assert item["boundary_exclusive_utc"] == spec["boundary"]
+
+        user_messages: list[str] = []
+        for event in events:
+            payload = event.get("payload", {})
+            if event.get("type") != "response_item" or payload.get("role") != "user":
+                continue
+            user_messages.append(
+                "\n".join(
+                    str(part.get("text") or part.get("input_text") or "")
+                    for part in payload.get("content") or []
+                    if isinstance(part, dict)
+                )
+            )
+        assert len(user_messages) == spec["prompt_count"]
+        assert user_messages[0].startswith("# AGENTS.md instructions")
+        starter = (ROOT / spec["starter"]).read_text(encoding="utf-8")
+        assert user_messages[1] == starter
+        if spec["continuation"] is None:
+            assert len(user_messages) == 2
+            assert item["prompt_conformance"]["continuation_prompt_events_before_boundary"] == 0
+        else:
+            continuation = (ROOT / spec["continuation"]).read_text(encoding="utf-8")
+            assert user_messages[2] == continuation
+            assert item["prompt_conformance"]["continuation_prompt_sha256"] == sha256(
+                ROOT / spec["continuation"]
+            )
+        assert item["prompt_conformance"]["strict_exact_organizer_prompt_text"] is True
+        assert item["prompt_conformance"]["starter_prompt_sha256"] == sha256(
+            ROOT / spec["starter"]
+        )
+        assert item["provenance_file"] == f"{task}/ROLLOUT_PROVENANCE.json"
+
+    task2_result = audit["tasks"]["task2"]["preboundary_submission"]
+    assert task2_result == {
+        "submission_ref": 55260695,
+        "kernel_version": 2,
+        "submitted_at_utc": "2026-08-05T06:19:10.890Z",
+        "public_score": 0.55416,
+        "private_score": 0.54833,
+        "trace_alignment": True,
+        "artifact_chain": "task2/remote/rotation-cnn-v2/",
+    }
+    task2_summary = json.loads((ROOT / "task2/SUMMARY.json").read_text(encoding="utf-8"))
+    assert task2_summary["best_submission_ref"] == task2_result["submission_ref"]
+    assert task2_summary["best_public_score"] == task2_result["public_score"]
+    assert task2_summary["best_private_score"] == task2_result["private_score"]
+    assert audit["tasks"]["task1"]["preboundary_submission"] is None
+    return {"all_ok": True, "formal_prefixes": 2, "task2_trace_aligned_submission": 55260695}
+
+
 def _verify_gpu_notebook_metadata(
     metadata: dict[str, object], competition: str, kernel: str
 ) -> None:
@@ -915,6 +1012,18 @@ def verify_cross_task_rule_audit() -> dict[str, object]:
         assert audit["tasks"][task]["informational_disclosures"] == [
             "method_background_research_not_treated_as_compliance_issue"
         ]
+    assert audit["tasks"]["task1"]["formal_prefix"] == {
+        "path": "task1/evidence/rollouts/rollout-2026-08-05T17-20-55-019fd139-d180-7171-ac0b-c037e11866eb.jsonl",
+        "audit": "FORMAL_PREFIX_AUDIT.json",
+        "strict_exact_organizer_prompt_text_conformance": True,
+        "preboundary_submission": None,
+    }
+    assert audit["tasks"]["task2"]["formal_prefix"] == {
+        "path": "task2/evidence/rollouts/rollout-2026-08-05T13-30-31-019fd066-e338-71a0-9d8e-6e1d154c5a79.jsonl",
+        "audit": "FORMAL_PREFIX_AUDIT.json",
+        "strict_exact_organizer_prompt_text_conformance": True,
+        "preboundary_submission": 55260695,
+    }
     assert audit["cost_accounting"]["local_gpu_runtime"] == "incomplete_tasks_4_to_6"
     return {
         "tasks": len(tasks),
@@ -1047,6 +1156,7 @@ def main() -> None:
     report["task1_package_replay"] = verify_task1_package()
     report["task2_artifact_chain"] = verify_task2_artifacts()
     report["task3_package_replay"] = verify_task3_package()
+    report["formal_prefix_audit"] = verify_formal_prefix_audit()
     report["task4_artifact_chain"] = verify_task4_artifacts()
     report["task5_artifact_chain"] = verify_task5_artifacts()
     report["task6_exact_artifacts"] = verify_task6_artifacts()
@@ -1126,6 +1236,10 @@ def main() -> None:
             "REPRODUCTION_TRACE_MATERIAL.md",
             "REPRODUCTION_TRACE_INDEX.json",
             "REPRODUCTION_COSTS.json",
+        ],
+        "tasks1_2_formal_prefix_audit": [
+            "FORMAL_PREFIX_AUDIT.md",
+            "FORMAL_PREFIX_AUDIT.json",
         ],
         "task4_supplemental_trace_and_rule_audit": [
             "task4/evidence/SUPPLEMENTAL_ROLLOUT_PROVENANCE.json",

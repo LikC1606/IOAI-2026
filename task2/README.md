@@ -9,11 +9,14 @@ task's evidence, start with `COMPLIANCE.md`, `SUMMARY.json`, and
 
 ## Record recovery note
 
-The original Task 2 run record was unavailable after a school-server restart.
-The canonical trace in `evidence/reproduction-120m/` is a later fresh
-reproduction using the same configured solver/system, official competition
-bundle, and organizer constraints. It is a reproduction record, not the lost
-original run record, and its post-deadline status remains explicit below.
+The complete original Task 2 run record was unavailable after a school-server
+restart. A bounded pre-boundary formal prefix remains under
+`evidence/rollouts/`; its provenance hashes are recorded in
+`ROLLOUT_PROVENANCE.json`. The canonical trace in
+`evidence/reproduction-120m/` is a later fresh reproduction using the same
+configured solver/system, official competition bundle, and organizer
+constraints. It is a reproduction record, not a replacement for the incomplete
+original record, and its post-deadline status remains explicit below.
 
 The canonical published no-live-human rollout is
 the complete later two-hour trace under `evidence/reproduction-120m/`; the

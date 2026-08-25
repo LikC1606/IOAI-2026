@@ -17,10 +17,12 @@ the full raw stream remains in the reproduction package; Task 2 uses its full
 later trace.
 They remain post-deadline, non-ranking traces for official-score purposes and
 must not be read as the official account result.
-The original Task 1 and Task 2 run records were unavailable after a
-school-server restart; those two selected traces are later fresh reproductions
-using the same configured solver/system, official competition bundle, and
-organizer constraints, not the lost original run records.
+The complete original Task 1 and Task 2 run records were unavailable after a
+school-server restart; bounded pre-boundary formal prefixes remain as separate
+historical audit evidence. Those two selected traces are later fresh
+reproductions using the same configured solver/system, official competition
+bundle, and organizer constraints, not replacements for the incomplete
+original records. See [`FORMAL_PREFIX_AUDIT.md`](FORMAL_PREFIX_AUDIT.md).
 
 ## What is represented
 

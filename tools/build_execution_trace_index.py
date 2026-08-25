@@ -27,14 +27,16 @@ DEFAULT_TASK6_RAW = Path(
 )
 RECOVERY_NOTES = {
     "task1": (
-        "The original Task 1 run record was unavailable after a school-server restart; "
-        "the selected trace is a later fresh reproduction using the same configured "
-        "solver/system and organizer constraints, not the original run record."
+        "The complete original Task 1 run record was unavailable after a school-server "
+        "restart; a bounded pre-boundary formal prefix remains under task1/evidence/rollouts, "
+        "while the selected trace is a later fresh reproduction using the same configured "
+        "solver/system and organizer constraints."
     ),
     "task2": (
-        "The original Task 2 run record was unavailable after a school-server restart; "
-        "the selected trace is a later fresh reproduction using the same configured "
-        "solver/system and organizer constraints, not the original run record."
+        "The complete original Task 2 run record was unavailable after a school-server "
+        "restart; a bounded pre-boundary formal prefix remains under task2/evidence/rollouts, "
+        "while the selected trace is a later fresh reproduction using the same configured "
+        "solver/system and organizer constraints."
     ),
 }
 
@@ -296,9 +298,10 @@ def main() -> None:
         "The JSONL files are credential-redacted observable traces; see",
         "[`EXECUTION_TRACES.md`](EXECUTION_TRACES.md) for interpretation and limits.",
         "",
-        "Task 1 and Task 2 records were recovered as later fresh reproductions",
-        "after the original run records became unavailable following a school-server",
-        "restart; their notes and scope are recorded in the JSON index.",
+        "Task 1 and Task 2 selected records are later fresh reproductions after the",
+        "complete original run records became unavailable following a school-server",
+        "restart. Bounded formal prefixes remain as supplemental historical audit",
+        "material in each task package; their notes and scope are recorded in the JSON index.",
         "",
         "| Task | Files | Events | Logical calls | Outer exec calls | Tokens |",
         "|---|---:|---:|---:|---:|---:|",

@@ -9,13 +9,16 @@ task's evidence, start with `COMPLIANCE.md`, `SUMMARY.json`, and
 
 ## Record recovery note
 
-The original Task 1 run record was unavailable after a school-server restart.
-The canonical solution trace in `evidence/canonical/` is the immutable prefix
-of a later fresh reproduction through its `task_complete` event. The same
-configured solver/system, official competition bundle, and organizer
-constraints were used. It is a reproduction record, not the lost original run
-record, and its post-deadline status remains explicit below. The complete raw
-reproduction remains under `evidence/reproduction-120m/` for audit.
+The complete original Task 1 run record was unavailable after a school-server
+restart. A bounded pre-boundary formal prefix remains under
+`evidence/rollouts/`; its provenance hashes are recorded in
+`ROLLOUT_PROVENANCE.json`. The canonical solution trace in
+`evidence/canonical/` is the immutable prefix of a later fresh reproduction
+through its `task_complete` event. The same configured solver/system, official
+competition bundle, and organizer constraints were used. It is a reproduction
+record, not a replacement for the incomplete original record, and its
+post-deadline status remains explicit below. The complete raw reproduction
+remains under `evidence/reproduction-120m/` for audit.
 
 This package preserves the historical formal Task 1 Agent evidence and
 separates it from the official account result and the canonical later

@@ -95,6 +95,10 @@
       "REPRODUCTION_TRACE_INDEX.json",
       "REPRODUCTION_COSTS.json"
     ],
+    "tasks1_2_formal_prefix_audit": [
+      "FORMAL_PREFIX_AUDIT.md",
+      "FORMAL_PREFIX_AUDIT.json"
+    ],
     "task4_supplemental_trace_and_rule_audit": [
       "task4/evidence/SUPPLEMENTAL_ROLLOUT_PROVENANCE.json",
       "task4/RULE_DIFFERENCE_AUDIT.md"
@@ -120,7 +124,7 @@
         "REPRODUCTION_TRACE_INDEX.json",
         "REPRODUCTION_COSTS.json"
       ],
-      "note": "The original Task 1 and Task 2 run records were unavailable after a school-server restart. These are full redacted later 120-minute reproductions using the same configured solver/system, official competition bundle, and organizer constraints. Task 1's canonical solution selection is the exact prefix through task_complete while its full raw stream remains here; Task 2 uses its full reproduction. Both are post-deadline and non-ranking, and their custom starter appendices prevent exact-prompt claims."
+      "note": "The complete original Task 1 and Task 2 run records were unavailable after a school-server restart, while bounded formal prefixes remain as separate historical audit material. These are full redacted later 120-minute reproductions using the same configured solver/system, official competition bundle, and organizer constraints. Task 1's canonical solution selection is the exact prefix through task_complete while its full raw stream remains here; Task 2 uses its full reproduction. Both are post-deadline and non-ranking, and their custom starter appendices prevent exact-prompt claims. See FORMAL_PREFIX_AUDIT.md/json for the separate formal-prefix scope."
     },
     "prompts_and_visible_outputs": {
       "status": "complete_for_selected_observable_trace_scope",

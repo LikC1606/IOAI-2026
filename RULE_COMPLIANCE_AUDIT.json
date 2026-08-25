@@ -17,7 +17,8 @@
       "strict_claim_status": "not_supported",
       "primary_classifications": ["known_deviation", "evidence_unavailable"],
       "risks": [
-        "original_run_trace_unavailable_after_school_server_restart",
+        "complete_original_run_record_unavailable_after_school_server_restart",
+        "bounded_formal_prefix_preserved_as_supplemental_evidence",
         "later_reproduction_is_post_deadline_different_submission",
         "custom_starter_prompt",
         "38_captured_versions_vs_published_limit_20_jury_scope_unclear"
@@ -25,6 +26,12 @@
       "informational_disclosures": [
         "method_background_research_not_treated_as_compliance_issue"
       ],
+      "formal_prefix": {
+        "path": "task1/evidence/rollouts/rollout-2026-08-05T17-20-55-019fd139-d180-7171-ac0b-c037e11866eb.jsonl",
+        "audit": "FORMAL_PREFIX_AUDIT.json",
+        "strict_exact_organizer_prompt_text_conformance": true,
+        "preboundary_submission": null
+      },
       "evidence": ["task1/COMPLIANCE.md", "task1/SUMMARY.json"]
     },
     "task2": {
@@ -34,7 +41,8 @@
       "strict_claim_status": "not_supported",
       "primary_classifications": ["known_deviation", "evidence_unavailable"],
       "risks": [
-        "original_run_trace_unavailable_after_school_server_restart",
+        "complete_original_run_record_unavailable_after_school_server_restart",
+        "bounded_formal_prefix_preserved_as_supplemental_evidence",
         "official_final_downstream_of_formal_supervision_boundary",
         "later_reproduction_is_post_deadline_different_submission",
         "custom_starter_prompt"
@@ -44,6 +52,12 @@
       ],
       "captured_versions": 18,
       "published_version_limit": 20,
+      "formal_prefix": {
+        "path": "task2/evidence/rollouts/rollout-2026-08-05T13-30-31-019fd066-e338-71a0-9d8e-6e1d154c5a79.jsonl",
+        "audit": "FORMAL_PREFIX_AUDIT.json",
+        "strict_exact_organizer_prompt_text_conformance": true,
+        "preboundary_submission": 55260695
+      },
       "evidence": ["task2/COMPLIANCE.md", "task2/SUMMARY.json"]
     },
     "task3": {

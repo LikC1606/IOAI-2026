@@ -193,16 +193,18 @@ def build_task1_solution_prefix() -> None:
         raise ValueError(f"unexpected Task 1 prefix token totals: {totals}")
 RECOVERY_NOTES = {
     "task1": (
-        "The original Task 1 run record was unavailable after a school-server restart. "
-        "The canonical trace is a later fresh reproduction using the same configured "
-        "solver/system, official competition bundle, and organizer constraints; it is "
-        "not the original run record."
+        "The complete original Task 1 run record was unavailable after a school-server "
+        "restart. A bounded pre-boundary formal prefix remains under "
+        "task1/evidence/rollouts; the canonical trace is a later fresh reproduction "
+        "using the same configured solver/system, official competition bundle, and "
+        "organizer constraints."
     ),
     "task2": (
-        "The original Task 2 run record was unavailable after a school-server restart. "
-        "The canonical trace is a later fresh reproduction using the same configured "
-        "solver/system, official competition bundle, and organizer constraints; it is "
-        "not the original run record."
+        "The complete original Task 2 run record was unavailable after a school-server "
+        "restart. A bounded pre-boundary formal prefix remains under "
+        "task2/evidence/rollouts; the canonical trace is a later fresh reproduction "
+        "using the same configured solver/system, official competition bundle, and "
+        "organizer constraints."
     ),
 }
 
@@ -508,9 +510,10 @@ def write_markdown(index: dict[str, Any]) -> None:
         "a measured technical behavior; neither is treated as a compliance blocker. See",
         "`RULE_COMPLIANCE_AUDIT.md/json`.",
         "",
-        "For Tasks 1 and 2, the original run records were unavailable after a",
-        "school-server restart; the selected traces are later fresh reproductions",
-        "using the same configured solver/system and organizer constraints.",
+        "For Tasks 1 and 2, the complete original run records were unavailable after",
+        "a school-server restart; bounded formal prefixes remain as separate historical",
+        "audit material, while the selected traces are later fresh reproductions using",
+        "the same configured solver/system and organizer constraints.",
         "",
         "| Task | Trace files | Events | User prompts | Logical calls | Tokens | Boundary (exclusive UTC) |",
         "|---|---:|---:|---:|---:|---:|---|",
@@ -604,6 +607,9 @@ def write_manifest(index: dict[str, Any]) -> None:
         "AUTONOMOUS_TRACE_INDEX.json",
         "AUTONOMOUS_COSTS.json",
         "AUTONOMOUS_TRACE_MATERIAL.md",
+        "EXECUTION_TRACE_INDEX.json",
+        "EXECUTION_TRACE_INDEX.md",
+        "EXECUTION_TRACES.md",
         "COSTS.json",
         "task3/evidence/AUTONOMOUS_TOKEN_USAGE.json",
         "task1/tools/verify_package.py",
@@ -611,6 +617,8 @@ def write_manifest(index: dict[str, Any]) -> None:
         "tools/build_autonomous_trace_material.py",
         "tools/build_execution_trace_index.py",
         "FINAL_SUBMISSION_RESULTS.md",
+        "FORMAL_PREFIX_AUDIT.json",
+        "FORMAL_PREFIX_AUDIT.md",
         "ORGANIZER_SUBMISSION.md",
         "ORGANIZER_SUBMISSION.json",
         "ORGANIZER_REVIEW_GUIDE.md",
