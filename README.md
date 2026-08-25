@@ -72,6 +72,8 @@ sha256sum -c AUTONOMOUS_MATERIAL_MANIFEST.sha256
 sha256sum -c REPRODUCTION_MATERIAL_MANIFEST.sha256
 ```
 
+## Official result and scope summary
+
 | Task | Competition | Official final Public LB | Status |
 |---|---|---:|---|
 | [Task 1](task1/) | `ioai-2026-task-1-westlake-nlp-24` | 0.77751 | Private 0.80474; tied refs `55267333` / `55267368`; final not trace-bound |
