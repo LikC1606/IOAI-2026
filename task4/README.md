@@ -20,13 +20,15 @@ strict exact-organizer-prompt claim. The final selected submission is downstream
 of the custom continuation events. See `../PROMPT_CONFORMANCE_AUDIT.md`; the
 organizer/Jury decides whether the disclosed deviation is recognized.
 
-The full rule audit also discloses three narrower risks: the local notebook
-folder contained a transient `__pycache__` before some pushes even though the
-remote source artifact was unaffected; a parallel solver made two arXiv search
-queries after version 3 was pushed without evidence that their results entered
-the final version-4 path; and local development records mention one H100 while
-the final notebook itself ran on the required one T4 at `cuda:0`. These are not
-silently recast as compliant facts; see `RULE_DIFFERENCE_AUDIT.md`.
+The full rule audit also preserves three narrower disclosures: the local
+notebook folder contained a transient `__pycache__` before some pushes even
+though the remote source artifact was unaffected; a parallel solver made two
+arXiv search queries after version 3 was pushed, with no evidence that their
+results entered the final version-4 path; and local development records mention
+one H100 while the final notebook itself ran on the required one T4 at
+`cuda:0`. The arXiv searches are retained as method-background provenance and
+are not treated as a compliance issue; the folder and hardware facts remain
+separately disclosed in `RULE_DIFFERENCE_AUDIT.md`.
 
 Eligible submissions:
 

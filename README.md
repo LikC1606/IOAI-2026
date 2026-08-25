@@ -8,6 +8,30 @@ known deviations, Jury-interpretation risks, and unavailable evidence; the
 current record does not support a claim that all six tasks are strictly
 compliant.
 
+## Recommended review order
+
+1. [`ORGANIZER_SUBMISSION.md`](ORGANIZER_SUBMISSION.md) — complete deliverable
+   checklist and evidence links.
+2. [`FINAL_SUBMISSION_RESULTS.md`](FINAL_SUBMISSION_RESULTS.md) — official
+   account results separated from autonomous and later reproduction results.
+3. [`RULE_COMPLIANCE_AUDIT.md`](RULE_COMPLIANCE_AUDIT.md) — cross-task scope,
+   prompt, provenance, budget, hardware, and reporting audit.
+4. [`AUTONOMOUS_TRACE_MATERIAL.md`](AUTONOMOUS_TRACE_MATERIAL.md) and
+   [`EXECUTION_TRACES.md`](EXECUTION_TRACES.md) — how to read the selected
+   traces, event envelopes, boundaries, and token accounting.
+5. `task1/` through `task6/` — task-specific source, outputs, reports, and
+   compliance notes.
+6. [`KAGGLE_EXTRACTION_DELIVERY.json`](KAGGLE_EXTRACTION_DELIVERY.json) — the
+   complete external Kaggle extraction archive and Drive delivery record.
+
+## Scope labels used throughout
+
+| Label | Meaning |
+|---|---|
+| **Official final** | The result reconciled from the extracted Kaggle account under the competition's automatic highest-Public-before-deadline rule. |
+| **Canonical autonomous rollout** | The selected no-live-human trace and result for the package's stated boundary; for Tasks 1–2 it is a later post-deadline reproduction, not the lost original run. |
+| **Historical/reproduction evidence** | Other preserved submissions, reports, source copies, or later runs retained for audit context but not substituted for the official result. |
+
 | Task | Competition | Official final Public LB | Status |
 |---|---|---:|---|
 | [Task 1](task1/) | `ioai-2026-task-1-westlake-nlp-24` | 0.77751 | Private 0.80474; tied refs `55267333` / `55267368` |

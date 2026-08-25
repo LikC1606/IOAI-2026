@@ -99,10 +99,10 @@ from the first trace index. The rule audit also discloses the substantive
 non-exact continuation, a transient local `__pycache__` in the push folder, the
 method-background arXiv searches (not treated as a compliance issue), and the
 interpretation question around local H100 development versus the final one-T4
-notebook. No organizer acceptance is self-certified.
-They occurred after the account's official competition deadline, so their scores
-remain reference/reproduction results, not official-ranking scores, and do not
-replace the official account reconciliation. Their exact token,
-runtime, and unavailable-USD disclosures are in
+notebook. No organizer acceptance is self-certified. The final Task 4
+submission was accepted at `06:10:48.923Z`, before the `06:15:00Z` official
+deadline; the selected trace itself continues to the later agent-run boundary,
+but no post-deadline submission is used to replace the official result. Exact
+token, runtime, and unavailable-USD disclosures are in
 [`REPRODUCTION_COSTS.json`](REPRODUCTION_COSTS.json), with hashes in
 [`REPRODUCTION_MATERIAL_MANIFEST.sha256`](REPRODUCTION_MATERIAL_MANIFEST.sha256).
