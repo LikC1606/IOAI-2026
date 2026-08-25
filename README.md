@@ -72,16 +72,23 @@ all-account numerical maxima.
 
 The trace indexes, trace guide, cost summary, prompt audit, Task 4 rule audit,
 and their SHA-256 material manifest are generated from the preserved evidence.
-Their refresh tools are:
+The canonical full refresh is `build_autonomous_trace_material.py`; it rebuilds
+the autonomous index/material, cost ledger, both audit reports, and the
+autonomous material manifest in one consistent pass. The other builders remain
+available as standalone diagnostic/regeneration tools when investigating one
+component. Their roles are:
 
 | Generated material | Refresh tool |
 |---|---|
-| `EXECUTION_TRACE_INDEX.json/.md` | `python3 tools/build_execution_trace_index.py` |
-| `AUTONOMOUS_TRACE_INDEX.json`, `AUTONOMOUS_TRACE_MATERIAL.md`, `AUTONOMOUS_COSTS.json`, and `AUTONOMOUS_MATERIAL_MANIFEST.sha256` | `python3 tools/build_autonomous_trace_material.py` |
-| `PROMPT_CONFORMANCE_AUDIT.json/.md` | `python3 tools/build_prompt_conformance_audit.py` |
-| `task4/RULE_DIFFERENCE_AUDIT.json/.md` | `python3 tools/build_task4_rule_audit.py` |
+| `AUTONOMOUS_TRACE_INDEX.json`, `AUTONOMOUS_TRACE_MATERIAL.md`, `AUTONOMOUS_COSTS.json`, `PROMPT_CONFORMANCE_AUDIT.json/.md`, `task4/RULE_DIFFERENCE_AUDIT.json/.md`, and `AUTONOMOUS_MATERIAL_MANIFEST.sha256` | `python3 tools/build_autonomous_trace_material.py` (canonical full refresh) |
+| `EXECUTION_TRACE_INDEX.json/.md` | `python3 tools/build_execution_trace_index.py` (standalone execution inventory) |
+| `PROMPT_CONFORMANCE_AUDIT.json/.md` | `python3 tools/build_prompt_conformance_audit.py` (standalone prompt diagnostic) |
+| `task4/RULE_DIFFERENCE_AUDIT.json/.md` | `python3 tools/build_task4_rule_audit.py` (standalone Task 4 diagnostic) |
 
-After any refresh, run `python3 verify_repository.py` and all manifest checks.
+Recommended refresh order is: execution inventory first, then the canonical
+autonomous-material builder, then `verify_repository.py` and every manifest
+check. After any refresh, run `python3 verify_repository.py` and all manifest
+checks.
 Do not hand-edit the JSONL traces, exact submission artifacts, or generated
 hashes; make a source/evidence change first, then regenerate and verify.
 
