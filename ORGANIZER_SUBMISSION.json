@@ -117,6 +117,10 @@
       "task1/remote/OFFICIAL_FINAL_EXTRACTION_PROVENANCE.json",
       "task2/remote/OFFICIAL_FINAL_EXTRACTION_PROVENANCE.json"
     ],
+    "submission_version_budget_audit": [
+      "SUBMISSION_VERSION_AUDIT.json",
+      "SUBMISSION_VERSION_AUDIT.md"
+    ],
     "task4_supplemental_trace_and_rule_audit": [
       "task4/evidence/SUPPLEMENTAL_ROLLOUT_PROVENANCE.json",
       "task4/RULE_DIFFERENCE_AUDIT.md"
@@ -180,6 +184,14 @@
       ],
       "all_six_strictly_compliant_claim_supported": false,
       "note": "Tasks 1 and 2 are not official-final/trace aligned; Tasks 1, 2, and 4 are non-exact-prompt; remaining task-specific prompt, budget, hardware, report, and provenance limits are disclosed. External method research and Task 6 evaluator batch behavior are retained as informational/technical disclosures, not compliance blockers."
+    },
+    "submission_version_limits": {
+      "status": "complete_literal_audit_with_known_deviations_and_organizer_scope_questions",
+      "paths": [
+        "SUBMISSION_VERSION_AUDIT.md",
+        "SUBMISSION_VERSION_AUDIT.json"
+      ],
+      "note": "Checks extracted task budgets and the published one-submission-per-Notebook-version rule. Tasks 1 and 3 exceed the literal captured budget; Tasks 1, 2, and 3 contain repeated scriptVersionId submissions. No exception is assumed."
     },
     "task4_rule_difference_audit": {
       "status": "complete_with_disclosed_prompt_process_and_hardware_limits",

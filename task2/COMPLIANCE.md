@@ -107,7 +107,11 @@ the reproduction trace. See `../PROMPT_CONFORMANCE_AUDIT.md` for hashes.
   not runtime data, labels, weights, embeddings, or runtime resources. They are
   retained for provenance and are not treated as a competition compliance issue.
 - The extraction captured 18 notebook versions, within the published 20-version
-  limit. This does not cure the final-result/trace mismatch.
+  count. However, `scriptVersionId=340290308` was submitted twice as refs
+  `55260462` and `55260695` before the deadline; the latter is the eligible
+  formal v2 result. This directly conflicts with the published
+  one-submission-per-version rule and does not cure the final-result/trace
+  mismatch. See [`../SUBMISSION_VERSION_AUDIT.json`](../SUBMISSION_VERSION_AUDIT.json).
 - API and GPU USD remain unavailable, and the original lost run's total compute
   cannot be reconstructed. The cost file covers the selected later
   reproduction and separately recorded formal-run evidence only.

@@ -6,11 +6,35 @@
   "remote_filename": "submission.csv",
   "size_bytes": 190117536,
   "sha256": "bdb202711d6494bc94c331d549b0fa7956aa1d9eb585c247ae0dfce723f76542",
+  "extraction_archive": {
+    "archive": "ioai-kaggle-fetch-researai-20260813.tar.gz",
+    "archive_sha256": "eb14e52057c3cfca21972993fb73c2addaf9f214abc9c6f38b88bca97d93fe3c",
+    "archive_output_path": "ioai-kaggle-fetch/ioai-2026-task-4-westlake-nlp-24/researai/ioai-2026-task-4-westlake-nlp-24-solution/v4/submission.csv",
+    "archive_source_path": "ioai-kaggle-fetch/ioai-2026-task-4-westlake-nlp-24/researai/ioai-2026-task-4-westlake-nlp-24-solution/v4/kernel-source.py",
+    "archive_metadata_path": "ioai-kaggle-fetch/ioai-2026-task-4-westlake-nlp-24/researai/ioai-2026-task-4-westlake-nlp-24-solution/v4/kernel-version-metadata.json",
+    "archive_log_path": "ioai-kaggle-fetch/ioai-2026-task-4-westlake-nlp-24/researai/ioai-2026-task-4-westlake-nlp-24-solution/v4/run.log.json.gz",
+    "archive_source_sha256": "d467bc5a1e7c83ae7da780aaf01fb6ac001fd326e514495cae3a9279b7b6301b",
+    "archive_output_sha256": "bdb202711d6494bc94c331d549b0fa7956aa1d9eb585c247ae0dfce723f76542",
+    "archive_metadata_sha256": "3da88345f245f7b46fadb08385c29b8999da7299cb1513013b002f33431735cc",
+    "archive_log_gzip_sha256": "3fddd4688f831d7f68d671f63db4058884233f26bb4310028075384d8f7f1bd2",
+    "archive_metadata_observation": {
+      "kernel_version_directory": 4,
+      "matched_kernel_confidence": [55316818, 55316194, 55315359],
+      "matched_version_confidence": [],
+      "enable_gpu": true,
+      "machine_shape": "NvidiaTeslaT4",
+      "enable_internet": false,
+      "cuda_device_strings": ["cuda:0"],
+      "observed_runtime_seconds": 321.609419295,
+      "produced_output_file": true,
+      "reused_from_disk": false
+    },
+    "binding_note": "The extracted v4 source/output bytes match the compact-package source/output hashes. The extraction metadata still reports empty matched_version_confidence, so this strengthens artifact identity but does not independently prove which version bytes Kaggle scored for each linked ref."
+  },
   "rows": 200,
   "columns": ["id", "delta_a", "delta_b"],
   "remote_runtime_seconds": 316,
   "public_score": 98.41,
   "stored_in_compact_package": false,
-  "reason_not_stored": "Large exact output remains available from the private Kaggle Kernel; log, source, metadata, validation record, size and digest are retained here."
+  "reason_not_stored": "The exact output is 190 MB and remains external to the compact GitHub package. It is independently present in the organizer-requested extraction archive with matching hash; log, source, metadata, validation record, size and digest are retained here."
 }
-

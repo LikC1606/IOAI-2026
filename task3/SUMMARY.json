@@ -30,7 +30,14 @@
   "submissions_before_official_deadline": 11,
   "submissions_after_official_deadline": 16,
   "published_scored_submission_limit": 15,
-  "submission_budget_status": "all_account_total_exceeds_limit_post_deadline_scope_requires_jury",
+  "submission_budget_status": "literal_all_account_total_exceeds_limit_and_script_version_reused; post_deadline_exception_scope_requires_jury",
+  "submission_version_audit": {
+    "path": "../SUBMISSION_VERSION_AUDIT.json",
+    "task_key": "task3",
+    "literal_version_reuse_conflict": true,
+    "reused_script_version_id": 340521169,
+    "reused_submission_refs": [55290807, 55290810]
+  },
   "historical_report_status": "nonconforming_length_and_v8_local_score_error_disclosed",
   "latest_account_submission_ref": 55306794,
   "latest_account_public_score": 41.16666,

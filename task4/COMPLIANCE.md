@@ -56,8 +56,12 @@ Artifact hashes:
 
 The 190,117,536-byte CSV is not duplicated in this compact package. Its hash,
 schema, row count, runtime, Kernel/version, and retrieval path are recorded in
-`remote/V4_OUTPUT_PROVENANCE.json`. This omission is a disclosed archive
-limitation, not evidence that the output was locally uploaded.
+`remote/V4_OUTPUT_PROVENANCE.json`. The organizer-requested Kaggle extraction
+archive also contains the exact output bytes and matching source/output hashes;
+the extraction metadata reports an empty `matched_version_confidence`, so the
+archive strengthens byte identity without silently converting linked-ref
+matching into an exact-version claim. The compact-package omission is a
+disclosed storage choice, not evidence that the output was locally uploaded.
 
 ## Historical report supplement
 

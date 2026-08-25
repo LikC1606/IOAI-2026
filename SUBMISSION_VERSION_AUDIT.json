@@ -1,0 +1,374 @@
+{
+  "schema": "ioai.submission-version-audit.v1",
+  "purpose": "Literal audit of published submission/version limits and repeated Kaggle scriptVersionId use; not an organizer adjudication.",
+  "generated_by": "tools/build_submission_version_audit.py",
+  "source_archive": "ioai-kaggle-fetch-researai-20260813.tar.gz",
+  "source_archive_sha256": "eb14e52057c3cfca21972993fb73c2addaf9f214abc9c6f38b88bca97d93fe3c",
+  "extraction_summary": "KAGGLE_EXTRACTION_SUMMARY.json",
+  "extraction_summary_sha256": "0ccd29d1e4a8542ddaf7f05a0526dcbb17e1b0975e0cabac46bc925e6985865b",
+  "status_definition": {
+    "known_deviation_under_published_wording": "The extracted account record directly conflicts with the literal published requirement. Only the organizer can grant an exception or narrower enforcement scope.",
+    "evidence_supported_account_extraction_scope": "No conflict appears in the complete extracted account fields used for this check; this does not prove unobservable off-account facts."
+  },
+  "tasks": {
+    "task1": {
+      "competition": "ioai-2026-task-1-westlake-nlp-24",
+      "official_rule_source": "task1/official/OFFICIAL_PAGES_FULL.json#rules-2.3",
+      "official_budget_kind": "notebook_versions",
+      "official_budget_limit": 20,
+      "observed_budget_count": 38,
+      "observed_budget_source": "KAGGLE_EXTRACTION_SUMMARY.json",
+      "budget_literal_status": "known_deviation_under_published_wording",
+      "post_deadline_scope_note": "The observed count includes activity captured after the official deadline. The published limit text does not state a post-deadline exemption; the organizer decides whether any requested audit/reproduction activity receives one.",
+      "one_submission_per_version_rule": "A Notebook version may be submitted to the Competition at most once.",
+      "submission_record_count": 30,
+      "submission_status_counts": {
+        "COMPLETE": 30
+      },
+      "known_script_version_id_records": 30,
+      "unknown_script_version_id_records": 0,
+      "unique_known_script_version_ids": 27,
+      "duplicate_script_version_groups": [
+        {
+          "script_version_id": 340342513,
+          "submission_count": 2,
+          "submission_refs": [
+            55267333,
+            55267368
+          ],
+          "all_before_official_deadline": true,
+          "observations": [
+            {
+              "submission_ref": 55267333,
+              "submitted_at_utc": "2026-08-05T10:41:12.387000Z",
+              "seconds_before_official_deadline": 527.613,
+              "before_official_deadline": true
+            },
+            {
+              "submission_ref": 55267368,
+              "submitted_at_utc": "2026-08-05T10:42:54.010000Z",
+              "seconds_before_official_deadline": 425.99,
+              "before_official_deadline": true
+            }
+          ]
+        },
+        {
+          "script_version_id": 340345171,
+          "submission_count": 3,
+          "submission_refs": [
+            55267587,
+            55267607,
+            55267647
+          ],
+          "all_before_official_deadline": false,
+          "observations": [
+            {
+              "submission_ref": 55267587,
+              "submitted_at_utc": "2026-08-05T10:54:05.467000Z",
+              "seconds_before_official_deadline": -245.467,
+              "before_official_deadline": false
+            },
+            {
+              "submission_ref": 55267607,
+              "submitted_at_utc": "2026-08-05T10:54:51.343000Z",
+              "seconds_before_official_deadline": -291.343,
+              "before_official_deadline": false
+            },
+            {
+              "submission_ref": 55267647,
+              "submitted_at_utc": "2026-08-05T10:56:25.367000Z",
+              "seconds_before_official_deadline": -385.367,
+              "before_official_deadline": false
+            }
+          ]
+        }
+      ],
+      "predeadline_duplicate_script_version_groups": [
+        {
+          "script_version_id": 340342513,
+          "submission_count": 2,
+          "submission_refs": [
+            55267333,
+            55267368
+          ],
+          "all_before_official_deadline": true,
+          "observations": [
+            {
+              "submission_ref": 55267333,
+              "submitted_at_utc": "2026-08-05T10:41:12.387000Z",
+              "seconds_before_official_deadline": 527.613,
+              "before_official_deadline": true
+            },
+            {
+              "submission_ref": 55267368,
+              "submitted_at_utc": "2026-08-05T10:42:54.010000Z",
+              "seconds_before_official_deadline": 425.99,
+              "before_official_deadline": true
+            }
+          ]
+        }
+      ],
+      "version_reuse_literal_status": "known_deviation_under_published_wording",
+      "official_final_submission_refs": [
+        55267333,
+        55267368
+      ],
+      "official_final_refs_affected_by_version_reuse": [
+        55267333,
+        55267368
+      ],
+      "combined_budget_and_reuse_status": "known_deviation_under_published_wording",
+      "all_submissions_archive_path": "ioai-kaggle-fetch/ioai-2026-task-1-westlake-nlp-24/researai/all-submissions.json",
+      "all_submissions_sha256": "922375f34f447965c28bf7d7d089427376cac9e00afee2e739360f6275b60c04"
+    },
+    "task2": {
+      "competition": "ioai-2026-task-2-westlake-nlp-24",
+      "official_rule_source": "task2/official/OFFICIAL_PAGES_FULL.json#rules-2.3",
+      "official_budget_kind": "notebook_versions",
+      "official_budget_limit": 20,
+      "observed_budget_count": 18,
+      "observed_budget_source": "KAGGLE_EXTRACTION_SUMMARY.json",
+      "budget_literal_status": "evidence_supported_account_extraction_scope",
+      "post_deadline_scope_note": "No budget excess is visible in the complete extraction summary.",
+      "one_submission_per_version_rule": "A Notebook version may be submitted to the Competition at most once.",
+      "submission_record_count": 16,
+      "submission_status_counts": {
+        "COMPLETE": 16
+      },
+      "known_script_version_id_records": 16,
+      "unknown_script_version_id_records": 0,
+      "unique_known_script_version_ids": 15,
+      "duplicate_script_version_groups": [
+        {
+          "script_version_id": 340290308,
+          "submission_count": 2,
+          "submission_refs": [
+            55260462,
+            55260695
+          ],
+          "all_before_official_deadline": true,
+          "observations": [
+            {
+              "submission_ref": 55260462,
+              "submitted_at_utc": "2026-08-05T06:09:48.697000Z",
+              "seconds_before_official_deadline": 5111.303,
+              "before_official_deadline": true
+            },
+            {
+              "submission_ref": 55260695,
+              "submitted_at_utc": "2026-08-05T06:19:10.890000Z",
+              "seconds_before_official_deadline": 4549.11,
+              "before_official_deadline": true
+            }
+          ]
+        }
+      ],
+      "predeadline_duplicate_script_version_groups": [
+        {
+          "script_version_id": 340290308,
+          "submission_count": 2,
+          "submission_refs": [
+            55260462,
+            55260695
+          ],
+          "all_before_official_deadline": true,
+          "observations": [
+            {
+              "submission_ref": 55260462,
+              "submitted_at_utc": "2026-08-05T06:09:48.697000Z",
+              "seconds_before_official_deadline": 5111.303,
+              "before_official_deadline": true
+            },
+            {
+              "submission_ref": 55260695,
+              "submitted_at_utc": "2026-08-05T06:19:10.890000Z",
+              "seconds_before_official_deadline": 4549.11,
+              "before_official_deadline": true
+            }
+          ]
+        }
+      ],
+      "version_reuse_literal_status": "known_deviation_under_published_wording",
+      "official_final_submission_refs": [
+        55261432
+      ],
+      "official_final_refs_affected_by_version_reuse": [],
+      "combined_budget_and_reuse_status": "known_deviation_under_published_wording",
+      "all_submissions_archive_path": "ioai-kaggle-fetch/ioai-2026-task-2-westlake-nlp-24/researai/all-submissions.json",
+      "all_submissions_sha256": "cd78ff77983ad75afb301ee1bdf7bc79962ff9dc5a7efa91d19110e3dee740b2"
+    },
+    "task3": {
+      "competition": "ioai-2026-task-3-westlake-nlp-48",
+      "official_rule_source": "task3/official/OFFICIAL_PAGES_FULL.json#rules-2.3",
+      "official_budget_kind": "scored_submissions",
+      "official_budget_limit": 15,
+      "observed_budget_count": 27,
+      "observed_budget_source": "KAGGLE_EXTRACTION_SUMMARY.json",
+      "budget_literal_status": "known_deviation_under_published_wording",
+      "post_deadline_scope_note": "The observed count includes activity captured after the official deadline. The published limit text does not state a post-deadline exemption; the organizer decides whether any requested audit/reproduction activity receives one.",
+      "one_submission_per_version_rule": "A Notebook version may be submitted to the Competition at most once.",
+      "submission_record_count": 27,
+      "submission_status_counts": {
+        "COMPLETE": 27
+      },
+      "known_script_version_id_records": 25,
+      "unknown_script_version_id_records": 2,
+      "unique_known_script_version_ids": 24,
+      "duplicate_script_version_groups": [
+        {
+          "script_version_id": 340521169,
+          "submission_count": 2,
+          "submission_refs": [
+            55290807,
+            55290810
+          ],
+          "all_before_official_deadline": true,
+          "observations": [
+            {
+              "submission_ref": 55290807,
+              "submitted_at_utc": "2026-08-06T06:29:50.570000Z",
+              "seconds_before_official_deadline": 9.43,
+              "before_official_deadline": true
+            },
+            {
+              "submission_ref": 55290810,
+              "submitted_at_utc": "2026-08-06T06:29:58.903000Z",
+              "seconds_before_official_deadline": 1.097,
+              "before_official_deadline": true
+            }
+          ]
+        }
+      ],
+      "predeadline_duplicate_script_version_groups": [
+        {
+          "script_version_id": 340521169,
+          "submission_count": 2,
+          "submission_refs": [
+            55290807,
+            55290810
+          ],
+          "all_before_official_deadline": true,
+          "observations": [
+            {
+              "submission_ref": 55290807,
+              "submitted_at_utc": "2026-08-06T06:29:50.570000Z",
+              "seconds_before_official_deadline": 9.43,
+              "before_official_deadline": true
+            },
+            {
+              "submission_ref": 55290810,
+              "submitted_at_utc": "2026-08-06T06:29:58.903000Z",
+              "seconds_before_official_deadline": 1.097,
+              "before_official_deadline": true
+            }
+          ]
+        }
+      ],
+      "version_reuse_literal_status": "known_deviation_under_published_wording",
+      "official_final_submission_refs": [
+        55289569,
+        55289823
+      ],
+      "official_final_refs_affected_by_version_reuse": [],
+      "combined_budget_and_reuse_status": "known_deviation_under_published_wording",
+      "all_submissions_archive_path": "ioai-kaggle-fetch/ioai-2026-task-3-westlake-nlp-48/researai/all-submissions.json",
+      "all_submissions_sha256": "b1492e3213fad6ae0c77a2a97f02e4e39542f18b9aee950af1349d55cd60588e"
+    },
+    "task4": {
+      "competition": "ioai-2026-task-4-westlake-nlp-24",
+      "official_rule_source": "task4/official/OFFICIAL_PAGES_FULL.json#rules-2.3",
+      "official_budget_kind": "notebook_versions",
+      "official_budget_limit": 20,
+      "observed_budget_count": 4,
+      "observed_budget_source": "KAGGLE_EXTRACTION_SUMMARY.json",
+      "budget_literal_status": "evidence_supported_account_extraction_scope",
+      "post_deadline_scope_note": "No budget excess is visible in the complete extraction summary.",
+      "one_submission_per_version_rule": "A Notebook version may be submitted to the Competition at most once.",
+      "submission_record_count": 3,
+      "submission_status_counts": {
+        "COMPLETE": 3
+      },
+      "known_script_version_id_records": 3,
+      "unknown_script_version_id_records": 0,
+      "unique_known_script_version_ids": 3,
+      "duplicate_script_version_groups": [],
+      "predeadline_duplicate_script_version_groups": [],
+      "version_reuse_literal_status": "evidence_supported_account_extraction_scope",
+      "official_final_submission_refs": [
+        55316818
+      ],
+      "official_final_refs_affected_by_version_reuse": [],
+      "combined_budget_and_reuse_status": "evidence_supported_account_extraction_scope",
+      "all_submissions_archive_path": "ioai-kaggle-fetch/ioai-2026-task-4-westlake-nlp-24/researai/all-submissions.json",
+      "all_submissions_sha256": "8afbfb3ad2a6a6fd0711b03e92db38fb6a46fb038ac2a106a4bb4356a9b94038"
+    },
+    "task5": {
+      "competition": "ioai-2026-task-5-westlake-nlp-24",
+      "official_rule_source": "task5/official/OFFICIAL_PAGES_FULL.json#rules-2.3",
+      "official_budget_kind": "notebook_versions",
+      "official_budget_limit": 15,
+      "observed_budget_count": 7,
+      "observed_budget_source": "KAGGLE_EXTRACTION_SUMMARY.json",
+      "budget_literal_status": "evidence_supported_account_extraction_scope",
+      "post_deadline_scope_note": "No budget excess is visible in the complete extraction summary.",
+      "one_submission_per_version_rule": "A Notebook version may be submitted to the Competition at most once.",
+      "submission_record_count": 7,
+      "submission_status_counts": {
+        "COMPLETE": 7
+      },
+      "known_script_version_id_records": 7,
+      "unknown_script_version_id_records": 0,
+      "unique_known_script_version_ids": 7,
+      "duplicate_script_version_groups": [],
+      "predeadline_duplicate_script_version_groups": [],
+      "version_reuse_literal_status": "evidence_supported_account_extraction_scope",
+      "official_final_submission_refs": [
+        55320296
+      ],
+      "official_final_refs_affected_by_version_reuse": [],
+      "combined_budget_and_reuse_status": "evidence_supported_account_extraction_scope",
+      "all_submissions_archive_path": "ioai-kaggle-fetch/ioai-2026-task-5-westlake-nlp-24/researai/all-submissions.json",
+      "all_submissions_sha256": "d72861924dd58ad649c70bca45cdcda276253d88a5dcd2a51cb8da402b5b5820"
+    },
+    "task6": {
+      "competition": "ioai-2026-task-6-westlake-nlp-60",
+      "official_rule_source": "task6/official/OFFICIAL_PAGES_FULL.json#rules-2.3",
+      "official_budget_kind": "notebook_versions",
+      "official_budget_limit": 20,
+      "observed_budget_count": 8,
+      "observed_budget_source": "KAGGLE_EXTRACTION_SUMMARY.json",
+      "budget_literal_status": "evidence_supported_account_extraction_scope",
+      "post_deadline_scope_note": "No budget excess is visible in the complete extraction summary.",
+      "one_submission_per_version_rule": "A Notebook version may be submitted to the Competition at most once.",
+      "submission_record_count": 6,
+      "submission_status_counts": {
+        "COMPLETE": 6
+      },
+      "known_script_version_id_records": 6,
+      "unknown_script_version_id_records": 0,
+      "unique_known_script_version_ids": 6,
+      "duplicate_script_version_groups": [],
+      "predeadline_duplicate_script_version_groups": [],
+      "version_reuse_literal_status": "evidence_supported_account_extraction_scope",
+      "official_final_submission_refs": [
+        55357080
+      ],
+      "official_final_refs_affected_by_version_reuse": [],
+      "combined_budget_and_reuse_status": "evidence_supported_account_extraction_scope",
+      "all_submissions_archive_path": "ioai-kaggle-fetch/ioai-2026-task-6-westlake-nlp-60/researai/all-submissions.json",
+      "all_submissions_sha256": "220c181eafc7be3db00a8bc1a955c7af351d62e3e73384fb0adfbf941221b50f"
+    }
+  },
+  "overall": {
+    "tasks_with_literal_budget_excess": [
+      "task1",
+      "task3"
+    ],
+    "tasks_with_repeated_script_version_submission": [
+      "task1",
+      "task2",
+      "task3"
+    ],
+    "strict_all_six_budget_and_version_reuse_claim_supported": false
+  }
+}

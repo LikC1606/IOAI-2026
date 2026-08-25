@@ -1,6 +1,6 @@
 {
   "schema": "ioai.cross-task-rule-compliance-audit.v1",
-  "overall_status": "known_provenance_and_prompt_deviations_disclosed_method_and_batch_behavior_not_treated_as_issues",
+  "overall_status": "known_provenance_prompt_budget_and_version_reuse_deviations_disclosed_method_and_batch_behavior_not_treated_as_issues",
   "all_six_strictly_compliant_claim_supported": false,
   "classification_definitions": {
     "known_deviation": "Direct repository evidence conflicts with a stated requirement or the provenance scope needed for the claim.",
@@ -21,7 +21,9 @@
         "bounded_formal_prefix_preserved_as_supplemental_evidence",
         "later_reproduction_is_post_deadline_different_submission",
         "custom_starter_prompt",
-        "38_captured_versions_vs_published_limit_20_jury_scope_unclear"
+        "38_captured_versions_vs_published_limit_20_under_literal_wording",
+        "one_version_submitted_twice_for_official_refs_55267333_and_55267368",
+        "post_deadline_activity_exception_scope_requires_organizer_adjudication"
       ],
       "informational_disclosures": [
         "method_background_research_not_treated_as_compliance_issue"
@@ -32,7 +34,7 @@
         "strict_exact_organizer_prompt_text_conformance": true,
         "preboundary_submission": null
       },
-      "evidence": ["task1/COMPLIANCE.md", "task1/SUMMARY.json"]
+      "evidence": ["task1/COMPLIANCE.md", "task1/SUMMARY.json", "SUBMISSION_VERSION_AUDIT.json"]
     },
     "task2": {
       "official_final_submission_refs": [55261432],
@@ -45,7 +47,8 @@
         "bounded_formal_prefix_preserved_as_supplemental_evidence",
         "official_final_downstream_of_formal_supervision_boundary",
         "later_reproduction_is_post_deadline_different_submission",
-        "custom_starter_prompt"
+        "custom_starter_prompt",
+        "script_version_340290308_submitted_twice_for_refs_55260462_and_55260695"
       ],
       "informational_disclosures": [
         "method_background_research_not_treated_as_compliance_issue"
@@ -58,16 +61,17 @@
         "strict_exact_organizer_prompt_text_conformance": true,
         "preboundary_submission": 55260695
       },
-      "evidence": ["task2/COMPLIANCE.md", "task2/SUMMARY.json"]
+      "evidence": ["task2/COMPLIANCE.md", "task2/SUMMARY.json", "SUBMISSION_VERSION_AUDIT.json"]
     },
     "task3": {
       "official_final_submission_refs": [55289569, 55289823],
       "official_final_trace_alignment": true,
       "strict_exact_organizer_prompt_text_conformance": true,
-      "strict_claim_status": "evidence_supported_with_separate_budget_and_report_disclosures",
+      "strict_claim_status": "trace_and_prompt_supported_but_literal_budget_version_reuse_and_report_deviations_remain",
       "primary_classifications": ["known_deviation"],
       "risks": [
         "27_all_account_submissions_vs_published_limit_15_with_16_post_deadline",
+        "script_version_340521169_submitted_twice_for_refs_55290807_and_55290810",
         "historical_report_length_and_score_errors"
       ],
       "informational_disclosures": [
@@ -79,7 +83,7 @@
         "after_official_deadline": 16,
         "published_limit": 15
       },
-      "evidence": ["task3/COMPLIANCE.md", "task3/REPORT_COMPLIANCE.md", "task3/SUMMARY.json"]
+      "evidence": ["task3/COMPLIANCE.md", "task3/REPORT_COMPLIANCE.md", "task3/SUMMARY.json", "SUBMISSION_VERSION_AUDIT.json"]
     },
     "task4": {
       "official_final_submission_refs": [55316818],

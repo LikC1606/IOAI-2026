@@ -33,6 +33,9 @@ trace boundaries, prompt classifications, event-type coverage, exact Task 6
 artifacts, Task 4/5 provenance chains, Task 4 rule-status classifications,
 Task 5 historical-source limitation, Task 6 measured-behavior disclosures,
 extraction metadata, all advertised checklist paths, and all material hashes.
+The separate `SUBMISSION_VERSION_AUDIT.json` checks exact extracted
+`script_version_id` reuse and literal task-budget counts; it is intentionally
+not reduced to a green check when the published wording is contradicted.
 It also runs the Task 1 package/provenance verifier and all eight Task 3
 source/output replays, and scans tracked text for common unredacted
 credentials and private endpoints. It should print `"all_ok": true`.
@@ -76,10 +79,15 @@ make the minimum factual findings first and defer only the policy questions:
    candidate has byte-confirmed exact-version binding. The formal prefix is not
    silently promoted to a complete historical run, and the reproduction is not
    used as causal evidence for the official final.
-5. For Task 3, decide whether the published 15-submission rule counts the 16
-   post-deadline account submissions. The package records 11 before and 16
-   after the deadline and does not choose an enforcement interpretation.
-6. Record any exception or interpretation in writing. The repository's
+5. For Tasks 1–3, review `SUBMISSION_VERSION_AUDIT.md`: Task 1's official
+   final refs reuse one Notebook version; Task 2's eligible v2 pair reuses one
+   version; Task 3 has a repeated version immediately before the deadline.
+   Task 1 and Task 3 also exceed the literal extracted budget counts. The
+   package records these conflicts and leaves only any post-deadline exception
+   scope to organizer adjudication.
+6. For Task 3, decide whether the published 15-submission rule counts the 16
+   post-deadline account submissions in addition to the 11 before deadline.
+7. Record any exception or interpretation in writing. The repository's
    `all_ok` result means internal evidence consistency, not organizer
    acceptance.
 
@@ -87,9 +95,9 @@ make the minimum factual findings first and defer only the policy questions:
 
 | Task | Evidence-supported positive finding | Open organizer/Jury determination |
 |---|---|---|
-| 1 | A complete observable, no-live-human later 120-minute reproduction is preserved, with a canonical prefix through `task_complete`; a bounded exact-prompt formal prefix is also retained after the complete original record became unavailable following a school-server restart. | Whether the later reproduction or supplemental formal prefix may satisfy the requested trace deliverable; whether the custom starter appendix is acceptable. Neither is causal evidence for official final refs `55267333`/`55267368`. |
-| 2 | A complete observable, no-live-human later 120-minute reproduction is preserved; the exact-prompt formal prefix and eligible v2 submission `55260695` are separately recorded. | Whether the later reproduction may satisfy the requested trace deliverable despite being post-deadline and custom-starter based. Official final `55261432` is downstream of the modified formal boundary and is not attributed to the later reproduction. |
-| 3 | Eight scored submissions, including the tied official Public-best refs `55289569`/`55289823`, are in exact-prompt autonomous scope before the supervision boundary. | Whether the 27 captured account submissions (16 after the deadline) count against the published 15-submission rule, or whether enforcement is limited to scored competition-window submissions. The package does not decide this. |
+| 1 | A complete observable, no-live-human later 120-minute reproduction is preserved, with a canonical prefix through `task_complete`; a bounded exact-prompt formal prefix is also retained after the complete original record became unavailable following a school-server restart. | Whether the later reproduction or supplemental formal prefix may satisfy the requested trace deliverable; whether the custom starter appendix is acceptable; and whether the literal 38/20 version count and duplicate official-final version receive an exception. Neither reproduction is causal evidence for official final refs `55267333`/`55267368`. |
+| 2 | A complete observable, no-live-human later 120-minute reproduction is preserved; the exact-prompt formal prefix and eligible v2 submission `55260695` are separately recorded. | Whether the later reproduction may satisfy the requested trace deliverable despite being post-deadline and custom-starter based, and whether the duplicate use of scriptVersionId `340290308` is excused. Official final `55261432` is downstream of the modified formal boundary and is not attributed to the later reproduction. |
+| 3 | Eight scored submissions, including the tied official Public-best refs `55289569`/`55289823`, are in exact-prompt autonomous scope before the supervision boundary. | The account history has 27 submissions (16 after deadline) against the published 15 and repeats scriptVersionId `340521169` immediately before the deadline. The package records the literal conflicts; only any post-deadline exception scope remains for organizer decision. |
 | 4 | Final submission `55316818` is trace-aligned, before deadline, notebook-only, one-T4, and has exact output/artifact evidence; all 12 selected solver traces are indexed. | Whether the formatting-modified starter and substantive generic continuation are acceptable operational deviations; whether the transient local `__pycache__` affects the two-file folder rule. |
 | 5 | Final v6 submission `55320296` is trace-aligned, exact-prompt, before deadline, notebook-only, one-T4, and its output/log are preserved. | Whether the trace-preserved v6 source is sufficient when Kaggle now returns 403 for the historical source pull, and whether the historical report-format limitations are material. |
 | 6 | Final v3 submission `55357080` is trace-aligned and exact-prompt; notebook metadata, decoded source, weights, CSV, parameter count, and hashes verify exactly. | Whether the measured evaluator-batch dependence and the historical report's factual range/dropout errors affect eligibility. They are disclosed technical/report facts, not silently removed or declared harmless by this package. |
@@ -112,6 +120,8 @@ make the minimum factual findings first and defer only the policy questions:
   `PROMPT_CONFORMANCE_AUDIT.json`.
 - Cross-task findings: `RULE_COMPLIANCE_AUDIT.md` and
   `RULE_COMPLIANCE_AUDIT.json`.
+- Submission/version limits: `SUBMISSION_VERSION_AUDIT.md` and
+  `SUBMISSION_VERSION_AUDIT.json`.
 - Official account reconciliation: `FINAL_SUBMISSION_RESULTS.md` and each
   `taskN/remote/FINAL_ACCOUNT_RESULTS.json`.
 - Task 1/2 external final-result candidates (not exact-version claims):

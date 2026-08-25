@@ -12,6 +12,7 @@
     "known_deviation": "Evidence directly conflicts with the stated requirement or strict claim scope.",
     "known_deviation_with_exact_supplement": "Canonical claim is non-exact, while a separate bounded exact-prompt supplement exists.",
     "jury_interpretation_risk": "Facts are established but organizer/Jury interpretation remains necessary.",
+    "known_deviation_with_scope_adjudication": "The extracted record conflicts with the literal requirement; a separate post-deadline, platform, or organizer exception may be considered only by the organizer and is not assumed here.",
     "evidence_unavailable_for_official_final": "The historical official-final fact/artifact cannot be reconstructed from retained records.",
     "evidence_supported_with_disclosure": "Supported, with a separate factual/report/provenance limitation that is not silently repaired.",
     "evidence_supported_with_later_score_disclosure": "Supported; later platform observations remain outside the immutable submitted report.",
@@ -89,15 +90,16 @@
           "note": "The archive candidate has Kaggle script-kernel metadata, source, output, and linked submission records. Its empty matched_version_confidence means this supports the candidate's notebook flow, not an exact byte-level claim for either official ref."
         },
         "version_budget": {
-          "requirement": "Maximum 20 notebook versions; failed/time-out pushes count.",
+          "requirement": "Maximum 20 notebook versions; failed/time-out pushes count, and each version may be submitted at most once.",
           "official_source": "Kaggle CLI Submission page",
-          "status": "jury_interpretation_risk",
-          "scope": "extracted account history",
+          "status": "known_deviation_with_scope_adjudication",
+          "scope": "complete extracted account history; literal count and repeated-version conflicts are separated from post-deadline scope",
           "evidence": [
+            "SUBMISSION_VERSION_AUDIT.json",
             "task1/SUMMARY.json",
             "KAGGLE_EXTRACTION_SUMMARY.json"
           ],
-          "note": "38 versions were captured versus the published 20; the package cannot determine whether post-deadline activity is included by the Jury."
+          "note": "The extraction captures 38 versions versus the published 20 and shows scriptVersionId 340342513 used for both official refs 55267333/55267368 (plus 340345171 used three times). The literal rule is not met; the organizer may decide whether post-deadline audit/reproduction activity receives an exception."
         },
         "runtime_cap": {
           "requirement": "Each Kernel run must be capped at 600 seconds.",
@@ -224,15 +226,16 @@
           "note": "The archive candidate has Kaggle script-kernel metadata, source, output, and linked submission records. Its empty matched_version_confidence means it cannot be called an exact official-final artifact chain; the tracked current-tree snapshot is a different v3 result."
         },
         "version_budget": {
-          "requirement": "Maximum 20 notebook versions; failed/time-out pushes count.",
+          "requirement": "Maximum 20 notebook versions; failed/time-out pushes count, and each version may be submitted at most once.",
           "official_source": "Kaggle CLI Submission page",
-          "status": "evidence_supported",
-          "scope": "extracted account history",
+          "status": "known_deviation_with_scope_adjudication",
+          "scope": "complete extracted account history; count is within limit but repeated-version use is direct",
           "evidence": [
+            "SUBMISSION_VERSION_AUDIT.json",
             "task2/SUMMARY.json",
             "KAGGLE_EXTRACTION_SUMMARY.json"
           ],
-          "note": "18 captured versions are within the published 20-version limit."
+          "note": "18 captured versions are within the 20-version count, but scriptVersionId 340290308 was submitted as refs 55260462 and 55260695 before the deadline. The one-submission-per-version rule is directly conflicted; any platform/organizer exception is not assumed."
         },
         "runtime_cap": {
           "requirement": "Each Kernel run must be capped at 300 seconds.",
@@ -361,16 +364,16 @@
           "note": "Metadata and remote outputs establish notebook-only submission flow."
         },
         "version_budget": {
-          "requirement": "Maximum 15 scored submissions; each competition submission consumes the limit.",
+          "requirement": "Maximum 15 scored submissions; each competition submission consumes the limit, and each Notebook version may be submitted at most once.",
           "official_source": "Kaggle CLI Submission page",
-          "status": "jury_interpretation_risk",
-          "scope": "extracted account history versus autonomous scope",
+          "status": "known_deviation_with_scope_adjudication",
+          "scope": "complete extracted account history; literal count and repeated-version conflicts are separated from post-deadline scope",
           "evidence": [
+            "SUBMISSION_VERSION_AUDIT.json",
             "task3/SUMMARY.json",
-            "task3/remote/FINAL_ACCOUNT_RESULTS.json",
             "RULE_COMPLIANCE_AUDIT.md"
           ],
-          "note": "27 account submissions were captured (11 before and 16 after deadline) against a published limit of 15; the package does not choose how post-deadline activity is enforced."
+          "note": "27 account submissions were captured (11 before and 16 after deadline) against a published limit of 15. The extraction also shows scriptVersionId 340521169 used for refs 55290807 and 55290810 immediately before the deadline. The literal conflicts are disclosed; the organizer may decide whether post-deadline activity receives an exception."
         },
         "runtime_cap": {
           "requirement": "One 600-second CPU budget covers the round.",
@@ -547,13 +550,13 @@
           "requirement": "Exactly 200 id,delta_a,delta_b rows with valid encoded tensors.",
           "official_source": "Scoring and Kaggle CLI Submission pages",
           "status": "evidence_supported",
-          "scope": "official version 4 output provenance",
+          "scope": "official version 4 output provenance plus external extraction byte match",
           "evidence": [
             "task4/COMPLIANCE.md",
             "task4/remote/V4_OUTPUT_PROVENANCE.json",
             "task4/remote/V4_KERNEL.log"
           ],
-          "note": "Schema, row count, tensor count, output hash, and retrieval path are recorded; the large CSV is not duplicated."
+          "note": "Schema, row count, tensor count, output hash, and retrieval path are recorded. The complete 190 MB CSV is also present in the external extraction archive with matching source/output hashes; extraction matched_version_confidence remains empty."
         },
         "technical_report": {
           "requirement": "Submitted source carries the required 8–10 paragraph technical report.",
@@ -856,7 +859,7 @@
     "main_unresolved_items": [
       "Task 1/2 lost-original provenance and final-result trace alignment",
       "Task 1/2 later reproduction custom starter and post-deadline scope",
-      "Task 1/3 account-history budget interpretation",
+      "Task 1/2/3 literal budget and one-submission-per-version conflicts; post-deadline exception scope requires organizer adjudication",
       "Task 4 non-exact continuation and local-H100 interpretation",
       "Task 5 historical v6 source re-download 403",
       "Task 3/6 historical report factual/format limitations",

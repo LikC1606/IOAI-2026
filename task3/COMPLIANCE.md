@@ -82,6 +82,11 @@ is `remote/FINAL_ACCOUNT_RESULTS.json`.
 The official budget is 15 scored submissions. The extraction records 27 account
 submissions: 11 before the official deadline and 16 after it. The autonomous
 competition-window work stayed below 15, but the all-account history exceeds the
-published total. Whether post-deadline audit/reproduction submissions are
-excluded from organizer enforcement requires a Jury decision; the repository
-does not mark the total as compliant.
+published total under the literal wording. The extraction also records
+`scriptVersionId=340521169` submitted twice as refs `55290807` and `55290810`
+immediately before the official deadline, conflicting with the rule that a
+Notebook version may be submitted at most once. The complete ref/version
+records are in [`../SUBMISSION_VERSION_AUDIT.json`](../SUBMISSION_VERSION_AUDIT.json).
+Whether post-deadline audit/reproduction submissions receive an organizer
+exception remains a Jury decision; the repository does not mark the account
+history as compliant.

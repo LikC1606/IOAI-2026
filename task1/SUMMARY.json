@@ -92,7 +92,13 @@
   "submissions_after_official_deadline": 15,
   "captured_account_notebook_versions": 38,
   "published_version_limit": 20,
-  "version_budget_status": "jury_interpretation_risk_post_deadline_activity_included",
+  "version_budget_status": "literal_count_exceeds_limit_and_official_final_version_reused; post_deadline_exception_scope_requires_organizer",
+  "submission_version_audit": {
+    "path": "../SUBMISSION_VERSION_AUDIT.json",
+    "task_key": "task1",
+    "literal_version_reuse_conflict": true,
+    "official_final_refs_share_script_version_id": 340342513
+  },
   "external_method_research_status": "method_background_only_not_treated_as_compliance_issue",
   "rollout_provenance": {
     "filename": "rollout-2026-08-05T17-20-55-019fd139-d180-7171-ac0b-c037e11866eb.jsonl",

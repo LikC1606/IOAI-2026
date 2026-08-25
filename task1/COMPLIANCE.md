@@ -106,9 +106,12 @@ after the selected submission, final Agent answer, and `task_complete`. See
   compliance issue.
 - The extraction captured 38 Task 1 notebook versions across the account,
   compared with the published 20-version limit. Many are post-deadline,
-  including later reproduction activity. The package cannot establish from the
-  current summary whether the Jury counts only competition-window versions or
-  every captured version, so this is disclosed as an account-history budget
-  risk rather than silently marked compliant.
+  including later reproduction activity. Under the literal published wording
+  this is a budget conflict; the organizer may decide whether requested
+  post-deadline audit/reproduction activity receives an exception. The same
+  extraction also shows `scriptVersionId=340342513` submitted twice as the two
+  official-final refs `55267333` and `55267368`, directly conflicting with the
+  one-submission-per-version rule. See the complete ref/version audit in
+  [`../SUBMISSION_VERSION_AUDIT.json`](../SUBMISSION_VERSION_AUDIT.json).
 - API USD, GPU USD, and the original lost run's compute total remain
   unavailable. Cost records cover the selected later reproduction only.

@@ -785,7 +785,11 @@ def verify_task4_artifacts() -> dict[str, object]:
     assert source.read_bytes() == local_source.read_bytes()
     assert sha256(source) == "d467bc5a1e7c83ae7da780aaf01fb6ac001fd326e514495cae3a9279b7b6301b"
     assert sha256(log_path) == "bc7cfde1adb09278a12c9d623422d07039f3bdac3afe22c5041ea5653832b535"
-    assert provenance == {
+    # Keep the compact-package provenance contract strict while allowing the
+    # separately documented extraction-archive binding block to evolve.  The
+    # archive block is intentionally checked below rather than silently
+    # discarded by a whole-dict equality assertion.
+    expected_provenance = {
         "competition": "ioai-2026-task-4-westlake-nlp-24",
         "kernel": "researai/ioai-2026-task-4-westlake-nlp-24-solution",
         "version": 4,
@@ -798,7 +802,50 @@ def verify_task4_artifacts() -> dict[str, object]:
         "remote_runtime_seconds": 316,
         "public_score": 98.41,
         "stored_in_compact_package": False,
-        "reason_not_stored": provenance["reason_not_stored"],
+    }
+    assert set(provenance) == set(expected_provenance) | {
+        "reason_not_stored", "extraction_archive"
+    }
+    for key, value in expected_provenance.items():
+        assert provenance[key] == value
+    assert isinstance(provenance["reason_not_stored"], str)
+    extraction = provenance["extraction_archive"]
+    assert extraction["archive"] == "ioai-kaggle-fetch-researai-20260813.tar.gz"
+    assert extraction["archive_sha256"] == (
+        "eb14e52057c3cfca21972993fb73c2addaf9f214abc9c6f38b88bca97d93fe3c"
+    )
+    assert extraction["archive_source_sha256"] == sha256(source)
+    assert extraction["archive_output_sha256"] == provenance["sha256"]
+    assert extraction["archive_metadata_sha256"] == (
+        "3da88345f245f7b46fadb08385c29b8999da7299cb1513013b002f33431735cc"
+    )
+    assert extraction["archive_log_gzip_sha256"] == (
+        "3fddd4688f831d7f68d671f63db4058884233f26bb4310028075384d8f7f1bd2"
+    )
+    assert extraction["archive_output_path"].endswith(
+        "/ioai-2026-task-4-westlake-nlp-24-solution/v4/submission.csv"
+    )
+    assert extraction["archive_source_path"].endswith(
+        "/ioai-2026-task-4-westlake-nlp-24-solution/v4/kernel-source.py"
+    )
+    assert extraction["archive_metadata_path"].endswith(
+        "/ioai-2026-task-4-westlake-nlp-24-solution/v4/kernel-version-metadata.json"
+    )
+    assert extraction["archive_log_path"].endswith(
+        "/ioai-2026-task-4-westlake-nlp-24-solution/v4/run.log.json.gz"
+    )
+    observation = extraction["archive_metadata_observation"]
+    assert observation == {
+        "kernel_version_directory": 4,
+        "matched_kernel_confidence": [55316818, 55316194, 55315359],
+        "matched_version_confidence": [],
+        "enable_gpu": True,
+        "machine_shape": "NvidiaTeslaT4",
+        "enable_internet": False,
+        "cuda_device_strings": ["cuda:0"],
+        "observed_runtime_seconds": 321.609419295,
+        "produced_output_file": True,
+        "reused_from_disk": False,
     }
     summary = json.loads((root / "SUMMARY.json").read_text(encoding="utf-8"))
     rule_audit = json.loads((root / "RULE_DIFFERENCE_AUDIT.json").read_text(encoding="utf-8"))
@@ -1079,6 +1126,16 @@ def verify_cross_task_rule_audit() -> dict[str, object]:
     task4_provenance = json.loads(
         (ROOT / "task4/remote/V4_OUTPUT_PROVENANCE.json").read_text(encoding="utf-8")
     )
+    task4_extraction = task4_provenance["extraction_archive"]
+    assert task4_extraction["archive_sha256"] == (
+        "eb14e52057c3cfca21972993fb73c2addaf9f214abc9c6f38b88bca97d93fe3c"
+    )
+    assert task4_extraction["archive_source_sha256"] == sha256(
+        ROOT / "task4/notebooks/REMOTE_CURRENT_V4.py"
+    )
+    assert task4_extraction["archive_output_sha256"] == task4_provenance["sha256"]
+    assert task4_extraction["archive_metadata_observation"]["matched_version_confidence"] == []
+    assert task4_extraction["archive_metadata_observation"]["kernel_version_directory"] == 4
     task4_final = json.loads(
         (ROOT / "task4/remote/FINAL_ACCOUNT_RESULTS.json").read_text(encoding="utf-8")
     )
@@ -1251,6 +1308,81 @@ def verify_requirement_evidence_matrix() -> dict[str, object]:
         "all_ok": True,
         "tasks": {task: len(data["requirements"]) for task, data in matrix["tasks"].items()},
         "strict_all_six_claim": matrix["overall"]["strict_all_six_claim"],
+    }
+
+
+def verify_submission_version_audit() -> dict[str, object]:
+    """Verify literal budget/version-reuse findings without greenwashing them."""
+    audit = json.loads((ROOT / "SUBMISSION_VERSION_AUDIT.json").read_text(encoding="utf-8"))
+    assert audit["schema"] == "ioai.submission-version-audit.v1"
+    assert audit["source_archive_sha256"] == (
+        "eb14e52057c3cfca21972993fb73c2addaf9f214abc9c6f38b88bca97d93fe3c"
+    )
+    assert audit["extraction_summary_sha256"] == sha256(
+        ROOT / "KAGGLE_EXTRACTION_SUMMARY.json"
+    )
+    assert set(audit["tasks"]) == {f"task{i}" for i in range(1, 7)}
+    assert audit["overall"] == {
+        "tasks_with_literal_budget_excess": ["task1", "task3"],
+        "tasks_with_repeated_script_version_submission": ["task1", "task2", "task3"],
+        "strict_all_six_budget_and_version_reuse_claim_supported": False,
+    }
+    expected_budget = {
+        "task1": (20, 38, "known_deviation_under_published_wording"),
+        "task2": (20, 18, "evidence_supported_account_extraction_scope"),
+        "task3": (15, 27, "known_deviation_under_published_wording"),
+        "task4": (20, 4, "evidence_supported_account_extraction_scope"),
+        "task5": (15, 7, "evidence_supported_account_extraction_scope"),
+        "task6": (20, 8, "evidence_supported_account_extraction_scope"),
+    }
+    expected_duplicates = {
+        "task1": {
+            340342513: [55267333, 55267368],
+            340345171: [55267587, 55267607, 55267647],
+        },
+        "task2": {340290308: [55260462, 55260695]},
+        "task3": {340521169: [55290807, 55290810]},
+        "task4": {},
+        "task5": {},
+        "task6": {},
+    }
+    for task, item in audit["tasks"].items():
+        limit, observed, status = expected_budget[task]
+        assert item["official_budget_limit"] == limit
+        assert item["observed_budget_count"] == observed
+        assert item["budget_literal_status"] == status
+        assert item["submission_status_counts"] == {
+            "COMPLETE": item["submission_record_count"]
+        }
+        groups = {
+            group["script_version_id"]: group["submission_refs"]
+            for group in item["duplicate_script_version_groups"]
+        }
+        assert groups == expected_duplicates[task]
+        for group in item["duplicate_script_version_groups"]:
+            for observation in group["observations"]:
+                assert observation["submitted_at_utc"].endswith("Z")
+        pages = json.loads(
+            (ROOT / f"{task}/official/OFFICIAL_PAGES_FULL.json").read_text(encoding="utf-8")
+        )
+        rules = next(page["content"] for page in pages if page.get("name") == "rules")
+        assert item["one_submission_per_version_rule"] in rules
+        summary = json.loads((ROOT / f"{task}/SUMMARY.json").read_text(encoding="utf-8"))
+        final_refs = summary["official_final_submission_refs"]
+        assert item["official_final_submission_refs"] == final_refs
+    assert audit["tasks"]["task1"]["official_final_refs_affected_by_version_reuse"] == [
+        55267333, 55267368
+    ]
+    assert audit["tasks"]["task2"]["official_final_refs_affected_by_version_reuse"] == []
+    assert audit["tasks"]["task3"]["unknown_script_version_id_records"] == 2
+    assert (ROOT / "SUBMISSION_VERSION_AUDIT.md").is_file()
+    assert (ROOT / "tools/build_submission_version_audit.py").is_file()
+    return {
+        "all_ok": True,
+        "literal_budget_excess_tasks": ["task1", "task3"],
+        "repeated_version_tasks": ["task1", "task2", "task3"],
+        "official_final_version_reuse_tasks": ["task1"],
+        "compliance_certificate": False,
     }
 
 
@@ -1482,6 +1614,7 @@ def main() -> None:
     report["task6_exact_artifacts"] = verify_task6_artifacts()
     report["cross_task_rule_audit"] = verify_cross_task_rule_audit()
     report["requirement_evidence_matrix"] = verify_requirement_evidence_matrix()
+    report["submission_version_audit"] = verify_submission_version_audit()
     report["kaggle_extraction_summary_crosscheck"] = verify_kaggle_extraction_summary()
     report["publication_safety"] = verify_publication_safety()
     report["markdown_links"] = verify_markdown_links()
@@ -1600,6 +1733,10 @@ def main() -> None:
             "task1/remote/OFFICIAL_FINAL_EXTRACTION_PROVENANCE.json",
             "task2/remote/OFFICIAL_FINAL_EXTRACTION_PROVENANCE.json",
         ],
+        "submission_version_budget_audit": [
+            "SUBMISSION_VERSION_AUDIT.json",
+            "SUBMISSION_VERSION_AUDIT.md",
+        ],
         "task4_supplemental_trace_and_rule_audit": [
             "task4/evidence/SUPPLEMENTAL_ROLLOUT_PROVENANCE.json",
             "task4/RULE_DIFFERENCE_AUDIT.md",
@@ -1622,6 +1759,7 @@ def main() -> None:
         "prompts_and_visible_outputs": "complete_for_selected_observable_trace_scope",
         "exact_organizer_prompt_conformance": "audited_with_non_exact_tasks",
         "cross_task_rule_compliance": "audited_known_deviations_and_evidence_limits_remain",
+        "submission_version_limits": "complete_literal_audit_with_known_deviations_and_organizer_scope_questions",
         "task4_rule_difference_audit": "complete_with_disclosed_prompt_process_and_hardware_limits",
         "task6_exact_artifact_and_rule_audit": "exact_v3_artifacts_complete_measured_batch_behavior_disclosed_not_a_compliance_blocker",
         "tool_calls_and_outputs": "complete_for_selected_observable_trace_scope",

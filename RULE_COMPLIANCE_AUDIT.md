@@ -8,10 +8,11 @@ exact-prompt rule or is not trace-bound.
 ## Bottom line
 
 The current evidence does **not** support a claim that all six tasks satisfy
-every organizer verification rule, because Task 1/2 provenance and Task 4
-prompt text remain different from the official final claims. Method research
-and the Task 6 evaluator batching behavior are retained as factual disclosures,
-but are **not treated as compliance problems** in this audit.
+every organizer verification rule. Task 1/2 provenance, Task 4 prompt text,
+and the literal submission/version conflicts documented for Tasks 1–3 remain
+different from an all-green official-final claim. Method research and the Task
+6 evaluator batching behavior are retained as factual disclosures, but are
+**not treated as compliance problems** in this audit.
 
 The classifications used here are:
 
@@ -29,9 +30,9 @@ The classifications used here are:
 
 | Task | Official final bound to selected trace? | Exact organizer prompt? | Evidence-backed assessment |
 |---|:---:|:---:|---|
-| 1 | **No** | **No for the canonical reproduction** | **Strict claim not supported.** The complete original run record was unavailable after a school-server restart, but a bounded exact-prompt formal prefix is preserved as supplemental evidence. The selected two-hour run is a later post-deadline reproduction with a custom starter and a different submission. The official final refs are therefore not trace-bound. The method literature in the reproduction was informational only and is not treated as a compliance problem; the 38-versus-20 captured-version issue remains separately disclosed. |
-| 2 | **No** | **No for the canonical reproduction** | **Strict claim not supported for the official final.** The complete original run record was unavailable after a school-server restart, but a bounded exact-prompt formal prefix and eligible v2 artifact chain are preserved as supplemental evidence. The official final is downstream of the formal supervision boundary; the selected two-hour run is a different post-deadline reproduction with a custom starter. The BabyAI/FiLM/MiniGrid/noisy-demonstration material was method background only and is not treated as a compliance problem. The captured version count is 18/20. |
-| 3 | **Yes** | **Yes** | The result and exact prompt are supported. The noisy GBS, Bayesian active learning, dueling bandits, and entropy-pursuit searches are retained as method-background disclosures, not compliance findings. The account has 27 scored submissions against a published limit of 15: 11 before and 16 after the official deadline. Historical report length and score statements also deviate. |
+| 1 | **No** | **No for the canonical reproduction** | **Strict claim not supported.** The complete original run record was unavailable after a school-server restart, but a bounded exact-prompt formal prefix is preserved as supplemental evidence. The selected two-hour run is a later post-deadline reproduction with a custom starter and a different submission. The official final refs are therefore not trace-bound. The extraction also records 38 captured notebook versions against the literal 20-version wording, and `scriptVersionId=340342513` was submitted twice as the two official-final refs; these are disclosed in `SUBMISSION_VERSION_AUDIT.json`. Whether post-deadline audit/reproduction activity receives an exception is for the organizer. |
+| 2 | **No** | **No for the canonical reproduction** | **Strict claim not supported for the official final.** The complete original run record was unavailable after a school-server restart, but a bounded exact-prompt formal prefix and eligible v2 artifact chain are preserved as supplemental evidence. The official final is downstream of the formal supervision boundary; the selected two-hour run is a different post-deadline reproduction with a custom starter. The account has 18 captured versions within the 20-version count, but `scriptVersionId=340290308` was submitted twice as refs `55260462` and `55260695`, including the eligible v2 result. The BabyAI/FiLM/MiniGrid/noisy-demonstration material was method background only. |
+| 3 | **Yes** | **Yes** | The result and exact prompt are supported, but the account history contains literal budget deviations: 27 scored submissions against a published limit of 15 (11 before and 16 after the official deadline), and `scriptVersionId=340521169` was submitted twice as refs `55290807` and `55290810` immediately before the deadline. Historical report length and score statements also deviate. The full ref/version evidence is in `SUBMISSION_VERSION_AUDIT.json`; post-deadline exception scope remains an organizer decision. |
 | 4 | **Yes** | **No** | **Known exact-prompt deviation.** The final is downstream of a substantive generic continuation template. The corrected package contains all 12 selected solver traces. The two arXiv searches are retained for provenance and are not treated as a method-research violation; the transient local `__pycache__` and local H100 accounting remain separately disclosed. |
 | 5 | **Yes** | **Yes** | The final and exact prompt are supported. The sentence-level detection/stylometry literature is retained as method background and is not treated as a compliance problem. The exact v6 output/log are retained; its source is the trace-preserved copy because Kaggle now rejects the historical source pull. |
 | 6 | **Yes** | **Yes** | The exact v3 notebook, metadata, submitted CSV, decoded source, weights envelope, and trace are present. The model's evaluator-batch dependence is a measured technical property: changing unrelated batch points changes 5/100 final predictions in the deterministic fixture. The non-redistributed official evaluator's batching behavior is bound by file hash and function/call-site locators. This is **not treated as a compliance blocker or violation**; the historical report's dropout construction and range error remain disclosed. |
@@ -80,6 +81,8 @@ total.
   `task6/RULE_DIFFERENCE_AUDIT.md/json`
 - Task 6 evaluator batching provenance:
   `task6/evidence/EVALUATOR_BATCHING_PROVENANCE.json`
+- Submission/version budget and one-version-one-submission audit:
+  `SUBMISSION_VERSION_AUDIT.md` and `SUBMISSION_VERSION_AUDIT.json`
 - Costs: `AUTONOMOUS_COSTS.json` and `COSTS.json`
 
 `RULE_COMPLIANCE_AUDIT.json` is the machine-readable version. The organizer or

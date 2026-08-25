@@ -13,6 +13,12 @@ the tied refs. “Final submission” is not used for the chronological last
 submission, an all-account numerical maximum, a late submission, or a narrower
 autonomous-trace result.
 
+The separate [`SUBMISSION_VERSION_AUDIT.md`](SUBMISSION_VERSION_AUDIT.md) checks
+the published budget and the rule that one Notebook version may be submitted at
+most once. It records repeated `scriptVersionId` values in Tasks 1–3; Task 1's
+two official tied refs share one version. Those account-history findings are not
+silently removed from this score reconciliation.
+
 | Task | Official deadline | Official final result | Canonical no-live-human rollout | Chronological last account submission |
 |---|---|---|---|---|
 | 1 | 2026-08-05 10:50 UTC | `55267333` / `55267368`: Public 0.77751, Private 0.80474 | `55277782`: Public 0.74121; Private not recorded; post-deadline, non-ranking | `55300144`: Public 0.81854, Private 0.82775, post-deadline |
