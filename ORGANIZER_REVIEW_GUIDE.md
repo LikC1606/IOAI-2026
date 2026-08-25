@@ -101,7 +101,9 @@ make the minimum factual findings first and defer only the policy questions:
 - Extraction archive: `KAGGLE_EXTRACTION_DELIVERY.json` and the linked Drive
   archive. Its archive hash and size are recorded there and in the verifier;
   the delivery record also contains a live HTTP 200 HEAD check with matching
-  `Content-Length`, filename, and byte-range support.
+  `Content-Length`, filename, and byte-range support. For this approximately
+  474 MiB file, Drive may show a virus-scan warning first; use **Download
+  anyway** to reach the archive.
 - Extraction/account cross-check: `KAGGLE_EXTRACTION_SUMMARY.json` and the
   `extraction_summary_binding` blocks in the six task summaries. This binds
   the six competition slugs, deadlines, submission totals, late-submission

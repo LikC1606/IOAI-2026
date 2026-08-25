@@ -88,6 +88,11 @@ Drive:
 
 <https://drive.google.com/file/d/1c9yRn5SUo6LOPDrHLrAVjj-9JLFti9Vz/view?usp=drivesdk>
 
+Because the archive is approximately 474 MiB, Google Drive may first show its
+standard virus-scan warning page. Choose **Download anyway**; the delivery
+record below preserves the archive hash, byte length, filename, and byte-range
+support for the resulting download.
+
 ## Verification
 
 ```bash
