@@ -3,7 +3,8 @@
 Organizer-review materials for IOAI 2026 Tasks 1-6. Start with
 [`ORGANIZER_SUBMISSION.md`](ORGANIZER_SUBMISSION.md), which maps every requested
 deliverable to its exact evidence path and machine-verifiable status. The
-cross-task [`RULE_COMPLIANCE_AUDIT.md`](RULE_COMPLIANCE_AUDIT.md) separates
+shortest audit route is [`ORGANIZER_REVIEW_GUIDE.md`](ORGANIZER_REVIEW_GUIDE.md).
+The cross-task [`RULE_COMPLIANCE_AUDIT.md`](RULE_COMPLIANCE_AUDIT.md) separates
 known deviations, Jury-interpretation risks, and unavailable evidence; the
 current record does not support a claim that all six tasks are strictly
 compliant.
@@ -15,20 +16,22 @@ compliant.
 
 ## Recommended review order
 
-1. [`ORGANIZER_SUBMISSION.md`](ORGANIZER_SUBMISSION.md) — complete deliverable
+1. [`ORGANIZER_REVIEW_GUIDE.md`](ORGANIZER_REVIEW_GUIDE.md) — shortest audit
+   route, verification commands, evidence map, and unresolved determinations.
+2. [`ORGANIZER_SUBMISSION.md`](ORGANIZER_SUBMISSION.md) — complete deliverable
    checklist and evidence links.
-2. [`FINAL_SUBMISSION_RESULTS.md`](FINAL_SUBMISSION_RESULTS.md) — official
+3. [`FINAL_SUBMISSION_RESULTS.md`](FINAL_SUBMISSION_RESULTS.md) — official
    account results separated from autonomous and later reproduction results.
-3. [`RULE_COMPLIANCE_AUDIT.md`](RULE_COMPLIANCE_AUDIT.md) and
+4. [`RULE_COMPLIANCE_AUDIT.md`](RULE_COMPLIANCE_AUDIT.md) and
    [`PROMPT_CONFORMANCE_AUDIT.md`](PROMPT_CONFORMANCE_AUDIT.md) — cross-task
    scope, exact-prompt, provenance, budget, hardware, and reporting audits.
-4. [`AUTONOMOUS_TRACE_MATERIAL.md`](AUTONOMOUS_TRACE_MATERIAL.md) and
+5. [`AUTONOMOUS_TRACE_MATERIAL.md`](AUTONOMOUS_TRACE_MATERIAL.md) and
    [`EXECUTION_TRACES.md`](EXECUTION_TRACES.md) — selected traces, event
    envelopes, boundaries, and token accounting; see also
    [`COSTS.json`](COSTS.json) for compute/accounting fields.
-5. `task1/` through `task6/` — task-specific source, outputs, reports, and
+6. `task1/` through `task6/` — task-specific source, outputs, reports, and
    compliance notes.
-6. [`KAGGLE_EXTRACTION_DELIVERY.json`](KAGGLE_EXTRACTION_DELIVERY.json) — the
+7. [`KAGGLE_EXTRACTION_DELIVERY.json`](KAGGLE_EXTRACTION_DELIVERY.json) — the
    complete external Kaggle extraction archive and Drive delivery record.
 
 ## Scope labels used throughout

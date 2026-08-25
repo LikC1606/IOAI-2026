@@ -603,6 +603,8 @@ def main() -> None:
     assert checklist["status"] == (
         "complete_evidence_package_with_known_compliance_and_cost_limits"
     )
+    assert checklist["organizer_review_guide"] == "ORGANIZER_REVIEW_GUIDE.md"
+    assert (ROOT / checklist["organizer_review_guide"]).is_file()
     assert checklist["access_control"] == {
         "repository_visibility": "private_authorized_review_only_while_restricted_data_is_present",
         "restricted_path": "task3/input/competition/",

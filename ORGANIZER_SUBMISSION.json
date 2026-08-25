@@ -1,6 +1,7 @@
 {
   "schema": "ioai.organizer-submission-index.v1",
   "status": "complete_evidence_package_with_known_compliance_and_cost_limits",
+  "organizer_review_guide": "ORGANIZER_REVIEW_GUIDE.md",
   "tasks": [
     "task1",
     "task2",

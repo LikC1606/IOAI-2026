@@ -5,6 +5,11 @@ machine-readable checklist is [`ORGANIZER_SUBMISSION.json`](ORGANIZER_SUBMISSION
 and `python3 verify_repository.py` validates the paths, hashes, score records,
 trace coverage, model/cost fields, and extraction metadata.
 
+For the shortest organizer/Jury audit route, start with
+[`ORGANIZER_REVIEW_GUIDE.md`](ORGANIZER_REVIEW_GUIDE.md). It lists the exact
+verification commands, evidence map, and the few determinations that cannot be
+resolved from the preserved historical records.
+
 > **Restricted-data notice:** `task3/input/competition/` contains
 > organizer-provided data for authorized review. Keep this repository private
 > and follow [`task3/DATA_PROVENANCE.md`](task3/DATA_PROVENANCE.md) before
