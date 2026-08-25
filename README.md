@@ -8,6 +8,8 @@ The cross-task [`RULE_COMPLIANCE_AUDIT.md`](RULE_COMPLIANCE_AUDIT.md) separates
 known deviations, Jury-interpretation risks, and unavailable evidence; the
 current record does not support a claim that all six tasks are strictly
 compliant.
+The field-by-field [`REQUIREMENT_EVIDENCE_MATRIX.md`](REQUIREMENT_EVIDENCE_MATRIX.md)
+indexes the same limits against 11 concrete requirements per task.
 
 > **Access note:** `task3/input/competition/` contains organizer data that is
 > restricted to authorized reviewers. Keep this repository private and follow
@@ -25,13 +27,15 @@ compliant.
 4. [`RULE_COMPLIANCE_AUDIT.md`](RULE_COMPLIANCE_AUDIT.md) and
    [`PROMPT_CONFORMANCE_AUDIT.md`](PROMPT_CONFORMANCE_AUDIT.md) — cross-task
    scope, exact-prompt, provenance, budget, hardware, and reporting audits.
-5. [`AUTONOMOUS_TRACE_MATERIAL.md`](AUTONOMOUS_TRACE_MATERIAL.md) and
+5. [`REQUIREMENT_EVIDENCE_MATRIX.md`](REQUIREMENT_EVIDENCE_MATRIX.md) — one
+   row per rule field with scope-labeled status and direct evidence paths.
+6. [`AUTONOMOUS_TRACE_MATERIAL.md`](AUTONOMOUS_TRACE_MATERIAL.md) and
    [`EXECUTION_TRACES.md`](EXECUTION_TRACES.md) — selected traces, event
    envelopes, boundaries, and token accounting; see also
    [`COSTS.json`](COSTS.json) for compute/accounting fields.
-6. `task1/` through `task6/` — task-specific source, outputs, reports, and
+7. `task1/` through `task6/` — task-specific source, outputs, reports, and
    compliance notes.
-7. [`KAGGLE_EXTRACTION_DELIVERY.json`](KAGGLE_EXTRACTION_DELIVERY.json) — the
+8. [`KAGGLE_EXTRACTION_DELIVERY.json`](KAGGLE_EXTRACTION_DELIVERY.json) — the
    complete external Kaggle extraction archive and Drive delivery record.
 
 ## Scope labels used throughout
@@ -74,7 +78,8 @@ all-account numerical maxima.
 ## Generated material and safe refresh order
 
 The trace indexes, trace guide, cost summary, prompt audit, Task 4 rule audit,
-and their SHA-256 material manifest are generated from the preserved evidence.
+requirement matrix, and their SHA-256 material manifest are generated from the
+preserved evidence.
 The canonical full refresh is `build_autonomous_trace_material.py`; it rebuilds
 the autonomous index/material, cost ledger, both audit reports, and the
 autonomous material manifest in one consistent pass. The other builders remain
@@ -87,6 +92,7 @@ component. Their roles are:
 | `EXECUTION_TRACE_INDEX.json/.md` | `python3 tools/build_execution_trace_index.py` (standalone execution inventory) |
 | `PROMPT_CONFORMANCE_AUDIT.json/.md` | `python3 tools/build_prompt_conformance_audit.py` (standalone prompt diagnostic) |
 | `task4/RULE_DIFFERENCE_AUDIT.json/.md` | `python3 tools/build_task4_rule_audit.py` (standalone Task 4 diagnostic) |
+| `REQUIREMENT_EVIDENCE_MATRIX.json/.md` | `python3 tools/build_requirement_evidence_matrix.py` (scope-labeled rule index) |
 
 Recommended refresh order is: execution inventory first, then the canonical
 autonomous-material builder, then `verify_repository.py` and every manifest

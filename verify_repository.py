@@ -1169,6 +1169,54 @@ def verify_cross_task_rule_audit() -> dict[str, object]:
     }
 
 
+def verify_requirement_evidence_matrix() -> dict[str, object]:
+    """Check the rule-by-rule navigation index without certifying eligibility."""
+    path = ROOT / "REQUIREMENT_EVIDENCE_MATRIX.json"
+    matrix = json.loads(path.read_text(encoding="utf-8"))
+    assert matrix["schema"] == "ioai.requirement-evidence-matrix.v1"
+    assert matrix["overall"]["strict_all_six_claim"] is False
+    assert set(matrix["tasks"]) == {f"task{i}" for i in range(1, 7)}
+    expected_requirements = {
+        "trace_no_live_human", "final_trace_alignment", "exact_prompt_text",
+        "notebook_only", "version_budget", "runtime_cap", "internet_resources",
+        "hardware", "output_artifacts", "technical_report", "official_deadline",
+    }
+    competitions = {
+        1: "ioai-2026-task-1-westlake-nlp-24",
+        2: "ioai-2026-task-2-westlake-nlp-24",
+        3: "ioai-2026-task-3-westlake-nlp-48",
+        4: "ioai-2026-task-4-westlake-nlp-24",
+        5: "ioai-2026-task-5-westlake-nlp-24",
+        6: "ioai-2026-task-6-westlake-nlp-60",
+    }
+    for task, data in matrix["tasks"].items():
+        assert set(data["requirements"]) == expected_requirements, task
+        number = int(task.removeprefix("task"))
+        assert data["competition"] == competitions[number]
+        for requirement, item in data["requirements"].items():
+            assert item["requirement"] and item["official_source"] and item["scope"]
+            assert item["evidence"] and item["note"]
+            assert all((ROOT / evidence).exists() for evidence in item["evidence"]), (task, requirement)
+
+    # Exact prompt snapshots must be byte-equal to the stored page bodies.
+    for task in (4, 5, 6):
+        pages = json.loads(
+            (ROOT / f"task{task}/official/OFFICIAL_PAGES_FULL.json").read_text(encoding="utf-8")
+        )
+        for page_name, filename in (
+            ("Starter Prompt", "STARTER_PROMPT_EXACT.md"),
+            ("Continuation Prompt", "CONTINUE_PROMPT_EXACT.md"),
+        ):
+            expected = next(item["content"] for item in pages if item.get("name") == page_name)
+            actual = (ROOT / f"task{task}/official/{filename}").read_text(encoding="utf-8")
+            assert actual == expected, (task, filename)
+    return {
+        "all_ok": True,
+        "tasks": {task: len(data["requirements"]) for task, data in matrix["tasks"].items()},
+        "strict_all_six_claim": matrix["overall"]["strict_all_six_claim"],
+    }
+
+
 def verify_kaggle_extraction_summary() -> dict[str, object]:
     """Bind the external extraction summary to every task package.
 
@@ -1396,6 +1444,7 @@ def main() -> None:
     report["task5_artifact_chain"] = verify_task5_artifacts()
     report["task6_exact_artifacts"] = verify_task6_artifacts()
     report["cross_task_rule_audit"] = verify_cross_task_rule_audit()
+    report["requirement_evidence_matrix"] = verify_requirement_evidence_matrix()
     report["kaggle_extraction_summary_crosscheck"] = verify_kaggle_extraction_summary()
     report["publication_safety"] = verify_publication_safety()
     report["markdown_links"] = verify_markdown_links()
@@ -1417,6 +1466,14 @@ def main() -> None:
     )
     assert checklist["organizer_review_guide"] == "ORGANIZER_REVIEW_GUIDE.md"
     assert (ROOT / checklist["organizer_review_guide"]).is_file()
+    assert checklist["requirement_evidence_matrix"] == {
+        "json": "REQUIREMENT_EVIDENCE_MATRIX.json",
+        "markdown": "REQUIREMENT_EVIDENCE_MATRIX.md",
+        "builder": "tools/build_requirement_evidence_matrix.py",
+        "status": "complete_scope_labeled_rule_by_rule_index_not_a_compliance_certificate",
+    }
+    assert (ROOT / checklist["requirement_evidence_matrix"]["json"]).is_file()
+    assert (ROOT / checklist["requirement_evidence_matrix"]["markdown"]).is_file()
     assert checklist["access_control"] == {
         "repository_visibility": "private_authorized_review_only_while_restricted_data_is_present",
         "restricted_path": "task3/input/competition/",
@@ -1445,21 +1502,25 @@ def main() -> None:
             "task4/official/OFFICIAL_PAGES_FULL.json",
             "task4/official/OVERVIEW.md",
             "task4/official/SUBMISSION.md",
-            "task4/official/start.md",
-            "task4/official/continue.md",
+            "task4/official/STARTER_PROMPT_EXACT.md",
+            "task4/official/CONTINUE_PROMPT_EXACT.md",
+            "task4/official/README.md",
         ],
         "task5": [
             "task5/official/OFFICIAL_PAGES_FULL.json",
             "task5/official/OVERVIEW.md",
             "task5/official/SUBMISSION.md",
-            "task5/official/start.md",
-            "task5/official/continue.md",
+            "task5/official/STARTER_PROMPT_EXACT.md",
+            "task5/official/CONTINUE_PROMPT_EXACT.md",
+            "task5/official/README.md",
         ],
         "task6": [
+            "task6/official/OFFICIAL_PAGES_FULL.json",
             "task6/official/OVERVIEW.md",
             "task6/official/SUBMISSION.md",
-            "task6/official/start.md",
+            "task6/official/STARTER_PROMPT_EXACT.md",
             "task6/official/CONTINUE_PROMPT_EXACT.md",
+            "task6/official/README.md",
         ],
     }
     for task, paths in checklist["task_packages"].items():

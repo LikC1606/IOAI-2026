@@ -10,6 +10,12 @@ For the shortest organizer/Jury audit route, start with
 verification commands, evidence map, and the few determinations that cannot be
 resolved from the preserved historical records.
 
+For a requirement-by-requirement view, use the
+[`REQUIREMENT_EVIDENCE_MATRIX.md`](REQUIREMENT_EVIDENCE_MATRIX.md) table or its
+machine-readable [`REQUIREMENT_EVIDENCE_MATRIX.json`](REQUIREMENT_EVIDENCE_MATRIX.json).
+It explicitly separates official-account scope, selected-trace scope,
+artifact scope, known deviations, and Jury-interpretation risks.
+
 > **Restricted-data notice:** `task3/input/competition/` contains
 > organizer-provided data for authorized review. Keep this repository private
 > and follow [`task3/DATA_PROVENANCE.md`](task3/DATA_PROVENANCE.md) before
@@ -42,6 +48,7 @@ Special evidence is linked here for quick review:
 | Prompts and visible Agent outputs | Complete within selected observable trace scope | Full payloads are in every indexed JSONL trace; prompt classes and hashes are in the index |
 | Exact organizer prompt conformance | Audited; canonical Task 1/2 reproductions and Task 4 are non-exact, while the supplemental Task 1/2 formal prefixes are exact-prompt bounded evidence | [`PROMPT_CONFORMANCE_AUDIT.md`](PROMPT_CONFORMANCE_AUDIT.md), [`PROMPT_CONFORMANCE_AUDIT.json`](PROMPT_CONFORMANCE_AUDIT.json), [`FORMAL_PREFIX_AUDIT.md`](FORMAL_PREFIX_AUDIT.md) |
 | Cross-task rule compliance | Audited; known deviations and evidence/interpretation limits remain | [`RULE_COMPLIANCE_AUDIT.md`](RULE_COMPLIANCE_AUDIT.md), [`RULE_COMPLIANCE_AUDIT.json`](RULE_COMPLIANCE_AUDIT.json) |
+| Rule-by-rule evidence map | Complete, scope-labeled for 11 requirements per Task | [`REQUIREMENT_EVIDENCE_MATRIX.md`](REQUIREMENT_EVIDENCE_MATRIX.md), [`REQUIREMENT_EVIDENCE_MATRIX.json`](REQUIREMENT_EVIDENCE_MATRIX.json) |
 | Task 4 competition-rule differences | Audited with disclosed prompt, process, and hardware limits | [`task4/RULE_DIFFERENCE_AUDIT.md`](task4/RULE_DIFFERENCE_AUDIT.md), [`task4/RULE_DIFFERENCE_AUDIT.json`](task4/RULE_DIFFERENCE_AUDIT.json) |
 | Task 6 exact artifacts and rule differences | Exact v3 artifacts complete; evaluator batch behavior measured and disclosed, not treated as a compliance blocker | [`task6/ARTIFACT_PROVENANCE.json`](task6/ARTIFACT_PROVENANCE.json), [`task6/RULE_DIFFERENCE_AUDIT.md`](task6/RULE_DIFFERENCE_AUDIT.md) |
 | Read-only artifact replay | Task 1 provenance/package verifier, Task 2 eligible v2 exact source/output chain, all eight Task 3 source/output replays, Task 4 hash-only output chain, Task 5 exact v6 output chain, and Task 6 exact v3 replay pass | [`task1/tools/verify_package.py`](task1/tools/verify_package.py), Task 2 `remote/rotation-cnn-v2/`, [`task3/evidence/verify_artifacts.py`](task3/evidence/verify_artifacts.py), `task4/remote/V4_OUTPUT_PROVENANCE.json`, `task5/V6_SOURCE_PROVENANCE.json`, and `python3 verify_repository.py` |

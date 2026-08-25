@@ -1,4 +1,14 @@
-Continue solving the Kaggle competition ioai-2026-task-6-westlake-nlp-60.
+Please use this **exact** prompt to continue your agent execution.
+
+Replace `<COMPETITION-SLUG>` with this competition's slug, which is the last
+part of the competition URL in your browser's address bar:
+
+```
+https://www.kaggle.com/competitions/<COMPETITION-SLUG>
+```
+
+```
+Continue solving the Kaggle competition <COMPETITION-SLUG>.
 
 Follow your system instructions to guide you on how to solve this.
 
@@ -54,3 +64,4 @@ deadline. A submission sent after the deadline still scores, but it will not
 appear on the leaderboard and will not count.
 
 Work autonomously. Do not ask me questions.
+```

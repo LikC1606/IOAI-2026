@@ -429,10 +429,7 @@
     },
     "task6": {
       "competition": "ioai-2026-task-6-westlake-nlp-60",
-      "official_prompt_source": {
-        "starter": "task6/official/start.md",
-        "continuation": "task6/official/CONTINUE_PROMPT_EXACT.md"
-      },
+      "official_prompt_source": "task6/official/OFFICIAL_PAGES_FULL.json",
       "official_prompt_hashes": {
         "starter": {
           "normalized_length": 3297,

@@ -5,6 +5,12 @@ for determinations, not a self-issued compliance certificate. The preserved
 artifacts and hashes are authoritative; this guide only points to them and
 separates supported facts from questions that require organizer judgment.
 
+The fastest field-by-field route is the
+[`REQUIREMENT_EVIDENCE_MATRIX.md`](REQUIREMENT_EVIDENCE_MATRIX.md) (11 rows per
+task: autonomy, trace alignment, prompt, notebook flow, budget, runtime,
+resources, hardware, output, report, and deadline). This index is deliberately
+scope-labeled and is not a self-issued compliance certificate.
+
 ## Fast verification route
 
 From the repository root, run:

@@ -1,0 +1,861 @@
+{
+  "schema": "ioai.requirement-evidence-matrix.v1",
+  "generated_by": "tools/build_requirement_evidence_matrix.py",
+  "purpose": "One-row-per-requirement navigation; not an organizer compliance certificate.",
+  "status_definitions": {
+    "evidence_supported": "The cited package evidence supports the requirement in the stated scope.",
+    "evidence_supported_separate_reproduction": "Supported for a separate reproduction/prefix, not the official final claim.",
+    "evidence_supported_artifact_scope": "Supported by an artifact chain whose causal/autonomy scope is stated separately.",
+    "evidence_supported_account_scope": "Supported for the extracted account deadline/selection scope, not necessarily trace causality.",
+    "evidence_partially_available": "Some positive evidence exists, but the repository cannot prove the universal negative or historical fact.",
+    "known_deviation": "Evidence directly conflicts with the stated requirement or strict claim scope.",
+    "known_deviation_with_exact_supplement": "Canonical claim is non-exact, while a separate bounded exact-prompt supplement exists.",
+    "jury_interpretation_risk": "Facts are established but organizer/Jury interpretation remains necessary.",
+    "evidence_unavailable_for_official_final": "The historical official-final fact/artifact cannot be reconstructed from retained records.",
+    "evidence_supported_with_disclosure": "Supported, with a separate factual/report/provenance limitation that is not silently repaired.",
+    "evidence_supported_with_later_score_disclosure": "Supported; later platform observations remain outside the immutable submitted report.",
+    "evidence_supported_with_method_disclosure": "Supported for runtime resources; development method-background research is separately disclosed.",
+    "evidence_supported_with_technical_disclosure": "Supported for the operational rule; a measured technical behavior is separately disclosed."
+  },
+  "common_requirements": {
+    "one_account_no_teams": {
+      "requirement": "Compete individually, use one Kaggle account, and do not share private competition material.",
+      "official_source": "official rules page (individual participation)",
+      "status": "evidence_partially_available",
+      "scope": "all captured repository and Kaggle-account records",
+      "evidence": [
+        "task1/SUMMARY.json",
+        "task2/SUMMARY.json",
+        "task3/SUMMARY.json",
+        "task4/SUMMARY.json",
+        "task5/SUMMARY.json",
+        "task6/SUMMARY.json",
+        "KAGGLE_EXTRACTION_SUMMARY.json"
+      ],
+      "note": "All captured competition actions identify account researai. Local records cannot independently prove that no other account, team relationship, or off-trace private sharing existed; the organizer decides whether the account history is sufficient."
+    }
+  },
+  "tasks": {
+    "task1": {
+      "competition": "ioai-2026-task-1-westlake-nlp-24",
+      "official_final": "55267333 / 55267368 (Public 0.77751, Private 0.80474)",
+      "requirements": {
+        "trace_no_live_human": {
+          "requirement": "Selected trace contains no live-human method, target, or forced-submission instruction.",
+          "official_source": "Starter/Continuation Prompt; trace boundary",
+          "status": "evidence_supported_separate_reproduction",
+          "scope": "later 120-minute reproduction and bounded formal prefix; not the lost original run",
+          "evidence": [
+            "task1/evidence/canonical/rollout-solution-prefix.jsonl",
+            "task1/evidence/rollouts/rollout-2026-08-05T17-20-55-019fd139-d180-7171-ac0b-c037e11866eb.jsonl",
+            "task1/COMPLIANCE.md"
+          ],
+          "note": "The complete original run record was unavailable after a school-server restart."
+        },
+        "final_trace_alignment": {
+          "requirement": "Official final must be causally bound to the selected autonomous trace for a strict trace claim.",
+          "official_source": "Kaggle account extraction and trace provenance",
+          "status": "known_deviation",
+          "scope": "official account final versus selected reproduction",
+          "evidence": [
+            "task1/remote/FINAL_ACCOUNT_RESULTS.json",
+            "task1/SUMMARY.json"
+          ],
+          "note": "The official final refs are not bound to the lost original or to the later post-deadline reproduction."
+        },
+        "exact_prompt_text": {
+          "requirement": "Use the exact organizer Starter/Continuation Prompt text.",
+          "official_source": "Starter Prompt and Continuation Prompt pages",
+          "status": "known_deviation_with_exact_supplement",
+          "scope": "canonical later reproduction; supplemental formal prefix separately",
+          "evidence": [
+            "PROMPT_CONFORMANCE_AUDIT.json",
+            "FORMAL_PREFIX_AUDIT.json",
+            "task1/official/OFFICIAL_PAGES_FULL.json"
+          ],
+          "note": "The canonical later reproduction has a custom starter appendix. The bounded formal prefix is exact-prompt evidence but has no scored pre-boundary submission."
+        },
+        "notebook_only": {
+          "requirement": "Every valid submission is generated by a Kaggle Notebook; no direct prediction-file upload.",
+          "official_source": "Kaggle CLI Submission page",
+          "status": "evidence_unavailable_for_official_final",
+          "scope": "official final versus later reproduction",
+          "evidence": [
+            "task1/COMPLIANCE.md",
+            "task1/remote/FINAL_ACCOUNT_RESULTS.json",
+            "KAGGLE_EXTRACTION_SUMMARY.json"
+          ],
+          "note": "The package has a notebook-backed late Agent-executed submission and later reproduction, but not the exact notebook/source/output chain for the official final refs."
+        },
+        "version_budget": {
+          "requirement": "Maximum 20 notebook versions; failed/time-out pushes count.",
+          "official_source": "Kaggle CLI Submission page",
+          "status": "jury_interpretation_risk",
+          "scope": "extracted account history",
+          "evidence": [
+            "task1/SUMMARY.json",
+            "KAGGLE_EXTRACTION_SUMMARY.json"
+          ],
+          "note": "38 versions were captured versus the published 20; the package cannot determine whether post-deadline activity is included by the Jury."
+        },
+        "runtime_cap": {
+          "requirement": "Each Kernel run must be capped at 600 seconds.",
+          "official_source": "Kaggle CLI Submission page",
+          "status": "evidence_supported_reproduction_only",
+          "scope": "later reproduction and late Agent-executed submission",
+          "evidence": [
+            "task1/COMPLIANCE.md",
+            "task1/submission/agent-executed-55267607/SUBMISSION_RECEIPT.json",
+            "REPRODUCTION_COSTS.json"
+          ],
+          "note": "The official final's exact runtime is not recoverable from the preserved final-result chain."
+        },
+        "internet_resources": {
+          "requirement": "Internet disabled; only competition data and permitted offline resources.",
+          "official_source": "Kaggle CLI Submission and competition rules",
+          "status": "evidence_supported_reproduction_only",
+          "scope": "later reproduction/Agent-executed notebook scope",
+          "evidence": [
+            "task1/COMPLIANCE.md",
+            "task1/submission/agent-executed-55267607/SUBMISSION_RECEIPT.json"
+          ],
+          "note": "Method-background web research is disclosed separately and is not claimed as a runtime resource; official-final source provenance remains unavailable."
+        },
+        "hardware": {
+          "requirement": "CPU or one permitted GPU, using only cuda:0 when applicable.",
+          "official_source": "Kaggle CLI Submission and competition rules",
+          "status": "evidence_supported_reproduction_only",
+          "scope": "later reproduction/Agent-executed notebook scope",
+          "evidence": [
+            "task1/COMPLIANCE.md",
+            "REPRODUCTION_COSTS.json"
+          ],
+          "note": "The exact official-final notebook metadata is not preserved in the package."
+        },
+        "output_artifacts": {
+          "requirement": "Required output schema and one row per dialogue; output generated by the notebook.",
+          "official_source": "Scoring and Kaggle CLI Submission pages",
+          "status": "evidence_supported_reproduction_only",
+          "scope": "later reproduction and separate late Agent-executed submission",
+          "evidence": [
+            "task1/COMPLIANCE.md",
+            "task1/submission/agent-executed-55267607/SUBMISSION_RECEIPT.json"
+          ],
+          "note": "The official-final artifact chain is not trace-linked; the preserved reproduction/output evidence is separately scoped."
+        },
+        "technical_report": {
+          "requirement": "Submitted source carries the required 8–10 paragraph technical report.",
+          "official_source": "Report Generation Prompt page",
+          "status": "evidence_unavailable_for_official_final",
+          "scope": "official final versus preserved reproduction",
+          "evidence": [
+            "task1/COMPLIANCE.md",
+            "task1/EXCLUSIONS.md"
+          ],
+          "note": "The package does not replace the missing official-final source report with a later report."
+        },
+        "official_deadline": {
+          "requirement": "Submit through Kaggle before the official deadline for ranking eligibility.",
+          "official_source": "Kaggle CLI Submission and account extraction",
+          "status": "evidence_supported_account_scope",
+          "scope": "official account final selection",
+          "evidence": [
+            "task1/remote/FINAL_ACCOUNT_RESULTS.json",
+            "FINAL_SUBMISSION_RESULTS.md"
+          ],
+          "note": "The account final refs are deadline-eligible under the extracted highest-Public rule, but are not trace-aligned. The later reproduction is post-deadline."
+        }
+      }
+    },
+    "task2": {
+      "competition": "ioai-2026-task-2-westlake-nlp-24",
+      "official_final": "55261432 (Public 0.63583, Private 0.62500)",
+      "requirements": {
+        "trace_no_live_human": {
+          "requirement": "Selected trace contains no live-human method, target, or forced-submission instruction.",
+          "official_source": "Starter/Continuation Prompt; trace boundary",
+          "status": "evidence_supported_separate_reproduction",
+          "scope": "later 120-minute reproduction and bounded formal prefix; not the lost original run",
+          "evidence": [
+            "task2/evidence/reproduction-120m/rollout.jsonl",
+            "task2/evidence/rollouts/rollout-2026-08-05T13-30-31-019fd066-e338-71a0-9d8e-6e1d154c5a79.jsonl",
+            "task2/COMPLIANCE.md"
+          ],
+          "note": "The complete original run record was unavailable after a school-server restart."
+        },
+        "final_trace_alignment": {
+          "requirement": "Official final must be causally bound to the selected autonomous trace for a strict trace claim.",
+          "official_source": "Kaggle account extraction and trace provenance",
+          "status": "known_deviation",
+          "scope": "official account final versus formal prefix and later reproduction",
+          "evidence": [
+            "task2/remote/FINAL_ACCOUNT_RESULTS.json",
+            "task2/SUMMARY.json"
+          ],
+          "note": "The official ExtraTrees final is downstream of the formal supervision boundary; the later reproduction is a different post-deadline submission."
+        },
+        "exact_prompt_text": {
+          "requirement": "Use the exact organizer Starter/Continuation Prompt text.",
+          "official_source": "Starter Prompt and Continuation Prompt pages",
+          "status": "known_deviation_with_exact_supplement",
+          "scope": "canonical later reproduction; supplemental formal prefix separately",
+          "evidence": [
+            "PROMPT_CONFORMANCE_AUDIT.json",
+            "FORMAL_PREFIX_AUDIT.json",
+            "task2/official/OFFICIAL_PAGES_FULL.json"
+          ],
+          "note": "The canonical later reproduction has a custom starter appendix. The bounded formal prefix is exact-prompt evidence and contains eligible v2 evidence."
+        },
+        "notebook_only": {
+          "requirement": "Every valid submission is generated by a Kaggle Notebook; no direct prediction-file upload.",
+          "official_source": "Kaggle CLI Submission page",
+          "status": "evidence_supported_artifact_scope",
+          "scope": "official final artifact chain and formal eligible v2 chain",
+          "evidence": [
+            "task2/COMPLIANCE.md",
+            "task2/excluded/current-tree-notebook/kernel-metadata.json",
+            "task2/excluded/current-tree-output/submission.csv"
+          ],
+          "note": "The official final source/output is preserved under excluded/ because it is outside the selected autonomous claim; preservation does not make its result autonomous."
+        },
+        "version_budget": {
+          "requirement": "Maximum 20 notebook versions; failed/time-out pushes count.",
+          "official_source": "Kaggle CLI Submission page",
+          "status": "evidence_supported",
+          "scope": "extracted account history",
+          "evidence": [
+            "task2/SUMMARY.json",
+            "KAGGLE_EXTRACTION_SUMMARY.json"
+          ],
+          "note": "18 captured versions are within the published 20-version limit."
+        },
+        "runtime_cap": {
+          "requirement": "Each Kernel run must be capped at 300 seconds.",
+          "official_source": "Kaggle CLI Submission page",
+          "status": "evidence_supported_artifact_scope",
+          "scope": "official final output log and eligible v2 run",
+          "evidence": [
+            "task2/excluded/current-tree-output/ioai-2026-structured-extratrees-v1.log",
+            "task2/remote/rotation-cnn-v2/ioai-task2-westlake-rotation-cnn-v2.log",
+            "task2/COMPLIANCE.md"
+          ],
+          "note": "The official-final ExtraTrees log records 156.469 seconds below the 300-second cap; eligible v2 records 204.02 seconds."
+        },
+        "internet_resources": {
+          "requirement": "Internet disabled; no pretrained model or extra data beyond permitted wheel dataset.",
+          "official_source": "Kaggle CLI Submission and competition rules",
+          "status": "evidence_supported_artifact_scope",
+          "scope": "official final artifact and formal eligible v2 notebook metadata",
+          "evidence": [
+            "task2/COMPLIANCE.md",
+            "task2/excluded/current-tree-notebook/kernel-metadata.json",
+            "task2/notebooks/rotation-cnn-v2/kernel-metadata.json"
+          ],
+          "note": "Method-background research is disclosed and not treated as a runtime resource."
+        },
+        "hardware": {
+          "requirement": "CPU or one permitted GPU, using only cuda:0 when applicable.",
+          "official_source": "Kaggle CLI Submission and competition rules",
+          "status": "evidence_supported_artifact_scope",
+          "scope": "official final and eligible v2 notebook metadata",
+          "evidence": [
+            "task2/excluded/current-tree-notebook/kernel-metadata.json",
+            "task2/notebooks/rotation-cnn-v2/kernel-metadata.json",
+            "task2/COMPLIANCE.md"
+          ],
+          "note": "Metadata records one permitted T4 and cuda:0 use where GPU is used."
+        },
+        "output_artifacts": {
+          "requirement": "Required id,prediction schema with one valid integer prediction per test id.",
+          "official_source": "Scoring and Kaggle CLI Submission pages",
+          "status": "evidence_supported_artifact_scope",
+          "scope": "official final and eligible v2 output chains",
+          "evidence": [
+            "task2/excluded/current-tree-output/submission.csv",
+            "task2/remote/rotation-cnn-v2/submission.csv",
+            "task2/COMPLIANCE.md"
+          ],
+          "note": "The package preserves exact output files and row/schema checks for both relevant chains."
+        },
+        "technical_report": {
+          "requirement": "Submitted source carries the required technical report.",
+          "official_source": "Report Generation Prompt page",
+          "status": "evidence_supported_with_disclosure",
+          "scope": "official final artifact and eligible v2 source",
+          "evidence": [
+            "task2/excluded/current-tree-notebook/ioai-2026-structured-extratrees-v1.py",
+            "task2/notebooks/rotation-cnn-v2/ioai-task2-westlake-rotation-cnn-v2.py",
+            "task2/COMPLIANCE.md"
+          ],
+          "note": "Historical report values/documentation gaps are disclosed rather than rewritten."
+        },
+        "official_deadline": {
+          "requirement": "Submit through Kaggle before the official deadline for ranking eligibility.",
+          "official_source": "Kaggle CLI Submission and account extraction",
+          "status": "evidence_supported_account_scope",
+          "scope": "official account final selection",
+          "evidence": [
+            "task2/remote/FINAL_ACCOUNT_RESULTS.json",
+            "FINAL_SUBMISSION_RESULTS.md"
+          ],
+          "note": "The official final is deadline-eligible under the extracted highest-Public rule, but not trace-aligned."
+        }
+      }
+    },
+    "task3": {
+      "competition": "ioai-2026-task-3-westlake-nlp-48",
+      "official_final": "55289569 / 55289823 (Public 58.51666, Private 51.61666)",
+      "requirements": {
+        "trace_no_live_human": {
+          "requirement": "Selected trace contains no live-human method, target, or forced-submission instruction.",
+          "official_source": "Starter/Continuation Prompt; trace boundary",
+          "status": "evidence_supported",
+          "scope": "eight pre-boundary autonomous traces",
+          "evidence": [
+            "AUTONOMOUS_TRACE_INDEX.json",
+            "task3/AUTONOMY_BOUNDARY.md",
+            "task3/evidence/rollouts/"
+          ],
+          "note": "Observable prompts, outputs, worker assignments, tool calls, and tool outputs are retained within the declared boundary."
+        },
+        "final_trace_alignment": {
+          "requirement": "Official final must be causally bound to the selected autonomous trace for a strict trace claim.",
+          "official_source": "Kaggle account extraction and trace provenance",
+          "status": "evidence_supported",
+          "scope": "official final and selected autonomous v1-v8 scope",
+          "evidence": [
+            "task3/SUMMARY.json",
+            "task3/remote/FINAL_ACCOUNT_RESULTS.json",
+            "task3/COMPLIANCE.md"
+          ],
+          "note": "The tied official Public-best refs are in the selected exact-prompt autonomous scope."
+        },
+        "exact_prompt_text": {
+          "requirement": "Use the exact organizer Starter/Continuation Prompt text.",
+          "official_source": "Starter Prompt and Continuation Prompt pages",
+          "status": "evidence_supported",
+          "scope": "selected pre-intervention traces",
+          "evidence": [
+            "task3/official/OFFICIAL_PAGES_FULL.json",
+            "task3/official/STARTER_PROMPT_SUBSTITUTED.md",
+            "task3/official/CONTINUE_PROMPT_EXACT.md",
+            "PROMPT_CONFORMANCE_AUDIT.json"
+          ],
+          "note": "No continuation event appears in the selected traces; exact starter text and exact continuation page are preserved."
+        },
+        "notebook_only": {
+          "requirement": "Every valid submission is generated by a Kaggle Notebook; no direct prediction-file upload.",
+          "official_source": "Kaggle CLI Submission page",
+          "status": "evidence_supported",
+          "scope": "official v1-v8 notebook submissions",
+          "evidence": [
+            "task3/COMPLIANCE.md",
+            "task3/official/SUBMISSION_WORKING_COPY.md",
+            "task3/notebooks/"
+          ],
+          "note": "Metadata and remote outputs establish notebook-only submission flow."
+        },
+        "version_budget": {
+          "requirement": "Maximum 15 scored submissions; each competition submission consumes the limit.",
+          "official_source": "Kaggle CLI Submission page",
+          "status": "jury_interpretation_risk",
+          "scope": "extracted account history versus autonomous scope",
+          "evidence": [
+            "task3/SUMMARY.json",
+            "task3/remote/FINAL_ACCOUNT_RESULTS.json",
+            "RULE_COMPLIANCE_AUDIT.md"
+          ],
+          "note": "27 account submissions were captured (11 before and 16 after deadline) against a published limit of 15; the package does not choose how post-deadline activity is enforced."
+        },
+        "runtime_cap": {
+          "requirement": "One 600-second CPU budget covers the round.",
+          "official_source": "Kaggle CLI Submission and Evaluation pages",
+          "status": "evidence_supported",
+          "scope": "v1-v8 local and remote artifact scope",
+          "evidence": [
+            "task3/COMPLIANCE.md",
+            "task3/evidence/LOCAL_REPRODUCTION.json",
+            "task3/official/OVERVIEW_WORKING_COPY.md"
+          ],
+          "note": "Local full-public runs are far below 600 seconds and the notebook metadata is CPU-only."
+        },
+        "internet_resources": {
+          "requirement": "Internet disabled; only competition data and ordinary permitted libraries.",
+          "official_source": "Kaggle CLI Submission and competition rules",
+          "status": "evidence_supported",
+          "scope": "selected submitted sources",
+          "evidence": [
+            "task3/COMPLIANCE.md",
+            "task3/official/OVERVIEW_WORKING_COPY.md",
+            "task3/notebooks/"
+          ],
+          "note": "Submitted sources import standard library and NumPy only; development literature is recorded as non-runtime method background."
+        },
+        "hardware": {
+          "requirement": "CPU-only notebook for the submitted Task 3 package.",
+          "official_source": "Kaggle CLI Submission and metadata",
+          "status": "evidence_supported",
+          "scope": "official v1-v8 notebook metadata",
+          "evidence": [
+            "task3/official/SUBMISSION_WORKING_COPY.md",
+            "task3/notebooks/"
+          ],
+          "note": "Metadata records enable_gpu=false and blank machine shape."
+        },
+        "output_artifacts": {
+          "requirement": "Exactly id,program_b64 rows for leaderboard-a/b with identical payloads and valid source envelope.",
+          "official_source": "Scoring and Kaggle CLI Submission pages",
+          "status": "evidence_supported",
+          "scope": "all eight selected submitted versions",
+          "evidence": [
+            "task3/evidence/verify_artifacts.py",
+            "task3/evidence/LOCAL_REPRODUCTION.json",
+            "task3/remote/"
+          ],
+          "note": "Source identity, contract execution, CSV shape, and hashes are mechanically checked."
+        },
+        "technical_report": {
+          "requirement": "Every submitted source carries an 8–10 paragraph report with required quantitative content.",
+          "official_source": "Report Generation Prompt page",
+          "status": "known_deviation",
+          "scope": "historical v1-v8 reports",
+          "evidence": [
+            "task3/REPORT_COMPLIANCE.md",
+            "task3/COMPLIANCE.md"
+          ],
+          "note": "Historical reports have length and v8 score/distribution documentation errors; the package preserves them and discloses the errors."
+        },
+        "official_deadline": {
+          "requirement": "Submit through Kaggle before the official deadline for ranking eligibility.",
+          "official_source": "Kaggle CLI Submission and account extraction",
+          "status": "evidence_supported",
+          "scope": "selected official final refs",
+          "evidence": [
+            "task3/remote/FINAL_ACCOUNT_RESULTS.json",
+            "FINAL_SUBMISSION_RESULTS.md"
+          ],
+          "note": "The official Public-best tied refs were sent before the deadline and are trace-aligned."
+        }
+      }
+    },
+    "task4": {
+      "competition": "ioai-2026-task-4-westlake-nlp-24",
+      "official_final": "55316818 (Public 98.41000, Private 98.32000)",
+      "requirements": {
+        "trace_no_live_human": {
+          "requirement": "Selected trace contains no live-human method, target, or forced-submission instruction.",
+          "official_source": "Starter/Continuation Prompt; trace boundary",
+          "status": "evidence_supported",
+          "scope": "12 selected autonomous solver traces",
+          "evidence": [
+            "AUTONOMOUS_TRACE_INDEX.json",
+            "task4/evidence/SUPPLEMENTAL_ROLLOUT_PROVENANCE.json",
+            "task4/COMPLIANCE.md"
+          ],
+          "note": "The trace is no-live-human within its declared boundary, but custom prompt events remain part of the solver context."
+        },
+        "final_trace_alignment": {
+          "requirement": "Official final must be causally bound to the selected autonomous trace for a strict trace claim.",
+          "official_source": "Kaggle account extraction and trace provenance",
+          "status": "evidence_supported",
+          "scope": "version-4 selected trace and official final",
+          "evidence": [
+            "task4/SUMMARY.json",
+            "task4/remote/FINAL_ACCOUNT_RESULTS.json",
+            "task4/remote/V4_OUTPUT_PROVENANCE.json"
+          ],
+          "note": "Version 4 source, output hash, runtime, and submission ref are bound."
+        },
+        "exact_prompt_text": {
+          "requirement": "Use the exact organizer Starter/Continuation Prompt text.",
+          "official_source": "Starter Prompt and Continuation Prompt pages",
+          "status": "known_deviation",
+          "scope": "selected Task 4 trace",
+          "evidence": [
+            "task4/official/OFFICIAL_PAGES_FULL.json",
+            "task4/official/STARTER_PROMPT_EXACT.md",
+            "task4/official/CONTINUE_PROMPT_EXACT.md",
+            "task4/RULE_DIFFERENCE_AUDIT.json"
+          ],
+          "note": "The historical trace contains a formatting-modified starter and substantive generic continuation events; exact official bodies are provided separately for comparison."
+        },
+        "notebook_only": {
+          "requirement": "Every valid submission is generated by a Kaggle Notebook; no direct prediction-file upload.",
+          "official_source": "Kaggle CLI Submission page",
+          "status": "evidence_supported",
+          "scope": "official version 4",
+          "evidence": [
+            "task4/COMPLIANCE.md",
+            "task4/notebooks/kernel-metadata.json",
+            "task4/remote/V4_OUTPUT_PROVENANCE.json"
+          ],
+          "note": "Remote source, metadata, log, and output provenance establish the notebook flow."
+        },
+        "version_budget": {
+          "requirement": "Maximum 20 notebook versions; failed/time-out pushes count.",
+          "official_source": "Kaggle CLI Submission page",
+          "status": "evidence_supported",
+          "scope": "extracted account history",
+          "evidence": [
+            "task4/SUMMARY.json",
+            "KAGGLE_EXTRACTION_SUMMARY.json"
+          ],
+          "note": "Three account submissions/versions were captured, all before the official deadline."
+        },
+        "runtime_cap": {
+          "requirement": "Each Kernel run must be capped at 600 seconds.",
+          "official_source": "Kaggle CLI Submission page",
+          "status": "evidence_supported",
+          "scope": "official version 4",
+          "evidence": [
+            "task4/COMPLIANCE.md",
+            "task4/remote/V4_OUTPUT_PROVENANCE.json",
+            "task4/remote/V4_KERNEL.log"
+          ],
+          "note": "The selected remote runtime is about 316 seconds."
+        },
+        "internet_resources": {
+          "requirement": "Internet disabled; only competition data, supplied classifiers, and permitted wheels.",
+          "official_source": "Kaggle CLI Submission and competition rules",
+          "status": "evidence_supported_with_method_disclosure",
+          "scope": "official version 4 notebook",
+          "evidence": [
+            "task4/COMPLIANCE.md",
+            "task4/notebooks/kernel-metadata.json",
+            "task4/RULE_DIFFERENCE_AUDIT.json"
+          ],
+          "note": "Two post-v3 arXiv searches are retained as provenance; no evidence shows their results entered v4 and they are not treated as a runtime-resource violation."
+        },
+        "hardware": {
+          "requirement": "CPU or one T4; use only cuda:0 on GPU.",
+          "official_source": "Kaggle CLI Submission and competition rules",
+          "status": "jury_interpretation_risk",
+          "scope": "submitted notebook versus local development",
+          "evidence": [
+            "task4/COMPLIANCE.md",
+            "task4/notebooks/kernel-metadata.json",
+            "task4/RULE_DIFFERENCE_AUDIT.json"
+          ],
+          "note": "The submitted notebook used one T4/cuda:0. Local H100 development records remain disclosed; the Jury decides the scope implication."
+        },
+        "output_artifacts": {
+          "requirement": "Exactly 200 id,delta_a,delta_b rows with valid encoded tensors.",
+          "official_source": "Scoring and Kaggle CLI Submission pages",
+          "status": "evidence_supported",
+          "scope": "official version 4 output provenance",
+          "evidence": [
+            "task4/COMPLIANCE.md",
+            "task4/remote/V4_OUTPUT_PROVENANCE.json",
+            "task4/remote/V4_KERNEL.log"
+          ],
+          "note": "Schema, row count, tensor count, output hash, and retrieval path are recorded; the large CSV is not duplicated."
+        },
+        "technical_report": {
+          "requirement": "Submitted source carries the required 8–10 paragraph technical report.",
+          "official_source": "Report Generation Prompt page",
+          "status": "evidence_supported_with_later_score_disclosure",
+          "scope": "historical version-4 source",
+          "evidence": [
+            "task4/COMPLIANCE.md",
+            "task4/notebooks/REMOTE_CURRENT_V4.py"
+          ],
+          "note": "The source contains ten report paragraphs; later score/runtime facts are disclosed outside the immutable report."
+        },
+        "official_deadline": {
+          "requirement": "Submit through Kaggle before the official deadline for ranking eligibility.",
+          "official_source": "Kaggle CLI Submission and account extraction",
+          "status": "evidence_supported",
+          "scope": "official version 4",
+          "evidence": [
+            "task4/remote/FINAL_ACCOUNT_RESULTS.json",
+            "task4/COMPLIANCE.md"
+          ],
+          "note": "Submission 55316818 was sent before the 06:15 UTC deadline."
+        }
+      }
+    },
+    "task5": {
+      "competition": "ioai-2026-task-5-westlake-nlp-24",
+      "official_final": "55320296 (Public 95.39000, Private 96.06000)",
+      "requirements": {
+        "trace_no_live_human": {
+          "requirement": "Selected trace contains no live-human method, target, or forced-submission instruction.",
+          "official_source": "Starter/Continuation Prompt; trace boundary",
+          "status": "evidence_supported",
+          "scope": "selected pre-deadline autonomous trace",
+          "evidence": [
+            "AUTONOMOUS_TRACE_INDEX.json",
+            "task5/COMPLIANCE.md",
+            "task5/evidence/rollouts/"
+          ],
+          "note": "The main solver received the exact Starter Prompt and no continuation; controller status messages were not solver inputs."
+        },
+        "final_trace_alignment": {
+          "requirement": "Official final must be causally bound to the selected autonomous trace for a strict trace claim.",
+          "official_source": "Kaggle account extraction and trace provenance",
+          "status": "evidence_supported",
+          "scope": "official version 6 and selected trace",
+          "evidence": [
+            "task5/SUMMARY.json",
+            "task5/remote/FINAL_ACCOUNT_RESULTS.json",
+            "task5/V6_SOURCE_PROVENANCE.json"
+          ],
+          "note": "The source is trace-preserved and bound to version 6; Kaggle's historical source endpoint now returns 403, which is disclosed."
+        },
+        "exact_prompt_text": {
+          "requirement": "Use the exact organizer Starter/Continuation Prompt text.",
+          "official_source": "Starter Prompt and Continuation Prompt pages",
+          "status": "evidence_supported",
+          "scope": "selected Task 5 trace",
+          "evidence": [
+            "task5/official/OFFICIAL_PAGES_FULL.json",
+            "task5/official/STARTER_PROMPT_EXACT.md",
+            "task5/official/CONTINUE_PROMPT_EXACT.md",
+            "PROMPT_CONFORMANCE_AUDIT.json"
+          ],
+          "note": "Selected traces contain exact Starter Prompt text and no continuation event."
+        },
+        "notebook_only": {
+          "requirement": "Every valid submission is generated by a Kaggle Notebook; no direct prediction-file upload.",
+          "official_source": "Kaggle CLI Submission page",
+          "status": "evidence_supported",
+          "scope": "official version 6",
+          "evidence": [
+            "task5/COMPLIANCE.md",
+            "task5/notebooks/kernel-metadata.json",
+            "task5/remote/v6/"
+          ],
+          "note": "Notebook metadata, exact output, log, and submission record are retained."
+        },
+        "version_budget": {
+          "requirement": "Maximum 15 notebook versions; failed/time-out pushes count.",
+          "official_source": "Kaggle CLI Submission page",
+          "status": "evidence_supported",
+          "scope": "extracted account history",
+          "evidence": [
+            "task5/SUMMARY.json",
+            "KAGGLE_EXTRACTION_SUMMARY.json"
+          ],
+          "note": "Seven captured versions are within the published 15-version limit."
+        },
+        "runtime_cap": {
+          "requirement": "Each Kernel run must be capped at 600 seconds.",
+          "official_source": "Kaggle CLI Submission page",
+          "status": "evidence_supported",
+          "scope": "official version 6",
+          "evidence": [
+            "task5/COMPLIANCE.md",
+            "task5/remote/v6/ioai-2026-ghost-of-the-machine-solution.log"
+          ],
+          "note": "The v6 remote log records about 289.3 seconds."
+        },
+        "internet_resources": {
+          "requirement": "Internet disabled; only the permitted local bge-base-en-v1.5 and competition data.",
+          "official_source": "Kaggle CLI Submission and competition rules",
+          "status": "evidence_supported_with_method_disclosure",
+          "scope": "official version 6 notebook",
+          "evidence": [
+            "task5/COMPLIANCE.md",
+            "task5/notebooks/kernel-metadata.json",
+            "task5/official/OVERVIEW.md"
+          ],
+          "note": "External literature search is retained as method-background provenance; no external runtime data, weights, or API entered the submitted notebook."
+        },
+        "hardware": {
+          "requirement": "CPU or one T4; use only cuda:0 on GPU.",
+          "official_source": "Kaggle CLI Submission and competition rules",
+          "status": "evidence_supported",
+          "scope": "official version 6 notebook",
+          "evidence": [
+            "task5/COMPLIANCE.md",
+            "task5/notebooks/kernel-metadata.json",
+            "task5/remote/v6/ioai-2026-ghost-of-the-machine-solution.log"
+          ],
+          "note": "The submitted notebook used one Tesla T4 on cuda:0; local H100 accounting is a separate incomplete cost scope."
+        },
+        "output_artifacts": {
+          "requirement": "Exactly 760 id,boundary_char_index rows with integer in-range predictions.",
+          "official_source": "Scoring and Kaggle CLI Submission pages",
+          "status": "evidence_supported",
+          "scope": "official version 6",
+          "evidence": [
+            "task5/COMPLIANCE.md",
+            "task5/remote/v6/submission.csv",
+            "task5/remote/v6/ioai-2026-ghost-of-the-machine-solution.log"
+          ],
+          "note": "The exact archived output and log are retained and hash-bound."
+        },
+        "technical_report": {
+          "requirement": "Submitted source carries the required 8–10 paragraph technical report.",
+          "official_source": "Report Generation Prompt page",
+          "status": "evidence_supported_with_later_score_disclosure",
+          "scope": "preserved version-6 source",
+          "evidence": [
+            "task5/COMPLIANCE.md",
+            "task5/notebooks/BEST_V6_SOURCE.py"
+          ],
+          "note": "The source contains ten report paragraphs; later platform facts are documented outside it."
+        },
+        "official_deadline": {
+          "requirement": "Submit through Kaggle before the official deadline for ranking eligibility.",
+          "official_source": "Kaggle CLI Submission and account extraction",
+          "status": "evidence_supported",
+          "scope": "official version 6",
+          "evidence": [
+            "task5/remote/FINAL_ACCOUNT_RESULTS.json",
+            "task5/COMPLIANCE.md"
+          ],
+          "note": "Version 6 was submitted before the deadline; version 7 was late and is not substituted."
+        }
+      }
+    },
+    "task6": {
+      "competition": "ioai-2026-task-6-westlake-nlp-60",
+      "official_final": "55357080 (Public 75.01540, Private 73.36234)",
+      "requirements": {
+        "trace_no_live_human": {
+          "requirement": "Selected trace contains no live-human method, target, or forced-submission instruction.",
+          "official_source": "Starter/Continuation Prompt; trace boundary",
+          "status": "evidence_supported",
+          "scope": "selected pre-intervention autonomous trace",
+          "evidence": [
+            "AUTONOMOUS_TRACE_INDEX.json",
+            "task6/COMPLIANCE.md",
+            "task6/evidence/autonomous-only/"
+          ],
+          "note": "The selected main and worker traces contain exact Starter Prompt text and no continuation event."
+        },
+        "final_trace_alignment": {
+          "requirement": "Official final must be causally bound to the selected autonomous trace for a strict trace claim.",
+          "official_source": "Kaggle account extraction and trace provenance",
+          "status": "evidence_supported",
+          "scope": "official version 3 and selected trace",
+          "evidence": [
+            "task6/SUMMARY.json",
+            "task6/remote/FINAL_ACCOUNT_RESULTS.json",
+            "task6/ARTIFACT_PROVENANCE.json"
+          ],
+          "note": "The exact v3 source, weights, CSV, decoded code, and submission ref are aligned."
+        },
+        "exact_prompt_text": {
+          "requirement": "Use the exact organizer Starter/Continuation Prompt text.",
+          "official_source": "Starter Prompt and Continuation Prompt pages",
+          "status": "evidence_supported",
+          "scope": "selected Task 6 trace",
+          "evidence": [
+            "task6/official/OFFICIAL_PAGES_FULL.json",
+            "task6/official/STARTER_PROMPT_EXACT.md",
+            "task6/official/CONTINUE_PROMPT_EXACT.md",
+            "PROMPT_CONFORMANCE_AUDIT.json"
+          ],
+          "note": "Selected traces contain exact Starter Prompt text and no continuation event."
+        },
+        "notebook_only": {
+          "requirement": "Every valid submission is generated by a Kaggle Notebook; no direct prediction-file upload.",
+          "official_source": "Kaggle CLI Submission page",
+          "status": "evidence_supported",
+          "scope": "official version 3",
+          "evidence": [
+            "task6/COMPLIANCE.md",
+            "task6/notebooks/v3/kernel-metadata.json",
+            "task6/remote/v3/submission.csv"
+          ],
+          "note": "Notebook metadata and exact submission envelope are retained."
+        },
+        "version_budget": {
+          "requirement": "Maximum 20 notebook versions; failed/time-out pushes count.",
+          "official_source": "Kaggle CLI Submission page",
+          "status": "evidence_supported",
+          "scope": "extracted account history",
+          "evidence": [
+            "task6/SUMMARY.json",
+            "KAGGLE_EXTRACTION_SUMMARY.json"
+          ],
+          "note": "Eight captured versions are within the published 20-version limit."
+        },
+        "runtime_cap": {
+          "requirement": "Each Kernel run must be capped at 600 seconds.",
+          "official_source": "Kaggle CLI Submission page",
+          "status": "evidence_supported",
+          "scope": "official v3 and autonomous remote versions",
+          "evidence": [
+            "task6/COMPLIANCE.md",
+            "task6/remote/v3/",
+            "task6/official/SUBMISSION.md"
+          ],
+          "note": "The selected v3 run is in the required timeout scope; exact logs and runtime provenance are retained."
+        },
+        "internet_resources": {
+          "requirement": "Internet disabled; only permitted packages, public config/API, and competition resources.",
+          "official_source": "Kaggle CLI Submission and protected-runtime rules",
+          "status": "evidence_supported_with_technical_disclosure",
+          "scope": "official v3 notebook and selected trace",
+          "evidence": [
+            "task6/COMPLIANCE.md",
+            "task6/notebooks/v3/kernel-metadata.json",
+            "task6/RULE_DIFFERENCE_AUDIT.json"
+          ],
+          "note": "The protected evaluator was not redistributed or reverse engineered. Measured evaluator-batch dependence is disclosed as a technical property, not classified here as a violation."
+        },
+        "hardware": {
+          "requirement": "CPU or one T4; use only cuda:0 on GPU.",
+          "official_source": "Kaggle CLI Submission and competition rules",
+          "status": "evidence_supported",
+          "scope": "official v3 notebook",
+          "evidence": [
+            "task6/COMPLIANCE.md",
+            "task6/notebooks/v3/kernel-metadata.json"
+          ],
+          "note": "The submitted notebook used the permitted one-T4/cuda:0 scope; local H100 total remains an incomplete accounting issue."
+        },
+        "output_artifacts": {
+          "requirement": "Exactly id,model_b64,code_b64 with identical leaderboard-a/b payloads and valid model envelope.",
+          "official_source": "Scoring and Kaggle CLI Submission pages",
+          "status": "evidence_supported",
+          "scope": "official v3 exact artifact chain",
+          "evidence": [
+            "task6/ARTIFACT_PROVENANCE.json",
+            "task6/remote/v3/submission.csv",
+            "task6/remote/v3/custom_model.py",
+            "task6/tools/verify_v3_artifacts.py"
+          ],
+          "note": "CSV identity, decoded source, safetensors state, parameter count, and hashes are mechanically checked."
+        },
+        "technical_report": {
+          "requirement": "Submitted source carries the required 8–10 paragraph technical report.",
+          "official_source": "Report Generation Prompt page",
+          "status": "known_deviation",
+          "scope": "historical v3 report",
+          "evidence": [
+            "task6/COMPLIANCE.md",
+            "task6/RULE_DIFFERENCE_AUDIT.json"
+          ],
+          "note": "The immutable report contains dropout/range factual errors; the source is preserved and the correction is disclosed."
+        },
+        "official_deadline": {
+          "requirement": "Submit through Kaggle before the official deadline for ranking eligibility.",
+          "official_source": "Kaggle CLI Submission and account extraction",
+          "status": "evidence_supported",
+          "scope": "official version 3",
+          "evidence": [
+            "task6/remote/FINAL_ACCOUNT_RESULTS.json",
+            "task6/COMPLIANCE.md"
+          ],
+          "note": "The selected v3 result was submitted before the official deadline; later numerical maxima are not substituted."
+        }
+      }
+    }
+  },
+  "overall": {
+    "strict_all_six_claim": false,
+    "main_unresolved_items": [
+      "Task 1/2 lost-original provenance and final-result trace alignment",
+      "Task 1/2 later reproduction custom starter and post-deadline scope",
+      "Task 1/3 account-history budget interpretation",
+      "Task 4 non-exact continuation and local-H100 interpretation",
+      "Task 5 historical v6 source re-download 403",
+      "Task 3/6 historical report factual/format limitations",
+      "exhaustive local H100 runtime and USD cost reconstruction"
+    ]
+  }
+}

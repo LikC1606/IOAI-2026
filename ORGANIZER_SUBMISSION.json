@@ -2,6 +2,12 @@
   "schema": "ioai.organizer-submission-index.v1",
   "status": "complete_evidence_package_with_known_compliance_and_cost_limits",
   "organizer_review_guide": "ORGANIZER_REVIEW_GUIDE.md",
+  "requirement_evidence_matrix": {
+    "json": "REQUIREMENT_EVIDENCE_MATRIX.json",
+    "markdown": "REQUIREMENT_EVIDENCE_MATRIX.md",
+    "builder": "tools/build_requirement_evidence_matrix.py",
+    "status": "complete_scope_labeled_rule_by_rule_index_not_a_compliance_certificate"
+  },
   "tasks": [
     "task1",
     "task2",
@@ -57,8 +63,9 @@
         "task4/official/OFFICIAL_PAGES_FULL.json",
         "task4/official/OVERVIEW.md",
         "task4/official/SUBMISSION.md",
-        "task4/official/start.md",
-        "task4/official/continue.md"
+        "task4/official/STARTER_PROMPT_EXACT.md",
+        "task4/official/CONTINUE_PROMPT_EXACT.md",
+        "task4/official/README.md"
       ],
       "summary": "task4/SUMMARY.json",
       "compliance": "task4/COMPLIANCE.md",
@@ -70,8 +77,9 @@
         "task5/official/OFFICIAL_PAGES_FULL.json",
         "task5/official/OVERVIEW.md",
         "task5/official/SUBMISSION.md",
-        "task5/official/start.md",
-        "task5/official/continue.md"
+        "task5/official/STARTER_PROMPT_EXACT.md",
+        "task5/official/CONTINUE_PROMPT_EXACT.md",
+        "task5/official/README.md"
       ],
       "summary": "task5/SUMMARY.json",
       "compliance": "task5/COMPLIANCE.md",
@@ -80,10 +88,12 @@
     "task6": {
       "readme": "task6/README.md",
       "official_sources": [
+        "task6/official/OFFICIAL_PAGES_FULL.json",
         "task6/official/OVERVIEW.md",
         "task6/official/SUBMISSION.md",
-        "task6/official/start.md",
-        "task6/official/CONTINUE_PROMPT_EXACT.md"
+        "task6/official/STARTER_PROMPT_EXACT.md",
+        "task6/official/CONTINUE_PROMPT_EXACT.md",
+        "task6/official/README.md"
       ],
       "summary": "task6/SUMMARY.json",
       "compliance": "task6/COMPLIANCE.md",
