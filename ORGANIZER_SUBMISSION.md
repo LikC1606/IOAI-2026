@@ -17,14 +17,14 @@ resolved from the preserved historical records.
 
 ## Task-package entry points
 
-| Task | Package README | Machine-readable summary | Compliance note | Integrity manifest |
-|---|---|---|---|---|
-| 1 | [`task1/README.md`](task1/README.md) | [`task1/SUMMARY.json`](task1/SUMMARY.json) | [`task1/COMPLIANCE.md`](task1/COMPLIANCE.md) | [`task1/MANIFEST.sha256`](task1/MANIFEST.sha256) |
-| 2 | [`task2/README.md`](task2/README.md) | [`task2/SUMMARY.json`](task2/SUMMARY.json) | [`task2/COMPLIANCE.md`](task2/COMPLIANCE.md) | [`task2/MANIFEST.sha256`](task2/MANIFEST.sha256) |
-| 3 | [`task3/README.md`](task3/README.md) | [`task3/SUMMARY.json`](task3/SUMMARY.json) | [`task3/COMPLIANCE.md`](task3/COMPLIANCE.md) | [`task3/MANIFEST.sha256`](task3/MANIFEST.sha256) |
-| 4 | [`task4/README.md`](task4/README.md) | [`task4/SUMMARY.json`](task4/SUMMARY.json) | [`task4/COMPLIANCE.md`](task4/COMPLIANCE.md) | [`task4/MANIFEST.sha256`](task4/MANIFEST.sha256) |
-| 5 | [`task5/README.md`](task5/README.md) | [`task5/SUMMARY.json`](task5/SUMMARY.json) | [`task5/COMPLIANCE.md`](task5/COMPLIANCE.md) | [`task5/MANIFEST.sha256`](task5/MANIFEST.sha256) |
-| 6 | [`task6/README.md`](task6/README.md) | [`task6/SUMMARY.json`](task6/SUMMARY.json) | [`task6/COMPLIANCE.md`](task6/COMPLIANCE.md) | [`task6/MANIFEST.sha256`](task6/MANIFEST.sha256) |
+| Task | Package README | Official-page snapshots | Machine-readable summary | Compliance note | Integrity manifest |
+|---|---|---|---|---|---|
+| 1 | [`task1/README.md`](task1/README.md) | [`task1/official/`](task1/official/) | [`task1/SUMMARY.json`](task1/SUMMARY.json) | [`task1/COMPLIANCE.md`](task1/COMPLIANCE.md) | [`task1/MANIFEST.sha256`](task1/MANIFEST.sha256) |
+| 2 | [`task2/README.md`](task2/README.md) | [`task2/official/`](task2/official/) | [`task2/SUMMARY.json`](task2/SUMMARY.json) | [`task2/COMPLIANCE.md`](task2/COMPLIANCE.md) | [`task2/MANIFEST.sha256`](task2/MANIFEST.sha256) |
+| 3 | [`task3/README.md`](task3/README.md) | [`task3/official/`](task3/official/) | [`task3/SUMMARY.json`](task3/SUMMARY.json) | [`task3/COMPLIANCE.md`](task3/COMPLIANCE.md) | [`task3/MANIFEST.sha256`](task3/MANIFEST.sha256) |
+| 4 | [`task4/README.md`](task4/README.md) | [`task4/official/`](task4/official/) | [`task4/SUMMARY.json`](task4/SUMMARY.json) | [`task4/COMPLIANCE.md`](task4/COMPLIANCE.md) | [`task4/MANIFEST.sha256`](task4/MANIFEST.sha256) |
+| 5 | [`task5/README.md`](task5/README.md) | [`task5/official/`](task5/official/) | [`task5/SUMMARY.json`](task5/SUMMARY.json) | [`task5/COMPLIANCE.md`](task5/COMPLIANCE.md) | [`task5/MANIFEST.sha256`](task5/MANIFEST.sha256) |
+| 6 | [`task6/README.md`](task6/README.md) | [`task6/official/`](task6/official/) | [`task6/SUMMARY.json`](task6/SUMMARY.json) | [`task6/COMPLIANCE.md`](task6/COMPLIANCE.md) | [`task6/MANIFEST.sha256`](task6/MANIFEST.sha256) |
 
 Special evidence is linked here for quick review:
 

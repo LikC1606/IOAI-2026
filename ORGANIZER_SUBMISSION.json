@@ -18,36 +18,72 @@
   "task_packages": {
     "task1": {
       "readme": "task1/README.md",
+      "official_sources": [
+        "task1/official/OFFICIAL_PAGES_FULL.json",
+        "task1/official/STARTER_PROMPT.md",
+        "task1/official/CONTINUE_PROMPT.md"
+      ],
       "summary": "task1/SUMMARY.json",
       "compliance": "task1/COMPLIANCE.md",
       "manifest": "task1/MANIFEST.sha256"
     },
     "task2": {
       "readme": "task2/README.md",
+      "official_sources": [
+        "task2/official/OFFICIAL_PAGES_FULL.json",
+        "task2/official/STARTER_PROMPT.md",
+        "task2/official/CONTINUE_PROMPT.md"
+      ],
       "summary": "task2/SUMMARY.json",
       "compliance": "task2/COMPLIANCE.md",
       "manifest": "task2/MANIFEST.sha256"
     },
     "task3": {
       "readme": "task3/README.md",
+      "official_sources": [
+        "task3/official/OFFICIAL_PAGES_FULL.json",
+        "task3/official/STARTER_PROMPT_SUBSTITUTED.md",
+        "task3/official/OVERVIEW_WORKING_COPY.md",
+        "task3/official/SUBMISSION_WORKING_COPY.md"
+      ],
       "summary": "task3/SUMMARY.json",
       "compliance": "task3/COMPLIANCE.md",
       "manifest": "task3/MANIFEST.sha256"
     },
     "task4": {
       "readme": "task4/README.md",
+      "official_sources": [
+        "task4/official/OFFICIAL_PAGES_FULL.json",
+        "task4/official/OVERVIEW.md",
+        "task4/official/SUBMISSION.md",
+        "task4/official/start.md",
+        "task4/official/continue.md"
+      ],
       "summary": "task4/SUMMARY.json",
       "compliance": "task4/COMPLIANCE.md",
       "manifest": "task4/MANIFEST.sha256"
     },
     "task5": {
       "readme": "task5/README.md",
+      "official_sources": [
+        "task5/official/OFFICIAL_PAGES_FULL.json",
+        "task5/official/OVERVIEW.md",
+        "task5/official/SUBMISSION.md",
+        "task5/official/start.md",
+        "task5/official/continue.md"
+      ],
       "summary": "task5/SUMMARY.json",
       "compliance": "task5/COMPLIANCE.md",
       "manifest": "task5/MANIFEST.sha256"
     },
     "task6": {
       "readme": "task6/README.md",
+      "official_sources": [
+        "task6/official/OVERVIEW.md",
+        "task6/official/SUBMISSION.md",
+        "task6/official/start.md",
+        "task6/official/CONTINUE_PROMPT_EXACT.md"
+      ],
       "summary": "task6/SUMMARY.json",
       "compliance": "task6/COMPLIANCE.md",
       "manifest": "task6/MANIFEST.sha256"

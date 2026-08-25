@@ -647,15 +647,58 @@ def main() -> None:
         "handling_instructions": "task3/DATA_PROVENANCE.md",
     }
     assert set(checklist["task_packages"]) == {f"task{i}" for i in range(1, 7)}
+    expected_official_sources = {
+        "task1": [
+            "task1/official/OFFICIAL_PAGES_FULL.json",
+            "task1/official/STARTER_PROMPT.md",
+            "task1/official/CONTINUE_PROMPT.md",
+        ],
+        "task2": [
+            "task2/official/OFFICIAL_PAGES_FULL.json",
+            "task2/official/STARTER_PROMPT.md",
+            "task2/official/CONTINUE_PROMPT.md",
+        ],
+        "task3": [
+            "task3/official/OFFICIAL_PAGES_FULL.json",
+            "task3/official/STARTER_PROMPT_SUBSTITUTED.md",
+            "task3/official/OVERVIEW_WORKING_COPY.md",
+            "task3/official/SUBMISSION_WORKING_COPY.md",
+        ],
+        "task4": [
+            "task4/official/OFFICIAL_PAGES_FULL.json",
+            "task4/official/OVERVIEW.md",
+            "task4/official/SUBMISSION.md",
+            "task4/official/start.md",
+            "task4/official/continue.md",
+        ],
+        "task5": [
+            "task5/official/OFFICIAL_PAGES_FULL.json",
+            "task5/official/OVERVIEW.md",
+            "task5/official/SUBMISSION.md",
+            "task5/official/start.md",
+            "task5/official/continue.md",
+        ],
+        "task6": [
+            "task6/official/OVERVIEW.md",
+            "task6/official/SUBMISSION.md",
+            "task6/official/start.md",
+            "task6/official/CONTINUE_PROMPT_EXACT.md",
+        ],
+    }
     for task, paths in checklist["task_packages"].items():
         number = task.removeprefix("task")
         assert paths == {
             "readme": f"task{number}/README.md",
+            "official_sources": expected_official_sources[task],
             "summary": f"task{number}/SUMMARY.json",
             "compliance": f"task{number}/COMPLIANCE.md",
             "manifest": f"task{number}/MANIFEST.sha256",
         }
-        assert all((ROOT / path).is_file() for path in paths.values()), task
+        assert all(
+            (ROOT / path).is_file()
+            for value in paths.values()
+            for path in (value if isinstance(value, list) else [value])
+        ), task
     assert checklist["special_evidence"] == {
         "tasks1_2_reproductions": [
             "REPRODUCTION_TRACE_MATERIAL.md",

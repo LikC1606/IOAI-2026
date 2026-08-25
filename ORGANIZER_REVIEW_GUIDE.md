@@ -41,6 +41,9 @@ remain private while the restricted Task 3 competition bundle is present; see
 
 - Trace selection and causal boundaries: `AUTONOMOUS_TRACE_MATERIAL.md`,
   `AUTONOMOUS_TRACE_INDEX.json`, and `AUTONOMOUS_MATERIAL_MANIFEST.sha256`.
+- Official rules, Starter Prompts, and Continuation Prompts: the
+  `official_sources` arrays in `ORGANIZER_SUBMISSION.json` point to the exact
+  per-task snapshots; these are checked by `verify_repository.py`.
 - Later Task 1/2 reproductions: `REPRODUCTION_TRACE_MATERIAL.md`,
   `REPRODUCTION_TRACE_INDEX.json`, and `REPRODUCTION_COSTS.json`.
 - Exact prompt comparison: `PROMPT_CONFORMANCE_AUDIT.md` and
