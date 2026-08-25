@@ -1130,6 +1130,27 @@ def verify_execution_accounting() -> dict[str, int]:
     tokens = 0
     traces = 0
     for task, data in index["tasks"].items():
+        cost_task = costs["tasks"][task]
+        task_summary = json.loads(
+            (ROOT / task / "SUMMARY.json").read_text(encoding="utf-8")
+        )
+        assert cost_task["competition"] == task_summary["competition"], task
+        assert cost_task["model_provider"] == "ioai_allowed", task
+        assert cost_task["model"] == "gpt-5.6-sol", task
+        assert cost_task["reasoning_effort"] in {"max", "xhigh"}, task
+        assert cost_task["api_cost_usd"] is None, task
+        token_usage = cost_task["token_usage"]
+        assert set(token_usage) >= {
+            "input_tokens",
+            "cached_input_tokens",
+            "cache_write_input_tokens",
+            "output_tokens",
+            "reasoning_output_tokens",
+            "total_tokens",
+        }, task
+        gpu = cost_task["gpu"]
+        assert "accelerator" in gpu and "runtime_seconds" in gpu, task
+        assert gpu["gpu_cost_usd"] is None or gpu["gpu_cost_usd"] == 0, task
         task_tokens = data["token_usage_cumulative_sum_across_traces"]["total_tokens"]
         assert costs["tasks"][task]["token_usage"]["total_tokens"] == task_tokens, task
         if task in {"task4", "task5", "task6"}:
@@ -1156,6 +1177,9 @@ def verify_reproduction_material() -> dict[str, int]:
         checked += 1
 
     index = json.loads((ROOT / "REPRODUCTION_TRACE_INDEX.json").read_text(encoding="utf-8"))
+    costs = json.loads((ROOT / "REPRODUCTION_COSTS.json").read_text(encoding="utf-8"))
+    assert costs["api_cost_usd_total"] is None
+    assert costs["gpu_cost_usd_total"] is None
     assert index["schema"] == "ioai.later-reproduction-trace-material.v1"
     events = 0
     tokens = 0
@@ -1169,6 +1193,16 @@ def verify_reproduction_material() -> dict[str, int]:
     }
     for task in ("task1", "task2"):
         data = index["tasks"][task]
+        cost_task = costs["tasks"][task]
+        assert cost_task["competition"] == data["competition"], task
+        assert cost_task["model_provider"] == "ioai_allowed", task
+        assert cost_task["model"] == "gpt-5.6-sol", task
+        assert cost_task["reasoning_effort"] == "max", task
+        assert cost_task["api_cost_usd"] is None, task
+        assert cost_task["trace_token_usage"]["total_tokens"] == data[
+            "trace_file"
+        ]["token_usage_cumulative_final"]["total_tokens"], task
+        assert cost_task["gpu"]["gpu_cost_usd"] is None, task
         assert data["post_deadline"] is True
         assert data["ranking_eligible"] is False
         assert data["strict_exact_organizer_prompt_text_conformance"] is False

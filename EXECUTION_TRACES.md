@@ -24,6 +24,22 @@ reproductions using the same configured solver/system, official competition
 bundle, and organizer constraints, not replacements for the incomplete
 original records. See [`FORMAL_PREFIX_AUDIT.md`](FORMAL_PREFIX_AUDIT.md).
 
+## Supplemental formal prefixes for Tasks 1–2
+
+These are intentionally listed separately from the canonical selected trace
+set above:
+
+| Task | Prefix | Exact prompt evidence | Scored result in prefix | Scope |
+|---|---:|---|---|---|
+| 1 | 350 events | Exact Starter Prompt; no continuation | None before the boundary | Historical bounded audit only |
+| 2 | 705 events | Exact Starter and Continuation Prompts | `55260695`, Public `0.55416`, Private `0.54833` | Historical bounded audit plus eligible v2 artifact chain |
+
+The complete original formal runs for Tasks 1 and 2 are not available after a
+school-server restart. A prefix is not silently expanded into a complete
+historical trace, and neither prefix is used to claim causal provenance for the
+account's later automatic official final. Hashes, timestamps, prompt checks,
+and boundary definitions are in [`FORMAL_PREFIX_AUDIT.json`](FORMAL_PREFIX_AUDIT.json).
+
 ## What is represented
 
 Each JSONL line is one timestamped event. In `response_item` events:
