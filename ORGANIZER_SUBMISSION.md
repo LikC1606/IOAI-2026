@@ -5,6 +5,11 @@ machine-readable checklist is [`ORGANIZER_SUBMISSION.json`](ORGANIZER_SUBMISSION
 and `python3 verify_repository.py` validates the paths, hashes, score records,
 trace coverage, model/cost fields, and extraction metadata.
 
+> **Restricted-data notice:** `task3/input/competition/` contains
+> organizer-provided data for authorized review. Keep this repository private
+> and follow [`task3/DATA_PROVENANCE.md`](task3/DATA_PROVENANCE.md) before
+> sharing or publishing any copy.
+
 ## Task-package entry points
 
 | Task | Package README | Machine-readable summary | Compliance note | Integrity manifest |
@@ -21,6 +26,8 @@ Special evidence is linked here for quick review:
 - Tasks 1–2 later reproductions: [`REPRODUCTION_TRACE_MATERIAL.md`](REPRODUCTION_TRACE_MATERIAL.md), [`REPRODUCTION_TRACE_INDEX.json`](REPRODUCTION_TRACE_INDEX.json), and [`REPRODUCTION_COSTS.json`](REPRODUCTION_COSTS.json).
 - Task 4 supplemental trace provenance: [`task4/evidence/SUPPLEMENTAL_ROLLOUT_PROVENANCE.json`](task4/evidence/SUPPLEMENTAL_ROLLOUT_PROVENANCE.json) and [`task4/RULE_DIFFERENCE_AUDIT.md`](task4/RULE_DIFFERENCE_AUDIT.md).
 - Task 6 exact v3 artifact chain: [`task6/ARTIFACT_PROVENANCE.json`](task6/ARTIFACT_PROVENANCE.json), [`task6/RULE_DIFFERENCE_AUDIT.md`](task6/RULE_DIFFERENCE_AUDIT.md), and [`task6/evidence/EVALUATOR_BATCHING_PROVENANCE.json`](task6/evidence/EVALUATOR_BATCHING_PROVENANCE.json).
+
+## Deliverable checklist
 
 | Organizer requirement | Status | Evidence |
 |---|---|---|
