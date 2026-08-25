@@ -89,7 +89,8 @@ manifest for later completion if the provider supplies rates.
   `evidence/submission-execution/` post-boundary trace, including the
   agent-executed scored submission.
 - [Task 2](task2/): single main trace plus eligible remote CNN records.
-- [Task 3](task3/): main and subagent traces; token telemetry is redacted.
+- [Task 3](task3/): [direct trace and cost entry point](task3/EXECUTION_AND_COSTS.md),
+  main and subagent traces; token telemetry is redacted.
 - [Task 4](task4/): main and four worker/resume traces.
 - [Task 5](task5/): main trace and thirteen worker/resume traces.
 - [Task 6](task6/): main trace and four redacted subagent traces, plus the
