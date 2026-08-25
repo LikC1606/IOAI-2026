@@ -3,6 +3,16 @@
   "task": 3,
   "competition": "ioai-2026-task-3-westlake-nlp-48",
   "account_owner": "researai",
+  "extraction_summary_binding": {
+    "source_path": "../KAGGLE_EXTRACTION_SUMMARY.json",
+    "source_sha256": "0ccd29d1e4a8542ddaf7f05a0526dcbb17e1b0975e0cabac46bc925e6985865b",
+    "competition": "ioai-2026-task-3-westlake-nlp-48",
+    "deadline_utc": "2026-08-06T06:30:00Z",
+    "submissions": 27,
+    "submissions_after_deadline": 16,
+    "versions_captured": 30,
+    "kernels": 2
+  },
   "boundary_utc_exclusive": "2026-08-06T05:46:19.450Z",
   "best_submission_refs": [55289569, 55289823],
   "best_public_score": 58.51666,

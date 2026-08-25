@@ -29,6 +29,14 @@ credentials and private endpoints. It should print `"all_ok": true`.
 The repository must remain private while the restricted Task 3 competition
 bundle is present; see `task3/DATA_PROVENANCE.md`.
 
+The extraction cross-check is deliberately explicit: each `taskN/SUMMARY.json`
+contains an `extraction_summary_binding` with the source hash, competition
+slug, deadline, account submission count, post-deadline count, captured
+version count, and kernel count. The verifier compares those bindings with
+`KAGGLE_EXTRACTION_SUMMARY.json` and with each task's
+`remote/FINAL_ACCOUNT_RESULTS.json`; a green result means these records agree,
+not that the account history is automatically rule-compliant.
+
 ## Suggested adjudication order
 
 The package intentionally separates mechanical evidence from decisions that
@@ -94,6 +102,11 @@ make the minimum factual findings first and defer only the policy questions:
   archive. Its archive hash and size are recorded there and in the verifier;
   the delivery record also contains a live HTTP 200 HEAD check with matching
   `Content-Length`, filename, and byte-range support.
+- Extraction/account cross-check: `KAGGLE_EXTRACTION_SUMMARY.json` and the
+  `extraction_summary_binding` blocks in the six task summaries. This binds
+  the six competition slugs, deadlines, submission totals, late-submission
+  totals, captured-version totals, and kernel counts to the per-task account
+  result records.
 - Final notebook/output chains: Task 2 is verified from the autonomous eligible
   v2 source, exact 7,200-row CSV, metadata, log, and score record. Task 4 is
   verified from its exact source,

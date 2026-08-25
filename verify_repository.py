@@ -1133,6 +1133,61 @@ def verify_cross_task_rule_audit() -> dict[str, object]:
     }
 
 
+def verify_kaggle_extraction_summary() -> dict[str, object]:
+    """Bind the external extraction summary to every task package.
+
+    The extraction summary and the task packages are independently useful
+    records. This cross-check makes their shared account counts, deadlines,
+    competition slugs, and captured-version totals auditable instead of
+    relying on a reviewer to notice drift between files.
+    """
+    extraction_path = ROOT / "KAGGLE_EXTRACTION_SUMMARY.json"
+    extraction = json.loads(extraction_path.read_text(encoding="utf-8"))
+    assert extraction["tool_version"] == "1.0.0"
+    assert extraction["username"] == "researai"
+    assert len(extraction["competitions"]) == 6
+    extraction_sha = sha256(extraction_path)
+    by_competition = {item["competition"]: item for item in extraction["competitions"]}
+    assert len(by_competition) == 6
+
+    checked: list[dict[str, object]] = []
+    for number in range(1, 7):
+        task = f"task{number}"
+        task_summary = json.loads((ROOT / task / "SUMMARY.json").read_text(encoding="utf-8"))
+        binding = task_summary["extraction_summary_binding"]
+        competition = task_summary["competition"]
+        source = by_competition[competition]
+        assert binding["source_path"] == "../KAGGLE_EXTRACTION_SUMMARY.json", task
+        assert binding["source_sha256"] == extraction_sha, task
+        assert binding["competition"] == competition, task
+        assert binding["deadline_utc"] == source["deadline_utc"].replace(" ", "T") + "Z", task
+        for field in ("submissions", "submissions_after_deadline", "versions_captured", "kernels"):
+            assert binding[field] == source[field], (task, field)
+
+        final = json.loads(
+            (ROOT / task / "remote" / "FINAL_ACCOUNT_RESULTS.json").read_text(encoding="utf-8")
+        )
+        assert final["competition"] == competition, task
+        counts = final["submission_counts"]
+        assert counts["all_account"] == source["submissions"], task
+        assert counts["after_official_deadline"] == source["submissions_after_deadline"], task
+        assert task_summary["account_submission_count"] == source["submissions"], task
+        assert task_summary["submissions_after_official_deadline"] == source[
+            "submissions_after_deadline"
+        ], task
+        checked.append(
+            {
+                "task": task,
+                "competition": competition,
+                "submissions": source["submissions"],
+                "submissions_after_deadline": source["submissions_after_deadline"],
+                "versions_captured": source["versions_captured"],
+                "kernels": source["kernels"],
+            }
+        )
+    return {"all_ok": True, "source_sha256": extraction_sha, "tasks": checked}
+
+
 def verify_execution_accounting() -> dict[str, int]:
     index = json.loads((ROOT / "EXECUTION_TRACE_INDEX.json").read_text(encoding="utf-8"))
     costs = json.loads((ROOT / "COSTS.json").read_text(encoding="utf-8"))
@@ -1297,6 +1352,7 @@ def main() -> None:
     report["task5_artifact_chain"] = verify_task5_artifacts()
     report["task6_exact_artifacts"] = verify_task6_artifacts()
     report["cross_task_rule_audit"] = verify_cross_task_rule_audit()
+    report["kaggle_extraction_summary_crosscheck"] = verify_kaggle_extraction_summary()
     report["publication_safety"] = verify_publication_safety()
     report["markdown_links"] = verify_markdown_links()
     delivery = json.loads((ROOT / "KAGGLE_EXTRACTION_DELIVERY.json").read_text(encoding="utf-8"))

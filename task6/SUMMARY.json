@@ -4,6 +4,16 @@
   "task": 6,
   "competition": "ioai-2026-task-6-westlake-nlp-60",
   "account_owner": "researai",
+  "extraction_summary_binding": {
+    "source_path": "../KAGGLE_EXTRACTION_SUMMARY.json",
+    "source_sha256": "0ccd29d1e4a8542ddaf7f05a0526dcbb17e1b0975e0cabac46bc925e6985865b",
+    "competition": "ioai-2026-task-6-westlake-nlp-60",
+    "deadline_utc": "2026-08-08T18:30:00Z",
+    "submissions": 6,
+    "submissions_after_deadline": 2,
+    "versions_captured": 8,
+    "kernels": 5
+  },
   "agent_run": {
     "started_at_utc": "2026-08-08T16:23:20.951Z",
     "deadline_at_utc": "2026-08-08T18:23:20.900Z",

@@ -4,6 +4,16 @@
   "task": 1,
   "competition": "ioai-2026-task-1-westlake-nlp-24",
   "account_owner": "researai",
+  "extraction_summary_binding": {
+    "source_path": "../KAGGLE_EXTRACTION_SUMMARY.json",
+    "source_sha256": "0ccd29d1e4a8542ddaf7f05a0526dcbb17e1b0975e0cabac46bc925e6985865b",
+    "competition": "ioai-2026-task-1-westlake-nlp-24",
+    "deadline_utc": "2026-08-05T10:50:00Z",
+    "submissions": 30,
+    "submissions_after_deadline": 15,
+    "versions_captured": 38,
+    "kernels": 14
+  },
   "formal_run": {
     "scope": "historical_formal_run_audit_only; not the canonical autonomous rollout",
     "joined_at_utc": "2026-08-05T09:20:36.326Z",
@@ -76,6 +86,9 @@
   "official_final_private_score": 0.80474,
   "official_final_trace_alignment": false,
   "official_final_trace_alignment_limit": "Original record unavailable; later autonomous reproduction is a different post-deadline submission.",
+  "account_submission_count": 30,
+  "submissions_before_official_deadline": 15,
+  "submissions_after_official_deadline": 15,
   "captured_account_notebook_versions": 38,
   "published_version_limit": 20,
   "version_budget_status": "jury_interpretation_risk_post_deadline_activity_included",
