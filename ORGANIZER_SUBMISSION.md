@@ -16,6 +16,12 @@ trace coverage, model/cost fields, and extraction metadata.
 | 5 | [`task5/README.md`](task5/README.md) | [`task5/SUMMARY.json`](task5/SUMMARY.json) | [`task5/COMPLIANCE.md`](task5/COMPLIANCE.md) | [`task5/MANIFEST.sha256`](task5/MANIFEST.sha256) |
 | 6 | [`task6/README.md`](task6/README.md) | [`task6/SUMMARY.json`](task6/SUMMARY.json) | [`task6/COMPLIANCE.md`](task6/COMPLIANCE.md) | [`task6/MANIFEST.sha256`](task6/MANIFEST.sha256) |
 
+Special evidence is linked here for quick review:
+
+- Tasks 1–2 later reproductions: [`REPRODUCTION_TRACE_MATERIAL.md`](REPRODUCTION_TRACE_MATERIAL.md), [`REPRODUCTION_TRACE_INDEX.json`](REPRODUCTION_TRACE_INDEX.json), and [`REPRODUCTION_COSTS.json`](REPRODUCTION_COSTS.json).
+- Task 4 supplemental trace provenance: [`task4/evidence/SUPPLEMENTAL_ROLLOUT_PROVENANCE.json`](task4/evidence/SUPPLEMENTAL_ROLLOUT_PROVENANCE.json) and [`task4/RULE_DIFFERENCE_AUDIT.md`](task4/RULE_DIFFERENCE_AUDIT.md).
+- Task 6 exact v3 artifact chain: [`task6/ARTIFACT_PROVENANCE.json`](task6/ARTIFACT_PROVENANCE.json), [`task6/RULE_DIFFERENCE_AUDIT.md`](task6/RULE_DIFFERENCE_AUDIT.md), and [`task6/evidence/EVALUATOR_BATCHING_PROVENANCE.json`](task6/evidence/EVALUATOR_BATCHING_PROVENANCE.json).
+
 | Organizer requirement | Status | Evidence |
 |---|---|---|
 | Execution traces for Tasks 1–6 | Complete selected observable prefixes; provenance limits disclosed | [`AUTONOMOUS_TRACE_MATERIAL.md`](AUTONOMOUS_TRACE_MATERIAL.md), [`AUTONOMOUS_TRACE_INDEX.json`](AUTONOMOUS_TRACE_INDEX.json) |
