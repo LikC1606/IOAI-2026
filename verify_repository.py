@@ -1816,6 +1816,7 @@ def main() -> None:
     assert content_scan["content_marker_non_kernel_source_examples"] == []
     assert "heuristic" in content_scan["result_scope"]
     assert (ROOT / "tools/scan_extraction_archive.py").is_file()
+    assert (ROOT / "tools/verify_extraction_bindings.py").is_file()
     assert (ROOT / "ACCESS_CONTROL_AUDIT.md").is_file()
     assert set(checklist["task_packages"]) == {f"task{i}" for i in range(1, 7)}
     expected_official_sources = {
@@ -1877,6 +1878,23 @@ def main() -> None:
             for path in (value if isinstance(value, list) else [value])
         ), task
     assert checklist["special_evidence"] == {
+        "startup_instruction_payloads": [
+            "STARTUP_INSTRUCTION_INDEX.md",
+            "STARTUP_INSTRUCTION_INDEX.json",
+            "task1/environment/AGENTS-ACTUALLY-INJECTED.md",
+            "task2/environment/AGENTS-ACTUALLY-INJECTED.md",
+            "task3/environment/AGENTS-ACTUALLY-INJECTED.md",
+            "task4/environment/AGENTS-ACTUALLY-INJECTED.md",
+            "task5/environment/AGENTS-ACTUALLY-INJECTED.md",
+            "task6/environment/AGENTS-ACTUALLY-INJECTED.md",
+        ],
+        "extraction_binding_verifier": [
+            "tools/verify_extraction_bindings.py",
+            "KAGGLE_EXTRACTION_DELIVERY.json",
+            "task1/remote/OFFICIAL_FINAL_EXTRACTION_PROVENANCE.json",
+            "task2/remote/OFFICIAL_FINAL_EXTRACTION_PROVENANCE.json",
+            "task4/remote/V4_OUTPUT_PROVENANCE.json",
+        ],
         "tasks1_2_reproductions": [
             "REPRODUCTION_TRACE_MATERIAL.md",
             "REPRODUCTION_TRACE_INDEX.json",
@@ -1905,6 +1923,36 @@ def main() -> None:
             "task6/evidence/EVALUATOR_BATCHING_PROVENANCE.json",
         ],
     }
+    startup_index = ROOT / "STARTUP_INSTRUCTION_INDEX.md"
+    startup_index_json_path = ROOT / "STARTUP_INSTRUCTION_INDEX.json"
+    assert startup_index.is_file()
+    assert startup_index_json_path.is_file()
+    startup_index_text = startup_index.read_text(encoding="utf-8")
+    startup_index_json = json.loads(startup_index_json_path.read_text(encoding="utf-8"))
+    assert startup_index_json["schema"] == "ioai.startup-instruction-index.v1"
+    assert startup_index_json["generated_by"] == "tools/build_autonomous_trace_material.py"
+    assert set(startup_index_json["payloads"]) == {f"task{i}" for i in range(1, 7)}
+    expected_startup_payloads = {
+        1: (15697, "ce4bfa8a2339ad84ced241df576b307fadd763180b34b3a3fe65a3551fa6ad98"),
+        2: (15740, "9d4f1918cb840bd0620be0243bd35e46fe894ae3220a7ec194f15c3c6080e417"),
+        3: (32951, "2bf4a713178b0f6d0d707575fe22d16d15ea640f580abd60f672a935476b8f84"),
+        4: (26191, "8e0b9851cb90a9e95385ce629acbbb28760c93f3c3abcbd439ca140138dcda48"),
+        5: (28929, "42b34f4925e4cde8c6b311e3c56f0437fdc8f5f14e2bdcdf8bef9ce5f1edf5dc"),
+        6: (28945, "020fc980f4a6c5195014dd08ab265c30021da52c8730fd5cf0f66177e50a41f6"),
+    }
+    for number, (size_bytes, digest) in expected_startup_payloads.items():
+        payload = ROOT / f"task{number}/environment/AGENTS-ACTUALLY-INJECTED.md"
+        assert payload.is_file(), payload
+        assert payload.stat().st_size == size_bytes, payload
+        assert sha256(payload) == digest, payload
+        relative = f"task{number}/environment/AGENTS-ACTUALLY-INJECTED.md"
+        assert relative in startup_index_text
+        assert digest in startup_index_text
+        binding = startup_index_json["payloads"][f"task{number}"]
+        assert binding["path"] == relative
+        assert binding["manifest"] == f"task{number}/MANIFEST.sha256"
+        assert binding["size_bytes"] == size_bytes
+        assert binding["sha256"] == digest
     assert all(
         (ROOT / path).is_file()
         for paths in checklist["special_evidence"].values()
@@ -1915,6 +1963,8 @@ def main() -> None:
         "execution_traces_all_six_tasks": "complete_selected_observable_prefixes_with_provenance_limits",
         "later_two_hour_reproduction_traces_task1_task2": "complete_separately_scoped_post_deadline_reference",
         "prompts_and_visible_outputs": "complete_for_selected_observable_trace_scope",
+        "startup_instruction_payloads": "complete_hash_bound_per_task",
+        "extraction_binding_verifier": "read_only_archive_member_hash_check_available",
         "exact_organizer_prompt_conformance": "audited_with_non_exact_tasks",
         "cross_task_rule_compliance": "audited_known_deviations_and_evidence_limits_remain",
         "submission_version_limits": "complete_literal_audit_with_known_deviations_and_organizer_scope_questions",

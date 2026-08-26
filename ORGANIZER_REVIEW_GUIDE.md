@@ -14,6 +14,10 @@ scope-labeled and is not a self-issued compliance certificate.
 Before sharing, check [`ACCESS_CONTROL_AUDIT.md`](ACCESS_CONTROL_AUDIT.md): the
 GitHub repository is Private, while the external Drive extraction has its own
 link-access scope and a separately documented content scan.
+For the exact runtime instruction context, use
+[`STARTUP_INSTRUCTION_INDEX.md`](STARTUP_INSTRUCTION_INDEX.md) and its
+machine-readable companion [`STARTUP_INSTRUCTION_INDEX.json`](STARTUP_INSTRUCTION_INDEX.json),
+which link and hash the six `AGENTS-ACTUALLY-INJECTED.md` payloads.
 
 ## Fast verification route
 
@@ -26,6 +30,8 @@ python3 verify_repository.py
 for t in 1 2 3 4 5 6; do (cd task$t && sha256sum -c MANIFEST.sha256); done
 sha256sum -c AUTONOMOUS_MATERIAL_MANIFEST.sha256
 sha256sum -c REPRODUCTION_MATERIAL_MANIFEST.sha256
+# Optional, after downloading the Drive archive:
+python3 tools/verify_extraction_bindings.py --archive /path/to/ioai-kaggle-fetch-researai-20260813.tar.gz
 ```
 
 `verify_repository.py` checks the six task packages, score records, selected
@@ -114,6 +120,11 @@ make the minimum factual findings first and defer only the policy questions:
 
 - Trace selection and causal boundaries: `AUTONOMOUS_TRACE_MATERIAL.md`,
   `AUTONOMOUS_TRACE_INDEX.json`, and `AUTONOMOUS_MATERIAL_MANIFEST.sha256`.
+- Startup instruction context: `STARTUP_INSTRUCTION_INDEX.md/json` and the six
+  `taskN/environment/AGENTS-ACTUALLY-INJECTED.md` files, each covered by its
+  Task manifest.
+- Drive archive member bindings: `tools/verify_extraction_bindings.py` checks
+  the hashes cited by the Task 1/2 candidate and Task 4 extraction provenance.
 - Official rules, Starter Prompts, and Continuation Prompts: the
   `official_sources` arrays in `ORGANIZER_SUBMISSION.json` point to the exact
   per-task snapshots; these are checked by `verify_repository.py`. Task 3's

@@ -11,6 +11,9 @@ No-live-human autonomy is not treated as proof of the separate exact-prompt
 rule. Tasks 1, 2, and 4 contain custom prompt text and are disclosed as
 non-exact; organizer/Jury recognition is not assumed. Hidden chain-of-thought
 is not published.
+The actual startup instruction payload for each task is indexed and hash-bound
+in [`STARTUP_INSTRUCTION_INDEX.md`](STARTUP_INSTRUCTION_INDEX.md) and the
+machine-readable [`STARTUP_INSTRUCTION_INDEX.json`](STARTUP_INSTRUCTION_INDEX.json).
 
 Completeness here means completeness of the selected observable prefix, not
 proof of competition-rule compliance. Tasks 1 and 2 do not bind the official

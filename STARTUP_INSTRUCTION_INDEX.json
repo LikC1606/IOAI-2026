@@ -1,0 +1,54 @@
+{
+  "schema": "ioai.startup-instruction-index.v1",
+  "purpose": "Index the credential-redacted AGENTS.md payload actually injected at startup for each preserved Task run.",
+  "generated_by": "tools/build_autonomous_trace_material.py",
+  "payloads": {
+    "task1": {
+      "competition": "ioai-2026-task-1-westlake-nlp-24",
+      "path": "task1/environment/AGENTS-ACTUALLY-INJECTED.md",
+      "manifest": "task1/MANIFEST.sha256",
+      "size_bytes": 15697,
+      "sha256": "ce4bfa8a2339ad84ced241df576b307fadd763180b34b3a3fe65a3551fa6ad98"
+    },
+    "task2": {
+      "competition": "ioai-2026-task-2-westlake-nlp-24",
+      "path": "task2/environment/AGENTS-ACTUALLY-INJECTED.md",
+      "manifest": "task2/MANIFEST.sha256",
+      "size_bytes": 15740,
+      "sha256": "9d4f1918cb840bd0620be0243bd35e46fe894ae3220a7ec194f15c3c6080e417"
+    },
+    "task3": {
+      "competition": "ioai-2026-task-3-westlake-nlp-48",
+      "path": "task3/environment/AGENTS-ACTUALLY-INJECTED.md",
+      "manifest": "task3/MANIFEST.sha256",
+      "size_bytes": 32951,
+      "sha256": "2bf4a713178b0f6d0d707575fe22d16d15ea640f580abd60f672a935476b8f84"
+    },
+    "task4": {
+      "competition": "ioai-2026-task-4-westlake-nlp-24",
+      "path": "task4/environment/AGENTS-ACTUALLY-INJECTED.md",
+      "manifest": "task4/MANIFEST.sha256",
+      "size_bytes": 26191,
+      "sha256": "8e0b9851cb90a9e95385ce629acbbb28760c93f3c3abcbd439ca140138dcda48"
+    },
+    "task5": {
+      "competition": "ioai-2026-task-5-westlake-nlp-24",
+      "path": "task5/environment/AGENTS-ACTUALLY-INJECTED.md",
+      "manifest": "task5/MANIFEST.sha256",
+      "size_bytes": 28929,
+      "sha256": "42b34f4925e4cde8c6b311e3c56f0437fdc8f5f14e2bdcdf8bef9ce5f1edf5dc"
+    },
+    "task6": {
+      "competition": "ioai-2026-task-6-westlake-nlp-60",
+      "path": "task6/environment/AGENTS-ACTUALLY-INJECTED.md",
+      "manifest": "task6/MANIFEST.sha256",
+      "size_bytes": 28945,
+      "sha256": "020fc980f4a6c5195014dd08ab265c30021da52c8730fd5cf0f66177e50a41f6"
+    }
+  },
+  "notes": [
+    "These payloads are runtime evidence and are distinct from later project-file edits.",
+    "Selected JSONL traces remain authoritative for delivery timestamps and autonomy boundaries.",
+    "The index records only the six task-runtime payloads, not an unrelated parent-repository AGENTS.md."
+  ]
+}

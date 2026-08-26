@@ -502,6 +502,9 @@ def write_markdown(index: dict[str, Any]) -> None:
         "rule. Tasks 1, 2, and 4 contain custom prompt text and are disclosed as",
         "non-exact; organizer/Jury recognition is not assumed. Hidden chain-of-thought",
         "is not published.",
+        "The actual startup instruction payload for each task is indexed and hash-bound",
+        "in [`STARTUP_INSTRUCTION_INDEX.md`](STARTUP_INSTRUCTION_INDEX.md) and the",
+        "machine-readable [`STARTUP_INSTRUCTION_INDEX.json`](STARTUP_INSTRUCTION_INDEX.json).",
         "",
         "Completeness here means completeness of the selected observable prefix, not",
         "proof of competition-rule compliance. Tasks 1 and 2 do not bind the official",
@@ -627,9 +630,12 @@ def write_manifest(index: dict[str, Any]) -> None:
         "ORGANIZER_SUBMISSION.md",
         "ORGANIZER_SUBMISSION.json",
         "ORGANIZER_REVIEW_GUIDE.md",
+        "STARTUP_INSTRUCTION_INDEX.md",
+        "STARTUP_INSTRUCTION_INDEX.json",
         "ACCESS_CONTROL_AUDIT.json",
         "ACCESS_CONTROL_AUDIT.md",
         "tools/scan_extraction_archive.py",
+        "tools/verify_extraction_bindings.py",
         "REQUIREMENT_EVIDENCE_MATRIX.json",
         "REQUIREMENT_EVIDENCE_MATRIX.md",
         "tools/build_requirement_evidence_matrix.py",
@@ -693,6 +699,86 @@ def write_manifest(index: dict[str, Any]) -> None:
     )
 
 
+def write_startup_instruction_index() -> None:
+    """Build a machine-readable and human-readable index of startup payloads."""
+    payloads: dict[str, dict[str, Any]] = {}
+    competitions = {
+        "task1": "ioai-2026-task-1-westlake-nlp-24",
+        "task2": "ioai-2026-task-2-westlake-nlp-24",
+        "task3": "ioai-2026-task-3-westlake-nlp-48",
+        "task4": "ioai-2026-task-4-westlake-nlp-24",
+        "task5": "ioai-2026-task-5-westlake-nlp-24",
+        "task6": "ioai-2026-task-6-westlake-nlp-60",
+    }
+    for task, competition in competitions.items():
+        relative = f"{task}/environment/AGENTS-ACTUALLY-INJECTED.md"
+        path = ROOT / relative
+        payloads[task] = {
+            "competition": competition,
+            "path": relative,
+            "manifest": f"{task}/MANIFEST.sha256",
+            "size_bytes": path.stat().st_size,
+            "sha256": trace_tools.sha256(path),
+        }
+    data = {
+        "schema": "ioai.startup-instruction-index.v1",
+        "purpose": (
+            "Index the credential-redacted AGENTS.md payload actually injected "
+            "at startup for each preserved Task run."
+        ),
+        "generated_by": "tools/build_autonomous_trace_material.py",
+        "payloads": payloads,
+        "notes": [
+            "These payloads are runtime evidence and are distinct from later project-file edits.",
+            "Selected JSONL traces remain authoritative for delivery timestamps and autonomy boundaries.",
+            "The index records only the six task-runtime payloads, not an unrelated parent-repository AGENTS.md.",
+        ],
+    }
+    (ROOT / "STARTUP_INSTRUCTION_INDEX.json").write_text(
+        json.dumps(data, ensure_ascii=False, indent=2) + "\n", encoding="utf-8"
+    )
+
+    lines = [
+        "# Startup instruction index",
+        "",
+        "This index identifies the `AGENTS.md` payload actually injected at the start",
+        "of each preserved Task 1–6 run. These files are runtime evidence, not a claim",
+        "that later edits to a project instruction file were present at startup. Each",
+        "file is included in its Task package manifest and is linked from the trace",
+        "records where the corresponding user-role startup envelope appears.",
+        "",
+        "The machine-readable binding is [`STARTUP_INSTRUCTION_INDEX.json`](STARTUP_INSTRUCTION_INDEX.json).",
+        "",
+        "| Task | Competition | Injected startup payload | Bytes | SHA-256 |",
+        "|---|---|---|---:|---|",
+    ]
+    for task, item in payloads.items():
+        lines.append(
+            f"| {task.removeprefix('task')} | `{item['competition']}` | "
+            f"[`AGENTS-ACTUALLY-INJECTED.md`]({item['path']}) | "
+            f"{item['size_bytes']:,} | `{item['sha256']}` |"
+        )
+    lines.extend(
+        [
+            "",
+            "The payloads are credential-redacted exports. The selected JSONL traces remain",
+            "the authoritative event-level evidence for when each startup envelope was",
+            "delivered and for the subsequent autonomy boundary. This index does not add",
+            "the unrelated parent-repository `AGENTS.md`; it records only the six",
+            "task-runtime payloads that were injected into the preserved runs.",
+            "",
+            "Verify the files through the six Task manifests and the root repository",
+            "verifier:",
+            "",
+            "```bash",
+            "for t in 1 2 3 4 5 6; do (cd task$t && sha256sum -c MANIFEST.sha256); done",
+            "python3 verify_repository.py",
+            "```",
+        ]
+    )
+    (ROOT / "STARTUP_INSTRUCTION_INDEX.md").write_text("\n".join(lines) + "\n", encoding="utf-8")
+
+
 def main() -> None:
     build_task1_solution_prefix()
     import build_task4_supplemental_traces
@@ -721,6 +807,7 @@ def main() -> None:
         json.dumps(task4_audit, ensure_ascii=False, indent=2) + "\n", encoding="utf-8"
     )
     build_task4_rule_audit.write_markdown(task4_audit)
+    write_startup_instruction_index()
     # Keep the organizer-facing rule navigation synchronized with the same
     # canonical refresh.  This builder is archive-independent, unlike the
     # submission/version audit, which has its own explicit --archive input.

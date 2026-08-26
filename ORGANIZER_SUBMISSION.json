@@ -104,6 +104,23 @@
     }
   },
   "special_evidence": {
+    "startup_instruction_payloads": [
+      "STARTUP_INSTRUCTION_INDEX.md",
+      "STARTUP_INSTRUCTION_INDEX.json",
+      "task1/environment/AGENTS-ACTUALLY-INJECTED.md",
+      "task2/environment/AGENTS-ACTUALLY-INJECTED.md",
+      "task3/environment/AGENTS-ACTUALLY-INJECTED.md",
+      "task4/environment/AGENTS-ACTUALLY-INJECTED.md",
+      "task5/environment/AGENTS-ACTUALLY-INJECTED.md",
+      "task6/environment/AGENTS-ACTUALLY-INJECTED.md"
+    ],
+    "extraction_binding_verifier": [
+      "tools/verify_extraction_bindings.py",
+      "KAGGLE_EXTRACTION_DELIVERY.json",
+      "task1/remote/OFFICIAL_FINAL_EXTRACTION_PROVENANCE.json",
+      "task2/remote/OFFICIAL_FINAL_EXTRACTION_PROVENANCE.json",
+      "task4/remote/V4_OUTPUT_PROVENANCE.json"
+    ],
     "tasks1_2_reproductions": [
       "REPRODUCTION_TRACE_MATERIAL.md",
       "REPRODUCTION_TRACE_INDEX.json",
@@ -154,6 +171,19 @@
       "path": "AUTONOMOUS_TRACE_INDEX.json",
       "payload_location": "trace_files[].path",
       "note": "Startup/organizer prompts, worker assignments, developer messages, and visible assistant messages are retained in the selected JSONL files."
+    },
+    "startup_instruction_payloads": {
+      "status": "complete_hash_bound_per_task",
+      "paths": [
+        "STARTUP_INSTRUCTION_INDEX.md",
+        "STARTUP_INSTRUCTION_INDEX.json"
+      ],
+      "note": "The six AGENTS-ACTUALLY-INJECTED.md exports record the runtime startup payloads, are covered by their Task manifests, and are distinct from later project-file edits."
+    },
+    "extraction_binding_verifier": {
+      "status": "read_only_archive_member_hash_check_available",
+      "path": "tools/verify_extraction_bindings.py",
+      "note": "An authorized reviewer can run the checker against the downloaded Drive archive; it verifies candidate source/output/log/metadata member hashes while preserving the recorded exact-version-confidence limitations."
     },
     "exact_organizer_prompt_conformance": {
       "status": "audited_with_non_exact_tasks",

@@ -24,24 +24,27 @@ The channel/access distinction is recorded in
    route, verification commands, evidence map, and unresolved determinations.
 2. [`ORGANIZER_SUBMISSION.md`](ORGANIZER_SUBMISSION.md) — complete deliverable
    checklist and evidence links.
-3. [`FINAL_SUBMISSION_RESULTS.md`](FINAL_SUBMISSION_RESULTS.md) — official
+3. [`STARTUP_INSTRUCTION_INDEX.md`](STARTUP_INSTRUCTION_INDEX.md) and
+   [`STARTUP_INSTRUCTION_INDEX.json`](STARTUP_INSTRUCTION_INDEX.json) — the
+   actual startup `AGENTS.md` payload and hash for each Task run.
+4. [`FINAL_SUBMISSION_RESULTS.md`](FINAL_SUBMISSION_RESULTS.md) — official
    account results separated from autonomous and later reproduction results.
-4. [`RULE_COMPLIANCE_AUDIT.md`](RULE_COMPLIANCE_AUDIT.md) and
+5. [`RULE_COMPLIANCE_AUDIT.md`](RULE_COMPLIANCE_AUDIT.md) and
    [`PROMPT_CONFORMANCE_AUDIT.md`](PROMPT_CONFORMANCE_AUDIT.md) — cross-task
    scope, exact-prompt, provenance, budget, hardware, and reporting audits.
-5. [`REQUIREMENT_EVIDENCE_MATRIX.md`](REQUIREMENT_EVIDENCE_MATRIX.md) — one
+6. [`REQUIREMENT_EVIDENCE_MATRIX.md`](REQUIREMENT_EVIDENCE_MATRIX.md) — one
    row per rule field with scope-labeled status and direct evidence paths.
-6. [`SUBMISSION_VERSION_AUDIT.md`](SUBMISSION_VERSION_AUDIT.md) — exact
+7. [`SUBMISSION_VERSION_AUDIT.md`](SUBMISSION_VERSION_AUDIT.md) — exact
    account-level budget and repeated Notebook-version submission audit.
-7. [`ACCESS_CONTROL_AUDIT.md`](ACCESS_CONTROL_AUDIT.md) — GitHub Private,
+8. [`ACCESS_CONTROL_AUDIT.md`](ACCESS_CONTROL_AUDIT.md) — GitHub Private,
    external Drive delivery, and archive-content handling scope.
-8. [`AUTONOMOUS_TRACE_MATERIAL.md`](AUTONOMOUS_TRACE_MATERIAL.md) and
+9. [`AUTONOMOUS_TRACE_MATERIAL.md`](AUTONOMOUS_TRACE_MATERIAL.md) and
    [`EXECUTION_TRACES.md`](EXECUTION_TRACES.md) — selected traces, event
    envelopes, boundaries, and token accounting; see also
    [`COSTS.json`](COSTS.json) for compute/accounting fields.
-9. `task1/` through `task6/` — task-specific source, outputs, reports, and
+10. `task1/` through `task6/` — task-specific source, outputs, reports, and
    compliance notes.
-10. [`KAGGLE_EXTRACTION_DELIVERY.json`](KAGGLE_EXTRACTION_DELIVERY.json) — the
+11. [`KAGGLE_EXTRACTION_DELIVERY.json`](KAGGLE_EXTRACTION_DELIVERY.json) — the
    complete external Kaggle extraction archive and Drive delivery record.
 
 ## Scope labels used throughout
@@ -94,11 +97,12 @@ component. Their roles are:
 
 | Generated material | Refresh tool |
 |---|---|
-| `AUTONOMOUS_TRACE_INDEX.json`, `AUTONOMOUS_TRACE_MATERIAL.md`, `AUTONOMOUS_COSTS.json`, `PROMPT_CONFORMANCE_AUDIT.json/.md`, `task4/RULE_DIFFERENCE_AUDIT.json/.md`, `REQUIREMENT_EVIDENCE_MATRIX.json/.md`, and `AUTONOMOUS_MATERIAL_MANIFEST.sha256` | `python3 tools/build_autonomous_trace_material.py` (canonical full refresh) |
+| `AUTONOMOUS_TRACE_INDEX.json`, `AUTONOMOUS_TRACE_MATERIAL.md`, `AUTONOMOUS_COSTS.json`, `PROMPT_CONFORMANCE_AUDIT.json/.md`, `task4/RULE_DIFFERENCE_AUDIT.json/.md`, `REQUIREMENT_EVIDENCE_MATRIX.json/.md`, `STARTUP_INSTRUCTION_INDEX.json/.md`, and `AUTONOMOUS_MATERIAL_MANIFEST.sha256` | `python3 tools/build_autonomous_trace_material.py` (canonical full refresh) |
 | `EXECUTION_TRACE_INDEX.json/.md` | `python3 tools/build_execution_trace_index.py` (standalone execution inventory) |
 | `PROMPT_CONFORMANCE_AUDIT.json/.md` | `python3 tools/build_prompt_conformance_audit.py` (standalone prompt diagnostic) |
 | `task4/RULE_DIFFERENCE_AUDIT.json/.md` | `python3 tools/build_task4_rule_audit.py` (standalone Task 4 diagnostic) |
 | `REQUIREMENT_EVIDENCE_MATRIX.json/.md` | Included in the canonical full refresh; `python3 tools/build_requirement_evidence_matrix.py` remains a standalone scope-labeled rule-index refresh |
+| Extraction candidate member checks | `python3 tools/verify_extraction_bindings.py --archive /path/to/ioai-kaggle-fetch-researai-20260813.tar.gz` (read-only, after downloading the Drive archive) |
 
 Recommended refresh order is: execution inventory first, then the canonical
 autonomous-material builder, then `verify_repository.py` and every manifest
