@@ -34,6 +34,12 @@ Task 4 submissions. The per-task binding and source records are in
   classifiers and `cuda:0`.
 - Output: exactly 200 rows, columns `id,delta_a,delta_b`, and 400 finite
   original-resolution tensors.
+- `remote/KERNEL_FILES_CURRENT.json` is a post-run `/kaggle/working` listing
+  (the runtime helper and generated `submission.csv`); it is not the local
+  two-file folder passed to `kaggle kernels push`. The pushed source and
+  metadata are instead bound by `notebooks/kernel-metadata.json`, the pulled
+  `REMOTE_CURRENT_V4.py`, and the extraction paths recorded in
+  `remote/V4_OUTPUT_PROVENANCE.json`.
 - Remote runtime: the submission ledger rounds the notebook runtime to 316
   seconds; the extraction log's end-to-end maximum is 321.609419295 seconds
   (including notebook conversion), also within the 600-second cap. The output

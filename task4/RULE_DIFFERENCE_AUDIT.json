@@ -59,11 +59,12 @@
       "rule_id": "submission.folder_two_files",
       "requirement": "Prepare a notebook folder containing exactly script.py and kernel-metadata.json.",
       "status": "disclosed_process_deviation_remote_artifact_unaffected",
-      "conclusion": "A pre-v4 trace listing shows submission/__pycache__/script.cpython-311.pyc in the local folder; the v3 command itself ran py_compile immediately before push. Thus the local folder was not strictly two-file at those moments. Kaggle's remote source record still consists of the declared script/metadata artifact, and the final source hash matches the pulled version 4.",
+      "conclusion": "A pre-v4 trace listing shows submission/__pycache__/script.cpython-311.pyc in the local folder; the v3 command itself ran py_compile immediately before push. Thus the local folder was not strictly two-file at those moments. remote/KERNEL_FILES_CURRENT.json is explicitly a post-run /kaggle/working listing (runtime helper plus generated output), not evidence about the push folder. Kaggle's remote source record still consists of the declared script/metadata artifact, and the final source hash matches the pulled version 4.",
       "evidence": [
         "task4/evidence/rollouts/rollout-2026-08-07T12-18-29-019fda71-a6a2-7a22-8c18-22e99f127422.jsonl: line 1224, 2026-08-07T05:54:36.436Z output_check",
         "task4/evidence/supplemental-rollouts/rollout-2026-08-07T13-04-06-019fda9b-6b63-7031-a6dd-52db684209be.jsonl: line 764, 2026-08-07T05:54:22.092Z py_compile + push",
-        "task4/notebooks/REMOTE_CURRENT_V4.py"
+        "task4/notebooks/REMOTE_CURRENT_V4.py",
+        "task4/remote/KERNEL_FILES_CURRENT.json"
       ]
     },
     {
