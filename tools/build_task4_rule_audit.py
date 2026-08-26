@@ -186,8 +186,8 @@ def build() -> dict[str, Any]:
                 "hash matches the pulled version 4."
             ),
             [
-                "task4/evidence/rollouts/rollout-2026-08-07T12-18-29-019fda71-a6a2-7a22-8c18-22e99f127422.jsonl: 2026-08-07T05:54:36.436Z output_check",
-                "task4/evidence/supplemental-rollouts/rollout-2026-08-07T13-04-06-019fda9b-6b63-7031-a6dd-52db684209be.jsonl: 2026-08-07T05:54:22.092Z",
+                "task4/evidence/rollouts/rollout-2026-08-07T12-18-29-019fda71-a6a2-7a22-8c18-22e99f127422.jsonl: line 1224, 2026-08-07T05:54:36.436Z output_check",
+                "task4/evidence/supplemental-rollouts/rollout-2026-08-07T13-04-06-019fda9b-6b63-7031-a6dd-52db684209be.jsonl: line 764, 2026-08-07T05:54:22.092Z py_compile + push",
                 "task4/notebooks/REMOTE_CURRENT_V4.py",
             ],
         ),
@@ -202,8 +202,8 @@ def build() -> dict[str, Any]:
                 "maximum is 321.609419295 seconds including notebook conversion. All are below 600."
             ),
             [
-                "task4/evidence/rollouts/rollout-2026-08-07T12-18-29-019fda71-a6a2-7a22-8c18-22e99f127422.jsonl: 2026-08-07T05:03:12.519Z and 2026-08-07T06:01:55.355Z",
-                "task4/evidence/supplemental-rollouts/rollout-2026-08-07T13-04-06-019fda9b-6b63-7031-a6dd-52db684209be.jsonl: 2026-08-07T05:30:26.813Z and 2026-08-07T05:54:22.092Z",
+                "task4/evidence/rollouts/rollout-2026-08-07T12-18-29-019fda71-a6a2-7a22-8c18-22e99f127422.jsonl: line 622, 2026-08-07T05:03:12.519Z push --timeout 600; line 1347, 2026-08-07T06:01:55.355Z push --timeout 600",
+                "task4/evidence/supplemental-rollouts/rollout-2026-08-07T13-04-06-019fda9b-6b63-7031-a6dd-52db684209be.jsonl: line 432, 2026-08-07T05:30:26.813Z push --timeout 600; line 764, 2026-08-07T05:54:22.092Z py_compile + push --timeout 600",
                 "task4/remote/V4_KERNEL.log",
             ],
         ),
@@ -299,7 +299,7 @@ def build() -> dict[str, Any]:
             ),
             [
                 "task4/notebooks/REMOTE_CURRENT_V4.py",
-                "task4/evidence/rollouts/rollout-2026-08-07T12-18-29-019fda71-a6a2-7a22-8c18-22e99f127422.jsonl: 2026-08-07T05:54:36.436Z setup_check setup_exact True",
+                "task4/evidence/rollouts/rollout-2026-08-07T12-18-29-019fda71-a6a2-7a22-8c18-22e99f127422.jsonl: line 1224, 2026-08-07T05:54:36.436Z setup_check setup_exact True",
             ],
         ),
         finding(
