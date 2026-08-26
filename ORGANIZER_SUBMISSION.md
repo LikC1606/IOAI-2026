@@ -19,6 +19,14 @@ The numbered [`OPEN_REVIEW_ITEMS.md`](OPEN_REVIEW_ITEMS.md) register gathers
 those remaining decisions in one place, with a direct evidence link for each
 item.
 
+The compact [`PACKAGE_COMPLETENESS.md`](PACKAGE_COMPLETENESS.md) matrix joins
+the authoritative ledgers into one per-task view of trace events, prompt
+qualification, visible outputs/tool calls, model and token usage, official
+result binding, remote GPU runtime, and unavailable cost fields. Its JSON form
+and deterministic builder are [`PACKAGE_COMPLETENESS.json`](PACKAGE_COMPLETENESS.json)
+and [`tools/build_package_completeness.py`](tools/build_package_completeness.py).
+It is a navigation aid, not a compliance certificate.
+
 The recovered private raw-session metadata for the original Task 1/2 formal
 runs is summarized in [`ORIGINAL_SESSION_RECOVERY.md`](ORIGINAL_SESSION_RECOVERY.md)
 and [`ORIGINAL_SESSION_RECOVERY.json`](ORIGINAL_SESSION_RECOVERY.json). The raw

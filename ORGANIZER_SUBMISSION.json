@@ -15,6 +15,12 @@
     "builder": "tools/build_requirement_evidence_matrix.py",
     "status": "complete_scope_labeled_rule_by_rule_index_not_a_compliance_certificate"
   },
+  "package_completeness": {
+    "json": "PACKAGE_COMPLETENESS.json",
+    "markdown": "PACKAGE_COMPLETENESS.md",
+    "builder": "tools/build_package_completeness.py",
+    "status": "complete_reviewer_coverage_join_with_explicit_scope_limits"
+  },
   "tasks": [
     "task1",
     "task2",
@@ -165,6 +171,11 @@
       "task6/RULE_DIFFERENCE_AUDIT.md",
       "task6/SUPPLEMENTARY_TECHNICAL_REPORT.md",
       "task6/evidence/EVALUATOR_BATCHING_PROVENANCE.json"
+    ],
+    "package_completeness": [
+      "PACKAGE_COMPLETENESS.md",
+      "PACKAGE_COMPLETENESS.json",
+      "tools/build_package_completeness.py"
     ]
   },
   "requirements": {

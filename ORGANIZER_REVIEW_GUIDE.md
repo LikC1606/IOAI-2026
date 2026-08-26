@@ -9,6 +9,9 @@ For the shortest one-page hand-off of scores, trace scope, cost accounting,
 and unresolved decisions, see [`AUDIT_STATUS.md`](AUDIT_STATUS.md).
 For the same unresolved questions in a compact, numbered decision register,
 see [`OPEN_REVIEW_ITEMS.md`](OPEN_REVIEW_ITEMS.md).
+For a one-table view of the requested deliverables and their scope limits, see
+[`PACKAGE_COMPLETENESS.md`](PACKAGE_COMPLETENESS.md) and its checked-in
+machine-readable companion [`PACKAGE_COMPLETENESS.json`](PACKAGE_COMPLETENESS.json).
 
 The fastest field-by-field route is the
 [`REQUIREMENT_EVIDENCE_MATRIX.md`](REQUIREMENT_EVIDENCE_MATRIX.md) (11 rows per
@@ -38,6 +41,7 @@ sha256sum -c REPRODUCTION_MATERIAL_MANIFEST.sha256
 python3 tools/build_reproduction_trace_material.py
 python3 tools/build_execution_trace_index.py
 python3 tools/build_autonomous_trace_material.py
+python3 tools/build_package_completeness.py
 python3 verify_repository.py
 for t in 1 2 3 4 5 6; do (cd task$t && sha256sum -c MANIFEST.sha256); done
 sha256sum -c AUTONOMOUS_MATERIAL_MANIFEST.sha256

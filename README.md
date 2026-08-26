@@ -8,6 +8,10 @@ For a one-page hand-off of the current scope, scores, costs, and unresolved
 decisions, see [`AUDIT_STATUS.md`](AUDIT_STATUS.md).
 For a compact numbered register of the remaining organizer/Jury questions, see
 [`OPEN_REVIEW_ITEMS.md`](OPEN_REVIEW_ITEMS.md).
+For a single-table coverage view of every requested trace, prompt, output,
+model, cost, and result field, see
+[`PACKAGE_COMPLETENESS.md`](PACKAGE_COMPLETENESS.md). It is generated from the
+checked-in ledgers and independently checked by `verify_repository.py`.
 The cross-task [`RULE_COMPLIANCE_AUDIT.md`](RULE_COMPLIANCE_AUDIT.md) separates
 known deviations, Jury-interpretation risks, and unavailable evidence; the
 current record does not support a claim that all six tasks are strictly
@@ -118,6 +122,7 @@ component. Their roles are:
 | `PROMPT_CONFORMANCE_AUDIT.json/.md` | `python3 tools/build_prompt_conformance_audit.py` (standalone prompt diagnostic) |
 | `task4/RULE_DIFFERENCE_AUDIT.json/.md` | `python3 tools/build_task4_rule_audit.py` (standalone Task 4 diagnostic) |
 | `REQUIREMENT_EVIDENCE_MATRIX.json/.md` | Included in the canonical full refresh; `python3 tools/build_requirement_evidence_matrix.py` remains a standalone scope-labeled rule-index refresh |
+| `PACKAGE_COMPLETENESS.json/.md` | `python3 tools/build_package_completeness.py` (coverage join; checked by `verify_repository.py`) |
 | Extraction candidate member checks | `python3 tools/verify_extraction_bindings.py --archive /path/to/ioai-kaggle-fetch-researai-20260813.tar.gz` (read-only, after downloading the Drive archive) |
 
 Recommended refresh order is: first run the read-only verifier and checked-in
@@ -141,6 +146,7 @@ sha256sum -c REPRODUCTION_MATERIAL_MANIFEST.sha256
 python3 tools/build_reproduction_trace_material.py
 python3 tools/build_execution_trace_index.py
 python3 tools/build_autonomous_trace_material.py
+python3 tools/build_package_completeness.py
 python3 verify_repository.py
 for t in 1 2 3 4 5 6; do (cd task$t && sha256sum -c MANIFEST.sha256); done
 sha256sum -c AUTONOMOUS_MATERIAL_MANIFEST.sha256

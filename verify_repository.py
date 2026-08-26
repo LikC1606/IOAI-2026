@@ -1795,6 +1795,94 @@ def verify_reproduction_material() -> dict[str, int]:
     return {"manifest_files": checked, "trace_files": traces, "events": events, "tokens": tokens}
 
 
+def verify_package_completeness() -> dict[str, object]:
+    """Check the compact coverage join against its authoritative ledgers."""
+    path = ROOT / "PACKAGE_COMPLETENESS.json"
+    assert path.is_file()
+    matrix = json.loads(path.read_text(encoding="utf-8"))
+    assert matrix["schema"] == "ioai.package-completeness.v1"
+    assert matrix["generated_by"] == "tools/build_package_completeness.py"
+    assert matrix["global"]["strict_all_six_claim_supported"] is False
+
+    trace_index = json.loads(
+        (ROOT / "AUTONOMOUS_TRACE_INDEX.json").read_text(encoding="utf-8")
+    )
+    costs = json.loads((ROOT / "AUTONOMOUS_COSTS.json").read_text(encoding="utf-8"))
+    autonomous_files = autonomous_events = autonomous_tokens = 0
+    for task, trace in trace_index["tasks"].items():
+        item = matrix["tasks"][task]
+        coverage = trace["organizer_required_event_coverage"]
+        tokens = trace["token_usage_cumulative_sum_across_traces"]
+        assert item["trace"]["trace_file_count"] == len(trace["trace_files"])
+        assert item["trace"]["event_count"] == trace["event_count"]
+        assert item["trace"]["total_tokens"] == tokens["total_tokens"]
+        assert item["trace"]["manual_human_prompt_events_included"] == 0
+        assert item["trace"]["manual_human_prompt_events_included"] == trace[
+            "manual_human_prompt_events_included"
+        ]
+        assert item["trace"]["strict_exact_organizer_prompt_text_conformance"] == trace[
+            "strict_exact_organizer_prompt_text_conformance"
+        ]
+        assert item["trace"]["user_prompt_classes"] == trace["user_prompt_classes"]
+        assert item["observable_coverage"] == {
+            "assistant_output_events": coverage["assistant_output_events"],
+            "logical_function_call_events": trace["logical_function_calls"],
+            "function_call_output_events": coverage["function_call_output_events"],
+            "custom_tool_call_events": coverage["custom_tool_call_events"],
+            "custom_tool_call_output_events": coverage["custom_tool_call_output_events"],
+        }
+        assert item["model"] == {
+            "provider": trace["model_provider"],
+            "model": trace["canonical_model"],
+            "reasoning_effort": trace["reasoning_effort"],
+        }
+        gpu = costs["tasks"][task]["gpu"]
+        assert item["compute"]["accelerator"] == gpu["accelerator"]
+        assert item["compute"]["runtime_scope"] == gpu["runtime_scope"]
+        assert item["compute"]["runtime_seconds"] == gpu["runtime_seconds"]
+        assert item["compute"]["gpu_cost_usd"] == gpu["gpu_cost_usd"]
+        assert item["compute"]["gpu_cost_status"] == gpu["cost_status"]
+        assert item["api_cost"]["usd"] == costs["tasks"][task]["api_cost_usd"]
+        assert item["api_cost"]["status"] == costs["tasks"][task]["api_cost_status"]
+        assert item["api_cost"]["token_vector"] == costs["tasks"][task]["token_usage"]
+        official = json.loads(
+            (ROOT / task / "remote/FINAL_ACCOUNT_RESULTS.json").read_text(encoding="utf-8")
+        )["official_final_result"]
+        assert item["official_result"]["submission_refs"] == official["submission_refs"]
+        assert item["official_result"]["public_score"] == official["public_score"]
+        assert item["official_result"]["private_score"] == official["private_score"]
+        assert item["canonical_material"] and item["artifact_status"] and item["known_gap"]
+        autonomous_files += len(trace["trace_files"])
+        autonomous_events += trace["event_count"]
+        autonomous_tokens += tokens["total_tokens"]
+
+    assert matrix["global"]["autonomous_trace_files"] == autonomous_files
+    assert matrix["global"]["autonomous_events"] == autonomous_events
+    assert matrix["global"]["autonomous_tokens"] == autonomous_tokens
+    reproduction = json.loads(
+        (ROOT / "REPRODUCTION_TRACE_INDEX.json").read_text(encoding="utf-8")
+    )
+    reproduction_files = len(reproduction["tasks"])
+    reproduction_events = sum(
+        item["trace_file"]["event_count"] for item in reproduction["tasks"].values()
+    )
+    reproduction_tokens = sum(
+        item["trace_file"]["token_usage_cumulative_final"]["total_tokens"]
+        for item in reproduction["tasks"].values()
+    )
+    assert matrix["global"]["later_reproduction_trace_files"] == reproduction_files
+    assert matrix["global"]["later_reproduction_events"] == reproduction_events
+    assert matrix["global"]["later_reproduction_tokens"] == reproduction_tokens
+    assert matrix["global"]["api_cost_usd_total"] == costs["api_cost_usd_total"]
+    assert matrix["global"]["gpu_cost_usd_total"] == costs["gpu_cost_usd_total"]
+    return {
+        "all_ok": True,
+        "tasks": len(matrix["tasks"]),
+        "autonomous_trace_files": autonomous_files,
+        "later_reproduction_trace_files": reproduction_files,
+    }
+
+
 def main() -> None:
     report = {"tasks": {}}
     for task in range(1, 7):
@@ -1832,6 +1920,7 @@ def main() -> None:
     report["autonomous_material"] = verify_autonomous_material()
     report["published_execution_accounting"] = verify_execution_accounting()
     report["later_reproduction_material"] = verify_reproduction_material()
+    report["package_completeness"] = verify_package_completeness()
     report["task1_package_replay"] = verify_task1_package()
     report["task2_artifact_chain"] = verify_task2_artifacts()
     report["task3_package_replay"] = verify_task3_package()
@@ -1861,6 +1950,16 @@ def main() -> None:
     checklist = json.loads((ROOT / "ORGANIZER_SUBMISSION.json").read_text(encoding="utf-8"))
     assert checklist["status"] == (
         "complete_evidence_package_with_known_compliance_and_cost_limits"
+    )
+    assert checklist["package_completeness"] == {
+        "json": "PACKAGE_COMPLETENESS.json",
+        "markdown": "PACKAGE_COMPLETENESS.md",
+        "builder": "tools/build_package_completeness.py",
+        "status": "complete_reviewer_coverage_join_with_explicit_scope_limits",
+    }
+    assert all(
+        (ROOT / relative).is_file()
+        for relative in checklist["special_evidence"]["package_completeness"]
     )
     assert checklist["audit_status"] == "AUDIT_STATUS.md"
     assert (ROOT / checklist["audit_status"]).is_file()
@@ -2029,6 +2128,11 @@ def main() -> None:
             "task6/RULE_DIFFERENCE_AUDIT.md",
             "task6/SUPPLEMENTARY_TECHNICAL_REPORT.md",
             "task6/evidence/EVALUATOR_BATCHING_PROVENANCE.json",
+        ],
+        "package_completeness": [
+            "PACKAGE_COMPLETENESS.md",
+            "PACKAGE_COMPLETENESS.json",
+            "tools/build_package_completeness.py",
         ],
     }
     startup_index = ROOT / "STARTUP_INSTRUCTION_INDEX.md"

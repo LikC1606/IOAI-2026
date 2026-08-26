@@ -7,6 +7,9 @@ the root JSON ledgers.
 
 For a numbered register of each unresolved organizer/Jury question and its
 direct evidence path, see [`OPEN_REVIEW_ITEMS.md`](OPEN_REVIEW_ITEMS.md).
+For a compact per-task coverage join covering traces, prompts, outputs/tool
+calls, models, costs, and official-result binding, see
+[`PACKAGE_COMPLETENESS.md`](PACKAGE_COMPLETENESS.md).
 
 ## At-a-glance scope
 

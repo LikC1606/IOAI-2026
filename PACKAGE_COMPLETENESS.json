@@ -1,0 +1,427 @@
+{
+  "schema": "ioai.package-completeness.v1",
+  "generated_by": "tools/build_package_completeness.py",
+  "scope": "reviewer-facing coverage join over checked-in trace, result, prompt, and cost ledgers",
+  "source_ledgers": [
+    "AUTONOMOUS_TRACE_INDEX.json",
+    "AUTONOMOUS_COSTS.json",
+    "REPRODUCTION_TRACE_INDEX.json",
+    "taskN/remote/FINAL_ACCOUNT_RESULTS.json"
+  ],
+  "global": {
+    "autonomous_trace_files": 35,
+    "autonomous_events": 17331,
+    "autonomous_tokens": 572189803,
+    "later_reproduction_trace_files": 2,
+    "later_reproduction_events": 2465,
+    "later_reproduction_tokens": 70139455,
+    "api_cost_usd_total": null,
+    "gpu_cost_usd_total": null,
+    "strict_all_six_claim_supported": false
+  },
+  "tasks": {
+    "task1": {
+      "canonical_material": "Later 120-minute reproduction prefix; 350-event exact-prompt formal prefix is supplemental",
+      "trace": {
+        "paths": [
+          "task1/evidence/canonical/rollout-solution-prefix.jsonl"
+        ],
+        "trace_file_count": 1,
+        "event_count": 1383,
+        "total_tokens": 40830176,
+        "manual_human_prompt_events_included": 0,
+        "strict_exact_organizer_prompt_text_conformance": false,
+        "user_prompt_classes": {
+          "custom_starter_prompt": 1,
+          "startup_instructions": 1
+        }
+      },
+      "observable_coverage": {
+        "assistant_output_events": 70,
+        "logical_function_call_events": 17,
+        "function_call_output_events": 17,
+        "custom_tool_call_events": 262,
+        "custom_tool_call_output_events": 262
+      },
+      "model": {
+        "provider": "ioai_allowed",
+        "model": "gpt-5.6-sol",
+        "reasoning_effort": "max"
+      },
+      "official_result": {
+        "submission_refs": [
+          55267333,
+          55267368
+        ],
+        "public_score": 0.77751,
+        "private_score": 0.80474,
+        "binding_status": "Account result is reconciled, but neither public trace selection is causal evidence for the official final"
+      },
+      "compute": {
+        "accelerator": "NvidiaTeslaT4",
+        "runtime_scope": "all six notebook versions in the later 120-minute reproduction",
+        "runtime_seconds": 1946.54,
+        "gpu_cost_usd": null,
+        "gpu_cost_status": "unavailable_no_rate_or_invoice",
+        "local_development_runtime_seconds": null,
+        "local_development_runtime_status": null
+      },
+      "api_cost": {
+        "usd": null,
+        "status": "unavailable_unpriced_ioai_provider",
+        "token_vector": {
+          "input_tokens": 40631004,
+          "cached_input_tokens": 39450112,
+          "cache_write_input_tokens": 0,
+          "output_tokens": 199172,
+          "reasoning_output_tokens": 65664,
+          "total_tokens": 40830176
+        }
+      },
+      "artifact_status": "Agent/reproduction artifacts are preserved; official-final extraction is a kernel-linked candidate, not byte-confirmed",
+      "known_gap": "Custom starter in reproduction; recovered formal human-influenced suffix withheld; 38 captured versions vs literal 20 and repeated official version"
+    },
+    "task2": {
+      "canonical_material": "Complete later 120-minute reproduction; 705-event exact-prompt formal prefix and eligible v2 chain are supplemental",
+      "trace": {
+        "paths": [
+          "task2/evidence/reproduction-120m/rollout.jsonl"
+        ],
+        "trace_file_count": 1,
+        "event_count": 1067,
+        "total_tokens": 29205639,
+        "manual_human_prompt_events_included": 0,
+        "strict_exact_organizer_prompt_text_conformance": false,
+        "user_prompt_classes": {
+          "custom_starter_prompt": 1,
+          "startup_instructions": 1
+        }
+      },
+      "observable_coverage": {
+        "assistant_output_events": 61,
+        "logical_function_call_events": 40,
+        "function_call_output_events": 40,
+        "custom_tool_call_events": 176,
+        "custom_tool_call_output_events": 176
+      },
+      "model": {
+        "provider": "ioai_allowed",
+        "model": "gpt-5.6-sol",
+        "reasoning_effort": "max"
+      },
+      "official_result": {
+        "submission_refs": [
+          55261432
+        ],
+        "public_score": 0.63583,
+        "private_score": 0.625,
+        "binding_status": "Account result is reconciled, but the official final is downstream of the modified formal continuation and not bound to the later reproduction"
+      },
+      "compute": {
+        "accelerator": "NvidiaTeslaT4",
+        "runtime_scope": "version 2 in the later 120-minute reproduction; versions 1 and 3 were CPU",
+        "runtime_seconds": 263.17,
+        "gpu_cost_usd": null,
+        "gpu_cost_status": "unavailable_no_rate_or_invoice",
+        "local_development_runtime_seconds": null,
+        "local_development_runtime_status": null
+      },
+      "api_cost": {
+        "usd": null,
+        "status": "unavailable_unpriced_ioai_provider",
+        "token_vector": {
+          "input_tokens": 29066864,
+          "cached_input_tokens": 28332800,
+          "cache_write_input_tokens": 0,
+          "output_tokens": 138775,
+          "reasoning_output_tokens": 45072,
+          "total_tokens": 29205639
+        }
+      },
+      "artifact_status": "Eligible v2 source/output/log are exact; official-final extraction is a kernel-linked candidate, not byte-confirmed",
+      "known_gap": "Custom starter in reproduction; recovered formal modified-continuation suffix withheld; repeated pre-deadline version"
+    },
+    "task3": {
+      "canonical_material": "Four autonomous traces covering the eight scored pre-boundary versions",
+      "trace": {
+        "paths": [
+          "task3/evidence/rollouts/rollout-2026-08-06T12-34-49-019fd55a-3edf-7801-b6a1-f1313393ff34.jsonl",
+          "task3/evidence/rollouts/rollout-2026-08-06T12-40-25-019fd55f-61f3-74c2-a87f-66ce5288dc56.jsonl",
+          "task3/evidence/rollouts/rollout-2026-08-06T12-41-11-019fd560-1290-7bb1-af1d-8fd44c84aad5.jsonl",
+          "task3/evidence/rollouts/rollout-2026-08-06T12-41-42-019fd560-8eec-78c1-92c9-3ab2e67b1bd8.jsonl"
+        ],
+        "trace_file_count": 4,
+        "event_count": 2427,
+        "total_tokens": 56373300,
+        "manual_human_prompt_events_included": 0,
+        "strict_exact_organizer_prompt_text_conformance": true,
+        "user_prompt_classes": {
+          "exact_organizer_starter_prompt": 1,
+          "inherited_exact_organizer_starter_prompt": 3,
+          "startup_instructions": 4
+        }
+      },
+      "observable_coverage": {
+        "assistant_output_events": 48,
+        "logical_function_call_events": 135,
+        "function_call_output_events": 135,
+        "custom_tool_call_events": 373,
+        "custom_tool_call_output_events": 373
+      },
+      "model": {
+        "provider": "ioai_allowed",
+        "model": "gpt-5.6-sol",
+        "reasoning_effort": "max"
+      },
+      "official_result": {
+        "submission_refs": [
+          55289569,
+          55289823
+        ],
+        "public_score": 58.51666,
+        "private_score": 51.61666,
+        "binding_status": "Official final refs and selected trace are aligned"
+      },
+      "compute": {
+        "accelerator": "CPU",
+        "runtime_scope": "autonomous versions v1-v8; metadata has enable_gpu=false",
+        "runtime_seconds": 0,
+        "gpu_cost_usd": 0,
+        "gpu_cost_status": "no_gpu_allocated",
+        "local_development_runtime_seconds": null,
+        "local_development_runtime_status": null
+      },
+      "api_cost": {
+        "usd": null,
+        "status": "unavailable_unpriced_ioai_provider",
+        "token_vector": {
+          "input_tokens": 56131525,
+          "cached_input_tokens": 49080576,
+          "cache_write_input_tokens": 0,
+          "output_tokens": 241775,
+          "reasoning_output_tokens": 72666,
+          "total_tokens": 56373300
+        }
+      },
+      "artifact_status": "Eight source/output chains replay and verify against the supplied competition data",
+      "known_gap": "Account-wide count and repeated version conflict remain for organizer interpretation; historical reports are short and v8 contains factual score/distribution errors"
+    },
+    "task4": {
+      "canonical_material": "Twelve autonomous traces, including the corrected supplemental parallel-solver set",
+      "trace": {
+        "paths": [
+          "task4/evidence/rollouts/rollout-2026-08-07T12-18-29-019fda71-a6a2-7a22-8c18-22e99f127422.jsonl",
+          "task4/evidence/rollouts/rollout-2026-08-07T12-18-41-019fda71-d4eb-70a3-9b66-e0fb3b2d0e66.jsonl",
+          "task4/evidence/rollouts/rollout-2026-08-07T12-18-47-019fda71-effd-7321-8ce9-2a4a57fcaa48.jsonl",
+          "task4/evidence/rollouts/rollout-2026-08-07T13-21-43-019fdaab-8d94-76a0-b625-078c838b5227.jsonl",
+          "task4/evidence/rollouts/rollout-2026-08-07T13-21-51-019fdaab-ace4-7b51-93b2-244d9517423a.jsonl",
+          "task4/evidence/supplemental-rollouts/rollout-2026-08-07T13-04-06-019fda9b-6b63-7031-a6dd-52db684209be.jsonl",
+          "task4/evidence/supplemental-rollouts/rollout-2026-08-07T13-04-23-019fda9b-ade0-7912-868f-a922606fd40f.jsonl",
+          "task4/evidence/supplemental-rollouts/rollout-2026-08-07T13-04-30-019fda9b-c906-70a0-8f5c-99fc2f25fafa.jsonl",
+          "task4/evidence/supplemental-rollouts/rollout-2026-08-07T13-04-39-019fda9b-ed93-7473-96c5-f8c030d3e4bc.jsonl",
+          "task4/evidence/supplemental-rollouts/rollout-2026-08-07T13-57-14-019fdacc-1073-7f03-ac6e-346ad63c0c4f.jsonl",
+          "task4/evidence/supplemental-rollouts/rollout-2026-08-07T13-57-22-019fdacc-2e9c-78a2-b037-135a4b172944.jsonl",
+          "task4/evidence/supplemental-rollouts/rollout-2026-08-07T13-57-28-019fdacc-47fe-7bc3-8cac-d77f25b124e1.jsonl"
+        ],
+        "trace_file_count": 12,
+        "event_count": 5881,
+        "total_tokens": 244165721,
+        "manual_human_prompt_events_included": 0,
+        "strict_exact_organizer_prompt_text_conformance": false,
+        "user_prompt_classes": {
+          "custom_continuation_prompt": 10,
+          "custom_starter_prompt": 2,
+          "inherited_custom_continuation_prompt": 16,
+          "inherited_custom_starter_prompt": 10,
+          "startup_instructions": 12
+        }
+      },
+      "observable_coverage": {
+        "assistant_output_events": 118,
+        "logical_function_call_events": 198,
+        "function_call_output_events": 197,
+        "custom_tool_call_events": 753,
+        "custom_tool_call_output_events": 752
+      },
+      "model": {
+        "provider": "ioai_allowed",
+        "model": "gpt-5.6-sol",
+        "reasoning_effort": "max"
+      },
+      "official_result": {
+        "submission_refs": [
+          55316818
+        ],
+        "public_score": 98.41,
+        "private_score": 98.32,
+        "binding_status": "Official final ref and selected trace are aligned"
+      },
+      "compute": {
+        "accelerator": "NvidiaTeslaT4",
+        "runtime_scope": "Kaggle notebook versions v1-v4, including diagnostic v3",
+        "runtime_seconds": 1120.720551504,
+        "gpu_cost_usd": null,
+        "gpu_cost_status": "unavailable_no_rate_or_invoice",
+        "local_development_runtime_seconds": null,
+        "local_development_runtime_status": "unavailable_non_exhaustive_overlapping_approximate_records"
+      },
+      "api_cost": {
+        "usd": null,
+        "status": "unavailable_unpriced_ioai_provider",
+        "token_vector": {
+          "input_tokens": 243520790,
+          "cached_input_tokens": 236503296,
+          "cache_write_input_tokens": 0,
+          "output_tokens": 644931,
+          "reasoning_output_tokens": 222496,
+          "total_tokens": 244165721
+        }
+      },
+      "artifact_status": "Final source, metadata, log, and output hash are verified; the 190 MB CSV is retained by hash in the compact package",
+      "known_gap": "Starter formatting differs and continuation is substantively non-exact; local __pycache__ and H100-development scope are disclosed"
+    },
+    "task5": {
+      "canonical_material": "Fourteen autonomous traces through the run boundary",
+      "trace": {
+        "paths": [
+          "task5/evidence/rollouts/rollout-2026-08-07T15-04-23-019fdb09-8b16-7032-82e1-21be10be17c0.jsonl",
+          "task5/evidence/rollouts/rollout-2026-08-07T15-10-16-019fdb0e-ece5-75f1-a919-0cf4bc532838.jsonl",
+          "task5/evidence/rollouts/rollout-2026-08-07T15-10-32-019fdb0f-2ccc-7d80-b97f-3e6891df20be.jsonl",
+          "task5/evidence/rollouts/rollout-2026-08-07T15-10-46-019fdb0f-641d-71f1-aad9-71a76ad14bb3.jsonl",
+          "task5/evidence/rollouts/rollout-2026-08-07T15-23-21-019fdb1a-e97c-7542-b5b9-eb65046b1e4c.jsonl",
+          "task5/evidence/rollouts/rollout-2026-08-07T15-35-11-019fdb25-bcda-76b3-aa61-bf745122bb27.jsonl",
+          "task5/evidence/rollouts/rollout-2026-08-07T15-35-25-019fdb25-f27d-7fc0-a235-ef2d4e1b9e14.jsonl",
+          "task5/evidence/rollouts/rollout-2026-08-07T15-36-47-019fdb27-333f-7002-84f3-83c19536e1a2.jsonl",
+          "task5/evidence/rollouts/rollout-2026-08-07T15-58-45-019fdb3b-4f7e-70b2-b652-940314651df4.jsonl",
+          "task5/evidence/rollouts/rollout-2026-08-07T15-58-59-019fdb3b-85ff-7f63-9981-952915290c13.jsonl",
+          "task5/evidence/rollouts/rollout-2026-08-07T15-59-18-019fdb3b-d220-74b3-9fce-c89b25442543.jsonl",
+          "task5/evidence/rollouts/rollout-2026-08-07T16-05-40-019fdb41-a587-7410-8926-ba38fb7da71d.jsonl",
+          "task5/evidence/rollouts/rollout-2026-08-07T16-23-09-019fdb51-a930-7953-9c40-be02d0c93136.jsonl",
+          "task5/evidence/rollouts/rollout-2026-08-07T16-23-36-019fdb52-12da-7931-b44c-82fe30560795.jsonl"
+        ],
+        "trace_file_count": 14,
+        "event_count": 4705,
+        "total_tokens": 160243108,
+        "manual_human_prompt_events_included": 0,
+        "strict_exact_organizer_prompt_text_conformance": true,
+        "user_prompt_classes": {
+          "exact_organizer_starter_prompt": 1,
+          "inherited_exact_organizer_starter_prompt": 13,
+          "startup_instructions": 14
+        }
+      },
+      "observable_coverage": {
+        "assistant_output_events": 140,
+        "logical_function_call_events": 131,
+        "function_call_output_events": 131,
+        "custom_tool_call_events": 409,
+        "custom_tool_call_output_events": 409
+      },
+      "model": {
+        "provider": "ioai_allowed",
+        "model": "gpt-5.6-sol",
+        "reasoning_effort": "xhigh"
+      },
+      "official_result": {
+        "submission_refs": [
+          55320296
+        ],
+        "public_score": 95.39,
+        "private_score": 96.06,
+        "binding_status": "Official v6 final ref and selected trace are aligned"
+      },
+      "compute": {
+        "accelerator": "NvidiaTeslaT4",
+        "runtime_scope": "T4 versions v5-v7; versions v1-v4 were CPU runs",
+        "runtime_seconds": 837.27460599,
+        "gpu_cost_usd": null,
+        "gpu_cost_status": "unavailable_no_rate_or_invoice",
+        "local_development_runtime_seconds": null,
+        "local_development_runtime_status": "unavailable_multiple_overlapping_runs"
+      },
+      "api_cost": {
+        "usd": null,
+        "status": "unavailable_unpriced_ioai_provider",
+        "token_vector": {
+          "input_tokens": 159409014,
+          "cached_input_tokens": 154200064,
+          "cache_write_input_tokens": 0,
+          "output_tokens": 834094,
+          "reasoning_output_tokens": 175219,
+          "total_tokens": 160243108
+        }
+      },
+      "artifact_status": "v6 output/log/metadata and source hash are preserved; historical v6 source pull currently returns HTTP 403",
+      "known_gap": "Source is the trace-preserved formal-run copy rather than an independently redownloaded historical v6 file; exhaustive local H100 runtime is unavailable"
+    },
+    "task6": {
+      "canonical_material": "Three autonomous traces: bounded main trace plus two pre-boundary worker traces",
+      "trace": {
+        "paths": [
+          "task6/evidence/autonomous-only/rollout-2026-08-09T00-23-24-019fe22f-b2b8-7191-a6ec-39dea000da9f-autonomous-prefix.jsonl",
+          "task6/evidence/rollouts/rollout-2026-08-09T00-23-42-019fe22f-f897-7d10-b27c-2c6586c55a27.jsonl",
+          "task6/evidence/rollouts/rollout-2026-08-09T00-30-10-019fe235-e3a2-7173-bac5-0ba0451f279f.jsonl"
+        ],
+        "trace_file_count": 3,
+        "event_count": 1868,
+        "total_tokens": 41371859,
+        "manual_human_prompt_events_included": 0,
+        "strict_exact_organizer_prompt_text_conformance": true,
+        "user_prompt_classes": {
+          "exact_organizer_starter_prompt": 1,
+          "inherited_exact_organizer_starter_prompt": 2,
+          "startup_instructions": 3
+        }
+      },
+      "observable_coverage": {
+        "assistant_output_events": 54,
+        "logical_function_call_events": 54,
+        "function_call_output_events": 54,
+        "custom_tool_call_events": 309,
+        "custom_tool_call_output_events": 309
+      },
+      "model": {
+        "provider": "ioai_allowed",
+        "model": "gpt-5.6-sol",
+        "reasoning_effort": "xhigh"
+      },
+      "official_result": {
+        "submission_refs": [
+          55357080
+        ],
+        "public_score": 75.0154,
+        "private_score": 73.36234,
+        "binding_status": "Official v3 final ref and selected trace are aligned"
+      },
+      "compute": {
+        "accelerator": "NvidiaTeslaT4",
+        "runtime_scope": "versions v1-v3, all submitted before the human-prompt boundary",
+        "runtime_seconds": 243.721403533,
+        "gpu_cost_usd": null,
+        "gpu_cost_status": "unavailable_no_rate_or_invoice",
+        "local_development_runtime_seconds": null,
+        "local_development_runtime_status": "unavailable_multiple_experiment_records_not_exhaustively_allocated"
+      },
+      "api_cost": {
+        "usd": null,
+        "status": "unavailable_unpriced_ioai_provider",
+        "token_vector": {
+          "input_tokens": 41201506,
+          "cached_input_tokens": 37887872,
+          "cache_write_input_tokens": 0,
+          "output_tokens": 170353,
+          "reasoning_output_tokens": 61182,
+          "total_tokens": 41371859
+        }
+      },
+      "artifact_status": "Exact notebook, metadata, CSV, decoded source, weights, and parameter count verify",
+      "known_gap": "Historical report has dropout/range errors; evaluator batching dependence and incomplete local H100 accounting are explicitly disclosed"
+    }
+  },
+  "interpretation": {
+    "complete": "The named observable material is present within the declared scope and passes integrity checks.",
+    "qualified": "The material is present but its causal, exact-prompt, exact-version, or artifact scope is limited as stated.",
+    "unavailable": "The ledger deliberately records null/incomplete rather than estimating from unsupported rates or overlapping runtime records.",
+    "not_a_certificate": "This matrix does not decide organizer/Jury eligibility or recognition."
+  }
+}
