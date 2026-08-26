@@ -1931,6 +1931,7 @@ def main() -> None:
             "REPRODUCTION_TRACE_MATERIAL.md",
             "REPRODUCTION_TRACE_INDEX.json",
             "REPRODUCTION_COSTS.json",
+            "REPRODUCTION_MATERIAL_MANIFEST.sha256",
         ],
         "tasks1_2_formal_prefix_audit": [
             "FORMAL_PREFIX_AUDIT.md",
@@ -2040,6 +2041,7 @@ def main() -> None:
         "REPRODUCTION_TRACE_MATERIAL.md",
         "REPRODUCTION_TRACE_INDEX.json",
         "REPRODUCTION_COSTS.json",
+        "REPRODUCTION_MATERIAL_MANIFEST.sha256",
     ]
     prompt_requirement = requirements["exact_organizer_prompt_conformance"]
     assert prompt_requirement["strict_exact_prompt_tasks"] == ["task3", "task5", "task6"]

@@ -637,6 +637,8 @@ def write_manifest(index: dict[str, Any]) -> None:
         "STARTUP_INSTRUCTION_INDEX.json",
         "ACCESS_CONTROL_AUDIT.json",
         "ACCESS_CONTROL_AUDIT.md",
+        "REPRODUCTION_MATERIAL_MANIFEST.sha256",
+        "tools/build_reproduction_trace_material.py",
         "tools/scan_extraction_archive.py",
         "tools/verify_extraction_bindings.py",
         "REQUIREMENT_EVIDENCE_MATRIX.json",

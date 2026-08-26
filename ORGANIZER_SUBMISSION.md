@@ -43,7 +43,7 @@ not automatically apply to the external Google Drive extraction link.
 
 Special evidence is linked here for quick review:
 
-- Tasks 1–2 later reproductions: [`REPRODUCTION_TRACE_MATERIAL.md`](REPRODUCTION_TRACE_MATERIAL.md), [`REPRODUCTION_TRACE_INDEX.json`](REPRODUCTION_TRACE_INDEX.json), and [`REPRODUCTION_COSTS.json`](REPRODUCTION_COSTS.json).
+- Tasks 1–2 later reproductions: [`REPRODUCTION_TRACE_MATERIAL.md`](REPRODUCTION_TRACE_MATERIAL.md), [`REPRODUCTION_TRACE_INDEX.json`](REPRODUCTION_TRACE_INDEX.json), [`REPRODUCTION_COSTS.json`](REPRODUCTION_COSTS.json), and the integrity [`REPRODUCTION_MATERIAL_MANIFEST.sha256`](REPRODUCTION_MATERIAL_MANIFEST.sha256).
 - Tasks 1–2 bounded formal prefixes: [`FORMAL_PREFIX_AUDIT.md`](FORMAL_PREFIX_AUDIT.md) and [`FORMAL_PREFIX_AUDIT.json`](FORMAL_PREFIX_AUDIT.json).
 - Startup instruction payloads actually injected into each run: [`STARTUP_INSTRUCTION_INDEX.md`](STARTUP_INSTRUCTION_INDEX.md), machine-readable [`STARTUP_INSTRUCTION_INDEX.json`](STARTUP_INSTRUCTION_INDEX.json), and the six linked `taskN/environment/AGENTS-ACTUALLY-INJECTED.md` files.
 - Read-only extraction member verifier: [`tools/verify_extraction_bindings.py`](tools/verify_extraction_bindings.py), which checks the candidate source/output/log hashes against the downloaded Drive archive without upgrading any exact-version-confidence claim.
@@ -59,7 +59,7 @@ Special evidence is linked here for quick review:
 | Organizer requirement | Status | Evidence |
 |---|---|---|
 | Execution traces for Tasks 1–6 | Complete selected observable prefixes; provenance limits disclosed | [`AUTONOMOUS_TRACE_MATERIAL.md`](AUTONOMOUS_TRACE_MATERIAL.md), [`AUTONOMOUS_TRACE_INDEX.json`](AUTONOMOUS_TRACE_INDEX.json) |
-| Later two-hour reproduction traces for Tasks 1–2 | Complete, separately scoped post-deadline reproductions; not the lost originals | [`REPRODUCTION_TRACE_MATERIAL.md`](REPRODUCTION_TRACE_MATERIAL.md), [`REPRODUCTION_TRACE_INDEX.json`](REPRODUCTION_TRACE_INDEX.json) |
+| Later two-hour reproduction traces for Tasks 1–2 | Complete, separately scoped post-deadline reproductions; not the lost originals | [`REPRODUCTION_TRACE_MATERIAL.md`](REPRODUCTION_TRACE_MATERIAL.md), [`REPRODUCTION_TRACE_INDEX.json`](REPRODUCTION_TRACE_INDEX.json), [`REPRODUCTION_COSTS.json`](REPRODUCTION_COSTS.json), [`REPRODUCTION_MATERIAL_MANIFEST.sha256`](REPRODUCTION_MATERIAL_MANIFEST.sha256) |
 | Prompts and visible Agent outputs | Complete within selected observable trace scope | Full payloads are in every indexed JSONL trace; prompt classes and hashes are in the index |
 | Startup `AGENTS.md` payloads | Indexed and hash-bound per Task | [`STARTUP_INSTRUCTION_INDEX.md`](STARTUP_INSTRUCTION_INDEX.md), [`STARTUP_INSTRUCTION_INDEX.json`](STARTUP_INSTRUCTION_INDEX.json); each payload is also covered by its Task manifest |
 | Task 1/2 official-ref version mapping | Exact internal `scriptVersionId` evidence with candidate/byte limits clearly separated | [`KERNEL_VERSION_MAPPING_AUDIT.md`](KERNEL_VERSION_MAPPING_AUDIT.md) and the two task-level extraction provenance JSON files |

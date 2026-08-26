@@ -90,7 +90,7 @@ all-account numerical maxima.
 | [`AUTONOMOUS_TRACE_INDEX.json`](AUTONOMOUS_TRACE_INDEX.json) / [`AUTONOMOUS_TRACE_MATERIAL.md`](AUTONOMOUS_TRACE_MATERIAL.md) | The authoritative autonomous-scope classification: boundaries, prompt classes, exclusions, and exact-prompt status. |
 | [`REPRODUCTION_TRACE_INDEX.json`](REPRODUCTION_TRACE_INDEX.json) / [`REPRODUCTION_TRACE_MATERIAL.md`](REPRODUCTION_TRACE_MATERIAL.md) | The separate full later two-hour Task 1/2 reproductions; these are post-deadline reference material. |
 | [`COSTS.json`](COSTS.json) / [`AUTONOMOUS_COSTS.json`](AUTONOMOUS_COSTS.json) | Token, model, accelerator-runtime, and unavailable-USD fields for the selected 35-trace scope. |
-| [`REPRODUCTION_COSTS.json`](REPRODUCTION_COSTS.json) | Cost and token fields for the separate full Task 1/2 reproduction traces. |
+| [`REPRODUCTION_COSTS.json`](REPRODUCTION_COSTS.json) / [`REPRODUCTION_MATERIAL_MANIFEST.sha256`](REPRODUCTION_MATERIAL_MANIFEST.sha256) | Cost/token fields and integrity hashes for the separate full Task 1/2 reproduction traces. |
 
 ## Generated material and safe refresh order
 
@@ -107,19 +107,27 @@ component. Their roles are:
 |---|---|
 | `AUTONOMOUS_TRACE_INDEX.json`, `AUTONOMOUS_TRACE_MATERIAL.md`, `AUTONOMOUS_COSTS.json`, `PROMPT_CONFORMANCE_AUDIT.json/.md`, `task4/RULE_DIFFERENCE_AUDIT.json/.md`, `REQUIREMENT_EVIDENCE_MATRIX.json/.md`, `STARTUP_INSTRUCTION_INDEX.json/.md`, and `AUTONOMOUS_MATERIAL_MANIFEST.sha256` | `python3 tools/build_autonomous_trace_material.py` (canonical full refresh) |
 | `EXECUTION_TRACE_INDEX.json/.md` | `python3 tools/build_execution_trace_index.py` (standalone execution inventory) |
+| `REPRODUCTION_TRACE_INDEX.json`, `REPRODUCTION_TRACE_MATERIAL.md`, `REPRODUCTION_COSTS.json`, and `REPRODUCTION_MATERIAL_MANIFEST.sha256` | `python3 tools/build_reproduction_trace_material.py` (later Task 1/2 reproduction package; requires the preserved private historical source paths) |
 | `PROMPT_CONFORMANCE_AUDIT.json/.md` | `python3 tools/build_prompt_conformance_audit.py` (standalone prompt diagnostic) |
 | `task4/RULE_DIFFERENCE_AUDIT.json/.md` | `python3 tools/build_task4_rule_audit.py` (standalone Task 4 diagnostic) |
 | `REQUIREMENT_EVIDENCE_MATRIX.json/.md` | Included in the canonical full refresh; `python3 tools/build_requirement_evidence_matrix.py` remains a standalone scope-labeled rule-index refresh |
 | Extraction candidate member checks | `python3 tools/verify_extraction_bindings.py --archive /path/to/ioai-kaggle-fetch-researai-20260813.tar.gz` (read-only, after downloading the Drive archive) |
 
-Recommended refresh order is: execution inventory first, then the canonical
-autonomous-material builder, then `verify_repository.py` and every manifest
-check. After any refresh, run `python3 verify_repository.py` and all manifest
-checks.
+Recommended refresh order is: refresh the later-reproduction package first
+(when its preserved private source paths are available), then the execution
+inventory, then the canonical autonomous-material builder, and finally
+`verify_repository.py` plus every manifest check. If the private historical
+source paths are unavailable, do not regenerate the reproduction package;
+verify the checked-in reproduction manifest instead. After any refresh, run
+`python3 verify_repository.py` and all manifest checks.
 Do not hand-edit the JSONL traces, exact submission artifacts, or generated
 hashes; make a source/evidence change first, then regenerate and verify.
 
 ```bash
+python3 tools/build_reproduction_trace_material.py  # requires preserved private sources
+python3 tools/build_execution_trace_index.py
+python3 tools/build_autonomous_trace_material.py
+python3 verify_repository.py
 for t in 1 2 3 4 5 6; do (cd task$t && sha256sum -c MANIFEST.sha256); done
 sha256sum -c AUTONOMOUS_MATERIAL_MANIFEST.sha256
 sha256sum -c REPRODUCTION_MATERIAL_MANIFEST.sha256
