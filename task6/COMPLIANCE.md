@@ -31,6 +31,10 @@ remote `submission.csv` and its decoded `custom_model.py` are under
   `f325541e9ec0df6b4e286528c46070976407a66003912477f05d38134c80822a`;
 - decoded source byte identity with `remote/v3/custom_model.py`;
 - a loadable safetensors state dict and 13,426 parameters.
+- recursive inspection finds no persistent Tensor or NumPy array stored as an
+  unregistered module attribute; all persistent tensor state is in PyTorch's
+  Parameter/buffer registries (the exact check is in
+  `tools/verify_v3_artifacts.py`).
 
 Run `python3 tools/verify_v3_artifacts.py` from this directory. Full hashes and
 sizes are in `ARTIFACT_PROVENANCE.json` and `MANIFEST.sha256`.

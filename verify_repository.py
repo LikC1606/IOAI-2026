@@ -561,6 +561,7 @@ def verify_task6_artifacts() -> dict[str, object]:
     assert result["payloads_identical"] is True
     assert result["decoded_source_exact_match"] is True
     assert result["parameter_count"] == 13_426
+    assert result["unregistered_persistent_tensor_attributes"] == []
     assert result["batch_dependence"] == {
         "test_points": 100,
         "component_changes": 100,
@@ -574,6 +575,9 @@ def verify_task6_artifacts() -> dict[str, object]:
     )
     assert provenance["submission_ref"] == 55357080
     assert provenance["cross_checks"]["parameter_count"] == 13_426
+    assert provenance["cross_checks"]["persistent_tensor_registration"] == (
+        "no_unregistered_tensor_or_numpy_attributes"
+    )
     for key, relative in {
         "notebook_source": "notebooks/v3/script.py",
         "kernel_metadata": "notebooks/v3/kernel-metadata.json",
@@ -595,11 +599,17 @@ def verify_task6_artifacts() -> dict[str, object]:
     assert summary["exact_v3_artifacts"]["provenance"] == "ARTIFACT_PROVENANCE.json"
     assert summary["rule_difference_audit"] == "RULE_DIFFERENCE_AUDIT.json"
     assert summary["batch_dependence_fixture"] == result["batch_dependence"]
+    assert summary["persistent_tensor_registration_check"] == (
+        "no_unregistered_tensor_or_numpy_attributes"
+    )
     assert summary["historical_report_factual_error_disclosed"] is True
     assert summary["local_gpu_accounting_status"] == (
         "v3_candidate_31.03_seconds_known_exhaustive_total_unavailable"
     )
     assert rule_audit["statuses"]["result.trace_alignment"] == (
+        "evidence_supported_compliant"
+    )
+    assert rule_audit["statuses"]["model.persistent_tensor_registration"] == (
         "evidence_supported_compliant"
     )
     assert rule_audit["statuses"]["prompt.exact_text"] == (

@@ -67,6 +67,9 @@ measured batch behavior is disclosed in the rule audit and is not treated as a
 compliance issue. The non-redistributed official evaluator source is bound by hash and
 function/call-site locators in
 [`evidence/EVALUATOR_BATCHING_PROVENANCE.json`](evidence/EVALUATOR_BATCHING_PROVENANCE.json).
+The verifier also recursively checks the exact decoded model for unregistered
+persistent Tensor/NumPy attributes; it finds none, supporting the Task 6 model
+envelope rule.
 
 ## Execution trace
 

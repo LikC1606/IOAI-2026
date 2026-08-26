@@ -35,6 +35,7 @@
     "decoded_csv_source_matches_custom_model_byte_for_byte": true,
     "model_state_dict_loads_into_decoded_source_architecture": true,
     "parameter_count": 13426,
+    "persistent_tensor_registration": "no_unregistered_tensor_or_numpy_attributes",
     "verification_script": "tools/verify_v3_artifacts.py"
   },
   "provenance_limit": "The exact files were recovered from the preserved original Task 6 project and v3 Kaggle output. The notebook source was not independently re-downloaded from a historical Kaggle source endpoint during this packaging pass; CSV decoding independently binds the submitted custom_model.py and weights."

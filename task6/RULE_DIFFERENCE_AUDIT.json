@@ -11,6 +11,7 @@
     "submission.timeout": "evidence_supported_compliant",
     "resources.remote_metadata": "evidence_supported_compliant",
     "model.envelope_and_parameters": "evidence_supported_compliant",
+    "model.persistent_tensor_registration": "evidence_supported_compliant",
     "model.dropout_randomness": "evidence_supported_compliant",
     "model.evaluator_batch_dependence": "measured_technical_behavior_not_treated_as_compliance_issue",
     "protected_field.hidden_geometry": "measured_technical_behavior_not_treated_as_compliance_issue",

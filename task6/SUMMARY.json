@@ -71,6 +71,7 @@
     "final_prediction_changes": 5,
     "max_final_change": 1.0
   },
+  "persistent_tensor_registration_check": "no_unregistered_tensor_or_numpy_attributes",
   "historical_report_factual_error_disclosed": true,
   "local_gpu_accounting_status": "v3_candidate_31.03_seconds_known_exhaustive_total_unavailable",
   "trace_directories": ["evidence/autonomous-only", "evidence/rollouts"],

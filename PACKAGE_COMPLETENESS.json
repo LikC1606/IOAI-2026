@@ -414,7 +414,7 @@
           "total_tokens": 41371859
         }
       },
-      "artifact_status": "Exact notebook, metadata, CSV, decoded source, weights, and parameter count verify",
+      "artifact_status": "Exact notebook, metadata, CSV, decoded source, weights, parameter count, and persistent-tensor registration verify",
       "known_gap": "Historical report has dropout/range errors; evaluator batching dependence and incomplete local H100 accounting are explicitly disclosed"
     }
   },

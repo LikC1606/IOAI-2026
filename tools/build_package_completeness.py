@@ -48,7 +48,7 @@ TASK_META: dict[str, dict[str, str]] = {
     "task6": {
         "canonical_material": "Three autonomous traces: bounded main trace plus two pre-boundary worker traces",
         "official_binding": "Official v3 final ref and selected trace are aligned",
-        "artifact_status": "Exact notebook, metadata, CSV, decoded source, weights, and parameter count verify",
+        "artifact_status": "Exact notebook, metadata, CSV, decoded source, weights, parameter count, and persistent-tensor registration verify",
         "known_gap": "Historical report has dropout/range errors; evaluator batching dependence and incomplete local H100 accounting are explicitly disclosed",
     },
 }

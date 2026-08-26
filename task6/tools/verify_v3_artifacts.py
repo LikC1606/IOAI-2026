@@ -9,7 +9,9 @@ import hashlib
 import json
 from pathlib import Path
 
+import numpy as np
 import torch
+import torch.nn as nn
 from safetensors.torch import load
 
 
@@ -29,6 +31,25 @@ EXPECTED = {
 
 def sha256(path: Path) -> str:
     return hashlib.sha256(path.read_bytes()).hexdigest()
+
+
+def unregistered_persistent_tensor_attributes(module: nn.Module) -> list[str]:
+    """Find persistent Tensor/NumPy attributes outside Parameter/buffer registries."""
+    findings: list[str] = []
+
+    def visit(current: nn.Module, prefix: str) -> None:
+        registered = set(current._parameters) | set(current._buffers)
+        for name, value in vars(current).items():
+            if name.startswith("_") or name in {"training"}:
+                continue
+            if isinstance(value, (torch.Tensor, np.ndarray)) and name not in registered:
+                findings.append(f"{prefix}{name}")
+        for name, child in current._modules.items():
+            if child is not None:
+                visit(child, f"{prefix}{name}.")
+
+    visit(module, "")
+    return findings
 
 
 def main() -> None:
@@ -54,6 +75,8 @@ def main() -> None:
     model.eval()
     parameter_count = sum(parameter.numel() for parameter in model.parameters())
     assert parameter_count == 13_426
+    persistent_tensor_findings = unregistered_persistent_tensor_attributes(model)
+    assert persistent_tensor_findings == []
 
     generator = torch.Generator().manual_seed(20_260_825)
     points = torch.rand((100, 2), generator=generator)
@@ -96,6 +119,7 @@ def main() -> None:
                 "payloads_identical": True,
                 "decoded_source_exact_match": True,
                 "parameter_count": parameter_count,
+                "unregistered_persistent_tensor_attributes": persistent_tensor_findings,
                 "batch_dependence": {
                     "test_points": len(points),
                     "component_changes": component_changes,
