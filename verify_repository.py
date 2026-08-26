@@ -475,16 +475,12 @@ def verify_autonomous_material() -> dict[str, int]:
     costs = json.loads((ROOT / "AUTONOMOUS_COSTS.json").read_text(encoding="utf-8"))
     assert costs["schema"] == "ioai.autonomous-execution-costs.v1"
     assert costs["known_token_total_all_tasks"] == tokens
-    assert costs["api_cost_total_status"] == (
-        "unavailable_no_provider_invoice_or_applicable_public_rate"
-    )
+    assert costs["api_cost_total_status"] == "actual_charge_unavailable_estimate_provided"
     assert costs["api_cost_usd_total"] is None
     assert costs["gpu_compute_accounting_status"] == (
         "remote_kaggle_runtime_complete_selected_scope_local_development_incomplete"
     )
-    assert costs["gpu_cost_total_status"] == (
-        "incomplete_local_runtime_and_unavailable_rate"
-    )
+    assert costs["gpu_cost_total_status"] == "actual_charge_unavailable_user_assumption_estimate_provided"
     assert costs["gpu_cost_usd_total"] is None
     observed_t4_seconds = sum(
         float(costs["tasks"][task]["gpu"]["runtime_seconds"])
@@ -1919,16 +1915,12 @@ def verify_execution_accounting() -> dict[str, int]:
     costs = json.loads((ROOT / "COSTS.json").read_text(encoding="utf-8"))
     assert index["schema"] == "ioai.execution-trace-index.v1"
     assert costs["schema"] == "ioai.execution-costs.v1"
-    assert costs["api_cost_total_status"] == (
-        "unavailable_no_provider_invoice_or_applicable_public_rate"
-    )
+    assert costs["api_cost_total_status"] == "actual_charge_unavailable_estimate_provided"
     assert costs["api_cost_usd_total"] is None
     assert costs["gpu_compute_accounting_status"] == (
         "remote_kaggle_runtime_complete_selected_scope_local_development_incomplete"
     )
-    assert costs["gpu_cost_total_status"] == (
-        "incomplete_local_runtime_and_unavailable_rate"
-    )
+    assert costs["gpu_cost_total_status"] == "actual_charge_unavailable_user_assumption_estimate_provided"
     assert costs["gpu_cost_usd_total"] is None
     tokens = 0
     traces = 0
@@ -1942,6 +1934,8 @@ def verify_execution_accounting() -> dict[str, int]:
         assert cost_task["model"] == "gpt-5.6-sol", task
         assert cost_task["reasoning_effort"] in {"max", "xhigh"}, task
         assert cost_task["api_cost_usd"] is None, task
+        assert cost_task["api_cost_estimate_usd"] >= 0, task
+        assert cost_task["h100_server_cost_estimate_usd"] == 15.7, task
         token_usage = cost_task["token_usage"]
         assert set(token_usage) >= set(TOKEN_FIELDS), task
         verify_token_vector(token_usage, task)
@@ -1969,6 +1963,8 @@ def verify_execution_accounting() -> dict[str, int]:
         assert public_cost_task["model"] == cost_task["model"], task
         assert public_cost_task["reasoning_effort"] == cost_task["reasoning_effort"], task
         assert public_cost_task["token_usage"] == token_usage, task
+        assert public_cost_task["api_cost_estimate_usd"] == cost_task["api_cost_estimate_usd"], task
+        assert public_cost_task["h100_server_cost_estimate_usd"] == cost_task["h100_server_cost_estimate_usd"], task
         public_gpu = public_cost_task["gpu"]
         assert float(public_gpu["runtime_seconds"]) >= 0, task
         assert math.isclose(

@@ -22,7 +22,7 @@ item.
 The compact [`PACKAGE_COMPLETENESS.md`](PACKAGE_COMPLETENESS.md) matrix joins
 the authoritative ledgers into one per-task view of trace events, prompt
 qualification, visible outputs/tool calls, model and token usage, official
-result binding, remote GPU runtime, and unavailable cost fields. Its JSON form
+result binding, remote GPU runtime, and labeled cost estimates. Its JSON form
 and deterministic builder are [`PACKAGE_COMPLETENESS.json`](PACKAGE_COMPLETENESS.json)
 and [`tools/build_package_completeness.py`](tools/build_package_completeness.py).
 It is a navigation aid, not a compliance certificate.
@@ -93,8 +93,8 @@ Special evidence is linked here for quick review:
 | Read-only artifact replay | Task 1 provenance/package verifier, Task 2 eligible v2 exact source/output chain, all eight Task 3 source/output replays, Task 4 hash-only output chain, Task 5 exact v6 output chain, and Task 6 exact v3 replay pass | [`task1/tools/verify_package.py`](task1/tools/verify_package.py), Task 2 `remote/rotation-cnn-v2/`, [`task3/evidence/verify_artifacts.py`](task3/evidence/verify_artifacts.py), `task4/remote/V4_OUTPUT_PROVENANCE.json`, `task5/V6_SOURCE_PROVENANCE.json`, and `python3 verify_repository.py` |
 | Tool calls and tool outputs | Complete within selected observable trace scope | Per-task and per-file counts cover `function_call`, `function_call_output`, `custom_tool_call`, and `custom_tool_call_output` |
 | LLM(s) used | Complete | [`AUTONOMOUS_COSTS.json`](AUTONOMOUS_COSTS.json): `ioai_allowed` / `gpt-5.6-sol`; Tasks 1–4 `max`, Tasks 5–6 `xhigh` |
-| Total API costs | Token accounting complete; USD unavailable | Exact per-task tokens and total are provided; USD is `null` because no invoice or exact provider/model rate was captured |
-| GPU compute/cost per task | Kaggle remote selected scope complete; local H100 accounting and USD incomplete | Observed remote accelerator seconds/hours and known local observations are provided; exhaustive local runtime and USD are unavailable |
+| Total API costs | Exact token accounting plus labeled public-rate estimate | Exact per-task tokens and total are provided; actual `api_cost_usd` remains `null` because no provider invoice was captured, while the public-rate estimate is in [`COST_ESTIMATE.md`](COST_ESTIMATE.md) and `AUTONOMOUS_COSTS.json` |
+| GPU compute/cost per task | Observed Kaggle runtime plus requested H100 budget estimate | Remote accelerator seconds/hours remain recorded; the requested assumption of 2 H100s × 2 hours per Task is priced at the surveyed median and labeled as an estimate, not historical runtime or invoice |
 | Kaggle extraction results | Complete | [`KAGGLE_EXTRACTION_DELIVERY.json`](KAGGLE_EXTRACTION_DELIVERY.json), [`KAGGLE_EXTRACTION_SUMMARY.json`](KAGGLE_EXTRACTION_SUMMARY.json), and the linked Drive archive |
 | Final submitted results matching Kaggle | Score reconciliation complete; Tasks 1–2 are not final-trace-bound | [`FINAL_SUBMISSION_RESULTS.md`](FINAL_SUBMISSION_RESULTS.md) and six task-level `FINAL_ACCOUNT_RESULTS.json` files |
 
@@ -149,10 +149,12 @@ sha256sum -c AUTONOMOUS_MATERIAL_MANIFEST.sha256
 sha256sum -c REPRODUCTION_MATERIAL_MANIFEST.sha256
 ```
 
-The USD cost fields deliberately remain `null` rather than pricing
-`gpt-5.6-sol` with a different model's public rate or inventing a Kaggle GPU
-invoice. The local H100 total is also incomplete for Tasks 4–6; the cost files
-record only supported observations and do not extrapolate a total.
+Actual USD charge fields remain `null` because no provider invoice or historical
+GPU bill was captured. A separate, reproducible budget estimate uses the
+current official GPT-5.6 Sol public rates and the requested assumption of two
+H100 GPUs for two hours per Task. The resulting six-Task estimate is
+`$360.787820` API + `$94.20` H100 server = `$454.987820`; the assumptions,
+survey range, formulas, and per-task breakdown are in [`COST_ESTIMATE.md`](COST_ESTIMATE.md).
 
 ## Later two-hour reproduction scope
 

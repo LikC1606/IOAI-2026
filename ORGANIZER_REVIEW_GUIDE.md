@@ -204,9 +204,12 @@ private endpoints, and excluded live-human prompt bodies are intentionally not
 published. A complete selected trace is therefore not a claim that every
 historical official result is trace-bound.
 
-Token totals and selected remote Kaggle runtime are recorded. Exact API USD,
-exhaustive local H100 runtime for Tasks 4–6, and GPU USD are unavailable; the
-cost ledgers leave those fields null rather than inventing rates or invoices.
+Token totals and selected remote Kaggle runtime are recorded. Actual API/GPU
+invoice amounts are unavailable, so the charge fields remain null. A separate
+budget estimate is provided in [`COST_ESTIMATE.md`](COST_ESTIMATE.md), using
+the current public GPT-5.6 Sol rates and the requested assumption of two H100
+GPUs for two hours per Task; it is explicitly not a reconstructed invoice or
+historical local runtime.
 
 The final eligibility decision remains with the organizer/Jury. This guide is
 intended to make the remaining decisions explicit and quickly verifiable.

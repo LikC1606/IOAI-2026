@@ -17,6 +17,11 @@
     "later_reproduction_tokens": 70139455,
     "api_cost_usd_total": null,
     "gpu_cost_usd_total": null,
+    "api_cost_estimate_usd_total": 360.78782,
+    "h100_server_cost_estimate_usd_total": 94.2,
+    "h100_server_cost_estimate_low_usd_total": 52.56,
+    "h100_server_cost_estimate_high_usd_total": 167.52,
+    "estimated_api_plus_h100_usd_total": 454.98782,
     "strict_all_six_claim_supported": false
   },
   "tasks": {
@@ -64,11 +69,15 @@
         "gpu_cost_usd": null,
         "gpu_cost_status": "unavailable_no_rate_or_invoice",
         "local_development_runtime_seconds": null,
-        "local_development_runtime_status": null
+        "local_development_runtime_status": null,
+        "h100_server_cost_estimate_usd": 15.7,
+        "h100_server_cost_estimate_low_usd": 8.76,
+        "h100_server_cost_estimate_high_usd": 27.92,
+        "h100_server_cost_estimate_status": "user_assumed_two_h100_gpus_for_two_hours"
       },
       "api_cost": {
         "usd": null,
-        "status": "unavailable_unpriced_ioai_provider",
+        "status": "actual_charge_unavailable_estimate_provided",
         "token_vector": {
           "input_tokens": 40631004,
           "cached_input_tokens": 39450112,
@@ -76,8 +85,11 @@
           "output_tokens": 199172,
           "reasoning_output_tokens": 65664,
           "total_tokens": 40830176
-        }
+        },
+        "estimate_usd": 24.487053,
+        "estimate_status": "estimate_using_current_public_openai_price_assumption"
       },
+      "estimated_total_api_plus_h100_usd": 40.187053,
       "artifact_status": "Agent/reproduction artifacts are preserved; official-final extraction is a kernel-linked candidate, not byte-confirmed",
       "known_gap": "Custom starter in reproduction; recovered formal human-influenced suffix withheld; 38 captured versions vs literal 20 and repeated official version"
     },
@@ -124,11 +136,15 @@
         "gpu_cost_usd": null,
         "gpu_cost_status": "unavailable_no_rate_or_invoice",
         "local_development_runtime_seconds": null,
-        "local_development_runtime_status": null
+        "local_development_runtime_status": null,
+        "h100_server_cost_estimate_usd": 15.7,
+        "h100_server_cost_estimate_low_usd": 8.76,
+        "h100_server_cost_estimate_high_usd": 27.92,
+        "h100_server_cost_estimate_status": "user_assumed_two_h100_gpus_for_two_hours"
       },
       "api_cost": {
         "usd": null,
-        "status": "unavailable_unpriced_ioai_provider",
+        "status": "actual_charge_unavailable_estimate_provided",
         "token_vector": {
           "input_tokens": 29066864,
           "cached_input_tokens": 28332800,
@@ -136,8 +152,11 @@
           "output_tokens": 138775,
           "reasoning_output_tokens": 45072,
           "total_tokens": 29205639
-        }
+        },
+        "estimate_usd": 17.044876,
+        "estimate_status": "estimate_using_current_public_openai_price_assumption"
       },
+      "estimated_total_api_plus_h100_usd": 32.744876,
       "artifact_status": "Eligible v2 source/output/log are exact; official-final extraction is a kernel-linked candidate, not byte-confirmed",
       "known_gap": "Custom starter in reproduction; recovered formal modified-continuation suffix withheld; repeated pre-deadline version"
     },
@@ -189,11 +208,15 @@
         "gpu_cost_usd": 0,
         "gpu_cost_status": "no_gpu_allocated",
         "local_development_runtime_seconds": null,
-        "local_development_runtime_status": null
+        "local_development_runtime_status": null,
+        "h100_server_cost_estimate_usd": 15.7,
+        "h100_server_cost_estimate_low_usd": 8.76,
+        "h100_server_cost_estimate_high_usd": 27.92,
+        "h100_server_cost_estimate_status": "user_assumed_two_h100_gpus_for_two_hours"
       },
       "api_cost": {
         "usd": null,
-        "status": "unavailable_unpriced_ioai_provider",
+        "status": "actual_charge_unavailable_estimate_provided",
         "token_vector": {
           "input_tokens": 56131525,
           "cached_input_tokens": 49080576,
@@ -201,8 +224,11 @@
           "output_tokens": 241775,
           "reasoning_output_tokens": 72666,
           "total_tokens": 56373300
-        }
+        },
+        "estimate_usd": 52.671526,
+        "estimate_status": "estimate_using_current_public_openai_price_assumption"
       },
+      "estimated_total_api_plus_h100_usd": 68.371526,
       "artifact_status": "Eight source/output chains replay and verify against the supplied competition data",
       "known_gap": "Account-wide count and repeated version conflict remain for organizer interpretation; historical reports are short and v8 contains factual score/distribution errors"
     },
@@ -263,11 +289,15 @@
         "gpu_cost_usd": null,
         "gpu_cost_status": "unavailable_no_rate_or_invoice",
         "local_development_runtime_seconds": null,
-        "local_development_runtime_status": "unavailable_non_exhaustive_overlapping_approximate_records"
+        "local_development_runtime_status": "unavailable_non_exhaustive_overlapping_approximate_records",
+        "h100_server_cost_estimate_usd": 15.7,
+        "h100_server_cost_estimate_low_usd": 8.76,
+        "h100_server_cost_estimate_high_usd": 27.92,
+        "h100_server_cost_estimate_status": "user_assumed_two_h100_gpus_for_two_hours"
       },
       "api_cost": {
         "usd": null,
-        "status": "unavailable_unpriced_ioai_provider",
+        "status": "actual_charge_unavailable_estimate_provided",
         "token_vector": {
           "input_tokens": 243520790,
           "cached_input_tokens": 236503296,
@@ -275,8 +305,11 @@
           "output_tokens": 644931,
           "reasoning_output_tokens": 222496,
           "total_tokens": 244165721
-        }
+        },
+        "estimate_usd": 135.569914,
+        "estimate_status": "estimate_using_current_public_openai_price_assumption"
       },
+      "estimated_total_api_plus_h100_usd": 151.269914,
       "artifact_status": "Final source, metadata, log, and output hash are verified; the 190 MB CSV is retained by hash in the compact package",
       "known_gap": "Starter formatting differs and continuation is substantively non-exact; local __pycache__ and H100-development scope are disclosed"
     },
@@ -337,11 +370,15 @@
         "gpu_cost_usd": null,
         "gpu_cost_status": "unavailable_no_rate_or_invoice",
         "local_development_runtime_seconds": null,
-        "local_development_runtime_status": "unavailable_multiple_overlapping_runs"
+        "local_development_runtime_status": "unavailable_multiple_overlapping_runs",
+        "h100_server_cost_estimate_usd": 15.7,
+        "h100_server_cost_estimate_low_usd": 8.76,
+        "h100_server_cost_estimate_high_usd": 27.92,
+        "h100_server_cost_estimate_status": "user_assumed_two_h100_gpus_for_two_hours"
       },
       "api_cost": {
         "usd": null,
-        "status": "unavailable_unpriced_ioai_provider",
+        "status": "actual_charge_unavailable_estimate_provided",
         "token_vector": {
           "input_tokens": 159409014,
           "cached_input_tokens": 154200064,
@@ -349,8 +386,11 @@
           "output_tokens": 834094,
           "reasoning_output_tokens": 175219,
           "total_tokens": 160243108
-        }
+        },
+        "estimate_usd": 99.197706,
+        "estimate_status": "estimate_using_current_public_openai_price_assumption"
       },
+      "estimated_total_api_plus_h100_usd": 114.897706,
       "artifact_status": "v6 output/log/metadata and source hash are preserved; historical v6 source pull currently returns HTTP 403",
       "known_gap": "Source is the trace-preserved formal-run copy rather than an independently redownloaded historical v6 file; exhaustive local H100 runtime is unavailable"
     },
@@ -400,11 +440,15 @@
         "gpu_cost_usd": null,
         "gpu_cost_status": "unavailable_no_rate_or_invoice",
         "local_development_runtime_seconds": null,
-        "local_development_runtime_status": "unavailable_multiple_experiment_records_not_exhaustively_allocated"
+        "local_development_runtime_status": "unavailable_multiple_experiment_records_not_exhaustively_allocated",
+        "h100_server_cost_estimate_usd": 15.7,
+        "h100_server_cost_estimate_low_usd": 8.76,
+        "h100_server_cost_estimate_high_usd": 27.92,
+        "h100_server_cost_estimate_status": "user_assumed_two_h100_gpus_for_two_hours"
       },
       "api_cost": {
         "usd": null,
-        "status": "unavailable_unpriced_ioai_provider",
+        "status": "actual_charge_unavailable_estimate_provided",
         "token_vector": {
           "input_tokens": 41201506,
           "cached_input_tokens": 37887872,
@@ -412,8 +456,11 @@
           "output_tokens": 170353,
           "reasoning_output_tokens": 61182,
           "total_tokens": 41371859
-        }
+        },
+        "estimate_usd": 31.816745,
+        "estimate_status": "estimate_using_current_public_openai_price_assumption"
       },
+      "estimated_total_api_plus_h100_usd": 47.516745,
       "artifact_status": "Exact notebook, metadata, CSV, decoded source, weights, parameter count, and persistent-tensor registration verify",
       "known_gap": "Historical report has dropout/range errors; evaluator batching dependence and incomplete local H100 accounting are explicitly disclosed"
     }

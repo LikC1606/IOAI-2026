@@ -125,12 +125,29 @@ def build() -> dict[str, Any]:
                 "local_development_runtime_status": gpu.get(
                     "local_development_runtime_status"
                 ),
+                "h100_server_cost_estimate_usd": cost[
+                    "h100_server_cost_estimate_usd"
+                ],
+                "h100_server_cost_estimate_low_usd": cost[
+                    "h100_server_cost_estimate_low_usd"
+                ],
+                "h100_server_cost_estimate_high_usd": cost[
+                    "h100_server_cost_estimate_high_usd"
+                ],
+                "h100_server_cost_estimate_status": cost[
+                    "h100_server_cost_estimate_status"
+                ],
             },
             "api_cost": {
                 "usd": cost["api_cost_usd"],
                 "status": cost["api_cost_status"],
                 "token_vector": cost["token_usage"],
+                "estimate_usd": cost["api_cost_estimate_usd"],
+                "estimate_status": cost["api_cost_estimate_status"],
             },
+            "estimated_total_api_plus_h100_usd": cost[
+                "estimated_total_api_plus_h100_usd"
+            ],
             "artifact_status": TASK_META[task]["artifact_status"],
             "known_gap": TASK_META[task]["known_gap"],
         }
@@ -162,6 +179,19 @@ def build() -> dict[str, Any]:
             "later_reproduction_tokens": reproduction_tokens,
             "api_cost_usd_total": costs["api_cost_usd_total"],
             "gpu_cost_usd_total": costs["gpu_cost_usd_total"],
+            "api_cost_estimate_usd_total": costs["api_cost_estimate_usd_total"],
+            "h100_server_cost_estimate_usd_total": costs[
+                "h100_server_cost_estimate_usd_total"
+            ],
+            "h100_server_cost_estimate_low_usd_total": costs[
+                "h100_server_cost_estimate_low_usd_total"
+            ],
+            "h100_server_cost_estimate_high_usd_total": costs[
+                "h100_server_cost_estimate_high_usd_total"
+            ],
+            "estimated_api_plus_h100_usd_total": costs[
+                "estimated_api_plus_h100_usd_total"
+            ],
             "strict_all_six_claim_supported": False,
         },
         "tasks": tasks,
@@ -199,7 +229,7 @@ def markdown(data: dict[str, Any]) -> str:
         "",
         "## Requested deliverables by task",
         "",
-        "| Task | Trace and prompt coverage | Observable outputs/tool calls | Model and tokens | Official result binding | GPU/runtime and USD | Main qualification |",
+        "| Task | Trace and prompt coverage | Observable outputs/tool calls | Model and tokens | Official result binding | Compute and USD estimate | Main qualification |",
         "|---|---|---|---|---|---|---|",
     ]
     for task, item in data["tasks"].items():
@@ -207,6 +237,7 @@ def markdown(data: dict[str, Any]) -> str:
         obs = item["observable_coverage"]
         model = item["model"]
         comp = item["compute"]
+        api = item["api_cost"]
         official = item["official_result"]
         prompt = "exact" if tr["strict_exact_organizer_prompt_text_conformance"] else "non-exact/custom disclosed"
         if comp["gpu_cost_usd"] == 0:
@@ -215,20 +246,23 @@ def markdown(data: dict[str, Any]) -> str:
             gpu_usd = "null (" + str(comp["gpu_cost_status"]) + ")"
         local = comp["local_development_runtime_status"] or "not applicable"
         lines.append(
-            f"| [{task}]({task}/README.md) | {tr['trace_file_count']} files / {tr['event_count']} events; {prompt}; 0 live-human events | assistant {obs['assistant_output_events']}; logical calls {obs['logical_function_call_events']}; tool calls {obs['custom_tool_call_events']} (+ outputs) | `{model['provider']} / {model['model']}` / `{model['reasoning_effort']}`; {tr['total_tokens']:,} total tokens | `{official['submission_refs']}`: Public {official['public_score']}, Private {official['private_score']}; {official['binding_status']} | {comp['accelerator']}, {comp['runtime_seconds']} s; GPU USD {gpu_usd}; local: {local} | {item['known_gap']} |"
+            f"| [{task}]({task}/README.md) | {tr['trace_file_count']} files / {tr['event_count']} events; {prompt}; 0 live-human events | assistant {obs['assistant_output_events']}; logical calls {obs['logical_function_call_events']}; tool calls {obs['custom_tool_call_events']} (+ outputs) | `{model['provider']} / {model['model']}` / `{model['reasoning_effort']}`; {tr['total_tokens']:,} total tokens | `{official['submission_refs']}`: Public {official['public_score']}, Private {official['private_score']}; {official['binding_status']} | observed {comp['accelerator']}, {comp['runtime_seconds']} s; API estimate ${api['estimate_usd']:.6f}; assumed H100 server ${comp['h100_server_cost_estimate_usd']:.2f}; combined ${item['estimated_total_api_plus_h100_usd']:.6f} | {item['known_gap']} |"
         )
     lines.extend(
         [
             "",
             "## Cost interpretation",
             "",
-            "Token vectors and the selected remote runtime are recorded per task.",
-            "API USD is `null` for every task because no provider invoice or",
-            "applicable `ioai_allowed / gpt-5.6-sol` rate was captured. GPU USD is",
-            "also `null` except the explicit zero for the CPU-only Task 3 scope.",
-            "Tasks 4–6 additionally contain local H100 development observations",
-            "whose exhaustive non-overlapping runtime is unavailable; no estimate",
-            "is substituted.",
+            "Token vectors and selected remote runtime are recorded per task. Actual",
+            "invoice fields remain `null` where no invoice was captured. A separate",
+            "budgetary estimate applies the current public GPT-5.6 Sol rates of",
+            "$4/M uncached input, $0.40/M cached input, $5/M cache writes, and",
+            "$20/M output. At the user's requested server assumption of two H100s",
+            "for two hours per Task and a representative $3.925/GPU-hour median rate, the",
+            f"six-Task API estimate is ${data['global']['api_cost_estimate_usd_total']:.6f},",
+            f"the H100 estimate is ${data['global']['h100_server_cost_estimate_usd_total']:.2f} (survey range ${data['global']['h100_server_cost_estimate_low_usd_total']:.2f}-${data['global']['h100_server_cost_estimate_high_usd_total']:.2f}),",
+            f"and the combined estimate is ${data['global']['estimated_api_plus_h100_usd_total']:.6f}.",
+            "These are estimates, not invoices or reconstructed actual H100 runtime.",
             "",
             "## Where to verify",
             "",

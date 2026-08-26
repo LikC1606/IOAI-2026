@@ -377,8 +377,12 @@ def main() -> None:
         "currency": "USD",
         "api_cost_usd_total": None,
         "api_cost_status": "unavailable_no_provider_invoice_or_applicable_rate",
+        "api_cost_estimate_pricing": autonomous_material.API_ESTIMATE_PRICING,
+        "api_cost_estimate_status": "budgetary_estimate_not_invoice",
         "gpu_cost_usd_total": None,
         "gpu_cost_status": "unavailable_no_invoice_or_rate",
+        "h100_server_cost_estimate_status": "user_assumption_two_h100_gpus_for_two_hours_per_task_not_actual_invoice",
+        "h100_server_cost_estimate_basis": autonomous_material.H100_ESTIMATE,
         "tasks": {
             task: {
                 "competition": run["competition"],
@@ -388,11 +392,52 @@ def main() -> None:
                 "reasoning_effort": "max",
                 "trace_token_usage": run["trace"]["token_usage_cumulative_final"],
                 "api_cost_usd": None,
+                "api_cost_estimate_usd": autonomous_material.api_cost_estimate(
+                    run["trace"]["token_usage_cumulative_final"]
+                ),
+                "api_cost_estimate_status": "estimate_using_current_public_openai_price_assumption",
+                "h100_server_cost_estimate_usd": round(
+                    autonomous_material.H100_ESTIMATE["gpu_hours"]
+                    * autonomous_material.H100_ESTIMATE["rate_usd_per_gpu_hour"],
+                    6,
+                ),
+                "h100_server_cost_estimate_low_usd": autonomous_material.H100_ESTIMATE[
+                    "low_cost_usd_per_task"
+                ],
+                "h100_server_cost_estimate_high_usd": autonomous_material.H100_ESTIMATE[
+                    "high_cost_usd_per_task"
+                ],
+                "h100_server_cost_assumption": autonomous_material.H100_ESTIMATE,
+                "estimated_total_api_plus_h100_usd": round(
+                    autonomous_material.api_cost_estimate(
+                        run["trace"]["token_usage_cumulative_final"]
+                    )
+                    + autonomous_material.H100_ESTIMATE["gpu_hours"]
+                    * autonomous_material.H100_ESTIMATE["rate_usd_per_gpu_hour"],
+                    6,
+                ),
                 "gpu": run["gpu"],
             }
             for task, run in tasks.items()
         },
     }
+    costs["api_cost_estimate_usd_total"] = round(
+        sum(item["api_cost_estimate_usd"] for item in costs["tasks"].values()), 6
+    )
+    costs["h100_server_cost_estimate_usd_total"] = round(
+        sum(item["h100_server_cost_estimate_usd"] for item in costs["tasks"].values()), 6
+    )
+    costs["h100_server_cost_estimate_low_usd_total"] = round(
+        sum(item["h100_server_cost_estimate_low_usd"] for item in costs["tasks"].values()), 6
+    )
+    costs["h100_server_cost_estimate_high_usd_total"] = round(
+        sum(item["h100_server_cost_estimate_high_usd"] for item in costs["tasks"].values()), 6
+    )
+    costs["estimated_api_plus_h100_usd_total"] = round(
+        costs["api_cost_estimate_usd_total"]
+        + costs["h100_server_cost_estimate_usd_total"],
+        6,
+    )
     (ROOT / "REPRODUCTION_COSTS.json").write_text(json.dumps(costs, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
 
     manifest_paths = [

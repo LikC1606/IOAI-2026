@@ -103,7 +103,8 @@ all-account numerical maxima.
 | [`EXECUTION_TRACE_INDEX.json`](EXECUTION_TRACE_INDEX.json) / [`EXECUTION_TRACE_INDEX.md`](EXECUTION_TRACE_INDEX.md) | One inventory of the 35 selected redacted trace files, event counts, tool-call counts, and token totals. |
 | [`AUTONOMOUS_TRACE_INDEX.json`](AUTONOMOUS_TRACE_INDEX.json) / [`AUTONOMOUS_TRACE_MATERIAL.md`](AUTONOMOUS_TRACE_MATERIAL.md) | The authoritative autonomous-scope classification: boundaries, prompt classes, exclusions, and exact-prompt status. |
 | [`REPRODUCTION_TRACE_INDEX.json`](REPRODUCTION_TRACE_INDEX.json) / [`REPRODUCTION_TRACE_MATERIAL.md`](REPRODUCTION_TRACE_MATERIAL.md) | The separate full later two-hour Task 1/2 reproductions; these are post-deadline reference material. |
-| [`COSTS.json`](COSTS.json) / [`AUTONOMOUS_COSTS.json`](AUTONOMOUS_COSTS.json) | Token, model, accelerator-runtime, and unavailable-USD fields for the selected 35-trace scope. |
+| [`COSTS.json`](COSTS.json) / [`AUTONOMOUS_COSTS.json`](AUTONOMOUS_COSTS.json) | Token, model, accelerator-runtime, actual-charge fields, and labeled public-rate estimates for the selected 35-trace scope. |
+| [`COST_ESTIMATE.md`](COST_ESTIMATE.md) | Per-task API estimate using official GPT-5.6 Sol rates and the requested 2×H100 × 2-hour server assumption, with survey range and formulas. |
 | [`REPRODUCTION_COSTS.json`](REPRODUCTION_COSTS.json) / [`REPRODUCTION_MATERIAL_MANIFEST.sha256`](REPRODUCTION_MATERIAL_MANIFEST.sha256) | Cost/token fields and integrity hashes for the separate full Task 1/2 reproduction traces. |
 
 ## Generated material and safe refresh order

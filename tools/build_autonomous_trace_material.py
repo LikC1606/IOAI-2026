@@ -284,6 +284,76 @@ GPU = {
     },
 }
 
+# Reviewer-requested cost estimate assumptions.  The observed Kaggle runtime
+# and actual provider charge fields above remain unchanged; these fields are a
+# reproducible estimate for budgeting only.  OpenAI's current pricing page
+# lists GPT-5.6 Sol at $4/M uncached input, $0.40/M cached input, $5/M cache
+# writes, and $20/M output.  The user-requested server assumption is two H100
+# GPUs for two hours per task.  A representative H100 on-demand rate of
+# $3.925/GPU-hour is used as the median of 14 surveyed public per-GPU rates
+# ($2.19-$6.98/GPU-hour); no claim is made that this was the billed rate.
+API_ESTIMATE_PRICING = {
+    "source_url": "https://platform.openai.com/docs/pricing",
+    "as_of_utc": "2026-08-26T00:00:00Z",
+    "input_usd_per_million": 4.0,
+    "cached_input_usd_per_million": 0.40,
+    "cache_write_usd_per_million": 5.0,
+    "output_usd_per_million": 20.0,
+}
+H100_ESTIMATE = {
+    "accelerator": "Nvidia H100",
+    "gpu_count": 2,
+    "hours": 2.0,
+    "gpu_hours": 4.0,
+    "rate_usd_per_gpu_hour": 3.925,
+    "low_rate_usd_per_gpu_hour": 2.19,
+    "high_rate_usd_per_gpu_hour": 6.98,
+    "low_cost_usd_per_task": 8.76,
+    "median_cost_usd_per_task": 15.70,
+    "high_cost_usd_per_task": 27.92,
+    "rate_basis": "median of 14 surveyed public on-demand H100 per-GPU rates ($2.19-$6.98/GPU-hour), based on the 2026-08-21 comparison table",
+    "surveyed_rates_usd_per_gpu_hour": [
+        2.19,
+        2.89,
+        2.99,
+        3.19,
+        3.29,
+        3.85,
+        3.90,
+        3.95,
+        4.41,
+        5.36,
+        5.95,
+        6.16,
+        6.88,
+        6.98,
+    ],
+    "survey_source_urls": [
+        "https://www.thundercompute.com/blog/nvidia-h100-pricing",
+        "https://www.spheron.network/blog/lambda-cloud-h100-pricing-2026/",
+        "https://tech-insider.org/runpod-vs-lambda-vs-vast-ai-2026/",
+        "https://vast.ai/pricing",
+    ],
+    "survey_note": "Public comparison prices vary by provider, region, storage, SLA, and spot/on-demand tier; the median is a budgeting proxy only.",
+}
+
+
+def api_cost_estimate(token_usage: dict[str, int]) -> float:
+    uncached = token_usage["input_tokens"] - token_usage["cached_input_tokens"]
+    return round(
+        uncached * API_ESTIMATE_PRICING["input_usd_per_million"] / 1_000_000
+        + token_usage["cached_input_tokens"]
+        * API_ESTIMATE_PRICING["cached_input_usd_per_million"]
+        / 1_000_000
+        + token_usage["cache_write_input_tokens"]
+        * API_ESTIMATE_PRICING["cache_write_usd_per_million"]
+        / 1_000_000
+        + token_usage["output_tokens"]
+        * API_ESTIMATE_PRICING["output_usd_per_million"]
+        / 1_000_000,
+        6,
+    )
+
 
 def validate_task6_prefix() -> None:
     if not TASK6_MAIN_PREFIX.is_file():
@@ -588,9 +658,19 @@ def write_markdown(index: dict[str, Any]) -> None:
 def write_costs(index: dict[str, Any]) -> None:
     tasks = {}
     total = 0
+    estimated_api_total = 0.0
+    estimated_h100_total = 0.0
+    estimated_h100_low_total = 0.0
+    estimated_h100_high_total = 0.0
     for task, data in index["tasks"].items():
         token_usage = data["token_usage_cumulative_sum_across_traces"]
         total += token_usage["total_tokens"]
+        estimated_api = api_cost_estimate(token_usage)
+        estimated_h100 = round(H100_ESTIMATE["gpu_hours"] * H100_ESTIMATE["rate_usd_per_gpu_hour"], 6)
+        estimated_api_total += estimated_api
+        estimated_h100_total += estimated_h100
+        estimated_h100_low_total += H100_ESTIMATE["low_cost_usd_per_task"]
+        estimated_h100_high_total += H100_ESTIMATE["high_cost_usd_per_task"]
         tasks[task] = {
             "competition": COMPETITIONS[task],
             "model_provider": "ioai_allowed",
@@ -603,7 +683,15 @@ def write_costs(index: dict[str, Any]) -> None:
             ),
             "token_usage": token_usage,
             "api_cost_usd": None,
-            "api_cost_status": "unavailable_unpriced_ioai_provider",
+            "api_cost_status": "actual_charge_unavailable_estimate_provided",
+            "api_cost_estimate_usd": estimated_api,
+            "api_cost_estimate_status": "estimate_using_current_public_openai_price_assumption",
+            "h100_server_cost_estimate_usd": estimated_h100,
+            "h100_server_cost_estimate_low_usd": H100_ESTIMATE["low_cost_usd_per_task"],
+            "h100_server_cost_estimate_high_usd": H100_ESTIMATE["high_cost_usd_per_task"],
+            "h100_server_cost_estimate_status": "user_assumed_two_h100_gpus_for_two_hours",
+            "h100_server_cost_assumption": H100_ESTIMATE,
+            "estimated_total_api_plus_h100_usd": round(estimated_api + estimated_h100, 6),
             "gpu": GPU[task],
         }
     payload = {
@@ -614,17 +702,93 @@ def write_costs(index: dict[str, Any]) -> None:
         "known_t4_runtime_seconds": 4411.426561027,
         "known_t4_runtime_hours": 1.2253962669519445,
         "api_cost_usd_total": None,
-        "api_cost_total_status": "unavailable_no_provider_invoice_or_applicable_public_rate",
-        "api_cost_total_reason": "No invoice or exact ioai_allowed/gpt-5.6-sol rate card was captured; another model's public price is not substituted.",
-        "api_cost_formula_if_provider_rates_are_supplied": "(input_tokens-cached_input_tokens)/1e6*input_rate + cached_input_tokens/1e6*cached_input_rate + output_tokens/1e6*output_rate",
+        "api_cost_total_status": "actual_charge_unavailable_estimate_provided",
+        "api_cost_total_reason": "No provider invoice was captured. The separately labeled estimate applies the current official public gpt-5.6-sol token rates to the exact trace counters.",
+        "api_cost_formula_if_provider_rates_are_supplied": "(input_tokens-cached_input_tokens)/1e6*input_rate + cached_input_tokens/1e6*cached_input_rate + cache_write_input_tokens/1e6*cache_write_rate + output_tokens/1e6*output_rate",
+        "api_cost_estimate_usd_total": round(estimated_api_total, 6),
+        "api_cost_estimate_status": "budgetary_estimate_not_invoice",
+        "api_cost_estimate_pricing": API_ESTIMATE_PRICING,
         "gpu_cost_usd_total": None,
-        "gpu_cost_total_status": "incomplete_local_runtime_and_unavailable_rate",
-        "gpu_cost_total_reason": "Observed Kaggle T4 runtimes are reported, but Tasks 4-6 also used local H100 development and the exhaustive non-overlapping local runtime is unavailable. No billable rate or invoice was captured.",
+        "gpu_cost_total_status": "actual_charge_unavailable_user_assumption_estimate_provided",
+        "gpu_cost_total_reason": "Observed Kaggle T4 runtimes are reported, but exhaustive local H100 runtime and an invoice were not captured. The separately labeled H100 server estimate uses the user's two-GPU/two-hour-per-Task assumption.",
         "gpu_compute_accounting_status": "remote_kaggle_runtime_complete_selected_scope_local_development_incomplete",
+        "h100_server_cost_estimate_usd_total": round(estimated_h100_total, 6),
+        "h100_server_cost_estimate_low_usd_total": round(estimated_h100_low_total, 6),
+        "h100_server_cost_estimate_high_usd_total": round(estimated_h100_high_total, 6),
+        "h100_server_cost_estimate_status": "user_assumption_two_h100_gpus_for_two_hours_per_task_not_actual_invoice",
+        "h100_server_cost_estimate_basis": H100_ESTIMATE,
+        "estimated_api_plus_h100_usd_total": round(estimated_api_total + estimated_h100_total, 6),
         "tasks": tasks,
     }
     (ROOT / "AUTONOMOUS_COSTS.json").write_text(
         json.dumps(payload, ensure_ascii=False, indent=2) + "\n", encoding="utf-8"
+    )
+    # Keep the legacy public execution-cost view in lockstep with the richer
+    # autonomous ledger.  Its actual-charge fields remain null; estimate
+    # fields are explicitly labeled as budgetary assumptions.
+    public_costs = json.loads((ROOT / "COSTS.json").read_text(encoding="utf-8"))
+    public_costs.update(
+        {
+            "api_cost_method": "exact token telemetry plus separately labeled estimate using current official GPT-5.6 Sol rates",
+            "api_cost_formula_if_provider_rates_are_supplied": payload[
+                "api_cost_formula_if_provider_rates_are_supplied"
+            ],
+            "api_cost_total_status": payload["api_cost_total_status"],
+            "api_cost_total_reason": payload["api_cost_total_reason"],
+            "api_cost_estimate_usd_total": payload["api_cost_estimate_usd_total"],
+            "api_cost_estimate_status": payload["api_cost_estimate_status"],
+            "api_cost_estimate_pricing": payload["api_cost_estimate_pricing"],
+            "gpu_cost_total_status": payload["gpu_cost_total_status"],
+            "gpu_cost_total_reason": payload["gpu_cost_total_reason"],
+            "h100_server_cost_estimate_usd_total": payload[
+                "h100_server_cost_estimate_usd_total"
+            ],
+            "h100_server_cost_estimate_low_usd_total": payload[
+                "h100_server_cost_estimate_low_usd_total"
+            ],
+            "h100_server_cost_estimate_high_usd_total": payload[
+                "h100_server_cost_estimate_high_usd_total"
+            ],
+            "h100_server_cost_estimate_status": payload[
+                "h100_server_cost_estimate_status"
+            ],
+            "h100_server_cost_estimate_basis": payload[
+                "h100_server_cost_estimate_basis"
+            ],
+            "estimated_api_plus_h100_usd_total": payload[
+                "estimated_api_plus_h100_usd_total"
+            ],
+        }
+    )
+    for task, task_cost in tasks.items():
+        public_task = public_costs["tasks"][task]
+        public_task.update(
+            {
+                "api_cost_status": task_cost["api_cost_status"],
+                "api_cost_estimate_usd": task_cost["api_cost_estimate_usd"],
+                "api_cost_estimate_status": task_cost["api_cost_estimate_status"],
+                "h100_server_cost_estimate_usd": task_cost[
+                    "h100_server_cost_estimate_usd"
+                ],
+                "h100_server_cost_estimate_low_usd": task_cost[
+                    "h100_server_cost_estimate_low_usd"
+                ],
+                "h100_server_cost_estimate_high_usd": task_cost[
+                    "h100_server_cost_estimate_high_usd"
+                ],
+                "h100_server_cost_estimate_status": task_cost[
+                    "h100_server_cost_estimate_status"
+                ],
+                "h100_server_cost_assumption": task_cost[
+                    "h100_server_cost_assumption"
+                ],
+                "estimated_total_api_plus_h100_usd": task_cost[
+                    "estimated_total_api_plus_h100_usd"
+                ],
+            }
+        )
+    (ROOT / "COSTS.json").write_text(
+        json.dumps(public_costs, ensure_ascii=False, indent=2) + "\n", encoding="utf-8"
     )
 
 

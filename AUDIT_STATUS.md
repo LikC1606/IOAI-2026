@@ -52,11 +52,11 @@ the omission is auditable without exposing those contents.
 [`AUTONOMOUS_COSTS.json`](AUTONOMOUS_COSTS.json) is the machine-readable source
 for model, reasoning effort, token vectors, and observed Kaggle runtime per
 task. All selected traces use `ioai_allowed / gpt-5.6-sol`; Tasks 1–4 use
-`max`, and Tasks 5–6 use `xhigh`. Exact API USD is `null` because no provider
-invoice or applicable rate card was captured. Kaggle T4 runtime is reported for
-the selected scope; exhaustive overlapping local H100 development time for
-Tasks 4–6 and GPU USD are not reconstructable, so they remain explicitly
-unavailable rather than estimated.
+`max`, and Tasks 5–6 use `xhigh`. Actual API/GPU charge fields remain `null`
+because no provider invoice or historical GPU bill was captured. A separate
+budget estimate in [`COST_ESTIMATE.md`](COST_ESTIMATE.md) applies current
+public GPT-5.6 Sol rates and the requested two-H100-for-two-hours-per-Task
+assumption; it is not a reconstructed invoice or exhaustive local runtime.
 
 ## Remaining organizer decisions
 

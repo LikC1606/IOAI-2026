@@ -64,13 +64,13 @@ informational facts, not compliance blockers.
 ## Cost completeness
 
 Per-task token counters, provider/model attribution, and selected Kaggle remote
-runtime are recorded. API USD is unavailable because no applicable
-`ioai_allowed` / `gpt-5.6-sol` rate card or invoice was captured. GPU USD is
-also unavailable. Tasks 4–6 used local H100 development; selected observations
-are recorded where available, but exhaustive non-overlapping local GPU runtime
-cannot be reconstructed. Cost accounting is therefore complete for tokens and
-the stated selected remote scope, not a complete numeric USD or all-local-GPU
-total.
+runtime are recorded. Actual API/GPU USD charges are unavailable because no
+provider invoice or historical GPU bill was captured. A separate numeric
+budget estimate is provided in [`COST_ESTIMATE.md`](COST_ESTIMATE.md): it
+applies current public GPT-5.6 Sol token rates to exact telemetry and prices
+the requested assumption of two H100 GPUs for two hours per Task using a
+surveyed median on-demand rate. This estimate is not a reconstructed invoice
+or exhaustive local runtime total; the actual-charge fields remain null.
 
 ## Evidence entry points
 

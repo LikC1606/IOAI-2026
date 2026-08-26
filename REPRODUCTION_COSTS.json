@@ -4,8 +4,54 @@
   "currency": "USD",
   "api_cost_usd_total": null,
   "api_cost_status": "unavailable_no_provider_invoice_or_applicable_rate",
+  "api_cost_estimate_pricing": {
+    "source_url": "https://platform.openai.com/docs/pricing",
+    "as_of_utc": "2026-08-26T00:00:00Z",
+    "input_usd_per_million": 4.0,
+    "cached_input_usd_per_million": 0.4,
+    "cache_write_usd_per_million": 5.0,
+    "output_usd_per_million": 20.0
+  },
+  "api_cost_estimate_status": "budgetary_estimate_not_invoice",
   "gpu_cost_usd_total": null,
   "gpu_cost_status": "unavailable_no_invoice_or_rate",
+  "h100_server_cost_estimate_status": "user_assumption_two_h100_gpus_for_two_hours_per_task_not_actual_invoice",
+  "h100_server_cost_estimate_basis": {
+    "accelerator": "Nvidia H100",
+    "gpu_count": 2,
+    "hours": 2.0,
+    "gpu_hours": 4.0,
+    "rate_usd_per_gpu_hour": 3.925,
+    "low_rate_usd_per_gpu_hour": 2.19,
+    "high_rate_usd_per_gpu_hour": 6.98,
+    "low_cost_usd_per_task": 8.76,
+    "median_cost_usd_per_task": 15.7,
+    "high_cost_usd_per_task": 27.92,
+    "rate_basis": "median of 14 surveyed public on-demand H100 per-GPU rates ($2.19-$6.98/GPU-hour), based on the 2026-08-21 comparison table",
+    "surveyed_rates_usd_per_gpu_hour": [
+      2.19,
+      2.89,
+      2.99,
+      3.19,
+      3.29,
+      3.85,
+      3.9,
+      3.95,
+      4.41,
+      5.36,
+      5.95,
+      6.16,
+      6.88,
+      6.98
+    ],
+    "survey_source_urls": [
+      "https://www.thundercompute.com/blog/nvidia-h100-pricing",
+      "https://www.spheron.network/blog/lambda-cloud-h100-pricing-2026/",
+      "https://tech-insider.org/runpod-vs-lambda-vs-vast-ai-2026/",
+      "https://vast.ai/pricing"
+    ],
+    "survey_note": "Public comparison prices vary by provider, region, storage, SLA, and spot/on-demand tier; the median is a budgeting proxy only."
+  },
   "tasks": {
     "task1": {
       "competition": "ioai-2026-task-1-westlake-nlp-24",
@@ -22,6 +68,48 @@
         "total_tokens": 40933816
       },
       "api_cost_usd": null,
+      "api_cost_estimate_usd": 24.549085,
+      "api_cost_estimate_status": "estimate_using_current_public_openai_price_assumption",
+      "h100_server_cost_estimate_usd": 15.7,
+      "h100_server_cost_estimate_low_usd": 8.76,
+      "h100_server_cost_estimate_high_usd": 27.92,
+      "h100_server_cost_assumption": {
+        "accelerator": "Nvidia H100",
+        "gpu_count": 2,
+        "hours": 2.0,
+        "gpu_hours": 4.0,
+        "rate_usd_per_gpu_hour": 3.925,
+        "low_rate_usd_per_gpu_hour": 2.19,
+        "high_rate_usd_per_gpu_hour": 6.98,
+        "low_cost_usd_per_task": 8.76,
+        "median_cost_usd_per_task": 15.7,
+        "high_cost_usd_per_task": 27.92,
+        "rate_basis": "median of 14 surveyed public on-demand H100 per-GPU rates ($2.19-$6.98/GPU-hour), based on the 2026-08-21 comparison table",
+        "surveyed_rates_usd_per_gpu_hour": [
+          2.19,
+          2.89,
+          2.99,
+          3.19,
+          3.29,
+          3.85,
+          3.9,
+          3.95,
+          4.41,
+          5.36,
+          5.95,
+          6.16,
+          6.88,
+          6.98
+        ],
+        "survey_source_urls": [
+          "https://www.thundercompute.com/blog/nvidia-h100-pricing",
+          "https://www.spheron.network/blog/lambda-cloud-h100-pricing-2026/",
+          "https://tech-insider.org/runpod-vs-lambda-vs-vast-ai-2026/",
+          "https://vast.ai/pricing"
+        ],
+        "survey_note": "Public comparison prices vary by provider, region, storage, SLA, and spot/on-demand tier; the median is a budgeting proxy only."
+      },
+      "estimated_total_api_plus_h100_usd": 40.249085,
       "gpu": {
         "accelerator": "NvidiaTeslaT4",
         "notebook_versions": 6,
@@ -46,6 +134,48 @@
         "total_tokens": 29205639
       },
       "api_cost_usd": null,
+      "api_cost_estimate_usd": 17.044876,
+      "api_cost_estimate_status": "estimate_using_current_public_openai_price_assumption",
+      "h100_server_cost_estimate_usd": 15.7,
+      "h100_server_cost_estimate_low_usd": 8.76,
+      "h100_server_cost_estimate_high_usd": 27.92,
+      "h100_server_cost_assumption": {
+        "accelerator": "Nvidia H100",
+        "gpu_count": 2,
+        "hours": 2.0,
+        "gpu_hours": 4.0,
+        "rate_usd_per_gpu_hour": 3.925,
+        "low_rate_usd_per_gpu_hour": 2.19,
+        "high_rate_usd_per_gpu_hour": 6.98,
+        "low_cost_usd_per_task": 8.76,
+        "median_cost_usd_per_task": 15.7,
+        "high_cost_usd_per_task": 27.92,
+        "rate_basis": "median of 14 surveyed public on-demand H100 per-GPU rates ($2.19-$6.98/GPU-hour), based on the 2026-08-21 comparison table",
+        "surveyed_rates_usd_per_gpu_hour": [
+          2.19,
+          2.89,
+          2.99,
+          3.19,
+          3.29,
+          3.85,
+          3.9,
+          3.95,
+          4.41,
+          5.36,
+          5.95,
+          6.16,
+          6.88,
+          6.98
+        ],
+        "survey_source_urls": [
+          "https://www.thundercompute.com/blog/nvidia-h100-pricing",
+          "https://www.spheron.network/blog/lambda-cloud-h100-pricing-2026/",
+          "https://tech-insider.org/runpod-vs-lambda-vs-vast-ai-2026/",
+          "https://vast.ai/pricing"
+        ],
+        "survey_note": "Public comparison prices vary by provider, region, storage, SLA, and spot/on-demand tier; the median is a budgeting proxy only."
+      },
+      "estimated_total_api_plus_h100_usd": 32.744876,
       "gpu": {
         "accelerator": "NvidiaTeslaT4",
         "gpu_versions": [
@@ -61,5 +191,10 @@
         "cost_status": "unavailable_no_invoice_or_rate"
       }
     }
-  }
+  },
+  "api_cost_estimate_usd_total": 41.593961,
+  "h100_server_cost_estimate_usd_total": 31.4,
+  "h100_server_cost_estimate_low_usd_total": 17.52,
+  "h100_server_cost_estimate_high_usd_total": 55.84,
+  "estimated_api_plus_h100_usd_total": 72.993961
 }
