@@ -30,33 +30,36 @@ The channel/access distinction is recorded in
    checklist and evidence links.
 3. [`OPEN_REVIEW_ITEMS.md`](OPEN_REVIEW_ITEMS.md) — compact decision register
    for the remaining organizer/Jury questions.
-4. [`STARTUP_INSTRUCTION_INDEX.md`](STARTUP_INSTRUCTION_INDEX.md) and
+4. [`ORIGINAL_SESSION_RECOVERY.md`](ORIGINAL_SESSION_RECOVERY.md) — recovered
+   private raw-session hashes/counts for the Task 1/2 formal runs and the
+   causal reason their human-influenced suffixes are not published.
+5. [`STARTUP_INSTRUCTION_INDEX.md`](STARTUP_INSTRUCTION_INDEX.md) and
    [`STARTUP_INSTRUCTION_INDEX.json`](STARTUP_INSTRUCTION_INDEX.json) — the
    actual startup `AGENTS.md` payload and hash for each Task run.
-5. [`AGENT_INSTRUCTION_LINEAGE.md`](AGENT_INSTRUCTION_LINEAGE.md) — explains
+6. [`AGENT_INSTRUCTION_LINEAGE.md`](AGENT_INSTRUCTION_LINEAGE.md) — explains
    the task-scoped startup payload families; there was no single literal
    `AGENT.md` shared by all six runs.
-6. [`KERNEL_VERSION_MAPPING_AUDIT.md`](KERNEL_VERSION_MAPPING_AUDIT.md) —
+7. [`KERNEL_VERSION_MAPPING_AUDIT.md`](KERNEL_VERSION_MAPPING_AUDIT.md) —
    separates exact Kaggle `scriptVersionId` evidence from the unresolved
    archive version/byte mapping for the Task 1/2 official refs.
-7. [`FINAL_SUBMISSION_RESULTS.md`](FINAL_SUBMISSION_RESULTS.md) — official
+8. [`FINAL_SUBMISSION_RESULTS.md`](FINAL_SUBMISSION_RESULTS.md) — official
    account results separated from autonomous and later reproduction results.
-8. [`RULE_COMPLIANCE_AUDIT.md`](RULE_COMPLIANCE_AUDIT.md) and
+9. [`RULE_COMPLIANCE_AUDIT.md`](RULE_COMPLIANCE_AUDIT.md) and
    [`PROMPT_CONFORMANCE_AUDIT.md`](PROMPT_CONFORMANCE_AUDIT.md) — cross-task
    scope, exact-prompt, provenance, budget, hardware, and reporting audits.
-9. [`REQUIREMENT_EVIDENCE_MATRIX.md`](REQUIREMENT_EVIDENCE_MATRIX.md) — one
+10. [`REQUIREMENT_EVIDENCE_MATRIX.md`](REQUIREMENT_EVIDENCE_MATRIX.md) — one
    row per rule field with scope-labeled status and direct evidence paths.
-10. [`SUBMISSION_VERSION_AUDIT.md`](SUBMISSION_VERSION_AUDIT.md) — exact
+11. [`SUBMISSION_VERSION_AUDIT.md`](SUBMISSION_VERSION_AUDIT.md) — exact
    account-level budget and repeated Notebook-version submission audit.
-11. [`ACCESS_CONTROL_AUDIT.md`](ACCESS_CONTROL_AUDIT.md) — GitHub Private,
+12. [`ACCESS_CONTROL_AUDIT.md`](ACCESS_CONTROL_AUDIT.md) — GitHub Private,
    external Drive delivery, and archive-content handling scope.
-12. [`AUTONOMOUS_TRACE_MATERIAL.md`](AUTONOMOUS_TRACE_MATERIAL.md) and
+13. [`AUTONOMOUS_TRACE_MATERIAL.md`](AUTONOMOUS_TRACE_MATERIAL.md) and
    [`EXECUTION_TRACES.md`](EXECUTION_TRACES.md) — selected traces, event
    envelopes, boundaries, and token accounting; see also
    [`COSTS.json`](COSTS.json) for compute/accounting fields.
-13. `task1/` through `task6/` — task-specific source, outputs, reports, and
+14. `task1/` through `task6/` — task-specific source, outputs, reports, and
    compliance notes.
-14. [`KAGGLE_EXTRACTION_DELIVERY.json`](KAGGLE_EXTRACTION_DELIVERY.json) — the
+15. [`KAGGLE_EXTRACTION_DELIVERY.json`](KAGGLE_EXTRACTION_DELIVERY.json) — the
    complete external Kaggle extraction archive and Drive delivery record.
 
 ## Scope labels used throughout
@@ -64,7 +67,7 @@ The channel/access distinction is recorded in
 | Label | Meaning |
 |---|---|
 | **Official final** | The result reconciled from the extracted Kaggle account under the competition's automatic highest-Public-before-deadline rule. |
-| **Canonical autonomous rollout** | The selected no-live-human trace and result for the package's stated boundary; for Tasks 1–2 it is a later post-deadline reproduction, not the lost original run. |
+| **Canonical autonomous rollout** | The selected no-live-human trace and result for the package's stated boundary; for Tasks 1–2 it is a later post-deadline reproduction, separate from the recovered private formal session. |
 | **Historical/reproduction evidence** | Other preserved submissions, reports, source copies, or later runs retained for audit context but not substituted for the official result. |
 
 ## Official result and scope summary
@@ -174,13 +177,15 @@ For Task 1, the canonical solution selection is the later two-hour rollout
 prefix through `task_complete`; the complete raw trace remains under
 [REPRODUCTION_TRACE_MATERIAL.md](REPRODUCTION_TRACE_MATERIAL.md). Task 2 uses
 its full later trace. Neither contains a live human method/target prompt, and
-both scores remain post-deadline and non-ranking. The complete original Task 1
-and Task 2 run records were unavailable after a school-server restart; bounded
-pre-boundary formal prefixes remain as separate historical audit evidence.
-These are later fresh reproductions using the same configured solver/system,
-official competition bundle, and organizer constraints, not replacements for
-the incomplete original records. See
+both scores remain post-deadline and non-ranking. The complete raw formal Task 1
+and Task 2 sessions were subsequently located in private local archives after a
+school-server restart; their human-influenced suffixes are intentionally not
+published, while bounded pre-boundary formal prefixes remain separate
+historical audit evidence. These are later fresh reproductions using the same
+configured solver/system, official competition bundle, and organizer
+constraints, not replacements for the recovered private formal sessions. See
 [FORMAL_PREFIX_AUDIT.md](FORMAL_PREFIX_AUDIT.md).
+Recovery metadata is in [ORIGINAL_SESSION_RECOVERY.md](ORIGINAL_SESSION_RECOVERY.md).
 
 Task 4's full rule classification and corrected 12-trace solver inventory are
 in [task4/RULE_DIFFERENCE_AUDIT.md](task4/RULE_DIFFERENCE_AUDIT.md). Task 6's

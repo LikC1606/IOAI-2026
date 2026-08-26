@@ -1,7 +1,7 @@
 {
   "schema": "ioai.formal-prefix-audit.v1",
   "scope": "Supplemental bounded pre-intervention prefixes from the original formal Task 1/2 runs; these do not replace the requested later two-hour reproductions and do not make the official final results trace-bound.",
-  "recovery_statement": "The complete original run records were unavailable after a school-server restart. The bounded redacted prefixes through the applicable autonomy boundaries remain preserved, with private-source and published-file hashes recorded below.",
+  "recovery_statement": "The complete raw formal run records were subsequently located in private local archives after a school-server restart. Their bounded redacted prefixes through the applicable autonomy boundaries remain preserved publicly; private-source and published-file hashes are recorded below. Human-influenced suffixes are intentionally not published.",
   "tasks": {
     "task1": {
       "competition": "ioai-2026-task-1-westlake-nlp-24",

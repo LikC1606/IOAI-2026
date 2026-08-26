@@ -30,8 +30,8 @@ The classifications used here are:
 
 | Task | Official final bound to selected trace? | Exact organizer prompt? | Evidence-backed assessment |
 |---|:---:|:---:|---|
-| 1 | **No** | **No for the canonical reproduction** | **Strict claim not supported.** The complete original run record was unavailable after a school-server restart, but a bounded exact-prompt formal prefix is preserved as supplemental evidence. The selected two-hour run is a later post-deadline reproduction with a custom starter and a different submission. The official final refs are therefore not trace-bound. The extraction also records 38 captured notebook versions against the literal 20-version wording, and `scriptVersionId=340342513` was submitted twice as the two official-final refs; these are disclosed in `SUBMISSION_VERSION_AUDIT.json`. The official-final version reuse is a separate pre-deadline literal conflict; any post-deadline exception scope is for the organizer. |
-| 2 | **No** | **No for the canonical reproduction** | **Strict claim not supported for the official final.** The complete original run record was unavailable after a school-server restart, but a bounded exact-prompt formal prefix and eligible v2 artifact chain are preserved as supplemental evidence. The official final is downstream of the formal supervision boundary; the selected two-hour run is a different post-deadline reproduction with a custom starter. The account has 18 captured versions within the 20-version count, but `scriptVersionId=340290308` was submitted twice as refs `55260462` and `55260695`, including the eligible v2 result. The BabyAI/FiLM/MiniGrid/noisy-demonstration material was method background only. |
+| 1 | **No** | **No for the canonical reproduction** | **Strict claim not supported.** The complete raw formal session was recovered privately after a school-server restart, but its human-influenced suffix is withheld; a bounded exact-prompt formal prefix is preserved as supplemental evidence. The selected two-hour run is a later post-deadline reproduction with a custom starter and a different submission. The official final refs are therefore not trace-bound. The extraction also records 38 captured notebook versions against the literal 20-version wording, and `scriptVersionId=340342513` was submitted twice as the two official-final refs; these are disclosed in `SUBMISSION_VERSION_AUDIT.json`. The official-final version reuse is a separate pre-deadline literal conflict; any post-deadline exception scope is for the organizer. |
+| 2 | **No** | **No for the canonical reproduction** | **Strict claim not supported for the official final.** The complete raw formal session was recovered privately after a school-server restart, but its modified-continuation suffix is withheld; a bounded exact-prompt formal prefix and eligible v2 artifact chain are preserved as supplemental evidence. The official final is downstream of the formal supervision boundary; the selected two-hour run is a different post-deadline reproduction with a custom starter. The account has 18 captured versions within the 20-version count, but `scriptVersionId=340290308` was submitted twice as refs `55260462` and `55260695`, including the eligible v2 result. The BabyAI/FiLM/MiniGrid/noisy-demonstration material was method background only. |
 | 3 | **Yes** | **Yes** | The result and exact prompt are supported. The account extraction has 27 submissions in total, of which 11 were sent before and 16 after the official deadline. Under the timeline clause's deadline-scoped reading, the 11 pre-deadline submissions are within the published limit of 15; under an account-wide reading, 27 exceeds it. Separately, `scriptVersionId=340521169` was submitted twice as refs `55290807` and `55290810` immediately before the deadline. Historical report length and score statements also deviate. The full ref/version evidence and both count interpretations are in `SUBMISSION_VERSION_AUDIT.json`; the organizer decides the applicable scope. |
 | 4 | **Yes** | **No** | **Known exact-prompt deviation.** The final is downstream of a substantive generic continuation template. The corrected package contains all 12 selected solver traces. The two arXiv searches are retained for provenance and are not treated as a method-research violation; the transient local `__pycache__` and local H100 accounting remain separately disclosed. |
 | 5 | **Yes** | **Yes** | The final and exact prompt are supported. The sentence-level detection/stylometry literature is retained as method background and is not treated as a compliance problem. The exact v6 output/log are retained; its source is the trace-preserved copy because Kaggle now rejects the historical source pull. |
@@ -45,14 +45,16 @@ their declared causal boundaries. Credentials and private endpoints are
 redacted; hidden or encrypted chain-of-thought is not published. Those limits
 are provenance limits, not missing observable tool envelopes.
 
-Tasks 1 and 2 are special cases: their complete original run records are
-unavailable, while bounded pre-boundary formal prefixes remain as supplemental
-historical evidence. Their selected traces are later fresh two-hour
+Tasks 1 and 2 are special cases: their complete raw formal sessions were
+recovered in private local archives, while bounded pre-boundary formal prefixes
+remain as supplemental historical evidence and the human-influenced suffixes
+are intentionally withheld. Their selected traces are later fresh two-hour
 reproductions using the same configured solver/system, official competition
 bundle, and organizer constraints. They demonstrate no-live-human
 reproduction, but cannot prove the provenance of the earlier official final
 results; the later reproductions do not use the exact organizer Starter text.
-See `FORMAL_PREFIX_AUDIT.md/json` for the separate formal-prefix scope.
+See `FORMAL_PREFIX_AUDIT.md/json` and `ORIGINAL_SESSION_RECOVERY.md/json` for
+the separate formal-prefix and recovery scopes.
 
 Tasks 3–6 have official-final/selected-trace alignment. That alignment does not
 erase the task-specific prompt, report, budget, hardware, or provenance limits

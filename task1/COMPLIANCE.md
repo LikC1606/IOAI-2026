@@ -6,8 +6,9 @@ into an official-prompt-only result.
 
 ## Record recovery note
 
-The complete original Task 1 run record was unavailable after a school-server
-restart. A bounded pre-boundary formal prefix is nevertheless preserved under
+The complete raw formal Task 1 session was subsequently located in a private
+local archive after a school-server restart. Its human-influenced suffix is not
+published. A bounded pre-boundary formal prefix is nevertheless preserved under
 `evidence/rollouts/`, with its private-source and published-file hashes in
 `ROLLOUT_PROVENANCE.json`; its exact prompt, boundary, and scope are summarized
 in [`../FORMAL_PREFIX_AUDIT.md`](../FORMAL_PREFIX_AUDIT.md). The published
@@ -17,7 +18,9 @@ constraints. Its first 1,383 unmodified events through `task_complete` are
 selected as the canonical solution trace at
 `evidence/canonical/rollout-solution-prefix.jsonl`; the complete reproduction
 trace is kept as raw audit evidence. The formal prefix, later reproduction, and
-official account result remain separate scopes.
+official account result remain separate scopes. See the root
+[`../ORIGINAL_SESSION_RECOVERY.md`](../ORIGINAL_SESSION_RECOVERY.md) for the
+recovered raw-session metadata.
 
 ## Status
 
@@ -90,7 +93,7 @@ after the selected submission, final Agent answer, and `task_complete`. See
 ## Additional rule and material limits
 
 - The official final refs `55267333` / `55267368` are not bound to either the
-  lost original trace or the later reproduction. The GitHub task package does
+  recovered private session's unpublished suffix or the later reproduction. The GitHub task package does
   not contain a trace-linked final artifact set. The separately delivered
   Kaggle extraction contains a strongly identified kernel-linked candidate
   (`ioai-2026-task1-pairwise-kemeny`, archive directory `v5`) with source,

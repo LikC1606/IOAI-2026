@@ -29,10 +29,11 @@ RUNS: dict[str, dict[str, Any]] = {
         "account": "researai",
         "run_kind": "later_reproduction_120m",
         "record_recovery_note": (
-            "The complete original Task 1 run record was unavailable after a school-server "
-            "restart; a bounded formal prefix remains as separate historical audit material. "
-            "This is a later fresh reproduction using the same configured solver/system, "
-            "official competition bundle, and organizer constraints."
+            "The complete raw formal Task 1 session was subsequently located in a private "
+            "local archive after the school-server restart. Its post-boundary human-influenced "
+            "suffix is not published; the 350-event exact-prompt prefix is retained as separate "
+            "historical audit material. This is a later fresh reproduction using the same "
+            "configured solver/system, official competition bundle, and organizer constraints."
         ),
         "post_deadline": True,
         "ranking_eligible": False,
@@ -89,10 +90,11 @@ RUNS: dict[str, dict[str, Any]] = {
         "account": "researai",
         "run_kind": "later_reproduction_120m",
         "record_recovery_note": (
-            "The complete original Task 2 run record was unavailable after a school-server "
-            "restart; a bounded formal prefix remains as separate historical audit material. "
-            "This is a later fresh reproduction using the same configured solver/system, "
-            "official competition bundle, and organizer constraints."
+            "The complete raw formal Task 2 session was subsequently located in a private "
+            "local archive after the school-server restart. Its post-boundary human-influenced "
+            "suffix is not published; the 705-event exact-prompt prefix is retained as separate "
+            "historical audit material. This is a later fresh reproduction using the same "
+            "configured solver/system, official competition bundle, and organizer constraints."
         ),
         "post_deadline": True,
         "ranking_eligible": False,
@@ -297,10 +299,12 @@ def main() -> None:
         "the full Task 1 stream remains here for audit. Task 2 uses its full stream.",
         "Both remain post-deadline, non-ranking reference material.",
         "",
-        "The complete original Task 1 and Task 2 run records were unavailable after",
-        "a school-server restart. Bounded formal prefixes remain as separate historical",
-        "audit material. Each trace below is a later fresh reproduction using the same",
-        "configured solver/system, official competition bundle, and organizer constraints.",
+        "The complete raw formal Task 1 and Task 2 sessions were subsequently located",
+        "in private local archives after a school-server restart. Their human-influenced",
+        "suffixes are intentionally not published; bounded exact-prompt prefixes remain",
+        "separate historical audit material. Each trace below is a later fresh",
+        "reproduction using the same configured solver/system, official competition",
+        "bundle, and organizer constraints. See `ORIGINAL_SESSION_RECOVERY.md/json`.",
         "",
         "The JSONL retains startup and actual user prompts, visible Agent messages, tool",
         "calls, tool outputs, lifecycle events, and cumulative token telemetry.",
@@ -389,6 +393,8 @@ def main() -> None:
         "REPRODUCTION_TRACE_INDEX.json",
         "REPRODUCTION_TRACE_MATERIAL.md",
         "REPRODUCTION_COSTS.json",
+        "ORIGINAL_SESSION_RECOVERY.md",
+        "ORIGINAL_SESSION_RECOVERY.json",
         "tools/build_reproduction_trace_material.py",
     ] + [data["trace_file"]["path"] for data in index["tasks"].values()]
     manifest = "\n".join(f"{trace_tools.sha256(ROOT / path)}  {path}" for path in sorted(manifest_paths)) + "\n"

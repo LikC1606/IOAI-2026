@@ -193,18 +193,20 @@ def build_task1_solution_prefix() -> None:
         raise ValueError(f"unexpected Task 1 prefix token totals: {totals}")
 RECOVERY_NOTES = {
     "task1": (
-        "The complete original Task 1 run record was unavailable after a school-server "
-        "restart. A bounded pre-boundary formal prefix remains under "
-        "task1/evidence/rollouts; the canonical trace is a later fresh reproduction "
+        "The complete raw formal Task 1 session was subsequently located in a private "
+        "local archive after a school-server restart. Its human-influenced suffix is "
+        "not published; a bounded pre-boundary formal prefix remains under "
+        "task1/evidence/rollouts. The canonical trace is a later fresh reproduction "
         "using the same configured solver/system, official competition bundle, and "
-        "organizer constraints."
+        "organizer constraints. See ORIGINAL_SESSION_RECOVERY.md/json."
     ),
     "task2": (
-        "The complete original Task 2 run record was unavailable after a school-server "
-        "restart. A bounded pre-boundary formal prefix remains under "
-        "task2/evidence/rollouts; the canonical trace is a later fresh reproduction "
+        "The complete raw formal Task 2 session was subsequently located in a private "
+        "local archive after a school-server restart. Its human-influenced suffix is "
+        "not published; a bounded pre-boundary formal prefix remains under "
+        "task2/evidence/rollouts. The canonical trace is a later fresh reproduction "
         "using the same configured solver/system, official competition bundle, and "
-        "organizer constraints."
+        "organizer constraints. See ORIGINAL_SESSION_RECOVERY.md/json."
     ),
 }
 
@@ -513,10 +515,12 @@ def write_markdown(index: dict[str, Any]) -> None:
         "a measured technical behavior; neither is treated as a compliance blocker. See",
         "`RULE_COMPLIANCE_AUDIT.md/json`.",
         "",
-        "For Tasks 1 and 2, the complete original run records were unavailable after",
-        "a school-server restart; bounded formal prefixes remain as separate historical",
-        "audit material, while the selected traces are later fresh reproductions using",
-        "the same configured solver/system and organizer constraints.",
+        "For Tasks 1 and 2, complete raw formal sessions were subsequently recovered",
+        "in private local archives after a school-server restart. Their human-influenced",
+        "suffixes are intentionally unpublished; bounded formal prefixes remain separate",
+        "historical audit material, while the selected traces are later fresh reproductions",
+        "using the same configured solver/system and organizer constraints. See",
+        "`ORIGINAL_SESSION_RECOVERY.md/json`.",
         "",
         "| Task | Trace files | Events | User prompts | Logical calls | Tokens | Boundary (exclusive UTC) |",
         "|---|---:|---:|---:|---:|---:|---|",
@@ -631,6 +635,8 @@ def write_manifest(index: dict[str, Any]) -> None:
         "ORGANIZER_SUBMISSION.json",
         "ORGANIZER_REVIEW_GUIDE.md",
         "OPEN_REVIEW_ITEMS.md",
+        "ORIGINAL_SESSION_RECOVERY.md",
+        "ORIGINAL_SESSION_RECOVERY.json",
         "AUDIT_STATUS.md",
         "AGENT_INSTRUCTION_LINEAGE.md",
         "KERNEL_VERSION_MAPPING_AUDIT.md",

@@ -1,7 +1,8 @@
 {
   "formal_solver": {
     "filename": "rollout-2026-08-05T17-20-55-019fd139-d180-7171-ac0b-c037e11866eb.jsonl",
-    "private_original_path": "/workspace/IOAI/next-task/ioai-2026-task-1-westlake-nlp-24/codex-home/sessions/2026/08/05/rollout-2026-08-05T17-20-55-019fd139-d180-7171-ac0b-c037e11866eb.jsonl",
+    "private_original_path": "/workspace/IOAI/runs/next-task/ioai-2026-task-1-westlake-nlp-24/codex-home/sessions/2026/08/05/rollout-2026-08-05T17-20-55-019fd139-d180-7171-ac0b-c037e11866eb.jsonl",
+    "recovery_register": "../ORIGINAL_SESSION_RECOVERY.json",
     "private_original_sha256": "caeff9bb37bef475044391ca35ba834a3aaf144278b66b50adffbc023127e3d6",
     "redacted_sha256": "bcfb0c6ffca945638aedd4b3771915bc88abf72ca29843b457e966427684eb89",
     "boundary_utc_exclusive": "2026-08-05T10:16:52.222Z",

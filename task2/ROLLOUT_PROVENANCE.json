@@ -1,6 +1,8 @@
 {
   "task": 2,
   "provenance": {
+    "recovery_register": "../ORIGINAL_SESSION_RECOVERY.json",
+    "private_original_path": "/workspace/IOAI/runs/historical/ioai2-competition-runs-task2-formal-20260805T052738Z/ioai-2026-task-2-westlake-nlp-24/codex-home/sessions/2026/08/05/rollout-2026-08-05T13-30-31-019fd066-e338-71a0-9d8e-6e1d154c5a79.jsonl",
     "boundary_utc": "2026-08-05T06:24:47.549Z",
     "boundary_prompt_body_in_repository": false,
     "causal_suffix_in_repository": false,

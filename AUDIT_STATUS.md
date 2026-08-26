@@ -12,8 +12,8 @@ direct evidence path, see [`OPEN_REVIEW_ITEMS.md`](OPEN_REVIEW_ITEMS.md).
 
 | Task | Official final (Public / Private) | Published no-live-human trace | Exact organizer prompt text | Main qualification |
 |---|---:|---|---|---|
-| [1](task1/) | 0.77751 / 0.80474 (`55267333`, `55267368`) | Later 120-minute reproduction; 1 canonical prefix | No | Original run lost after school-server restart; later trace is post-deadline and non-ranking. Exact-prompt formal prefix is separate and has no scored submission. |
-| [2](task2/) | 0.63583 / 0.62500 (`55261432`) | Later 120-minute reproduction; full trace | No | Original run lost after school-server restart; later trace is post-deadline and non-ranking. Exact-prompt formal prefix and eligible `55260695` are separate evidence. |
+| [1](task1/) | 0.77751 / 0.80474 (`55267333`, `55267368`) | Later 120-minute reproduction; 1 canonical prefix | No | Raw formal session recovered privately; its 425-event human-influenced suffix is withheld. Later trace is post-deadline/non-ranking; exact-prompt 350-event prefix is separate and has no scored submission. |
+| [2](task2/) | 0.63583 / 0.62500 (`55261432`) | Later 120-minute reproduction; full trace | No | Raw formal session recovered privately; its 662-event modified-continuation suffix is withheld. Later trace is post-deadline/non-ranking; exact-prompt 705-event prefix and eligible `55260695` are separate evidence. |
 | [3](task3/) | 58.51666 / 51.61666 (`55289569`, `55289823`) | 4 traces covering 8 scored submissions | Yes | Account/version-budget interpretation and report/timeline fields remain for Jury determination. |
 | [4](task4/) | 98.41 / 98.32 (`55316818`) | 12 traces | No | Formatting-modified Starter and substantive non-exact continuation are disclosed; final artifact chain is verified. |
 | [5](task5/) | 95.39 / 96.06 (`55320296`) | 14 traces | Yes | Historical v6 source pull returned HTTP 403; byte identity limitation is disclosed. |

@@ -6,7 +6,8 @@
     "known_deviation": "Direct repository evidence conflicts with a stated requirement or the provenance scope needed for the claim.",
     "informational_disclosure": "A technically relevant fact is retained for reproducibility but is not classified as a rule problem.",
     "jury_interpretation_risk": "The facts are established but the published wording does not resolve how the organizer/Jury applies the remaining prompt, hardware, or provenance rule.",
-    "evidence_unavailable": "A historical fact cannot be reconstructed from retained records and is not replaced with a post-run assertion."
+    "evidence_unavailable": "A historical fact cannot be reconstructed from retained records and is not replaced with a post-run assertion.",
+    "provenance_scope_limit": "The raw session is privately recovered, but the public causal prefix intentionally excludes human-influenced events and cannot bind a later official result."
   },
   "trace_scope_status": "complete_selected_observable_prefixes_with_disclosed_provenance_limits",
   "tasks": {
@@ -15,9 +16,9 @@
       "official_final_trace_alignment": false,
       "strict_exact_organizer_prompt_text_conformance": false,
       "strict_claim_status": "not_supported",
-      "primary_classifications": ["known_deviation", "evidence_unavailable"],
+      "primary_classifications": ["known_deviation", "provenance_scope_limit"],
       "risks": [
-        "complete_original_run_record_unavailable_after_school_server_restart",
+        "complete_raw_session_recovered_privately_human_influenced_suffix_withheld",
         "bounded_formal_prefix_preserved_as_supplemental_evidence",
         "later_reproduction_is_post_deadline_different_submission",
         "custom_starter_prompt",
@@ -41,9 +42,9 @@
       "official_final_trace_alignment": false,
       "strict_exact_organizer_prompt_text_conformance": false,
       "strict_claim_status": "not_supported",
-      "primary_classifications": ["known_deviation", "evidence_unavailable"],
+      "primary_classifications": ["known_deviation", "provenance_scope_limit"],
       "risks": [
-        "complete_original_run_record_unavailable_after_school_server_restart",
+        "complete_raw_session_recovered_privately_modified_continuation_suffix_withheld",
         "bounded_formal_prefix_preserved_as_supplemental_evidence",
         "official_final_downstream_of_formal_supervision_boundary",
         "later_reproduction_is_post_deadline_different_submission",

@@ -4,10 +4,11 @@ Generated from the JSON index by `tools/build_execution_trace_index.py`.
 The JSONL files are credential-redacted observable traces; see
 [`EXECUTION_TRACES.md`](EXECUTION_TRACES.md) for interpretation and limits.
 
-Task 1 and Task 2 selected records are later fresh reproductions after the
-complete original run records became unavailable following a school-server
-restart. Bounded formal prefixes remain as supplemental historical audit
-material in each task package; their notes and scope are recorded in the JSON index.
+Task 1 and Task 2 selected records are later fresh reproductions. Complete
+raw formal sessions were subsequently recovered in private local archives after
+a school-server restart; their human-influenced suffixes remain unpublished, and
+bounded formal prefixes are supplemental historical audit material. See
+`ORIGINAL_SESSION_RECOVERY.md/json`; notes and scope are recorded in this index.
 
 | Task | Files | Events | Logical calls | Outer exec calls | Tokens |
 |---|---:|---:|---:|---:|---:|

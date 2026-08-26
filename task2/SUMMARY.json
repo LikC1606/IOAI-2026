@@ -26,7 +26,7 @@
   "official_final_public_score": 0.63583,
   "official_final_private_score": 0.625,
   "official_final_trace_alignment": false,
-  "official_final_trace_alignment_limit": "Official ExtraTrees final is downstream of the formal supervision boundary; later reproduction is a different post-deadline submission.",
+  "official_final_trace_alignment_limit": "The recovered private session includes a human-influenced suffix that is not published; its bounded prefix and the later reproduction are different scopes, and the official ExtraTrees final is downstream of the formal supervision boundary.",
   "account_submission_count": 16,
   "submissions_before_official_deadline": 5,
   "submissions_after_official_deadline": 11,
@@ -48,10 +48,18 @@
   },
   "external_method_research_status": "method_background_only_not_treated_as_compliance_issue",
   "historical_remote_source_retrievable": true,
+  "original_session_recovery": {
+    "register": "../ORIGINAL_SESSION_RECOVERY.json",
+    "private_original_sha256": "0573b7a06093526fa9d81856ec370801e66fff4404e2c6811909db8ef292b09d",
+    "total_events": 1367,
+    "published_prefix_events": 705,
+    "excluded_human_influenced_suffix_events": 662,
+    "raw_session_published": false
+  },
   "canonical_autonomous_rollout": {
     "trace_path": "evidence/reproduction-120m/rollout.jsonl",
     "run_kind": "later_reproduction_120m",
-    "record_recovery_note": "The complete original Task 2 run record was unavailable after a school-server restart. A bounded exact-prompt formal prefix remains as supplemental historical audit evidence; this is a later fresh reproduction using the same configured solver/system, official competition bundle, and organizer constraints, not a replacement for the incomplete original record.",
+    "record_recovery_note": "The complete raw formal Task 2 session was subsequently located in a private local archive after a school-server restart. Its human-influenced suffix is not published; a bounded exact-prompt formal prefix remains as supplemental historical audit evidence. This is a later fresh reproduction using the same configured solver/system, official competition bundle, and organizer constraints, not a replacement for the recovered private formal session.",
     "autonomy_status": "fully_autonomous_no_live_human_intervention",
     "run_window_start_utc": "2026-08-05T16:20:09.021Z",
     "boundary_utc_exclusive": "2026-08-05T18:20:08.972Z",

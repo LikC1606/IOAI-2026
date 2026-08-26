@@ -6,10 +6,12 @@ is the exact prefix through task_complete under `task1/evidence/canonical/`;
 the full Task 1 stream remains here for audit. Task 2 uses its full stream.
 Both remain post-deadline, non-ranking reference material.
 
-The complete original Task 1 and Task 2 run records were unavailable after
-a school-server restart. Bounded formal prefixes remain as separate historical
-audit material. Each trace below is a later fresh reproduction using the same
-configured solver/system, official competition bundle, and organizer constraints.
+The complete raw formal Task 1 and Task 2 sessions were subsequently located
+in private local archives after a school-server restart. Their human-influenced
+suffixes are intentionally not published; bounded exact-prompt prefixes remain
+separate historical audit material. Each trace below is a later fresh
+reproduction using the same configured solver/system, official competition
+bundle, and organizer constraints. See `ORIGINAL_SESSION_RECOVERY.md/json`.
 
 The JSONL retains startup and actual user prompts, visible Agent messages, tool
 calls, tool outputs, lifecycle events, and cumulative token telemetry.
@@ -38,7 +40,7 @@ Task 1 prefix and full Task 2 trace are selected in
 ## task1
 
 Competition: `ioai-2026-task-1-westlake-nlp-24`; account: `researai`.
-Record recovery note: The complete original Task 1 run record was unavailable after a school-server restart; a bounded formal prefix remains as separate historical audit material. This is a later fresh reproduction using the same configured solver/system, official competition bundle, and organizer constraints.
+Record recovery note: The complete raw formal Task 1 session was subsequently located in a private local archive after the school-server restart. Its post-boundary human-influenced suffix is not published; the 350-event exact-prompt prefix is retained as separate historical audit material. This is a later fresh reproduction using the same configured solver/system, official competition bundle, and organizer constraints.
 Run window: `2026-08-05T16:25:50.693Z` to `2026-08-05T18:25:50.634Z`.
 Official Kaggle deadline: `2026-08-05T10:50:00Z` (the run starts after it).
 Trace: [`rollout.jsonl`](task1/evidence/reproduction-120m/rollout.jsonl) — 1398 events; SHA-256 `ee1f08c710402e2db9408eb6ec122b17ef1c8f8dd8d2b1aab21af71c0f9deb84`.
@@ -55,7 +57,7 @@ Observed compute: {"accelerator": "NvidiaTeslaT4", "notebook_versions": 6, "obse
 ## task2
 
 Competition: `ioai-2026-task-2-westlake-nlp-24`; account: `researai`.
-Record recovery note: The complete original Task 2 run record was unavailable after a school-server restart; a bounded formal prefix remains as separate historical audit material. This is a later fresh reproduction using the same configured solver/system, official competition bundle, and organizer constraints.
+Record recovery note: The complete raw formal Task 2 session was subsequently located in a private local archive after the school-server restart. Its post-boundary human-influenced suffix is not published; the 705-event exact-prompt prefix is retained as separate historical audit material. This is a later fresh reproduction using the same configured solver/system, official competition bundle, and organizer constraints.
 Run window: `2026-08-05T16:20:09.021Z` to `2026-08-05T18:20:08.972Z`.
 Official Kaggle deadline: `2026-08-05T07:35:00Z` (the run starts after it).
 Trace: [`rollout.jsonl`](task2/evidence/reproduction-120m/rollout.jsonl) — 1067 events; SHA-256 `429c4a133ea7c661f48fdf4f547baf481a0fd12c209449d5804df662ee95d3a8`.

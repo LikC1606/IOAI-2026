@@ -72,7 +72,7 @@
           }
         }
       ],
-      "record_recovery_note": "The complete original Task 1 run record was unavailable after a school-server restart; a bounded pre-boundary formal prefix remains under task1/evidence/rollouts, while the selected trace is a later fresh reproduction using the same configured solver/system and organizer constraints.",
+      "record_recovery_note": "The complete raw formal Task 1 session was subsequently located in a private local archive after a school-server restart. Its human-influenced suffix is not published; a bounded pre-boundary formal prefix remains under task1/evidence/rollouts, while the selected trace is a later fresh reproduction using the same configured solver/system and organizer constraints. See ORIGINAL_SESSION_RECOVERY.md/json.",
       "canonical_model": "gpt-5.6-sol",
       "model_provider": "ioai_allowed",
       "reasoning_effort": "max",
@@ -182,7 +182,7 @@
           }
         }
       ],
-      "record_recovery_note": "The complete original Task 2 run record was unavailable after a school-server restart; a bounded pre-boundary formal prefix remains under task2/evidence/rollouts, while the selected trace is a later fresh reproduction using the same configured solver/system and organizer constraints.",
+      "record_recovery_note": "The complete raw formal Task 2 session was subsequently located in a private local archive after a school-server restart. Its human-influenced suffix is not published; a bounded pre-boundary formal prefix remains under task2/evidence/rollouts, while the selected trace is a later fresh reproduction using the same configured solver/system and organizer constraints. See ORIGINAL_SESSION_RECOVERY.md/json.",
       "canonical_model": "gpt-5.6-sol",
       "model_provider": "ioai_allowed",
       "reasoning_effort": "max",

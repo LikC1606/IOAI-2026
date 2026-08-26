@@ -4,6 +4,11 @@
   "audit_status": "AUDIT_STATUS.md",
   "organizer_review_guide": "ORGANIZER_REVIEW_GUIDE.md",
   "open_review_items": "OPEN_REVIEW_ITEMS.md",
+  "original_session_recovery": {
+    "markdown": "ORIGINAL_SESSION_RECOVERY.md",
+    "json": "ORIGINAL_SESSION_RECOVERY.json",
+    "status": "complete_private_raw_sessions_recovered_public_suffixes_causally_redacted"
+  },
   "requirement_evidence_matrix": {
     "json": "REQUIREMENT_EVIDENCE_MATRIX.json",
     "markdown": "REQUIREMENT_EVIDENCE_MATRIX.md",
@@ -139,6 +144,10 @@
       "FORMAL_PREFIX_AUDIT.md",
       "FORMAL_PREFIX_AUDIT.json"
     ],
+    "tasks1_2_original_session_recovery": [
+      "ORIGINAL_SESSION_RECOVERY.md",
+      "ORIGINAL_SESSION_RECOVERY.json"
+    ],
     "tasks1_2_official_final_extraction_candidates": [
       "task1/remote/OFFICIAL_FINAL_EXTRACTION_PROVENANCE.json",
       "task2/remote/OFFICIAL_FINAL_EXTRACTION_PROVENANCE.json"
@@ -174,7 +183,7 @@
         "REPRODUCTION_COSTS.json",
         "REPRODUCTION_MATERIAL_MANIFEST.sha256"
       ],
-      "note": "The complete original Task 1 and Task 2 run records were unavailable after a school-server restart, while bounded formal prefixes remain as separate historical audit material. These are full redacted later 120-minute reproductions using the same configured solver/system, official competition bundle, and organizer constraints. Task 1's canonical solution selection is the exact prefix through task_complete while its full raw stream remains here; Task 2 uses its full reproduction. Both are post-deadline and non-ranking, and their custom starter appendices prevent exact-prompt claims. The reproduction manifest binds both trace files, indexes, costs, and the builder. See FORMAL_PREFIX_AUDIT.md/json for the separate formal-prefix scope."
+      "note": "The complete raw formal Task 1 and Task 2 sessions were subsequently recovered in private local archives after a school-server restart. Their human-influenced suffixes are intentionally not published, while bounded formal prefixes remain as separate historical audit material. These are full redacted later 120-minute reproductions using the same configured solver/system, official competition bundle, and organizer constraints. Task 1's canonical solution selection is the exact prefix through task_complete while its full raw stream remains here; Task 2 uses its full reproduction. Both are post-deadline and non-ranking, and their custom starter appendices prevent exact-prompt claims. The reproduction manifest binds both trace files, indexes, costs, and the builder. See FORMAL_PREFIX_AUDIT.md/json and ORIGINAL_SESSION_RECOVERY.md/json."
     },
     "prompts_and_visible_outputs": {
       "status": "complete_for_selected_observable_trace_scope",

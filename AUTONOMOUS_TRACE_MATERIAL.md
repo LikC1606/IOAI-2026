@@ -22,10 +22,12 @@ background provenance, and Task 6's evaluator-batch dependence is retained as
 a measured technical behavior; neither is treated as a compliance blocker. See
 `RULE_COMPLIANCE_AUDIT.md/json`.
 
-For Tasks 1 and 2, the complete original run records were unavailable after
-a school-server restart; bounded formal prefixes remain as separate historical
-audit material, while the selected traces are later fresh reproductions using
-the same configured solver/system and organizer constraints.
+For Tasks 1 and 2, complete raw formal sessions were subsequently recovered
+in private local archives after a school-server restart. Their human-influenced
+suffixes are intentionally unpublished; bounded formal prefixes remain separate
+historical audit material, while the selected traces are later fresh reproductions
+using the same configured solver/system and organizer constraints. See
+`ORIGINAL_SESSION_RECOVERY.md/json`.
 
 | Task | Trace files | Events | User prompts | Logical calls | Tokens | Boundary (exclusive UTC) |
 |---|---:|---:|---:|---:|---:|---|
@@ -47,7 +49,7 @@ Verify the complete selected set with
 
 Boundary: canonical causal solution prefix ends at task_complete; the complete later reproduction remains in the separate reproduction audit package.
 
-Record recovery note: The complete original Task 1 run record was unavailable after a school-server restart. A bounded pre-boundary formal prefix remains under task1/evidence/rollouts; the canonical trace is a later fresh reproduction using the same configured solver/system, official competition bundle, and organizer constraints.
+Record recovery note: The complete raw formal Task 1 session was subsequently located in a private local archive after a school-server restart. Its human-influenced suffix is not published; a bounded pre-boundary formal prefix remains under task1/evidence/rollouts. The canonical trace is a later fresh reproduction using the same configured solver/system, official competition bundle, and organizer constraints. See ORIGINAL_SESSION_RECOVERY.md/json.
 
 Strict exact organizer prompt text: **no**.
 Prompt audit note: The reproduction starter contains a user-requested fresh-run-isolation appendix. The canonical solution prefix ends at task_complete and contains no continuation event, but the custom starter still prevents an exact-prompt-only claim. The full raw reproduction preserves the later post-solution continuation separately.
@@ -67,7 +69,7 @@ Explicitly excluded:
 
 Boundary: later two-hour reproduction deadline; no live human method/target prompt was delivered.
 
-Record recovery note: The complete original Task 2 run record was unavailable after a school-server restart. A bounded pre-boundary formal prefix remains under task2/evidence/rollouts; the canonical trace is a later fresh reproduction using the same configured solver/system, official competition bundle, and organizer constraints.
+Record recovery note: The complete raw formal Task 2 session was subsequently located in a private local archive after a school-server restart. Its human-influenced suffix is not published; a bounded pre-boundary formal prefix remains under task2/evidence/rollouts. The canonical trace is a later fresh reproduction using the same configured solver/system, official competition bundle, and organizer constraints. See ORIGINAL_SESSION_RECOVERY.md/json.
 
 Strict exact organizer prompt text: **no**.
 Prompt audit note: The reproduction starter contains a user-requested fresh-run-isolation appendix; there is no continuation event in this reproduction.

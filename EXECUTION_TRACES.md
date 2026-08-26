@@ -17,9 +17,10 @@ the full raw stream remains in the reproduction package; Task 2 uses its full
 later trace.
 They remain post-deadline, non-ranking traces for official-score purposes and
 must not be read as the official account result.
-The complete original Task 1 and Task 2 run records were unavailable after a
-school-server restart; bounded pre-boundary formal prefixes remain as separate
-historical audit evidence. Those two selected traces are later fresh
+The complete raw formal Task 1 and Task 2 sessions were subsequently recovered
+in private local archives after a school-server restart. Their human-influenced
+suffixes are intentionally withheld; bounded pre-boundary formal prefixes remain
+as separate historical audit evidence. Those two selected traces are later fresh
 reproductions using the same configured solver/system, official competition
 bundle, and organizer constraints, not replacements for the incomplete
 original records. See [`FORMAL_PREFIX_AUDIT.md`](FORMAL_PREFIX_AUDIT.md).
@@ -34,8 +35,9 @@ set above:
 | 1 | 350 events | Exact Starter Prompt; no continuation | None before the boundary | Historical bounded audit only |
 | 2 | 705 events | Exact Starter and Continuation Prompts | `55260695`, Public `0.55416`, Private `0.54833` | Historical bounded audit plus eligible v2 artifact chain |
 
-The complete original formal runs for Tasks 1 and 2 are not available after a
-school-server restart. A prefix is not silently expanded into a complete
+The complete raw formal sessions for Tasks 1 and 2 are available only in the
+private local archives recorded in `ORIGINAL_SESSION_RECOVERY.json`; their
+human-influenced suffixes are not published. A prefix is not silently expanded into a complete
 historical trace, and neither prefix is used to claim causal provenance for the
 account's later automatic official final. Hashes, timestamps, prompt checks,
 and boundary definitions are in [`FORMAL_PREFIX_AUDIT.json`](FORMAL_PREFIX_AUDIT.json).

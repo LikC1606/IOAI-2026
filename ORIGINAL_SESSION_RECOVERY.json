@@ -1,0 +1,59 @@
+{
+  "schema": "ioai.original-session-recovery.v1",
+  "purpose": "Record the private recovery of the complete raw Task 1/2 formal sessions without publishing their human-influenced suffixes.",
+  "repository_policy": "The raw JSONL sessions are not copied into this repository. Only hashes, counts, timestamps, boundary metadata, and scope classifications are published.",
+  "tasks": {
+    "task1": {
+      "competition": "ioai-2026-task-1-westlake-nlp-24",
+      "recovery_status": "complete_raw_session_located_in_private_local_archive",
+      "private_archive_path": "/workspace/IOAI/runs/next-task/ioai-2026-task-1-westlake-nlp-24/codex-home/sessions/2026/08/05/rollout-2026-08-05T17-20-55-019fd139-d180-7171-ac0b-c037e11866eb.jsonl",
+      "private_original_sha256": "caeff9bb37bef475044391ca35ba834a3aaf144278b66b50adffbc023127e3d6",
+      "total_events": 775,
+      "first_timestamp_utc": "2026-08-05T09:20:55.426Z",
+      "last_timestamp_utc": "2026-08-05T11:04:39.466Z",
+      "user_prompt_events_total": 5,
+      "published_prefix": {
+        "path": "task1/evidence/rollouts/rollout-2026-08-05T17-20-55-019fd139-d180-7171-ac0b-c037e11866eb.jsonl",
+        "sha256": "bcfb0c6ffca945638aedd4b3771915bc88abf72ca29843b457e966427684eb89",
+        "events": 350,
+        "boundary_exclusive_utc": "2026-08-05T10:16:52.222Z",
+        "last_timestamp_utc": "2026-08-05T09:52:58.695Z",
+        "scope": "exact-prompt_bounded_preboundary_historical_audit_only"
+      },
+      "excluded_suffix": {
+        "events": 425,
+        "first_timestamp_utc": "2026-08-05T10:17:35.568Z",
+        "last_timestamp_utc": "2026-08-05T11:04:39.466Z",
+        "redacted_sha256": "390d1fa9399fe42bfd31412659af9156a8e98542713ad2b6371ee51efefe870b",
+        "content_in_repository": false,
+        "reason": "contains_live_human_continuation_and_causally_downstream_events"
+      }
+    },
+    "task2": {
+      "competition": "ioai-2026-task-2-westlake-nlp-24",
+      "recovery_status": "complete_raw_session_located_in_private_local_archive",
+      "private_archive_path": "/workspace/IOAI/runs/historical/ioai2-competition-runs-task2-formal-20260805T052738Z/ioai-2026-task-2-westlake-nlp-24/codex-home/sessions/2026/08/05/rollout-2026-08-05T13-30-31-019fd066-e338-71a0-9d8e-6e1d154c5a79.jsonl",
+      "private_original_sha256": "0573b7a06093526fa9d81856ec370801e66fff4404e2c6811909db8ef292b09d",
+      "total_events": 1367,
+      "first_timestamp_utc": "2026-08-05T05:30:31.777Z",
+      "last_timestamp_utc": "2026-08-05T07:44:00.825Z",
+      "user_prompt_events_total": 14,
+      "published_prefix": {
+        "path": "task2/evidence/rollouts/rollout-2026-08-05T13-30-31-019fd066-e338-71a0-9d8e-6e1d154c5a79.jsonl",
+        "sha256": "a7dc48c7a837b3536d835c17fdee63db6fe27b79cd1cc577cbf4e15672f45014",
+        "events": 705,
+        "boundary_exclusive_utc": "2026-08-05T06:24:47.549Z",
+        "last_timestamp_utc": "2026-08-05T06:24:47.487Z",
+        "scope": "exact-prompt_bounded_preboundary_historical_audit_only"
+      },
+      "excluded_suffix": {
+        "events": 662,
+        "first_timestamp_utc": "2026-08-05T06:24:47.549Z",
+        "last_timestamp_utc": "2026-08-05T07:44:00.825Z",
+        "content_in_repository": false,
+        "reason": "begins_with_first_modified_continuation_prompt_and_contains_causally_downstream_events"
+      }
+    }
+  },
+  "interpretation": "A complete raw session being available privately does not make its official final result autonomous: the public evidence boundary remains causal, and the excluded human prompt bodies and suffixes are not published. The later Task 1/2 two-hour reproductions remain separate post-deadline reference runs."
+}

@@ -6,15 +6,16 @@ method as support for the claimed result.
 
 ## Record recovery note
 
-The complete original Task 2 run record was unavailable after a school-server
-restart. A bounded pre-boundary formal prefix remains under
+The complete raw formal Task 2 session was subsequently located in a private
+local archive after a school-server restart. Its human-influenced suffix is not
+published. A bounded pre-boundary formal prefix remains under
 `evidence/rollouts/`, with its private-source and published-file hashes in
 `ROLLOUT_PROVENANCE.json`; [`../FORMAL_PREFIX_AUDIT.md`](../FORMAL_PREFIX_AUDIT.md)
 records its exact prompt hashes, boundary, and result scope. That prefix contains the exact Starter/Continuation
 and the eligible v2 result described below. The published
 `evidence/reproduction-120m/rollout.jsonl` is a later fresh reproduction using
 the same configured solver/system, official competition bundle, and organizer
-constraints. It is clearly separated from the incomplete original record and
+constraints. It is clearly separated from the recovered private formal session and
 from the official account result.
 
 ## Eligible scope

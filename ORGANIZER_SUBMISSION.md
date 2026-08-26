@@ -19,6 +19,12 @@ The numbered [`OPEN_REVIEW_ITEMS.md`](OPEN_REVIEW_ITEMS.md) register gathers
 those remaining decisions in one place, with a direct evidence link for each
 item.
 
+The recovered private raw-session metadata for the original Task 1/2 formal
+runs is summarized in [`ORIGINAL_SESSION_RECOVERY.md`](ORIGINAL_SESSION_RECOVERY.md)
+and [`ORIGINAL_SESSION_RECOVERY.json`](ORIGINAL_SESSION_RECOVERY.json). The raw
+JSONL files are not copied into this repository; only their hashes, counts,
+timestamps, and causal exclusion metadata are included.
+
 For a requirement-by-requirement view, use the
 [`REQUIREMENT_EVIDENCE_MATRIX.md`](REQUIREMENT_EVIDENCE_MATRIX.md) table or its
 machine-readable [`REQUIREMENT_EVIDENCE_MATRIX.json`](REQUIREMENT_EVIDENCE_MATRIX.json).
@@ -63,7 +69,7 @@ Special evidence is linked here for quick review:
 | Organizer requirement | Status | Evidence |
 |---|---|---|
 | Execution traces for Tasks 1–6 | Complete selected observable prefixes; provenance limits disclosed | [`AUTONOMOUS_TRACE_MATERIAL.md`](AUTONOMOUS_TRACE_MATERIAL.md), [`AUTONOMOUS_TRACE_INDEX.json`](AUTONOMOUS_TRACE_INDEX.json) |
-| Later two-hour reproduction traces for Tasks 1–2 | Complete, separately scoped post-deadline reproductions; not the lost originals | [`REPRODUCTION_TRACE_MATERIAL.md`](REPRODUCTION_TRACE_MATERIAL.md), [`REPRODUCTION_TRACE_INDEX.json`](REPRODUCTION_TRACE_INDEX.json), [`REPRODUCTION_COSTS.json`](REPRODUCTION_COSTS.json), [`REPRODUCTION_MATERIAL_MANIFEST.sha256`](REPRODUCTION_MATERIAL_MANIFEST.sha256) |
+| Later two-hour reproduction traces for Tasks 1–2 | Complete, separately scoped post-deadline reproductions; not substitutes for the recovered private formal sessions | [`REPRODUCTION_TRACE_MATERIAL.md`](REPRODUCTION_TRACE_MATERIAL.md), [`REPRODUCTION_TRACE_INDEX.json`](REPRODUCTION_TRACE_INDEX.json), [`REPRODUCTION_COSTS.json`](REPRODUCTION_COSTS.json), [`REPRODUCTION_MATERIAL_MANIFEST.sha256`](REPRODUCTION_MATERIAL_MANIFEST.sha256) |
 | Prompts and visible Agent outputs | Complete within selected observable trace scope | Full payloads are in every indexed JSONL trace; prompt classes and hashes are in the index |
 | Startup `AGENTS.md` payloads | Indexed and hash-bound per Task | [`STARTUP_INSTRUCTION_INDEX.md`](STARTUP_INSTRUCTION_INDEX.md), [`STARTUP_INSTRUCTION_INDEX.json`](STARTUP_INSTRUCTION_INDEX.json); each payload is also covered by its Task manifest |
 | Task 1/2 official-ref version mapping | Exact internal `scriptVersionId` evidence with candidate/byte limits clearly separated | [`KERNEL_VERSION_MAPPING_AUDIT.md`](KERNEL_VERSION_MAPPING_AUDIT.md) and the two task-level extraction provenance JSON files |
@@ -146,12 +152,16 @@ At the request to use the later fresh two-hour runs for Tasks 1 and 2, the full
 credential-redacted traces are published separately under
 [`task1/evidence/reproduction-120m/`](task1/evidence/reproduction-120m/) and
 [`task2/evidence/reproduction-120m/`](task2/evidence/reproduction-120m/).
-The complete original Task 1 and Task 2 run records were unavailable after a
-school-server restart; bounded pre-boundary formal prefixes remain as separate
-historical audit evidence. These are later fresh reproductions using the same
-configured solver/system, official competition bundle, and organizer
-constraints, not replacements for the incomplete original records. See
+The complete raw formal Task 1 and Task 2 sessions were subsequently located in
+private local archives after a school-server restart. Their human-influenced
+suffixes are intentionally not published; bounded pre-boundary formal prefixes
+remain as separate historical audit evidence. These are later fresh
+reproductions using the same configured solver/system, official competition
+bundle, and organizer constraints, not replacements for the recovered private
+formal sessions. See
 [`FORMAL_PREFIX_AUDIT.md`](FORMAL_PREFIX_AUDIT.md).
+Recovery metadata (private hash, event counts, and exact boundary) is in
+[`ORIGINAL_SESSION_RECOVERY.md`](ORIGINAL_SESSION_RECOVERY.md).
 They preserve the complete observable event streams and the corresponding
 candidate/submission outcomes. Both runs contain no live human method/target
 prompt. Task 1's canonical solution material is the immutable prefix through

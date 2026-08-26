@@ -686,9 +686,10 @@ def verify_formal_prefix_audit() -> dict[str, object]:
     """Verify the supplemental bounded formal Task 1/2 prefixes.
 
     These prefixes are deliberately separate from the requested later
-    reproduction selection.  Checking them here prevents a reviewer-facing
-    audit from silently losing the exact-prompt formal evidence that remains
-    after the complete original records became unavailable.
+    reproduction selection. Checking them here prevents a reviewer-facing
+    audit from silently losing the exact-prompt formal evidence retained from
+    the privately recovered sessions; their human-influenced suffixes remain
+    intentionally unpublished.
     """
     audit = json.loads((ROOT / "FORMAL_PREFIX_AUDIT.json").read_text(encoding="utf-8"))
     assert audit["schema"] == "ioai.formal-prefix-audit.v1"
@@ -766,10 +767,12 @@ def verify_formal_prefix_audit() -> dict[str, object]:
         if task == "task1":
             provenance_rollout = provenance["formal_solver"]
             assert provenance["supervising_controller"]["prompt_body_in_repository"] is False
+            assert provenance_rollout["recovery_register"] == "../ORIGINAL_SESSION_RECOVERY.json"
         else:
             assert provenance["provenance"]["boundary_prompt_body_in_repository"] is False
             assert provenance["provenance"]["causal_suffix_in_repository"] is False
             provenance_rollout = provenance["provenance"]["rollouts"][0]
+            assert provenance["provenance"]["recovery_register"] == "../ORIGINAL_SESSION_RECOVERY.json"
         assert provenance_rollout["filename"] == path.name
         assert provenance_rollout["redacted_sha256"] == spec["trace_sha256"]
         assert provenance_rollout["kept_events"] == spec["events"]
@@ -797,6 +800,64 @@ def verify_formal_prefix_audit() -> dict[str, object]:
     assert task2_summary["best_private_score"] == task2_result["private_score"]
     assert audit["tasks"]["task1"]["preboundary_submission"] is None
     return {"all_ok": True, "formal_prefixes": 2, "task2_trace_aligned_submission": 55260695}
+
+
+def verify_original_session_recovery() -> dict[str, object]:
+    """Verify metadata for the privately recovered Task 1/2 raw sessions.
+
+    The raw JSONL files intentionally remain outside the repository.  This
+    check validates the published register, its prefix hashes/counts, and its
+    consistency with each task's public provenance record without requiring a
+    reviewer to have the private archive mounted locally.
+    """
+    register_path = ROOT / "ORIGINAL_SESSION_RECOVERY.json"
+    markdown_path = ROOT / "ORIGINAL_SESSION_RECOVERY.md"
+    assert register_path.is_file()
+    assert markdown_path.is_file()
+    register = json.loads(register_path.read_text(encoding="utf-8"))
+    assert register["schema"] == "ioai.original-session-recovery.v1"
+    assert register["repository_policy"].startswith("The raw JSONL sessions are not copied")
+    expected = {
+        "task1": {
+            "private_original_sha256": "caeff9bb37bef475044391ca35ba834a3aaf144278b66b50adffbc023127e3d6",
+            "total_events": 775,
+            "prefix_events": 350,
+            "suffix_events": 425,
+            "prefix_sha256": "bcfb0c6ffca945638aedd4b3771915bc88abf72ca29843b457e966427684eb89",
+            "provenance_path": "task1/ROLLOUT_PROVENANCE.json",
+        },
+        "task2": {
+            "private_original_sha256": "0573b7a06093526fa9d81856ec370801e66fff4404e2c6811909db8ef292b09d",
+            "total_events": 1367,
+            "prefix_events": 705,
+            "suffix_events": 662,
+            "prefix_sha256": "a7dc48c7a837b3536d835c17fdee63db6fe27b79cd1cc577cbf4e15672f45014",
+            "provenance_path": "task2/ROLLOUT_PROVENANCE.json",
+        },
+    }
+    for task, spec in expected.items():
+        item = register["tasks"][task]
+        assert item["recovery_status"] == "complete_raw_session_located_in_private_local_archive"
+        assert item["private_original_sha256"] == spec["private_original_sha256"]
+        assert item["total_events"] == spec["total_events"]
+        prefix = item["published_prefix"]
+        suffix = item["excluded_suffix"]
+        assert prefix["events"] == spec["prefix_events"]
+        assert prefix["sha256"] == spec["prefix_sha256"]
+        assert suffix["events"] == spec["suffix_events"]
+        assert prefix["events"] + suffix["events"] == item["total_events"]
+        assert suffix["content_in_repository"] is False
+        assert "human" in suffix["reason"] or "continuation" in suffix["reason"]
+        published = ROOT / prefix["path"]
+        assert published.is_file()
+        assert sha256(published) == prefix["sha256"]
+        with published.open(encoding="utf-8") as handle:
+            assert sum(1 for line in handle if line.strip()) == prefix["events"]
+        provenance = json.loads((ROOT / spec["provenance_path"]).read_text(encoding="utf-8"))
+        rollout = provenance["formal_solver"] if task == "task1" else provenance["provenance"]["rollouts"][0]
+        assert rollout["private_original_sha256"] == spec["private_original_sha256"]
+        assert rollout["kept_events"] == spec["prefix_events"]
+    return {"all_ok": True, "tasks": 2, "private_raw_sessions_not_published": True}
 
 
 def _verify_gpu_notebook_metadata(
@@ -1778,6 +1839,7 @@ def main() -> None:
     report["task4_artifact_chain"] = verify_task4_artifacts()
     report["task5_artifact_chain"] = verify_task5_artifacts()
     report["task6_exact_artifacts"] = verify_task6_artifacts()
+    report["original_session_recovery"] = verify_original_session_recovery()
     report["cross_task_rule_audit"] = verify_cross_task_rule_audit()
     report["requirement_evidence_matrix"] = verify_requirement_evidence_matrix()
     report["submission_version_audit"] = verify_submission_version_audit()
@@ -1806,6 +1868,13 @@ def main() -> None:
     assert (ROOT / checklist["organizer_review_guide"]).is_file()
     assert checklist["open_review_items"] == "OPEN_REVIEW_ITEMS.md"
     assert (ROOT / checklist["open_review_items"]).is_file()
+    assert checklist["original_session_recovery"] == {
+        "markdown": "ORIGINAL_SESSION_RECOVERY.md",
+        "json": "ORIGINAL_SESSION_RECOVERY.json",
+        "status": "complete_private_raw_sessions_recovered_public_suffixes_causally_redacted",
+    }
+    assert (ROOT / checklist["original_session_recovery"]["markdown"]).is_file()
+    assert (ROOT / checklist["original_session_recovery"]["json"]).is_file()
     assert checklist["requirement_evidence_matrix"] == {
         "json": "REQUIREMENT_EVIDENCE_MATRIX.json",
         "markdown": "REQUIREMENT_EVIDENCE_MATRIX.md",
@@ -1938,6 +2007,10 @@ def main() -> None:
         "tasks1_2_formal_prefix_audit": [
             "FORMAL_PREFIX_AUDIT.md",
             "FORMAL_PREFIX_AUDIT.json",
+        ],
+        "tasks1_2_original_session_recovery": [
+            "ORIGINAL_SESSION_RECOVERY.md",
+            "ORIGINAL_SESSION_RECOVERY.json",
         ],
         "tasks1_2_official_final_extraction_candidates": [
             "task1/remote/OFFICIAL_FINAL_EXTRACTION_PROVENANCE.json",

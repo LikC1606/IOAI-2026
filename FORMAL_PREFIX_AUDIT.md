@@ -1,10 +1,11 @@
 # Supplemental formal-prefix audit — Tasks 1–2
 
 This is supplemental historical evidence, not a replacement for the requested
-later two-hour reproduction package. The complete original formal run records
-were unavailable after a school-server restart, but bounded redacted prefixes
-through the applicable pre-intervention boundaries remain in the two task
-packages. The hashes and scope below are also machine-readable in
+later two-hour reproduction package. The complete raw formal run records were
+subsequently located in private local archives after a school-server restart.
+Their human-influenced suffixes are intentionally not published; bounded
+redacted prefixes through the applicable pre-intervention boundaries remain in
+the two task packages. The hashes and scope below are also machine-readable in
 [`FORMAL_PREFIX_AUDIT.json`](FORMAL_PREFIX_AUDIT.json).
 
 | Task | Formal prefix | Boundary | Exact prompt status | Pre-boundary scored result | Relation to official final |
@@ -24,4 +25,5 @@ they are already retained in each task package as historical audit material.
 This separation prevents a reviewer from confusing (a) a complete later
 reproduction, (b) a bounded original formal prefix, and (c) the account's
 automatic official final result. The organizer/Jury decides how these scopes
-should be recognized.
+should be recognized. Recovery metadata is summarized in
+[`ORIGINAL_SESSION_RECOVERY.md`](ORIGINAL_SESSION_RECOVERY.md).

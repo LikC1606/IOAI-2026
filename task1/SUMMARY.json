@@ -43,7 +43,7 @@
     "full_raw_trace_path": "evidence/reproduction-120m/rollout.jsonl",
     "canonical_cutoff": "inclusive through task_complete at 2026-08-05T18:24:58.140Z",
     "run_kind": "later_reproduction_120m",
-    "record_recovery_note": "The complete original Task 1 run record was unavailable after a school-server restart. A bounded exact-prompt formal prefix remains as supplemental historical audit evidence; this is a later fresh reproduction using the same configured solver/system, official competition bundle, and organizer constraints, not a replacement for the incomplete original record.",
+    "record_recovery_note": "The complete raw formal Task 1 session was subsequently located in a private local archive after a school-server restart. Its human-influenced suffix is not published; a bounded exact-prompt formal prefix remains as supplemental historical audit evidence. This is a later fresh reproduction using the same configured solver/system, official competition bundle, and organizer constraints, not a replacement for the recovered private formal session.",
     "autonomy_status": "fully_autonomous_no_live_human_intervention",
     "run_window_start_utc": "2026-08-05T16:25:50.693Z",
     "boundary_utc_exclusive": "2026-08-05T18:25:50.634Z",
@@ -86,7 +86,7 @@
   "official_final_public_score": 0.77751,
   "official_final_private_score": 0.80474,
   "official_final_trace_alignment": false,
-  "official_final_trace_alignment_limit": "Original record unavailable; later autonomous reproduction is a different post-deadline submission.",
+  "official_final_trace_alignment_limit": "Recovered private session includes a human-influenced suffix that is not published; its bounded prefix and the later autonomous reproduction are different scopes and neither binds the official final.",
   "account_submission_count": 30,
   "submissions_before_official_deadline": 15,
   "submissions_after_official_deadline": 15,
@@ -108,7 +108,7 @@
   "external_method_research_status": "method_background_only_not_treated_as_compliance_issue",
   "rollout_provenance": {
     "filename": "rollout-2026-08-05T17-20-55-019fd139-d180-7171-ac0b-c037e11866eb.jsonl",
-    "private_original_path": "/workspace/IOAI/next-task/ioai-2026-task-1-westlake-nlp-24/codex-home/sessions/2026/08/05/rollout-2026-08-05T17-20-55-019fd139-d180-7171-ac0b-c037e11866eb.jsonl",
+    "private_original_path": "/workspace/IOAI/runs/next-task/ioai-2026-task-1-westlake-nlp-24/codex-home/sessions/2026/08/05/rollout-2026-08-05T17-20-55-019fd139-d180-7171-ac0b-c037e11866eb.jsonl",
     "private_original_sha256": "caeff9bb37bef475044391ca35ba834a3aaf144278b66b50adffbc023127e3d6",
     "redacted_sha256": "bcfb0c6ffca945638aedd4b3771915bc88abf72ca29843b457e966427684eb89",
     "boundary_utc_exclusive": "2026-08-05T10:16:52.222Z",
@@ -124,6 +124,14 @@
       "last_timestamp": "2026-08-05T11:04:39.466Z",
       "classification": "excluded_agent_execution_after_supervision_boundary"
     }
+  },
+  "original_session_recovery": {
+    "register": "../ORIGINAL_SESSION_RECOVERY.json",
+    "private_original_sha256": "caeff9bb37bef475044391ca35ba834a3aaf144278b66b50adffbc023127e3d6",
+    "total_events": 775,
+    "published_prefix_events": 350,
+    "excluded_human_influenced_suffix_events": 425,
+    "raw_session_published": false
   },
   "controller_provenance": {
     "private_original_path": "/workspace/.codex/sessions/2026/08/04/rollout-2026-08-04T21-48-47-019fcd08-b264-72b3-93f3-3afaf2cf41af.jsonl",

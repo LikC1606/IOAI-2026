@@ -30,12 +30,14 @@ silently removed from this score reconciliation.
 
 ## Scope notes
 
-- The complete original Task 1 and Task 2 run records were unavailable after a
-  school-server restart. Bounded pre-boundary formal prefixes remain as
-  supplemental evidence, while their canonical no-live-human traces are later
-  fresh reproductions run with the same configured solver/system, official
-  competition bundle, and organizer constraints. Neither later reproduction is
-  the incomplete original record; see `FORMAL_PREFIX_AUDIT.md/json`.
+- The complete raw formal Task 1 and Task 2 sessions were subsequently located
+  in private local archives after a school-server restart. Their human-influenced
+  suffixes are intentionally unpublished. Bounded pre-boundary formal prefixes
+  remain as supplemental evidence, while their canonical no-live-human traces
+  are later fresh reproductions run with the same configured solver/system,
+  official competition bundle, and organizer constraints. Neither later
+  reproduction substitutes for the recovered private formal session; see
+  `FORMAL_PREFIX_AUDIT.md/json` and `ORIGINAL_SESSION_RECOVERY.md/json`.
 - Task 1's separately preserved Agent-executed submission `55267607` scored
   Public 0.78049 / Private 0.76808 but was submitted 291.343 seconds after the
   official Kaggle deadline and after human intervention. It is not the official

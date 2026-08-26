@@ -9,14 +9,16 @@ task's evidence, start with `COMPLIANCE.md`, `SUMMARY.json`, and
 
 ## Record recovery note
 
-The complete original Task 1 run record was unavailable after a school-server
-restart. A bounded pre-boundary formal prefix remains under
-`evidence/rollouts/`; its provenance hashes are recorded in
-`ROLLOUT_PROVENANCE.json`. The canonical solution trace in
+The complete raw formal Task 1 session was subsequently located in a private
+local archive after a school-server restart. Because its 425-event suffix is
+human-influenced, the public package intentionally retains only the bounded
+350-event pre-boundary formal prefix under `evidence/rollouts/`; its provenance
+hashes are recorded in `ROLLOUT_PROVENANCE.json` and the root
+[`ORIGINAL_SESSION_RECOVERY.md`](../ORIGINAL_SESSION_RECOVERY.md). The canonical solution trace in
 `evidence/canonical/` is the immutable prefix of a later fresh reproduction
 through its `task_complete` event. The same configured solver/system, official
 competition bundle, and organizer constraints were used. It is a reproduction
-record, not a replacement for the incomplete original record, and its
+record, not a replacement for the recovered private formal session, and its
 post-deadline status remains explicit below. The complete raw reproduction
 remains under `evidence/reproduction-120m/` for audit.
 
