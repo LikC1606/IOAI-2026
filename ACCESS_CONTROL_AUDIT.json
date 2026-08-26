@@ -51,12 +51,17 @@
     },
     "observed_scope": "All 1,151 file paths classify as Kaggle extraction metadata, kernel source, kernel log, notebook output, or submission records; no competition-data-like path matched the stated heuristic.",
     "content_heuristic_scan": {
-      "scan_observed_utc": "2026-08-26T00:50:03Z",
+      "scan_observed_utc": "2026-08-26T01:11:27Z",
       "method": "Stream-read every regular tar member and search its bytes for competition-data markers (test_leaderboard, public_embeddings, vocabulary.json, field_config, checkpoint extensions, and Kaggle competition-input paths).",
       "regular_files_scanned": 1151,
       "data_like_path_matches": 0,
+      "content_marker_hit_basenames": {
+        "kernel-source.py": 98
+      },
+      "content_marker_non_kernel_source_files": 0,
+      "content_marker_non_kernel_source_examples": [],
       "content_marker_hit_files": 98,
-      "content_marker_hit_interpretation": "All marker hits were kernel source text documenting allowed input paths or model filenames; no archive member was itself a competition-data file or checkpoint by name.",
+      "content_marker_hit_interpretation": "The scanner directly classified all 98 marker-hit files by basename as kernel-source.py, with zero non-kernel-source hits. These are source-text references to allowed input paths or model filenames; no archive member was itself a competition-data file or checkpoint by name.",
       "result_scope": "additional heuristic evidence only; it does not certify that arbitrary source, CSV, or compressed-log bytes contain no restricted information"
     },
     "limitation": "A path-name scan is not a proof that no restricted bytes occur inside arbitrary source, output, or compressed log contents. An authorized reviewer should make the final handling decision before redistributing the archive."

@@ -1811,6 +1811,9 @@ def main() -> None:
     assert content_scan["regular_files_scanned"] == 1151
     assert content_scan["data_like_path_matches"] == 0
     assert content_scan["content_marker_hit_files"] == 98
+    assert content_scan["content_marker_hit_basenames"] == {"kernel-source.py": 98}
+    assert content_scan["content_marker_non_kernel_source_files"] == 0
+    assert content_scan["content_marker_non_kernel_source_examples"] == []
     assert "heuristic" in content_scan["result_scope"]
     assert (ROOT / "tools/scan_extraction_archive.py").is_file()
     assert (ROOT / "ACCESS_CONTROL_AUDIT.md").is_file()

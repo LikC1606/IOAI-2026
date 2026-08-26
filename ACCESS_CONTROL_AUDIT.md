@@ -30,10 +30,11 @@ the final sharing decision.
 As an additional heuristic, every regular member was stream-scanned for
 competition-data markers such as `test_leaderboard`, `public_embeddings`,
 `vocabulary.json`, `field_config`, checkpoint extensions, and Kaggle input
-paths. The scan found 98 source files containing such words as code-level path
-or filename references, but no data-file or checkpoint member. This is still
-only a heuristic content check and does not replace an authorized review of
-the archive before redistribution.
+paths. The scan found 98 marker-hit files; the tool directly classified all 98
+by basename as `kernel-source.py` and found zero non-kernel-source hits. These
+are source-text path or filename references, not data-file or checkpoint
+members. This is still only a heuristic content check and does not replace an
+authorized review of the archive before redistribution.
 
 The scan is reproducible without extracting the archive:
 

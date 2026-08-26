@@ -721,6 +721,18 @@ def main() -> None:
         json.dumps(task4_audit, ensure_ascii=False, indent=2) + "\n", encoding="utf-8"
     )
     build_task4_rule_audit.write_markdown(task4_audit)
+    # Keep the organizer-facing rule navigation synchronized with the same
+    # canonical refresh.  This builder is archive-independent, unlike the
+    # submission/version audit, which has its own explicit --archive input.
+    import build_requirement_evidence_matrix as evidence_matrix
+
+    matrix = evidence_matrix.build()
+    (ROOT / "REQUIREMENT_EVIDENCE_MATRIX.json").write_text(
+        json.dumps(matrix, ensure_ascii=False, indent=2) + "\n", encoding="utf-8"
+    )
+    (ROOT / "REQUIREMENT_EVIDENCE_MATRIX.md").write_text(
+        evidence_matrix.markdown(matrix), encoding="utf-8"
+    )
     write_manifest(index)
     print(json.dumps({task: data["event_count"] for task, data in index["tasks"].items()}))
 

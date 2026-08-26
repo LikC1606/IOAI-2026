@@ -94,11 +94,11 @@ component. Their roles are:
 
 | Generated material | Refresh tool |
 |---|---|
-| `AUTONOMOUS_TRACE_INDEX.json`, `AUTONOMOUS_TRACE_MATERIAL.md`, `AUTONOMOUS_COSTS.json`, `PROMPT_CONFORMANCE_AUDIT.json/.md`, `task4/RULE_DIFFERENCE_AUDIT.json/.md`, and `AUTONOMOUS_MATERIAL_MANIFEST.sha256` | `python3 tools/build_autonomous_trace_material.py` (canonical full refresh) |
+| `AUTONOMOUS_TRACE_INDEX.json`, `AUTONOMOUS_TRACE_MATERIAL.md`, `AUTONOMOUS_COSTS.json`, `PROMPT_CONFORMANCE_AUDIT.json/.md`, `task4/RULE_DIFFERENCE_AUDIT.json/.md`, `REQUIREMENT_EVIDENCE_MATRIX.json/.md`, and `AUTONOMOUS_MATERIAL_MANIFEST.sha256` | `python3 tools/build_autonomous_trace_material.py` (canonical full refresh) |
 | `EXECUTION_TRACE_INDEX.json/.md` | `python3 tools/build_execution_trace_index.py` (standalone execution inventory) |
 | `PROMPT_CONFORMANCE_AUDIT.json/.md` | `python3 tools/build_prompt_conformance_audit.py` (standalone prompt diagnostic) |
 | `task4/RULE_DIFFERENCE_AUDIT.json/.md` | `python3 tools/build_task4_rule_audit.py` (standalone Task 4 diagnostic) |
-| `REQUIREMENT_EVIDENCE_MATRIX.json/.md` | `python3 tools/build_requirement_evidence_matrix.py` (scope-labeled rule index) |
+| `REQUIREMENT_EVIDENCE_MATRIX.json/.md` | Included in the canonical full refresh; `python3 tools/build_requirement_evidence_matrix.py` remains a standalone scope-labeled rule-index refresh |
 
 Recommended refresh order is: execution inventory first, then the canonical
 autonomous-material builder, then `verify_repository.py` and every manifest

@@ -318,7 +318,7 @@
           "requirement": "Selected trace contains no live-human method, target, or forced-submission instruction.",
           "official_source": "Starter/Continuation Prompt; trace boundary",
           "status": "evidence_supported",
-          "scope": "eight pre-boundary autonomous traces",
+          "scope": "four pre-boundary autonomous trace files covering eight scored submissions",
           "evidence": [
             "AUTONOMOUS_TRACE_INDEX.json",
             "task3/AUTONOMY_BOUNDARY.md",

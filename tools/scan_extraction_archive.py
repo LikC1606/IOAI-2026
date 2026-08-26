@@ -12,6 +12,7 @@ import hashlib
 import json
 import re
 import tarfile
+from collections import Counter
 from pathlib import Path
 from typing import BinaryIO
 
@@ -65,6 +66,10 @@ def scan(archive: Path) -> dict[str, object]:
                 handle = bundle.extractfile(member)
                 if handle is not None and contains_marker(handle):
                     content_hits.append(member.name)
+    hit_basenames = Counter(Path(name).name for name in content_hits)
+    non_kernel_source_hits = [
+        name for name in content_hits if Path(name).name != "kernel-source.py"
+    ]
     return {
         "archive": str(archive),
         "archive_size_bytes": archive.stat().st_size,
@@ -75,14 +80,18 @@ def scan(archive: Path) -> dict[str, object]:
         "data_like_path_matches": len(path_hits),
         "data_like_path_examples": path_hits[:20],
         "content_marker_hit_files": len(content_hits),
+        "content_marker_hit_basenames": dict(sorted(hit_basenames.items())),
+        "content_marker_non_kernel_source_files": len(non_kernel_source_hits),
+        "content_marker_non_kernel_source_examples": non_kernel_source_hits[:20],
         "content_marker_hit_examples": content_hits[:20],
         "method": (
             "Stream-read every regular tar member and search bytes for the "
             "configured markers; nested compressed members are not decompressed."
         ),
         "interpretation": (
-            "Content-marker hits identify source text documenting paths or "
-            "filenames; they do not by themselves indicate restricted data."
+            "The basename and non-kernel-source counts show whether marker "
+            "hits are confined to kernel source text documenting paths or "
+            "filenames; marker hits do not by themselves indicate restricted data."
         ),
         "limitation": (
             "This heuristic does not certify that arbitrary source, CSV, or "
