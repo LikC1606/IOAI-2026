@@ -28,6 +28,7 @@ CONTENT_MARKERS = re.compile(
 )
 CHUNK_SIZE = 1024 * 1024
 MAX_MARKER_LENGTH = 64
+KERNEL_SOURCE_BASENAMES = {"kernel-source.py", "kernel-source.ipynb"}
 
 
 def sha256_file(path: Path) -> str:
@@ -68,7 +69,7 @@ def scan(archive: Path) -> dict[str, object]:
                     content_hits.append(member.name)
     hit_basenames = Counter(Path(name).name for name in content_hits)
     non_kernel_source_hits = [
-        name for name in content_hits if Path(name).name != "kernel-source.py"
+        name for name in content_hits if Path(name).name not in KERNEL_SOURCE_BASENAMES
     ]
     return {
         "archive": str(archive),

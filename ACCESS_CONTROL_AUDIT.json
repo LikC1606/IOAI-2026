@@ -56,12 +56,13 @@
       "regular_files_scanned": 1151,
       "data_like_path_matches": 0,
       "content_marker_hit_basenames": {
-        "kernel-source.py": 98
+        "kernel-source.ipynb": 1,
+        "kernel-source.py": 97
       },
       "content_marker_non_kernel_source_files": 0,
       "content_marker_non_kernel_source_examples": [],
       "content_marker_hit_files": 98,
-      "content_marker_hit_interpretation": "The scanner directly classified all 98 marker-hit files by basename as kernel-source.py, with zero non-kernel-source hits. These are source-text references to allowed input paths or model filenames; no archive member was itself a competition-data file or checkpoint by name.",
+      "content_marker_hit_interpretation": "The scanner directly classified all 98 marker-hit files by basename as kernel-source.py (97) or kernel-source.ipynb (1), with zero non-kernel-source hits. These are source-text references to allowed input paths or model filenames; no archive member was itself a competition-data file or checkpoint by name.",
       "result_scope": "additional heuristic evidence only; it does not certify that arbitrary source, CSV, or compressed-log bytes contain no restricted information"
     },
     "limitation": "A path-name scan is not a proof that no restricted bytes occur inside arbitrary source, output, or compressed log contents. An authorized reviewer should make the final handling decision before redistributing the archive."
