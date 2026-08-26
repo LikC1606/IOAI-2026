@@ -1736,41 +1736,56 @@ def verify_extraction_binding_receipt() -> dict[str, object]:
     }
     crosscheck = receipt["independent_live_output_crosscheck"]
     assert crosscheck["checked_utc"] == "2026-08-26T06:39:49Z"
-    assert crosscheck["method"].startswith("Authenticated Kaggle CLI kernels output retrieval")
+    assert crosscheck["method"] == "Authenticated Kaggle CLI kernels output retrieval; downloaded output bytes were hashed locally."
+    assert "latest-output cross-check only" in crosscheck["scope_note"]
     assert "does not upgrade exact-version confidence" in crosscheck["scope_note"]
+    assert "omits that version" in crosscheck["cli_version_behavior"]
     assert "HTTP 403" in crosscheck["source_pull_note"]
     assert crosscheck["results"] == [
         {
             "task": 1,
-            "kernel_ref": "researai/ioai-2026-task1-pairwise-kemeny/4",
+            "requested_kernel_ref": "researai/ioai-2026-task1-pairwise-kemeny/4",
+            "effective_kernel_ref": "researai/ioai-2026-task1-pairwise-kemeny",
+            "version_suffix_honored": False,
             "bytes": 6533,
             "output_sha256": "a663e8add16554c12a4458890e3de557794f83b0eb1f72209e132af3aacd2470",
             "matches_archive_candidate_output": True,
             "archive_candidate_version": 5,
+            "match_scope": "latest_kernel_output_bytes_equal_archive_candidate_output",
         },
         {
             "task": 1,
-            "kernel_ref": "researai/ioai-2026-task1-pairwise-kemeny/5",
+            "requested_kernel_ref": "researai/ioai-2026-task1-pairwise-kemeny/5",
+            "effective_kernel_ref": "researai/ioai-2026-task1-pairwise-kemeny",
+            "version_suffix_honored": False,
             "bytes": 6533,
             "output_sha256": "a663e8add16554c12a4458890e3de557794f83b0eb1f72209e132af3aacd2470",
             "matches_archive_candidate_output": True,
             "archive_candidate_version": 5,
+            "match_scope": "latest_kernel_output_bytes_equal_archive_candidate_output",
         },
         {
             "task": 1,
-            "kernel_ref": "researai/ioai-2026-task1-pairwise-kemeny/6",
+            "requested_kernel_ref": "researai/ioai-2026-task1-pairwise-kemeny/6",
+            "effective_kernel_ref": "researai/ioai-2026-task1-pairwise-kemeny",
+            "version_suffix_honored": False,
             "bytes": 6533,
             "output_sha256": "a663e8add16554c12a4458890e3de557794f83b0eb1f72209e132af3aacd2470",
             "matches_archive_candidate_output": True,
             "archive_candidate_version": 5,
+            "match_scope": "latest_kernel_output_bytes_equal_archive_candidate_output",
         },
         {
             "task": 2,
-            "kernel_ref": "researai/ioai-2026-structured-extratrees-v1/1",
+            "requested_kernel_ref": "researai/ioai-2026-structured-extratrees-v1/1",
+            "effective_kernel_ref": "researai/ioai-2026-structured-extratrees-v1",
+            "version_suffix_honored": False,
             "bytes": 79215,
             "output_sha256": "27d883289959980693529dbd9bbe062c68d4a30b37ac7999ef24a3d512b12dee",
-            "matches_archive_candidate_output": True,
+            "matches_archive_candidate_output": False,
             "archive_candidate_version": 1,
+            "archive_candidate_output_sha256": "de4f2b9a949585eafd5d085200ce3759d32d86dba9c1f5cb39c277f05e9a56b6",
+            "match_scope": "latest_kernel_output_differs_from_archive_candidate_output",
         },
     ]
     return {

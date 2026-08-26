@@ -20,14 +20,16 @@ The archive also proves the hashes of the selected candidate source, output,
 run log, and metadata; an authorized reviewer can rerun
 `tools/verify_extraction_bindings.py` against the downloaded Drive archive.
 
-On 2026-08-26, an authenticated Kaggle CLI `kernels output` cross-check also
-retrieved the version-qualified outputs for Task 1 `v4/v5/v6` and Task 2 `v1`.
-The downloaded bytes match the corresponding archive candidate output hash
-(Task 1: 6,533 bytes; Task 2: 79,215 bytes). This independently confirms the
-currently retrievable output bytes, while version-qualified source pulls were
-denied with HTTP 403; it therefore does not prove the historical submitted-file
-digest or upgrade the exact-version status above. The complete hash receipt is
-the `independent_live_output_crosscheck` block in
+On 2026-08-26, an authenticated Kaggle CLI `kernels output` cross-check was
+performed for the Task 1 `v4/v5/v6` and Task 2 `v1` arguments. The CLI's output
+request ignores the `/version` suffix and returns the kernel's latest output;
+the receipt records this behavior explicitly. The latest Task 1 output is
+byte-equal to the archive candidate output, while the latest Task 2 output is
+not byte-equal to the archived v1 candidate (it corresponds to a later output).
+Version-qualified source pulls were denied with HTTP 403. This cross-check
+therefore does not prove any historical submitted-file digest or upgrade the
+exact-version status above. The complete hash receipt is the
+`independent_live_output_crosscheck` block in
 [`EXTRACTION_BINDING_RECEIPT.json`](EXTRACTION_BINDING_RECEIPT.json).
 
 The remaining gap is narrow but material: the extraction's metadata has an
