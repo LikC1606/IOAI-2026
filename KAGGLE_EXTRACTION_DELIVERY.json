@@ -16,7 +16,8 @@
     "size_bytes": 496870419,
     "sha256": "eb14e52057c3cfca21972993fb73c2addaf9f214abc9c6f38b88bca97d93fe3c",
     "entry_count": 1401,
-    "repository_storage": "external_due_to_GitHub_file_size_limit"
+    "repository_storage": "external_due_to_GitHub_file_size_limit",
+    "binding_receipt": "EXTRACTION_BINDING_RECEIPT.json"
   },
   "google_drive": {
     "file_id": "1c9yRn5SUo6LOPDrHLrAVjj-9JLFti9Vz",

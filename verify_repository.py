@@ -1654,6 +1654,86 @@ def verify_kaggle_extraction_summary() -> dict[str, object]:
     return {"all_ok": True, "source_sha256": extraction_sha, "tasks": checked}
 
 
+def verify_extraction_binding_receipt() -> dict[str, object]:
+    """Validate the checked-in receipt without requiring the external archive.
+
+    The receipt is a record of a completed archive verification.  This local
+    check confirms that its archive identity, member paths, and non-null
+    hashes agree with the provenance records in the repository.  Re-reading
+    the Drive archive remains the stronger independent check and is handled by
+    ``tools/verify_extraction_bindings.py``.
+    """
+    receipt_path = ROOT / "EXTRACTION_BINDING_RECEIPT.json"
+    receipt = json.loads(receipt_path.read_text(encoding="utf-8"))
+    assert receipt["schema"] == "ioai.extraction-bindings-receipt.v1"
+    assert re.fullmatch(r"2026-08-26T[0-9]{2}:[0-9]{2}:[0-9]{2}Z", receipt["verified_utc"])
+    assert receipt["verifier"] == "tools/verify_extraction_bindings.py"
+    delivery = json.loads((ROOT / "KAGGLE_EXTRACTION_DELIVERY.json").read_text(encoding="utf-8"))
+    assert receipt["archive"] == {
+        "filename": delivery["archive"]["filename"],
+        "size_bytes": delivery["archive"]["size_bytes"],
+        "sha256": delivery["archive"]["sha256"],
+        "entry_count": delivery["archive"]["entry_count"],
+    }
+    assert receipt["all_ok"] is True
+    members = receipt["member_bindings"]
+    assert receipt["checked_member_count"] == len(members) == 12
+    by_path = {item["path"]: item for item in members}
+    assert len(by_path) == len(members)
+    for item in members:
+        assert set(item) == {"task", "role", "path", "size_bytes", "sha256"}
+        assert item["task"] in {1, 2, 4}
+        assert item["role"] in {"source", "output", "run_log_gzip", "metadata"}
+        assert item["size_bytes"] > 0
+        assert re.fullmatch(r"[0-9a-f]{64}", item["sha256"])
+
+    expected: list[dict[str, object]] = []
+    for task in (1, 2):
+        provenance = json.loads(
+            (ROOT / f"task{task}/remote/OFFICIAL_FINAL_EXTRACTION_PROVENANCE.json").read_text(
+                encoding="utf-8"
+            )
+        )
+        candidate = provenance["kernel_linked_candidate"]
+        expected.extend(
+            [
+                {"task": task, "role": "source", "path": candidate["archive_source_path"], "sha256": candidate["source_sha256"]},
+                {"task": task, "role": "output", "path": candidate["archive_output_path"], "sha256": candidate["output_sha256"]},
+                {"task": task, "role": "run_log_gzip", "path": candidate["archive_log_path"], "sha256": candidate["log_gzip_sha256"]},
+                {"task": task, "role": "metadata", "path": candidate["archive_metadata_path"], "sha256": None},
+            ]
+        )
+    provenance = json.loads(
+        (ROOT / "task4/remote/V4_OUTPUT_PROVENANCE.json").read_text(encoding="utf-8")
+    )["extraction_archive"]
+    expected.extend(
+        [
+            {"task": 4, "role": "source", "path": provenance["archive_source_path"], "sha256": provenance["archive_source_sha256"]},
+            {"task": 4, "role": "output", "path": provenance["archive_output_path"], "sha256": provenance["archive_output_sha256"]},
+            {"task": 4, "role": "metadata", "path": provenance["archive_metadata_path"], "sha256": provenance["archive_metadata_sha256"]},
+            {"task": 4, "role": "run_log_gzip", "path": provenance["archive_log_path"], "sha256": provenance["archive_log_gzip_sha256"]},
+        ]
+    )
+    assert len(expected) == 12
+    for item in expected:
+        observed = by_path[item["path"]]
+        assert observed["task"] == item["task"]
+        assert observed["role"] == item["role"]
+        if item["sha256"] is not None:
+            assert observed["sha256"] == item["sha256"]
+    assert receipt["exact_version_confidence"] == {
+        "task1": "kernel_linked_candidate_not_byte_confirmed_exact_version",
+        "task2": "kernel_linked_candidate_not_byte_confirmed_exact_version",
+        "task4": "source_output_bytes_match_archive_provenance; linked-ref exact-version confidence remains as recorded in provenance",
+    }
+    return {
+        "all_ok": True,
+        "archive_sha256": receipt["archive"]["sha256"],
+        "checked_member_count": receipt["checked_member_count"],
+        "verified_utc": receipt["verified_utc"],
+    }
+
+
 def verify_execution_accounting() -> dict[str, int]:
     index = json.loads((ROOT / "EXECUTION_TRACE_INDEX.json").read_text(encoding="utf-8"))
     costs = json.loads((ROOT / "COSTS.json").read_text(encoding="utf-8"))
@@ -1943,12 +2023,14 @@ def main() -> None:
     report["requirement_evidence_matrix"] = verify_requirement_evidence_matrix()
     report["submission_version_audit"] = verify_submission_version_audit()
     report["kaggle_extraction_summary_crosscheck"] = verify_kaggle_extraction_summary()
+    report["extraction_binding_receipt"] = verify_extraction_binding_receipt()
     report["publication_safety"] = verify_publication_safety()
     report["markdown_links"] = verify_markdown_links()
     delivery = json.loads((ROOT / "KAGGLE_EXTRACTION_DELIVERY.json").read_text(encoding="utf-8"))
     assert delivery["archive"]["size_bytes"] == 496870419
     assert delivery["archive"]["entry_count"] == 1401
     assert delivery["archive"]["sha256"] == "eb14e52057c3cfca21972993fb73c2addaf9f214abc9c6f38b88bca97d93fe3c"
+    assert delivery["archive"]["binding_receipt"] == "EXTRACTION_BINDING_RECEIPT.json"
     assert delivery["google_drive"]["file_id"] == "1c9yRn5SUo6LOPDrHLrAVjj-9JLFti9Vz"
     live_drive = delivery["google_drive"]["live_head_check"]
     assert live_drive["view_http_status"] == 200
@@ -2102,6 +2184,7 @@ def main() -> None:
         ],
         "extraction_binding_verifier": [
             "tools/verify_extraction_bindings.py",
+            "EXTRACTION_BINDING_RECEIPT.json",
             "KAGGLE_EXTRACTION_DELIVERY.json",
             "task1/remote/OFFICIAL_FINAL_EXTRACTION_PROVENANCE.json",
             "task2/remote/OFFICIAL_FINAL_EXTRACTION_PROVENANCE.json",
@@ -2181,13 +2264,17 @@ def main() -> None:
         for path in paths
     )
     requirements = checklist["requirements"]
+    assert requirements["extraction_binding_verifier"]["receipt"] == (
+        "EXTRACTION_BINDING_RECEIPT.json"
+    )
+    assert (ROOT / requirements["extraction_binding_verifier"]["receipt"]).is_file()
     expected_requirement_statuses = {
         "execution_traces_all_six_tasks": "complete_selected_observable_prefixes_with_provenance_limits",
         "later_two_hour_reproduction_traces_task1_task2": "complete_separately_scoped_post_deadline_reference",
         "prompts_and_visible_outputs": "complete_for_selected_observable_trace_scope",
         "startup_instruction_payloads": "complete_hash_bound_per_task",
         "task1_task2_version_mapping": "exact_internal_script_version_ids_with_explicit_candidate_and_byte_limits",
-        "extraction_binding_verifier": "read_only_archive_member_hash_check_available",
+        "extraction_binding_verifier": "archive_member_hash_check_completed_and_read_only_rerun_available",
         "exact_organizer_prompt_conformance": "audited_with_non_exact_tasks",
         "cross_task_rule_compliance": "audited_known_deviations_and_evidence_limits_remain",
         "submission_version_limits": "complete_literal_audit_with_known_deviations_and_organizer_scope_questions",

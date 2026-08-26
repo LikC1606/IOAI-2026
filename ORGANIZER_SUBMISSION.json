@@ -135,6 +135,7 @@
     ],
     "extraction_binding_verifier": [
       "tools/verify_extraction_bindings.py",
+      "EXTRACTION_BINDING_RECEIPT.json",
       "KAGGLE_EXTRACTION_DELIVERY.json",
       "task1/remote/OFFICIAL_FINAL_EXTRACTION_PROVENANCE.json",
       "task2/remote/OFFICIAL_FINAL_EXTRACTION_PROVENANCE.json",
@@ -211,9 +212,10 @@
       "note": "The six AGENTS-ACTUALLY-INJECTED.md exports record the runtime startup payloads, are covered by their Task manifests, and are distinct from later project-file edits."
     },
     "extraction_binding_verifier": {
-      "status": "read_only_archive_member_hash_check_available",
+      "status": "archive_member_hash_check_completed_and_read_only_rerun_available",
       "path": "tools/verify_extraction_bindings.py",
-      "note": "An authorized reviewer can run the checker against the downloaded Drive archive; it verifies candidate source/output/log/metadata member hashes while preserving the recorded exact-version-confidence limitations."
+      "receipt": "EXTRACTION_BINDING_RECEIPT.json",
+      "note": "The checked-in receipt records a completed full-archive hash and 12 cited source/output/log/metadata member checks. An authorized reviewer can rerun the checker against the downloaded Drive archive; neither the receipt nor rerun upgrades the recorded exact-version-confidence limitations."
     },
     "task1_task2_version_mapping": {
       "status": "exact_internal_script_version_ids_with_explicit_candidate_and_byte_limits",

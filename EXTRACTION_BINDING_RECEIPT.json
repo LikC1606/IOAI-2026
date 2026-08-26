@@ -1,0 +1,105 @@
+{
+  "schema": "ioai.extraction-bindings-receipt.v1",
+  "verified_utc": "2026-08-26T04:48:53Z",
+  "verifier": "tools/verify_extraction_bindings.py",
+  "archive": {
+    "filename": "ioai-kaggle-fetch-researai-20260813.tar.gz",
+    "size_bytes": 496870419,
+    "sha256": "eb14e52057c3cfca21972993fb73c2addaf9f214abc9c6f38b88bca97d93fe3c",
+    "entry_count": 1401
+  },
+  "all_ok": true,
+  "checked_member_count": 12,
+  "member_bindings": [
+    {
+      "task": 1,
+      "role": "run_log_gzip",
+      "path": "ioai-kaggle-fetch/ioai-2026-task-1-westlake-nlp-24/researai/ioai-2026-task1-pairwise-kemeny/v5/run.log.json.gz",
+      "size_bytes": 5190,
+      "sha256": "e79e43f3b8532d59feb455acc4ea1a0292718fc368524ab04511625f97bf3e40"
+    },
+    {
+      "task": 1,
+      "role": "metadata",
+      "path": "ioai-kaggle-fetch/ioai-2026-task-1-westlake-nlp-24/researai/ioai-2026-task1-pairwise-kemeny/v5/kernel-version-metadata.json",
+      "size_bytes": 3621,
+      "sha256": "a97603e621fd4cdf00d91327569aeaac8b9903b8ae58149208c6c66020e2468f"
+    },
+    {
+      "task": 1,
+      "role": "source",
+      "path": "ioai-kaggle-fetch/ioai-2026-task-1-westlake-nlp-24/researai/ioai-2026-task1-pairwise-kemeny/v5/kernel-source.py",
+      "size_bytes": 34212,
+      "sha256": "546e889764600c23ba6203cf8b03a5f13bc467374c968f9770f1de71f6f41d56"
+    },
+    {
+      "task": 1,
+      "role": "output",
+      "path": "ioai-kaggle-fetch/ioai-2026-task-1-westlake-nlp-24/researai/ioai-2026-task1-pairwise-kemeny/v5/submission.csv",
+      "size_bytes": 6533,
+      "sha256": "a663e8add16554c12a4458890e3de557794f83b0eb1f72209e132af3aacd2470"
+    },
+    {
+      "task": 4,
+      "role": "run_log_gzip",
+      "path": "ioai-kaggle-fetch/ioai-2026-task-4-westlake-nlp-24/researai/ioai-2026-task-4-westlake-nlp-24-solution/v4/run.log.json.gz",
+      "size_bytes": 4002,
+      "sha256": "3fddd4688f831d7f68d671f63db4058884233f26bb4310028075384d8f7f1bd2"
+    },
+    {
+      "task": 4,
+      "role": "metadata",
+      "path": "ioai-kaggle-fetch/ioai-2026-task-4-westlake-nlp-24/researai/ioai-2026-task-4-westlake-nlp-24-solution/v4/kernel-version-metadata.json",
+      "size_bytes": 3494,
+      "sha256": "3da88345f245f7b46fadb08385c29b8999da7299cb1513013b002f33431735cc"
+    },
+    {
+      "task": 4,
+      "role": "source",
+      "path": "ioai-kaggle-fetch/ioai-2026-task-4-westlake-nlp-24/researai/ioai-2026-task-4-westlake-nlp-24-solution/v4/kernel-source.py",
+      "size_bytes": 32002,
+      "sha256": "d467bc5a1e7c83ae7da780aaf01fb6ac001fd326e514495cae3a9279b7b6301b"
+    },
+    {
+      "task": 4,
+      "role": "output",
+      "path": "ioai-kaggle-fetch/ioai-2026-task-4-westlake-nlp-24/researai/ioai-2026-task-4-westlake-nlp-24-solution/v4/submission.csv",
+      "size_bytes": 190117536,
+      "sha256": "bdb202711d6494bc94c331d549b0fa7956aa1d9eb585c247ae0dfce723f76542"
+    },
+    {
+      "task": 2,
+      "role": "output",
+      "path": "ioai-kaggle-fetch/ioai-2026-task-2-westlake-nlp-24/researai/ioai-2026-structured-extratrees-v1/v1/submission.csv",
+      "size_bytes": 79215,
+      "sha256": "de4f2b9a949585eafd5d085200ce3759d32d86dba9c1f5cb39c277f05e9a56b6"
+    },
+    {
+      "task": 2,
+      "role": "run_log_gzip",
+      "path": "ioai-kaggle-fetch/ioai-2026-task-2-westlake-nlp-24/researai/ioai-2026-structured-extratrees-v1/v1/run.log.json.gz",
+      "size_bytes": 4055,
+      "sha256": "d3d504f6dfe8137b0fba64224593b1881f06b227116ecb5d7916114b22be5540"
+    },
+    {
+      "task": 2,
+      "role": "source",
+      "path": "ioai-kaggle-fetch/ioai-2026-task-2-westlake-nlp-24/researai/ioai-2026-structured-extratrees-v1/v1/kernel-source.py",
+      "size_bytes": 25579,
+      "sha256": "e2f3211c999bd5564f9e9deb494d28122fe12a6d1dc4a39b3807732f494f8884"
+    },
+    {
+      "task": 2,
+      "role": "metadata",
+      "path": "ioai-kaggle-fetch/ioai-2026-task-2-westlake-nlp-24/researai/ioai-2026-structured-extratrees-v1/v1/kernel-version-metadata.json",
+      "size_bytes": 3397,
+      "sha256": "e6d0c0c18f1c956121792f632bc2f2e5a64de939e214520487162bbcf7ad4acc"
+    }
+  ],
+  "exact_version_confidence": {
+    "task1": "kernel_linked_candidate_not_byte_confirmed_exact_version",
+    "task2": "kernel_linked_candidate_not_byte_confirmed_exact_version",
+    "task4": "source_output_bytes_match_archive_provenance; linked-ref exact-version confidence remains as recorded in provenance"
+  },
+  "scope_note": "This receipt proves that the cited candidate source/output/log/metadata members are present and hash-consistent in the delivered archive. It does not upgrade the candidate-level exact-version limitations recorded for Tasks 1 and 2, nor replace organizer/Jury adjudication."
+}

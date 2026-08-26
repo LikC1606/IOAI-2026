@@ -65,6 +65,9 @@ The channel/access distinction is recorded in
    compliance notes.
 15. [`KAGGLE_EXTRACTION_DELIVERY.json`](KAGGLE_EXTRACTION_DELIVERY.json) — the
    complete external Kaggle extraction archive and Drive delivery record.
+16. [`EXTRACTION_BINDING_RECEIPT.json`](EXTRACTION_BINDING_RECEIPT.json) — the
+   latest full archive hash and cited-member verification receipt; rerun the
+   read-only checker when independently reviewing the Drive download.
 
 ## Scope labels used throughout
 
@@ -123,7 +126,7 @@ component. Their roles are:
 | `task4/RULE_DIFFERENCE_AUDIT.json/.md` | `python3 tools/build_task4_rule_audit.py` (standalone Task 4 diagnostic) |
 | `REQUIREMENT_EVIDENCE_MATRIX.json/.md` | Included in the canonical full refresh; `python3 tools/build_requirement_evidence_matrix.py` remains a standalone scope-labeled rule-index refresh |
 | `PACKAGE_COMPLETENESS.json/.md` | `python3 tools/build_package_completeness.py` (coverage join; checked by `verify_repository.py`) |
-| Extraction candidate member checks | `python3 tools/verify_extraction_bindings.py --archive /path/to/ioai-kaggle-fetch-researai-20260813.tar.gz` (read-only, after downloading the Drive archive) |
+| Extraction candidate member checks | [`EXTRACTION_BINDING_RECEIPT.json`](EXTRACTION_BINDING_RECEIPT.json) records the latest completed check; rerun `python3 tools/verify_extraction_bindings.py --archive /path/to/ioai-kaggle-fetch-researai-20260813.tar.gz` (read-only, after downloading the Drive archive) |
 
 Recommended refresh order is: first run the read-only verifier and checked-in
 manifest checks. If the preserved private historical source paths are

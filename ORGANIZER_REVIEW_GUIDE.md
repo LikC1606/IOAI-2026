@@ -50,6 +50,11 @@ sha256sum -c REPRODUCTION_MATERIAL_MANIFEST.sha256
 python3 tools/verify_extraction_bindings.py --archive /path/to/ioai-kaggle-fetch-researai-20260813.tar.gz
 ```
 
+The latest completed full-archive run is summarized in
+[`EXTRACTION_BINDING_RECEIPT.json`](EXTRACTION_BINDING_RECEIPT.json). The
+receipt is a reproducible hash record, not a substitute for rerunning the
+checker against the downloaded bytes.
+
 `verify_repository.py` checks the six task packages, score records, selected
 trace boundaries, prompt classifications, event-type coverage, exact Task 6
 artifacts, Task 4/5 provenance chains, Task 4 rule-status classifications,
@@ -171,7 +176,8 @@ make the minimum factual findings first and defer only the policy questions:
 - Task 6 artifact and evaluator evidence: `task6/ARTIFACT_PROVENANCE.json`,
   `task6/RULE_DIFFERENCE_AUDIT.md`, `task6/RULE_DIFFERENCE_AUDIT.json`, and
   `task6/evidence/EVALUATOR_BATCHING_PROVENANCE.json`.
-- Extraction archive: `KAGGLE_EXTRACTION_DELIVERY.json` and the linked Drive
+- Extraction archive: `KAGGLE_EXTRACTION_DELIVERY.json`, the completed
+  [`EXTRACTION_BINDING_RECEIPT.json`](EXTRACTION_BINDING_RECEIPT.json), and the linked Drive
   archive. Its archive hash and size are recorded there and in the verifier;
   the delivery record also contains a live HTTP 200 HEAD check with matching
   `Content-Length`, filename, and byte-range support. For this approximately
