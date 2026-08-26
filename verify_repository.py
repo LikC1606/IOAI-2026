@@ -1822,7 +1822,7 @@ def verify_extraction_binding_receipt() -> dict[str, object]:
         },
     ]
     account_crosscheck = receipt["live_account_submission_crosscheck"]
-    assert account_crosscheck["checked_utc"] == "2026-08-26T07:36:38Z"
+    assert account_crosscheck["checked_utc"] == "2026-08-26T08:15:36Z"
     assert account_crosscheck["kaggle_cli_version"] == "Kaggle CLI 2.2.4"
     assert account_crosscheck["method"] == (
         "Authenticated Kaggle CLI competitions submissions retrieval; ref, "
@@ -1830,6 +1830,7 @@ def verify_extraction_binding_receipt() -> dict[str, object]:
         "were canonicalized and hashed locally."
     )
     assert "current account-list cross-check" in account_crosscheck["scope_note"]
+    assert "for all six competitions" in account_crosscheck["scope_note"]
     assert "does not prove historical source bytes" in account_crosscheck["scope_note"]
     assert account_crosscheck["results"] == [
         {
@@ -1855,6 +1856,54 @@ def verify_extraction_binding_receipt() -> dict[str, object]:
             "latest_ref": 55280319,
             "latest_date": "2026-08-05T20:34:57.803000",
             "latest_public_score": "0.65888",
+        },
+        {
+            "task": 3,
+            "competition": "ioai-2026-task-3-westlake-nlp-48",
+            "records": 27,
+            "ref_public_fields_sha256": "ad876ae5d7ac52c4700eb6f1a2ac97b2acf371ddb26ce1e84009c266394dc762",
+            "matches_archived_ref_public_fields": True,
+            "official_refs_present": True,
+            "official_refs": [55289569, 55289823],
+            "latest_ref": 55306794,
+            "latest_date": "2026-08-06T20:45:05.597000",
+            "latest_public_score": "41.16666",
+        },
+        {
+            "task": 4,
+            "competition": "ioai-2026-task-4-westlake-nlp-24",
+            "records": 3,
+            "ref_public_fields_sha256": "d65c08214e8cc7a427f99f31187c434ca33144f9298e780d0e2ac35daec0f2f6",
+            "matches_archived_ref_public_fields": True,
+            "official_refs_present": True,
+            "official_refs": [55316818],
+            "latest_ref": 55316818,
+            "latest_date": "2026-08-07T06:10:48.923000",
+            "latest_public_score": "98.41",
+        },
+        {
+            "task": 5,
+            "competition": "ioai-2026-task-5-westlake-nlp-24",
+            "records": 7,
+            "ref_public_fields_sha256": "2275de038789c89d0c7046f671fbab325b5b6b6c962f5786b0b4d451e21e8f1d",
+            "matches_archived_ref_public_fields": True,
+            "official_refs_present": True,
+            "official_refs": [55320296],
+            "latest_ref": 55320652,
+            "latest_date": "2026-08-07T09:02:01.927000",
+            "latest_public_score": "94.17",
+        },
+        {
+            "task": 6,
+            "competition": "ioai-2026-task-6-westlake-nlp-60",
+            "records": 6,
+            "ref_public_fields_sha256": "a384f6c79a7f01675285f50cd2816bfab87c8b6d54f2926e66fe3a84cb55a11e",
+            "matches_archived_ref_public_fields": True,
+            "official_refs_present": True,
+            "official_refs": [55357080],
+            "latest_ref": 55358739,
+            "latest_date": "2026-08-08T19:23:10.690000",
+            "latest_public_score": "76.41428",
         },
     ]
     return {
