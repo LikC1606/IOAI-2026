@@ -4,6 +4,8 @@ Organizer-review materials for IOAI 2026 Tasks 1-6. Start with
 [`ORGANIZER_SUBMISSION.md`](ORGANIZER_SUBMISSION.md), which maps every requested
 deliverable to its exact evidence path and machine-verifiable status. The
 shortest audit route is [`ORGANIZER_REVIEW_GUIDE.md`](ORGANIZER_REVIEW_GUIDE.md).
+For a one-page hand-off of the current scope, scores, costs, and unresolved
+decisions, see [`AUDIT_STATUS.md`](AUDIT_STATUS.md).
 The cross-task [`RULE_COMPLIANCE_AUDIT.md`](RULE_COMPLIANCE_AUDIT.md) separates
 known deviations, Jury-interpretation risks, and unavailable evidence; the
 current record does not support a claim that all six tasks are strictly

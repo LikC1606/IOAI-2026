@@ -10,6 +10,11 @@ For the shortest organizer/Jury audit route, start with
 verification commands, evidence map, and the few determinations that cannot be
 resolved from the preserved historical records.
 
+The compact current-status hand-off is [`AUDIT_STATUS.md`](AUDIT_STATUS.md).
+It summarizes the six official account results, selected trace scope, prompt
+qualification, cost accounting, and remaining Jury decisions without replacing
+the detailed evidence.
+
 For a requirement-by-requirement view, use the
 [`REQUIREMENT_EVIDENCE_MATRIX.md`](REQUIREMENT_EVIDENCE_MATRIX.md) table or its
 machine-readable [`REQUIREMENT_EVIDENCE_MATRIX.json`](REQUIREMENT_EVIDENCE_MATRIX.json).

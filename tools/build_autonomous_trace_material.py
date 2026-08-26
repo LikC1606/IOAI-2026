@@ -630,6 +630,7 @@ def write_manifest(index: dict[str, Any]) -> None:
         "ORGANIZER_SUBMISSION.md",
         "ORGANIZER_SUBMISSION.json",
         "ORGANIZER_REVIEW_GUIDE.md",
+        "AUDIT_STATUS.md",
         "STARTUP_INSTRUCTION_INDEX.md",
         "STARTUP_INSTRUCTION_INDEX.json",
         "ACCESS_CONTROL_AUDIT.json",
