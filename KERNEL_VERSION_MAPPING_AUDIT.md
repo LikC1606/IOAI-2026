@@ -20,6 +20,16 @@ The archive also proves the hashes of the selected candidate source, output,
 run log, and metadata; an authorized reviewer can rerun
 `tools/verify_extraction_bindings.py` against the downloaded Drive archive.
 
+On 2026-08-26, an authenticated Kaggle CLI `kernels output` cross-check also
+retrieved the version-qualified outputs for Task 1 `v4/v5/v6` and Task 2 `v1`.
+The downloaded bytes match the corresponding archive candidate output hash
+(Task 1: 6,533 bytes; Task 2: 79,215 bytes). This independently confirms the
+currently retrievable output bytes, while version-qualified source pulls were
+denied with HTTP 403; it therefore does not prove the historical submitted-file
+digest or upgrade the exact-version status above. The complete hash receipt is
+the `independent_live_output_crosscheck` block in
+[`EXTRACTION_BINDING_RECEIPT.json`](EXTRACTION_BINDING_RECEIPT.json).
+
 The remaining gap is narrow but material: the extraction's metadata has an
 empty `matched_version_confidence` list and each submission JSON has
 `_version_confirmed: false`. Therefore this package does not say that the
@@ -34,4 +44,3 @@ The machine-readable details are embedded in
 `task2/remote/OFFICIAL_FINAL_EXTRACTION_PROVENANCE.json` under
 `kernel_linked_candidate.version_mapping_audit`. This is an evidence-strength
 improvement, not a promotion to an exact-version or organizer-approved claim.
-
