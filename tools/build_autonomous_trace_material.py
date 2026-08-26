@@ -654,6 +654,7 @@ def write_manifest(index: dict[str, Any]) -> None:
         "PACKAGE_COMPLETENESS.json",
         "PACKAGE_COMPLETENESS.md",
         "tools/build_package_completeness.py",
+        "EXTRACTION_BINDING_RECEIPT.json",
         "KAGGLE_EXTRACTION_DELIVERY.json",
         "KAGGLE_EXTRACTION_SUMMARY.json",
         "PROMPT_CONFORMANCE_AUDIT.json",
