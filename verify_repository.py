@@ -10,6 +10,8 @@ import subprocess
 import sys
 from pathlib import Path
 
+from tools.build_execution_trace_index import call_pairing_audit, jsonl_events
+
 
 ROOT = Path(__file__).resolve().parent
 EXPECTED = {
@@ -420,6 +422,12 @@ def verify_autonomous_material() -> dict[str, int]:
             assert trace["path"] in manifest_paths, trace["path"]
             assert sha256(path) == trace["sha256"], trace["path"]
             assert trace["last_timestamp"] < boundary, trace["path"]
+            pairing = call_pairing_audit(jsonl_events(path))
+            assert pairing == trace["call_pairing"], trace["path"]
+            assert pairing["status"] in {
+                "complete",
+                "incomplete_at_capture_boundary",
+            }, trace["path"]
             if task in {"task1", "task2"}:
                 expected_scope = (
                     "/evidence/canonical/"
@@ -1861,6 +1869,12 @@ def verify_reproduction_material() -> dict[str, int]:
         path = ROOT / trace["path"]
         assert trace["path"] in manifest_paths, trace["path"]
         assert sha256(path) == trace["published_sha256"], trace["path"]
+        pairing = call_pairing_audit(jsonl_events(path))
+        assert pairing == trace["call_pairing"], trace["path"]
+        assert pairing["status"] in {
+            "complete",
+            "incomplete_at_capture_boundary",
+        }, trace["path"]
         line_count = 0
         max_tokens = None
         with path.open(encoding="utf-8") as handle:

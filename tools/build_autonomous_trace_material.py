@@ -522,18 +522,30 @@ def write_markdown(index: dict[str, Any]) -> None:
         "using the same configured solver/system and organizer constraints. See",
         "`ORIGINAL_SESSION_RECOVERY.md/json`.",
         "",
-        "| Task | Trace files | Events | User prompts | Logical calls | Tokens | Boundary (exclusive UTC) |",
-        "|---|---:|---:|---:|---:|---:|---|",
+        "| Task | Trace files | Events | User prompts | Logical calls | Unfinished calls | Tokens | Boundary (exclusive UTC) |",
+        "|---|---:|---:|---:|---:|---:|---:|---|",
     ]
     for task, data in index["tasks"].items():
         lines.append(
             f"| {task} | {len(data['trace_files'])} | {data['event_count']} | "
             f"{data['message_counts'].get('user', 0)} | {data['logical_function_calls']} | "
+            f"{sum(len(item['call_pairing']['unmatched_calls']) for item in data['trace_files'])} | "
             f"{data['token_usage_cumulative_sum_across_traces']['total_tokens']} | "
             f"{data['boundary']['exclusive_utc']} |"
         )
+    unfinished_total = sum(
+        len(item["call_pairing"]["unmatched_calls"])
+        for data in index["tasks"].values()
+        for item in data["trace_files"]
+    )
     lines.extend(
         [
+            "",
+            f"Call-envelope audit found {unfinished_total} call(s) whose output is absent",
+            "because the trace ends on that call at the declared capture boundary. Each",
+            "call ID and timestamp is recorded below and in the JSON index; orphan outputs,",
+            "duplicate IDs, out-of-order outputs, or unmatched calls away from the final",
+            "event are rejected by `verify_repository.py`.",
             "",
             "Exact prompt hashes, per-trace SHA-256 values, tool-call counts, message",
             "counts, and token counters are in",
@@ -558,7 +570,15 @@ def write_markdown(index: dict[str, Any]) -> None:
         lines.append("")
         for item in data["trace_files"]:
             path = item["path"]
-            lines.append(f"- [`{Path(path).name}`]({path}) — {item['event_count']} events")
+            pairing = item["call_pairing"]
+            unfinished = ", ".join(
+                f"`{call['call_id']}` ({call['kind']})"
+                for call in pairing["unmatched_calls"]
+            ) or "none"
+            lines.append(
+                f"- [`{Path(path).name}`]({path}) — {item['event_count']} events; "
+                f"call pairing `{pairing['status']}`; unfinished calls: {unfinished}"
+            )
         lines.extend(["", "Explicitly excluded:", ""])
         for item in data["excluded_material"]:
             lines.append(f"- {item}")

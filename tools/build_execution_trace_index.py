@@ -107,6 +107,125 @@ def jsonl_events(path: Path) -> list[dict[str, Any]]:
     return events
 
 
+def call_pairing_audit(events: list[dict[str, Any]]) -> dict[str, Any]:
+    """Audit function/tool call envelopes against their returned outputs.
+
+    A trace can legitimately end while a tool call is in flight (for example,
+    when a declared autonomy boundary is reached).  That case is recorded
+    explicitly instead of making a reviewer infer it from two aggregate counts.
+    Any orphan output, duplicate call id, or unmatched call away from the last
+    captured event is classified as malformed and must fail verification.
+    """
+    pairs = (
+        ("function_call", "function_call_output"),
+        ("custom_tool_call", "custom_tool_call_output"),
+    )
+    by_type: dict[str, dict[str, list[tuple[int, dict[str, Any]]]]] = {}
+    for call_type, output_type in pairs:
+        calls: list[tuple[int, dict[str, Any]]] = []
+        outputs: list[tuple[int, dict[str, Any]]] = []
+        for index, event in enumerate(events):
+            if event.get("type") != "response_item":
+                continue
+            payload = event.get("payload") or {}
+            item_type = payload.get("type")
+            if item_type == call_type:
+                calls.append((index, payload))
+            elif item_type == output_type:
+                outputs.append((index, payload))
+        by_type[call_type] = {"calls": calls, "outputs": outputs}
+
+    unmatched: list[dict[str, Any]] = []
+    orphan_outputs: list[dict[str, Any]] = []
+    duplicate_ids: list[dict[str, Any]] = []
+    ordering_violations: list[dict[str, Any]] = []
+    per_kind: dict[str, dict[str, int]] = {}
+    for call_type, output_type in pairs:
+        calls = by_type[call_type]["calls"]
+        outputs = by_type[call_type]["outputs"]
+        call_map: dict[Any, list[tuple[int, dict[str, Any]]]] = {}
+        output_map: dict[Any, list[tuple[int, dict[str, Any]]]] = {}
+        for index, payload in calls:
+            call_map.setdefault(payload.get("call_id"), []).append((index, payload))
+        for index, payload in outputs:
+            output_map.setdefault(payload.get("call_id"), []).append((index, payload))
+        for call_id, entries in call_map.items():
+            if call_id is None or len(entries) > 1:
+                duplicate_ids.append(
+                    {
+                        "kind": call_type,
+                        "call_id": call_id,
+                        "event_indices": [index for index, _ in entries],
+                    }
+                )
+            if call_id not in output_map:
+                index, payload = entries[-1]
+                unmatched.append(
+                    {
+                        "kind": call_type,
+                        "call_id": call_id,
+                        "name": payload.get("name"),
+                        "timestamp": events[index].get("timestamp"),
+                        "event_index": index,
+                    }
+                )
+            else:
+                call_index = entries[-1][0]
+                output_index = output_map[call_id][-1][0]
+                if output_index <= call_index:
+                    ordering_violations.append(
+                        {
+                            "kind": call_type,
+                            "call_id": call_id,
+                            "call_event_index": call_index,
+                            "output_event_index": output_index,
+                        }
+                    )
+        for call_id, entries in output_map.items():
+            if call_id not in call_map:
+                for index, _ in entries:
+                    orphan_outputs.append(
+                        {
+                            "kind": output_type,
+                            "call_id": call_id,
+                            "timestamp": events[index].get("timestamp"),
+                            "event_index": index,
+                        }
+                    )
+        per_kind[call_type] = {
+            "calls": len(calls),
+            "outputs": len(outputs),
+            "unmatched_calls": sum(
+                1 for item in unmatched if item["kind"] == call_type
+            ),
+            "orphan_outputs": sum(
+                1 for item in orphan_outputs if item["kind"] == output_type
+            ),
+        }
+
+    last_index = len(events) - 1
+    boundary_unmatched = bool(unmatched) and all(
+        item["event_index"] == last_index for item in unmatched
+    )
+    malformed = bool(orphan_outputs or duplicate_ids or ordering_violations)
+    if malformed:
+        status = "invalid_pairing"
+    elif unmatched and boundary_unmatched:
+        status = "incomplete_at_capture_boundary"
+    elif unmatched:
+        status = "invalid_pairing"
+    else:
+        status = "complete"
+    return {
+        "status": status,
+        "per_kind": per_kind,
+        "unmatched_calls": unmatched,
+        "orphan_outputs": orphan_outputs,
+        "duplicate_call_ids": duplicate_ids,
+        "ordering_violations": ordering_violations,
+    }
+
+
 def token_totals(events: list[dict[str, Any]]) -> dict[str, int] | None:
     candidates: list[dict[str, Any]] = []
     for event in events:
@@ -181,6 +300,7 @@ def trace_record(path: Path, relative: str, role_hint: str | None = None) -> dic
         "logical_function_call_names": dict(sorted(function_calls.items())),
         "exec_wrapper_custom_tool_calls": sum(custom_calls.values()),
         "custom_tool_call_names": dict(sorted(custom_calls.items())),
+        "call_pairing": call_pairing_audit(events),
         "models_observed": sorted(models),
         "reasoning_efforts_observed": sorted(reasoning_efforts),
         "token_usage_cumulative_final": token_totals(events),
@@ -306,8 +426,8 @@ def main() -> None:
         "bounded formal prefixes are supplemental historical audit material. See",
         "`ORIGINAL_SESSION_RECOVERY.md/json`; notes and scope are recorded in this index.",
         "",
-        "| Task | Files | Events | Logical calls | Outer exec calls | Tokens |",
-        "|---|---:|---:|---:|---:|---:|",
+        "| Task | Files | Events | Logical calls | Outer exec calls | Unfinished calls | Tokens |",
+        "|---|---:|---:|---:|---:|---:|---:|",
     ]
     for task_name, task_data in index["tasks"].items():
         tokens = task_data["token_usage_cumulative_sum_across_traces"]
@@ -315,14 +435,21 @@ def main() -> None:
         markdown.append(
             f"| {task_name} | {len(task_data['trace_files'])} | "
             f"{task_data['event_count']} | {task_data['logical_function_calls']} | "
-            f"{task_data['exec_wrapper_custom_tool_calls']} | {token_text} |"
+            f"{task_data['exec_wrapper_custom_tool_calls']} | "
+            f"{sum(len(item['call_pairing']['unmatched_calls']) for item in task_data['trace_files'])} | "
+            f"{token_text} |"
         )
-    markdown.extend(["", "## Files", "", "| Task | Role | Events | SHA-256 | Path |", "|---|---|---:|---|---|"])
+    markdown.extend(["", "## Files", "", "| Task | Role | Events | Call pairing | Unfinished call IDs | SHA-256 | Path |", "|---|---|---:|---|---|---|---|"])
     for task_name, task_data in index["tasks"].items():
         for item in task_data["trace_files"]:
+            pairing = item["call_pairing"]
+            unfinished = ", ".join(
+                f"`{call['call_id']}` ({call['kind']})"
+                for call in pairing["unmatched_calls"]
+            ) or "—"
             markdown.append(
                 f"| {task_name} | {item['role']} | {item['event_count']} | "
-                f"`{item['sha256']}` | `{item['path']}` |"
+                f"{pairing['status']} | {unfinished} | `{item['sha256']}` | `{item['path']}` |"
             )
     (ROOT / "EXECUTION_TRACE_INDEX.md").write_text("\n".join(markdown) + "\n", encoding="utf-8")
     print(json.dumps(index, ensure_ascii=False, indent=2))

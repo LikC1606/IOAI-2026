@@ -60,6 +60,13 @@ chain-of-thought is not published. Opaque `encrypted_content` is replaced with
 `[OMITTED_OPAQUE_REASONING]`; credentials, private endpoints, and secret
 metadata are redacted.
 
+Call envelopes are paired by `call_id` during verification. Three published
+audit streams end exactly on an in-flight call (the full later Task 1
+reproduction and two Task 4 boundary traces); those call IDs and timestamps are
+marked `incomplete_at_capture_boundary` in the machine index. No orphan output,
+duplicate call ID, out-of-order output, or unmatched call away from the final
+captured event is accepted.
+
 The first excluded human prompt and all events causally downstream of it are
 outside this package. Boundary records contain timestamp, classification, and
 cryptographic hashes only; they do not reproduce human prompt bodies. The older

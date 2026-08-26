@@ -74,6 +74,27 @@
           "custom_tool_call_names": {
             "exec": 262
           },
+          "call_pairing": {
+            "status": "complete",
+            "per_kind": {
+              "function_call": {
+                "calls": 17,
+                "outputs": 17,
+                "unmatched_calls": 0,
+                "orphan_outputs": 0
+              },
+              "custom_tool_call": {
+                "calls": 262,
+                "outputs": 262,
+                "unmatched_calls": 0,
+                "orphan_outputs": 0
+              }
+            },
+            "unmatched_calls": [],
+            "orphan_outputs": [],
+            "duplicate_call_ids": [],
+            "ordering_violations": []
+          },
           "models_observed": [
             "gpt-5.6-sol"
           ],
@@ -209,6 +230,27 @@
           "exec_wrapper_custom_tool_calls": 176,
           "custom_tool_call_names": {
             "exec": 176
+          },
+          "call_pairing": {
+            "status": "complete",
+            "per_kind": {
+              "function_call": {
+                "calls": 40,
+                "outputs": 40,
+                "unmatched_calls": 0,
+                "orphan_outputs": 0
+              },
+              "custom_tool_call": {
+                "calls": 176,
+                "outputs": 176,
+                "unmatched_calls": 0,
+                "orphan_outputs": 0
+              }
+            },
+            "unmatched_calls": [],
+            "orphan_outputs": [],
+            "duplicate_call_ids": [],
+            "ordering_violations": []
           },
           "models_observed": [
             "gpt-5.6-sol"
@@ -348,6 +390,27 @@
           "custom_tool_call_names": {
             "exec": 171
           },
+          "call_pairing": {
+            "status": "complete",
+            "per_kind": {
+              "function_call": {
+                "calls": 32,
+                "outputs": 32,
+                "unmatched_calls": 0,
+                "orphan_outputs": 0
+              },
+              "custom_tool_call": {
+                "calls": 171,
+                "outputs": 171,
+                "unmatched_calls": 0,
+                "orphan_outputs": 0
+              }
+            },
+            "unmatched_calls": [],
+            "orphan_outputs": [],
+            "duplicate_call_ids": [],
+            "ordering_violations": []
+          },
           "models_observed": [
             "gpt-5.6-sol"
           ],
@@ -411,6 +474,27 @@
           "exec_wrapper_custom_tool_calls": 106,
           "custom_tool_call_names": {
             "exec": 106
+          },
+          "call_pairing": {
+            "status": "complete",
+            "per_kind": {
+              "function_call": {
+                "calls": 54,
+                "outputs": 54,
+                "unmatched_calls": 0,
+                "orphan_outputs": 0
+              },
+              "custom_tool_call": {
+                "calls": 106,
+                "outputs": 106,
+                "unmatched_calls": 0,
+                "orphan_outputs": 0
+              }
+            },
+            "unmatched_calls": [],
+            "orphan_outputs": [],
+            "duplicate_call_ids": [],
+            "ordering_violations": []
           },
           "models_observed": [
             "gpt-5.6-sol"
@@ -477,6 +561,27 @@
           "custom_tool_call_names": {
             "exec": 51
           },
+          "call_pairing": {
+            "status": "complete",
+            "per_kind": {
+              "function_call": {
+                "calls": 25,
+                "outputs": 25,
+                "unmatched_calls": 0,
+                "orphan_outputs": 0
+              },
+              "custom_tool_call": {
+                "calls": 51,
+                "outputs": 51,
+                "unmatched_calls": 0,
+                "orphan_outputs": 0
+              }
+            },
+            "unmatched_calls": [],
+            "orphan_outputs": [],
+            "duplicate_call_ids": [],
+            "ordering_violations": []
+          },
           "models_observed": [
             "gpt-5.6-sol"
           ],
@@ -542,6 +647,27 @@
           "exec_wrapper_custom_tool_calls": 45,
           "custom_tool_call_names": {
             "exec": 45
+          },
+          "call_pairing": {
+            "status": "complete",
+            "per_kind": {
+              "function_call": {
+                "calls": 24,
+                "outputs": 24,
+                "unmatched_calls": 0,
+                "orphan_outputs": 0
+              },
+              "custom_tool_call": {
+                "calls": 45,
+                "outputs": 45,
+                "unmatched_calls": 0,
+                "orphan_outputs": 0
+              }
+            },
+            "unmatched_calls": [],
+            "orphan_outputs": [],
+            "duplicate_call_ids": [],
+            "ordering_violations": []
           },
           "models_observed": [
             "gpt-5.6-sol"
@@ -726,6 +852,35 @@
           "custom_tool_call_names": {
             "exec": 277
           },
+          "call_pairing": {
+            "status": "incomplete_at_capture_boundary",
+            "per_kind": {
+              "function_call": {
+                "calls": 50,
+                "outputs": 50,
+                "unmatched_calls": 0,
+                "orphan_outputs": 0
+              },
+              "custom_tool_call": {
+                "calls": 277,
+                "outputs": 276,
+                "unmatched_calls": 1,
+                "orphan_outputs": 0
+              }
+            },
+            "unmatched_calls": [
+              {
+                "kind": "custom_tool_call",
+                "call_id": "call_WBf0RTIKAETcSi6JGnKXfF9S",
+                "name": "exec",
+                "timestamp": "2026-08-07T06:18:14.539Z",
+                "event_index": 1548
+              }
+            ],
+            "orphan_outputs": [],
+            "duplicate_call_ids": [],
+            "ordering_violations": []
+          },
           "models_observed": [
             "gpt-5.6-sol"
           ],
@@ -790,6 +945,27 @@
           "custom_tool_call_names": {
             "exec": 39
           },
+          "call_pairing": {
+            "status": "complete",
+            "per_kind": {
+              "function_call": {
+                "calls": 13,
+                "outputs": 13,
+                "unmatched_calls": 0,
+                "orphan_outputs": 0
+              },
+              "custom_tool_call": {
+                "calls": 39,
+                "outputs": 39,
+                "unmatched_calls": 0,
+                "orphan_outputs": 0
+              }
+            },
+            "unmatched_calls": [],
+            "orphan_outputs": [],
+            "duplicate_call_ids": [],
+            "ordering_violations": []
+          },
           "models_observed": [
             "gpt-5.6-sol"
           ],
@@ -851,6 +1027,27 @@
           "exec_wrapper_custom_tool_calls": 44,
           "custom_tool_call_names": {
             "exec": 44
+          },
+          "call_pairing": {
+            "status": "complete",
+            "per_kind": {
+              "function_call": {
+                "calls": 9,
+                "outputs": 9,
+                "unmatched_calls": 0,
+                "orphan_outputs": 0
+              },
+              "custom_tool_call": {
+                "calls": 44,
+                "outputs": 44,
+                "unmatched_calls": 0,
+                "orphan_outputs": 0
+              }
+            },
+            "unmatched_calls": [],
+            "orphan_outputs": [],
+            "duplicate_call_ids": [],
+            "ordering_violations": []
           },
           "models_observed": [
             "gpt-5.6-sol"
@@ -916,6 +1113,27 @@
           "custom_tool_call_names": {
             "exec": 14
           },
+          "call_pairing": {
+            "status": "complete",
+            "per_kind": {
+              "function_call": {
+                "calls": 2,
+                "outputs": 2,
+                "unmatched_calls": 0,
+                "orphan_outputs": 0
+              },
+              "custom_tool_call": {
+                "calls": 14,
+                "outputs": 14,
+                "unmatched_calls": 0,
+                "orphan_outputs": 0
+              }
+            },
+            "unmatched_calls": [],
+            "orphan_outputs": [],
+            "duplicate_call_ids": [],
+            "ordering_violations": []
+          },
           "models_observed": [
             "gpt-5.6-sol"
           ],
@@ -978,6 +1196,27 @@
           "exec_wrapper_custom_tool_calls": 13,
           "custom_tool_call_names": {
             "exec": 13
+          },
+          "call_pairing": {
+            "status": "complete",
+            "per_kind": {
+              "function_call": {
+                "calls": 1,
+                "outputs": 1,
+                "unmatched_calls": 0,
+                "orphan_outputs": 0
+              },
+              "custom_tool_call": {
+                "calls": 13,
+                "outputs": 13,
+                "unmatched_calls": 0,
+                "orphan_outputs": 0
+              }
+            },
+            "unmatched_calls": [],
+            "orphan_outputs": [],
+            "duplicate_call_ids": [],
+            "ordering_violations": []
           },
           "models_observed": [
             "gpt-5.6-sol"
@@ -1047,6 +1286,35 @@
           "custom_tool_call_names": {
             "exec": 153
           },
+          "call_pairing": {
+            "status": "incomplete_at_capture_boundary",
+            "per_kind": {
+              "function_call": {
+                "calls": 38,
+                "outputs": 37,
+                "unmatched_calls": 1,
+                "orphan_outputs": 0
+              },
+              "custom_tool_call": {
+                "calls": 153,
+                "outputs": 153,
+                "unmatched_calls": 0,
+                "orphan_outputs": 0
+              }
+            },
+            "unmatched_calls": [
+              {
+                "kind": "function_call",
+                "call_id": "call_eNISCiGsdfwyEhbSnydlqGCc",
+                "name": "wait_agent",
+                "timestamp": "2026-08-07T06:06:42.615Z",
+                "event_index": 996
+              }
+            ],
+            "orphan_outputs": [],
+            "duplicate_call_ids": [],
+            "ordering_violations": []
+          },
           "models_observed": [
             "gpt-5.6-sol"
           ],
@@ -1111,6 +1379,27 @@
           "exec_wrapper_custom_tool_calls": 77,
           "custom_tool_call_names": {
             "exec": 77
+          },
+          "call_pairing": {
+            "status": "complete",
+            "per_kind": {
+              "function_call": {
+                "calls": 28,
+                "outputs": 28,
+                "unmatched_calls": 0,
+                "orphan_outputs": 0
+              },
+              "custom_tool_call": {
+                "calls": 77,
+                "outputs": 77,
+                "unmatched_calls": 0,
+                "orphan_outputs": 0
+              }
+            },
+            "unmatched_calls": [],
+            "orphan_outputs": [],
+            "duplicate_call_ids": [],
+            "ordering_violations": []
           },
           "models_observed": [
             "gpt-5.6-sol"
@@ -1177,6 +1466,27 @@
           "custom_tool_call_names": {
             "exec": 62
           },
+          "call_pairing": {
+            "status": "complete",
+            "per_kind": {
+              "function_call": {
+                "calls": 38,
+                "outputs": 38,
+                "unmatched_calls": 0,
+                "orphan_outputs": 0
+              },
+              "custom_tool_call": {
+                "calls": 62,
+                "outputs": 62,
+                "unmatched_calls": 0,
+                "orphan_outputs": 0
+              }
+            },
+            "unmatched_calls": [],
+            "orphan_outputs": [],
+            "duplicate_call_ids": [],
+            "ordering_violations": []
+          },
           "models_observed": [
             "gpt-5.6-sol"
           ],
@@ -1238,6 +1548,27 @@
           "exec_wrapper_custom_tool_calls": 43,
           "custom_tool_call_names": {
             "exec": 43
+          },
+          "call_pairing": {
+            "status": "complete",
+            "per_kind": {
+              "function_call": {
+                "calls": 12,
+                "outputs": 12,
+                "unmatched_calls": 0,
+                "orphan_outputs": 0
+              },
+              "custom_tool_call": {
+                "calls": 43,
+                "outputs": 43,
+                "unmatched_calls": 0,
+                "orphan_outputs": 0
+              }
+            },
+            "unmatched_calls": [],
+            "orphan_outputs": [],
+            "duplicate_call_ids": [],
+            "ordering_violations": []
           },
           "models_observed": [
             "gpt-5.6-sol"
@@ -1301,6 +1632,27 @@
           "exec_wrapper_custom_tool_calls": 4,
           "custom_tool_call_names": {
             "exec": 4
+          },
+          "call_pairing": {
+            "status": "complete",
+            "per_kind": {
+              "function_call": {
+                "calls": 1,
+                "outputs": 1,
+                "unmatched_calls": 0,
+                "orphan_outputs": 0
+              },
+              "custom_tool_call": {
+                "calls": 4,
+                "outputs": 4,
+                "unmatched_calls": 0,
+                "orphan_outputs": 0
+              }
+            },
+            "unmatched_calls": [],
+            "orphan_outputs": [],
+            "duplicate_call_ids": [],
+            "ordering_violations": []
           },
           "models_observed": [
             "gpt-5.6-sol"
@@ -1367,6 +1719,27 @@
           "custom_tool_call_names": {
             "exec": 18
           },
+          "call_pairing": {
+            "status": "complete",
+            "per_kind": {
+              "function_call": {
+                "calls": 4,
+                "outputs": 4,
+                "unmatched_calls": 0,
+                "orphan_outputs": 0
+              },
+              "custom_tool_call": {
+                "calls": 18,
+                "outputs": 18,
+                "unmatched_calls": 0,
+                "orphan_outputs": 0
+              }
+            },
+            "unmatched_calls": [],
+            "orphan_outputs": [],
+            "duplicate_call_ids": [],
+            "ordering_violations": []
+          },
           "models_observed": [
             "gpt-5.6-sol"
           ],
@@ -1429,6 +1802,27 @@
           "exec_wrapper_custom_tool_calls": 9,
           "custom_tool_call_names": {
             "exec": 9
+          },
+          "call_pairing": {
+            "status": "complete",
+            "per_kind": {
+              "function_call": {
+                "calls": 2,
+                "outputs": 2,
+                "unmatched_calls": 0,
+                "orphan_outputs": 0
+              },
+              "custom_tool_call": {
+                "calls": 9,
+                "outputs": 9,
+                "unmatched_calls": 0,
+                "orphan_outputs": 0
+              }
+            },
+            "unmatched_calls": [],
+            "orphan_outputs": [],
+            "duplicate_call_ids": [],
+            "ordering_violations": []
           },
           "models_observed": [
             "gpt-5.6-sol"
@@ -1910,6 +2304,27 @@
           "custom_tool_call_names": {
             "exec": 170
           },
+          "call_pairing": {
+            "status": "complete",
+            "per_kind": {
+              "function_call": {
+                "calls": 64,
+                "outputs": 64,
+                "unmatched_calls": 0,
+                "orphan_outputs": 0
+              },
+              "custom_tool_call": {
+                "calls": 170,
+                "outputs": 170,
+                "unmatched_calls": 0,
+                "orphan_outputs": 0
+              }
+            },
+            "unmatched_calls": [],
+            "orphan_outputs": [],
+            "duplicate_call_ids": [],
+            "ordering_violations": []
+          },
           "models_observed": [
             "gpt-5.6-sol"
           ],
@@ -1972,6 +2387,27 @@
           "exec_wrapper_custom_tool_calls": 21,
           "custom_tool_call_names": {
             "exec": 21
+          },
+          "call_pairing": {
+            "status": "complete",
+            "per_kind": {
+              "function_call": {
+                "calls": 7,
+                "outputs": 7,
+                "unmatched_calls": 0,
+                "orphan_outputs": 0
+              },
+              "custom_tool_call": {
+                "calls": 21,
+                "outputs": 21,
+                "unmatched_calls": 0,
+                "orphan_outputs": 0
+              }
+            },
+            "unmatched_calls": [],
+            "orphan_outputs": [],
+            "duplicate_call_ids": [],
+            "ordering_violations": []
           },
           "models_observed": [
             "gpt-5.6-sol"
@@ -2036,6 +2472,27 @@
           "custom_tool_call_names": {
             "exec": 18
           },
+          "call_pairing": {
+            "status": "complete",
+            "per_kind": {
+              "function_call": {
+                "calls": 3,
+                "outputs": 3,
+                "unmatched_calls": 0,
+                "orphan_outputs": 0
+              },
+              "custom_tool_call": {
+                "calls": 18,
+                "outputs": 18,
+                "unmatched_calls": 0,
+                "orphan_outputs": 0
+              }
+            },
+            "unmatched_calls": [],
+            "orphan_outputs": [],
+            "duplicate_call_ids": [],
+            "ordering_violations": []
+          },
           "models_observed": [
             "gpt-5.6-sol"
           ],
@@ -2098,6 +2555,27 @@
           "exec_wrapper_custom_tool_calls": 26,
           "custom_tool_call_names": {
             "exec": 26
+          },
+          "call_pairing": {
+            "status": "complete",
+            "per_kind": {
+              "function_call": {
+                "calls": 9,
+                "outputs": 9,
+                "unmatched_calls": 0,
+                "orphan_outputs": 0
+              },
+              "custom_tool_call": {
+                "calls": 26,
+                "outputs": 26,
+                "unmatched_calls": 0,
+                "orphan_outputs": 0
+              }
+            },
+            "unmatched_calls": [],
+            "orphan_outputs": [],
+            "duplicate_call_ids": [],
+            "ordering_violations": []
           },
           "models_observed": [
             "gpt-5.6-sol"
@@ -2162,6 +2640,27 @@
           "custom_tool_call_names": {
             "exec": 23
           },
+          "call_pairing": {
+            "status": "complete",
+            "per_kind": {
+              "function_call": {
+                "calls": 7,
+                "outputs": 7,
+                "unmatched_calls": 0,
+                "orphan_outputs": 0
+              },
+              "custom_tool_call": {
+                "calls": 23,
+                "outputs": 23,
+                "unmatched_calls": 0,
+                "orphan_outputs": 0
+              }
+            },
+            "unmatched_calls": [],
+            "orphan_outputs": [],
+            "duplicate_call_ids": [],
+            "ordering_violations": []
+          },
           "models_observed": [
             "gpt-5.6-sol"
           ],
@@ -2224,6 +2723,27 @@
           "exec_wrapper_custom_tool_calls": 22,
           "custom_tool_call_names": {
             "exec": 22
+          },
+          "call_pairing": {
+            "status": "complete",
+            "per_kind": {
+              "function_call": {
+                "calls": 7,
+                "outputs": 7,
+                "unmatched_calls": 0,
+                "orphan_outputs": 0
+              },
+              "custom_tool_call": {
+                "calls": 22,
+                "outputs": 22,
+                "unmatched_calls": 0,
+                "orphan_outputs": 0
+              }
+            },
+            "unmatched_calls": [],
+            "orphan_outputs": [],
+            "duplicate_call_ids": [],
+            "ordering_violations": []
           },
           "models_observed": [
             "gpt-5.6-sol"
@@ -2288,6 +2808,27 @@
           "custom_tool_call_names": {
             "exec": 17
           },
+          "call_pairing": {
+            "status": "complete",
+            "per_kind": {
+              "function_call": {
+                "calls": 5,
+                "outputs": 5,
+                "unmatched_calls": 0,
+                "orphan_outputs": 0
+              },
+              "custom_tool_call": {
+                "calls": 17,
+                "outputs": 17,
+                "unmatched_calls": 0,
+                "orphan_outputs": 0
+              }
+            },
+            "unmatched_calls": [],
+            "orphan_outputs": [],
+            "duplicate_call_ids": [],
+            "ordering_violations": []
+          },
           "models_observed": [
             "gpt-5.6-sol"
           ],
@@ -2350,6 +2891,27 @@
           "exec_wrapper_custom_tool_calls": 18,
           "custom_tool_call_names": {
             "exec": 18
+          },
+          "call_pairing": {
+            "status": "complete",
+            "per_kind": {
+              "function_call": {
+                "calls": 4,
+                "outputs": 4,
+                "unmatched_calls": 0,
+                "orphan_outputs": 0
+              },
+              "custom_tool_call": {
+                "calls": 18,
+                "outputs": 18,
+                "unmatched_calls": 0,
+                "orphan_outputs": 0
+              }
+            },
+            "unmatched_calls": [],
+            "orphan_outputs": [],
+            "duplicate_call_ids": [],
+            "ordering_violations": []
           },
           "models_observed": [
             "gpt-5.6-sol"
@@ -2415,6 +2977,27 @@
           "custom_tool_call_names": {
             "exec": 18
           },
+          "call_pairing": {
+            "status": "complete",
+            "per_kind": {
+              "function_call": {
+                "calls": 6,
+                "outputs": 6,
+                "unmatched_calls": 0,
+                "orphan_outputs": 0
+              },
+              "custom_tool_call": {
+                "calls": 18,
+                "outputs": 18,
+                "unmatched_calls": 0,
+                "orphan_outputs": 0
+              }
+            },
+            "unmatched_calls": [],
+            "orphan_outputs": [],
+            "duplicate_call_ids": [],
+            "ordering_violations": []
+          },
           "models_observed": [
             "gpt-5.6-sol"
           ],
@@ -2478,6 +3061,27 @@
           "custom_tool_call_names": {
             "exec": 8
           },
+          "call_pairing": {
+            "status": "complete",
+            "per_kind": {
+              "function_call": {
+                "calls": 2,
+                "outputs": 2,
+                "unmatched_calls": 0,
+                "orphan_outputs": 0
+              },
+              "custom_tool_call": {
+                "calls": 8,
+                "outputs": 8,
+                "unmatched_calls": 0,
+                "orphan_outputs": 0
+              }
+            },
+            "unmatched_calls": [],
+            "orphan_outputs": [],
+            "duplicate_call_ids": [],
+            "ordering_violations": []
+          },
           "models_observed": [
             "gpt-5.6-sol"
           ],
@@ -2539,6 +3143,27 @@
           "exec_wrapper_custom_tool_calls": 11,
           "custom_tool_call_names": {
             "exec": 11
+          },
+          "call_pairing": {
+            "status": "complete",
+            "per_kind": {
+              "function_call": {
+                "calls": 1,
+                "outputs": 1,
+                "unmatched_calls": 0,
+                "orphan_outputs": 0
+              },
+              "custom_tool_call": {
+                "calls": 11,
+                "outputs": 11,
+                "unmatched_calls": 0,
+                "orphan_outputs": 0
+              }
+            },
+            "unmatched_calls": [],
+            "orphan_outputs": [],
+            "duplicate_call_ids": [],
+            "ordering_violations": []
           },
           "models_observed": [
             "gpt-5.6-sol"
@@ -2603,6 +3228,27 @@
           "custom_tool_call_names": {
             "exec": 30
           },
+          "call_pairing": {
+            "status": "complete",
+            "per_kind": {
+              "function_call": {
+                "calls": 6,
+                "outputs": 6,
+                "unmatched_calls": 0,
+                "orphan_outputs": 0
+              },
+              "custom_tool_call": {
+                "calls": 30,
+                "outputs": 30,
+                "unmatched_calls": 0,
+                "orphan_outputs": 0
+              }
+            },
+            "unmatched_calls": [],
+            "orphan_outputs": [],
+            "duplicate_call_ids": [],
+            "ordering_violations": []
+          },
           "models_observed": [
             "gpt-5.6-sol"
           ],
@@ -2666,6 +3312,27 @@
           "custom_tool_call_names": {
             "exec": 16
           },
+          "call_pairing": {
+            "status": "complete",
+            "per_kind": {
+              "function_call": {
+                "calls": 7,
+                "outputs": 7,
+                "unmatched_calls": 0,
+                "orphan_outputs": 0
+              },
+              "custom_tool_call": {
+                "calls": 16,
+                "outputs": 16,
+                "unmatched_calls": 0,
+                "orphan_outputs": 0
+              }
+            },
+            "unmatched_calls": [],
+            "orphan_outputs": [],
+            "duplicate_call_ids": [],
+            "ordering_violations": []
+          },
           "models_observed": [
             "gpt-5.6-sol"
           ],
@@ -2728,6 +3395,27 @@
           "exec_wrapper_custom_tool_calls": 11,
           "custom_tool_call_names": {
             "exec": 11
+          },
+          "call_pairing": {
+            "status": "complete",
+            "per_kind": {
+              "function_call": {
+                "calls": 3,
+                "outputs": 3,
+                "unmatched_calls": 0,
+                "orphan_outputs": 0
+              },
+              "custom_tool_call": {
+                "calls": 11,
+                "outputs": 11,
+                "unmatched_calls": 0,
+                "orphan_outputs": 0
+              }
+            },
+            "unmatched_calls": [],
+            "orphan_outputs": [],
+            "duplicate_call_ids": [],
+            "ordering_violations": []
           },
           "models_observed": [
             "gpt-5.6-sol"
@@ -3055,6 +3743,27 @@
           "custom_tool_call_names": {
             "exec": 212
           },
+          "call_pairing": {
+            "status": "complete",
+            "per_kind": {
+              "function_call": {
+                "calls": 27,
+                "outputs": 27,
+                "unmatched_calls": 0,
+                "orphan_outputs": 0
+              },
+              "custom_tool_call": {
+                "calls": 212,
+                "outputs": 212,
+                "unmatched_calls": 0,
+                "orphan_outputs": 0
+              }
+            },
+            "unmatched_calls": [],
+            "orphan_outputs": [],
+            "duplicate_call_ids": [],
+            "ordering_violations": []
+          },
           "models_observed": [
             "gpt-5.6-sol"
           ],
@@ -3117,6 +3826,27 @@
           "exec_wrapper_custom_tool_calls": 49,
           "custom_tool_call_names": {
             "exec": 49
+          },
+          "call_pairing": {
+            "status": "complete",
+            "per_kind": {
+              "function_call": {
+                "calls": 11,
+                "outputs": 11,
+                "unmatched_calls": 0,
+                "orphan_outputs": 0
+              },
+              "custom_tool_call": {
+                "calls": 49,
+                "outputs": 49,
+                "unmatched_calls": 0,
+                "orphan_outputs": 0
+              }
+            },
+            "unmatched_calls": [],
+            "orphan_outputs": [],
+            "duplicate_call_ids": [],
+            "ordering_violations": []
           },
           "models_observed": [
             "gpt-5.6-sol"
@@ -3181,6 +3911,27 @@
           "exec_wrapper_custom_tool_calls": 48,
           "custom_tool_call_names": {
             "exec": 48
+          },
+          "call_pairing": {
+            "status": "complete",
+            "per_kind": {
+              "function_call": {
+                "calls": 16,
+                "outputs": 16,
+                "unmatched_calls": 0,
+                "orphan_outputs": 0
+              },
+              "custom_tool_call": {
+                "calls": 48,
+                "outputs": 48,
+                "unmatched_calls": 0,
+                "orphan_outputs": 0
+              }
+            },
+            "unmatched_calls": [],
+            "orphan_outputs": [],
+            "duplicate_call_ids": [],
+            "ordering_violations": []
           },
           "models_observed": [
             "gpt-5.6-sol"

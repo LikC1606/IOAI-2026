@@ -77,6 +77,35 @@
         "custom_tool_call_names": {
           "exec": 264
         },
+        "call_pairing": {
+          "status": "incomplete_at_capture_boundary",
+          "per_kind": {
+            "function_call": {
+              "calls": 17,
+              "outputs": 17,
+              "unmatched_calls": 0,
+              "orphan_outputs": 0
+            },
+            "custom_tool_call": {
+              "calls": 264,
+              "outputs": 263,
+              "unmatched_calls": 1,
+              "orphan_outputs": 0
+            }
+          },
+          "unmatched_calls": [
+            {
+              "kind": "custom_tool_call",
+              "call_id": "call_zVeksbW19CHTeWRTlEK00gCV",
+              "name": "exec",
+              "timestamp": "2026-08-05T18:25:46.003Z",
+              "event_index": 1397
+            }
+          ],
+          "orphan_outputs": [],
+          "duplicate_call_ids": [],
+          "ordering_violations": []
+        },
         "models_observed": [
           "gpt-5.6-sol"
         ],
@@ -230,6 +259,27 @@
         "exec_wrapper_custom_tool_calls": 176,
         "custom_tool_call_names": {
           "exec": 176
+        },
+        "call_pairing": {
+          "status": "complete",
+          "per_kind": {
+            "function_call": {
+              "calls": 40,
+              "outputs": 40,
+              "unmatched_calls": 0,
+              "orphan_outputs": 0
+            },
+            "custom_tool_call": {
+              "calls": 176,
+              "outputs": 176,
+              "unmatched_calls": 0,
+              "orphan_outputs": 0
+            }
+          },
+          "unmatched_calls": [],
+          "orphan_outputs": [],
+          "duplicate_call_ids": [],
+          "ordering_violations": []
         },
         "models_observed": [
           "gpt-5.6-sol"

@@ -276,6 +276,7 @@ def main() -> None:
                 "logical_function_call_names": trace["logical_function_call_names"],
                 "exec_wrapper_custom_tool_calls": trace["exec_wrapper_custom_tool_calls"],
                 "custom_tool_call_names": trace["custom_tool_call_names"],
+                "call_pairing": trace["call_pairing"],
                 "models_observed": trace["models_observed"],
                 "reasoning_efforts_observed": trace["reasoning_efforts_observed"],
                 "token_usage_cumulative_final": trace["token_usage_cumulative_final"],
@@ -316,8 +317,12 @@ def main() -> None:
         "15-event suffix is outside the canonical Task 1 solution trace. Autonomy is",
         "reported separately from exact-organizer-prompt conformance.",
         "",
-        "| Task | Trace events | User / assistant | Logical calls | `exec` calls | Tokens | Result |",
-        "|---|---:|---:|---:|---:|---:|---|",
+        "Call-envelope pairing is checked explicitly. An unfinished call is accepted only",
+        "when it is the final captured event; orphan outputs, duplicate call IDs, and",
+        "out-of-order outputs fail repository verification.",
+        "",
+        "| Task | Trace events | User / assistant | Logical calls | `exec` calls | Unfinished calls | Tokens | Result |",
+        "|---|---:|---:|---:|---:|---:|---:|---|",
     ]
     for task, data in index["tasks"].items():
         trace = data["trace_file"]
@@ -325,6 +330,7 @@ def main() -> None:
         lines.append(
             f"| {task} | {trace['event_count']} | {trace['message_counts'].get('user', 0)} / {trace['message_counts'].get('assistant', 0)} | "
             f"{trace['logical_function_calls']} | {trace['exec_wrapper_custom_tool_calls']} | "
+            f"{len(trace['call_pairing']['unmatched_calls'])} | "
             f"{trace['token_usage_cumulative_final']['total_tokens']} | "
             f"`{result['submission_id']}` / Public {result['public_lb']} |"
         )

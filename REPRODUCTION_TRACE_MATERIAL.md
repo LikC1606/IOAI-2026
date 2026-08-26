@@ -23,10 +23,14 @@ selected submission, final Agent answer, and task_complete event; that
 15-event suffix is outside the canonical Task 1 solution trace. Autonomy is
 reported separately from exact-organizer-prompt conformance.
 
-| Task | Trace events | User / assistant | Logical calls | `exec` calls | Tokens | Result |
-|---|---:|---:|---:|---:|---:|---|
-| task1 | 1398 | 3 / 72 | 17 | 264 | 40933816 | `55277782` / Public 0.74121 |
-| task2 | 1067 | 2 / 61 | 40 | 176 | 29205639 | `55277682` / Public 0.675 |
+Call-envelope pairing is checked explicitly. An unfinished call is accepted only
+when it is the final captured event; orphan outputs, duplicate call IDs, and
+out-of-order outputs fail repository verification.
+
+| Task | Trace events | User / assistant | Logical calls | `exec` calls | Unfinished calls | Tokens | Result |
+|---|---:|---:|---:|---:|---:|---:|---|
+| task1 | 1398 | 3 / 72 | 17 | 264 | 1 | 40933816 | `55277782` / Public 0.74121 |
+| task2 | 1067 | 2 / 61 | 40 | 176 | 0 | 29205639 | `55277682` / Public 0.675 |
 
 ## Scope and result separation
 
