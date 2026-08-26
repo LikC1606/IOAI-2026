@@ -27,6 +27,24 @@ is not a proof that arbitrary
 compressed contents contain no restricted bytes; an authorized reviewer makes
 the final sharing decision.
 
+As an additional heuristic, every regular member was stream-scanned for
+competition-data markers such as `test_leaderboard`, `public_embeddings`,
+`vocabulary.json`, `field_config`, checkpoint extensions, and Kaggle input
+paths. The scan found 98 source files containing such words as code-level path
+or filename references, but no data-file or checkpoint member. This is still
+only a heuristic content check and does not replace an authorized review of
+the archive before redistribution.
+
+The scan is reproducible without extracting the archive:
+
+```bash
+python3 tools/scan_extraction_archive.py \
+  --archive /path/to/ioai-kaggle-fetch-researai-20260813.tar.gz
+```
+
+It prints only counts, member names, and hashes; it does not write or publish
+archive contents.
+
 See the machine-readable details in
 [`ACCESS_CONTROL_AUDIT.json`](ACCESS_CONTROL_AUDIT.json) and the delivery
 record in [`KAGGLE_EXTRACTION_DELIVERY.json`](KAGGLE_EXTRACTION_DELIVERY.json).

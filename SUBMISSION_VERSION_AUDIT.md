@@ -21,6 +21,24 @@ it does not decide whether the organizer grants an exception.
 - task2: scriptVersionId `340290308` was used by `55260462`, `55260695` (all before deadline).
 - task3: scriptVersionId `340521169` was used by `55290807`, `55290810` (all before deadline).
 
+## Deadline-scope cross-check
+
+The timeline section says a Submission counts for ranking only when its
+command is sent before the Final Submission Deadline. The limit section
+uses different wording for Task 3 (scored Submissions) and Tasks 1/2/4/5/6
+(Notebook versions), so both the account-wide extraction and the
+deadline-scoped submission counts are shown below without choosing an
+organizer interpretation:
+
+| Task | Before deadline | After deadline | Account-wide extracted count | Deadline-scope reading |
+|---|---:|---:|---:|---|
+| task1 | 15 | 15 | 38 | Version cap is push-based; submission rows are only a lower-bound cross-check |
+| task2 | 5 | 11 | 18 | Version cap is push-based; submission rows are only a lower-bound cross-check |
+| task3 | 11 | 16 | 27 | 11 <= 15 under deadline-scoped reading; account-wide count remains subject to adjudication |
+| task4 | 3 | 0 | 4 | Version cap is push-based; submission rows are only a lower-bound cross-check |
+| task5 | 6 | 1 | 7 | Version cap is push-based; submission rows are only a lower-bound cross-check |
+| task6 | 4 | 2 | 8 | Version cap is push-based; submission rows are only a lower-bound cross-check |
+
 Task 1's tied official-final refs are the same extracted scriptVersionId.
 Task 2's repeated version is the formal autonomous v2 pair, while its official
 final ref is not in that duplicate group. Task 3's duplicate pair was sent

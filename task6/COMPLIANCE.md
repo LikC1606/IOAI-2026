@@ -70,7 +70,10 @@ scaled dropout bits and lies in `[-1016,1016]`. The exact source instead expands
 eight equal-scale units and returns `250 * sum(dropout(z) - z)`, whose support
 can reach `[-2000,2000]`. The actual range still lies inside the official
 `[-2026,2026]` bound. This is a report-value error; the historical source is
-preserved rather than silently rewritten.
+preserved rather than silently rewritten. A corrected ten-section explanatory
+supplement is available in
+[`SUPPLEMENTARY_TECHNICAL_REPORT.md`](SUPPLEMENTARY_TECHNICAL_REPORT.md); it is
+not represented as part of the historical submission.
 
 ## Compute accounting limit
 

@@ -29,3 +29,8 @@ source identity, parameter count, batch dependence, and the preserved report
 discrepancy. The organizer evaluator source is not redistributed; its exact
 digest, `_predict_model_random_batches` locator, and call-site facts are in
 `evidence/EVALUATOR_BATCHING_PROVENANCE.json`.
+
+For reviewer convenience, [`SUPPLEMENTARY_TECHNICAL_REPORT.md`](SUPPLEMENTARY_TECHNICAL_REPORT.md)
+provides a corrected ten-section explanation of the exact v3 code. It is a
+post-run explanatory supplement, not a replacement for the immutable submitted
+report or source.

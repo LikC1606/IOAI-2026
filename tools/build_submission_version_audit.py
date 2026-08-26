@@ -156,6 +156,18 @@ def build(archive: Path) -> dict[str, Any]:
             if budget_kind == "notebook_versions"
             else extraction["submissions"]
         )
+        predeadline_submission_count = sum(
+            item["seconds_before_deadline"] >= 0 for item in rows
+        )
+        post_deadline_submission_count = len(rows) - predeadline_submission_count
+        predeadline_known_script_version_ids = sorted(
+            {
+                item["script_version_id"]
+                for item in rows
+                if item.get("script_version_id") is not None
+                and item["seconds_before_deadline"] >= 0
+            }
+        )
         budget_conflict = observed_budget > limit
         repeated_refs = {
             ref for group in groups for ref in group["submission_refs"]
@@ -168,6 +180,28 @@ def build(archive: Path) -> dict[str, Any]:
             "official_budget_limit": limit,
             "observed_budget_count": observed_budget,
             "observed_budget_source": "KAGGLE_EXTRACTION_SUMMARY.json",
+            "predeadline_submission_count": predeadline_submission_count,
+            "post_deadline_submission_count": post_deadline_submission_count,
+            "predeadline_known_script_version_count": len(
+                predeadline_known_script_version_ids
+            ),
+            "deadline_scope_interpretation": (
+                "For this task the published limit is phrased as scored submissions. "
+                "Under the timeline clause, the directly deadline-eligible count is "
+                f"{predeadline_submission_count} before the deadline and "
+                f"{post_deadline_submission_count} after it; the account-wide extracted "
+                f"count is {len(rows)}. The organizer decides which scope governs the "
+                "15-submission limit."
+                if budget_kind == "scored_submissions"
+                else (
+                    "For this task the published limit is phrased as Notebook versions "
+                    "created by kaggle kernels push, not competition submissions. The "
+                    "submission records provide only a deadline-scoped lower bound on "
+                    f"known versions ({len(predeadline_known_script_version_ids)}); the "
+                    f"account-wide extracted version count ({observed_budget}) remains "
+                    "the conservative budget observation."
+                )
+            ),
             "budget_literal_status": (
                 "known_deviation_under_published_wording"
                 if budget_conflict
@@ -276,6 +310,32 @@ def markdown(data: dict[str, Any]) -> str:
             lines.append(
                 f"- {task}: scriptVersionId `{group['script_version_id']}` was used by {refs} ({when})."
             )
+    lines += [
+        "",
+        "## Deadline-scope cross-check",
+        "",
+        "The timeline section says a Submission counts for ranking only when its",
+        "command is sent before the Final Submission Deadline. The limit section",
+        "uses different wording for Task 3 (scored Submissions) and Tasks 1/2/4/5/6",
+        "(Notebook versions), so both the account-wide extraction and the",
+        "deadline-scoped submission counts are shown below without choosing an",
+        "organizer interpretation:",
+        "",
+        "| Task | Before deadline | After deadline | Account-wide extracted count | Deadline-scope reading |",
+        "|---|---:|---:|---:|---|",
+    ]
+    for task, item in data["tasks"].items():
+        if item["official_budget_kind"] == "scored_submissions":
+            reading = (
+                f"{item['predeadline_submission_count']} <= {item['official_budget_limit']} "
+                "under deadline-scoped reading; account-wide count remains subject to adjudication"
+            )
+        else:
+            reading = "Version cap is push-based; submission rows are only a lower-bound cross-check"
+        lines.append(
+            f"| {task} | {item['predeadline_submission_count']} | "
+            f"{item['post_deadline_submission_count']} | {item['observed_budget_count']} | {reading} |"
+        )
     lines += [
         "",
         "Task 1's tied official-final refs are the same extracted scriptVersionId.",

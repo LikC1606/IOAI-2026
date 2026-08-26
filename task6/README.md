@@ -15,6 +15,11 @@ trace-aligned. The v3 model's use of evaluator-batch context is measured and
 documented as a technical behavior for reproducibility; it is not treated as a
 violation or compliance blocker.
 
+[`SUPPLEMENTARY_TECHNICAL_REPORT.md`](SUPPLEMENTARY_TECHNICAL_REPORT.md) is a
+post-run correction of the historical report's dropout/range statements. It is
+provided for review only and is not substituted for the immutable submitted
+source.
+
 The solver approximated a protected procedural 2-D field with a trained
 `torch.nn.Module`. The official evaluator scores five equally weighted regions
 (`I`, `O`, `A`, `I_entropy`, and background), requires dropout-derived inference

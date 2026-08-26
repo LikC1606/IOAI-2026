@@ -128,6 +128,7 @@
     "task6_exact_artifact_chain": [
       "task6/ARTIFACT_PROVENANCE.json",
       "task6/RULE_DIFFERENCE_AUDIT.md",
+      "task6/SUPPLEMENTARY_TECHNICAL_REPORT.md",
       "task6/evidence/EVALUATOR_BATCHING_PROVENANCE.json"
     ]
   },

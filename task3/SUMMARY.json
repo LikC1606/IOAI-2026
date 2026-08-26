@@ -30,7 +30,7 @@
   "submissions_before_official_deadline": 11,
   "submissions_after_official_deadline": 16,
   "published_scored_submission_limit": 15,
-  "submission_budget_status": "literal_count_exceeds_limit_and_predeadline_script_version_reused; post_deadline_count_scope_and_exception_requires_jury",
+  "submission_budget_status": "account_wide_literal_count_exceeds_limit_and_predeadline_script_version_reused; deadline_scoped_predeadline_count_is_11_within_15; count_scope_and_exception_requires_jury",
   "submission_version_audit": {
     "path": "../SUBMISSION_VERSION_AUDIT.json",
     "task_key": "task3",

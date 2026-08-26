@@ -70,7 +70,7 @@
       "strict_claim_status": "trace_and_prompt_supported_but_literal_budget_version_reuse_and_report_deviations_remain",
       "primary_classifications": ["known_deviation"],
       "risks": [
-        "27_all_account_submissions_vs_published_limit_15_with_16_post_deadline",
+        "27_all_account_submissions_vs_published_limit_15_with_16_post_deadline; deadline_scoped_predeadline_count_11_within_limit",
         "script_version_340521169_submitted_twice_for_refs_55290807_and_55290810",
         "historical_report_length_and_score_errors"
       ],
@@ -82,6 +82,12 @@
         "before_official_deadline": 11,
         "after_official_deadline": 16,
         "published_limit": 15
+      },
+      "submission_count_scope": {
+        "deadline_scoped_predeadline_within_limit": true,
+        "account_wide_count_exceeds_limit": true,
+        "organizer_scope_required": true,
+        "evidence": "SUBMISSION_VERSION_AUDIT.json#tasks.task3.deadline_scope_interpretation"
       },
       "evidence": ["task3/COMPLIANCE.md", "task3/REPORT_COMPLIANCE.md", "task3/SUMMARY.json", "SUBMISSION_VERSION_AUDIT.json"]
     },

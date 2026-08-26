@@ -1807,6 +1807,12 @@ def main() -> None:
         "eb14e52057c3cfca21972993fb73c2addaf9f214abc9c6f38b88bca97d93fe3c"
     )
     assert access_audit["archive_content_audit"]["data_like_path_heuristic_matches"] == 0
+    content_scan = access_audit["archive_content_audit"]["content_heuristic_scan"]
+    assert content_scan["regular_files_scanned"] == 1151
+    assert content_scan["data_like_path_matches"] == 0
+    assert content_scan["content_marker_hit_files"] == 98
+    assert "heuristic" in content_scan["result_scope"]
+    assert (ROOT / "tools/scan_extraction_archive.py").is_file()
     assert (ROOT / "ACCESS_CONTROL_AUDIT.md").is_file()
     assert set(checklist["task_packages"]) == {f"task{i}" for i in range(1, 7)}
     expected_official_sources = {
@@ -1892,6 +1898,7 @@ def main() -> None:
         "task6_exact_artifact_chain": [
             "task6/ARTIFACT_PROVENANCE.json",
             "task6/RULE_DIFFERENCE_AUDIT.md",
+            "task6/SUPPLEMENTARY_TECHNICAL_REPORT.md",
             "task6/evidence/EVALUATOR_BATCHING_PROVENANCE.json",
         ],
     }

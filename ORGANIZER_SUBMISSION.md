@@ -43,7 +43,7 @@ Special evidence is linked here for quick review:
 - Tasks 1–2 external final-result candidates: [`task1/remote/OFFICIAL_FINAL_EXTRACTION_PROVENANCE.json`](task1/remote/OFFICIAL_FINAL_EXTRACTION_PROVENANCE.json) and [`task2/remote/OFFICIAL_FINAL_EXTRACTION_PROVENANCE.json`](task2/remote/OFFICIAL_FINAL_EXTRACTION_PROVENANCE.json). These are kernel-linked candidates from the Kaggle extraction; neither has byte-confirmed exact-version binding to the official final ref.
 - Submission/version budget audit: [`SUBMISSION_VERSION_AUDIT.md`](SUBMISSION_VERSION_AUDIT.md) and [`SUBMISSION_VERSION_AUDIT.json`](SUBMISSION_VERSION_AUDIT.json). This explicitly checks the published budget and the one-submission-per-Notebook-version rule, including repeated `scriptVersionId` values.
 - Task 4 supplemental trace provenance: [`task4/evidence/SUPPLEMENTAL_ROLLOUT_PROVENANCE.json`](task4/evidence/SUPPLEMENTAL_ROLLOUT_PROVENANCE.json) and [`task4/RULE_DIFFERENCE_AUDIT.md`](task4/RULE_DIFFERENCE_AUDIT.md).
-- Task 6 exact v3 artifact chain: [`task6/ARTIFACT_PROVENANCE.json`](task6/ARTIFACT_PROVENANCE.json), [`task6/RULE_DIFFERENCE_AUDIT.md`](task6/RULE_DIFFERENCE_AUDIT.md), and [`task6/evidence/EVALUATOR_BATCHING_PROVENANCE.json`](task6/evidence/EVALUATOR_BATCHING_PROVENANCE.json).
+- Task 6 exact v3 artifact chain and corrected report supplement: [`task6/ARTIFACT_PROVENANCE.json`](task6/ARTIFACT_PROVENANCE.json), [`task6/RULE_DIFFERENCE_AUDIT.md`](task6/RULE_DIFFERENCE_AUDIT.md), [`task6/SUPPLEMENTARY_TECHNICAL_REPORT.md`](task6/SUPPLEMENTARY_TECHNICAL_REPORT.md), and [`task6/evidence/EVALUATOR_BATCHING_PROVENANCE.json`](task6/evidence/EVALUATOR_BATCHING_PROVENANCE.json).
 
 ## Deliverable checklist
 

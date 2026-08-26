@@ -373,7 +373,7 @@
             "task3/SUMMARY.json",
             "RULE_COMPLIANCE_AUDIT.md"
           ],
-          "note": "27 account submissions were captured (11 before and 16 after deadline) against a published limit of 15. The extraction also shows scriptVersionId 340521169 used for refs 55290807 and 55290810 immediately before the deadline. The count excess and pre-deadline version reuse are separate literal conflicts; any exception or enforcement scope remains an organizer decision."
+          "note": "27 account submissions were captured (11 before and 16 after deadline) against a published limit of 15. Under the timeline clause's deadline-scoped reading, the 11 pre-deadline submissions are within the 15 limit; under an account-wide reading, 27 exceeds it. The extraction also shows scriptVersionId 340521169 used for refs 55290807 and 55290810 immediately before the deadline. The count interpretation and pre-deadline version reuse are separate questions for organizer adjudication."
         },
         "runtime_cap": {
           "requirement": "One 600-second CPU budget covers the round.",

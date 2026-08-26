@@ -19,6 +19,11 @@
     "hardware.local_development": "jury_interpretation_risk_and_accounting_incomplete",
     "cost.total_usd": "unavailable_not_complete_numeric_total"
   },
+  "supplementary_report": {
+    "path": "SUPPLEMENTARY_TECHNICAL_REPORT.md",
+    "status": "post_run_correction_not_historical_submission",
+    "corrects": ["dropout_bit_count_and_scales", "entropy_output_range"]
+  },
   "artifact_provenance": "ARTIFACT_PROVENANCE.json",
   "official_evaluator_batching_provenance": "evidence/EVALUATOR_BATCHING_PROVENANCE.json",
   "verification_script": "tools/verify_v3_artifacts.py"
