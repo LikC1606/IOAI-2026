@@ -30,6 +30,11 @@ trace files, 17,331 events, and 572,189,803 cumulative tokens. The separate
 Task 1/2 reproduction package retains the complete later raw streams (2 files,
 2,465 events, 70,139,455 tokens). Startup instruction payloads are indexed and
 hash-bound in [`STARTUP_INSTRUCTION_INDEX.md`](STARTUP_INSTRUCTION_INDEX.md).
+The Task 1/2 official-ref mapping is further disambiguated in
+[`KERNEL_VERSION_MAPPING_AUDIT.md`](KERNEL_VERSION_MAPPING_AUDIT.md): the
+account's internal `scriptVersionId` is exact, while the archive `vN` folder
+and submitted bytes remain explicitly candidate-level where Kaggle did not
+provide a confirming digest.
 
 Credential material, private endpoints, hidden chain-of-thought, encrypted
 opaque reasoning, and the bodies of excluded live-human prompts are not

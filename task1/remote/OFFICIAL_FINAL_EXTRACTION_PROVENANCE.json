@@ -23,6 +23,24 @@
     "submission_descriptions": {
       "55267333": "V5 strong speaker parity diverse PMI beams plus full Qwen rerank",
       "55267368": "v5 V1 recovered strong-speaker diverse Kemeny full-dialogue rerank"
+    },
+    "version_mapping_audit": {
+      "submission_record_script_version_id_is_exact": true,
+      "submission_record_script_version_id": 340342513,
+      "candidate_version_directory": 5,
+      "candidate_version_directory_status": "semantic_candidate_not_internal_id_proof",
+      "selection_basis": [
+        "Both official submission descriptions identify the submitted revision as V5/v5.",
+        "The archive v5 source and output hashes are the stronger-speaker/Kemeny artifact pair described by those records.",
+        "The candidate was sent before the official deadline and its observed runtime is below the 600-second cap."
+      ],
+      "byte_equivalent_archive_versions": [5, 6],
+      "byte_equivalent_source_sha256": "546e889764600c23ba6203cf8b03a5f13bc467374c968f9770f1de71f6f41d56",
+      "byte_equivalent_output_sha256": "a663e8add16554c12a4458890e3de557794f83b0eb1f72209e132af3aacd2470",
+      "unresolved": [
+        "The extraction marks matched_version_confidence empty and _version_confirmed false.",
+        "The submission record exposes the internal scriptVersionId but not a byte-level submitted-file digest, so v5 versus the byte-identical v6 archive copy cannot be proven from this package."
+      ]
     }
   },
   "candidate_metadata_summary": {

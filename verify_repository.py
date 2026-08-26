@@ -1377,6 +1377,30 @@ def verify_requirement_evidence_matrix() -> dict[str, object]:
         assert output["produced_output_file"] is True
         assert output["reused_from_disk"] is False
         assert output["data_row_count"] in {200, 7200}
+        mapping = candidate["kernel_linked_candidate"]["version_mapping_audit"]
+        assert mapping["submission_record_script_version_id_is_exact"] is True
+        assert mapping["submission_record_script_version_id"] == candidate[
+            "kernel_linked_candidate"
+        ]["submission_record_script_version_id"]
+        assert mapping["candidate_version_directory"] == candidate[
+            "kernel_linked_candidate"
+        ]["kernel_version_directory"]
+        assert mapping["candidate_version_directory_status"] == (
+            "semantic_candidate_not_internal_id_proof"
+        )
+        assert mapping["unresolved"]
+        if number == 1:
+            assert mapping["submission_record_script_version_id"] == 340342513
+            assert mapping["byte_equivalent_archive_versions"] == [5, 6]
+            assert mapping["byte_equivalent_source_sha256"] == candidate[
+                "kernel_linked_candidate"
+            ]["source_sha256"]
+            assert mapping["byte_equivalent_output_sha256"] == candidate[
+                "kernel_linked_candidate"
+            ]["output_sha256"]
+        else:
+            assert mapping["submission_record_script_version_id"] == 340299118
+            assert mapping["byte_equivalent_archive_versions"] == []
 
     # Exact prompt snapshots must be byte-equal to the stored page bodies.
     for task in (4, 5, 6):
@@ -1890,6 +1914,12 @@ def main() -> None:
             "task5/environment/AGENTS-ACTUALLY-INJECTED.md",
             "task6/environment/AGENTS-ACTUALLY-INJECTED.md",
         ],
+        "startup_instruction_lineage": [
+            "AGENT_INSTRUCTION_LINEAGE.md",
+        ],
+        "task1_task2_kernel_version_mapping_audit": [
+            "KERNEL_VERSION_MAPPING_AUDIT.md",
+        ],
         "extraction_binding_verifier": [
             "tools/verify_extraction_bindings.py",
             "KAGGLE_EXTRACTION_DELIVERY.json",
@@ -1966,6 +1996,7 @@ def main() -> None:
         "later_two_hour_reproduction_traces_task1_task2": "complete_separately_scoped_post_deadline_reference",
         "prompts_and_visible_outputs": "complete_for_selected_observable_trace_scope",
         "startup_instruction_payloads": "complete_hash_bound_per_task",
+        "task1_task2_version_mapping": "exact_internal_script_version_ids_with_explicit_candidate_and_byte_limits",
         "extraction_binding_verifier": "read_only_archive_member_hash_check_available",
         "exact_organizer_prompt_conformance": "audited_with_non_exact_tasks",
         "cross_task_rule_compliance": "audited_known_deviations_and_evidence_limits_remain",

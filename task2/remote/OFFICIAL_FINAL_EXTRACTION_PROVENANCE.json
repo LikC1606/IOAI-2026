@@ -20,7 +20,23 @@
     "log_gzip_sha256": "d3d504f6dfe8137b0fba64224593b1881f06b227116ecb5d7916114b22be5540",
     "observed_runtime_seconds": 118.58038651,
     "submission_record_script_version_id": 340299118,
-    "submission_timestamp_utc": "2026-08-05T06:46:18.437Z"
+    "submission_timestamp_utc": "2026-08-05T06:46:18.437Z",
+    "version_mapping_audit": {
+      "submission_record_script_version_id_is_exact": true,
+      "submission_record_script_version_id": 340299118,
+      "candidate_version_directory": 1,
+      "candidate_version_directory_status": "semantic_candidate_not_internal_id_proof",
+      "selection_basis": [
+        "The official submission description is explicitly 'structured ExtraTrees v1'.",
+        "The archive v1 source and output are the first version in the matching kernel slug and satisfy the recorded output/report/runtime checks.",
+        "The candidate timestamp is the official-final submission timestamp and its observed runtime is below the 300-second cap."
+      ],
+      "byte_equivalent_archive_versions": [],
+      "unresolved": [
+        "The extraction marks matched_version_confidence empty and _version_confirmed false.",
+        "The submission record exposes the internal scriptVersionId but not a byte-level submitted-file digest; v1 is therefore a strongly identified candidate, not an exact scored-byte claim."
+      ]
+    }
   },
   "candidate_metadata_summary": {
     "enable_gpu": true,

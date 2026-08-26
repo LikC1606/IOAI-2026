@@ -98,7 +98,10 @@ after the selected submission, final Agent answer, and `task_complete`. See
   [`remote/OFFICIAL_FINAL_EXTRACTION_PROVENANCE.json`](remote/OFFICIAL_FINAL_EXTRACTION_PROVENANCE.json).
   Its `matched_version_confidence` is empty, so it must not be described as
   the exact source/output bytes scored for either tied ref, and it does not
-  establish autonomous causality.
+  establish autonomous causality. The exact linked internal
+  `scriptVersionId=340342513`, the V5 semantic evidence, and the byte-equivalent
+  v5/v6 archive class are summarized in the root
+  [`KERNEL_VERSION_MAPPING_AUDIT.md`](../KERNEL_VERSION_MAPPING_AUDIT.md).
 - The later reproduction searched AI4Code, sentence-ordering and Qwen method
   material before candidate selection. No external runtime data, weights, or
   runtime resource were added beyond organizer-supplied resources. This is

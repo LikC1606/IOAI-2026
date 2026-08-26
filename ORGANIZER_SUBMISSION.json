@@ -115,6 +115,12 @@
       "task5/environment/AGENTS-ACTUALLY-INJECTED.md",
       "task6/environment/AGENTS-ACTUALLY-INJECTED.md"
     ],
+    "startup_instruction_lineage": [
+      "AGENT_INSTRUCTION_LINEAGE.md"
+    ],
+    "task1_task2_kernel_version_mapping_audit": [
+      "KERNEL_VERSION_MAPPING_AUDIT.md"
+    ],
     "extraction_binding_verifier": [
       "tools/verify_extraction_bindings.py",
       "KAGGLE_EXTRACTION_DELIVERY.json",
@@ -185,6 +191,15 @@
       "status": "read_only_archive_member_hash_check_available",
       "path": "tools/verify_extraction_bindings.py",
       "note": "An authorized reviewer can run the checker against the downloaded Drive archive; it verifies candidate source/output/log/metadata member hashes while preserving the recorded exact-version-confidence limitations."
+    },
+    "task1_task2_version_mapping": {
+      "status": "exact_internal_script_version_ids_with_explicit_candidate_and_byte_limits",
+      "path": "KERNEL_VERSION_MAPPING_AUDIT.md",
+      "machine_readable_paths": [
+        "task1/remote/OFFICIAL_FINAL_EXTRACTION_PROVENANCE.json",
+        "task2/remote/OFFICIAL_FINAL_EXTRACTION_PROVENANCE.json"
+      ],
+      "note": "The account export proves the linked scriptVersionId. Task 1's archive v5/v6 source-output equivalence and Task 2's v1 semantic candidate are recorded without upgrading either to exact scored-byte proof."
     },
     "exact_organizer_prompt_conformance": {
       "status": "audited_with_non_exact_tasks",

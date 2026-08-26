@@ -29,24 +29,30 @@ The channel/access distinction is recorded in
 3. [`STARTUP_INSTRUCTION_INDEX.md`](STARTUP_INSTRUCTION_INDEX.md) and
    [`STARTUP_INSTRUCTION_INDEX.json`](STARTUP_INSTRUCTION_INDEX.json) — the
    actual startup `AGENTS.md` payload and hash for each Task run.
-4. [`FINAL_SUBMISSION_RESULTS.md`](FINAL_SUBMISSION_RESULTS.md) — official
+4. [`AGENT_INSTRUCTION_LINEAGE.md`](AGENT_INSTRUCTION_LINEAGE.md) — explains
+   the task-scoped startup payload families; there was no single literal
+   `AGENT.md` shared by all six runs.
+5. [`KERNEL_VERSION_MAPPING_AUDIT.md`](KERNEL_VERSION_MAPPING_AUDIT.md) —
+   separates exact Kaggle `scriptVersionId` evidence from the unresolved
+   archive version/byte mapping for the Task 1/2 official refs.
+6. [`FINAL_SUBMISSION_RESULTS.md`](FINAL_SUBMISSION_RESULTS.md) — official
    account results separated from autonomous and later reproduction results.
-5. [`RULE_COMPLIANCE_AUDIT.md`](RULE_COMPLIANCE_AUDIT.md) and
+7. [`RULE_COMPLIANCE_AUDIT.md`](RULE_COMPLIANCE_AUDIT.md) and
    [`PROMPT_CONFORMANCE_AUDIT.md`](PROMPT_CONFORMANCE_AUDIT.md) — cross-task
    scope, exact-prompt, provenance, budget, hardware, and reporting audits.
-6. [`REQUIREMENT_EVIDENCE_MATRIX.md`](REQUIREMENT_EVIDENCE_MATRIX.md) — one
+8. [`REQUIREMENT_EVIDENCE_MATRIX.md`](REQUIREMENT_EVIDENCE_MATRIX.md) — one
    row per rule field with scope-labeled status and direct evidence paths.
-7. [`SUBMISSION_VERSION_AUDIT.md`](SUBMISSION_VERSION_AUDIT.md) — exact
+9. [`SUBMISSION_VERSION_AUDIT.md`](SUBMISSION_VERSION_AUDIT.md) — exact
    account-level budget and repeated Notebook-version submission audit.
-8. [`ACCESS_CONTROL_AUDIT.md`](ACCESS_CONTROL_AUDIT.md) — GitHub Private,
+10. [`ACCESS_CONTROL_AUDIT.md`](ACCESS_CONTROL_AUDIT.md) — GitHub Private,
    external Drive delivery, and archive-content handling scope.
-9. [`AUTONOMOUS_TRACE_MATERIAL.md`](AUTONOMOUS_TRACE_MATERIAL.md) and
+11. [`AUTONOMOUS_TRACE_MATERIAL.md`](AUTONOMOUS_TRACE_MATERIAL.md) and
    [`EXECUTION_TRACES.md`](EXECUTION_TRACES.md) — selected traces, event
    envelopes, boundaries, and token accounting; see also
    [`COSTS.json`](COSTS.json) for compute/accounting fields.
-10. `task1/` through `task6/` — task-specific source, outputs, reports, and
+12. `task1/` through `task6/` — task-specific source, outputs, reports, and
    compliance notes.
-11. [`KAGGLE_EXTRACTION_DELIVERY.json`](KAGGLE_EXTRACTION_DELIVERY.json) — the
+13. [`KAGGLE_EXTRACTION_DELIVERY.json`](KAGGLE_EXTRACTION_DELIVERY.json) — the
    complete external Kaggle extraction archive and Drive delivery record.
 
 ## Scope labels used throughout

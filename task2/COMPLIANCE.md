@@ -97,7 +97,10 @@ the reproduction trace. See `../PROMPT_CONFORMANCE_AUDIT.md` for hashes.
   post-deadline result. The external extraction contains a strongly identified
   v1 kernel-linked source/output candidate, but its metadata says the exact
   version is not byte-confirmed; see
-  [`remote/OFFICIAL_FINAL_EXTRACTION_PROVENANCE.json`](remote/OFFICIAL_FINAL_EXTRACTION_PROVENANCE.json).
+  [`remote/OFFICIAL_FINAL_EXTRACTION_PROVENANCE.json`](remote/OFFICIAL_FINAL_EXTRACTION_PROVENANCE.json)
+  and the root [`KERNEL_VERSION_MAPPING_AUDIT.md`](../KERNEL_VERSION_MAPPING_AUDIT.md),
+  which records the exact linked `scriptVersionId=340299118` and the v1
+  candidate-selection basis.
   The tracked `excluded/current-tree-*` snapshot is a later v3 result
   (`55262303`, Public 0.63416), not the official final and must not be cited as
   its exact artifact chain.
