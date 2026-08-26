@@ -7,6 +7,8 @@ separates supported facts from questions that require organizer judgment.
 
 For the shortest one-page hand-off of scores, trace scope, cost accounting,
 and unresolved decisions, see [`AUDIT_STATUS.md`](AUDIT_STATUS.md).
+For the same unresolved questions in a compact, numbered decision register,
+see [`OPEN_REVIEW_ITEMS.md`](OPEN_REVIEW_ITEMS.md).
 
 The fastest field-by-field route is the
 [`REQUIREMENT_EVIDENCE_MATRIX.md`](REQUIREMENT_EVIDENCE_MATRIX.md) (11 rows per
@@ -27,7 +29,13 @@ which link and hash the six `AGENTS-ACTUALLY-INJECTED.md` payloads.
 From the repository root, run:
 
 ```bash
-python3 tools/build_reproduction_trace_material.py  # requires preserved private sources
+# This read-only route works from the checked-in package alone:
+python3 verify_repository.py
+for t in 1 2 3 4 5 6; do (cd task$t && sha256sum -c MANIFEST.sha256); done
+sha256sum -c AUTONOMOUS_MATERIAL_MANIFEST.sha256
+sha256sum -c REPRODUCTION_MATERIAL_MANIFEST.sha256
+# Optional refresh, only when the preserved private historical sources exist:
+python3 tools/build_reproduction_trace_material.py
 python3 tools/build_execution_trace_index.py
 python3 tools/build_autonomous_trace_material.py
 python3 verify_repository.py

@@ -6,6 +6,8 @@ deliverable to its exact evidence path and machine-verifiable status. The
 shortest audit route is [`ORGANIZER_REVIEW_GUIDE.md`](ORGANIZER_REVIEW_GUIDE.md).
 For a one-page hand-off of the current scope, scores, costs, and unresolved
 decisions, see [`AUDIT_STATUS.md`](AUDIT_STATUS.md).
+For a compact numbered register of the remaining organizer/Jury questions, see
+[`OPEN_REVIEW_ITEMS.md`](OPEN_REVIEW_ITEMS.md).
 The cross-task [`RULE_COMPLIANCE_AUDIT.md`](RULE_COMPLIANCE_AUDIT.md) separates
 known deviations, Jury-interpretation risks, and unavailable evidence; the
 current record does not support a claim that all six tasks are strictly
@@ -26,33 +28,35 @@ The channel/access distinction is recorded in
    route, verification commands, evidence map, and unresolved determinations.
 2. [`ORGANIZER_SUBMISSION.md`](ORGANIZER_SUBMISSION.md) — complete deliverable
    checklist and evidence links.
-3. [`STARTUP_INSTRUCTION_INDEX.md`](STARTUP_INSTRUCTION_INDEX.md) and
+3. [`OPEN_REVIEW_ITEMS.md`](OPEN_REVIEW_ITEMS.md) — compact decision register
+   for the remaining organizer/Jury questions.
+4. [`STARTUP_INSTRUCTION_INDEX.md`](STARTUP_INSTRUCTION_INDEX.md) and
    [`STARTUP_INSTRUCTION_INDEX.json`](STARTUP_INSTRUCTION_INDEX.json) — the
    actual startup `AGENTS.md` payload and hash for each Task run.
-4. [`AGENT_INSTRUCTION_LINEAGE.md`](AGENT_INSTRUCTION_LINEAGE.md) — explains
+5. [`AGENT_INSTRUCTION_LINEAGE.md`](AGENT_INSTRUCTION_LINEAGE.md) — explains
    the task-scoped startup payload families; there was no single literal
    `AGENT.md` shared by all six runs.
-5. [`KERNEL_VERSION_MAPPING_AUDIT.md`](KERNEL_VERSION_MAPPING_AUDIT.md) —
+6. [`KERNEL_VERSION_MAPPING_AUDIT.md`](KERNEL_VERSION_MAPPING_AUDIT.md) —
    separates exact Kaggle `scriptVersionId` evidence from the unresolved
    archive version/byte mapping for the Task 1/2 official refs.
-6. [`FINAL_SUBMISSION_RESULTS.md`](FINAL_SUBMISSION_RESULTS.md) — official
+7. [`FINAL_SUBMISSION_RESULTS.md`](FINAL_SUBMISSION_RESULTS.md) — official
    account results separated from autonomous and later reproduction results.
-7. [`RULE_COMPLIANCE_AUDIT.md`](RULE_COMPLIANCE_AUDIT.md) and
+8. [`RULE_COMPLIANCE_AUDIT.md`](RULE_COMPLIANCE_AUDIT.md) and
    [`PROMPT_CONFORMANCE_AUDIT.md`](PROMPT_CONFORMANCE_AUDIT.md) — cross-task
    scope, exact-prompt, provenance, budget, hardware, and reporting audits.
-8. [`REQUIREMENT_EVIDENCE_MATRIX.md`](REQUIREMENT_EVIDENCE_MATRIX.md) — one
+9. [`REQUIREMENT_EVIDENCE_MATRIX.md`](REQUIREMENT_EVIDENCE_MATRIX.md) — one
    row per rule field with scope-labeled status and direct evidence paths.
-9. [`SUBMISSION_VERSION_AUDIT.md`](SUBMISSION_VERSION_AUDIT.md) — exact
+10. [`SUBMISSION_VERSION_AUDIT.md`](SUBMISSION_VERSION_AUDIT.md) — exact
    account-level budget and repeated Notebook-version submission audit.
-10. [`ACCESS_CONTROL_AUDIT.md`](ACCESS_CONTROL_AUDIT.md) — GitHub Private,
+11. [`ACCESS_CONTROL_AUDIT.md`](ACCESS_CONTROL_AUDIT.md) — GitHub Private,
    external Drive delivery, and archive-content handling scope.
-11. [`AUTONOMOUS_TRACE_MATERIAL.md`](AUTONOMOUS_TRACE_MATERIAL.md) and
+12. [`AUTONOMOUS_TRACE_MATERIAL.md`](AUTONOMOUS_TRACE_MATERIAL.md) and
    [`EXECUTION_TRACES.md`](EXECUTION_TRACES.md) — selected traces, event
    envelopes, boundaries, and token accounting; see also
    [`COSTS.json`](COSTS.json) for compute/accounting fields.
-12. `task1/` through `task6/` — task-specific source, outputs, reports, and
+13. `task1/` through `task6/` — task-specific source, outputs, reports, and
    compliance notes.
-13. [`KAGGLE_EXTRACTION_DELIVERY.json`](KAGGLE_EXTRACTION_DELIVERY.json) — the
+14. [`KAGGLE_EXTRACTION_DELIVERY.json`](KAGGLE_EXTRACTION_DELIVERY.json) — the
    complete external Kaggle extraction archive and Drive delivery record.
 
 ## Scope labels used throughout
@@ -113,18 +117,25 @@ component. Their roles are:
 | `REQUIREMENT_EVIDENCE_MATRIX.json/.md` | Included in the canonical full refresh; `python3 tools/build_requirement_evidence_matrix.py` remains a standalone scope-labeled rule-index refresh |
 | Extraction candidate member checks | `python3 tools/verify_extraction_bindings.py --archive /path/to/ioai-kaggle-fetch-researai-20260813.tar.gz` (read-only, after downloading the Drive archive) |
 
-Recommended refresh order is: refresh the later-reproduction package first
-(when its preserved private source paths are available), then the execution
-inventory, then the canonical autonomous-material builder, and finally
-`verify_repository.py` plus every manifest check. If the private historical
-source paths are unavailable, do not regenerate the reproduction package;
+Recommended refresh order is: first run the read-only verifier and checked-in
+manifest checks. If the preserved private historical source paths are
+available, refresh the later-reproduction package, then the execution
+inventory and canonical autonomous-material builder, and run the checks again.
+If those private paths are unavailable, do not run the reproduction builder;
 verify the checked-in reproduction manifest instead. After any refresh, run
 `python3 verify_repository.py` and all manifest checks.
 Do not hand-edit the JSONL traces, exact submission artifacts, or generated
 hashes; make a source/evidence change first, then regenerate and verify.
 
 ```bash
-python3 tools/build_reproduction_trace_material.py  # requires preserved private sources
+# Always works from the checked-in package:
+python3 verify_repository.py
+for t in 1 2 3 4 5 6; do (cd task$t && sha256sum -c MANIFEST.sha256); done
+sha256sum -c AUTONOMOUS_MATERIAL_MANIFEST.sha256
+sha256sum -c REPRODUCTION_MATERIAL_MANIFEST.sha256
+
+# Optional refresh, only when the preserved private historical sources exist:
+python3 tools/build_reproduction_trace_material.py
 python3 tools/build_execution_trace_index.py
 python3 tools/build_autonomous_trace_material.py
 python3 verify_repository.py

@@ -5,6 +5,9 @@ index of preserved evidence and machine checks, not a compliance certificate.
 The authoritative detailed records remain in the linked task packages and in
 the root JSON ledgers.
 
+For a numbered register of each unresolved organizer/Jury question and its
+direct evidence path, see [`OPEN_REVIEW_ITEMS.md`](OPEN_REVIEW_ITEMS.md).
+
 ## At-a-glance scope
 
 | Task | Official final (Public / Private) | Published no-live-human trace | Exact organizer prompt text | Main qualification |

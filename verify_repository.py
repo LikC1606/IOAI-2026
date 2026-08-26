@@ -1804,6 +1804,8 @@ def main() -> None:
     assert (ROOT / checklist["audit_status"]).is_file()
     assert checklist["organizer_review_guide"] == "ORGANIZER_REVIEW_GUIDE.md"
     assert (ROOT / checklist["organizer_review_guide"]).is_file()
+    assert checklist["open_review_items"] == "OPEN_REVIEW_ITEMS.md"
+    assert (ROOT / checklist["open_review_items"]).is_file()
     assert checklist["requirement_evidence_matrix"] == {
         "json": "REQUIREMENT_EVIDENCE_MATRIX.json",
         "markdown": "REQUIREMENT_EVIDENCE_MATRIX.md",

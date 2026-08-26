@@ -15,6 +15,10 @@ It summarizes the six official account results, selected trace scope, prompt
 qualification, cost accounting, and remaining Jury decisions without replacing
 the detailed evidence.
 
+The numbered [`OPEN_REVIEW_ITEMS.md`](OPEN_REVIEW_ITEMS.md) register gathers
+those remaining decisions in one place, with a direct evidence link for each
+item.
+
 For a requirement-by-requirement view, use the
 [`REQUIREMENT_EVIDENCE_MATRIX.md`](REQUIREMENT_EVIDENCE_MATRIX.md) table or its
 machine-readable [`REQUIREMENT_EVIDENCE_MATRIX.json`](REQUIREMENT_EVIDENCE_MATRIX.json).
@@ -68,6 +72,7 @@ Special evidence is linked here for quick review:
 | Cross-task rule compliance | Audited; known deviations and evidence/interpretation limits remain | [`RULE_COMPLIANCE_AUDIT.md`](RULE_COMPLIANCE_AUDIT.md), [`RULE_COMPLIANCE_AUDIT.json`](RULE_COMPLIANCE_AUDIT.json) |
 | Submission/version limits | Audited against extracted `script_version_id`, deadline offset, task budget fields, and per-task summary bindings | [`SUBMISSION_VERSION_AUDIT.md`](SUBMISSION_VERSION_AUDIT.md), [`SUBMISSION_VERSION_AUDIT.json`](SUBMISSION_VERSION_AUDIT.json), `task1/SUMMARY.json` through `task6/SUMMARY.json` |
 | Rule-by-rule evidence map | Complete, scope-labeled for 11 requirements per Task | [`REQUIREMENT_EVIDENCE_MATRIX.md`](REQUIREMENT_EVIDENCE_MATRIX.md), [`REQUIREMENT_EVIDENCE_MATRIX.json`](REQUIREMENT_EVIDENCE_MATRIX.json) |
+| Open organizer/Jury decisions | Centralized numbered register; facts and requested dispositions kept separate | [`OPEN_REVIEW_ITEMS.md`](OPEN_REVIEW_ITEMS.md) |
 | Access-control and delivery scope | Audited separately for Private GitHub, external Drive, and archive content limits | [`ACCESS_CONTROL_AUDIT.md`](ACCESS_CONTROL_AUDIT.md), [`ACCESS_CONTROL_AUDIT.json`](ACCESS_CONTROL_AUDIT.json) |
 | Task 4 competition-rule differences | Audited with disclosed prompt, process, and hardware limits | [`task4/RULE_DIFFERENCE_AUDIT.md`](task4/RULE_DIFFERENCE_AUDIT.md), [`task4/RULE_DIFFERENCE_AUDIT.json`](task4/RULE_DIFFERENCE_AUDIT.json) |
 | Task 6 exact artifacts and rule differences | Exact v3 artifacts complete; evaluator batch behavior measured and disclosed, not treated as a compliance blocker | [`task6/ARTIFACT_PROVENANCE.json`](task6/ARTIFACT_PROVENANCE.json), [`task6/RULE_DIFFERENCE_AUDIT.md`](task6/RULE_DIFFERENCE_AUDIT.md) |
