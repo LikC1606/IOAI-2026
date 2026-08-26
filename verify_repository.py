@@ -1821,6 +1821,42 @@ def verify_extraction_binding_receipt() -> dict[str, object]:
             "match_scope": "latest_kernel_source_differs_from_archive_candidate_source",
         },
     ]
+    account_crosscheck = receipt["live_account_submission_crosscheck"]
+    assert account_crosscheck["checked_utc"] == "2026-08-26T07:36:38Z"
+    assert account_crosscheck["kaggle_cli_version"] == "Kaggle CLI 2.2.4"
+    assert account_crosscheck["method"] == (
+        "Authenticated Kaggle CLI competitions submissions retrieval; ref, "
+        "filename, timestamp, description, status, and Public-score fields "
+        "were canonicalized and hashed locally."
+    )
+    assert "current account-list cross-check" in account_crosscheck["scope_note"]
+    assert "does not prove historical source bytes" in account_crosscheck["scope_note"]
+    assert account_crosscheck["results"] == [
+        {
+            "task": 1,
+            "competition": "ioai-2026-task-1-westlake-nlp-24",
+            "records": 30,
+            "ref_public_fields_sha256": "c73f95e05ac4d7a2416f0774165d3707e9590cd2b846731ac7c6adbb574f53cf",
+            "matches_archived_ref_public_fields": True,
+            "official_refs_present": True,
+            "official_refs": [55267333, 55267368],
+            "latest_ref": 55300144,
+            "latest_date": "2026-08-06T14:00:38.463000",
+            "latest_public_score": "0.81854",
+        },
+        {
+            "task": 2,
+            "competition": "ioai-2026-task-2-westlake-nlp-24",
+            "records": 16,
+            "ref_public_fields_sha256": "b4c72fff6f7f1d08b567b901fbee31aaa9383fc047a749fbfcaaef66e684775d",
+            "matches_archived_ref_public_fields": True,
+            "official_refs_present": True,
+            "official_refs": [55261432],
+            "latest_ref": 55280319,
+            "latest_date": "2026-08-05T20:34:57.803000",
+            "latest_public_score": "0.65888",
+        },
+    ]
     return {
         "all_ok": True,
         "archive_sha256": receipt["archive"]["sha256"],

@@ -185,5 +185,37 @@
       }
     ]
   },
+  "live_account_submission_crosscheck": {
+    "checked_utc": "2026-08-26T07:36:38Z",
+    "kaggle_cli_version": "Kaggle CLI 2.2.4",
+    "method": "Authenticated Kaggle CLI competitions submissions retrieval; ref, filename, timestamp, description, status, and Public-score fields were canonicalized and hashed locally.",
+    "scope_note": "This is a current account-list cross-check against the extracted snapshot. It confirms the listed records and cited official refs have not changed in the checked competitions as of this timestamp; it does not prove historical source bytes, exact-version binding, or organizer acceptance.",
+    "results": [
+      {
+        "task": 1,
+        "competition": "ioai-2026-task-1-westlake-nlp-24",
+        "records": 30,
+        "ref_public_fields_sha256": "c73f95e05ac4d7a2416f0774165d3707e9590cd2b846731ac7c6adbb574f53cf",
+        "matches_archived_ref_public_fields": true,
+        "official_refs_present": true,
+        "official_refs": [55267333, 55267368],
+        "latest_ref": 55300144,
+        "latest_date": "2026-08-06T14:00:38.463000",
+        "latest_public_score": "0.81854"
+      },
+      {
+        "task": 2,
+        "competition": "ioai-2026-task-2-westlake-nlp-24",
+        "records": 16,
+        "ref_public_fields_sha256": "b4c72fff6f7f1d08b567b901fbee31aaa9383fc047a749fbfcaaef66e684775d",
+        "matches_archived_ref_public_fields": true,
+        "official_refs_present": true,
+        "official_refs": [55261432],
+        "latest_ref": 55280319,
+        "latest_date": "2026-08-05T20:34:57.803000",
+        "latest_public_score": "0.65888"
+      }
+    ]
+  },
   "scope_note": "This receipt proves that the cited candidate source/output/log/metadata members are present and hash-consistent in the delivered archive. It does not upgrade the candidate-level exact-version limitations recorded for Tasks 1 and 2, nor replace organizer/Jury adjudication."
 }
