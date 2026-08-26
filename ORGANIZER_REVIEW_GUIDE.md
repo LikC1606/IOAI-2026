@@ -27,6 +27,7 @@ which link and hash the six `AGENTS-ACTUALLY-INJECTED.md` payloads.
 From the repository root, run:
 
 ```bash
+python3 tools/build_reproduction_trace_material.py  # requires preserved private sources
 python3 tools/build_execution_trace_index.py
 python3 tools/build_autonomous_trace_material.py
 python3 verify_repository.py
