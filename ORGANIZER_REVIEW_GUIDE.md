@@ -5,6 +5,9 @@ for determinations, not a self-issued compliance certificate. The preserved
 artifacts and hashes are authoritative; this guide only points to them and
 separates supported facts from questions that require organizer judgment.
 
+For the shortest one-page hand-off of scores, trace scope, cost accounting,
+and unresolved decisions, see [`AUDIT_STATUS.md`](AUDIT_STATUS.md).
+
 The fastest field-by-field route is the
 [`REQUIREMENT_EVIDENCE_MATRIX.md`](REQUIREMENT_EVIDENCE_MATRIX.md) (11 rows per
 task: autonomy, trace alignment, prompt, notebook flow, budget, runtime,

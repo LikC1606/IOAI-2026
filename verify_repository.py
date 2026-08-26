@@ -1776,6 +1776,8 @@ def main() -> None:
     assert checklist["status"] == (
         "complete_evidence_package_with_known_compliance_and_cost_limits"
     )
+    assert checklist["audit_status"] == "AUDIT_STATUS.md"
+    assert (ROOT / checklist["audit_status"]).is_file()
     assert checklist["organizer_review_guide"] == "ORGANIZER_REVIEW_GUIDE.md"
     assert (ROOT / checklist["organizer_review_guide"]).is_file()
     assert checklist["requirement_evidence_matrix"] == {
