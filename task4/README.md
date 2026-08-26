@@ -43,7 +43,9 @@ Eligible submissions:
 Version 3 was an autonomous diagnostic Kernel but was not submitted. Version 4
 was accepted 4 minutes 11.077 seconds before the official Kaggle deadline at
 06:15:00 UTC and 7 minutes 36.594 seconds before the agent-run deadline at
-06:18:25.517 UTC. It ran on one Tesla T4 in about 316 seconds. Its exact current remote source matches
+06:18:25.517 UTC. The submission ledger rounds its one-T4 runtime to 316
+seconds; the extraction log records 321.609419295 seconds end-to-end including
+notebook conversion, both below the 600-second cap. Its exact current remote source matches
 `notebooks/script.py` with SHA-256
 `d467bc5a1e7c83ae7da780aaf01fb6ac001fd326e514495cae3a9279b7b6301b`.
 

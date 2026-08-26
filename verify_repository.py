@@ -919,6 +919,24 @@ def verify_task4_artifacts() -> dict[str, object]:
     )
     assert "SUBMISSION_VERSION_AUDIT.json: tasks.task4" in version_finding["evidence"]
     assert "four captured Task 4 notebook versions" in version_finding["conclusion"]
+    # Organizer-facing evidence locators must be directly followable.  Reject
+    # abbreviated filenames and verify that every cited timestamp is present
+    # in the cited local record.
+    timestamp_pattern = re.compile(
+        r"20\d{2}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}(?:\.\d+)?Z"
+    )
+    for finding in rule_audit["findings"]:
+        assert finding["evidence"], finding["rule_id"]
+        for locator in finding["evidence"]:
+            assert "..." not in locator, (finding["rule_id"], locator)
+            relative = locator.split(": ", 1)[0]
+            evidence_path = (ROOT / relative).resolve()
+            assert evidence_path.is_relative_to(ROOT.resolve()), locator
+            assert evidence_path.is_file(), locator
+            timestamps = timestamp_pattern.findall(locator)
+            if timestamps:
+                evidence_text = evidence_path.read_text(encoding="utf-8", errors="replace")
+                assert all(timestamp in evidence_text for timestamp in timestamps), locator
     assert summary["official_final_submission_refs"] == [provenance["submission_ref"]]
     assert summary["official_final_public_score"] == provenance["public_score"]
     assert summary["official_final_private_score"] == provenance.get("private_score", audited["private_score"])
@@ -1108,6 +1126,16 @@ def verify_cross_task_rule_audit() -> dict[str, object]:
         task = f"task{task_number}"
         summary = json.loads((ROOT / task / "SUMMARY.json").read_text(encoding="utf-8"))
         rule = tasks[task]
+        for relative in rule.get("evidence", []):
+            target = (ROOT / relative).resolve()
+            assert target.is_relative_to(ROOT.resolve()), (task, relative)
+            assert target.is_file(), (task, relative)
+        formal_prefix = rule.get("formal_prefix")
+        if formal_prefix:
+            for key in ("path", "audit"):
+                target = (ROOT / formal_prefix[key]).resolve()
+                assert target.is_relative_to(ROOT.resolve()), (task, formal_prefix[key])
+                assert target.is_file(), (task, formal_prefix[key])
         prompt = prompt_audit["tasks"][task]
         assert summary["official_final_submission_refs"] == rule["official_final_submission_refs"]
         assert summary["official_final_trace_alignment"] is rule["official_final_trace_alignment"]

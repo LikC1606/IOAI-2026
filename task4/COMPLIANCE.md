@@ -34,7 +34,10 @@ Task 4 submissions. The per-task binding and source records are in
   classifiers and `cuda:0`.
 - Output: exactly 200 rows, columns `id,delta_a,delta_b`, and 400 finite
   original-resolution tensors.
-- Remote runtime: 316 seconds, within the 600-second cap.
+- Remote runtime: the submission ledger rounds the notebook runtime to 316
+  seconds; the extraction log's end-to-end maximum is 321.609419295 seconds
+  (including notebook conversion), also within the 600-second cap. The output
+  file was written at 315.957934901 seconds.
 
 Direct trace evidence records `--timeout 600` for all four Kernel pushes. The
 formal and supplemental trace set now includes 12 files: the seven added
@@ -77,8 +80,9 @@ disclosed storage choice, not evidence that the output was locally uploaded.
 The source contains the requested ten report paragraphs. It records the first
 two Public scores and estimates the refined T4 runtime because version 4's own
 result was not yet known. Post-run evidence establishes version 4 Public LB
-`98.41` and actual remote runtime about 316 seconds. Those later facts are
-documented here rather than inserted into the immutable source report. No
+`98.41` and actual remote runtime about 316 seconds (321.609419295 seconds
+end-to-end in the extracted log). Those later facts are documented here rather
+than inserted into the immutable source report. No
 Private score is inferred from the local checks or Public LB; the `98.32` value
 comes directly from the later Kaggle extraction recorded in
 `remote/FINAL_ACCOUNT_RESULTS.json`.
