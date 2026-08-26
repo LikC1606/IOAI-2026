@@ -1788,6 +1788,39 @@ def verify_extraction_binding_receipt() -> dict[str, object]:
             "match_scope": "latest_kernel_output_differs_from_archive_candidate_output",
         },
     ]
+    source_crosscheck = receipt["independent_live_source_crosscheck"]
+    assert source_crosscheck["checked_utc"] == "2026-08-26T07:22:18Z"
+    assert source_crosscheck["method"] == (
+        "Authenticated Kaggle CLI kernels pull without a version suffix; "
+        "downloaded source and generated metadata were hashed locally."
+    )
+    assert "current/latest source" in source_crosscheck["scope_note"]
+    assert "does not upgrade exact-version confidence" in source_crosscheck["scope_note"]
+    assert source_crosscheck["results"] == [
+        {
+            "task": 1,
+            "effective_kernel_ref": "researai/ioai-2026-task1-pairwise-kemeny",
+            "source_bytes": 34212,
+            "source_sha256": "546e889764600c23ba6203cf8b03a5f13bc467374c968f9770f1de71f6f41d56",
+            "metadata_bytes": 701,
+            "metadata_sha256": "06979d0873e3755cfbe966c05804bcedfd85cdf92e42cd8db5db29599a5c8e70",
+            "matches_archive_candidate_source": True,
+            "archive_candidate_version": 5,
+            "match_scope": "latest_kernel_source_bytes_equal_archive_candidate_source",
+        },
+        {
+            "task": 2,
+            "effective_kernel_ref": "researai/ioai-2026-structured-extratrees-v1",
+            "source_bytes": 24524,
+            "source_sha256": "d86b5df898a6593bf86779398141b725e8bde4f3499a9ef5b777f13ffd060e92",
+            "metadata_bytes": 697,
+            "metadata_sha256": "231324d381483318048d8a49def6ae98310f6f22fe05f4fbf1864d3ce943d86a",
+            "matches_archive_candidate_source": False,
+            "archive_candidate_version": 1,
+            "archive_candidate_source_sha256": "e2f3211c999bd5564f9e9deb494d28122fe12a6d1dc4a39b3807732f494f8884",
+            "match_scope": "latest_kernel_source_differs_from_archive_candidate_source",
+        },
+    ]
     return {
         "all_ok": True,
         "archive_sha256": receipt["archive"]["sha256"],

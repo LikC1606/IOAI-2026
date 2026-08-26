@@ -26,10 +26,15 @@ request ignores the `/version` suffix and returns the kernel's latest output;
 the receipt records this behavior explicitly. The latest Task 1 output is
 byte-equal to the archive candidate output, while the latest Task 2 output is
 not byte-equal to the archived v1 candidate (it corresponds to a later output).
-Version-qualified source pulls were denied with HTTP 403. This cross-check
-therefore does not prove any historical submitted-file digest or upgrade the
-exact-version status above. The complete hash receipt is the
-`independent_live_output_crosscheck` block in
+Version-qualified source pulls were denied with HTTP 403. An unversioned
+source pull was nevertheless available: its current Task 1 source matches the
+archive v5 candidate byte-for-byte, while its current Task 2 source differs
+from the archived v1 candidate. Because an unversioned pull returns the
+kernel's current/latest source, this is a current-state cross-check only; it
+does not prove any historical submitted-file digest or upgrade the exact-version
+status above. The complete hash receipts are the
+`independent_live_output_crosscheck` and `independent_live_source_crosscheck`
+blocks in
 [`EXTRACTION_BINDING_RECEIPT.json`](EXTRACTION_BINDING_RECEIPT.json).
 
 The remaining gap is narrow but material: the extraction's metadata has an
